@@ -2,12 +2,43 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col-8">
-            <p class="lead mb-3">Welcome <%= name %></p>
+            <p class="lead mb-3">Welcome <%= fname %></p>
         </div>
         <div class="col-4">
             <a href="/users/logout" class="btn btn-secondary">Logout</a>
         </div>
     </div>
+    <p>Go to <a href="/users/<%= id %>">your</a> profile.</p>
     <hr class="my-4">
- 
-  </div>
+    <div class="row">
+        <div class="col-5 friends">
+
+            <h5>Friend List:</h5>
+            <ul>
+                <% profile.friends.forEach(function(friend){ %>
+                    <li style="list-style: none;">
+                        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
+                            <div>
+                                <img src="/images/system/default-user_1a1a1a.png" alt="Default User" width="50px" height="50px">
+                                <a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
+                            </div>  
+                            
+                        </div>
+                    </li>
+                    <% }); %>
+                </ul>
+            </div>
+    </div>
+</div>
+
+    <!-- Static User Routes -->
+    <div class="static-users">
+        <h2>User Profiles</h2>
+        <h5>Jonny O</h5>
+        <p><a href="/users/5f60d9bc564a9e3010a0c5ad">5f60d9bc564a9e3010a0c5ad</a></p>
+        <h5>Mike Jones</h5>
+        <p><a href="/users/5f7d064688285325f888e2c3">5f7d064688285325f888e2c3</a></p>
+        <h5>Jon Olson</h5>
+        <p><a href="/users/5f749fd3bd01753cb4f9677a">5f749fd3bd01753cb4f9677a</a></p>
+    </div>
+    <!-- End Static Users -->

@@ -1,0 +1,26 @@
+.friends {
+    padding: 20px;
+    border-radius: 10px;
+}
+.friends li {
+    background: #bbb;
+    border-radius: 10px;
+    transition: ease-in 0.2s;
+}
+.friends li:hover {
+    background: #777;
+    box-shadow: 0 2px 5px black;
+    transition: ease-in 0.2s;
+}
+
+.list-item a {
+    padding-left: 10px;
+}
+
+
+/* Static User Routes */
+.static-users {
+    background: lime;
+    padding: 20px;
+    margin-bottom: 40px;
+}

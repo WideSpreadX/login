@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-6">
+        <h1 class="mt-4"><%= profile.fname %> <%= profile.lname %>'s Profile</h1>
+    </div>
+    <div class="col-3">
+        <a href="/dashboard" class="btn btn-secondary mt-4">Home</a>
+    </div>
+    <div class="col-3">
+        <a href="/users/logout" class="btn btn-secondary mt-4">Logout</a>
+    </div>
+</div>
+<div class="jumbotron mt-4">
+    <div class="row">
+        <div class="col-10" style="background: #ccc; padding: 20px;">
+            <p class="lead mb-3"><%= profile.fname %> <%= profile.lname %></p>
+            <p class="lead mb-3"><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
+            <p class="lead mb-3"> Age: <%= profile.age %></p>
+        </div>
+        <div class="col-2" style="background: #ccc; display: flex; flex-direction: row; align-items: center; padding-top: 20px">
+            <form action="/users/<%= profile._id %>/add-friend" method="POST">
+                <input type="text" name="friends" value="<%= profile._id %>" style="display: none;">
+                <input class="btn btn-success add-friend" type="submit" value="Add Friend" style="margin-bottom: 30px;">
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4" style="background: #eee;">
+            <h3 style="text-align: center; padding: 20px;">About <%= profile.fname %></h3>
+            <p><%= profile.about %></p>
+        </div>
+        <div class="col-4" style="background: #eee;">
+            <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Social Life</h3>
+            <div class="list-item">
+                <img src="/images/system/github_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
+            </div>
+        </div>
+        <div class="col-4" style="background: #eee;">
+            <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Work Life</h3>
+        </div>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-5 friends">
+
+            <h5>Friend List:</h5>
+            <ul>
+                <% profile.friends.forEach(function(friend){ %>
+                    <li style="list-style: none;">
+                        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
+                            <div>
+                                <img src="/images/system/default-user_1a1a1a.png" alt="Default User" width="50px" height="50px">
+                                <a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
+                            </div>  
+                            
+                        </div>
+                    </li>
+                    <% }); %>
+                </ul>
+            </div>
+            <div class="col-7">
+                <h5 style="text-align: center;">Top Posts</h5>
+                <ul>
+                    <% profile.posts.forEach(function(post){ %>
+                        <li style="list-style: none;">
+                            <div style="padding: 10px; border: solid 1px #222; margin: 5px; border-radius: 10px;">
+                                <div>
+                                    <img src="/images/system/default-post_1a1a1a.png" alt="Default Post" width="50px" height="50px">
+                                    <a href="/users/:id"><%= post %></a>
+                                </div>  
+                                
+                            </div>
+                        </li>
+                        <% }); %>
+                    </ul> 
+            </div>
+        </div>
+</div>
+    <div class="static-users">
+        <h2>User Profiles</h2>
+        <h5>Jonny O</h5>
+        <p><a href="/users/5f60d9bc564a9e3010a0c5ad">5f60d9bc564a9e3010a0c5ad</a></p>
+        <h5>Mike Jones</h5>
+        <p><a href="/users/5f7d064688285325f888e2c3">5f7d064688285325f888e2c3</a></p>
+        <h5>Jon Olson</h5>
+        <p><a href="/users/5f749fd3bd01753cb4f9677a">5f749fd3bd01753cb4f9677a</a></p>
+    </div>
