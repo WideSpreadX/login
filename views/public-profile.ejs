@@ -61,12 +61,14 @@
             <div class="col-7">
                 <h5 style="text-align: center;">Top Posts</h5>
                 <ul>
-                    <% profile.posts.forEach(function(post){ %>
+                    <% posts.forEach(function(post){ %>
                         <li style="list-style: none;">
                             <div style="padding: 10px; border: solid 1px #222; margin: 5px; border-radius: 10px;">
                                 <div>
                                     <img src="/images/system/default-post_1a1a1a.png" alt="Default Post" width="50px" height="50px">
-                                    <a href="/users/:id"><%= post %></a>
+                                    <small class="d-inline"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString('en-US') %></small>
+                                    <p><%= post.postBody %></p>
+                                    <a href="/users/posts/<%= post.id %>">See More</a>
                                 </div>  
                                 
                             </div>

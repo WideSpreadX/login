@@ -1,0 +1,73 @@
+<h1 class="mt-4">Update your Profile</h1>
+<div class="update-profile col-12">
+
+<form action="/users/<%= id %>/update-profile" type="POST">
+
+    <h3>About Me Section</h3>
+    <textarea name="about" id="aboutMe" cols="50" rows="10"></textarea>
+
+    <div class="s-m-container">
+
+    <h3>Social Media Outlets</h3>
+    
+    <div class="s-m-outlet">
+        <p>Github</p>
+        <input type="url" name="github">
+    </div>
+
+    <div class="s-m-outlet">
+    <p>LinkedIn</p>
+    <input type="url" name="linkedin">
+    </div>
+    <div class="s-m-outlet">
+    <p>Facebook</p>
+    <input type="url" name="facebook">
+    </div>
+    <div class="s-m-outlet">
+    <p>Instagram</p>
+    <input type="url" name="instagram">
+    </div>
+    <div class="s-m-outlet">
+    <p>Twitter</p>
+    <input type="url" name="twitter">
+    </div>
+    <div class="s-m-outlet">
+        <p>Pinterest</p>
+        <input type="url" name="pinterest">
+    </div>    
+    </div>
+
+    <div class="s-m-container">
+        <h3>Mailing Information</h3>
+        <div class="s-m-outlet">
+            <p>Town:</p>
+            <input type="text" name="town">    
+        </div>
+        
+        <div class="s-m-outlet">
+
+            <p>State</p>
+            <select name="state">
+                <option value="CT">CT</option>
+                <option value="FL">FL</option>
+                <option value="MA">MA</option>
+                <option value="IL">IL</option>
+            </select>
+        </div>
+
+        <div class="s-m-outlet">
+            <p>Zip Code</p>
+            <input type="number" name="zip">
+        </div>
+            
+        <div class="s-m-outlet">
+
+            <p>Country</p>
+            <input type="text" name="country">
+        </div>
+        
+        <br>
+    </div>
+        <input type="submit" value="Update Profile" style="margin-top: 40px; display: block; width: 100%;">
+    </form>
+</div>

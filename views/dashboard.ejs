@@ -1,4 +1,11 @@
-<h1 class="mt-4">Dashboard</h1>
+<div class="widespread-header">
+    <div class="logo">
+        <h1><a href="/dashboard" title="Go to your Dashboard">WideSpread</a></h1>
+    </div>
+    <div class="current-page-title">
+        <h2><a href="#" title="Refresh your Dashboard"><%= currentPageTitle %></a></h2>
+    </div>
+</div>
 <div class="jumbotron">
     <div class="row">
         <div class="col-8">
@@ -8,7 +15,12 @@
             <a href="/users/logout" class="btn btn-secondary">Logout</a>
         </div>
     </div>
-    <p>Go to <a href="/users/<%= id %>">your</a> profile.</p>
+    <div class="update">
+        <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
+    </div>
+    <div class="update">
+        <a class="btn btn-dark" href="/users/<%= id %>/update-profile">Update Your Profile</a>
+    </div>
     <hr class="my-4">
     <div class="row">
         <div class="col-5 friends">
@@ -21,6 +33,8 @@
                             <div>
                                 <img src="/images/system/default-user_1a1a1a.png" alt="Default User" width="50px" height="50px">
                                 <a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
+                                <p class="d-inline"> - </p>
+                                <a class="d-inline" href="#">Business/School Name</a>
                             </div>  
                             
                         </div>
@@ -28,9 +42,60 @@
                     <% }); %>
                 </ul>
             </div>
+            <div class="col-7 user-posts">
+                <h5>Create New Post</h5>
+                <div class="create-post">
+                    <form action="/users/<%= id %>/post" method="POST">
+                        <textarea required name="postBody" id="postBody" class="form-control bg-dark"></textarea>
+                        <button class="btn btn-success" type="submit">Add Post</button>
+                    </form>
+                </div>
+                <h5>Your Posts:</h5>
+                <div class="user-posts-container">
+                <ul>
+                    <% posts.forEach(function(post){ %>
+                        <li style="list-style: none;">
+                            <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
+                                <a href="/users/post/<%= post.id%>">X</a>
+                                <div class="post-container">
+                                    <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
+                                    <small class="text-muted"><%= post.createdAt.toLocaleDateString() %></small>
+                                    <div class="post">
+                                        <p><%= post.postBody %></p>
+                                    </div>
+                                </div>  
+                                
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+                </div>
+
+            </div>
     </div>
 </div>
-
+<div class="outer_cont_container">
+    <div class="cont_container">
+        <div class="cont_inner_container">
+    <% profile.friends.forEach(function(friend){ %>
+            <div id="userCard_<%=friend.id %>" class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image">
+                        <h3><%= friend.fname %> <%= friend.lname %></h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p><%= friend.about %></p>
+                            <a href="/users/<%= friend.id %>">Profile</a>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+        </div>
+        </div>
     <!-- Static User Routes -->
     <div class="static-users">
         <h2>User Profiles</h2>
@@ -42,3 +107,4 @@
         <p><a href="/users/5f749fd3bd01753cb4f9677a">5f749fd3bd01753cb4f9677a</a></p>
     </div>
     <!-- End Static Users -->
+

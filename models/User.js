@@ -22,6 +22,7 @@ const UserSchema = new mongoose.Schema({
     state: String,
     zip: String,
     country: String,
+    images: [{type:mongoose.Schema.Types.ObjectId, ref: 'uploads.files'}],
     friends: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const {ensureAuthenticated } = require('../config/auth');
 // User Model
 const User = require('../models/User');
@@ -119,18 +120,17 @@ router.get('/:userId', (req, res, next) => {
 });
 
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', ensureAuthenticated, async (req, res) => {
     const id = req.params.id
     const userId = req.user._id;
     console.log("User ID: " + userId);
 
-   /*  console.log("This is user: " + req.user.id); */
-    
+   const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
     User.findById(id)
     .populate('friends')
     .exec()
     .then(profile => {
-            res.render('public-profile', {profile})
+            res.render('public-profile', {profile, posts})
             console.log(profile);
         });
 })
@@ -192,19 +192,114 @@ router.get('/:id', (req, res) => {
                     console.log(err);
                     }else{
                     
+                        return
                     }
                 }
-                );
-                return
-            
-        }
+                )
+                
+            }
     })
     .then(
         res.redirect('/dashboard')
     )
 
-})
-router.get('/:id/post/:id', (req, res) => {
+});
 
+router.get('/:id/update-profile', ensureAuthenticated, (req, res, next) => {
+    const id = req.user._id
+
+    res.render('update-profile', {id: id});
+});
+router.post('/:id/update-profile', ensureAuthenticated, (req, res, next) => {
+    const id = req.params._id;
+    const userId = req.user._id
+/*     let data = {
+        about: req.body.about,
+        town: req.body.town,
+        state: req.body.state,
+        zip: req.body.zip,
+        country: req.body.country,
+        social: {
+            github: req.body.github,
+            linkedin: req.body.linkedin,
+            facebook: req.body.facebook,
+            instagram: req.body.instagram,
+            twitter: req.body.twitter,
+            pinterest: req.body.pinterest
+        }
+    }; */
+    User.findByIdAndUpdate(userId,
+        {data: req.body},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+            console.log(err);
+            }else{
+            
+                return
+            }
+        }
+        )
+    res.redirect('/dashboard');
+});
+
+
+router.post('/:id/post', (req, res) => {
+    const userId = req.user._id;
+    const post = new Post({
+        _id: req.body._id,
+        postBody: req.body.postBody,
+        createdAt: req.body.createdAt,
+        author: userId
+    })
+    post.save()
+    res.redirect('/dashboard')
+
+});
+
+
+// Seeing Posts
+
+router.get('/posts/:postId', ensureAuthenticated, async (req, res) => {
+      const postId = req.params.postId;
+
+        
+      const thisPost = await Post.findById(postId)
+      console.log("Post ID: " + postId);
+      console.log("postId Data: " + thisPost.author);
+
+    const userPost =
+    {
+        id: req.params.postId,
+        author: req.body.author,
+        postBody: req.body.postBody,
+        createdAt: req.body.createdAt,
+        comments: req.body.comments
+    }
+
+    const postAuthor = await User.findById(thisPost.author)
+        console.log("POST AUTHOR: " + postAuthor.fname)
+        
+        res.render('full-post', {thisPost, postAuthor})
 })
+
+// Deleting Posts - ONLY FOR DASHBOARD
+router.get('/post/:postId', (req, res) => {
+    const post = {
+        id: req.params.postId,
+        postBody: req.params.postBody
+    }
+    const id = req.user.id;
+    res.render('delete-post', {post, id})
+})
+router.delete('/post/:postId', async (req, res) => {
+    const post = req.params.postId;
+
+    await Post.findByIdAndDelete(post);
+    res.redirect('/dashboard')
+
+});
+
+
+
 module.exports = router;

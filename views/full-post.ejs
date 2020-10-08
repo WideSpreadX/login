@@ -1,0 +1,15 @@
+<h1>Full Post</h1>
+
+<a href="/users/<%= postAuthor.id %>">Go Back</a>
+
+<div class="full-page-post-container">
+
+    <h3><%= postAuthor.fname %> <%= postAuthor.lname %></h3>
+    <small><%= thisPost.createdAt.toLocaleDateString()%> - <%= thisPost.createdAt.toLocaleTimeString('en-US') %></small>
+    <hr>
+    <p><%= thisPost.postBody %></p>
+    <!-- 
+        <% thisPost.comments.forEach(function(comment){ %>
+            <p><%= comment.author %></p>
+            <% }); %> -->
+</div>
