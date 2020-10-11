@@ -4,6 +4,9 @@ const {ensureAuthenticated } = require('../config/auth');
 
 const User = require('../models/User');
 const Post = require('../models/Post');
+
+
+
 // Welcome Page
 router.get('/', (req, res) => {
     res.render('welcome');

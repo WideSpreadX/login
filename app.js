@@ -6,7 +6,6 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 
-
 const app = express();
 
 require('./config/passport')(passport);
@@ -76,6 +75,7 @@ const storage = new GridFsStorage({
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/business', require('./routes/businesses'));
 
 
 const PORT = process.env.PORT || 5000;

@@ -23,34 +23,66 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-4" style="background: #eee;">
+    <div class="row spread-container">
+        <div class="col-4 spread-container-sub" style="background: #eee;">
             <h3 style="text-align: center; padding: 20px;">About <%= profile.fname %></h3>
             <p><%= profile.about %></p>
         </div>
-        <div class="col-4" style="background: #eee;">
+        <div class="col-4 spread-container-sub" style="background: #eee;">
             <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Social Life</h3>
             <div class="list-item">
                 <img src="/images/system/github_1a1a1a.png" alt="Github" width="25px" height="25px">
                 <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
             </div>
         </div>
-        <div class="col-4" style="background: #eee;">
+        <div class="col-4 spread-container-sub" style="background: #eee;">
             <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Work Life</h3>
         </div>
     </div>
     <hr class="my-4">
+    <div class="outer_cont_container">
+        <div class="cont_container">
+            <div class="cont_inner_container">
+        <% profile.friends.forEach(function(friend){ %>
+                <div id="userCard_<%=friend.id %>" class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image">
+                            <h3><%= friend.fname %> <%= friend.lname %></h3>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <p><%= friend.about %></p>
+                            <a href="/users/<%= friend.id %>">Profile</a>
+                            <div class="add-friend">
+                                <form action="/users/<%= profile._id %>/add-friend" method="POST">
+                                    <input type="text" name="friends" value="<%= profile._id %>" style="display: none;">
+                                    <button class="" type="submit">
+                                        <i class="fas fa-user-plus"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            </div>
+            </div>
     <div class="row">
+        
+        <!-- 
         <div class="col-5 friends">
-
-            <h5>Friend List:</h5>
+            
+                 <h5>Friend List:</h5>
             <ul>
                 <% profile.friends.forEach(function(friend){ %>
                     <li style="list-style: none;">
                         <div style="padding: 10px; margin: 5px; border-radius: 10px;">
                             <div>
                                 <img src="/images/system/default-user_1a1a1a.png" alt="Default User" width="50px" height="50px">
-                                <a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
+                                </i><a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
                             </div>  
                             
                         </div>
@@ -58,17 +90,24 @@
                     <% }); %>
                 </ul>
             </div>
-            <div class="col-7">
+            -->
+            <div class="col-12">
                 <h5 style="text-align: center;">Top Posts</h5>
                 <ul>
                     <% posts.forEach(function(post){ %>
                         <li style="list-style: none;">
-                            <div style="padding: 10px; border: solid 1px #222; margin: 5px; border-radius: 10px;">
-                                <div>
+                            <div class="public-post-container">
+                                <div class="public-post">
                                     <img src="/images/system/default-post_1a1a1a.png" alt="Default Post" width="50px" height="50px">
                                     <small class="d-inline"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString('en-US') %></small>
                                     <p><%= post.postBody %></p>
                                     <a href="/users/posts/<%= post.id %>">See More</a>
+                                    <div class="post-option-bar">
+                                        <i class="fas fa-copy"></i>
+                                        <i class="fas fa-hashtag"></i>
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-share-alt"></i>
+                                    </div>
                                 </div>  
                                 
                             </div>
@@ -77,6 +116,7 @@
                     </ul> 
             </div>
         </div>
+    
 </div>
     <div class="static-users">
         <h2>User Profiles</h2>

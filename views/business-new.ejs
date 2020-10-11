@@ -1,0 +1,71 @@
+<h1><%= currentPageTitle %></h1>
+
+<div class="row">
+
+<div class="update-profile col-12">
+<p>You must be the business owner to add a new business.</p>
+<form action="/business/add-new-business" method="post">
+    <div class="s-m-outlet">
+        <p>Company Name</p>
+        <input type="text" name="company_name" id="company_name">
+    </div>
+    <div class="s-m-outlet">
+        <p>Company Bio</p>
+        <textarea name="company_bio" id="company_bio" cols="30" rows="10"></textarea>
+    </div>
+    <div class="s-m-outlet">
+        <p>Address</p>
+        <input type="text" name="company_street_1" id="company_street_1" value="Address Line 1">
+    </div>
+    <div class="s-m-outlet">
+        <input type="text" name="company_street_2" id="company_street_2" value="Address Line 2">
+    </div>
+    <div class="s-m-outlet">
+        <input type="text" name="company_suite_number" id="company_suite_number" value="Suite Number">
+    </div>
+    <div class="s-m-outlet">
+        <input type="text" name="company_city" id="company_city" value="City">
+    </div>
+    <div class="s-m-outlet">
+        <input type="text" name="company_state" id="company_state" value="State">
+    </div>
+    <div class="s-m-outlet">
+        <input type="text" name="company_zip" id="company_zip" value="Postal Code">
+    </div>
+    <div class="s-m-outlet">
+        <input type="text" name="company_country" id="company_country" value="Country">
+    </div>
+    <div class="s-m-outlet">
+        <p>Company Type</p>
+        <select name="company_type" id="company_type">
+            <option value="construction">Construction</option>
+            <option value="landscape">Landscape</option>
+            <option value="hospitality">Hospitality</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="retail">Retail</option>
+            <option value="financial">Financial</option>
+            <option value="automotive">Automotive</option>
+            <option value="technology">Technology</option>
+            <option value="internet">Internet</option>
+        </select>
+    </div>
+    <div class="s-m-outlet">
+        <p>EIN/Tax ID #</p>
+        <input type="text" name="ein" id="ein">
+    </div>
+    <div class="s-m-outlet">
+        <p>Phone</p>
+        <input type="tel" name="company_phone" id="company_phone">
+    </div>
+    <div class="s-m-outlet">
+        <p>Fax</p>
+        <input type="tel" name="company_fax" id="company_fax">
+    </div>
+    <div class="s-m-outlet">
+        <p>Main Email</p>
+        <input type="email" name="company_main_email" id="company_main_email">
+    </div>
+    <input type="submit" value="Add Company">
+</form>
+</div>
+</div>

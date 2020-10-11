@@ -1,0 +1,30 @@
+<h1 style="text-align: center; margin-top: 50px; margin-bottom: 50px;">Business</h1>
+
+
+
+<% companies.forEach(function(company){ %>
+    <div class="company-container-card">
+        <a style="text-decoration: none;" href="#">
+            <h2><%= company.company_name %></h2>
+            <h5><%= company.company_type %></h5>
+        </a>
+        <hr>
+        <div class="company-bio">
+            <p><%= company.company_bio %></p>
+        </div>
+        <hr>
+        <div class="company-contact">
+            <p><i class="fas fa-phone"></i><a href="tel:<%= company.company_phone %>"><%= company.company_phone %></a></p>
+            <p><i class="far fa-envelope"></i><a href="mailto:<%= company.company_main_email %>"><%= company.company_main_email %></a></p>
+        </div>
+        <div class="employee-portal">
+            <a href="/business/employee/:id">Employee Portal</a>
+        </div>
+    </div>
+<% }); %>
+
+
+
+<div class="business-footer">
+    <a href="/business/add-new-business">Add New Business</a>
+</div>

@@ -1,53 +1,54 @@
-<h1 class="mt-4">Update your Profile</h1>
 <div class="update-profile col-12">
 
-<form action="/users/<%= id %>/update-profile" type="POST">
+
+
+<!-- <form action="/users/update-profile/<%= currentUser.id %>" type="POST">
 
     <h3>About Me Section</h3>
-    <textarea name="about" id="aboutMe" cols="50" rows="10"></textarea>
-
+    <textarea name="about" id="aboutMe" cols="50" rows="10"><%= currentUser.about %></textarea>
+    
     <div class="s-m-container">
 
     <h3>Social Media Outlets</h3>
     
     <div class="s-m-outlet">
         <p>Github</p>
-        <input type="url" name="github">
+        <input type="url" name="github" value="<%= currentUser.social.github %>">
     </div>
 
     <div class="s-m-outlet">
     <p>LinkedIn</p>
-    <input type="url" name="linkedin">
+    <input type="url" name="linkedin" value="<%= currentUser.social.linkedin %>">
     </div>
     <div class="s-m-outlet">
     <p>Facebook</p>
-    <input type="url" name="facebook">
+    <input type="url" name="facebook" value="<%= currentUser.social.facebook %>">
     </div>
     <div class="s-m-outlet">
     <p>Instagram</p>
-    <input type="url" name="instagram">
+    <input type="url" name="instagram" value="<%= currentUser.social.instagram %>">
     </div>
     <div class="s-m-outlet">
     <p>Twitter</p>
-    <input type="url" name="twitter">
+    <input type="url" name="twitter" value="<%= currentUser.social.twitter %>">
     </div>
     <div class="s-m-outlet">
         <p>Pinterest</p>
-        <input type="url" name="pinterest">
+        <input type="url" name="pinterest" value="<%= currentUser.social.pinterest %>">
     </div>    
     </div>
 
     <div class="s-m-container">
         <h3>Mailing Information</h3>
         <div class="s-m-outlet">
-            <p>Town:</p>
-            <input type="text" name="town">    
+            <p>Town</p>
+            <input type="text" name="town" value="<%= currentUser.town %>">    
         </div>
         
         <div class="s-m-outlet">
 
             <p>State</p>
-            <select name="state">
+            <select name="state" value="<%= currentUser.state %>">
                 <option value="CT">CT</option>
                 <option value="FL">FL</option>
                 <option value="MA">MA</option>
@@ -57,17 +58,70 @@
 
         <div class="s-m-outlet">
             <p>Zip Code</p>
-            <input type="number" name="zip">
+            <input type="number" name="zip" value="<%= currentUser.zip %>">
         </div>
             
         <div class="s-m-outlet">
 
             <p>Country</p>
-            <input type="text" name="country">
+            <input type="text" name="country" value="<%= currentUser.country %>">
         </div>
         
+        <div class="s-m-container">
+            <h3>Contact Information</h3>
+
+            <div class="s-m-outlet">
+                <p>Phone Number</p>
+                <input type="tel" name="phone1" id="phone1" value="<%= currentUser.phone1 %>">
+                <select name="phoneType1" id="phoneType1" value="<%= currentUser.phoneType1 %>">
+                    <option value="home">Home</option>
+                    <option value="cell">Cell</option>
+                    <option value="work">Work</option>
+                    <option value="business">Business</option>
+                </select>
+            </div>
+            <div class="s-m-outlet">
+                <p>Secondary Number</p>
+                <input type="tel" name="phone2" id="phone2" value="<%= currentUser.phone2 %>">
+                <select name="phoneType2" id="phoneType2" value="<%= currentUser.phoneType2 %>">
+                    <option value="home">Home</option>
+                    <option value="cell">Cell</option>
+                    <option value="work">Work</option>
+                    <option value="business">Business</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="s-m-container">
+            <h3>Personal Details</h3>
+            <div class="s-m-outlet">
+                <p>Gender</p>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input style="margin-left: 10px;" type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>   
+            </div>
+        </div>
+        <div class="s-m-outlet">
+
+            <p style="width:auto; margin-right: 10px;">Relationship Status</p>
+            <select name="relationshipStatus" value="<%= currentUser.relationshipStatus %>">
+                <option value="single">Single</option>
+                <option value="relationship">In a Relationship</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+            </select>
+        </div>
+        <div class="s-m-outlet">
+            <p>Favorite Colors</p>
+            <input type="color" name="favColor1" id="favColor1" value="<%= currentUser.favColor1 %>"><input type="color" name="favColor2" id="favColor2" value="<%= currentUser.favColor2 %>"><input type="color" name="favColor3" id="favColor3" value="<%= currentUser.favColor3 %>">
+        </div>
         <br>
-    </div>
+    </div> -->
+    <form action="/users/update-profile" type="POST">
+        <h3>About Me Section</h3>
+        <textarea name="about" id="aboutMe" cols="50" rows="10"><%= currentUser.about %></textarea>
         <input type="submit" value="Update Profile" style="margin-top: 40px; display: block; width: 100%;">
     </form>
 </div>

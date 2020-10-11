@@ -10,13 +10,21 @@ const User = require('../models/User');
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 
+const mainUserInfo = (req, res) => {
+    User.findById(req.user._id)
+    const mainUser = {
+        id: req.user.id,
+        fname: req.user.fname,
+        lname: req.user.lname
+    }
+};
 // Login Page
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {currentPageTitle: 'Login', fname: ''});
 })
 // Register Page
 router.get('/register', (req, res) => {
-    res.render('register');
+    res.render('register', {currentPageTitle: 'Register'});
 })
 
 // Register Handle
@@ -77,7 +85,7 @@ router.post('/register', (req, res) => {
                     newUser.save()
                         .then(user => {
                             req.flash('success_msg', 'You are now registered and can log in');
-                            res.redirect('/users/login');
+                            res.render('login', {currentPageTitle: 'Login'});
                         })
                         .catch(err => console.log(err));
 
@@ -106,20 +114,7 @@ router.get('/logout', (req, res) => {
 });
 
 // User Profile Page
-/* 
-router.get('/:userId', (req, res, next) => {
-    const users = req.app.locals.user;
-    const userId = req.params._id;
 
-    users.findOne({ userId }, (err, results) => {
-        if (err || !results) {
-            res.render('user-not-found');
-        }
-        res.render('public-profile', {...results, userId, name: req.user.name, email: req.user.email});
-    });
-});
-
- */
 router.get('/:id', ensureAuthenticated, async (req, res) => {
     const id = req.params.id
     const userId = req.user._id;
@@ -130,44 +125,11 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     .populate('friends')
     .exec()
     .then(profile => {
-            res.render('public-profile', {profile, posts})
+            res.render('public-profile', {currentPageTitle: "Profile", profile, posts})
             console.log(profile);
         });
 })
 
-/* router.post('/:id/add-friend', ensureAuthenticated, (req, res) => {
-    let thisFriend = req.params.id
-    let currentUser = req.user.friends; 
-    let thisFriend = req.params.id
-     let currentUser = req.user.friends; 
-        User.find({
-            _id: {$nin: user.friends}
-        }, function(err, friends) {
-            res.render('dashboard', {friends}); 
-            
-        }) 
-           
-        console.log("User to Add: " + thisFriend + "  -  Current User: " + currentUser);
-          User.findById(req.user.id, function() {
-
-            thisFriend.push(req.user.friends)
-            thisFriend.save(function(err) {
-                res.redirect('/dashboard');
-            })
-        }) 
-    }) 
-        console.log("THIS USER " + thisFriend);
-
-
-            User.findById(req.user.id)
-                thisFriend.push(req.user.friends)
-                .save()
-
-
-});
-    
-    
-     .catch(err => console.log(err)); */
 
 
   router.post('/:id/add-friend', (req, res) => {
@@ -205,44 +167,109 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
 
 });
 
-router.get('/:id/update-profile', ensureAuthenticated, (req, res, next) => {
+router.get('/update-profile/:id', ensureAuthenticated, async (req, res, next) => {
     const id = req.user._id
+    const currentUser = await User.findById(id);
 
-    res.render('update-profile', {id: id});
+    console.log(`Current user to update: ${id} - ${currentUser.fname}`)
+
+    res.render('update-profile', {currentPageTitle: 'Update Your Profile', id: id, currentUser});
 });
-router.post('/:id/update-profile', ensureAuthenticated, (req, res, next) => {
-    const id = req.params._id;
-    const userId = req.user._id
-/*     let data = {
-        about: req.body.about,
-        town: req.body.town,
-        state: req.body.state,
-        zip: req.body.zip,
-        country: req.body.country,
-        social: {
-            github: req.body.github,
-            linkedin: req.body.linkedin,
-            facebook: req.body.facebook,
-            instagram: req.body.instagram,
-            twitter: req.body.twitter,
-            pinterest: req.body.pinterest
+
+
+router.patch('/update-profile', ensureAuthenticated, (req, res, next) => {
+    try {
+    const id = req.user._id;
+    const updates = req.body;
+    const options = {new: true};
+
+    const result = User.findByIdAndUpdate(id, updates, options);
+    res.send(result);
+
+/*     await User.findByIdAndUpdate(conditions, req.body = {
+        phone1: req.body.phone1
+    })
+    .then(data => {
+        if (!data) {return res.status(404).end();}
+        return res.status(200).json(data);
+    })
+    console.log("Updated Data: " + data) */
+} catch (error) {
+    console.log(error);
+}
+
+});
+/* router.put('/update-profile/:id', async (req, res, next) => {
+    req.user = await User.findById(req.user.id)
+    return async (req, res) => {
+        let user = req.user
+        
+
+            user.facebook = req.body.social.facebook,
+            user.phone1 = req.body.phone1
+        
+        try {
+          user = await user.save()
+          res.redirect(`/dashboard`)
+        } catch (e) {
+            console.log(e)
+          res.render(`/update-profile/:id`, { user: user })
         }
-    }; */
-    User.findByIdAndUpdate(userId,
-        {data: req.body},
-        {safe: true, upsert: true},
-        function(err, doc) {
-            if(err){
-            console.log(err);
-            }else{
-            
-                return
-            }
+      }
+  }); */
+
+
+/* router.post('/:id/update-profile', ensureAuthenticated, (req, res, next) => { */
+/*     const id = req.params._id;
+    const userId = req.user._id;
+    console.log(`User making updates: ${id} or ${userId}`) */
+
+
+
+/*     req.article = await Article.findById(req.params.id)
+
+    console.log(`userId: ${userId}`)
+    User.findById(id, function(err, data) {
+        if (!data)
+          return next(new Error('Could not load data'));
+        else { */
+          // do your updates here
+/*            data = {
+          about: req.body.about,
+          town: req.body.town,
+          state: req.body.state,
+          zip: req.body.zip,
+          country: req.body.country,
+          github: req.body.social.github,
+          linkedin: req.body.social.linkedin, 
+          req.user.facebook = req.params.facebook
+           instagram: req.body.social.instagram,
+          twitter: req.body.social.twitter,
+          pinterest: req.body.social.pinterest,
+          phone1: req.body.phone1,
+          phoneType1: req.body.phoneType1,
+          phone2: phone2,
+          phoneType2: phoneType2,
+          gender: gender,
+          relationshipStatus: relationshipStatus,
+          favColor1: favColor1,
+          favColor2: favColor2,
+          favColor3: favColor3
+        } */
+/*           data.save(function(err) {
+            if (err)
+              console.log('error')
+            else
+              console.log('success')
+          });
         }
-        )
+      });
+        
+        console.log(`userId: ${userId} - ${data}`)
+        
     res.redirect('/dashboard');
 });
-
+ */
 
 router.post('/:id/post', (req, res) => {
     const userId = req.user._id;
@@ -280,7 +307,7 @@ router.get('/posts/:postId', ensureAuthenticated, async (req, res) => {
     const postAuthor = await User.findById(thisPost.author)
         console.log("POST AUTHOR: " + postAuthor.fname)
         
-        res.render('full-post', {thisPost, postAuthor})
+        res.render('full-post', {thisPost, postAuthor, currentPageTitle: thisPost.author + "'s Post"})
 })
 
 // Deleting Posts - ONLY FOR DASHBOARD
@@ -300,6 +327,19 @@ router.delete('/post/:postId', async (req, res) => {
 
 });
 
-
+function saveUserAndRedirect(path) {
+    return async (req, res) => {
+      let user = req.user
+      user.social.facebook = req.body.facebook
+      user.description = req.body.description
+      user.markdown = req.body.markdown
+      try {
+        user = await user.save()
+        res.redirect(`/dashboard`)
+      } catch (e) {
+        res.render(`/:id/update-profile`, { user: user })
+      }
+    }
+  }
 
 module.exports = router;

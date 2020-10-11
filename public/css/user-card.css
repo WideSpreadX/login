@@ -4,6 +4,7 @@
     width: 100%;
     padding-bottom: 50px;
     margin-bottom: 50px;
+    margin-top: -150px;
     overflow-x: scroll;
 }
 .cont_inner_container{
@@ -108,4 +109,26 @@
 .content {
     margin: 0 auto;
     text-align: center;
+}
+
+.add-friend {
+    display: inline-block;
+
+}
+.add-friend button{
+    border: none;
+    background: rgba(0, 128, 0, 0.719);
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    border-radius: 50%;
+    box-shadow: -1px -1px 3px rgb(19, 78, 19), 1px 1px 3px rgb(7, 78, 7), inset 2px 2px 4px rgb(32, 122, 32), inset -2px -2px 4px rgb(7, 78, 7);
+    transition: ease-in 0.4s;
+}
+.add-friend button:hover {
+    background: green;
+    transition: ease-in 0.2s;
+}
+.add-friend button i {
+    text-shadow: 0 0 3px #111;
 }
