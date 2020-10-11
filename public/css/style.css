@@ -72,6 +72,28 @@ h1,h2,h3,h4,h5,h6 {
     text-align: center;
     line-height: 30px;
 }
+
+.nav-bar {
+    margin-top: 20px;
+    padding: 5px;
+}
+.nav-bar a {
+    margin-left: 10px;
+    background: #111;
+    padding: 5px;
+    color: #ccc;
+    text-decoration: none;
+    transition: ease-in 0.4s;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgb(46, 53, 58), 0 0 3px rgba(46, 53, 58, 0.685), 0 0 8px rgba(46, 53, 58, 0.301);
+}
+.nav-bar a:hover {
+    box-shadow: 0 0 1px lightskyblue, 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    text-decoration: none;
+    color: lightskyblue;
+    transition: ease-in 0.4s;
+    text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+}
 .fa-ellipsis-v {
     cursor: pointer;
     text-shadow: 0 0 1px lightskyblue;
@@ -260,6 +282,17 @@ h1,h2,h3,h4,h5,h6 {
 .s-m-outlet input[type=color] {
     margin-right: 10px;
 }
+
+/* 
+
+
+                    Academy
+
+*/
+
+
+
+
 
 /* 
 

@@ -1,0 +1,43 @@
+<h1><%= currentPageTitle %></h1>
+
+<div class="row">
+    <div class="update-profile col-12">
+        <form action="/academy/add-course" method="POST">
+            <div class="s-m-outlet">
+                <p>Course Catagory</p>
+                <select name="subject" id="subject">
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="reading">Reading</option>
+                    <option value="language">Language</option>
+                    <option value="art">Art</option>
+                    <option value="music">Music</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="computer_science">Computer Science</option>
+                    <option value="health">Health</option>
+                </select>
+                
+            </div>
+            <div class="s-m-outlet">
+                <p>Course Name</p>
+                <input type="text" name="course">
+            </div>
+            <div class="s-m-outlet">
+                <p>Course Difficulty</p>
+                <select name="difficulty" id="difficulty">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="s-m-outlet">
+                <p>Credit Value</p>
+                <input type="number" name="credit_value">
+            </div>
+            <input type="submit" value="Add Course">
+        </form>
+    </div>
+</div>

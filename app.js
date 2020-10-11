@@ -76,6 +76,7 @@ const storage = new GridFsStorage({
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/business', require('./routes/businesses'));
+app.use('/academy', require('./routes/academy'));
 
 
 const PORT = process.env.PORT || 5000;

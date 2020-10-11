@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const CompanySchema = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
     companyOwner: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     company_name: String,
     company_bio: String,
@@ -19,6 +19,6 @@ const CompanySchema = new mongoose.Schema({
 
 });
 
-const Company = mongoose.model('Company', CompanySchema);
+const Company = mongoose.model('Company', companySchema);
 
 module.exports = Company;

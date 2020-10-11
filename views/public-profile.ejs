@@ -11,10 +11,16 @@
 </div>
 <div class="jumbotron mt-4">
     <div class="row">
-        <div class="col-10" style="background: #ccc; padding: 20px;">
+        <div class="col-5" style="background: #ccc; padding: 20px;">
             <p class="lead mb-3"><%= profile.fname %> <%= profile.lname %></p>
             <p class="lead mb-3"><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
+            <p class="lead mb-3"><i style="margin-right: 10px;" class="fas fa-phone"></i><a href="tel:<%= profile.phone1 %>"><%= profile.phone1 %></a></p>
+        </div>
+        <div class="col-5" style="background: #ccc; padding: 20px;">
+            <p class="lead mb-3"><%= profile.town %>, <%= profile.state %> - <%= profile.country %></p>
             <p class="lead mb-3"> Age: <%= profile.age %></p>
+            <p class="lead mb-3"> <%= profile.gender %></p>
+            
         </div>
         <div class="col-2" style="background: #ccc; display: flex; flex-direction: row; align-items: center; padding-top: 20px">
             <form action="/users/<%= profile._id %>/add-friend" method="POST">
@@ -31,12 +37,24 @@
         <div class="col-4 spread-container-sub" style="background: #eee;">
             <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Social Life</h3>
             <div class="list-item">
-                <img src="/images/system/github_1a1a1a.png" alt="Github" width="25px" height="25px">
-                <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
+                <img src="/images/system/instagram_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <a href="<%= profile.social.instagram %>" target="_blank"><%= profile.social.instagram %></a>
+            </div>
+            <div class="list-item">
+                <img src="/images/system/facebook_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <a href="<%= profile.social.facebook %>" target="_blank"><%= profile.social.facebook %></a>
             </div>
         </div>
         <div class="col-4 spread-container-sub" style="background: #eee;">
             <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Work Life</h3>
+            <div class="list-item">
+                <img src="/images/system/github_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
+            </div>
+            <div class="list-item">
+                <img src="/images/system/linkedin_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <a href="<%= profile.social.linkedin %>" target="_blank"><%= profile.social.linkedin %></a>
+            </div>
         </div>
     </div>
     <hr class="my-4">
