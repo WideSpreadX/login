@@ -4,7 +4,7 @@
 
 <% companies.forEach(function(company){ %>
     <div class="company-container-card">
-        <a style="text-decoration: none;" href="#">
+        <a style="text-decoration: none;" href="/business/<%= company._id %>">
             <h2><%= company.company_name %></h2>
             <h5><%= company.company_type %></h5>
         </a>

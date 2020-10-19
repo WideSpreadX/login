@@ -2,7 +2,7 @@
     <a href="/academy">Academy</a>
     <a href="/business">Business</a>
 </div>
-<div class="jumbotron">
+<div class="jumbotron" style="background: <%= profile.favColor1 %>">
     <div class="row">
         <div class="col-8">
             <p class="lead mb-3">Welcome <%= fname %></p>
@@ -11,16 +11,41 @@
             <a href="/users/logout" class="btn btn-secondary">Logout</a>
         </div>
     </div>
-    <div class="update">
-        <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
+    <div class="row">
+        <div class="nav-bar">
+            <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
+            <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
+            
+        </div>
     </div>
-    <div class="update">
-        <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
-    </div>
+    
     <hr class="my-4">
     <div class="row">
-        <div class="col-5 friends">
+<div class="col-2">
 
+    <div class="nav-bar">
+        <a class="btn btn-dark" href="/users/new-resume/<%= id %>">Add Resume</a>
+        
+    </div>
+</div>
+<div class="col-10 resume-nav">
+
+    <% resume.forEach(function(resume){ %>
+        <li style="list-style: none;">
+            <div style="padding: 10px; margin: 5px; border-radius: 10px;">
+                <div>
+                    <div class="nav-bar">
+                        <a href="/users/resume/<%= resume.id %>"> <%= resume.bio %></a>
+                    </div>
+                </div>  
+                
+            </div>
+        </li>
+        <% }); %>
+    </div>
+        </div>
+    <div class="row">
+        <div class="col-5 friends">
             <h5>Friend List:</h5>
             <ul>
                 <% profile.friends.forEach(function(friend){ %>

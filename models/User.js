@@ -46,6 +46,7 @@ const UserSchema = new mongoose.Schema({
         twitter: String,
         pinterest: String
     },
+    resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
     date: {
         type: Date,
         default: Date.now

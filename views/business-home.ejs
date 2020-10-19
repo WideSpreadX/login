@@ -1,5 +1,42 @@
-<h1><%= company.company_name %></h1>
-<h5><%= company.company_type %></h5>
-<hr>
-<p><%= company.company_bio %></p>
+<h1><%= currentPageTitle %></h1>
+<div class="nav-bar">
+    <a href="/business">Business Home</a>
+</div>
 
+<div class="companySite-container">
+
+    <h1><%= company.company_name %></h1>
+    <h5><%= company.company_type %></h5>
+<hr>
+<div class="row companySite-inner">
+
+    <div class="col-8">
+        <p><%= company.company_bio %></p>
+    </div>
+
+<div class="col-4 companyInfo">
+<p><%= company.company_street_1 %></p>
+<p><%= company.company_street_2 %></p>
+<p><%= company.company_suite_number %></p>
+<p><%= company.company_city %></p>
+<p><%= company.company_state %></p>
+<p><%= company.company_zip %></p>
+<p><%= company.company_country %></p>
+<p><a href="tel:<%= company.company_phone %>"><%= company.company_phone %></a></p>
+<p><a href="mailto:<%= company.company_main_email %>"><%= company.company_main_email %></a></p>
+<p><%= company.company_fax %></p>
+<p><%= company.company_website %></p>
+</div>
+</div>
+<div class="row companySite-nav nav-bar">
+    <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Services</a></li>
+    </ul>
+</div>
+<div class="nav-bar">
+    <a href="/business/<%= company._id %>/manage">Manage Company</a>
+    <a href="/business/<%= company._id %>/add-employee">Apply for a Job</a>
+</div>
+</div>

@@ -1,0 +1,9 @@
+<%= currentPageTitle %>
+
+<p><%= userId %></p>
+<p><%= company._id %></p>
+<h1>NEED TO FINISH USER RESUME FIRST</h1>
+<form action="/business/<%= company._id %>/add-employee/<%= userId %>" method="POST">
+    <input type="text" name="job_applicants" id="job_applicants" value="<%= userId %>">
+    <input type="submit" value="Apply for Job">
+</form>

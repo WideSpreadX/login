@@ -9,6 +9,8 @@ const {ensureAuthenticated } = require('../config/auth');
 const User = require('../models/User');
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
+const Resume = require('../models/Resume');
+const Company = require('../models/Company');
 
 const mainUserInfo = (req, res) => {
     User.findById(req.user._id)
@@ -193,7 +195,89 @@ router.patch('/update-profile', ensureAuthenticated, async (req, res, next) => {
 
 });
 
-router.post('/:id/post', (req, res) => {
+router.get('/new-resume/:userId', ensureAuthenticated, async (req, res) => {
+    const userId = req.params.userId;
+    const user = await User.findById(userId)
+    User.findById(userId)
+    console.log(`This Userrrrrr: ${user}`)
+    res.render('new-resume', {currentPageTitle: 'New Resume', user})
+})
+router.post('/new-resume', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+            
+            const resume = new Resume({
+                resumeOwner: userId,
+                bio: req.body.bio,
+                education: req.body.education,
+                employment_history: req.body.employment_history,
+                special_skills: req.body.special_skills,
+                us_veteran: req.body.us_veteran,
+                security_clearance: req.body.security_clearance,
+                willing_to_travel: req.body.willing_to_travel
+            })
+            
+            
+            await User.findByIdAndUpdate(userId,
+                {$push: {resume: resume._id}},
+                {safe: true, upsert: true},
+                function(err, doc) {
+                    if(err){
+                        console.log(err);
+                    }else{
+                        resume.save()
+                        return
+                    }
+                }
+                )
+            res.redirect('/dashboard');
+        })
+        router.patch('/update-resume/:resumeId', ensureAuthenticated, async (req, res, next) => {
+            try {
+                const resumeOwner  = req.user._id;
+                const updates = req.body;
+                const options = {new: true};
+                await Resume.findByIdAndUpdate(resumeOwner, updates, options);
+                
+                res.redirect('/dashboard');
+                
+                
+            } catch (error) {
+                console.log(error);
+            }
+        
+
+});
+
+router.get('/update-resume/:resumeId', ensureAuthenticated, async (req, res, next) => {
+    const resumeId = req.params.resumeId;
+    const resume = await Resume.find(resumeId);
+    const currentUser = req.user;
+    Resume.find(resumeId)
+    console.log(`Current user to update: ${resumeId} - ${resume}`)
+
+    res.render('update-resume', {currentPageTitle: 'Update Your Resume', id: id, currentUser, resume});
+});
+router.get('/resumes', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const resume = await Resume.find({resumeOwner: {$eq: userId}})
+    Resume.find({resumeOwner: {$eq: userId}})
+    console.log(`Resumes: ${resume}`)
+    res.render('resumes', {currentPageTitle: 'Your Resumes', resume})
+})
+
+router.get('/resume/:resumeId', ensureAuthenticated, async (req, res) => {
+    const resumeId = req.params.resumeId;
+    const resume = await Resume.findById(resumeId);
+    const userId = await User.findOne({'resume': resumeId }, '_id');
+    console.log(`UserId of resume: ${userId}`)
+    const hiringId = await Company.findOne({'job_applicants': userId});
+    Resume.findById(resumeId);
+
+    res.render('resume', {currentPageTitle: 'Resume', resume, hiringId})
+})
+
+
+router.post('/:id/post', ensureAuthenticated, (req, res) => {
     const userId = req.user._id;
     const post = new Post({
         _id: req.body._id,

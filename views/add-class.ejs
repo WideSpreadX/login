@@ -1,0 +1,17 @@
+<h1><%= currentPageTitle %></h1>
+<h2><%= courseInfo %></h2>
+<h2><%= course %></h2>
+<div class="row">
+    <div class="update-profile col-12">
+        <form action="/academy/courses/<%= course %>/add-class" method="POST">
+            <div class="s-m-outlet">
+                <p>Class Name</p>
+                <input type="text" name="name">
+            </div>
+            <div class="s-m-outlet">
+                <textarea name="description" id="classDescription" cols="30" rows="10"></textarea>
+            </div>
+            <input type="submit" value="Add Class">
+        </form>
+    </div>
+</div>

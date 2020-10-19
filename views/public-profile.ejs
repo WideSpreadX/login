@@ -1,28 +1,21 @@
-<div class="row">
-    <div class="col-6">
-        <h1 class="mt-4"><%= profile.fname %> <%= profile.lname %>'s Profile</h1>
-    </div>
-    <div class="col-3">
-        <a href="/dashboard" class="btn btn-secondary mt-4">Home</a>
-    </div>
-    <div class="col-3">
-        <a href="/users/logout" class="btn btn-secondary mt-4">Logout</a>
-    </div>
-</div>
+
 <div class="jumbotron mt-4">
-    <div class="row">
-        <div class="col-5" style="background: #ccc; padding: 20px;">
-            <p class="lead mb-3"><%= profile.fname %> <%= profile.lname %></p>
-            <p class="lead mb-3"><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
+    <div class="row name-header">
+        <h1 style="color: lightskyblue;" class="mb-3"><%= profile.fname %> <%= profile.lname %></h1>
+
+    </div>
+    <div class="row info-header">
+        <div class="col-5" style="padding: 20px;">
+            <p class="lead mb-3"><i style="margin-right: 10px;;" class="far fa-envelope"></i><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
             <p class="lead mb-3"><i style="margin-right: 10px;" class="fas fa-phone"></i><a href="tel:<%= profile.phone1 %>"><%= profile.phone1 %></a></p>
         </div>
-        <div class="col-5" style="background: #ccc; padding: 20px;">
+        <div class="col-5" style="padding: 20px;">
             <p class="lead mb-3"><%= profile.town %>, <%= profile.state %> - <%= profile.country %></p>
             <p class="lead mb-3"> Age: <%= profile.age %></p>
             <p class="lead mb-3"> <%= profile.gender %></p>
             
         </div>
-        <div class="col-2" style="background: #ccc; display: flex; flex-direction: row; align-items: center; padding-top: 20px">
+        <div class="col-2" style="display: flex; flex-direction: row; align-items: center; padding-top: 20px">
             <form action="/users/<%= profile._id %>/add-friend" method="POST">
                 <input type="text" name="friends" value="<%= profile._id %>" style="display: none;">
                 <input class="btn btn-success add-friend" type="submit" value="Add Friend" style="margin-bottom: 30px;">
@@ -37,12 +30,16 @@
         <div class="col-4 spread-container-sub" style="background: #eee;">
             <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Social Life</h3>
             <div class="list-item">
-                <img src="/images/system/instagram_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <img src="/images/system/instagram_1a1a1a.png" alt="Instagram" width="25px" height="25px">
                 <a href="<%= profile.social.instagram %>" target="_blank"><%= profile.social.instagram %></a>
             </div>
             <div class="list-item">
-                <img src="/images/system/facebook_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <img src="/images/system/facebook_1a1a1a.png" alt="Facebook" width="25px" height="25px">
                 <a href="<%= profile.social.facebook %>" target="_blank"><%= profile.social.facebook %></a>
+            </div>
+            <div class="list-item">
+                <img src="/images/system/twitter_1a1a1a.png" alt="Twitter" width="25px" height="25px">
+                <a href="<%= profile.social.twitter %>" target="_blank"><%= profile.social.twitter %></a>
             </div>
         </div>
         <div class="col-4 spread-container-sub" style="background: #eee;">
@@ -52,7 +49,7 @@
                 <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
             </div>
             <div class="list-item">
-                <img src="/images/system/linkedin_1a1a1a.png" alt="Github" width="25px" height="25px">
+                <img src="/images/system/linkedin_1a1a1a.png" alt="LinkedIn" width="25px" height="25px">
                 <a href="<%= profile.social.linkedin %>" target="_blank"><%= profile.social.linkedin %></a>
             </div>
         </div>

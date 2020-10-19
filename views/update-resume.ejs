@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="update-profile col-12">
+    
+    
+    
+    <form action="/users/update-resume?_method=PATCH" method="POST">
+    
+        <h3>Your Bio</h3>
+        <textarea name="bio" id="bio" cols="50" rows="10"><%= currentUser.bio %></textarea>
+        
+        <div class="s-m-container">
+    
+        <h3>Education</h3>
+        
+        <div class="s-m-outlet">
+            <p>High School</p>
+            <input type="text" name="education" value="<%= currentUser.education %>">
+        </div>
+        
+        <div class="s-m-outlet">
+            <p>University</p>
+            <input type="text" name="education" value="<%= currentUser.education %>">
+        </div>
+        
+        <div class="s-m-outlet">
+            <p>Certification</p>
+            <input type="text" name="education" value="<%= currentUser.education %>">
+        </div>
+    
+        </div>
+    
+        <div class="s-m-container">
+            <h3>Special Skills</h3>
+            <input type="text" name="special_skills" id="special_skills">
+        </div>
+        <div class="s-m-container">
+            <div class="s-m-outlet">
+                <h3>Checklist</h3>
+                <p>Are you a U.S. Veteran?</p>
+                <input type="checkbox" name="us_veteran" id="us_veteran">
+                <p>Do you have Security Clearance?</p>
+                <input type="checkbox" name="security_clearance" id="security_clearance">
+                <p>Are you willing to travel?</p>
+                <input type="checkbox" name="willing_to_travel" id="willing_to_travel">
+            </div>
+        </div>
+    
+            <input type="submit" value="Update Resume" style="margin-top: 40px; display: block; width: 100%;">
+        </form>
+    </div>
+    </div>

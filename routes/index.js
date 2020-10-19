@@ -4,6 +4,7 @@ const {ensureAuthenticated } = require('../config/auth');
 
 const User = require('../models/User');
 const Post = require('../models/Post');
+const Resume = require('../models/Resume');
 
 
 
@@ -15,10 +16,12 @@ router.get('/', (req, res) => {
 // Dashboard
     router.get('/dashboard', ensureAuthenticated, async (req, res) => {
         const id = req.user._id;
-        /* const posts = Post.find({author: id}).populate('Post'); */
+       
         const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
+        const resume = await Resume.find({ resumeOwner: { $eq: id } });
 
-/* posts.map(post => post.postBody).sort(); */
+
+        console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
         User.findById(id)
         .populate('friends')
@@ -29,15 +32,10 @@ router.get('/', (req, res) => {
                 fname: req.user.fname,
                 id: req.user.id,
                 posts,
+                resume,
                 currentPageTitle: 'Dashboard'
                 })
-                console.log(profile);
-                console.log(posts);
             }); 
-         /*    {
-        } 
-        );
-       */
     });
 
 

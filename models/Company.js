@@ -15,7 +15,10 @@ const companySchema = new mongoose.Schema({
     company_type: String,
     company_phone: String,
     company_fax: String,
-    company_main_email: String
+    company_main_email: String,
+    company_website: String,
+    job_applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'Resume'}],
+    employees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 
 });
 

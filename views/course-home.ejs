@@ -1,0 +1,20 @@
+<h1><%= courseData.course %></h1>
+
+
+<% courseData.classes.forEach(function(classes){ %>
+    <div class="class-container">
+        <h1><%= classes.name %></h1>
+        <p><%= classes.description %></p>
+        <div class="nav-bar">
+            <a href="/academy/courses/<%= courseData.id %>/<%= classes.id %>">Begin Class</a>
+        </div>
+    </div>
+    <% }); %>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<div class="nav-bar">
+    <a href="/academy/courses/<%= courseData.id %>/add-class">Add a Class</a>
+</div>

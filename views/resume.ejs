@@ -1,0 +1,16 @@
+<%= currentPageTitle %>
+
+<%= resume.bio %>
+<% resume.special_skills.forEach(function(skill){ %>
+    <li style="list-style: none;">
+        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
+            <div>
+                <div class="nav-bar">
+                    <%= skill %>
+                </div>
+            </div>  
+            
+        </div>
+    </li>
+    <% }); %>
+
