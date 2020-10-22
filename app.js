@@ -77,6 +77,7 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/business', require('./routes/businesses'));
 app.use('/academy', require('./routes/academy'));
+app.use('/news', require('./routes/news'));
 
 
 const PORT = process.env.PORT || 5000;

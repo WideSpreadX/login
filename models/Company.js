@@ -18,8 +18,21 @@ const companySchema = new mongoose.Schema({
     company_main_email: String,
     company_website: String,
     job_applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'Resume'}],
-    employees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
-
+    employees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    inventory: {
+        office: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Item',
+            have: Number,
+            need: Number
+        }],
+        sale: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Item',
+            have: Number,
+            need: Number
+        }]
+    }
 });
 
 const Company = mongoose.model('Company', companySchema);

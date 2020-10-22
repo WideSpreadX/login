@@ -6,6 +6,7 @@ const {ensureAuthenticated } = require('../config/auth');
 const User = require('../models/User');
 const Company = require('../models/Company');
 const Resume = require('../models/Resume');
+const Item = require('../models/Item');
 
 
 router.get('/', async (req, res) => {
@@ -96,7 +97,60 @@ router.post('/:companyId/add-employee/:resumeId', ensureAuthenticated, (req, res
         res.redirect('/business')
     )
 
-})
+});
+
+
+router.get('/:companyId/inventory', async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+    
+
+    Company.findById(companyId).populate('inventory').exec()
+    .then(inventoryData => {
+    
+        console.log(`Company Info to Manage: ${company}`)
+        console.log(`Inventory Data: ${inventoryData}`)
+        res.render('inventory', {currentPageTitle: 'Inventory', company, inventoryData})
+    });
+});
+
+
+router.post('/:companyId/inventory', async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+    const item = new Item({
+        name: req.body.name,
+        description: req.body.description,
+        sku: req.body.sku,
+        make: req.body.make,
+        model: req.body.model,
+        year: req.body.year,
+        price: req.body.price,
+        color1: req.body.color1,
+        color2: req.body.color2,
+        dimensions: {
+            width: req.body.width,
+            height: req.body.height,
+            depth: req.body.depth
+        },
+        weight: req.body.weight,
+        category: req.body.category
+    })
+    item.save()
+    await Company.findByIdAndUpdate(companyId,
+        {$push: {inventory: item._id}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                
+                return
+            }
+        }
+        )
+    res.redirect('/business')
+});
 
 
 module.exports = router;
