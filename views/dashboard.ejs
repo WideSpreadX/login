@@ -1,8 +1,22 @@
+<div class="row">
+    <div class="col-8">
+        <p class="lead mb-3">Welcome <%= fname %></p>
+    </div>
+
+</div>
+
 <div class="nav-bar-outer">
     <div class="nav-bar nav-bar-ws">
-        <a href="/academy">Academy</a>
-        <a href="/business">Business</a>
-        <a href="/news">News</a>
+        <div class="row">
+            <div class="col-10">
+                <a href="/academy">Academy</a>
+                <a href="/business">Business</a>
+                <a href="/news">News</a>
+            </div>
+            <div class="col-2">
+                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -13,66 +27,99 @@
         <a href="/spreadshield">SpreadShield</a>
     </div>
 </div>
-<div class="jumbotron">
+<hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+<h2 style="text-align: center; margin-bottom: 20px;">Your Dashboard</h2>
+<div class="user-avatar">
+    <img src="/image/d86c75731a6bde2183e2c0f159c90ad1.jpg" alt="Jonny O">
+</div>
     <div class="row">
-        <div class="col-8">
-            <p class="lead mb-3">Welcome <%= fname %></p>
+        <div class="col-5">
+        <div class="nav-bar-outer">
+            <div class="nav-bar nav-bar-ws" style="padding: 25px;">
+                <div class="row">
+                    <div class="col-6">
+                        <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
+                    </div>
+                    <div class="col-6">
+                        <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
+                            </div>
+                </div>
+            </div>
         </div>
-        <div class="col-4">
-            <a href="/users/logout" class="btn btn-secondary">Logout</a>
+        </div>
+        <div class="col-7">
+            <div class="nav-bar-outer">
+                <div class="nav-bar nav-bar-ws">
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="custom-file">
+                            <input type="file" name="user_image" id="userImage">
+                            <label for="userImage" class="custom-file-label">Upload an Image</label>
+                        </div>
+                        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                        <input type="submit" value="Add Image" class="btn-block" style="margin-top: 5px;">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="nav-bar">
-            <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
-            <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
-            
-        </div>
-    </div>
-    
-    <hr class="my-4">
-    <div class="row">
-<div class="col-2">
 
-    <div class="nav-bar">
+<div class="row">
+<div class="col-2" style="padding-top: 10px;">
+
+    <div class="nav-bar-outer">
+        <div class="nav-bar nav-bar-ws">
         <a class="btn btn-dark" href="/users/new-resume/<%= id %>">Add Resume</a>
         
     </div>
 </div>
-<div class="col-10 resume-nav">
+</div>
 
+<div class="col-10 resume-nav" style="padding-top: 10px;">
+    <div class="nav-bar-outer">
+        <div class="nav-bar nav-bar-ws">
     <% resume.forEach(function(resume){ %>
         <li style="list-style: none;">
-            <div style="padding: 10px; margin: 5px; border-radius: 10px;">
+            <div style="padding: 7px;">
                 <div>
-                    <div class="nav-bar">
                         <a href="/users/resume/<%= resume.id %>"> <%= resume.bio %></a>
-                    </div>
                 </div>  
                 
             </div>
         </li>
         <% }); %>
+        </div>
+    </div>
     </div>
         </div>
+
+
+        <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Your Friends</h2>
     <div class="row">
-        <div class="col-5 friends">
-            <h5>Friend List:</h5>
-            <ul>
+        <div class="col-12 friends" style="margin-top: 70px;">
+            <div class="outer_cont_container">
+                <div class="cont_container">
+                    <div class="cont_inner_container">
                 <% profile.friends.forEach(function(friend){ %>
-                    <li style="list-style: none;">
-                        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
-                            <div>
-                                <img src="/images/system/default-user_1a1a1a.png" alt="Default User" width="50px" height="50px">
-                                <a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
-                                <p class="d-inline"> - </p>
-                                <a class="d-inline" href="#">Business/School Name</a>
-                            </div>  
-                            
+                        <div id="userCard_<%=friend.id %>" class="card">
+                            <div class="face face1">
+                                <div class="content">
+                                    <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image">
+                                    <h3><%= friend.fname %> <%= friend.lname %></h3>
+                                </div>
+                            </div>
+                            <div class="face face2">
+                                <div class="content">
+                                    <p><%= friend.about %></p>
+                                        <a href="/users/<%= friend.id %>">Profile</a><a style="background: green;" href=""><i  class="fas fa-user-plus"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </li>
-                    <% }); %>
-                </ul>
+                        <% }); %>
+                    </div>
+                    </div>
+                    </div>
+
             </div>
     </div>
     <div class="row">
@@ -141,37 +188,4 @@
             </div>
     </div>
 </div>
-<div class="outer_cont_container">
-    <div class="cont_container">
-        <div class="cont_inner_container">
-    <% profile.friends.forEach(function(friend){ %>
-            <div id="userCard_<%=friend.id %>" class="card">
-                <div class="face face1">
-                    <div class="content">
-                        <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image">
-                        <h3><%= friend.fname %> <%= friend.lname %></h3>
-                    </div>
-                </div>
-                <div class="face face2">
-                    <div class="content">
-                        <p><%= friend.about %></p>
-                            <a href="/users/<%= friend.id %>">Profile</a><a style="background: green;" href=""><i  class="fas fa-user-plus"></i></a>
-                    </div>
-                </div>
-            </div>
-            <% }); %>
-        </div>
-        </div>
-        </div>
-    <!-- Static User Routes -->
-    <div class="static-users">
-        <h2>User Profiles</h2>
-        <h5>Jonny O</h5>
-        <p><a href="/users/5f60d9bc564a9e3010a0c5ad">5f60d9bc564a9e3010a0c5ad</a></p>
-        <h5>Mike Jones</h5>
-        <p><a href="/users/5f7d064688285325f888e2c3">5f7d064688285325f888e2c3</a></p>
-        <h5>Jon Olson</h5>
-        <p><a href="/users/5f749fd3bd01753cb4f9677a">5f749fd3bd01753cb4f9677a</a></p>
-    </div>
-    <!-- End Static Users -->
 

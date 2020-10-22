@@ -3,8 +3,14 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const methodOverride = require('method-override');
 const {ensureAuthenticated } = require('../config/auth');
+
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
+
 // User Model
 const User = require('../models/User');
 const Post = require('../models/Post');
@@ -367,5 +373,12 @@ router.get('/articles/:articleId', ensureAuthenticated, async (req, res) => {
       
       res.render('full-article', {thisArticle, articleAuthor, currentPageTitle: articleAuthor.fname + " " + articleAuthor.lname + "'s Article"})
 })
+
+
+
+
+// MUST BE AT BOTTOM BEFORE MODULE.EXPORTS
+let gfs;
+
 
 module.exports = router;
