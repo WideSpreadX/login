@@ -98,7 +98,7 @@ h1,h2,h3,h4,h5,h6 {
     transition: ease-in 0.4s;
 }
 .nav-bar-ws:hover {
-    background: rgba(51, 51, 51, 0.534);
+    background: rgba(97, 97, 97, 0.534);
     transition: ease-in 0.4s;
 }
 .red {
@@ -124,8 +124,8 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: 0 0 1px lightskyblue, 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
     text-decoration: none;
     color: lightskyblue;
-    transition: ease-in 0.4s;
     text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+    transition: ease-in 0.4s;
 }
 
 .add-form {
