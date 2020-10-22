@@ -71,7 +71,7 @@
                 <form action="/users/<%= id %>/article" method="POST">
                     <input type="text" name="articleTitle" placeholder="Article Title" id="articleTitle"></input>
                     <input type="text" name="articleHeader" id="articleHeader" placeholder="Article Header">
-                    <textarea required name="articleBody" id="articleBody" class="form-control bg-dark"></textarea>
+                    <textarea required name="articleBody" id="articleBody" class="form-control"></textarea>
                     <button class="btn btn-success" type="submit">Add Article</button>
                 </form>
             </div>
@@ -102,7 +102,7 @@
                 <h5>Create New Post</h5>
                 <div class="create-post">
                     <form action="/users/<%= id %>/post" method="POST">
-                        <textarea required name="postBody" id="postBody" class="form-control bg-dark"></textarea>
+                        <textarea required name="postBody" id="postBody" class="form-control"></textarea>
                         <button class="btn btn-success" type="submit">Add Post</button>
                     </form>
                 </div>

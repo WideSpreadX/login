@@ -115,13 +115,13 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     const id = req.params.id
     const userId = req.user._id;
     console.log("User ID: " + userId);
-
+    const articles = await Article.find({author: {$eq: id}});
    const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
     User.findById(id)
     .populate('friends')
     .exec()
     .then(profile => {
-            res.render('public-profile', {currentPageTitle: "Profile", profile, posts})
+            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles})
             console.log(profile);
         });
 })
@@ -342,5 +342,30 @@ router.post('/:id/article', ensureAuthenticated, (req, res) => {
     res.redirect('/dashboard')
 
 });
+
+router.get('/articles/:articleId', ensureAuthenticated, async (req, res) => {
+    const articleId = req.params.articleId;
+
+      
+    const thisArticle = await Article.findById(articleId)
+    console.log("Post ID: " + articleId);
+    console.log("postId Data: " + thisArticle.author);
+
+  const userArticle =
+  {
+      id: req.params.postId,
+      author: req.body.author,
+      articleTitle: req.body.articleTitle,
+      articleHeader: req.body.articleHeader,
+      articleBody: req.body.articleBody,
+      createdAt: req.body.createdAt,
+      comments: req.body.comments
+  }
+
+  const articleAuthor = await User.findById(thisArticle.author)
+      console.log("POST AUTHOR: " + articleAuthor.fname)
+      
+      res.render('full-article', {thisArticle, articleAuthor, currentPageTitle: articleAuthor.fname + " " + articleAuthor.lname + "'s Article"})
+})
 
 module.exports = router;

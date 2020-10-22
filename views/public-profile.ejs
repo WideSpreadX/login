@@ -106,6 +106,7 @@
                 </ul>
             </div>
             -->
+            <div class="row">
             <div class="col-12">
                 <h5 style="text-align: center;">Top Posts</h5>
                 <ul>
@@ -129,6 +130,35 @@
                         </li>
                         <% }); %>
                     </ul> 
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5 style="text-align: center;">Top Articles</h5>
+                    <ul>
+                        <% articles.forEach(function(article){ %>
+                            <li style="list-style: none;">
+                                <div class="public-post-container">
+                                    <div class="public-post">
+                                        <img src="/images/system/default-post_1a1a1a.png" alt="Default Post" width="50px" height="50px">
+                                        <small class="d-inline"><%= article.createdAt.toLocaleDateString() %> - <%= article.createdAt.toLocaleTimeString('en-US') %></small>
+                                        <h3><%= article.articleTitle %></h3>
+                                        <h5><%= article.articleHeader %></h5>
+                                        <p><%= article.articleBody %></p>
+                                        <a href="/users/articles/<%= article.id %>">See More</a>
+                                        <div class="post-option-bar">
+                                            <i class="fas fa-copy"></i>
+                                            <i class="fas fa-hashtag"></i>
+                                            <i class="fas fa-plus"></i>
+                                            <i class="fas fa-share-alt"></i>
+                                        </div>
+                                    </div>  
+                                    
+                                </div>
+                            </li>
+                            <% }); %>
+                        </ul> 
+                </div>
             </div>
         </div>
     
