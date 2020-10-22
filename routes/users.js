@@ -11,15 +11,9 @@ const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 const Resume = require('../models/Resume');
 const Company = require('../models/Company');
+const Article = require('../models/Article');
 
-const mainUserInfo = (req, res) => {
-    User.findById(req.user._id)
-    const mainUser = {
-        id: req.user.id,
-        fname: req.user.fname,
-        lname: req.user.lname
-    }
-};
+
 // Login Page
 router.get('/login', (req, res) => {
     res.render('login', {currentPageTitle: 'Login', fname: ''});
@@ -333,5 +327,20 @@ router.delete('/post/:postId', async (req, res) => {
 
 });
 
+
+router.post('/:id/article', ensureAuthenticated, (req, res) => {
+    const userId = req.user._id;
+    const article = new Article({
+        _id: req.body._id,
+        articleTitle: req.body.articleTitle,
+        articleHeader: req.body.articleHeader,
+        articleBody: req.body.articleBody,
+        createdAt: req.body.createdAt,
+        author: userId
+    })
+    article.save()
+    res.redirect('/dashboard')
+
+});
 
 module.exports = router;

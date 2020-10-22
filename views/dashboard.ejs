@@ -2,7 +2,7 @@
     <a href="/academy">Academy</a>
     <a href="/business">Business</a>
 </div>
-<div class="jumbotron" style="background: <%= profile.favColor1 %>">
+<div class="jumbotron">
     <div class="row">
         <div class="col-8">
             <p class="lead mb-3">Welcome <%= fname %></p>
@@ -63,7 +63,42 @@
                     <% }); %>
                 </ul>
             </div>
-            <div class="col-7 user-posts">
+    </div>
+    <div class="row">
+        <div class="col-6 user-posts">
+            <h5>Create New Article</h5>
+            <div class="create-post">
+                <form action="/users/<%= id %>/article" method="POST">
+                    <input type="text" name="articleTitle" placeholder="Article Title" id="articleTitle"></input>
+                    <input type="text" name="articleHeader" id="articleHeader" placeholder="Article Header">
+                    <textarea required name="articleBody" id="articleBody" class="form-control bg-dark"></textarea>
+                    <button class="btn btn-success" type="submit">Add Article</button>
+                </form>
+            </div>
+            <h5>Your Articles:</h5>
+            <div class="user-posts-container">
+            <ul>
+                <% article.forEach(function(article){ %>
+                    <li style="list-style: none;">
+                        <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
+                            <a href="/users/article/<%= article.id%>">X</a>
+                            <div class="post-container">
+                                <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
+                                <small class="text-muted"><%= article.createdAt.toLocaleDateString() %></small>
+                                <div class="post">
+                                    <h3><%= article.articleTitle %></h3>
+                                    <h5><%= article.articleHeader %></h5>
+                                    <p><%= article.articleBody %></p>
+                                </div>
+                            </div>  
+                            
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+            </div>
+        </div>
+            <div class="col-6 user-posts">
                 <h5>Create New Post</h5>
                 <div class="create-post">
                     <form action="/users/<%= id %>/post" method="POST">

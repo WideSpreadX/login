@@ -5,7 +5,7 @@ const {ensureAuthenticated } = require('../config/auth');
 const User = require('../models/User');
 const Post = require('../models/Post');
 const Resume = require('../models/Resume');
-
+const Article = require('../models/Article');
 
 
 // Welcome Page
@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
        
         const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
+        const article = await Article.find({ author: { $eq: id } });
 
 
         console.log("Users Resume: " + resume)
@@ -33,6 +34,7 @@ router.get('/', (req, res) => {
                 id: req.user.id,
                 posts,
                 resume,
+                article,
                 currentPageTitle: 'Dashboard'
                 })
             }); 
