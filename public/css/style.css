@@ -99,6 +99,26 @@ h1,h2,h3,h4,h5,h6 {
     transition: ease-in 0.4s;
     text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
 }
+
+.add-form {
+    margin: 20px;
+    padding: 20px;
+    margin-top: 40px;
+}
+.add-form input {
+    display: block;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+.add-form button {
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    display: block;
+    background: rgb(20, 221, 20);
+}
 .fa-ellipsis-v {
     cursor: pointer;
     text-shadow: 0 0 1px lightskyblue;
@@ -269,7 +289,7 @@ h1,h2,h3,h4,h5,h6 {
      box-shadow: -3px -3px 6px #333, 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     }
     .public-post {
-        box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     border-radius: 10px;
     background: #111;
     padding: 10px;

@@ -6,6 +6,7 @@ const {ensureAuthenticated } = require('../config/auth');
 const User = require('../models/User');
 const Course = require('../models/Course');
 const Class = require('../models/Class');
+const Flashcard = require('../models/Flashcard');
 
 
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -44,8 +45,8 @@ router.get('/courses/:courseId', ensureAuthenticated, (req, res) => {
     .then(courseData => {
             const courseClasses = Class.find({inCourse: {$eq: thisCourse}});
             Class.find({inCourse: {$eq: thisCourse}});
-            console.log(`This is the selected course: ${courseData.course}`);
-            console.log(`These are the Classes in this Course: ${courseClasses}`);
+/*             console.log(`This is the selected course: ${courseData.course}`);
+            console.log(`These are the Classes in this Course: ${courseClasses}`); */
             res.render('course-home', {courseData, courseClasses})
             console.log(`courseData: ${courseData.classes.name}`);
         });
@@ -88,7 +89,37 @@ router.post('/courses/:courseId/add-class', ensureAuthenticated, async (req, res
 })
 
 
-router.get('/courses/:courseId/:classId', ensureAuthenticated, (req, res) => {
-    res.render('class-page', {currentPageTitle: 'Classroom'});
+router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) => {
+    const classId = req.params.classId;
+    const thisCourseId = req.params.courseId;
+    const thisClass = await Class.findById(classId);
+    const thisCourse = await Course.findById(thisCourseId);
+    console.log(`This Class is: ${thisClass}`)
+    console.log(`for Course: ${thisCourse}`)
+    res.render('class-page', {currentPageTitle: 'Classroom', thisClass, thisCourseId});
 });
+
+
+router.post('/:classId/add-flashcard', ensureAuthenticated, (req, res) => {
+    const classId = req.params.classId;
+    const thisCourseId = req.params.courseId;
+    const flashcard = new Flashcard({
+        class: classId,
+        question: req.body.question,
+        answer: req.body.answer,
+        difficulty: req.body.difficulty
+    })
+    flashcard.save()
+    console.log(`New Class: ${flashcard}`)
+    res.redirect(`/academy/courses`)
+});
+
+router.get('/:classId/flashcards', ensureAuthenticated, async (req, res) => {
+    const classId = req.params.classId;
+    const thisClass = await Class.findById(classId);
+    const flashcards = await Flashcard.find({class: {$eq: classId}});
+    res.render('flashcards', {currentPageTitle: 'Flashcards', flashcards, thisClass})
+
+})
+
 module.exports = router;

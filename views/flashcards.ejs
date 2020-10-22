@@ -1,0 +1,17 @@
+<h1><%= currentPageTitle %> for <%= thisClass.name %></h1>
+
+<div class="flashcard-container">
+
+    <% flashcards.forEach(function(flashcard) { %>
+        <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front easy">
+                <%= flashcard.question %>
+            </div>
+            <div class="flip-card-back easy">
+                <%= flashcard.answer %>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+</div>

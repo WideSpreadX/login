@@ -1,1 +1,14 @@
 <h1><%= currentPageTitle %></h1>
+
+
+<div class="nav-bar">
+    <a href="/academy/<%= thisClass.id %>/flashcards">Flashcards</a>
+</div>
+
+
+<form action="/academy/<%= thisClass.id %>/add-flashcard" method="post" class="add-form">
+    <input type="text" name="question" id="flashcardQuestion" placeholder="Question">
+    <input type="text" name="answer" id="flashcardAnswer" placeholder="Answer">
+    <input type="number" name="difficulty" id="flashcardDifficulty" placeholder="Difficulty (1-3)">
+    <button type="submit">Add Flashcard</button>
+</form>
