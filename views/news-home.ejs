@@ -41,12 +41,27 @@
 
   <div id="Technology" class="tabcontent">
     <h3>Technological News</h3>
-    <p>List of news items...</p>
+    <h4>Reddit</h4>
+    <hr>
+    <% results.forEach(function(article){ %>
+      <li style="list-style: none;">
+          <div style="padding: 7px;">
+              <div>
+                     <a href="https://old.reddit.com/<%= article.link %>" target="_blank"><h5><%= article.title %></h5> </a>
+              </div>  
+              
+          </div>
+      </li>
+      <% }); %>
   </div>
 
   <div id="Politics" class="tabcontent">
     <h3>Political News</h3>
-    <p>List of news items...</p>
+    
+
+
+
+
   </div>
 
   <div id="Events" class="tabcontent">
