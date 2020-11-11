@@ -1,6 +1,14 @@
-<div class="row mt-5">
+
+<div class="row mt-5" style="padding-top: 70px;">
     <div class="col-md-6 m-auto">
+      <div class="nav-bar-outer" style="opacity: 1.0;">
+        <div class="nav-bar nav-bar-ws" style="padding: 15px; padding-left: 0;">
+          <div class="login-background">
+            <div class="login-background-image">
+            </div>
+            </div>
       <div class="card card-body">
+
         <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
         <% include('./partials/messages') %>
         <form action="/users/login" method="POST">
@@ -10,7 +18,7 @@
               type="email"
               id="email"
               name="email"
-              class="form-control"
+              class="form-control login-input"
               placeholder="Enter Email"
             />
           </div>
@@ -20,15 +28,17 @@
               type="password"
               id="password"
               name="password"
-              class="form-control"
+              class="form-control login-input"
               placeholder="Enter Password"
             />
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <button type="submit" class="btn btn-primary btn-block login-button">Login</button>
         </form>
         <p class="lead mt-4">
           No Account? <a class="spreadlink" href="/users/register">Register</a>
         </p>
+      </div>
+        </div>
       </div>
     </div>
   </div>

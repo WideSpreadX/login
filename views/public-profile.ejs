@@ -4,8 +4,10 @@
         <h1 style="color: lightskyblue;" class="mb-3"><%= profile.fname %> <%= profile.lname %></h1>
 
     </div>
-    <div class="row info-header">
-        <div class="col-5" style="padding: 20px;">
+    <div class="row user-header">
+
+        <div class="row info-header">
+            <div class="col-5" style="padding: 20px;">
             <p class="lead mb-3"><i style="margin-right: 10px;;" class="far fa-envelope"></i><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
             <p class="lead mb-3"><i style="margin-right: 10px;" class="fas fa-phone"></i><a href="tel:<%= profile.phone1 %>"><%= profile.phone1 %></a></p>
         </div>
@@ -54,6 +56,9 @@
             </div>
         </div>
     </div>
+    
+</div>
+    
     <hr class="my-4">
     <div class="outer_cont_container">
         <div class="cont_container">
@@ -163,12 +168,3 @@
         </div>
     
 </div>
-    <div class="static-users">
-        <h2>User Profiles</h2>
-        <h5>Jonny O</h5>
-        <p><a href="/users/5f60d9bc564a9e3010a0c5ad">5f60d9bc564a9e3010a0c5ad</a></p>
-        <h5>Mike Jones</h5>
-        <p><a href="/users/5f7d064688285325f888e2c3">5f7d064688285325f888e2c3</a></p>
-        <h5>Jon Olson</h5>
-        <p><a href="/users/5f749fd3bd01753cb4f9677a">5f749fd3bd01753cb4f9677a</a></p>
-    </div>

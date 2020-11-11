@@ -105,8 +105,7 @@ router.get('/:companyId/inventory', async (req, res) => {
     const company = await Company.findById(companyId);
     
 
-    Company.findById(companyId).populate('inventory').exec()
-    .then(inventoryData => {
+    Company.findById(companyId).populate('inventory').exec(inventoryData => {
     
         console.log(`Company Info to Manage: ${company}`)
         console.log(`Inventory Data: ${inventoryData}`)

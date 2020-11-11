@@ -1,70 +1,19 @@
 <h1><%= currentPageTitle %></h1>
 
-
-<!-- Tab links -->
-<div class="tab">
-    <button class="tablinks" onclick="openCategory(event, 'Local')">Local</button>
-    <button class="tablinks" onclick="openCategory(event, 'National')">National</button>
-    <button class="tablinks" onclick="openCategory(event, 'International')">International</button>
-    <button class="tablinks" onclick="openCategory(event, 'Business')">Business</button>
-    <button class="tablinks" onclick="openCategory(event, 'Health')">Health</button>
-    <button class="tablinks" onclick="openCategory(event, 'Technology')">Technology</button>
-    <button class="tablinks" onclick="openCategory(event, 'Politics')">Politics</button>
-    <button class="tablinks" onclick="openCategory(event, 'Events')">Events</button>
-  </div>
-  
-  <!-- Tab content -->
-  <div id="Local" class="tabcontent">
-    <h3>Local News</h3>
-    <p>List of news items...</p>
-  </div>
-  
-  <div id="National" class="tabcontent">
-    <h3>National News</h3>
-    <p>List of news items...</p>
-  </div>
-  
-  <div id="International" class="tabcontent">
-    <h3>International News</h3>
-    <p>List of news items...</p>
-  </div>
-
-  <div id="Business" class="tabcontent">
-    <h3>Business News</h3>
-    <p>List of news items...</p>
-  </div>
-  
-  <div id="Health" class="tabcontent">
-    <h3>Health News</h3>
-    <p>List of news items...</p>
-  </div>
-
-  <div id="Technology" class="tabcontent">
-    <h3>Technological News</h3>
-    <h4>Reddit</h4>
-    <hr>
-    <% results.forEach(function(article){ %>
-      <li style="list-style: none;">
-          <div style="padding: 7px;">
-              <div>
-                     <a href="https://old.reddit.com/<%= article.link %>" target="_blank"><h5><%= article.title %></h5> </a>
-              </div>  
-              
+<div class="nav-bar-outer">
+  <div class="nav-bar nav-bar-ws">
+      <div class="row">
+          <div class="col-12">
+              <a href="/news/election">2020 U.S. Election</a>
+              <a href="/news/local">Local</a>
+              <a href="/news/national">National</a>
+              <a href="/news/international">International</a>
+              <a href="/news/business">Business</a>
+              <a href="/news/health">Health</a>
+              <a href="/news/technology">Technology</a>
+              <a href="/news/politics">Politics</a>
+              <a href="/news/events">Events</a>
           </div>
-      </li>
-      <% }); %>
+      </div>
   </div>
-
-  <div id="Politics" class="tabcontent">
-    <h3>Political News</h3>
-    
-
-
-
-
-  </div>
-
-  <div id="Events" class="tabcontent">
-    <h3>Events</h3>
-    <p>List of news items...</p>
-  </div>
+</div>
