@@ -31,7 +31,6 @@ const UserSchema = new mongoose.Schema({
     favColor1: String,
     favColor2: String,
     favColor3: String,
-    images: [{type:mongoose.Schema.Types.ObjectId, ref: 'uploads.files'}],
     friends: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
@@ -46,7 +45,7 @@ const UserSchema = new mongoose.Schema({
         twitter: String,
         pinterest: String
     },
-    user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'uploads.files'}],
+    user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
     resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
     date: {
         type: Date,

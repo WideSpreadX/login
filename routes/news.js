@@ -9,43 +9,43 @@ const cheerio = require('cheerio');
 
 router.get('/', (req, res) => {
 
-/*     console.log("\n***********************************\n" +
-    "Grabbing every thread name and link\n" +
-    "from reddit's webdev board:" +
-    "\n***********************************\n");
+axios.get("https://www.oann.com/category/newsroom/").then(function(response) {
+        const $ = cheerio.load(response.data);
+        const results = [];
 
-// Making a request via axios for reddit's "webdev" board. We are sure to use old.reddit due to changes in HTML structure for the new reddit. The page's Response is passed as our promise argument.
-axios.get("https://old.reddit.com/r/webdev").then(function(response) {
+        $('.archive-grid').children('article').each(function(i, element) {
 
-// Load the Response into cheerio and save it to a variable
-// '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-var $ = cheerio.load(response.data);
+        const title = $(element).children('.content-grid-title').children('a').text();
+        const articleImage = $(element).children('.content-grid-thumb').children('a').children('img').attr('src');
+        const articleImageAlt = $(element).children('.content-grid-thumb').children('a').attr('title');
+        const link = $(element).children('.content-grid-title').children('a').attr('href');
+       /*  
+        
+        const time = $(element).children('.info').children('.info-header').children('.meta').children('div').children('.time').text();
+        // Save the text of the element in a "title" variable
+        
+        // In the currently selected element, look at its child elements (i.e., its a-tags),
+        // then save the values for any "href" attributes that the child elements may have
+        
+        const newsPreview = $(element).children('.info').children('.content').children('p').children('a').text()
+        // Save these results in an object that we'll push into the results array we defined earlier
+         */
+        results.push({
+        title: title,
+        articleImage: articleImage,
+        articleImageAlt: articleImageAlt,
+        link: link,
+/*         
+        newsPreview: newsPreview,
+        time: time
+         */
+        });
+        });
+        // Log the results once you've looped through each of the elements found with cheerio
+        console.log(results);
 
-// An empty array to save the data that we'll scrape
-var results = [];
-
-// With cheerio, find each p-tag with the "title" class
-// (i: iterator. element: the current element)
-$("p.title").each(function(i, element) {
-
-// Save the text of the element in a "title" variable
-var title = $(element).text();
-
-// In the currently selected element, look at its child elements (i.e., its a-tags),
-// then save the values for any "href" attributes that the child elements may have
-var link = $(element).children().attr("href");
-
-// Save these results in an object that we'll push into the results array we defined earlier
-results.push({
-title: title,
-link: link
-});
-});
- */
-
-
-
-res.render('news-home', {currentPageTitle: 'News'});
+    res.render('news-home', {currentPageTitle: 'News', results});
+        });
 });
 
 

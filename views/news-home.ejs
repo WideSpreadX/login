@@ -17,3 +17,25 @@
       </div>
   </div>
 </div>
+
+<div class="news-articles">
+
+    <% results.forEach(function(article){ %>
+        <div class="row">
+            <div class="col-4">
+                <div class="article-image">
+                    <img src="<%= article.articleImage %>" alt="<%= article.articleImageAlt %>">
+                </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="article-info">
+                    <small><%= article.time %></small>
+                    <a href="<%= article.link %>" target="_blank"><h5><%= article.title %></h5> </a>
+                    <p><%= article.newsPreview %></p>
+                </div>
+            </div>
+        </div>
+        
+        <% }); %>
+    </div>

@@ -1,0 +1,37 @@
+<h1><%= currentPageTitle %></h1>
+
+<div class="nav-bar-outer">
+  <div class="nav-bar nav-bar-ws">
+      <div class="row">
+          <div class="col-12">
+              <a href="/shopping/outdoors-camping/tents">Tents</a>
+              <a href="/shopping/outdoors-camping/sleeping-bags">Sleeping Bags</a>
+              <a href="/shopping/outdoors-camping/survival-tools">Survival Tools</a>
+              <a href="/shopping/outdoors-camping/firearms">Firearms</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="news-articles">
+
+    <% results.forEach(function(item){ %>
+        <div class="row">
+            <div class="col-4">
+                <div class="item-image">
+                    <img src="<%= item.itemImage %>" alt="<%= item.itemImageAlt %>">
+                </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="article-info">
+                    <h5><%= item.price %></h5>
+                    <a href="https://www.ems.com<%= item.link %>" target="_blank"><h5><%= item.item %></h5> </a>
+                </div>
+            </div>
+        </div>
+
+        <% }); %>
+    </div>
+

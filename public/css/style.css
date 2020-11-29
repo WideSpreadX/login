@@ -503,6 +503,7 @@ h1,h2,h3,h4,h5,h6 {
      margin-top: 20px;
      background: #222;
      box-shadow: -3px -3px 6px #333, 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+        width: 100%;
     }
     .public-post {
     box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
@@ -823,6 +824,31 @@ h1,h2,h3,h4,h5,h6 {
     transition: ease-in 0.3s;
 }
 
+/* 
+        SHOPPING
+ */
+
+#output {
+    width: 500px;
+    height: 300px;
+    background: lime;
+}
+.item-image {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+     max-width: 150px;
+     border-radius: 10px;
+}
+.item-image img {
+     max-width: 150px;
+     border-radius: 10px;
+     opacity: 0.8;
+     transition: ease-in 0.4s;
+ }
+ .item-image img:hover {
+     opacity: 1.0;
+     transition: ease-in 0.4s;
+     box-shadow: 0 0 10px white;
+ }
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
     body {

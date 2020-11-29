@@ -18,6 +18,7 @@ const Comment = require('../models/Comment');
 const Resume = require('../models/Resume');
 const Company = require('../models/Company');
 const Article = require('../models/Article');
+const ProfileImage = require('../models/ProfileImage');
 
 
 // Login Page
@@ -123,11 +124,13 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     console.log("User ID: " + userId);
     const articles = await Article.find({author: {$eq: id}});
    const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
+   const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
     User.findById(id)
     .populate('friends')
+    .populate('user_images')
     .exec()
     .then(profile => {
-            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles})
+            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages})
             console.log(profile);
         });
 })
@@ -144,10 +147,6 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
         if (err) {
             return
         } else {
-/*             let newFriendId = newFriend._id;
-            User.findByIdAndUpdate(req.user._id, newFriend._id, (err, userId))
-            userId.friends.push(newFriendId);
-            userId.save(); */
             User.findByIdAndUpdate(userId,
                 {$push: {friends: req.body.friends}},
                 {safe: true, upsert: true},

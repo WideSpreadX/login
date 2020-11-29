@@ -13,6 +13,7 @@ const User = require('../models/User');
 const Post = require('../models/Post');
 const Resume = require('../models/Resume');
 const Article = require('../models/Article');
+const ProfileImage = require('../models/ProfileImage');
 
 
 // Welcome Page
@@ -40,8 +41,10 @@ conn.once('open', () => {
           }
           const filename = buf.toString('hex') + path.extname(file.originalname);
           const fileInfo = {
+            metadata: {
+              imageOwner: req.user._id
+            },
             filename: filename,
-            imageOwner: req.body.imageOwner,
             bucketName: 'uploads'
           };
           resolve(fileInfo);
@@ -58,16 +61,22 @@ conn.once('open', () => {
         const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const article = await Article.find({ author: { $eq: id } });
-
+        const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
+        
 
         console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
+        console.log("Users Posts: " + profileImages)
+
         User.findById(id)
         .populate('friends')
+        .populate('posts')
+        .populate('user_images')
         .exec()
         .then(profile => {
                 res.render('dashboard', {
                 profile,
+                profileImages,
                 fname: req.user.fname,
                 id: req.user.id,
                 posts,
@@ -75,6 +84,10 @@ conn.once('open', () => {
                 article,
                 currentPageTitle: 'Dashboard'
                 })
+                console.log(`User Info: ${profile}`)
+                console.log(`User Friends: ${profile.friends}`)
+                console.log(`User Images: ${profileImages}`)
+
             });
             
     });

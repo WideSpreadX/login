@@ -12,6 +12,7 @@
                 <a href="/academy">Academy</a>
                 <a href="/business">Business</a>
                 <a href="/news">News</a>
+                <a href="/shopping">Shopping</a>
             </div>
             <div class="col-2">
                 <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
@@ -22,13 +23,13 @@
 
 <div class="nav-bar-outer">
     <div class="nav-bar nav-bar-ws">
-        <a href="/socialspread">SocialSpread</a>
+        <a href="/socialspread/<%= id %>">SocialSpread</a>
         <a href="/flexfloor">FlexFloor</a>
         <a href="/spreadshield">SpreadShield</a>
     </div>
 </div>
+<h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
-<h2 style="text-align: center; margin-bottom: 20px;">Your Dashboard</h2>
 <div class="user-avatar">
     <img src="/image/d86c75731a6bde2183e2c0f159c90ad1.jpg" alt="Jonny O">
 </div>
@@ -56,7 +57,7 @@
                             <label for="userImage" class="custom-file-label">Upload an Image</label>
                         </div>
                         <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                        <input type="submit" value="Add Image" class="btn-block" style="margin-top: 5px;">
+                        <input type="submit" value="Add Image" class="btn-block btn-dark" style="margin-top: 15px;">
                     </form>
                 </div>
             </div>
@@ -94,6 +95,21 @@
 
 
         <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+        <% profileImages.forEach(function(image){ %>
+            <li style="list-style: none;">
+                <div style="padding: 7px;">
+                    <div> 
+                        <div> 
+                            <img src="image/<%= image.img.data %>" width="300px" height="300px"> 
+                            <div> 
+
+                            </div> 
+                        </div> 
+                    </div> 
+                    
+                </div>
+            </li>
+            <% }); %>
         <h2 style="text-align: center; margin-bottom: 20px;">Your Friends</h2>
     <div class="row">
         <div class="col-12 friends" style="margin-top: 70px;">
@@ -122,6 +138,11 @@
 
             </div>
     </div>
+    <% profile.friends.forEach(function(friend){ %>
+        <div id="userCard_<%=friend.id %>" class="card">
+            <h3><%= friend.posts %></h3>
+        </div>
+        <% }); %>
     <div class="row">
         <div class="col-6 user-posts">
             <div class="create-post">

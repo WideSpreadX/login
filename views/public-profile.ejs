@@ -60,6 +60,28 @@
 </div>
     
     <hr class="my-4">
+    <div class="outer_cont_container" style="margin-top: 150px;">
+        <div class="cont_container">
+            <div class="cont_inner_container">
+    <% profileImages.forEach(function(image){ %>
+            <div style="padding: 7px;">
+                <div> 
+                    <div> 
+                        <div> 
+                            <img src="/image/<%= image.img.data %>" width="300px" height="300px"> 
+
+                        </div> 
+                    </div> 
+                </div> 
+                
+            </div>
+        
+        <% }); %>
+    
+            </div>
+        </div>
+    </div>
+    
     <div class="outer_cont_container">
         <div class="cont_container">
             <div class="cont_inner_container">
@@ -112,7 +134,7 @@
             </div>
             -->
             <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <h5 style="text-align: center;">Top Posts</h5>
                 <ul>
                     <% posts.forEach(function(post){ %>
@@ -136,9 +158,7 @@
                         <% }); %>
                     </ul> 
             </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <h5 style="text-align: center;">Top Articles</h5>
                     <ul>
                         <% articles.forEach(function(article){ %>

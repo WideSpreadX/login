@@ -11,7 +11,9 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-
+const User = require('./models/User');
+const profileImage = require('./models/ProfileImage');
+const fs = require('fs');
 
 const { response } = require('express');
 
@@ -124,14 +126,54 @@ app.use('/users', require('./routes/users'));
 app.use('/business', require('./routes/businesses'));
 app.use('/academy', require('./routes/academy'));
 app.use('/news', require('./routes/news'));
+app.use('/shopping', require('./routes/shopping'));
 app.use('/socialspread', require('./routes/socialspread'));
 app.use('/flexfloor', require('./routes/flexfloor'));
 app.use('/spreadshield', require('./routes/spreadshield'));
 /* app.use('/upload', require('./routes/upload')); */
 
 app.post('/upload', upload.single('user_image'), (req, res) => {
-  console.log(`This is the data that was just uploaded: ${req.file}`)
-  res.json({file: req.file})
+  const imageOwner = req.user._id;
+  const obj = { 
+    imageOwner: req.user._id, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  profileImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${imageOwner} Image Data: ${req.file}`);
+        User.findByIdAndUpdate(imageOwner,
+          {$push: {user_images: req.file.id}},
+          {safe: true, upsert: true},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect('/dashboard'); 
+    } 
+}); 
+/*   User.findByIdAndUpdate(imageOwner,
+          {$push: {user_images: req.file.id}},
+          {safe: true, upsert: true},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+      res.json({file: req.file}) */
 });
 
 app.get('/files', (req, res) => {
