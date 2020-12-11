@@ -277,6 +277,18 @@ h1,h2,h3,h4,h5,h6 {
     color: rgba(255, 255, 255, 0.753);
 }
 
+/* 
+        IMAGES
+*/
+
+.med-image {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+.med-image img {
+    border-radius: 10px;
+}
 
 .spreadlink {
     color: #fff;
@@ -782,6 +794,25 @@ h1,h2,h3,h4,h5,h6 {
 }
 .article-container hr {
     border-color: lightskyblue;
+}
+
+
+.news-outlet-container {
+    text-align: center;
+    padding: 20px;
+}
+.news-outlet-logo {
+    padding: 20px;
+    box-shadow: 4px 4px 8px #000, 3px 3px 6px #111, -6px -6px 8px #444, -3px -3px 6px #444, 2px 2px 2px #333, -2px -2px 2px #222;
+    border-radius: 10px;
+}
+.news-outlet-logo img {
+    opacity: 0.4;
+    transition: ease-in 0.5s;
+}
+.news-outlet-logo img:hover {
+    opacity: 1.0;
+    transition: ease-in 0.3s;
 }
 
 .news-outlet h2 {

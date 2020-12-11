@@ -49,6 +49,35 @@ axios.get("https://www.oann.com/category/newsroom/").then(function(response) {
 });
 
 
+    //  https://www.newsmax.com/newsfront/
+
+
+
+router.get('/newsmax', (req, res) => {
+    axios.get("https://www.newsmax.com/newsfront/").then(function(response) {
+        const $ = cheerio.load(response.data);
+        const results = [];
+        
+
+        $(".inside_cover_content").children('ul').children('li').each(function(i, element) {
+        
+        const articleImage = $(element).children('img').attr('src');
+        const title = $(element).children('a').text();
+        const newsPreview = $(element).children('#copy_small').text();
+        const link = $(element).children('a').attr('href');
+        
+        results.push({
+        articleImage: articleImage,
+        title: title,
+        link: link,
+        newsPreview: newsPreview,
+        });
+        });
+        // Log the results once you've looped through each of the elements found with cheerio
+        console.log(results);
+        res.render('news-newsmax', {currentPageTitle: 'Newsmax', results});
+        });
+})
     
 
 router.get('/politics', (req, res) => {
@@ -219,6 +248,38 @@ router.get('/business', (req, res) => {
         });
 });
 
+
+
+router.get('/health', (req, res) => {
+    axios.get("https://medicalxpress.com/").then(function(response) {
+        const $ = cheerio.load(response.data);
+        const results = [];
+        
+
+        $('.sorted-article').each(function(i, element) {
+        
+        const articleImage = $(element).children('figure').children('a').children('img').attr('src');
+        const topic = $(element).children('.sorted-article-content').children('.sorted-article-topic').text();
+        const title = $(element).children('.sorted-article-content').children('h2').children('a').text();
+        const link = $(element).children('.sorted-article-content').children('h2').children('a').attr('href');
+        const newsPreview = $(element).children('.sorted-article-content').children('p').text();
+        const time = $(element).children('.sorted-article-content').children('.article__info').children('.mr-auto').children('p').text();
+
+        results.push({
+        articleImage: articleImage,
+        topic: topic,
+        title: title,
+        link: link,
+        newsPreview: newsPreview,
+        time: time 
+        });
+        });
+        // Log the results once you've looped through each of the elements found with cheerio
+        console.log(results);
+        res.render('news-health', {currentPageTitle: 'Health', results});
+        });
+})
+    
 
 
 /* 

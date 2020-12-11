@@ -94,22 +94,29 @@
         </div>
 
 
-        <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Your Photos</h2>
+        <div class="outer_cont_container" style="margin-top: 150px;">
+            <div class="cont_container">
+                <div class="cont_inner_container">
         <% profileImages.forEach(function(image){ %>
-            <li style="list-style: none;">
                 <div style="padding: 7px;">
                     <div> 
                         <div> 
-                            <img src="image/<%= image.img.data %>" width="300px" height="300px"> 
-                            <div> 
-
+                            <div class="med-image"> 
+                                <img src="/image/<%= image.img.data %>" width="300px" height="300px"> 
+    
                             </div> 
                         </div> 
                     </div> 
                     
                 </div>
-            </li>
+            
             <% }); %>
+        
+                </div>
+            </div>
+        </div>
+
         <h2 style="text-align: center; margin-bottom: 20px;">Your Friends</h2>
     <div class="row">
         <div class="col-12 friends" style="margin-top: 70px;">
