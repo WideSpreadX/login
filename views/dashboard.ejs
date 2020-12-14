@@ -9,6 +9,7 @@
     <div class="nav-bar nav-bar-ws">
         <div class="row">
             <div class="col-10">
+                <a href="/dashboard/wall">YourSpread</a>
                 <a href="/academy">Academy</a>
                 <a href="/business">Business</a>
                 <a href="/news">News</a>
@@ -30,8 +31,25 @@
 </div>
 <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+<div class="row">
+    <div class="col-12">
+
+        <div class="user-profile-image-form">
+            <form action="/upload-avatar" method="post" enctype="multipart/form-data">
+                <div class="custom-file-profile-image">
+                    <input type="file" name="user_profile_image" id="userProfileImage">
+                    <label for="userProfileImage" class="custom-file-label-profile-image">Change Profile Picture</label>
+                </div>
+                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                <div class="custom-file-profile-image-button">
+                    <input type="submit" value="Change" class="" style="margin-top: 15px;">
+                </div>
+            </form>
+</div>
+</div>
+</div>
 <div class="user-avatar">
-    <img src="/image/d86c75731a6bde2183e2c0f159c90ad1.jpg" alt="Jonny O">
+    <img src="/image/<%= avatarImage.img.data  %>" alt="Jonny O">
 </div>
     <div class="row">
         <div class="col-5">

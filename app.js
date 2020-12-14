@@ -13,6 +13,7 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const User = require('./models/User');
 const profileImage = require('./models/ProfileImage');
+const avatar = require('./models/Avatar');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -162,8 +163,27 @@ app.post('/upload', upload.single('user_image'), (req, res) => {
         res.redirect('/dashboard'); 
     } 
 }); 
-/*   User.findByIdAndUpdate(imageOwner,
-          {$push: {user_images: req.file.id}},
+});
+
+
+app.post('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
+  const imageOwner = req.user._id;
+  const obj = { 
+    imageOwner: req.user._id, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  avatar.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${imageOwner} Image Data: ${req.file}`);
+        User.findByIdAndUpdate(imageOwner,
+          {$push: {user_avatar: req.file.id}},
           {safe: true, upsert: true},
           function(err, doc) {
               if(err) {
@@ -173,8 +193,11 @@ app.post('/upload', upload.single('user_image'), (req, res) => {
               }
           }
       )
-      res.json({file: req.file}) */
+        res.redirect('/dashboard'); 
+    } 
+}); 
 });
+
 
 app.get('/files', (req, res) => {
   gfs.files.find().toArray((err, files) => {

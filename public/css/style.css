@@ -252,6 +252,38 @@ h1,h2,h3,h4,h5,h6 {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+
+
+.user-profile-image-form {
+    width: 100%;
+    background: red;
+    text-align: center;
+    margin: 0 auto;
+}
+.custom-file-profile-image input {
+    display: none;
+}
+.custom-file-label-profile-image {
+    background: lightskyblue;
+    box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgba(135, 206, 250, 0.61);
+    padding: 10px;
+    margin-left: -5px;
+    border-radius: 10px;
+}
+
+.custom-file-profile-image-button {
+    margin-top: 0;
+    padding: 0;
+}
+.custom-file-profile-image-button input {
+    background: lightskyblue;
+    box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgba(135, 206, 250, 0.61);
+    padding: 10px;
+    margin-left: -5px;
+    margin-top: 0;
+    border-radius: 10px;
+}
 .add-form {
     margin: 20px;
     padding: 20px;
@@ -309,7 +341,9 @@ h1,h2,h3,h4,h5,h6 {
     background: #111;
     padding-bottom: 20px;
 }
-
+.user-profile-image-form {
+    max-width: 200px;
+}
 .user-avatar {
     max-width: 200px;
     max-height: 200px;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); 
   
-const imageProfileSchema = new mongoose.Schema({ 
+const avatarSchema = new mongoose.Schema({ 
     imageOwner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     img: 
     { 
@@ -9,6 +9,6 @@ const imageProfileSchema = new mongoose.Schema({
     },
 }); 
   
-//profileImage is a model which has a schema imageSchema 
+//avatar is a model which has a schema imageSchema 
   
-module.exports = new mongoose.model('ProfileImage', imageProfileSchema); 
+module.exports = new mongoose.model('Avatar', avatarSchema); 

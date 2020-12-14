@@ -14,6 +14,7 @@ const Post = require('../models/Post');
 const Resume = require('../models/Resume');
 const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
+const Avatar = require('../models/Avatar');
 
 
 // Welcome Page
@@ -62,11 +63,12 @@ conn.once('open', () => {
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const article = await Article.find({ author: { $eq: id } });
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
+        const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         
 
-        console.log("Users Resume: " + resume)
+/*         console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
-        console.log("Users Posts: " + profileImages)
+        console.log("Users Posts: " + profileImages) */
 
         User.findById(id)
         .populate('friends')
@@ -77,6 +79,7 @@ conn.once('open', () => {
                 res.render('dashboard', {
                 profile,
                 profileImages,
+                avatarImage,
                 fname: req.user.fname,
                 id: req.user.id,
                 posts,
@@ -84,13 +87,84 @@ conn.once('open', () => {
                 article,
                 currentPageTitle: 'Dashboard'
                 })
-                console.log(`User Info: ${profile}`)
-                console.log(`User Friends: ${profile.friends}`)
-                console.log(`User Images: ${profileImages}`)
+                /* console.log(`User Info: ${profile}`) */
+                console.log(`User Friends ---------------- ${profile.friends}`)
+                /* console.log(`User Images: ${profileImages}`) */
 
             });
             
     });
 
+    router.get('/dashboard/wall', ensureAuthenticated, async (req, res) => {
+      const id = req.user._id;
+      console.log( `User Friends List Array +++++++++ ${req.user.friends}`)
+      const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
+      const resume = await Resume.find({ resumeOwner: { $eq: id } });
+      const article = await Article.find({ author: { $eq: id } });
+      const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
+      const findUserAvatar = await profileImages[0]._id;
+      const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } });
+      console.log(`User Avatar -------------- ${findUserAvatar}`);
+      let friendIdArray = []
+      const getFriendId = await User.findById(id);
+      /* const allFriendsPosts = await Post.find({author: {$eq: friendId}}).sort({createdAt: 'desc'}); */
+       
+
+      const friendIds = req.user.friends;
+    const friendData = await User.findById(friendIds).populate('friends');
+
+     const allPosts = await Post.find({ "author": { "$in": friendIds } })
+    .sort("-createdAt") // or .sort({ field: 'asc', created: -1 });
+    .exec(function (err, data){
+        if(err){
+            return console.log(err);
+        } else {
+            return res.render('dashboard-wall', {
+              currentPageTitle: 'YourSpread',
+              data,
+              friendData
+            })
+              /* console.log(data); */
+        }
+    }); 
+
+/*         console.log("Users Resume: " + resume)
+      console.log("Users Posts: " + posts)
+      console.log("Users Posts: " + profileImages) */
+
+/*       User.findById(id)
+      .populate('friends')
+      .populate('posts')
+      .populate('user_images')
+      .then(profile => {
+        const allPosts = Post.find({ "author": { "$in": friendIds } })
+        .sort("-createdAt") // or .sort({ field: 'asc', created: -1 });
+        .exec(function (err, data){
+            if(err){
+                return console.log(err);
+            } else {
+                return data;
+            }
+        })
+              res.render('dashboard-wall', {
+              profile,
+              profileImages,
+              userAvatar,
+              friendIds,
+              allPosts,
+              fname: req.user.fname,
+              id: req.user.id,
+              posts,
+              resume,
+              article,
+              currentPageTitle: 'YourSpread'
+              })
+               console.log(`Users Friends ============== ${profile.friends.posts}`);
+              console.log(`First User Image ---------------- ${profileImages[0]._id}`)
+               console.log(`User Images: ${profileImages}`)
+
+          }); */
+          
+  });
 
 module.exports = router;

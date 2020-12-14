@@ -45,7 +45,9 @@ const UserSchema = new mongoose.Schema({
         twitter: String,
         pinterest: String
     },
+    user_profile_image: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
     user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
+    user_avatar: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
     resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
     date: {
         type: Date,
