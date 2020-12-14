@@ -45,6 +45,14 @@ body {
 h1,h2,h3,h4,h5,h6 {
     color: #ccc;
 }
+.spread-h3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-bottom: solid 2px rgba(135, 206, 250, 0.555);
+}
 .spread-h5 {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -238,37 +246,86 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: 10px;
     padding: 10px;
     background: #000;
-    box-shadow: inset 3px 3px 3px rgb(0, 0, 0), inset -3px -3px 2px rgb(46, 46, 46);
-    transition: ease-in 0.4s;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222, inset 0 0 4px rgba(135, 206, 250, 0.582);
+    cursor: pointer;
+    transition: ease-in 0.5s;
 }
 .custom-file-label:hover {
     background: #111;
-    transition: ease-in 0.4s;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px lightskyblue;
+    transition: ease-in 0.3s;
 }
 .custom-file-label::after {
-    background: rgb(63, 207, 63);
-    box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgb(16, 230, 16);
+    background: rgb(45, 84, 109);
+    box-shadow: -1px -2px 6px #222, 0 -3px 4px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
     margin-left: -5px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    color: #000;
+    transition: ease-in 0.5;
+}
+.custom-file-label::after:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    transition: ease-in 0.3;
+}
+.block-button {
+    background: rgb(45, 84, 109);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
+    border-radius: 10px;
+    color: #000;
+    outline: none;
+    border: none;
+    transition: ease-in 0.5s;
 }
 
-
+.block-button:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    border-radius: 10px;
+    color: #000;
+    outline: none;
+    border: none;
+    transition: ease-in 0.3s;
+}
 
 .user-profile-image-form {
     width: 100%;
-    background: red;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
     text-align: center;
     margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
+
+.user-profile-image-form form {
+    /* background: lime; */
+}
+
 .custom-file-profile-image input {
     display: none;
+}
+.custom-file-label-choose-profile-image {
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 4px rgba(135, 206, 250, 0.582);
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    transition: ease-in 0.5s;
+}
+.custom-file-label-choose-profile-image:hover {
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px lightskyblue;
+    background: #111;
+    transition: ease-in 0.3s;
 }
 .custom-file-label-profile-image {
     background: lightskyblue;
     box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgba(135, 206, 250, 0.61);
     padding: 10px;
-    margin-left: -5px;
     border-radius: 10px;
 }
 
@@ -277,12 +334,20 @@ h1,h2,h3,h4,h5,h6 {
     padding: 0;
 }
 .custom-file-profile-image-button input {
-    background: lightskyblue;
-    box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgba(135, 206, 250, 0.61);
+    outline: none;
+    border: none;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
     padding: 10px;
     margin-left: -5px;
     margin-top: 0;
     border-radius: 10px;
+    background: rgb(45, 84, 109);
+    transition: ease-in 0.5s;
+}
+.custom-file-profile-image-button input:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    transition: ease-in 0.3s;
 }
 .add-form {
     margin: 20px;
@@ -309,6 +374,18 @@ h1,h2,h3,h4,h5,h6 {
     color: rgba(255, 255, 255, 0.753);
 }
 
+/* Spread It Button */
+.spread-it {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.562);
+    text-shadow: 0 0 2px lightskyblue;
+}
+.spread-it:hover {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.747);
+    text-shadow: 0 0 4px rgba(26, 27, 27, 0.603);
+}
 /* 
         IMAGES
 */
@@ -425,20 +502,28 @@ h1,h2,h3,h4,h5,h6 {
     padding-bottom: 60px;
     transition: ease-in 0.4s;
 }
+
 .create-post input {
     display: block;
     width: 100%;
     padding: 12px;
     margin-bottom: 10px;
     border-radius: 10px;
-    background: #222;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
     border: none;
     outline: none;
+    transition: ease-in 0.5s;
+}
+.create-post input:hover {
     box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
 }
 .create-post input:focus {
-    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     background: #333;
+    transition: ease-in 0.3s;
 }
 .create-post form {
     padding: 10px;
@@ -448,12 +533,19 @@ h1,h2,h3,h4,h5,h6 {
     min-height: 150px;
     padding: 12px;
     border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    transition: ease-in 0.5s;
+}
+.create-post textarea:hover {
     box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     background: #222;
+    transition: ease-in 0.3s;
 }
 .create-post textarea:focus {
     background: #333;
-    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
 }
 .post h3 {
     color: #000;

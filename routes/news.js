@@ -118,7 +118,7 @@ router.get('/politics', (req, res) => {
         });
         // Log the results once you've looped through each of the elements found with cheerio
         console.log(results);
-        res.render('news-politics', {currentPageTitle: 'News', results});
+        res.render('news-politics', {currentPageTitle: 'Politics', results});
         });
 })
 
@@ -160,7 +160,7 @@ router.get('/election', (req, res) => {
         });
         // Log the results once you've looped through each of the elements found with cheerio
         console.log(results);
-        res.render('news-election', {currentPageTitle: 'Election News', results});
+        res.render('news-election', {currentPageTitle: 'Election', results});
         });
 })
 
@@ -195,7 +195,7 @@ const link = $(element).children('a').attr('href');
         });
 
             console.log(results);
-            res.render('news-technology', {currentPageTitle: 'Technology News', results});
+            res.render('news-technology', {currentPageTitle: 'Technology', results});
         })
     
 });

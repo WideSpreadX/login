@@ -1,9 +1,3 @@
-<div class="row">
-    <div class="col-8">
-        <p class="lead mb-3">Welcome <%= fname %></p>
-    </div>
-
-</div>
 
 <div class="nav-bar-outer">
     <div class="nav-bar nav-bar-ws">
@@ -29,6 +23,15 @@
         <a href="/spreadshield">SpreadShield</a>
     </div>
 </div>
+<br>
+<br>
+<div class="row">
+    <div class="col-8">
+        <h2 class="lead mb-3">Welcome <%= fname %></h2>
+    </div>
+
+</div>
+
 <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 <div class="row">
@@ -38,7 +41,7 @@
             <form action="/upload-avatar" method="post" enctype="multipart/form-data">
                 <div class="custom-file-profile-image">
                     <input type="file" name="user_profile_image" id="userProfileImage">
-                    <label for="userProfileImage" class="custom-file-label-profile-image">Change Profile Picture</label>
+                    <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
                 </div>
                 <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
                 <div class="custom-file-profile-image-button">
@@ -75,7 +78,7 @@
                             <label for="userImage" class="custom-file-label">Upload an Image</label>
                         </div>
                         <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                        <input type="submit" value="Add Image" class="btn-block btn-dark" style="margin-top: 15px;">
+                        <input type="submit" value="Add Image" class="btn-block block-button" style="margin-top: 15px;">
                     </form>
                 </div>
             </div>
@@ -176,11 +179,11 @@
                     <input type="text" name="articleTitle" placeholder="Article Title" id="articleTitle"></input>
                     <input type="text" name="articleHeader" id="articleHeader" placeholder="Article Header">
                     <textarea required name="articleBody" id="articleBody" class="form-control"></textarea>
-                    <button class="btn btn-success" type="submit">Add Article</button>
+                    <button class="btn-block block-button spread-it" type="submit">Spread It</button>
                 </form>
             </div>
-            <div class="spread-h5">
-                <h5>Your Articles</h5>
+            <div class="spread-h3">
+                <h3>Your Articles</h3>
             </div>
             <div class="user-posts-container">
             <ul>
@@ -209,11 +212,11 @@
                     <h5>Create New Post</h5>
                     <form action="/users/<%= id %>/post" method="POST">
                         <textarea required name="postBody" id="postBody" class="form-control"></textarea>
-                        <button class="btn btn-success" type="submit">Add Post</button>
+                        <button class="btn-block block-button spread-it" type="submit">Spread It</button>
                     </form>
                 </div>
-                <div class="spread-h5">
-                    <h5>Your Posts</h5>
+                <div class="spread-h3">
+                    <h3>Your Posts</h3>
                 </div>
                 <div class="user-posts-container">
                 <ul>
