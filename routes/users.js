@@ -315,6 +315,8 @@ router.get('/posts/:postId', ensureAuthenticated, async (req, res) => {
         res.render('full-post', {thisPost, postAuthor, currentPageTitle: thisPost.author + "'s Post"})
 })
 
+
+
 // Deleting Posts - ONLY FOR DASHBOARD
 router.get('/post/:postId', (req, res) => {
     const post = {
@@ -332,6 +334,31 @@ router.delete('/post/:postId', async (req, res) => {
 
 });
 
+router.post('/:id/post/:postId/comment', ensureAuthenticated, async (req, res) => {
+    const postId = req.params.postId;
+    const userId = req.user._id;
+
+    const comment = new Comment({
+        commentBody: req.body.commentBody,
+        fromPost: postId,
+        author: userId,
+    })
+    
+    await Post.findByIdAndUpdate(postId, 
+        {$push: {comments: comment._id}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err);
+            } else {
+                comment.save()
+                return
+            }
+        }
+        )
+    res.redirect('/dashboard/wall')
+
+});
 
 router.post('/:id/article', ensureAuthenticated, (req, res) => {
     const userId = req.user._id;

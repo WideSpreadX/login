@@ -112,6 +112,8 @@ h1,h2,h3,h4,h5,h6 {
     max-width: 100%;
     max-height: 100%;
 }
+.card h3 {
+}
 .card-body h1 {
     font-size: 22px;
 }
@@ -633,6 +635,77 @@ h1,h2,h3,h4,h5,h6 {
 }
 .post {
     padding-top: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+}
+.post p {
+    font-size: 1.2rem;
+}
+.ss-post {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    padding: 20px;
+    padding-top: 0;
+    border-radius: 20px;
+}
+.ss-post h4 {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #ccc;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+.post-body p {
+    padding: 30px;
+    padding-top: 20px;
+}
+.ss-post p {
+    font-size: 1.2rem;
+    color: #eee;
+}
+.post-timestamp {
+    width: 100%;
+    text-align: right;
+
+}
+.post-span {
+    color: lightskyblue;
+    border-bottom: solid 1px rgba(135, 206, 250, 0.404);
+}
+.post-actions i {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 0.5;
+    transition: ease-in 0.3s;
+}
+.post-actions i:hover {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 1;
+    transition: ease-in 0.3s;
+}
+.comment-on-post {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    margin-top: 10px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+.comment-on-post textarea {
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.5s;
+}
+.comment-on-post textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #444;
+    transition: ease-in 0.3s;
+}
+.comment-on-post textarea:focus {
+    background: #555;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
 }
 .public-post-container {
     padding: 8px;

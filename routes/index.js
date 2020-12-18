@@ -11,6 +11,7 @@ const Grid = require('gridfs-stream');
 
 const User = require('../models/User');
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
 const Resume = require('../models/Resume');
 const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
@@ -97,73 +98,46 @@ conn.once('open', () => {
 
     router.get('/dashboard/wall', ensureAuthenticated, async (req, res) => {
       const id = req.user._id;
-      console.log( `User Friends List Array +++++++++ ${req.user.friends}`)
-      const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
+      /* console.log( `User Friends List Array +++++++++ ${req.user.friends}`) */
+      const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate('comments');
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
       const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
       const findUserAvatar = await profileImages[0]._id;
       const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } });
       console.log(`User Avatar -------------- ${findUserAvatar}`);
-      let friendIdArray = []
-      const getFriendId = await User.findById(id);
+      
+      
       /* const allFriendsPosts = await Post.find({author: {$eq: friendId}}).sort({createdAt: 'desc'}); */
-       
-
+      
+      let extractedFriend = {};
+      const getFriendId = await User.findById(id);
       const friendIds = req.user.friends;
-    const friendData = await User.findById(friendIds).populate('friends');
-
-     const allPosts = await Post.find({ "author": { "$in": friendIds } })
-    .sort("-createdAt") // or .sort({ field: 'asc', created: -1 });
-    .exec(function (err, data){
+      const friendsData = await User.find({_id: friendIds});
+      console.log( `Friend +++++++++ ${friendsData}`)
+      let friendIdArray = Array.from(friendsData)
+      
+      /*       console.log( `ALL POSTS *************** ${allPosts}`)   */
+      /* console.log(`Comments: ${allPosts}`) */
+      /* console.log(`Comments: ${allPosts}`) */
+      const comments = await Comment.find({fromPost: {$eq: posts._id} })
+      const allPosts = Post.find({ "author": { "$in": friendIds } }).populate('author', 'comments')
+      .exec(function (err, data){
         if(err){
-            return console.log(err);
+          return console.log(err);
         } else {
-            return res.render('dashboard-wall', {
-              currentPageTitle: 'YourSpread',
-              data,
-              friendData
-            })
-              /* console.log(data); */
+          return res.render('dashboard-wall', {
+            currentPageTitle: 'YourSpread',
+            data,
+            friendsData,
+            allPosts,
+            comments,
+            userAvatar
+          })
         }
-    }); 
+      }); 
 
-/*         console.log("Users Resume: " + resume)
-      console.log("Users Posts: " + posts)
-      console.log("Users Posts: " + profileImages) */
 
-/*       User.findById(id)
-      .populate('friends')
-      .populate('posts')
-      .populate('user_images')
-      .then(profile => {
-        const allPosts = Post.find({ "author": { "$in": friendIds } })
-        .sort("-createdAt") // or .sort({ field: 'asc', created: -1 });
-        .exec(function (err, data){
-            if(err){
-                return console.log(err);
-            } else {
-                return data;
-            }
-        })
-              res.render('dashboard-wall', {
-              profile,
-              profileImages,
-              userAvatar,
-              friendIds,
-              allPosts,
-              fname: req.user.fname,
-              id: req.user.id,
-              posts,
-              resume,
-              article,
-              currentPageTitle: 'YourSpread'
-              })
-               console.log(`Users Friends ============== ${profile.friends.posts}`);
-              console.log(`First User Image ---------------- ${profileImages[0]._id}`)
-               console.log(`User Images: ${profileImages}`)
-
-          }); */
           
   });
 

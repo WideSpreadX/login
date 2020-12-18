@@ -67,26 +67,7 @@ app.use((req, res, next) => {
 
 //Init gfs
 
-/* // Create storage engine
-const storage = new GridFsStorage({
-    url: db,
-    file: (req, file) => {
-      return new Promise((resolve, reject) => {
-        crypto.randomBytes(16, (err, buf) => {
-          if (err) {
-            return reject(err);
-          }
-          const filename = buf.toString('hex') + path.extname(file.originalname);
-          const fileInfo = {
-            filename: filename,
-            bucketName: 'public/uploads'
-          };
-          resolve(fileInfo);
-        });
-      });
-    }
-  }); */
-//  const upload = multer({ storage });
+
 //Init gfs
 const conn = mongoose.createConnection(db)
 
@@ -131,7 +112,7 @@ app.use('/shopping', require('./routes/shopping'));
 app.use('/socialspread', require('./routes/socialspread'));
 app.use('/flexfloor', require('./routes/flexfloor'));
 app.use('/spreadshield', require('./routes/spreadshield'));
-/* app.use('/upload', require('./routes/upload')); */
+app.use('/wellness', require('./routes/wellness'));
 
 app.post('/upload', upload.single('user_image'), (req, res) => {
   const imageOwner = req.user._id;
