@@ -1,9 +1,11 @@
 body {
-    background: #111;
+    background: #ccc;
 
 
 }
-
+#switchCss {
+    background: lime;
+}
 .not-done {
     background: lime;
 }
@@ -655,25 +657,6 @@ h1,h2,h3,h4,h5,h6 {
     text-decoration: none;
     transition: ease-in 0.2s;
 }
-.post-container-single {
-    margin-bottom: 30px;
-    padding: 20px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
-}
-.post-container-single h3 {
-    border-bottom: solid 2px lightskyblue;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-.post-container-single p {
-    padding: 20px;
-}
-.post-container-single>a {
-    padding-bottom: 2px;
-    margin-bottom: 2px;
-}
 .post-container {
     border-top: solid 1px #ccc;
     padding: 5px;
@@ -737,51 +720,13 @@ h1,h2,h3,h4,h5,h6 {
     opacity: 1;
     transition: ease-in 0.3s;
 }
-.comment-actions i {
-    color: lightskyblue;
-    text-shadow: 0 0 2px white;
-    opacity: 0.5;
-    transition: ease-in 0.3s;
-    font-size: 1.2rem;
-    margin-left: 8px;
-}
-.comment-actions i:hover {
-    color: lightskyblue;
-    text-shadow: 0 0 2px white;
-    opacity: 1;
-    transition: ease-in 0.3s;
-}
-
-
-/* Comments  */
-.comment-container {
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 80px;
-}
-.comments {
-    
-}
-.comment {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
-    
-}
-
-
 .comment-on-post {
-    border-radius: 20px;
     box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
     margin-top: 10px;
     width: 80%;
     margin: 0 auto;
     padding: 20px;
 
-}
-.comment-on-post h4 {
-    text-align: center;
 }
 .comment-on-post textarea {
     padding: 12px;
@@ -808,7 +753,6 @@ h1,h2,h3,h4,h5,h6 {
      background: #222;
      box-shadow: -3px -3px 6px #333, 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
         width: 100%;
-
     }
     .public-post {
     box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;

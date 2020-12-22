@@ -2,13 +2,11 @@ const mongoose = require('mongoose');
 
 
 const WorkoutSchema = new mongoose.Schema({
-    teammate: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     exercise: String,
     sets: Number,
     reps: Number,
-    max: Number,
-    days: [String]
-
+    max_weight: Number,
+    max_reps: Number
 });
 
 const Workout = mongoose.model('Workout', WorkoutSchema);

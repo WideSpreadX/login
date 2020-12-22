@@ -105,24 +105,25 @@ conn.once('open', () => {
       const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
       const findUserAvatar = await profileImages[0]._id;
       const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } });
-      console.log(`User Avatar -------------- ${findUserAvatar}`);
+/*       console.log(`User Avatar -------------- ${findUserAvatar}`); */
       
       
       /* const allFriendsPosts = await Post.find({author: {$eq: friendId}}).sort({createdAt: 'desc'}); */
       
-      let extractedFriend = {};
-      const getFriendId = await User.findById(id);
+/*       let extractedFriend = {};
+      const getFriendId = await User.findById(id); */
       const friendIds = req.user.friends;
       const friendsData = await User.find({_id: friendIds});
-      console.log( `Friend +++++++++ ${friendsData}`)
+     /*  console.log( `Friend +++++++++ ${friendsData}`) */
       let friendIdArray = Array.from(friendsData)
       
       /*       console.log( `ALL POSTS *************** ${allPosts}`)   */
       /* console.log(`Comments: ${allPosts}`) */
       /* console.log(`Comments: ${allPosts}`) */
       const comments = await Comment.find({fromPost: {$eq: posts._id} })
-      const allPosts = Post.find({ "author": { "$in": friendIds } }).populate('author', 'comments')
+      const allPosts = await Post.find({ "author": { "$in": friendIds } }).populate('author', 'comments')
       .exec(function (err, data){
+        console.log(`Data: ${data}`)
         if(err){
           return console.log(err);
         } else {
@@ -139,6 +140,44 @@ conn.once('open', () => {
 
 
           
+  });
+
+  router.get('/dashboard/wall/:postId/comment', ensureAuthenticated, async (req, res) => {
+    const postId = req.params.postId;
+    const newPostAuthor = req.user._id;
+    const friendIds = req.user.friends;
+    const friendsData = await User.find({_id: friendIds});
+    const comments = await Comment.find({fromPost: {$eq: postId._id} }).populate('author')
+    const post = await Post.findById(postId)
+    .populate({
+      path: 'author',
+      model: 'User'
+    })
+    .populate({
+      path: 'comments',
+      model: 'Comment',
+      populate: {
+        path: 'author',
+        model: 'User'
+      }
+    })
+    
+    .exec(function (err, data){
+      console.log(`Data: ${data}`)
+      if(err){
+        return console.log(err);
+      } else {
+        return res.render('dashboard-wall-post', {
+          currentPageTitle: 'YourSpread',
+          data,
+          friendsData,
+          post,
+          comments,
+          newPostAuthor
+        })
+      }
+    }); 
+
   });
 
 module.exports = router;

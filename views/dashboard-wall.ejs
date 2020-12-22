@@ -49,19 +49,12 @@
                     </div>
 
                     <div class="post-actions">
-                        <p><span><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="#"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
+                        <p><span><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="/dashboard/wall/<%= post.id %>/comment"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
                     </div>
                           
-                    <div class="comment-section" style="padding: 30px;">
-                        <% data.forEach(function(comment){ %>
-                            <div class="comment" style="margin-top: 20px; background: lime;">
-                                <%= comment.comments %>
-                            </div>
-                        <% }); %>
-    
-                    </div>
+
                     <div class="comment-on-post">
-                        <p>Leave a comment</p>
+                        <h4>Leave a comment</h4>
                         <form action="/users/<%= post.author.id %>/post/<%= post.id %>/comment" method="POST">
                             <textarea required name="commentBody" id="commentBody" class="form-control"></textarea>
                             <button class="btn-block block-button spread-it" type="submit">Spread More</button>

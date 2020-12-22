@@ -49,6 +49,7 @@ const UserSchema = new mongoose.Schema({
     user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
     user_avatar: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
     resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
+    workouts: {type: mongoose.Schema.Types.ObjectId, ref: 'WorkoutSchedule'},
     date: {
         type: Date,
         default: Date.now
