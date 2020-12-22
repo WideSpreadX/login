@@ -558,10 +558,27 @@ h1,h2,h3,h4,h5,h6 {
     background: lime;
     padding: 3px;
 }
+.draggable>h4 {
+    cursor: grab;
+    color: lightskyblue;
+}
+.draggable>h4:focus{
+    cursor: grabbing;
+}
+.dragTo-container {
+    margin-top: 20px;
+}
+.dragTo-container>h3 {
+    margin-top: 10px;
+    padding: 10px;
+}
 .dragTo {
     width: 300px;
-    height: 200px;
-    background: lime;
+    height: auto;
+    min-height: 50px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
 }
 .create-post form {
     padding: 10px;

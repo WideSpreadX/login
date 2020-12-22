@@ -33,12 +33,18 @@
 
 <h1><%= currentPageTitle %></h1>
 
-<% workouts.forEach(function(workout){ %>
-    <div class="draggable" draggable="true">
-        <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
-        <h4><%= workout.exercise %></h4>
+<div class="dragTo-container">
+    <h3>Available Exercises</h3>
+<div class="dragTo">
+
+    <% workouts.forEach(function(workout){ %>
+        <div class="draggable" draggable="true">
+            <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
+            <h4><%= workout.exercise %></h4>
+        </div>
+        <% }); %>
     </div>
-<% }); %>
+    </div>
 <div class="dragTo-container">
     <h3>Sunday</h3>
     <div class="dragTo">
