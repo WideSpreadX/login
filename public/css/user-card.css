@@ -96,6 +96,7 @@
     color: rgb(185, 185, 185);
     padding: 5px;
     border: 1px solid #333;
+    border-radius: 10px;
 }
 
 .cont_container .card .face.face2 .content a:hover{

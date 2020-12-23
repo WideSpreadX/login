@@ -65,7 +65,7 @@ conn.once('open', () => {
         const article = await Article.find({ author: { $eq: id } });
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
-        
+        const nearbyUsers = await User.find()
 
 /*         console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
@@ -86,6 +86,7 @@ conn.once('open', () => {
                 posts,
                 resume,
                 article,
+                nearbyUsers,
                 currentPageTitle: 'Dashboard'
                 })
                 /* console.log(`User Info: ${profile}`) */
@@ -102,8 +103,9 @@ conn.once('open', () => {
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
       const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
-      const findUserAvatar = await profileImages[0]._id;
-      const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } });
+      /* const findUserAvatar = await profileImages[0]._id; */
+
+      /* const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } }); */
 
       const friendIds = req.user.friends;
       const friendsData = await User.find({_id: friendIds});
@@ -135,7 +137,7 @@ conn.once('open', () => {
             friendsData,
             allPosts,
             comments,
-            userAvatar,
+            /* userAvatar, */
             id
           })
         }
