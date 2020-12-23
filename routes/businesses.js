@@ -81,7 +81,7 @@ router.post('/:companyId/add-employee/:resumeId', ensureAuthenticated, (req, res
             return
         } else {
             Company.findByIdAndUpdate(companyId, 
-                {$push: {job_applicants: newEmployee}},
+                {$addToSet: {job_applicants: newEmployee}},
                 {safe: true, upsert: true},
                 function(err, doc) {
                     if(err) {
@@ -137,7 +137,7 @@ router.post('/:companyId/inventory', async (req, res) => {
     })
     item.save()
     await Company.findByIdAndUpdate(companyId,
-        {$push: {inventory: item._id}},
+        {$addToSet: {inventory: item._id}},
         {safe: true, upsert: true},
         function(err, doc) {
             if(err){

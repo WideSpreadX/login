@@ -98,32 +98,34 @@ conn.once('open', () => {
 
     router.get('/dashboard/wall', ensureAuthenticated, async (req, res) => {
       const id = req.user._id;
-      /* console.log( `User Friends List Array +++++++++ ${req.user.friends}`) */
       const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate('comments');
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
       const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
       const findUserAvatar = await profileImages[0]._id;
       const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } });
-/*       console.log(`User Avatar -------------- ${findUserAvatar}`); */
-      
-      
-      /* const allFriendsPosts = await Post.find({author: {$eq: friendId}}).sort({createdAt: 'desc'}); */
-      
-/*       let extractedFriend = {};
-      const getFriendId = await User.findById(id); */
+
       const friendIds = req.user.friends;
       const friendsData = await User.find({_id: friendIds});
-     /*  console.log( `Friend +++++++++ ${friendsData}`) */
       let friendIdArray = Array.from(friendsData)
-      
-      /*       console.log( `ALL POSTS *************** ${allPosts}`)   */
-      /* console.log(`Comments: ${allPosts}`) */
-      /* console.log(`Comments: ${allPosts}`) */
+
       const comments = await Comment.find({fromPost: {$eq: posts._id} })
-      const allPosts = await Post.find({ "author": { "$in": friendIds } }).populate('author', 'comments')
+      const allPosts = await Post.find({ "author": { "$in": friendIds } })
+      .sort({createdAt: 'desc'})
+      .populate({
+        path: 'author',
+        model: 'User'
+      })
+      .populate({
+        path: 'comments',
+        model: 'Comment',
+        populate: {
+          path: 'author',
+          model: 'User'
+        }
+      })
       .exec(function (err, data){
-        console.log(`Data: ${data}`)
+        /* console.log(`Data: ${data}`) */
         if(err){
           return console.log(err);
         } else {
@@ -133,7 +135,8 @@ conn.once('open', () => {
             friendsData,
             allPosts,
             comments,
-            userAvatar
+            userAvatar,
+            id
           })
         }
       }); 
@@ -142,13 +145,59 @@ conn.once('open', () => {
           
   });
 
+  /* Like Button */
+  /* Post Like */
+  router.patch('/dashboard/wall/post/:postId/like', ensureAuthenticated, (req, res) => {
+    const userId = req.user.id
+    const postId = req.params.postId;
+    Post.findByIdAndUpdate({_id: postId}, {$inc: {'likes': 1}})
+    .exec(
+        User.findByIdAndUpdate(userId, 
+          {$push: {likedPosts: postId}},
+          {safe: true, upsert: true},
+          function(err, doc) {
+            if(err) {
+              console.log(err)
+            } else {
+              return
+            }
+          })
+    )
+    .then(
+      res.redirect('/dashboard/wall')
+    )
+  })
+
+/* Comment Like */
+  router.patch('/:commentId/like', ensureAuthenticated, (req, res) => {
+    const userId = req.user.id
+    const commentId = req.params.commentId;
+    Comment.findByIdAndUpdate({_id: commentId}, {$inc: {'likes': 1}})
+    .exec(
+        User.findByIdAndUpdate(userId, 
+          {$push: {likedComments: commentId}},
+          {safe: true, upsert: true},
+          function(err, doc) {
+            if(err) {
+              console.log(err)
+            } else {
+              return
+            }
+          })
+    )
+    .then(
+      res.redirect('/dashboard/wall')
+    )
+  })
+
+
   router.get('/dashboard/wall/:postId/comment', ensureAuthenticated, async (req, res) => {
     const postId = req.params.postId;
     const newPostAuthor = req.user._id;
     const friendIds = req.user.friends;
     const friendsData = await User.find({_id: friendIds});
-    const comments = await Comment.find({fromPost: {$eq: postId._id} }).populate('author')
     const post = await Post.findById(postId)
+    const comments = await Comment.find({fromPost: {$eq: postId._id} }).populate('author')
     .populate({
       path: 'author',
       model: 'User'

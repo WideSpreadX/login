@@ -40,7 +40,118 @@ body {
     border-radius: 7px;
     box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
     transition: ease-in 0.4s;
-  }
+}
+
+
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 400px;
+    z-index: 1;
+    border: solid 1px lightskyblue;
+    box-shadow: inset 0 0 30px lightskyblue, -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    background: rgba(0, 0, 0, 0.377);
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    transition: ease-in 0.3s;
+}
+.dropdown-content a {
+    color: black;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.dropdown-content form {
+    color: black;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.dropdown-content>.add-form>input {
+    background: rgba(255, 255, 255, 0.774);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn-menu {
+    background: transparent;
+    box-shadow: inset 0 0 10px lightskyblue, -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    transition: ease-in 0.1s;
+}
+
+.dropdown-content-menu {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    z-index: 1;
+    border: solid 1px lightskyblue;
+    box-shadow: inset 0 0 30px lightskyblue, 0 0 10px lightskyblue;
+    background: rgba(0, 0, 0, 0.377);
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    transition: ease-in 0.1s;
+}
+.dropbtn-menu:hover {
+    border-radius: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: ease-in 0.1s;
+}
+.dropdown-content-menu button {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    background: transparent;
+}
+.dropdown-content-menu button:active {
+    outline: none;
+}
+.dropdown-menu:hover .dropdown-content-menu {
+    display: block;
+    animation-delay: 0.1s;
+}
+.dropdown-content-menu a {
+    color: rgba(204, 204, 204, 0.699);
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 1;
+    font-size: 2rem;
+    transition: ease-in 0.5s;
+}
+.dropdown-content-menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 3px lightskyblue;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
 .container {
     padding-top: 105px;
     padding-bottom: 40px;
@@ -163,8 +274,8 @@ h1,h2,h3,h4,h5,h6 {
 .widespread-header .user-info {
     width: 225px;
     position: absolute;
-    right: 20px;
-    top: 30px;
+    right: 0px;
+    top: 10px;
     height: 40px;
 }
 .widespread-header .user-info .current-user p {
@@ -179,6 +290,7 @@ h1,h2,h3,h4,h5,h6 {
     height: 30px;
     text-align: center;
     line-height: 30px;
+    background: transparent;
 }
 .nav-bar-outer {
     margin-top: 10px;
@@ -195,6 +307,7 @@ h1,h2,h3,h4,h5,h6 {
 .nav-bar {
     margin-top: 20px;
     padding: 5px;
+
 }
 .nav-bar-ws {
     padding: 20px;
@@ -218,16 +331,39 @@ h1,h2,h3,h4,h5,h6 {
 .nav-bar a {
     margin-left: 10px;
     background: transparent;
-    padding: 5px;
+    padding: 10px;
     color: #ccc;
     text-decoration: none;
     transition: ease-in 0.9s;
-    border-radius: 5px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 10px;
+    text-align: center;
 }
 
+
 .nav-bar a:hover {
-    box-shadow: 0 0 1px lightskyblue, 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
     text-decoration: none;
+    background: #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+    transition: ease-in 0.6s;
+}
+.nav-bar button {
+    margin-left: 10px;
+    background: transparent;
+    padding: 10px;
+    color: #ccc;
+    text-decoration: none;
+    transition: ease-in 0.9s;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 10px;
+    text-align: center;
+}
+.nav-bar button:hover {
+    box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    text-decoration: none;
+    background: #222;
     color: lightskyblue;
     text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
     transition: ease-in 0.6s;
@@ -358,6 +494,7 @@ h1,h2,h3,h4,h5,h6 {
     margin: 20px;
     padding: 20px;
     margin-top: 40px;
+
 }
 .add-form input {
     display: block;
@@ -371,7 +508,19 @@ h1,h2,h3,h4,h5,h6 {
     margin: 20px;
     padding: 10px;
     display: block;
-    background: rgb(20, 221, 20);
+    color: #ccc;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    background: #111;
+    transition: ease-in 0.3s;
+    outline: none;
+    border: none;
+}
+.add-form button:hover {
+    box-shadow: -2px -2px 6px rgb(40, 143, 40), -3px -3px 6px rgba(26, 104, 26, 0.568), 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px rgba(119, 118, 118, 0.432), 3px 3px 4px rgba(0, 0, 0, 0.445), 3px 3px 3px rgba(17, 17, 17, 0.527), -3px -3px 8px rgba(26, 104, 26, 0.644), -2px -2px 2px rgb(26, 104, 26), inset 0 0 8px rgba(204, 204, 204, 0.281);
+    background: rgb(26, 104, 26);
+    color: #eee;
+    transition: ease-in 0.3s;
+
 }
 .fa-ellipsis-v {
     cursor: pointer;
@@ -390,6 +539,25 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.747);
     text-shadow: 0 0 4px rgba(26, 27, 27, 0.603);
+}
+.submit-button {
+    height: 100px;
+    width: 300px;
+    text-align: center;   
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.like-button button {
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+}
+.center {
+    width: 100%;
+}
+.margin-bottom {
+    margin-bottom: 40px;;
 }
 /* 
         IMAGES
@@ -572,13 +740,40 @@ h1,h2,h3,h4,h5,h6 {
     margin-top: 10px;
     padding: 10px;
 }
+.dragTo-container>h2 {
+    text-align: center;
+
+}
+.dragTo-container small {
+    padding-left: 30px;
+}
 .dragTo {
-    width: 300px;
+    width: 95%;
     height: auto;
+    margin: 0 auto;
     min-height: 50px;
     padding: 20px;
     border-radius: 20px;
     box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.exercise-form {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.exercise-form label {
+    padding-left: 20px;
+}
+.exercise-form input {
+    border-radius: 10px;
+    background: #000;
+    outline: none;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    color: #ccc;
+    width: 100%;
+    text-shadow: inset 0 0 8px lightskyblue;
 }
 .create-post form {
     padding: 10px;
@@ -602,11 +797,13 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     transition: ease-in 0.3s;
 }
-.post h3 {
-    color: #000;
+.post h2 {
+    color: #aaa;
+    margin-bottom: 30px;
 }
 .post h5 {
-    color: #222;
+    color: #ccc;
+    margin-bottom: 30px;
 }
 .user-posts-container {
     padding: 10px;
@@ -654,10 +851,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 .outer-post-container {
        padding: 20px;
-    margin-top: 0;
     border-radius: 10px;
     box-shadow: inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
-    padding: 10px;
+    margin-bottom: 40px;
+    
 }
 .outer-post-container a {
     padding: 8px;
@@ -707,23 +904,20 @@ h1,h2,h3,h4,h5,h6 {
 }
 .post {
     padding-top: 20px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
 }
 .post p {
     font-size: 1.2rem;
 }
 .ss-post {
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
     padding: 20px;
     padding-top: 0;
     border-radius: 20px;
 }
-.ss-post h4 {
+.ss-post h3 {
     padding-left: 10px;
     padding-bottom: 5px;
     border-bottom: solid 2px #ccc;
     margin-bottom: 20px;
-    font-size: 1.4rem;
 }
 .post-body p {
     padding: 30px;
@@ -740,7 +934,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 .post-span {
     color: lightskyblue;
-    border-bottom: solid 1px rgba(135, 206, 250, 0.404);
 }
 .post-actions i {
     color: lightskyblue;
@@ -794,6 +987,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-top: 10px;
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 30px;
     padding: 20px;
 
 }
@@ -801,21 +995,29 @@ h1,h2,h3,h4,h5,h6 {
     text-align: center;
 }
 .comment-on-post textarea {
-    padding: 12px;
+    padding: 15px;
     border-radius: 20px;
     box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     background: #333;
     transition: ease-in 0.5s;
+    color: #000;
 }
 .comment-on-post textarea:hover {
     box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     background: #444;
     transition: ease-in 0.3s;
+    color: #000;
 }
 .comment-on-post textarea:focus {
     background: #555;
     box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     transition: ease-in 0.3s;
+    color: #000;
+}
+.comment-time p {
+    color: lightskyblue;
+    text-align: right;
+    font-size: 0.9rem;
 }
 .public-post-container {
     padding: 8px;
@@ -941,8 +1143,24 @@ h1,h2,h3,h4,h5,h6 {
     overflow-y: scroll;
 }
 
-
-
+/* Class */
+.class-container {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.class-chapter {
+}
+.class-chapter li {
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+.learning-point {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
 /* 
 
 

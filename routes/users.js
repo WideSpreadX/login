@@ -19,7 +19,7 @@ const Resume = require('../models/Resume');
 const Company = require('../models/Company');
 const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
-
+const CommentImage = require('../models/CommentImage');
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -117,7 +117,7 @@ router.get('/logout', (req, res) => {
 });
 
 // User Profile Page
-
+  
 router.get('/:id', ensureAuthenticated, async (req, res) => {
     const id = req.params.id
     const userId = req.user._id;
@@ -345,7 +345,7 @@ router.post('/:id/post/:postId/comment', ensureAuthenticated, async (req, res) =
     })
     
     await Post.findByIdAndUpdate(postId, 
-        {$push: {comments: comment._id}},
+        {$addToSet: {comments: comment._id}},
         {safe: true, upsert: true},
         function(err, doc) {
             if(err) {
@@ -359,6 +359,27 @@ router.post('/:id/post/:postId/comment', ensureAuthenticated, async (req, res) =
     res.redirect('/dashboard/wall')
 
 });
+
+/* router.post('/:id/post/:postId/image', ensureAuthenticated, async (req, res) => {
+    const postId = req.params.postId;
+    const userId = req.user._id;
+    const id = req.params.id;
+
+    CommentImage.findByIdAndUpdate(postId,
+        {$push: {fromPost: req.file.id}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+        .exec(
+            res.redirect('/dashboard/wall')
+        )
+}); */
 
 router.post('/:id/article', ensureAuthenticated, (req, res) => {
     const userId = req.user._id;

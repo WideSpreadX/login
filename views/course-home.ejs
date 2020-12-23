@@ -1,12 +1,49 @@
-<h1><%= courseData.course %></h1>
 
+<div class="nav-bar-outer">
+    <div class="nav-bar nav-bar-ws">
+        <div class="row">
+            <div class="col-10">
+                <a href="/dashboard/wall">YourSpread</a>
+                <a href="/academy">Academy</a>
+                <a href="/business">Business</a>
+                <a href="/news">News</a>
+                <a href="/shopping">Shopping</a>
+                <a href="/wellness">Wellness</a>
+            </div>
+            <div class="col-2">
+                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="nav-bar-outer">
+    <div class="nav-bar nav-bar-ws">
+        <div class="row">
+            <div class="col-12">
+                <a href="/academy">Your Desk</a>
+                <a href="/academy/courses">Courses</a>
+                <a href="#">Tools</a>
+                <a href="#">Help</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<h1><%= courseData.course %></h1>
 
 <% courseData.classes.forEach(function(classes){ %>
     <div class="class-container">
-        <h1><%= classes.name %></h1>
-        <p><%= classes.description %></p>
-        <div class="nav-bar">
-            <a href="/academy/courses/<%= courseData.id %>/<%= classes.id %>">Begin Class</a>
+        <div class="row">
+            <div class="col-10">
+                <h1><%= classes.name %></h1>
+                <p><%= classes.description %></p>
+            </div>
+            <div class="col-2">
+                <div class="nav-bar">
+                    <a href="/academy/courses/<%= courseData.id %>/<%= classes.id %>">Begin Class</a>
+                </div>
+            </div>
         </div>
     </div>
     <% }); %>

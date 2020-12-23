@@ -9,6 +9,7 @@ const PostSchema = new mongoose.Schema({
         default: Date.now()
     },
     comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
+    comment_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'CommentImage'}],
     likes: Number
 
 });

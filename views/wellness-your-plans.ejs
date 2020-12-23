@@ -31,20 +31,26 @@
     </div>
 </div>
 
-<h1><%= currentPageTitle %></h1>
-
-<div class="dragTo-container">
-    <h3>Available Exercises</h3>
-<div class="dragTo">
-
-    <% workouts.forEach(function(workout){ %>
-        <div class="draggable" draggable="true">
-            <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
-            <h4><%= workout.exercise %></h4>
+<h1 style="text-align: center; margin-bottom: 20px; margin-top: 30px;"><%= currentPageTitle %></h1>
+<hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+<div class="row margin-bottom">
+<div class="col-4">
+    
+    <div class="dragTo-container">
+        <h2>Available Exercises</h2>
+        <div class="dragTo">
+            
+            <% workouts.forEach(function(workout){ %>
+                <div class="draggable" draggable="true">
+                    <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
+                    <h4><%= workout.exercise %></h4>
+                </div>
+                <% }); %>
+            </div>
+            <small>Drag & Drop an exercise to the day you'd like.</small>
         </div>
-        <% }); %>
     </div>
-    </div>
+    <div class="col-4">
 <div class="dragTo-container">
     <h3>Sunday</h3>
     <div class="dragTo">
@@ -53,15 +59,52 @@
 </div>
 <div class="dragTo-container">
     <h3>Monday</h3>
+    <div class="dragTo">
+        
+    </div>
+</div>
+<div class="dragTo-container">
+    <h3>Tuesday</h3>
+    <div class="dragTo">
+        
+    </div>
+</div>
+<div class="dragTo-container">
+    <h3>Wednesday</h3>
+    <div class="dragTo">
+        
+    </div>
+</div>
+    </div>
+    <div class="col-4">
+<div class="dragTo-container">
+    <h3>Thursday</h3>
+    <div class="dragTo">
+        
+    </div>
+</div>
+<div class="dragTo-container">
+    <h3>Friday</h3>
+    <div class="dragTo">
+        
+    </div>
+</div>
+<div class="dragTo-container">
+    <h3>Saturday</h3>
     <form action="/wellness/your-plan/exercise" method="POST">
         <div class="dragTo">
 
             
         </div>
-        <button class="btn-block block-button spread-it" type="submit">Add Workouts</button>
+        <div class="submit-button">
+            <button class="btn-block block-button spread-it center" type="submit">Add Workouts</button>
+        </div>
     </form>
 </div>
-<h2>Your Fitness Schedule</h2>
+    </div>
+    </div>
+    
+<!-- <h2>Your Fitness Schedule</h2>
 <div class="user-workout">
     <div class="create-workout">
         <form action="/wellness/your-plans/add" method="post">
@@ -385,12 +428,22 @@
             <button class="btn-block block-button spread-it" type="submit">Add Workouts</button>
         </form>
     </div>
-</div>
+</div> -->
+<hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+<div class="exercise-form">
 
-<form action="/wellness/your-plans/exercise" method="post">
-    <input type="text" name="exercise" id="exercise" required="true">
-    <button class="btn-block block-button spread-it" type="submit">Add Exercise</button>
-</form>
+    <form action="/wellness/your-plans/exercise" method="post">
+        <div class="row">
+            <div class="col-7">
+                <label for="exercise">Add an Exercise</label>
+                <input type="text" name="exercise" id="exercise" required="true">
+            </div>
+            <div class="col-5">
+                <button class="btn-block block-button spread-it" type="submit">Add Exercise</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 
 <script>

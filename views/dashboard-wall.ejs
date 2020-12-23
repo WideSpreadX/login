@@ -37,22 +37,30 @@
 
 
 <% data.forEach(function(post){ %>
-    <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
+    <div class="outer-post-container">
                 <div class="ss-post">
                     <img src="" alt="">
                     <div class="post-timestamp">
-                        <small class="post-span"><%= post.createdAt.toLocaleDateString() %></small>
+                        <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
                     </div>
-                    <h4><%= post.author.fname %> <%= post.author.lname%></h4>
+                    <h3><%= post.author.fname %> <%= post.author.lname%></h3>
                     <div class="post-body">
                         <p><%= post.postBody %></p>
                     </div>
 
                     <div class="post-actions">
-                        <p><span><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="/dashboard/wall/<%= post.id %>/comment"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
+                        <span class="like-button">
+                            <form action="/dashboard/wall/post/<%= post.id %>/like?_method=PATCH" method="post">
+                                <input type="text" name="likedBy" value="<%= id %>" hidden="true">
+                                <button type="submit"><i class="far fa-heart"></i></button>
+                                <span><%= post.likes %></span>
+                            </form>
+                        </span>
+                        <p><span><a href="#"></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="/dashboard/wall/<%= post.id %>/comment"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
                     </div>
                           
 
+                    <div class="comment-container">
                     <div class="comment-on-post">
                         <h4>Leave a comment</h4>
                         <form action="/users/<%= post.author.id %>/post/<%= post.id %>/comment" method="POST">
@@ -60,7 +68,32 @@
                             <button class="btn-block block-button spread-it" type="submit">Spread More</button>
                             <input type="text" name="fromPost" value="<%= post.id %>" hidden="true">
                         </form>
+
                     </div>
+                        <div class="comments">
+                
+                            <% post.comments.forEach(function(comment){ %>
+                                <div class="comment">
+                                    <h5><%= comment.author.fname %> <%= comment.author.lname %></h5>
+                                    <p><%= comment.commentBody %></p>
+                                    <div class="comment-actions">
+                                        <span class="like-button">
+                                            <form action="/<%= comment.id %>/like?_method=PATCH" method="post">
+                                                <input type="text" name="likedBy" value="<%= id %>" hidden="true">
+                                                <button type="submit"><i class="far fa-heart"></i></button>
+                                                <span><%= comment.likes %></span>
+                                            </form>
+                                        </span>
+                                        <p><span><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="#"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
+                                        <div class="comment-time">
+                                            <p><small><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                                
+                            </div>
+                        </div>
                 </div>
                 </div>
 

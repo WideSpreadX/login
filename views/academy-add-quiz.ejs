@@ -30,34 +30,4 @@
         </div>
     </div>
 </div>
-<h1><%= currentPageTitle %></h1>
-<div class="nav-bar">
-    <a href="/academy/courses">All Courses</a>
-</div>
-
-<div class="course-selection-container">
-<% courses.forEach(function(course){ %>
-    <div class="row course-selection">
-        <div class="col-5">
-        <div class="course-card">
-            <h1><%= course.subject %></h1>
-            <h2><%= course.course %></h2>
-            <hr>
-            <h5>Credits: <%= course.credit_value %></h5>
-            <h5>Difficulty: <%= course.difficulty %></h5>
-            
-        </div>
-    </div>
-    <div class="col-2"></div>
-    <div class="col-5 class-selection">
-        <div class="course-classes">
-
-            <div class="nav-bar">
-
-                <a href="/academy/courses/<%= course.id %>">See Course</a>
-            </div>
-        </div>
-    </div>
-</div>
-        <% }); %>
-</div>
+<h1>Add Learning Point Quiz</h1>

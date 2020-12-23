@@ -50,7 +50,7 @@ router.post('/your-plans/add', ensureAuthenticated, async (req, res) => {
     })
 
     await User.findByIdAndUpdate(userId,
-        {$push: {workouts: workoutSchedule._id}},
+        {$addToSet: {workouts: workoutSchedule._id}},
         {safe: true, upsert: true},
         function(err, doc) {
             if(err){

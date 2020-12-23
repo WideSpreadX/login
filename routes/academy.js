@@ -7,6 +7,8 @@ const User = require('../models/User');
 const Course = require('../models/Course');
 const Class = require('../models/Class');
 const Flashcard = require('../models/Flashcard');
+const LearningPoint = require('../models/LearningPoint');
+const Quiz = require('../models/Quiz');
 
 
 router.get('/', ensureAuthenticated, (req, res) => {
@@ -72,7 +74,7 @@ router.post('/courses/:courseId/add-class', ensureAuthenticated, async (req, res
     aClass.save()
     console.log(`New Class: ${aClass}`)
     await Course.findByIdAndUpdate(thisCourseId,
-            {$push: {classes: aClass._id}},
+            {$addToSet: {classes: aClass._id}},
             {safe: true, upsert: true},
             function(err, doc) {
                 if(err){
@@ -96,9 +98,64 @@ router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) 
     const thisCourse = await Course.findById(thisCourseId);
     console.log(`This Class is: ${thisClass}`)
     console.log(`for Course: ${thisCourse}`)
-    res.render('class-page', {currentPageTitle: 'Classroom', thisClass, thisCourseId});
+    const learningPoints = await LearningPoint.find({class: {$eq: classId}})
+    learningPoints
+    .exec(
+        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisClass, thisCourseId})
+        )
 });
 
+
+router.post('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
+    const classId = req.params.classId;
+    const learningPoint = new LearningPoint({
+        class: classId,
+        section_header: req.body.section_header,
+        section_body: req.body.section_body,
+        section_notes: req.body.section_notes,
+        difficulty: req.body.difficulty
+    })
+    learningPoint.save()
+    console.log(`New Learning Point: ${learningPoint}`)
+    res.redirect(`/academy/courses`)
+});
+router.get('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
+    const classId = req.params.classId;
+    res.render('academy-add-learning-point')
+
+});
+
+router.post('/:learningPointId/add-quiz', ensureAuthenticated, (req, res) => {
+    const learningPointId = req. params.learningPointId;
+    const learningPointQuiz = new Quiz({
+        forLearningPoint: learningPointId,
+            question1: req.body.question1,
+            answer1: req.body.answer1,
+            difficulty1: req.body.difficulty1,
+            question2: req.body.question2,
+            answer2: req.body.answer2,
+            difficulty2: req.body.difficulty2,
+            question3: req.body.question3,
+            answer3: req.body.answer3,
+            difficulty3: req.body.difficulty3,
+            question4: req.body.question4,
+            answer4: req.body.answer4,
+            difficulty4: req.body.difficulty4,
+            question5: req.body.question5,
+            answer5: req.body.answer5,
+            difficulty5: req.body.difficulty5,
+    })
+    learningPointQuiz.save()
+    console.log(`New Quiz: ${learningPointQuiz}`)
+    res.redirect(`/academy/courses`)
+});
+
+router.get('/:learningPointId/add-quiz', ensureAuthenticated, (req, res) => {
+    const learningPointId = req.params.learningPointId;
+    res.render('academy-add-quiz')
+
+
+});
 
 router.post('/:classId/add-flashcard', ensureAuthenticated, (req, res) => {
     const classId = req.params.classId;

@@ -192,7 +192,7 @@
                                 <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
                                 <small class="text-muted"><%= article.createdAt.toLocaleDateString() %></small>
                                 <div class="post">
-                                    <h3><%= article.articleTitle %></h3>
+                                    <h2><%= article.articleTitle %></h2>
                                     <h5><%= article.articleHeader %></h5>
                                     <p><%= article.articleBody %></p>
                                 </div>
@@ -237,12 +237,3 @@
 
             </div>
     </div>
-    
-    <h1>What your friends are up to</h1>
-<% profile.friends.forEach(function(friend){ %>
-    <div id="userCard_<%=friend.id %>" class="card">
-        <h3><%= friend.posts %></h3>
-    </div>
-    <% }); %>
-</div>
-
