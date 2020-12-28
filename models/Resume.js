@@ -4,12 +4,31 @@ const mongoose = require('mongoose');
 const resumeSchema = new mongoose.Schema({
     resumeOwner: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     bio: String,
-    education: [{type: mongoose.Schema.Types.ObjectId, ref: 'School'}],
-    employment_history: [{type: mongoose.Schema.Types.ObjectId, ref: 'Company'}],
-    special_skills: [String],
-    us_veteran: Boolean,
-    security_clearance: Boolean,
-    willing_to_travel: Boolean
+    objective: String,
+    education: {
+        school: String,
+        graduated: String,
+        major: String,
+        gpa: String
+    },
+    employment_history: {
+        company: String,
+        position: String,
+        year_start: String,
+        year_end: String,
+        reference: {
+            fname: String,
+            lname: String,
+            email: String,
+            phone: String
+        }
+    },
+    volunteer_work: String,
+    special_skill1: String,
+    special_skill2: String,
+    special_skill3: String,
+    special_skill4: String,
+    special_skill5: String
 });
 
 const Resume = mongoose.model('Resume', resumeSchema);

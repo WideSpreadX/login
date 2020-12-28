@@ -17,14 +17,61 @@
     </div>
 </div>
 
+
+<div class="resume-form">
 <form action="/users/new-resume" method="POST">
-    <p>Your Bio</p>
-    <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
-
-    <div class="s-m-outlet">
-        <p>Special Skills</p>
-        <input type="text" name="special_skills" id="special_skills">
+    <div class="resume-form-group">
+        <h4>Your Bio</h4>
+        <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
     </div>
+    <div class="resume-form-group">
+        <h4>Your Objective     <small>Optional</small></h4>
+        <textarea name="objective" id="objective" cols="30" rows="10"></textarea>
+    </div>
+    <h4>Education</h4>
+    <div class="resume-form-group">
+        <input type="text" name="educationSchool" placeholder="School Name">
+        <input type="text" name="educationGraduate" placeholder="Year Graduated">
+        <input type="text" name="educationMajor" placeholder="Major">
+        <input type="text" name="educationGpa" placeholder="GPA">
+    </div>
+    <h4>Employment History</h4>
+  <div class="employment-history-company-form">
+      <p>Last Company You Worked For</p>
+      <input type="text" name="employment_historyCompany" placeholder="Company Name">
+      <input type="text" name="employment_historyPosition" placeholder="Position">
+      <input type="text" name="employment_historyYearStart" placeholder="Year you started">
+      <input type="text" name="employment_historyYearEnd" placeholder="Year you left">
+      <div class="employment-history-company-reference-form">
+          <p>Reference</p>
+          <input type="text" name="employment_historyReferenceFname" placeholder="First Name">
+          <input type="text" name="employment_historyReferenceLname" placeholder="Last Name">
+          <input type="text" name="employment_historyReferenceEmail" placeholder="Eamil">
+          <input type="text" name="employment_historyReferencePhone" placeholder="Phone">
+      </div>
 
-    <input type="submit" value="Create Resume">
+  </div>
+
+  </div>
+  <div class="resume-form-group">
+
+      <h4>Volunteer Work</h4>
+      <input type="text" name="volunteer_work" placeholder="Name of Nonprofit">
+  </div>
+
+
+  <div class="resume-form-group">
+
+      <div class="s-m-outlet">
+          <h4>Special Skills</h4>
+          <input type="text" name="special_skill1" placeholder="Add a Skill">
+          <input type="text" name="special_skill2" placeholder="Add a Skill">
+          <input type="text" name="special_skill3" placeholder="Add a Skill">
+          <input type="text" name="special_skill4" placeholder="Add a Skill">
+          <input type="text" name="special_skill5" placeholder="Add a Skill">
+      </div>
+  </div>
+
+    <button class="btn-block block-button spread-it" type="submit">Add Education</button>
 </form>
+</div>

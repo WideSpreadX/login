@@ -7,6 +7,7 @@ const User = require('../models/User');
 const Company = require('../models/Company');
 const Resume = require('../models/Resume');
 const Item = require('../models/Item');
+const { populate } = require('../models/User');
 
 
 router.get('/', async (req, res) => {
@@ -52,51 +53,66 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
 
 router.get('/:companyId/manage', async (req, res) => {
     const companyId = req.params.companyId;
-    const company = await Company.findById(companyId);
+    const company = await Company.findById(companyId).populate({
+        path: 'job_applicants',
+        model: 'Resume',
+        populate: {
+            path: 'resumeOwner',
+            model: 'User',
+            populate: {
+                path: 'resume',
+                model: 'Resume'
+            }
+        }
+    });
+    const jobApplicant = await Company.findById(companyId);
     Company.findById(companyId)
     console.log(`Company Info to Manage: ${company}`)
-    res.render('business-manage', {currentPageTitle: 'Manage Company', company});
+    res.render('business-manage', {currentPageTitle: 'Manage Company', company, jobApplicant});
+})
+
+router.get('/:companyId/resume/applicant/:applicantId', async (req, res) => {
+    const companyId = req.params.companyId;
+    const applicantId = req.params.applicantId;
+    const resumeOwner = await Resume.findById(applicantId).populate('resumeOwner')
+    const resume = await Resume.findById(applicantId);
+    const company = await Company.findById(companyId);
+    console.log(`Company Departments: ${company.departments}`)
+    res.render('business-see-applicant', {currentPageTitle: 'Job Applicant', resume, resumeOwner, company})
 })
 
 
-
-router.get('/:companyId/add-employee', async (req, res) => {
+router.get('/:companyId/:resumeId/add-employee', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
+    const resumeId = req.params.resumeId;
+    const resumeObject = Resume.findById(resumeId).populate('resumeOwner');
+    console.log(`Resume Owner: ${resumeOwner}`);
     const userId = req.user._id;
     User.findById(userId);
     Company.findById(companyId)
     console.log(`Company Info to Manage: ${company}`)
-    res.render('add-employee', {currentPageTitle: 'Add New Employee', company, userId})
+    res.render('add-employee', {currentPageTitle: 'Add New Employee', company, userId, resumeOwner})
 })
 
 
-router.post('/:companyId/add-employee/:resumeId', ensureAuthenticated, (req, res) => {
+router.post('/:companyId/add-employee', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;
-    const resumeId = req.params.resumeId;
     const userId = req.user._id;
-    
-    Resume.findOne({'resumeOwner': userId}, '_id', (err, newEmployee) => {
-        if (err) {
-            return
-        } else {
-            Company.findByIdAndUpdate(companyId, 
-                {$addToSet: {job_applicants: newEmployee}},
-                {safe: true, upsert: true},
-                function(err, doc) {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        return
-                    }
-                }
-                )
+    const newEmployee = req.body.newEmployee;
+    const company = await Company.findByIdAndUpdate(companyId,
+        {$addToSet: {employees: newEmployee}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
         }
-    })
-    .then(
-        res.redirect('/business')
-    )
-
+        )
+    company.save();        
+    res.redirect(`/business/${companyId}/manage`)
 });
 
 

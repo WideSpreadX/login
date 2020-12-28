@@ -1,4 +1,5 @@
 
+
 <div class="nav-bar-outer">
     <div class="nav-bar nav-bar-ws">
         <div class="row">
@@ -20,12 +21,6 @@
 <h1 style="text-align: center;"><%= currentPageTitle %></h1>
 
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-<a href="/users/add-to-resume/education/<%= resume.id %>">Add Education</a>
-<a href="/users/add-to-resume/work-history/<%= resume.id %>">Add Work History</a>
-    </div>
-</div>
 <div class="resume-container">
 <div class="resume-bio">
     <h2>Bio</h2>
@@ -56,6 +51,7 @@
             <span></span>
             <% } %>
     </div>
+    <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 <div class="resume-employment-history">
     <% if (resume.employment_history) { %>
             <h2>Employment History</h2>
@@ -89,12 +85,13 @@
 
             <div style="padding: 10px; margin: 5px; border-radius: 10px;">
                 <div>
-                    <div class="nav-bar">
-                        <%= resume.special_skill1 %>
-                        <%= resume.special_skill2 %>
-                        <%= resume.special_skill3 %>
-                        <%= resume.special_skill4 %>
-                        <%= resume.special_skill5 %>
+                    <h2>Skills</h2>
+                    <div class="resume-skills">
+                        <p><%= resume.special_skill1 %></p>
+                        <p><%= resume.special_skill2 %></p>
+                        <p><%= resume.special_skill3 %></p>
+                        <p><%= resume.special_skill4 %></p>
+                        <p><%= resume.special_skill5 %></p>
                     </div>
                 </div>  
                 
@@ -102,4 +99,15 @@
         </li>
     </div>
 
+    </div>
+    <div class="add-employee">
+        <form action="/business/<%= company._id %>/add-employee" method="post">
+            <input type="text" value="<%= resume.resumeOwner._id %>" name="newEmployee">
+            <select name="departments">
+                <option value="Frontend">Frontend</option>
+                <option value="Backend">Backend</option>
+                <option value="Security">Security</option>
+            </select>
+            <button type="submit">Add Employee</button>
+        </form>
     </div>

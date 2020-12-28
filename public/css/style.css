@@ -587,6 +587,153 @@ h1,h2,h3,h4,h5,h6 {
 .resume-nav {
     border-left: solid 2px #333;
 }
+.resume-form {
+    padding: 10px;
+}
+.resume-form h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.resume-form p {
+    color: #fff;
+    margin-left: 10%;
+}
+.resume-form small {
+    color: red;
+
+}
+.resume-form-options {
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 20px;
+}
+.form-option {
+    padding: 5px;
+    display: inline-flex;
+    width: 100%;
+    margin-top: 10px;
+}
+.resume-form-options h5 {
+
+}
+.resume-form-options input {
+    margin-left: 20px;
+}
+.resume-form-group {
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 20px;
+}
+.resume-form-group textarea {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.resume-form-group textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.resume-form-group textarea:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.resume-form-group input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.resume-form-group input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.resume-form-group input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.employment-history-company-form {
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: ease-in 0.5s;
+}
+.employment-history-company-form:hover {
+    background: #222;
+    transition: ease-in 0.3s;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.employment-history-company-reference-form {
+    width: 60%;
+    margin: auto;
+}
+.resume-container {
+    padding: 20px;
+    margin-top: 40px;
+}
+.resume-bio p {
+    margin-left: 10px;
+    padding: 20px;
+    color: #fff
+}
+.resume-objective p {
+    margin-left: 10px;
+    padding: 20px;
+    color: #fff
+}
+.resume-education {
+}
+.resume-education p {
+    margin-left: 20px;
+    color: #fff;
+}
+.employment-history-details-reference {
+    padding: 30px;
+    padding-top: 0;
+}
+.employment-history-details-reference p {
+    margin-left: 20px;
+    color: #fff;
+}
+
+.resume-skills {
+    display: inline-flex;
+}
+.resume-skills p {
+    padding: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    border-radius: 10px;
+}
+
+.job-applicant-card {
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
 .jumbotron {
     background: #111;
     padding-bottom: 20px;

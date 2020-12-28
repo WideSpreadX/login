@@ -207,12 +207,30 @@ router.post('/new-resume', ensureAuthenticated, async (req, res) => {
             const resume = new Resume({
                 resumeOwner: userId,
                 bio: req.body.bio,
-                education: req.body.education,
-                employment_history: req.body.employment_history,
-                special_skills: req.body.special_skills,
+                objective: req.body.objective,
+                "education.school": req.body.educationSchool,
+                "education.graduated": req.body.educationGraduate,
+                "education.major": req.body.educationMajor,
+                "education.gpa": req.body.educationGpa,
+                "employment_history.company": req.body.employment_historyCompany,
+                "employment_history.position": req.body.employment_historyPosition,
+                "employment_history.year_start": req.body.employment_historyYearStart,
+                "employment_history.year_end": req.body.employment_historyYearEnd,
+                "employment_history.reference.fname": req.body.employment_historyReferenceFname,
+                "employment_history.reference.lname": req.body.employment_historyReferenceLname,
+                "employment_history.reference.email": req.body.employment_historyReferenceEmail,
+                "employment_history.reference.phone": req.body.employment_historyReferencePhone,
+                volunteer_work: req.body.volunteer_work,
+                hobbies_interests: req.body.hobbies_interests,
+                special_skill1: req.body.special_skill1,
+                special_skill2: req.body.special_skill2,
+                special_skill3: req.body.special_skill3,
+                special_skill4: req.body.special_skill4,
+                special_skill5: req.body.special_skill5,
                 us_veteran: req.body.us_veteran,
                 security_clearance: req.body.security_clearance,
-                willing_to_travel: req.body.willing_to_travel
+                willing_to_travel: req.body.willing_to_travel,
+                willing_to_relocate: req.body.willing_to_relocate
             })
             
             
@@ -229,6 +247,15 @@ router.post('/new-resume', ensureAuthenticated, async (req, res) => {
                 }
                 )
             res.redirect('/dashboard');
+        })
+        router.get('/add-to-resume/education/:resumeId', ensureAuthenticated, async (req, res) => {
+            const user = req.user._id;
+            const resumeId = req.params.resumeId;
+            const resume = Resume.findById(resumeId);
+            res.render('new-resume-add-to-education', {resume})
+        })
+        router.patch('/add-to-resume/:resumeId', ensureAuthenticated, async (req, res) => {
+
         })
         router.patch('/update-resume/:resumeId', ensureAuthenticated, async (req, res, next) => {
             try {
