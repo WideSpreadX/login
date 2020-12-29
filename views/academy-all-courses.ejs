@@ -53,8 +53,12 @@
         <div class="course-classes">
 
             <div class="nav-bar">
-
                 <a href="/academy/courses/<%= course.id %>">See Course</a>
+                <form action="/academy/courses/<%= course.id %>/add-course?_method=PATCH" method="POST">
+                    <input type="text" value="<%= course.id %>" name="courseId">
+                    <button type="submit">Add Course</button>
+                </form>
+
             </div>
         </div>
     </div>

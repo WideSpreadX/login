@@ -31,6 +31,26 @@
     </div>
 </div>
 <h1><%= currentPageTitle %></h1>
+
+<div class="students-current-courses">
+    <h1>Your Current Courses</h1>
+    <% academyInfo.academy_info.current_courses.forEach(function(course){ %>
+        <div class="student-course">
+
+            <h2><%= course.subject %></h2>
+            <h2><%= course.course %></h2>
+            <p>Difficulty: <%= course.difficulty %></p>
+            <p>Credits: <%= course.credit_value %></p>
+            <p>Current Grade: <%= course.current_grade %>%</p>
+            <div class="go-to-course">
+                <div class="nav-bar">
+                    <a href="/academy/courses/<%= course.id %>">Go to Class</a>
+                </div>
+            </div>
+            </div>
+
+    <% }); %>
+</div>
 <div class="nav-bar">
     <a href="/academy/courses">All Courses</a>
 </div>

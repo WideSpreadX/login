@@ -78,7 +78,7 @@
 
         <div class="s-m-outlet">
             <p>Zip Code</p>
-            <input type="number" name="zip" value="<%= currentUser.zip %>">
+            <input type="text" name="zip" value="<%= currentUser.zip %>">
         </div>
             
         <div class="s-m-outlet">
@@ -115,6 +115,10 @@
 
         <div class="s-m-container">
             <h3>Personal Details</h3>
+            <div class="s-m-outlet">
+                <p>Age</p>
+                <input type="number" name="age" id="age" value="<%= currentUser.age %>">
+            </div>
             <div class="s-m-outlet">
                 <p>Gender</p>
                 

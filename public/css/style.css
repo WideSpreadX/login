@@ -1301,6 +1301,24 @@ h1,h2,h3,h4,h5,h6 {
                     Academy
 
 */
+.students-current-courses {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.students-current-courses h1 {
+    text-align: center;
+    padding-bottom: 30px;
+    color: lightskyblue;
+}
+.student-course {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+}
 .course-selection-container {
     background: #000;
     margin-top: 30px;

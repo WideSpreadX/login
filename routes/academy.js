@@ -11,8 +11,18 @@ const LearningPoint = require('../models/LearningPoint');
 const Quiz = require('../models/Quiz');
 
 
-router.get('/', ensureAuthenticated, (req, res) => {
-    res.render('academy-main', {currentPageTitle: 'Academy Main'})
+router.get('/', ensureAuthenticated, async (req, res) => {
+    const user = req.user._id;
+    const academyInfo = await User.findById(user).populate({
+        path: 'academy_info.current_courses',
+        model: 'Course',
+        populate: {
+            path: 'classes',
+            model: 'Class'
+        }
+    })
+        .exec()
+        res.render('academy-main', {currentPageTitle: 'Academy Main', academyInfo})
 });
 
 router.get('/courses', ensureAuthenticated, async (req, res) => {
@@ -52,6 +62,23 @@ router.get('/courses/:courseId', ensureAuthenticated, (req, res) => {
             res.render('course-home', {courseData, courseClasses})
             console.log(`courseData: ${courseData.classes.name}`);
         });
+})
+router.patch('/courses/:courseId/add-course', async (req, res) => {
+    const courseId = req.params.courseId;
+    const user = req.user._id;
+
+    await User.findByIdAndUpdate(user, 
+        {$addToSet: {"academy_info.current_courses": courseId}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return;
+            }
+        }
+        )
+        res.redirect('/academy')
 })
 router.get('/courses/:courseId/add-class', ensureAuthenticated, (req, res) => {
     const course = req.params.courseId;
