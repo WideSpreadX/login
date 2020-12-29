@@ -103,6 +103,7 @@ conn.once('open', () => {
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
       const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
+      
       /* const findUserAvatar = await profileImages[0]._id; */
 
       /* const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } }); */

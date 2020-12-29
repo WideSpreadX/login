@@ -36,7 +36,7 @@
 
     </div>
     <div class="row user-header">
-
+        <div class="col-12">
         <div class="row info-header">
             <div class="col-5" style="padding: 20px;">
             <p class="lead mb-3"><i style="margin-right: 10px;;" class="far fa-envelope"></i><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
@@ -55,10 +55,12 @@
             </form>
         </div>
     </div>
+        </div>
+    </div>
     <div class="row">
-        <div class="col-12 spread-container-sub" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
+        <div class="col-12 spread-container-about" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
             <h3 style="text-align: center; padding: 20px;">About <%= profile.fname %></h3>
-            <p><%= profile.about %></p>
+            <p style="padding: 30px"><%= profile.about %></p>
         </div>
 
     </div>
@@ -101,7 +103,7 @@
             <div style="padding: 7px;">
                 <div> 
                     <div> 
-                        <div> 
+                        <div class="med-image"> 
                             <img src="/image/<%= image.img.data %>" width="300px" height="300px"> 
 
                         </div> 
