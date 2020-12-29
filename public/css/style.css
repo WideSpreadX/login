@@ -7,6 +7,19 @@ body {
 .not-done {
     background: lime;
 }
+.to-do {
+    box-shadow: inset 0 0 10px lime, 0 0 10px lime;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+.to-do-data {
+    color: lime;
+    box-shadow: inset 0 0 10px lime, 0 0 10px lime;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
 /* Scrollbar */
 
 /* width */
@@ -761,6 +774,29 @@ h1,h2,h3,h4,h5,h6 {
     opacity: 0.5;
     transition: ease-in 0.4s;
 }
+.public-profile-avatar {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    padding: 10px;
+}
+.public-profile-avatar img {
+    min-width: 160px;
+    min-height: 160px;
+    margin: -10px;
+    margin-left: -40px;
+    opacity: 0.5;
+    transition: ease-in 0.4s;
+}
+.public-profile-avatar img:hover {
+    opacity: 1.0;
+}
 .find-new-friends {
     display: inline-flex;
     max-width: 90vw;
@@ -816,6 +852,7 @@ h1,h2,h3,h4,h5,h6 {
     
 }
 .info-header {
+    text-align: center;
     
 }
 .info-header a {
@@ -1194,7 +1231,7 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
     background: #333;
     transition: ease-in 0.5s;
-    color: #000;
+    color: #fff;
 }
 .comment-on-post textarea:hover {
     box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
@@ -1368,11 +1405,75 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 1.5rem;
     margin-top: 30px;
 }
+
+.add-learning-content {
+    padding: 20px;
+    border-radius: 15px;
+}
 .learning-point {
     padding: 20px;
     border-radius: 20px;
     box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
 }
+
+.create-flashcard {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.create-flashcard input, .create-learning-point input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+}
+.create-flashcard input:hover, .create-learning-point input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-flashcard input:focus, .create-learning-point input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.create-learning-point {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.create-learning-point textarea {
+    margin-bottom: 10px;
+    min-height: 150px;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    transition: ease-in 0.5s;
+    outline: none;
+    border: none;
+    color: #fff;
+    width: 100%;
+}
+.create-learning-point textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-learning-point textarea:focus {
+    background: #333;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+}
+
 /* 
 
 

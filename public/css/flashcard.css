@@ -55,8 +55,8 @@
     transform: rotateY(180deg);
   }
   .easy {
-      line-height: 200px;
+      margin: auto;
+      padding-top: 40px;
   }
   .hard {
-      line-height: 100px;
   }

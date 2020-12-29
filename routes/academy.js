@@ -144,7 +144,7 @@ router.post('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
     })
     learningPoint.save()
     console.log(`New Learning Point: ${learningPoint}`)
-    res.redirect(`/academy/courses`)
+    res.redirect(`/academy/courses/${classId}`)
 });
 router.get('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
     const classId = req.params.classId;
@@ -184,9 +184,9 @@ router.get('/:learningPointId/add-quiz', ensureAuthenticated, (req, res) => {
 
 });
 
-router.post('/:classId/add-flashcard', ensureAuthenticated, (req, res) => {
+router.post('/:courseId/:classId/add-flashcard', ensureAuthenticated, (req, res) => {
     const classId = req.params.classId;
-    const thisCourseId = req.params.courseId;
+    const courseId = req.params.courseId;
     const flashcard = new Flashcard({
         class: classId,
         question: req.body.question,
@@ -195,7 +195,7 @@ router.post('/:classId/add-flashcard', ensureAuthenticated, (req, res) => {
     })
     flashcard.save()
     console.log(`New Class: ${flashcard}`)
-    res.redirect(`/academy/courses`)
+    res.redirect(`/academy/courses/${courseId}/${classId}`)
 });
 
 router.get('/:classId/flashcards', ensureAuthenticated, async (req, res) => {

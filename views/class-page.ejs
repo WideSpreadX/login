@@ -32,7 +32,6 @@
 </div>
 <h1><%= currentPageTitle %></h1>
 
-
 <div class="nav-bar">
     <a href="/academy/<%= thisClass.id %>/flashcards">Flashcards</a>
 </div>
@@ -71,18 +70,31 @@
             <% }); %>
         </ol>
     </div>
-
-<form action="/academy/<%= thisClass.id %>/add-flashcard" method="post" class="add-form">
+<div class="add-learning-content to-do">
+<div class="to-do-data">
+    <p>Create Teacher-Admin-Page and move this content to it. Will need to change route data. Move 'Create Quiz' forms there and remove the drop-down feature.</p>
+</div>
+    <div class="create-flashcard">
+        <h3>Create a Flashcard</h3>
+<form action="/academy/<%= thisCourseId %>/<%= thisClass.id %>/add-flashcard" method="post" class="add-form">
     <input type="text" name="question" id="flashcardQuestion" placeholder="Question">
     <input type="text" name="answer" id="flashcardAnswer" placeholder="Answer">
-    <input type="number" name="difficulty" id="flashcardDifficulty" placeholder="Difficulty (1-3)">
-    <button type="submit">Add Flashcard</button>
-</form>
-<form action="/academy/<%= thisClass.id %>/add-learning-point" method="post" class="add-form">
-    <input type="text" hidden="true" value="<%=thisClass.id %>" name="class">
+        <input type="text" name="difficulty" id="flashcardDifficulty" placeholder="Difficulty (1-3)">
+        <button type="submit">Add Flashcard</button>
+    </form>
+</div>
+<div class="create-learning-point">
+    <h3>Create a Learning Point</h3>
+
+    <form action="/academy/<%= thisClass.id %>/add-learning-point" method="post" class="add-form">
+        <input type="text" hidden="true" value="<%=thisClass.id %>" name="class">
     <input type="text" name="section_header" id="section_header" placeholder="Section Header">
-    <textarea name="section_body" id="section_body" cols="30" rows="10"></textarea>
-    <textarea name="section_notes" id="section_notes" cols="30" rows="10"></textarea>
+    <h5>Body</h5>
+    <textarea name="section_body" id="section_body" rows="10"></textarea>
+    <h5>Notes</h5>
+    <textarea name="section_notes" id="section_notes" rows="10"></textarea>
     <input type="number" name="difficulty" id="difficulty" placeholder="Difficulty (1-3)">
     <button type="submit">Add Learning Point</button>
 </form>
+</div>
+</div>

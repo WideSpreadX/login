@@ -3,14 +3,15 @@
 .cont_container {
     width: 100%;
     padding-bottom: 50px;
-    margin-bottom: 50px;
     margin-top: -150px;
-    overflow-x: scroll;
 }
 .cont_inner_container{
-    width: 10000px;
-    position: relative;
-    display: flex;
+    display: inline-flex;
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: scroll;
+    padding: 20px;
+    margin-bottom: 100px;
 }
 .cont_container .card{
     position: relative;

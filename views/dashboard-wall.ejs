@@ -44,6 +44,9 @@
                         
                         <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
                     </div>
+                    <div class="to-do">
+                            <p>Add User Avatar to each post</p>
+                    </div>
                     <h3><%= post.author.fname %> <%= post.author.lname%></h3>
                     <div class="post-body">
                         <p><%= post.postBody %></p>
@@ -65,7 +68,7 @@
                     <div class="comment-on-post">
                         <h4>Leave a comment</h4>
                         <form action="/users/<%= post.author.id %>/post/<%= post.id %>/comment" method="POST">
-                            <textarea required name="commentBody" id="commentBody" class="form-control"></textarea>
+                            <textarea required name="commentBody" id="commentBody" class="form-control" style="color: #fff"></textarea>
                             <button class="btn-block block-button spread-it" type="submit">Spread More</button>
                             <input type="text" name="fromPost" value="<%= post.id %>" hidden="true">
                         </form>
@@ -75,6 +78,9 @@
                 
                             <% post.comments.forEach(function(comment){ %>
                                 <div class="comment">
+                                    <div class="to-do">
+                                            <p>Add User Avatar to each comment</p>
+                                    </div>
                                     <h5><%= comment.author.fname %> <%= comment.author.lname %></h5>
                                     <p><%= comment.commentBody %></p>
                                     <div class="comment-actions">

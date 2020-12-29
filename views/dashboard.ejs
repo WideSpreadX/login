@@ -206,7 +206,42 @@
     </div>
 
     <div class="row">
-        <div class="col-6 user-posts">
+            <div class="col-12 user-posts">
+                <div class="create-post">
+                    <h5>Create New Post</h5>
+                    <form action="/users/<%= id %>/post" method="POST">
+                        <textarea required name="postBody" id="postBody" class="form-control"></textarea>
+                        <button class="btn-block block-button spread-it" type="submit">Spread It</button>
+                    </form>
+                </div>
+                <div class="spread-h3">
+                    <h3>Your Posts</h3>
+                </div>
+                <div class="user-posts-container">
+                <ul>
+                    <% posts.forEach(function(post){ %>
+                        <li style="list-style: none;">
+                            <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
+                                <a href="/users/post/<%= post.id%>">&times;</a>
+                                <div class="post-container">
+                                    <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
+                                    <small class="text-muted"><%= post.createdAt.toLocaleDateString() %></small>
+                                    <div class="post">
+                                        <p><%= post.postBody %></p>
+                                    </div>
+                                </div>  
+                                
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+                </div>
+
+            </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 user-posts">
             <div class="create-post">
                 <h5>Create New Article</h5>
                 <form action="/users/<%= id %>/article" method="POST">
@@ -241,36 +276,4 @@
             </ul>
             </div>
         </div>
-            <div class="col-6 user-posts">
-                <div class="create-post">
-                    <h5>Create New Post</h5>
-                    <form action="/users/<%= id %>/post" method="POST">
-                        <textarea required name="postBody" id="postBody" class="form-control"></textarea>
-                        <button class="btn-block block-button spread-it" type="submit">Spread It</button>
-                    </form>
-                </div>
-                <div class="spread-h3">
-                    <h3>Your Posts</h3>
-                </div>
-                <div class="user-posts-container">
-                <ul>
-                    <% posts.forEach(function(post){ %>
-                        <li style="list-style: none;">
-                            <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
-                                <a href="/users/post/<%= post.id%>">&times;</a>
-                                <div class="post-container">
-                                    <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
-                                    <small class="text-muted"><%= post.createdAt.toLocaleDateString() %></small>
-                                    <div class="post">
-                                        <p><%= post.postBody %></p>
-                                    </div>
-                                </div>  
-                                
-                            </div>
-                        </li>
-                    <% }); %>
-                </ul>
-                </div>
-
-            </div>
     </div>

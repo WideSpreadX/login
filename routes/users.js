@@ -20,6 +20,7 @@ const Company = require('../models/Company');
 const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
 const CommentImage = require('../models/CommentImage');
+const Avatar = require('../models/Avatar');
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -125,12 +126,14 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     const articles = await Article.find({author: {$eq: id}});
    const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
    const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
+   const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
+   console.log(`Current Profile Avatar: ${avatarImage}`)
     User.findById(id)
     .populate('friends')
     .populate('user_images')
     .exec()
     .then(profile => {
-            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages})
+            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage})
             console.log(profile);
         });
 })
