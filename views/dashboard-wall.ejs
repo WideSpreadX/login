@@ -39,8 +39,9 @@
 <% data.forEach(function(post){ %>
     <div class="outer-post-container">
                 <div class="ss-post">
-                    <img src="" alt="">
+  
                     <div class="post-timestamp">
+                        
                         <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
                     </div>
                     <h3><%= post.author.fname %> <%= post.author.lname%></h3>
