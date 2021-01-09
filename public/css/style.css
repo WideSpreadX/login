@@ -1841,7 +1841,21 @@ h1,h2,h3,h4,h5,h6 {
     .none {
         display: none;
     }
-
+    .container {
+        width: 100vw;
+        min-height: 100vh;
+    }
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+    .logo a {
+        color: rgba(135, 206, 250, 0.795);
+        text-shadow: 0 0 3px #fff;
+    }
+    .user-menu {
+        display: none;
+    }
     /* Video Background */
     #vidBackground {
         position: fixed;
@@ -1864,5 +1878,45 @@ h1,h2,h3,h4,h5,h6 {
     height: 100vh;
     box-shadow: 0 0 100px #000;
     
+}
+.create-account {
+    width: 90vw;
+    padding: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    transition: ease-in 0.3s;
+    backdrop-filter: blur(2);
+    opacity: 0.6;
+    background: rgba(204, 204, 204, 0.199);
+}
+.create-account:hover {
+    opacity: 1.0;
+    transition: ease-in 0.5s;
+}
+.create-account p {
+    padding: 10px;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.39);
+    background: rgba(0, 0, 0, 0.685);
+    backdrop-filter: blur(6px);
+    border-radius: 2px;
+    border-top: solid 1px lightskyblue;
+    border-bottom: solid 1px lightskyblue;
+}
+.create-account img {
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(33, 192, 255, 0.705));
+}
+.blur {
+    background: rgba(204, 204, 204, 0.63);
+    backdrop-filter: blur(2px);
+}
+.card {
+    background: lime;
+}
+.card-body {
+    margin: 0 auto;
+    background: lime;
 }
 }  
