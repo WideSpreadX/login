@@ -20,6 +20,12 @@
 <%= currentPageTitle %>
 <h1><%= company.company_name %></h1>
 
+<div class="current-employess">
+    <h2>Current Employees</h2>
+    <% company.employees.forEach(function(employee) { %>
+        <p>Employee: <%= employee.fname %></p>
+        <% }) %>
+</div>
 
 <div class="job-applicants">
 

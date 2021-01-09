@@ -1,0 +1,1735 @@
+body {
+    background: #eee;
+
+
+}
+
+.not-done {
+    background: lime;
+}
+.to-do {
+    box-shadow: inset 0 0 10px lime, 0 0 10px lime;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+.to-do-data {
+    color: lime;
+    box-shadow: inset 0 0 10px lime, 0 0 10px lime;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 7px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    background: #ccc;
+}
+::-webkit-scrollbar:hover {
+    background: #333;
+}
+    /* Track */
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 4px 4px 8px rgba(135, 206, 250, 0.582), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(17, 17, 17, 0.705); 
+    border-radius: 7px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(135, 206, 250, 0.658); 
+    border-radius: 7px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+}
+
+
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 400px;
+    z-index: 1;
+    border: solid 1px lightskyblue;
+    box-shadow: inset 0 0 30px lightskyblue, -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    background: rgba(0, 0, 0, 0.377);
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    transition: ease-in 0.3s;
+}
+.dropdown-content a {
+    color: black;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.dropdown-content form {
+    color: black;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.dropdown-content>.add-form>input {
+    background: rgba(255, 255, 255, 0.774);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn-menu {
+    background: transparent;
+    box-shadow: inset 0 0 10px lightskyblue, -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    transition: ease-in 0.1s;
+}
+
+.dropdown-content-menu {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    z-index: 1;
+    border: solid 1px lightskyblue;
+    box-shadow: inset 0 0 30px lightskyblue, 0 0 10px lightskyblue;
+    background: rgba(0, 0, 0, 0.377);
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    transition: ease-in 0.1s;
+}
+.dropbtn-menu:hover {
+    border-radius: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: ease-in 0.1s;
+}
+.dropdown-content-menu button {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    background: transparent;
+}
+.dropdown-content-menu button:active {
+    outline: none;
+}
+.dropdown-menu:hover .dropdown-content-menu {
+    display: block;
+    animation-delay: 0.1s;
+}
+.dropdown-content-menu a {
+    color: rgba(204, 204, 204, 0.699);
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 1;
+    font-size: 2rem;
+    transition: ease-in 0.5s;
+}
+.dropdown-content-menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 3px lightskyblue;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.container {
+    padding-top: 105px;
+    padding-bottom: 40px;
+}
+h1,h2,h3,h4,h5,h6 {
+    color: #ccc;
+}
+.spread-h3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-bottom: solid 2px rgba(135, 206, 250, 0.555);
+}
+.spread-h5 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.widespread-header {
+    background-image: linear-gradient( black, rgba(0, 0, 0, 0.932), rgba(0, 0, 0, 0.863), rgba(0, 0, 0, 0.685));
+    position: fixed;
+    z-index: 10000;
+    top: -10px;
+    left: 20px;
+    right: 20px;
+    height: 85px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(135, 206, 250, 0.521),  0 0 20px rgba(135, 206, 250, 0.521), 0 0 40px rgba(135, 206, 250, 0.329);
+}
+.widespread-header .logo {
+    position: absolute;
+    left: 10px;
+    top: 25px;
+}
+.widespread-header .logo h1 a {
+    color: #222;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: ease-in 0.8s;
+}
+.widespread-header h1 a:hover {
+    text-decoration: none;
+    text-shadow: 0 0 1px lightskyblue, 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    transition: ease-in 0.3s;
+}
+.login-ws-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.login-background {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+}
+.login-background-image {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background-image: url('../images/system/widespread_logo_1d.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.3;
+    filter: drop-shadow(0 0 10px rgba(135, 206, 250, 0.664));
+}
+.login-background-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.card h3 {
+}
+.card-body h1 {
+    font-size: 22px;
+}
+.login-ws-logo img {
+    border-radius: 50%;
+    max-width: 200px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+.login-input {
+    border: solid 0.5px #000;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+.login-button {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    border-radius: 10px;
+    transition: ease-in 0.3s;
+}
+.login-button:hover {
+    box-shadow: -3px -3px 6px #000, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px lightskyblue;
+    transition: ease-in 0.3s;
+}
+.widespread-header .current-page-title {
+    text-align: center;
+    text-shadow: 0 0 1px black;
+    height: 85px;
+}
+.widespread-header .current-page-title h2 a {
+    text-decoration: none;
+    line-height: 85px;
+    color: rgba(135, 206, 250, 0.623);
+    transition: ease-in 0.3s;
+}
+.widespread-header .current-page-title h2 a:hover {
+    text-decoration: none;
+    line-height: 75px;
+    color: rgba(135, 206, 250, 0.829);
+    transition: ease-in 0.3s;
+    text-shadow: 0 0 4px rgba(135, 206, 250, 0.781);
+
+}
+.widespread-header .user-info {
+    width: 225px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    height: 40px;
+}
+.widespread-header .user-info .current-user p {
+    line-height: 30px;
+    max-width: 200px;
+}
+.widespread-header .user-info .user-menu {
+    width: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: transparent;
+}
+.nav-bar-outer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: #111;
+    transition: ease-in 0.6s;
+    
+}
+.nav-bar-outer:hover {
+    background: #000;
+    transition: ease-in 0.6s;
+}
+.nav-bar {
+    margin-top: 20px;
+    padding: 5px;
+
+}
+.nav-bar-ws {
+    padding: 20px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+    
+}
+.nav-bar-ws:hover {
+    transition: ease-in 0.4s;
+}
+.red {
+    box-shadow: inset 0 0 10px red;
+}
+.lightskyblue {
+    box-shadow: inset 0 0 10px lightskyblue;
+}
+.blue-glow {
+    box-shadow: 0 0 2px rgb(60, 165, 231);
+}
+.nav-bar a {
+    margin-left: 10px;
+    background: transparent;
+    padding: 10px;
+    color: #ccc;
+    text-decoration: none;
+    transition: ease-in 0.9s;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.nav-bar a:hover {
+    box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    text-decoration: none;
+    background: #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+    transition: ease-in 0.6s;
+}
+.nav-bar button {
+    margin-left: 10px;
+    background: transparent;
+    padding: 10px;
+    color: #ccc;
+    text-decoration: none;
+    transition: ease-in 0.9s;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 10px;
+    text-align: center;
+}
+.nav-bar button:hover {
+    box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    text-decoration: none;
+    background: #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+    transition: ease-in 0.6s;
+}
+.nav-bar-ws .logout-button:hover {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.562), 0 0 1px red;
+}
+.nav-bar-ws form {
+    background: transparent;
+}
+
+.custom-file input {
+    outline: none;
+    border: none;
+    background: transparent;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.custom-file-label {
+    border-radius: 10px;
+    padding: 10px;
+    background: #000;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222, inset 0 0 4px rgba(135, 206, 250, 0.582);
+    cursor: pointer;
+    transition: ease-in 0.5s;
+}
+.custom-file-label:hover {
+    background: #111;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px lightskyblue;
+    transition: ease-in 0.3s;
+}
+.custom-file-label::after {
+    background: rgb(45, 84, 109);
+    box-shadow: -1px -2px 6px #222, 0 -3px 4px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
+    margin-left: -5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #000;
+    transition: ease-in 0.5;
+}
+.custom-file-label::after:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    transition: ease-in 0.3;
+}
+.block-button {
+    background: rgb(45, 84, 109);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
+    border-radius: 10px;
+    color: #000;
+    outline: none;
+    border: none;
+    transition: ease-in 0.5s;
+}
+
+.block-button:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    border-radius: 10px;
+    color: #000;
+    outline: none;
+    border: none;
+    transition: ease-in 0.3s;
+}
+
+.user-profile-image-form {
+    width: 100%;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius: 10px;
+}
+
+.user-profile-image-form form {
+    /* background: lime; */
+}
+
+.custom-file-profile-image input {
+    display: none;
+}
+.custom-file-label-choose-profile-image {
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 4px rgba(135, 206, 250, 0.582);
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    transition: ease-in 0.5s;
+}
+.custom-file-label-choose-profile-image:hover {
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px lightskyblue;
+    background: #111;
+    transition: ease-in 0.3s;
+}
+.custom-file-label-profile-image {
+    background: lightskyblue;
+    box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgba(135, 206, 250, 0.61);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.custom-file-profile-image-button {
+    margin-top: 0;
+    padding: 0;
+}
+.custom-file-profile-image-button input {
+    outline: none;
+    border: none;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
+    padding: 10px;
+    margin-left: -5px;
+    margin-top: 0;
+    border-radius: 10px;
+    background: rgb(45, 84, 109);
+    transition: ease-in 0.5s;
+}
+.custom-file-profile-image-button input:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    transition: ease-in 0.3s;
+}
+.add-form {
+    margin: 20px;
+    padding: 20px;
+    margin-top: 40px;
+
+}
+.add-form input {
+    display: block;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+.add-form button {
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    display: block;
+    color: #ccc;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    background: #111;
+    transition: ease-in 0.3s;
+    outline: none;
+    border: none;
+}
+.add-form button:hover {
+    box-shadow: -2px -2px 6px rgb(40, 143, 40), -3px -3px 6px rgba(26, 104, 26, 0.568), 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px rgba(119, 118, 118, 0.432), 3px 3px 4px rgba(0, 0, 0, 0.445), 3px 3px 3px rgba(17, 17, 17, 0.527), -3px -3px 8px rgba(26, 104, 26, 0.644), -2px -2px 2px rgb(26, 104, 26), inset 0 0 8px rgba(204, 204, 204, 0.281);
+    background: rgb(26, 104, 26);
+    color: #eee;
+    transition: ease-in 0.3s;
+
+}
+.fa-ellipsis-v {
+    cursor: pointer;
+    text-shadow: 0 0 1px lightskyblue;
+    color: rgba(255, 255, 255, 0.753);
+}
+
+/* Spread It Button */
+.spread-it {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.562);
+    text-shadow: 0 0 2px lightskyblue;
+}
+.spread-it:hover {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.747);
+    text-shadow: 0 0 4px rgba(26, 27, 27, 0.603);
+}
+.submit-button {
+    height: 100px;
+    width: 300px;
+    text-align: center;   
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.like-button button {
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+}
+.center {
+    width: 100%;
+}
+.margin-bottom {
+    margin-bottom: 40px;;
+}
+/* 
+        IMAGES
+*/
+
+.med-image {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+.med-image img {
+    border-radius: 10px;
+}
+
+.spreadlink {
+    color: #fff;
+    text-decoration: none;
+    transition: ease-in 0.2s;
+}
+.spreadlink:hover {
+    color: rgba(255, 255, 255, 0.719);
+    text-decoration: none;
+    text-shadow: 0 0 2px lightskyblue;
+    transition: ease-in 0.2s;
+}
+
+.resume-nav {
+    border-left: solid 2px #333;
+}
+.resume-form {
+    padding: 10px;
+}
+.resume-form h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.resume-form p {
+    color: #fff;
+    margin-left: 10%;
+}
+.resume-form small {
+    color: red;
+
+}
+.resume-form-options {
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 20px;
+}
+.form-option {
+    padding: 5px;
+    display: inline-flex;
+    width: 100%;
+    margin-top: 10px;
+}
+.resume-form-options h5 {
+
+}
+.resume-form-options input {
+    margin-left: 20px;
+}
+.resume-form-group {
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 20px;
+}
+.resume-form-group textarea {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.resume-form-group textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.resume-form-group textarea:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.resume-form-group input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.resume-form-group input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.resume-form-group input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.employment-history-company-form {
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: ease-in 0.5s;
+}
+.employment-history-company-form:hover {
+    background: #222;
+    transition: ease-in 0.3s;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.employment-history-company-reference-form {
+    width: 60%;
+    margin: auto;
+}
+.resume-container {
+    padding: 20px;
+    margin-top: 40px;
+}
+.resume-bio p {
+    margin-left: 10px;
+    padding: 20px;
+    color: #fff
+}
+.resume-objective p {
+    margin-left: 10px;
+    padding: 20px;
+    color: #fff
+}
+.resume-education {
+}
+.resume-education p {
+    margin-left: 20px;
+    color: #fff;
+}
+.employment-history-details-reference {
+    padding: 30px;
+    padding-top: 0;
+}
+.employment-history-details-reference p {
+    margin-left: 20px;
+    color: #fff;
+}
+
+.resume-skills {
+    display: inline-flex;
+}
+.resume-skills p {
+    padding: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    border-radius: 10px;
+}
+
+.job-applicant-card {
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.jumbotron {
+    background: #111;
+    padding-bottom: 20px;
+}
+.user-profile-image-form {
+    max-width: 200px;
+}
+.user-avatar {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    overflow: hidden;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    padding: 10px;
+}
+.user-avatar img {
+    min-width: 160px;
+    min-height: 160px;
+    margin: -10px;
+    margin-left: -40px;
+    opacity: 0.5;
+    transition: ease-in 0.4s;
+}
+.public-profile-avatar {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    padding: 10px;
+}
+.public-profile-avatar img {
+    min-width: 160px;
+    min-height: 160px;
+    margin: -10px;
+    margin-left: -40px;
+    opacity: 0.5;
+    transition: ease-in 0.4s;
+}
+.public-profile-avatar img:hover {
+    opacity: 1.0;
+}
+.find-new-friends {
+    display: inline-flex;
+    max-width: 90vw;
+    overflow-x: scroll;
+    padding: 20px;
+    height: 300px;
+    margin-bottom: 100px;
+}
+.possible-friend {
+    background: rgba(204, 204, 204, 0.664);
+    padding: 20px;
+    min-width: 300px;
+    border-radius: 20px;
+    padding: 20px;
+    margin-right: 10px;
+    opacity: 0.6;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.possible-friend:hover {
+    opacity: 1.0;
+}
+.possible-friend a {
+    text-decoration: none;
+}
+.possible-friend h3 {
+    text-shadow: 0 0 3px #000;
+}
+.user-avatar img:hover {
+    opacity: 1.0;
+    transition: ease-in 0.4s;
+}
+
+.name-header {
+    background: #000;
+    padding: 25px;
+    padding-bottom: 10px;
+    width: 95%;
+    margin: 0 auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: inset 0 0 15px lightskyblue, -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.name-header h1 {
+    text-align: center;
+    width: 100%;
+}
+.user-header {
+    padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    
+}
+.info-header {
+    text-align: center;
+    
+}
+.info-header a {
+    text-decoration: none;
+    color: #ccc;
+    transition: ease-in 0.3s;
+}
+.info-header a:hover {
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+.spread-container-about p {
+    color: #fff;
+}
+.spread-container {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.spread-container-sub {
+    padding-bottom: 30px;
+    color: #fff;
+
+}
+.spread-container-sub img {
+    filter: drop-shadow(0 0 20px rgba(135, 206, 250, 0.925));
+}
+.spread-container-sub a {
+    color: #fff;
+}
+.friends {
+    padding: 20px;
+    border-radius: 10px;
+}
+.friends li {
+    background: #bbb;
+    border-radius: 10px;
+    transition: ease-in 0.2s;
+}
+.friends li:hover {
+    background: #777;
+    box-shadow: 0 2px 5px black;
+    transition: ease-in 0.2s;
+}
+
+.create-post {
+    padding: 20px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    padding: 10px;
+    padding-bottom: 60px;
+    transition: ease-in 0.4s;
+}
+
+.create-post input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+}
+.create-post input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-post input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.user-workout {
+}
+.create-workout {
+}
+.create-workout h5 {
+    padding: 20px;
+}
+.day {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+.checkbox {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+}
+.checkbox label {
+}
+.checkbox input {
+    border-radius: 5px;
+}
+.checker {
+    background: lime;
+    padding: 3px;
+}
+.draggable>h4 {
+    cursor: grab;
+    color: lightskyblue;
+}
+.draggable>h4:focus{
+    cursor: grabbing;
+}
+.dragTo-container {
+    margin-top: 20px;
+}
+.dragTo-container>h3 {
+    margin-top: 10px;
+    padding: 10px;
+}
+.dragTo-container>h2 {
+    text-align: center;
+
+}
+.dragTo-container small {
+    padding-left: 30px;
+}
+.dragTo {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    min-height: 50px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.exercise-form {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.exercise-form label {
+    padding-left: 20px;
+}
+.exercise-form input {
+    border-radius: 10px;
+    background: #000;
+    outline: none;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    color: #ccc;
+    width: 100%;
+    text-shadow: inset 0 0 8px lightskyblue;
+}
+.create-post form {
+    padding: 10px;
+}
+.create-post textarea {
+    margin-bottom: 10px;
+    min-height: 150px;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    transition: ease-in 0.5s;
+}
+.create-post textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-post textarea:focus {
+    background: #333;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+}
+.post h2 {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+.post h5 {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+.user-posts-container {
+    padding: 10px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    margin-bottom: 3px;
+    transition: ease-in 0.6s;
+}
+
+.user-posts-container ul {
+    max-height: 70vh;
+    overflow-y: scroll;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-right: 30px;
+    border-radius: 20px;
+}
+
+.user-posts-container li {
+    width: 100%;
+    list-style: none;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: #111;
+}
+.user-posts {
+    padding: 20px;
+    border-radius: 10px;
+}
+.user-posts h5 {
+    text-align: center;
+}
+.user-posts li {
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000;
+    padding: 10px;
+    padding-bottom: 60px;
+    margin-left: -15px;
+    transition: ease-in 0.4s;
+}
+.user-posts li:hover {
+    transition: ease-in 0.2s;
+}
+.outer-post-container {
+       padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    margin-bottom: 40px;
+    
+}
+.outer-post-container a {
+    padding: 8px;
+    font-size: 26px;
+    color: rgba(112, 25, 25, 0.733);
+    text-shadow: -1px -1px 2px rgb(78, 30, 30), 1px 1px 2px #000;
+    font-weight: bold;
+    transition: ease-in 0.2s;
+}
+.outer-post-container a:hover {
+    text-shadow: 0 0 2px red;
+    text-decoration: none;
+    transition: ease-in 0.2s;
+}
+.post-container-single {
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+}
+.post-container-single h3 {
+    border-bottom: solid 2px lightskyblue;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.post-container-single p {
+    padding: 20px;
+}
+.post-container-single>a {
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+.post-container {
+    border-top: solid 1px #ccc;
+    padding: 5px;
+    padding-top: 20px;
+    margin: 20px;
+    margin-top: 10px;
+}
+.post-container img {
+    width: 30px;
+    height: 30px;
+}
+.post-container small {
+    padding-left: 10px;
+}
+.post {
+    padding-top: 20px;
+}
+.post p {
+    font-size: 1.2rem;
+}
+.ss-post {
+    padding: 20px;
+    padding-top: 0;
+    border-radius: 20px;
+}
+.ss-post h3 {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #ccc;
+    margin-bottom: 20px;
+}
+.post-body p {
+    padding: 30px;
+    padding-top: 20px;
+}
+.ss-post p {
+    font-size: 1.2rem;
+    color: #eee;
+}
+.post-timestamp {
+    width: 100%;
+    text-align: right;
+
+}
+.post-span {
+    color: lightskyblue;
+}
+.post-actions i {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 0.5;
+    transition: ease-in 0.3s;
+}
+.post-actions i:hover {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 1;
+    transition: ease-in 0.3s;
+}
+.comment-actions i {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 0.5;
+    transition: ease-in 0.3s;
+    font-size: 1.2rem;
+    margin-left: 8px;
+}
+.comment-actions i:hover {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 1;
+    transition: ease-in 0.3s;
+}
+
+
+/* Comments  */
+.comment-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+.comments {
+    
+}
+.comment {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    
+}
+
+
+.comment-on-post {
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    margin-top: 10px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 20px;
+
+}
+.comment-on-post h4 {
+    text-align: center;
+}
+.comment-on-post textarea {
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.comment-on-post textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #444;
+    transition: ease-in 0.3s;
+    color: #000;
+}
+.comment-on-post textarea:focus {
+    background: #555;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+    color: #000;
+}
+.comment-time p {
+    color: lightskyblue;
+    text-align: right;
+    font-size: 0.9rem;
+}
+.public-post-container {
+    padding: 8px;
+     margin: 5px;
+     border-radius: 10px;
+     margin-top: 20px;
+     background: #222;
+     box-shadow: -3px -3px 6px #333, 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+        width: 100%;
+
+    }
+    .public-post {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    border-radius: 10px;
+    background: #111;
+    padding: 10px;
+}
+.public-post small {
+    margin-left: 10px;
+    cursor: default;
+}
+.public-post p {
+    padding: 10px;
+    margin-top: 10px;
+}
+.public-post a {
+    color: #ccc;
+}
+.post-option-bar {
+    margin-top: 3px;
+    padding: 3px;
+}
+.full-page-post-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background: #777;
+    padding: 20px;
+    border-radius: 20px;
+}
+.full-page-post-container h3 {
+    font-size: 3rem;
+    color: #aaa;
+}
+.full-page-post-container small {
+    color: #000;
+}
+.full-page-post-container hr {
+    border-color: #000;
+    margin-bottom: 30px;
+}
+.full-page-post-container p {
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+}
+.list-item a {
+    padding-left: 10px;
+}
+.update {
+    margin-bottom: 5px;
+}
+.update-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.update-profile h3 {
+    text-align: center;
+    margin-top: 40px;
+}
+.s-m-outlet {
+}
+.s-m-outlet p {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+.s-m-outlet input[type=color] {
+    margin-right: 10px;
+}
+
+/* 
+
+
+                    Academy
+
+*/
+.students-current-courses {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.students-current-courses h1 {
+    text-align: center;
+    padding-bottom: 30px;
+    color: lightskyblue;
+}
+.student-course {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+}
+.course-selection-container {
+    background: #000;
+    margin-top: 30px;
+    padding: 40px;
+    padding-top: 10px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.course-selection {
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    background: #000;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    transition: ease-in-out 0.5s;
+}
+.course-selection:hover {
+    background: #111;
+    box-shadow: inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 6px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-out 0.5s;
+}
+.course-card {
+    max-height: 300px;
+    padding: 10px;
+}
+.class-selection {
+    padding-top: 10px;
+}
+.class-selection h2 {
+    text-align: center;
+}
+.course-classes {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+/* Class */
+.class-container {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.class-chapter {
+}
+.class-chapter li {
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+
+.add-learning-content {
+    padding: 20px;
+    border-radius: 15px;
+}
+.learning-point {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+
+.create-flashcard {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.create-flashcard input, .create-learning-point input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+}
+.create-flashcard input:hover, .create-learning-point input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-flashcard input:focus, .create-learning-point input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.create-learning-point {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.create-learning-point textarea {
+    margin-bottom: 10px;
+    min-height: 150px;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    transition: ease-in 0.5s;
+    outline: none;
+    border: none;
+    color: #fff;
+    width: 100%;
+}
+.create-learning-point textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-learning-point textarea:focus {
+    background: #333;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+}
+
+/* 
+
+
+                    Business
+
+*/
+
+.company-container-card {
+    background: #000;
+    padding: 20px;
+    margin: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+
+.company-container-card a {
+    transition: ease-in 0.3s;
+}
+.company-container-card a:hover {
+    text-decoration: none;
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+.company-container-card .company-bio {
+    padding: 10px;
+    width: 90%;
+    margin-left: 5%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.company-container-card .employee-portal {
+    padding: 5px;
+    text-align: right;
+    padding-right: 20px;
+}
+.company-contact {
+    background: #000;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.company-contact i {
+    margin-right: 10px;
+}
+.company-contact a {
+    color: #555;
+}
+.company-container-card .employee-portal a {
+    color: #ccc;
+    transition: ease-in 0.3s;
+}
+.company-container-card .employee-portal a:hover {
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+.business-footer {
+    padding: 30px;
+    margin-bottom: 40px;
+}
+.business-footer a {
+    width: auto;
+    background: #888;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: ease-in 0.6s;
+}
+.business-footer a:hover {
+    background: lightskyblue;
+    transition: ease-in 0.3s;
+}
+
+.companySite-container {
+    background: #eee;
+    box-shadow: -4px -4px 8px #ccc, -3px -3px 6px #ddd, 6px 6px 8px #ddd,  3px 3px 6px #fff, inset -2px -2px 2px #ccc, inset 2px 2px 2px #ccc;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 20px;
+}
+.companySite-inner {
+    border-top: solid 3px lightskyblue;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.companySite-nav {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: #fff;
+    width: 90%;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: inset 4px 4px 8px #fff, inset 3px 3px 6px #eee, inset -6px -6px 8px #ddd, inset -3px -3px 6px #ccc, inset 2px 2px 2px #ddd, inset -2px -2px 2px #eee;
+}
+.companyInfo {
+    border-left: solid 1px #222;
+}
+.companyInfo a {
+    color: #ccc;
+}
+.companySite-nav ul {
+    display: inline-flex;
+}
+.companySite-nav li {
+    list-style: none;
+    height: 100%;
+    padding: 10px;
+    padding-top: 15px;
+    margin-top: 5px;
+    text-align: center;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.companySite-nav li:first-of-type {
+    margin-left: 0;
+}
+.companySite-nav li a {
+    text-decoration: none;
+}
+
+
+.job-applicants {
+    background: #111;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+.article-container {
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    background: #111;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.article-container .article-header {
+    padding: 20px;
+}
+.article-container .article-header h1 {
+    margin-bottom: 40px;
+    text-align: center;
+}
+.article-container .article-header h3 {
+    text-align: center;
+    color: #888;
+}
+.article-container p {
+    padding: 50px;
+    padding-top: 30px;
+    background: #000;
+    box-shadow: inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 6px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    border-radius: 20px;
+}
+.article-container hr {
+    border-color: lightskyblue;
+}
+
+
+.news-outlet-container {
+    text-align: center;
+    padding: 20px;
+}
+.news-outlet-logo {
+    padding: 20px;
+    box-shadow: 4px 4px 8px #000, 3px 3px 6px #111, -6px -6px 8px #444, -3px -3px 6px #444, 2px 2px 2px #333, -2px -2px 2px #222;
+    border-radius: 10px;
+}
+.news-outlet-logo img {
+    opacity: 0.4;
+    transition: ease-in 0.5s;
+}
+.news-outlet-logo img:hover {
+    opacity: 1.0;
+    transition: ease-in 0.3s;
+}
+
+.news-outlet h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+.news-articles {
+    padding: 20px;
+}
+
+.news-articles .row {
+    margin-top: 30px;
+    padding: 20px;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 20px;
+    box-shadow: inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 6px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+
+.news-articles .row .article-image img {
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.news-articles .article-info {
+    margin-top: 20px;
+}
+
+
+.news-articles .article-info a h5{
+    text-decoration: none;
+}
+.news-articles .article-info a h5{
+    transition: ease-in 0.3s;
+}
+.news-articles .article-info a h5:hover {
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+
+/* 
+        SHOPPING
+ */
+
+#output {
+    width: 500px;
+    height: 300px;
+    background: lime;
+}
+.item-image {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+     max-width: 150px;
+     border-radius: 10px;
+}
+.item-image img {
+     max-width: 150px;
+     border-radius: 10px;
+     opacity: 0.8;
+     transition: ease-in 0.4s;
+ }
+ .item-image img:hover {
+     opacity: 1.0;
+     transition: ease-in 0.4s;
+     box-shadow: 0 0 10px white;
+ }
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+    body {
+    }
+    .none {
+        display: none;
+    }
+}  

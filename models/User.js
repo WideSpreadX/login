@@ -62,7 +62,9 @@ const UserSchema = new mongoose.Schema({
     },
     user_profile_image: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
     user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
-    user_avatar: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
+    user_avatar: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
+    avatar: String,
+    user_video: [{type: mongoose.Schema.Types.ObjectId, ref: 'Video'}],
     resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
     workouts: {type: mongoose.Schema.Types.ObjectId, ref: 'WorkoutSchedule'},
     date: {

@@ -16,6 +16,7 @@ const Resume = require('../models/Resume');
 const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
 const Avatar = require('../models/Avatar');
+const Video = require('../models/Video');
 
 
 // Welcome Page
@@ -59,20 +60,34 @@ conn.once('open', () => {
 // Dashboard
     router.get('/dashboard', ensureAuthenticated, async (req, res) => {
         const id = req.user._id;
-
+        const friends = req.user.friends;
         const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const article = await Article.find({ author: { $eq: id } });
+        const videos = await Video.find({videoOwner: {$eq: id }});
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
-        const nearbyUsers = await User.find()
+        const nearbyUsers = await User.find();
+
+      const allAvatars = await ProfileImage.find({friends: {$elemMatch: {_id: friends}}})
+
+        console.log(`All Avatars: ${allAvatars}`)
+        const getAvatars = await User.find()
+        console.log(getAvatars)
 
 /*         console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
         console.log("Users Posts: " + profileImages) */
 
         User.findById(id)
-        .populate('friends')
+        .populate({
+          path: 'friends',
+          model: 'User',
+          populate: {
+            path: 'user_avatar',
+            model: 'ProfileImage'
+          } 
+        })
         .populate('posts')
         .populate('user_images')
         .exec()
@@ -81,16 +96,19 @@ conn.once('open', () => {
                 profile,
                 profileImages,
                 avatarImage,
+                getAvatars,
+                allAvatars,
                 fname: req.user.fname,
                 id: req.user.id,
                 posts,
+                videos,
                 resume,
                 article,
                 nearbyUsers,
                 currentPageTitle: 'Dashboard'
                 })
                 /* console.log(`User Info: ${profile}`) */
-                console.log(`User Friends ---------------- ${profile.friends}`)
+               /*  console.log(`User Friends ---------------- ${profile.friends}`) */
                 /* console.log(`User Images: ${profileImages}`) */
 
             });
@@ -102,23 +120,37 @@ conn.once('open', () => {
       const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate('comments');
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
-      const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
       
       /* const findUserAvatar = await profileImages[0]._id; */
-
+      
       /* const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } }); */
-
       const friendIds = req.user.friends;
-      const friendsData = await User.find({_id: friendIds});
-      let friendIdArray = Array.from(friendsData)
+      
+      const postAuthor = () => {
+        for (i = 0; i < posts.length; i++) {
+          console.log(posts[i].author);
+        }}
+        const postAvatars = await Post.find({ "author": { "$in": friendIds } })
+        console.log(`Post Author: ${postAvatars}`)
+        const profileImages = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
+        const avatarImage = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
+        console.log(`Profile Images: ${profileImages}`)
+/*         console.log(`Avatar Images: ${avatarImage}`)
+      console.log(`Avatar Image ID's: ${avatarImage}`) */
+
 
       const comments = await Comment.find({fromPost: {$eq: posts._id} })
       const allPosts = await Post.find({ "author": { "$in": friendIds } })
       .sort({createdAt: 'desc'})
       .populate({
         path: 'author',
-        model: 'User'
+        model: 'User',
+        populate: {
+          path: 'user_avatar',
+          model: 'ProfileImage'
+        }
       })
+      
       .populate({
         path: 'comments',
         model: 'Comment',
@@ -128,17 +160,18 @@ conn.once('open', () => {
         }
       })
       .exec(function (err, data){
-        /* console.log(`Data: ${data}`) */
+        console.log(`Dashboard Wall Page Loaded...`)
+        /* console.log(`Profile Images: ${data}`) */
         if(err){
           return console.log(err);
         } else {
           return res.render('dashboard-wall', {
             currentPageTitle: 'YourSpread',
             data,
-            friendsData,
             allPosts,
             comments,
-            /* userAvatar, */
+            profileImages,
+            avatarImage,
             id
           })
         }

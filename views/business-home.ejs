@@ -47,6 +47,13 @@
 <p><%= company.company_website %></p>
 </div>
 </div>
+<div class="add-new-subpage">
+    <form action="/business/add-subpage" method="post">
+        <input type="text" name="subpage_name">
+        <input type="text" name="companyId" value="<%= company._id %>">
+        <button type="submit">Add Subpage</button>
+    </form>
+</div>
 <div class="row companySite-nav nav-bar">
     <ul>
         <li><a href="#">About</a></li>

@@ -145,41 +145,39 @@
 
         <h2 style="text-align: center; margin-bottom: 20px;">Your Friends</h2>
     <div class="row">
-        <div class="col-12 friends" style="margin-top: 70px;">
-            <div class="outer_cont_container">
-                <div class="cont_container">
-                    <div class="cont_inner_container">
+        <div class="find-new-friends">
                 <% profile.friends.forEach(function(friend){ %>
-                        <div id="userCard_<%=friend.id %>" class="card">
-                            <div class="face face1">
-                                <div class="content">
-                                    <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image">
-                                    <h3><%= friend.fname %> <%= friend.lname %></h3>
+                    <div class="possible-friend" style="box-shadow: 0 0 10px <%= friend.favColor1 %>;">
+                        <a href="/users/<%= friend.id %>">
+                            <div class="possible-friend-image" style="border: groove 1px <%= friend.favColor1 %>; border-top: none;">
+                        <% if (friend.user_image) { %>
+                                <img src="/image/<%= friend.user_images[0].img.data   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+                                <%} else { %>
+                                    <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="100%" style="box-shadow: 0 3px 10px <%= friend.favColor1 %>;" >
+                                    <% } %>
                                 </div>
-                            </div>
-                            <div class="face face2">
-                                <div class="content">
-                                    <p><%= friend.about %></p>
-                                        <a href="/users/<%= friend.id %>">Profile</a>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>; border-top: solid 1px <%= friend.favColor1 %>; border-bottom: solid 1px <%= friend.favColor1 %>;"><%= friend.fname %> <%= friend.lname %></h3>
+                        <p><%= friend.town %>, <%= friend.state %></p>
+                        <p><%= friend.country %></p>
+                        <small><%= friend.gender %></small>
+                        <p><%= friend.email %></p>
+                        
+                    </a>
+                </div>
                         <% }); %>
                     </div>
-                    </div>
-                    </div>
 
-            </div>
     </div>
     <div class="row">
         <h1 style="text-align: center; width: 100%;">Find New Friends</h1>
         <div class="find-new-friends">
             <% nearbyUsers.forEach(function(friend){ %>
                 <% if(nearbyUsers) { %>
-                <div class="possible-friend" style="background: <%= friend.favColor1 %>;">
-                    <a href="/users/<%= friend.id %>">
-
-                        <h3><%= friend.fname %> <%= friend.lname %></h3>
+            <div class="possible-friend-background"></div>
+            <a href="/users/<%= friend.id %>">
+                <div class="possible-friend" style="box-shadow: 0 0 10px <%= friend.favColor1 %>;">
+                        <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image" width="60px" style="box-shadow: 0 5px 10px <%= friend.favColor1 %>;">
+                        <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
                         <p><%= friend.town %>, <%= friend.state %></p>
                         <p><%= friend.country %></p>
                         <small><%= friend.gender %></small>
@@ -198,6 +196,7 @@
                         </div>
                     </div>
                     </div>
+            
                 <%} else { %>
                     <span></span> 
                     <% } %>
@@ -274,6 +273,49 @@
                     </li>
                 <% }); %>
             </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="nav-bar-outer">
+        <div class="nav-bar nav-bar-ws">
+            <form action="/upload-video" method="post" enctype="multipart/form-data">
+                <div class="custom-file">
+                    <input type="file" name="user_video" id="userVideo">
+                    <label for="userVideo" class="custom-file-label">Upload a Video</label>
+                </div>
+                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                <input type="text" name="videoName" id="videoName" placeholder="Video Title">
+                <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
+                <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
+                <input type="submit" value="Add Video" class="btn-block block-button" style="margin-top: 15px;">
+            </form>
+        </div>
+    </div>
+    <div class="iframe">
+        <iframe src="https://drive.google.com/file/d/19DL4xxP8yCV4-QN5CeXEy7SS6b32LVft/preview" width="420" height="360"></iframe>
+    </div>
+
+    <h2 style="text-align: center; margin-bottom: 20px;">Your Videos</h2>
+    <div class="outer_cont_container" style="margin-top: 150px;">
+        <div class="cont_container">
+            <div class="cont_inner_container">
+    <% videos.forEach(function(video){ %>
+            <div style="padding: 7px;">
+                <div> 
+                    <div> 
+                        <div class="med-image"> 
+                            <video src="/image/<%= video.video.data %>" controls></video>
+
+                        </div> 
+                    </div> 
+                </div> 
+                
+            </div>
+        
+        <% }); %>
+    
             </div>
         </div>
     </div>

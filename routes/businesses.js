@@ -50,7 +50,22 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
     console.log(`Company Info: ${company}`)
     res.render('business-home', {currentPageTitle: 'Business', company});
 })
+router.post('/add-subpage', ensureAuthenticated, (req, res) => {
+    const companyId = req.body.companyId;
+    const subpageName = req.body.subpage_name;
+    Company.findByIdAndUpdate(companyId, 
+        {$push: {subpages: subpageName}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+          if(err) {
+            console.log(err)
+          } else {
+            return
+          }
+        })
 
+        res.redirect(`/business/${companyId}`)
+})
 router.get('/:companyId/manage', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId).populate({
@@ -64,6 +79,7 @@ router.get('/:companyId/manage', async (req, res) => {
                 model: 'Resume'
             }
         }
+        .populate('employees')
     });
     const jobApplicant = await Company.findById(companyId);
     Company.findById(companyId)

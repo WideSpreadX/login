@@ -1,9 +1,13 @@
-body {
-    background: #111;
 
-
+body, html {
+     background: rgba(0, 0, 0, 0.699);
+    padding: 0;
+    margin: 0;
+    box-shadow: inset 0 0 50px rgb(54, 71, 82);
 }
-
+body {
+    min-height: 100vh;
+}
 .not-done {
     background: lime;
 }
@@ -56,6 +60,33 @@ body {
 }
 
 
+/* Video Background */
+.video-background {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: -1000;
+}
+.video-background video {
+    width: 100%;
+    height: 100vh;
+    box-shadow: 0 0 100px #000;
+    
+}
+.welcome-background-video {
+    overflow: hidden;
+    text-align: center;
+}
+.welcome-background-video video {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 0 100px #000;
+}
 
 /* Dropdown */
 .dropdown {
@@ -166,8 +197,10 @@ body {
     transition: ease-in 0.3s;
 }
 .container {
+    padding: 0;
     padding-top: 105px;
     padding-bottom: 40px;
+    background: transparent;
 }
 h1,h2,h3,h4,h5,h6 {
     color: #ccc;
@@ -309,12 +342,13 @@ h1,h2,h3,h4,h5,h6 {
     margin-top: 10px;
     margin-bottom: 20px;
     border-radius: 10px;
-    background: #111;
+    backdrop-filter: blur(2px);
     transition: ease-in 0.6s;
     
 }
 .nav-bar-outer:hover {
-    background: #000;
+    background: rgba(0, 0, 0, 0.404);
+    backdrop-filter: blur(4px);
     transition: ease-in 0.6s;
 }
 .nav-bar {
@@ -326,11 +360,12 @@ h1,h2,h3,h4,h5,h6 {
     padding: 20px;
     margin-top: 0;
     border-radius: 10px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 4px lightskyblue, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
     transition: ease-in 0.4s;
     
 }
 .nav-bar-ws:hover {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px lightskyblue, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
     transition: ease-in 0.4s;
 }
 .red {
@@ -585,7 +620,19 @@ h1,h2,h3,h4,h5,h6 {
 .med-image img {
     border-radius: 10px;
 }
-
+.med-image video {
+    border-radius: 10px;
+}
+.iframe {
+    text-align: center;
+    padding: 5px;
+}
+.iframe iframe {
+    border: none;
+    outline: none;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    border-radius: 15px;
+}
 .spreadlink {
     color: #fff;
     text-decoration: none;
@@ -772,7 +819,7 @@ h1,h2,h3,h4,h5,h6 {
     min-height: 160px;
     margin: -10px;
     margin-left: -40px;
-    opacity: 0.5;
+    opacity: 0.7;
     transition: ease-in 0.4s;
 }
 .public-profile-avatar {
@@ -803,27 +850,63 @@ h1,h2,h3,h4,h5,h6 {
     max-width: 90vw;
     overflow-x: scroll;
     padding: 20px;
-    height: 300px;
+    height: 370px;
+    margin: 0 auto;
     margin-bottom: 100px;
+    padding-right: 80px;
+}
+.possible-friend-image {
+    width: 60px;
+    margin: 0 auto;
+    height: 60px;
+    margin-bottom: 15px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.possible-friend-background {
+    filter: blur(4px);
+    min-height: 300px;
+    padding: 0;
+    margin: 0;
 }
 .possible-friend {
-    background: rgba(204, 204, 204, 0.664);
-    padding: 20px;
+    background: rgba(204, 204, 204, 0.199);
+    padding-bottom: 20px;
+    padding-top: 0;
     min-width: 300px;
     border-radius: 20px;
-    padding: 20px;
-    margin-right: 10px;
+    margin-right: 20px;
+    text-align: center;
     opacity: 0.6;
     box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    transition: ease-in 0.3s;
+    backdrop-filter: blur(2);
 }
 .possible-friend:hover {
     opacity: 1.0;
+    transition: ease-in 0.5s;
 }
 .possible-friend a {
     text-decoration: none;
 }
+.possible-friend img {
+
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.possible-friend p {
+    color: #ccc;
+}
+.possible-friend small {
+    color: #aaa;
+}
 .possible-friend h3 {
-    text-shadow: 0 0 3px #000;
+    padding: 10px;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.39);
+    background: rgba(0, 0, 0, 0.685);
+    backdrop-filter: blur(6px);
+    border-radius: 2px;
 }
 .user-avatar img:hover {
     opacity: 1.0;
@@ -1732,4 +1815,19 @@ h1,h2,h3,h4,h5,h6 {
     .none {
         display: none;
     }
+
+    /* Video Background */
+.video-background {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: -1000;
+}
+.video-background video {
+    height: 100vh;
+    box-shadow: 0 0 100px #000;
+    
+}
 }  

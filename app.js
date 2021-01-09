@@ -13,6 +13,7 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const User = require('./models/User');
 const profileImage = require('./models/ProfileImage');
+const video = require('./models/Video');
 const avatar = require('./models/Avatar');
 const fs = require('fs');
 
@@ -162,9 +163,43 @@ app.post('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
     } 
     else { 
         item.save(); 
-        console.log(`Image Owner: ${imageOwner} Image Data: ${req.file}`);
+        console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
         User.findByIdAndUpdate(imageOwner,
           {$push: {user_avatar: req.file.id}},
+          {safe: true, upsert: true},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect('/dashboard'); 
+    } 
+}); 
+});
+
+
+/* Video Upload */
+app.post('/upload-video', upload.single('user_video'), (req, res) => {
+  const videoOwner = req.user._id;
+  const obj = { 
+    videoOwner: req.user._id, 
+    video: { 
+        data: req.file.filename,
+        contentType: 'video/mp4'
+    } 
+} 
+  video.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Video Owner: ${videoOwner} Video Data: ${obj.video.data}`);
+        User.findByIdAndUpdate(videoOwner,
+          {$push: {user_video: req.file.id}},
           {safe: true, upsert: true},
           function(err, doc) {
               if(err) {
