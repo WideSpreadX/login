@@ -71,9 +71,9 @@ conn.once('open', () => {
 
       const allAvatars = await ProfileImage.find({friends: {$elemMatch: {_id: friends}}})
 
-        console.log(`All Avatars: ${allAvatars}`)
+        /* console.log(`All Avatars: ${allAvatars}`) */
         const getAvatars = await User.find()
-        console.log(getAvatars)
+        console.log("Dashboard Page")
 
 /*         console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
