@@ -31,6 +31,8 @@
     </div>
 </div>
 <h1><%= currentPageTitle %></h1>
+<h2><%= thisClass.name %></h2>
+
 
 <div class="nav-bar">
     <a href="/academy/<%= thisClass.id %>/flashcards">Flashcards</a>
@@ -43,7 +45,7 @@
             <div class="learning-point">
                 <h5 class="collapsible-learning-point" ><%= point.section_header %> <span><i class="fas fa-angle-double-down"></i></span></h5>
                 <p><%= point.section_body %></p>
-                <small><%= point.section_notes %></small>
+                <p style="color: blue;"><%= point.section_notes %></p>
                 <div class="learning-point-actions">
                     <p><span><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="#"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
                 </div>
