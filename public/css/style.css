@@ -357,7 +357,7 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 .nav-bar-ws {
-    padding: 20px;
+    padding: 5px;
     margin-top: 0;
     border-radius: 10px;
     box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 4px lightskyblue, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
@@ -1845,45 +1845,62 @@ h1,h2,h3,h4,h5,h6 {
         width: 100vw;
         min-height: 100vh;
     }
+    .widespread-header {
+        padding-left: 0;
+        box-shadow: 0 0 10px lightskyblue;
+        background-image: linear-gradient( black, rgba(0, 0, 0, 0.781), rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.336));
+    }
     .logo {
-        width: 100%;
+        width: 95%;
         text-align: center;
+    }
+    .logo h1 {
+        left: 0;
+        padding-left: 0;
+    }
+    .widespread-header .logo h1 a {
+        margin-left: 0;
     }
     .logo a {
         color: rgba(135, 206, 250, 0.795);
         text-shadow: 0 0 3px #fff;
+        margin-left: 0;
+
     }
     .user-menu {
         display: none;
     }
+    .inner-container {
+        background: #000;
+        box-shadow: inset 0 0 30px #000;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
     /* Video Background */
+    .video-background {
+        z-index: -1000;
+        overflow: hidden;
+    }
     #vidBackground {
         position: fixed;
         right: 0;
-        bottom: 0;
-        min-width: 100%;
+        top: 0;
         min-height: 100vh;
-        z-index: -1000;
+        min-width: 375vw;
     }
-.video-background {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: center;
-    z-index: -1000;
 
-}
-.video-background video {
-    height: 100vh;
-    box-shadow: 0 0 100px #000;
-    
-}
 .create-account {
     width: 90vw;
-    padding: 0;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 1px;
     padding-top: 30px;
     padding-bottom: 30px;
+    border-radius: 15px;
     box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
     transition: ease-in 0.3s;
     backdrop-filter: blur(2);
@@ -1896,22 +1913,33 @@ h1,h2,h3,h4,h5,h6 {
 }
 .create-account p {
     padding: 10px;
+    margin: 0 auto;
     margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.39);
+    color: rgba(255, 255, 255, 0.795);
     background: rgba(0, 0, 0, 0.685);
     backdrop-filter: blur(6px);
     border-radius: 2px;
     border-top: solid 1px lightskyblue;
     border-bottom: solid 1px lightskyblue;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.616), inset 0 0 8px #000;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.616);
 }
 .create-account img {
     margin-bottom: 20px;
     filter: drop-shadow(0 0 10px rgba(33, 192, 255, 0.705));
+    opacity: 0.8;
+}
+.create-account-btns {
+    padding: 10px;
+}
+.create-account-btns a {
+    border-radius: 8px;
 }
 .blur {
-    background: rgba(204, 204, 204, 0.63);
+    background: rgba(19, 18, 18, 0.63);
     backdrop-filter: blur(2px);
 }
+
 .card {
     background: lime;
 }
