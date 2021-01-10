@@ -1850,6 +1850,9 @@ h1,h2,h3,h4,h5,h6 {
      transition: ease-in 0.4s;
      box-shadow: 0 0 10px white;
  }
+ .thumbMenuContainer {
+    display: none;
+}
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
     body {
@@ -1872,6 +1875,9 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: 0 0 100px #000;
     
 }
+.thumbMenuContainer {
+    display: none;
+}
 }  
 /* On screens that are 500px or less, set the background color to blue */
 @media screen and (max-width: 500px) {
@@ -1880,15 +1886,18 @@ h1,h2,h3,h4,h5,h6 {
     .none {
         display: none;
     }
-     .outerThumbContainer {
+    .thumbMenuContainer {
+    }
+    .outerThumbContainer {
         position: fixed;
         bottom: -20px;
         right: -20px;
         width: 100px;
         height: 100px;
         border-radius: 50%;
-     }
-     .thumbMenuContainer {
+    }
+    .thumbMenuContainer {
+        display: contents;
         bottom: -20px;
         right: -20px;
         width: 100px;
