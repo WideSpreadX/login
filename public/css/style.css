@@ -1505,7 +1505,43 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: 20px;
     box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
 }
-
+.collapsible-learning-point {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-radius: 15px;
+}
+.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.active, .collapsible-learning-point:hover {
+    background-color: #555;
+  }
+.learning-point p, .learning-point small {
+    padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: none;
+    overflow: hidden;
+    background-color: rgba(88, 88, 88, 0.521);
+    backdrop-filter: blur(2px);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #fff;
+    transition: 0.4s ease-out;
+}
+.quiz {
+    background: lime;
+    min-height: 50px;
+    padding-bottom: 30px;
+}
 .create-flashcard {
     box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
     border-radius: 15px;
