@@ -16,12 +16,24 @@
         </div>
     </div>
 </div>
-
+<h1 style="text-align: center; margin-top: 30px;">Update Your Profile</h1>
 <div class="row">
 <div class="update-profile col-12">
 
-
-
+    <div class="user-background-image-form">
+        <h3>Change Your Background Image</h3>
+        <form action="/upload-background-image" method="post" enctype="multipart/form-data">
+            <div class="custom-file-background-image">
+                <input type="file" name="user_background_image" id="userBackgroundImage">
+                <label for="userProfileImage" class="custom-file-label-choose-background-image">Choose Background Image</label>
+            </div>
+            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+            <div class="custom-file-background-image-button">
+                <input type="submit" value="Change" class="" style="margin-top: 15px;">
+            </div>
+        </form>
+    </div>
+    <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 <form action="/users/update-profile?_method=PATCH" method="POST">
 
     <h3>About Me Section</h3>

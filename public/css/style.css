@@ -338,6 +338,17 @@ h1,h2,h3,h4,h5,h6 {
     line-height: 30px;
     background: transparent;
 }
+.user-background-image img {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #111;
+    overflow-x: hidden;
+    z-index: -1;
+}
+
 .nav-bar-outer {
     margin-top: 10px;
     margin-bottom: 20px;

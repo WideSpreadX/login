@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 });
 
 const db = require('../config/keys').MongoURI;
+const UserBackgroundImage = require('../models/UserBackgroundImage');
 const conn = mongoose.createConnection(db)
 let gfs;
 conn.once('open', () => {
@@ -68,7 +69,7 @@ conn.once('open', () => {
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         const nearbyUsers = await User.find();
-
+        const backgroundImage = await UserBackgroundImage.findOne({ imageOwner: { $eq: id } });
       const allAvatars = await ProfileImage.find({friends: {$elemMatch: {_id: friends}}})
 
         /* console.log(`All Avatars: ${allAvatars}`) */
@@ -96,6 +97,7 @@ conn.once('open', () => {
                 profile,
                 profileImages,
                 avatarImage,
+                backgroundImage,
                 getAvatars,
                 allAvatars,
                 fname: req.user.fname,
@@ -107,7 +109,7 @@ conn.once('open', () => {
                 nearbyUsers,
                 currentPageTitle: 'Dashboard'
                 })
-                /* console.log(`User Info: ${profile}`) */
+                console.log(`User Info: ${backgroundImage}`)
                /*  console.log(`User Friends ---------------- ${profile.friends}`) */
                 /* console.log(`User Images: ${profileImages}`) */
 

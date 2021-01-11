@@ -61,6 +61,7 @@ const UserSchema = new mongoose.Schema({
         pinterest: String
     },
     user_profile_image: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
+    user_background_image: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
     user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
     user_avatar: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
     avatar: String,

@@ -1,4 +1,10 @@
-
+<div class="user-background-image">
+    <% if (backgroundImage) { %>
+        <img src="/image/<%= backgroundImage.img.data %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+        <%} else { %>
+        <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+        <% } %>
+</div>
 <div class="nav-bar-outer">
     <div class="nav-bar nav-bar-ws">
         <div class="row">
@@ -49,7 +55,7 @@
                     <input type="submit" value="Change" class="" style="margin-top: 15px;">
                 </div>
             </form>
-</div>
+        </div>
 </div>
 </div>
 <div class="user-avatar">
