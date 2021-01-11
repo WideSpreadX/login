@@ -64,7 +64,14 @@
                                 <span><%= post.likes %></span>
                             </form>
                         </span>
-                        <p><span><a href="#"></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="/dashboard/wall/<%= post.id %>/comment"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
+                        <p><span><a href="#"></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="/dashboard/wall/<%= post.id %>/comment"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span>
+                            <span style="float: right"><% if(id == post.author.id){ %>
+                            <a style="color: #fff;" href="/users/post/edit/<%= post.id%>"><small>Edit Post</small></a>
+                            <a href="/users/post/<%= post.id%>">&times;</a>
+                            <% } else { %>
+                            <p> Not Your Post</p>
+                            <% } %></span>
+                        </p>
                     </div>
                           
 

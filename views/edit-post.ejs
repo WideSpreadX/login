@@ -1,0 +1,7 @@
+
+
+<form action="/users/post/edit/<%= thisPost.id%>?_method=PATCH" method="POST">
+    <textarea name="postBody" id="" cols="30" rows="10"><%= thisPost.postBody %></textarea>
+    <input type="text" value="<%= thisPost.id %>">
+    <button type="submit">Update Post</button>
+</form>

@@ -117,7 +117,6 @@ conn.once('open', () => {
 
     router.get('/dashboard/wall', ensureAuthenticated, async (req, res) => {
       const id = req.user._id;
-      const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate('comments');
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
       
@@ -125,20 +124,25 @@ conn.once('open', () => {
       
       /* const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } }); */
       const friendIds = req.user.friends;
+      const posts = await Post.find({ "author": { "$in": friendIds } }).sort({createdAt: 'desc'}).populate('comments');
       
+      let checkAuthor = []
       const postAuthor = () => {
         for (i = 0; i < posts.length; i++) {
-          console.log(posts[i].author);
+          checkAuthor = posts[i].author
         }}
+        
         const postAvatars = await Post.find({ "author": { "$in": friendIds } })
-        console.log(`Post Author: ${postAvatars}`)
+        /* console.log(`Post Author: ${postAvatars}`) */
         const profileImages = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
         const avatarImage = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
-        console.log(`Profile Images: ${profileImages}`)
-/*         console.log(`Avatar Images: ${avatarImage}`)
-      console.log(`Avatar Image ID's: ${avatarImage}`) */
-
-
+/*         console.log(`Profile Images: ${profileImages}`)
+        console.log(`All Posts: ${posts}`) */
+        
+        /*         console.log(`Avatar Images: ${avatarImage}`)
+        console.log(`Avatar Image ID's: ${avatarImage}`) */
+        
+        
       const comments = await Comment.find({fromPost: {$eq: posts._id} })
       const allPosts = await Post.find({ "author": { "$in": friendIds } })
       .sort({createdAt: 'desc'})
@@ -149,8 +153,7 @@ conn.once('open', () => {
           path: 'user_avatar',
           model: 'ProfileImage'
         }
-      })
-      
+      }) 
       .populate({
         path: 'comments',
         model: 'Comment',
@@ -161,10 +164,10 @@ conn.once('open', () => {
       })
       .exec(function (err, data){
         console.log(`Dashboard Wall Page Loaded...`)
-        /* console.log(`Profile Images: ${data}`) */
         if(err){
           return console.log(err);
         } else {
+          /* console.log(`id: ${id} === post.author._id ${postAuthor(posts)}`) */
           return res.render('dashboard-wall', {
             currentPageTitle: 'YourSpread',
             data,
@@ -172,7 +175,8 @@ conn.once('open', () => {
             comments,
             profileImages,
             avatarImage,
-            id
+            id,
+            checkAuthor,
           })
         }
       }); 

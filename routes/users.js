@@ -347,7 +347,7 @@ router.get('/posts/:postId', ensureAuthenticated, async (req, res) => {
 
 
 
-// Deleting Posts - ONLY FOR DASHBOARD
+// See Post
 router.get('/post/:postId', (req, res) => {
     const post = {
         id: req.params.postId,
@@ -356,6 +356,28 @@ router.get('/post/:postId', (req, res) => {
     const id = req.user.id;
     res.render('delete-post', {post, id})
 })
+// Editing Posts
+router.get('/post/edit/:postId', ensureAuthenticated, async (req, res) => {
+    const postId = req.params.postId;
+    const thisPost = await Post.findById(postId);
+
+    const id = req.user.id;
+    res.render('edit-post', {thisPost})
+})
+
+router.patch('/post/edit/:postId', async (req, res) => {
+    try {
+    const post = req.params.postId;
+    const updates = req.body;
+    const options = {new: true};
+    await Post.findByIdAndUpdate(post, updates, options);
+    res.redirect('/dashboard/wall')
+} catch (error) {
+    console.log(error);
+}
+
+});
+// Deleting Posts
 router.delete('/post/:postId', async (req, res) => {
     const post = req.params.postId;
 
