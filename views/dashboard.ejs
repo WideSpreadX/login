@@ -5,31 +5,9 @@
         <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
         <% } %>
 </div>
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <a href="/socialspread/<%= id %>">SocialSpread</a>
-        <a href="/flexfloor">FlexFloor</a>
-        <a href="/spreadshield">SpreadShield</a>
-    </div>
-</div>
 <br>
 <br>
 <div class="row">

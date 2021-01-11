@@ -1,0 +1,64 @@
+<style>
+    .main-header-site-menu-container {
+        background: rgba(255, 255, 255, 0.308);
+        backdrop-filter: blur(2px);
+        border-radius: 12px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .main-header-site-menu-inner {
+        padding: 10px;
+    }
+    .main-header-site-menu-inner a {
+        padding: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.733);
+        transition: ease-in 0.4s;
+    }
+    .main-header-site-menu-inner a:hover {
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+        transition: ease-in 0.2s;
+    }
+    .logout-button {
+        background: rgba(255, 0, 0, 0.5);
+        border-radius: 8px;
+        color: #fff;
+        text-shadow: 0 0 3px red;
+        text-decoration: none;
+        transition: ease-in 0.4s;
+    }
+    .logout-button:hover {
+        color: red;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.603);
+        box-shadow: inset 0 0 10px red, 0 0 10px red;
+        transition: ease-in 0.2s;
+    }
+    @media screen and (max-width: 500px) {
+        .main-header-site-menu-container {
+        background: lime;
+        display: none;
+        }
+    }
+</style>
+<div class="main-header-site-menu-container">
+    <div id="mainHeaderSiteMenu">
+        <div class="main-header-site-menu-inner">
+            <div class="row ">
+                <div class="col-10">
+                        <a href="/dashboard/wall">YourSpread</a>
+                        <a href="/academy">Academy</a>
+                        <a href="/business">Business</a>
+                        <a href="/news">News</a>
+                        <a href="/shopping">Shopping</a>
+                        <a href="/wellness">Wellness</a>
+                </div>
+                <div class="col-2">
+                        <a href="/users/logout" class="logout-button">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
