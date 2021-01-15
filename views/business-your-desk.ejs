@@ -1,0 +1,56 @@
+<style>
+    @media screen and (max-width: 500px) {
+        .resume-new {
+            display: block;
+        }
+        .resume-new a {
+            display: block;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.329);
+            backdrop-filter: blur(2px);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.616);
+            color: rgba(0, 255, 0, 0.616);
+        }
+        .resume-list {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.356);
+            height: 50vh;
+            max-height: 50vh;
+            overflow-y: scroll;
+            border-radius: 10px;
+        }
+        .resume-list-item {
+            background: rgba(255, 255, 255, 0.329);
+            backdrop-filter: blur(2px);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: groove 1px rgba(135, 206, 250, 0.555);
+        }
+    }
+</style>
+<div class="current-page-title">
+    <h1><%= currentPageTitle %></h1>
+    <hr>
+</div>
+
+    <div class="resume-new">
+        <a class="btn btn-dark" href="/users/new-resume/<%= userData.id %>">Add New Resume</a>
+    </div>
+        
+    <div class="resume-list">
+
+        <% userResume.forEach(function(resume){ %>
+            <div class="resume-list-item">
+                
+                <div style="padding: 7px;">
+                    <div>
+                        <a href="/users/resume/<%= resume.id %>"><h5><%= resume.resume_name %></h5></a>
+                    </div>  
+                    
+                </div>
+            </div>
+            <% }); %>
+        </div>

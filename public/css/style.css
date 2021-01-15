@@ -223,8 +223,8 @@ h1,h2,h3,h4,h5,h6 {
     position: fixed;
     z-index: 10000;
     top: -10px;
-    left: 20px;
-    right: 20px;
+    width: 90vw;
+    margin-left: 5vw;
     height: 85px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -400,7 +400,16 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: 10px;
     text-align: center;
 }
-
+.current-page-title {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.current-page-title hr{
+    width: 60%;
+    margin: 0 auto;
+    border: solid 1px lightskyblue
+}
 
 .nav-bar a:hover {
     box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
@@ -493,7 +502,6 @@ h1,h2,h3,h4,h5,h6 {
 
 .user-profile-image-form {
     width: 100%;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
     text-align: center;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -511,7 +519,6 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
 }
 .custom-file-label-choose-profile-image {
-    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 4px rgba(135, 206, 250, 0.582);
     cursor: pointer;
     width: 100%;
     padding: 5px;
@@ -538,13 +545,7 @@ h1,h2,h3,h4,h5,h6 {
 .custom-file-profile-image-button input {
     outline: none;
     border: none;
-    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
-    padding: 10px;
-    margin-left: -5px;
-    margin-top: 0;
-    border-radius: 10px;
-    background: rgb(45, 84, 109);
-    transition: ease-in 0.5s;
+
 }
 .custom-file-profile-image-button input:hover {
     background: rgb(73, 170, 230);
@@ -627,7 +628,6 @@ h1,h2,h3,h4,h5,h6 {
 .med-image {
     padding: 10px;
     border-radius: 10px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
 }
 .med-image img {
     border-radius: 10px;
@@ -823,8 +823,8 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: 50%;
     margin: 0 auto;
     margin-bottom: 30px;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     overflow: hidden;
     box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
     padding: 10px;
@@ -1893,7 +1893,8 @@ h1,h2,h3,h4,h5,h6 {
 }  
 /* On screens that are 500px or less, set the background color to blue */
 @media screen and (max-width: 500px) {
-    body {
+    body,html {
+        overflow-x: hidden;
     }
     .none {
         display: none;
@@ -1925,133 +1926,7 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
 
 }
-
-    .thumbMenuContainer {
-    }
-    .outerThumbContainer {
-        position: fixed;
-        bottom: -20px;
-        right: -20px;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-    }
-    .thumbMenuContainer {
-        display: contents;
-        bottom: -20px;
-        right: -20px;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-    }
-    .thumbMenuContainer>h1 {
-        line-height: 90px;
-        padding-left: 30px;
-    }
-    .thumbMenuContainer>h1>i {
-        text-align: center;
-
-    }
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        background: purple;
-        z-index: 200;
-    }
-    
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        min-width: 100px;
-        z-index: 1;
-        border: solid 1px lightskyblue;
-        box-shadow: inset 0 0 30px lightskyblue, -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
-        background: rgba(0, 0, 0, 0.377);
-        backdrop-filter: blur(1px);
-        border-radius: 20px;
-        transition: ease-in 0.3s;
-    }
-    .dropdown-content a {
-        color: black;
-        background: transparent;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        z-index: 2;
-        transition: ease-in 0.3s;
-    }
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    .dropdown-menu {
-        position: relative;
-        display: inline-block;
-        right: 100px;
-        top: 0;
-        background: transparent;
-    }
-    .dropbtn-menu {
-        background: rgba(255, 255, 255, 0.39);
-        backdrop-filter: blur(2px); 
-        box-shadow: inset 0 0 10px lightskyblue, -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
-        outline: none;
-        border: none;
-        transition: ease-in 0.1s;
-    }
-    
-    .dropdown-content-menu {
-        display: none;
-        position: absolute;
-        min-width: 100px;
-        z-index: 1;
-        border: solid 1px lightskyblue;
-        box-shadow: inset 0 0 30px lightskyblue, 0 0 10px lightskyblue;
-        background: rgba(0, 0, 0, 0.377);
-        backdrop-filter: blur(1px);
-        border-radius: 20px;
-        transition: ease-in 0.1s;
-        padding-top: 10px;
-        padding-left: 10px;
-    }
-    .dropbtn-menu:hover {
-        border-radius: 50%;
-        background: lightskyblue;
-        transition: ease-in 0.1s;
-        outline: none;
-    }
-    .dropdown-content-menu button {
-        box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
-        background: transparent;
-        margin-right: 50px;
-    }
-    .dropdown-content-menu button:active {
-        outline: none;
-    }
-    .dropdown-menu:hover .dropdown-content-menu {
-        transform: translateY(-675px);
-        display: block;
-        animation-delay: 0.1s;
-    }
-    .dropdown-content-menu a {
-        color: rgba(204, 204, 204, 0.699);
-        background: transparent;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        z-index: 1;
-        font-size: 2rem;
-        transition: ease-in 0.5s;
-    }
-    .dropdown-content-menu a:hover {
-        color: #fff;
-        text-shadow: 0 0 3px lightskyblue;
-        background: transparent;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        z-index: 2;
-        transition: ease-in 0.3s;
-    }
+     
     .container {
         width: 90vw;
         min-width: 90vw;

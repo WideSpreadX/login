@@ -1,41 +1,44 @@
-<div class="row">
-    <div class="col-8">
-    </div>
-
-</div>
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        
-        <a href="/flexfloor">FlexFloor</a>
-        <a href="/spreadshield">SpreadShield</a>
-    </div>
-</div>
+<style>
+    .create-spread-post {
+        margin-bottom: 30px;
+    }
+    .create-spread-post h5 {
+        text-align: center;
+    }
+    .create-spread-post textarea {
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.295);
+        backdrop-filter: blur(2px);
+        color: #fff;
+    }
+    .create-spread-post textarea:active {
+        border-radius: 10px;
+        box-shadow: inset 0 0 10px lightskyblue;
+        color: #fff;
+    }
+    .socialspread-posts {
+    }
+    .socialspread-posts h5 {
+        text-align: center;
+    }
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
 <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">SocialSpread</h2>
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 
 
 
+<div class="create-spread-post">
+    <h5>Spread Something</h5>
+    <form action="/users/<%= id %>/post" method="POST">
+        <textarea required name="postBody" id="postBody" class="form-control"></textarea>
+        <button class="btn-block block-button spread-it" type="submit">Spread It</button>
+    </form>
+</div>
 
-
-
+<div class="socialspread-posts">
+<h5>Recent Spreads</h5>
 <% data.forEach(function(post){ %>
     <div class="outer-post-container">
                 <div class="ss-post">
@@ -120,3 +123,4 @@
                 </div>
 
 <% }); %>
+</div>

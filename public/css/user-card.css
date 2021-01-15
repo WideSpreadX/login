@@ -2,7 +2,6 @@
 
 .cont_container {
     width: 100%;
-    padding-bottom: 50px;
     margin-top: -150px;
 }
 .cont_inner_container{
@@ -11,7 +10,6 @@
     min-width: 100%;
     overflow-x: scroll;
     padding: 20px;
-    margin-bottom: 100px;
 }
 .cont_container .card{
     position: relative;

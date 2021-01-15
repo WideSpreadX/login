@@ -209,6 +209,7 @@ router.post('/new-resume', ensureAuthenticated, async (req, res) => {
             
             const resume = new Resume({
                 resumeOwner: userId,
+                resume_name: req.body.resume_name,
                 bio: req.body.bio,
                 objective: req.body.objective,
                 "education.school": req.body.educationSchool,
@@ -249,7 +250,7 @@ router.post('/new-resume', ensureAuthenticated, async (req, res) => {
                     }
                 }
                 )
-            res.redirect('/dashboard');
+            res.redirect('/business/your-desk');
         })
         router.get('/add-to-resume/education/:resumeId', ensureAuthenticated, async (req, res) => {
             const user = req.user._id;
@@ -315,7 +316,7 @@ router.post('/:id/post', ensureAuthenticated, (req, res) => {
         author: userId
     })
     post.save()
-    res.redirect('/dashboard')
+    res.redirect('/dashboard/wall')
 
 });
 

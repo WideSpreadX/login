@@ -43,6 +43,12 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
     res.redirect('/business');
 })
 
+ router.get('/your-desk', async (req, res) => {
+    const thisUser = req.user.id;
+    const userData = await User.findById(thisUser);
+    const userResume = await Resume.find({resumeOwner: {$eq: thisUser} });
+    res.render('business-your-desk', {currentPageTitle: 'Your Business Desk', userData, userResume});
+})
  router.get('/:companyId', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);

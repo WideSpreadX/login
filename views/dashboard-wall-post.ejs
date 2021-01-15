@@ -4,30 +4,8 @@
 
 </div>
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        
-        <a href="/flexfloor">FlexFloor</a>
-        <a href="/spreadshield">SpreadShield</a>
-    </div>
-</div>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
 <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">SocialSpread - <%= data.author.fname %> <%= data.author.lname %></h2>
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
     

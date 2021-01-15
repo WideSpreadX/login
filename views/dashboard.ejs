@@ -1,3 +1,101 @@
+<style>
+.user-profile-image-form {
+    max-width: 200px;
+}
+.user-avatar {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    padding: 10px;
+}
+.user-avatar img {
+    min-width: 160px;
+    min-height: 160px;
+    margin: -10px;
+    margin-left: -40px;
+    opacity: 0.7;
+    transition: ease-in 0.4s;
+}
+@media screen and (max-width: 500px) {
+    .user-profile-image-form {
+        max-width: 85vw;
+        margin-left: 2.5vw;
+        display: inline-flex;
+        position: relative;
+        background: rgba(255, 255, 255, 0.308);
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        backdrop-filter: blur(2px);
+        padding: 10px;
+        color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+    }
+    .custom-file-profile-image {
+        width: 55vw;
+        border: solid 1px white;
+        border-radius: 10px;
+    }
+    .custom-file-profile-image input {
+    }
+    .custom-file-profile-image {
+        width: 55vw;
+        
+    }
+    .custom-file-profile-image-button {
+        width: 20vw;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.432);
+        backdrop-filter: blur(4px);
+        outline: none;
+        border: none;
+    }
+    .user-profile-routes {
+        background: rgba(255, 255, 255, 0.178);
+        width: auto;
+        margin: 0 auto;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+    }
+    .user-profile-routes a {
+        margin-left: 5px;
+        background: rgba(255, 255, 255, 0.377);
+        backdrop-filter: blur(4px);
+        width: 45%;
+        border-radius: 10px;
+
+    }
+    .user-images {
+    }
+    .user-images h1 {
+        text-align: center;
+        padding-top: 20px;
+        border-top: solid 1px lightskyblue;
+    }
+    .med-image {
+        background: rgba(255, 255, 255, 0.288);
+        backdrop-filter: blur(2px);
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+    }
+
+    .friend-container {
+        margin-top: 20px;
+    }
+}
+</style>
+
 <div class="user-background-image">
     <% if (backgroundImage) { %>
         <img src="/image/<%= backgroundImage.img.data %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
@@ -19,23 +117,8 @@
 
 <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
-<div class="row">
-    <div class="col-12">
 
-        <div class="user-profile-image-form">
-            <form action="/upload-avatar" method="post" enctype="multipart/form-data">
-                <div class="custom-file-profile-image">
-                    <input type="file" name="user_profile_image" id="userProfileImage">
-                    <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
-                </div>
-                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                <div class="custom-file-profile-image-button">
-                    <input type="submit" value="Change" class="" style="margin-top: 15px;">
-                </div>
-            </form>
-        </div>
-</div>
-</div>
+<!-- Profile Image -->
 <div class="user-avatar">
     <% if (avatarImage) { %>
         <img src="/image/<%= avatarImage.img.data  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
@@ -43,90 +126,71 @@
         <img src="images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
         <% } %>
 </div>
-    <div class="row">
-        <div class="col-5">
-        <div class="nav-bar-outer">
-            <div class="nav-bar nav-bar-ws" style="padding: 25px;">
-                <div class="row">
-                    <div class="col-6">
-                        <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
-                    </div>
-                    <div class="col-6">
-                        <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
-                            </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-7">
-            <div class="nav-bar-outer">
-                <div class="nav-bar nav-bar-ws">
-                    <form action="/upload" method="post" enctype="multipart/form-data">
-                        <div class="custom-file">
-                            <input type="file" name="user_image" id="userImage">
-                            <label for="userImage" class="custom-file-label">Upload an Image</label>
+
+<!-- Profile Image -->
+        <div class="user-profile-image-form">
+            
+            <form action="/upload-avatar" method="post" enctype="multipart/form-data">
+                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                        <div class="custom-file-profile-image">
+                            <input type="file" name="user_profile_image" id="userProfileImage">
+                            <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
                         </div>
-                        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                        <input type="submit" value="Add Image" class="btn-block block-button" style="margin-top: 15px;">
-                    </form>
-                </div>
+                        
+                        <div>
+                            <button type="submit" class="custom-file-profile-image-button">Change</button>
+                        </div>
+                </form>
             </div>
-        </div>
-    </div>
-
-<div class="row">
-<div class="col-2" style="padding-top: 10px;">
-
-    <div class="nav-bar-outer">
-        <div class="nav-bar nav-bar-ws">
-        <a class="btn btn-dark" href="/users/new-resume/<%= id %>">Add Resume</a>
         
-    </div>
+
+<div class="user-profile-routes">
+    <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
+    <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
 </div>
-</div>
+<div class="user-images">
 
-<div class="col-10 resume-nav" style="padding-top: 10px;">
-    <div class="nav-bar-outer">
-        <div class="nav-bar nav-bar-ws">
-    <% resume.forEach(function(resume){ %>
-        <li style="list-style: none;">
-            <div style="padding: 7px;">
-                <div>
-                        <a href="/users/resume/<%= resume.id %>">See This Resume</a>
-                </div>  
-                
-            </div>
-        </li>
-        <% }); %>
-        </div>
-    </div>
-    </div>
-        </div>
+    <hr>
+    <h1>Your Photos</h1>
 
-
-        <h2 style="text-align: center; margin-bottom: 20px;">Your Photos</h2>
-        <div class="outer_cont_container" style="margin-top: 150px;">
-            <div class="cont_container">
-                <div class="cont_inner_container">
-        <% profileImages.forEach(function(image){ %>
-                <div style="padding: 7px;">
-                    <div> 
+    <div class="outer_cont_container" style="margin-top: 150px;">
+        <div class="cont_container">
+            <div class="cont_inner_container">
+                <% profileImages.forEach(function(image){ %>
+                    <div style="padding: 7px;">
                         <div> 
-                            <div class="med-image"> 
-                                <img src="/image/<%= image.img.data %>" width="300px" height="300px"> 
-    
+                            <div> 
+                                <div class="med-image"> 
+                                    <img src="/image/<%= image.img.data %>" width="300px" height="300px"> 
+                                    
+                                </div> 
                             </div> 
                         </div> 
-                    </div> 
+                        
+                    </div>
                     
-                </div>
-            
-            <% }); %>
-        
+                    <% }); %>
+                    
                 </div>
             </div>
         </div>
-
+        <div class="user-profile-image-form">
+        
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                <div class="custom-file-profile-image">
+                    <input type="file" name="user_image" id="userImage">
+                    <label for="userImage" class="custom-file-label-choose-profile-image">Upload an Image</label>
+                </div>
+                
+                <div>
+                    <button type="submit" class="custom-file-profile-image-button">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+        
+    <div class="friend-container">
         <h2 style="text-align: center; margin-bottom: 20px;">Your Friends</h2>
     <div class="row">
         <div class="find-new-friends">
@@ -150,6 +214,8 @@
                 </div>
                         <% }); %>
                     </div>
+
+    </div>
 
     </div>
     <div class="row">
@@ -197,29 +263,6 @@
                         <button class="btn-block block-button spread-it" type="submit">Spread It</button>
                     </form>
                 </div>
-                <div class="spread-h3">
-                    <h3>Your Posts</h3>
-                </div>
-                <div class="user-posts-container">
-                <ul>
-                    <% posts.forEach(function(post){ %>
-                        <li style="list-style: none;">
-                            <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
-                                <a href="/users/post/<%= post.id%>">&times;</a>
-                                <div class="post-container">
-                                    <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
-                                    <small class="text-muted"><%= post.createdAt.toLocaleDateString() %></small>
-                                    <div class="post">
-                                        <p><%= post.postBody %></p>
-                                    </div>
-                                </div>  
-                                
-                            </div>
-                        </li>
-                    <% }); %>
-                </ul>
-                </div>
-
             </div>
     </div>
     
@@ -233,30 +276,6 @@
                     <textarea required name="articleBody" id="articleBody" class="form-control"></textarea>
                     <button class="btn-block block-button spread-it" type="submit">Spread It</button>
                 </form>
-            </div>
-            <div class="spread-h3">
-                <h3>Your Articles</h3>
-            </div>
-            <div class="user-posts-container">
-            <ul>
-                <% article.forEach(function(article){ %>
-                    <li style="list-style: none;">
-                        <div class="outer-post-container" style="padding: 10px; margin: 5px; border-radius: 10px;">
-                            <a href="/users/article/<%= article.id%>">&times;</a>
-                            <div class="post-container">
-                                <img src="/images/system/default-post_1a1a1a.png" alt="Post Icon" width="50px" height="50px">
-                                <small class="text-muted"><%= article.createdAt.toLocaleDateString() %></small>
-                                <div class="post">
-                                    <h2><%= article.articleTitle %></h2>
-                                    <h5><%= article.articleHeader %></h5>
-                                    <p><%= article.articleBody %></p>
-                                </div>
-                            </div>  
-                            
-                        </div>
-                    </li>
-                <% }); %>
-            </ul>
             </div>
         </div>
     </div>
@@ -275,12 +294,9 @@
                     <input type="text" name="videoName" id="videoName" placeholder="Video Title" style="margin-top: 15px;">
                     <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
                     <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
-                    <input type="submit" value="Add Video" class="btn-block block-button" style="margin-top: 15px; color: #ccc;">
+                    <input type="text" placeholder="DISABLED" style="text-align: center;">
                 </form>
             </div>
         </div>
-    </div>
-    <div class="iframe">
-        <iframe src="https://drive.google.com/file/d/19DL4xxP8yCV4-QN5CeXEy7SS6b32LVft/preview" width="300" height="160"></iframe>
     </div>
 
