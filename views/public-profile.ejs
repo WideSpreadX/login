@@ -1,28 +1,65 @@
+<style>
+.jumbotron {
+    border-radius: 15px;
+}
+.user-header {
+    padding-bottom: 10px;
+}
+.info-header a {
+    display: inline-flex;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 3px lightskyblue;
+}
+.info-header p {
+    text-align: center;
+    color: #fff;
+}
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+.find-new-friends {
+    display: inline-flex;
+    max-width: 90vw;
+    overflow-x: scroll;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding-right: 80px;
+}
+.spread-container {
+    padding: 5px;
+    padding-top: 15px;
+    width: 100%;
+}
+.spread-container h3 {
+    text-align: center;
+}
+.spread-container-sub {
+    padding: 5px;
+    width: 98%;
+    margin-left: 1%;
+}
+.social-list-item {
+    background: rgba(255, 255, 255, 0.384);
+    backdrop-filter: blur(4px);
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.social-list-item img {
+    width: 20px;
+    height: 20px;
+}
+.social-list-item a {
+    height: 20px;
+    color: #fff;
+    overflow-y: hidden;
+    width: 50%;
+    padding-left: 5px;
+}
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <a href="/flexfloor">FlexFloor</a>
-        <a href="/spreadshield">SpreadShield</a>
-    </div>
-</div>
+</style>
+
+
 <div class="jumbotron mt-4">
     <div class="public-profile-avatar">
             <% if (avatarImage) { %>
@@ -35,23 +72,22 @@
         <h1 style="color: rgba(80, 80, 80, 0.884) ;text-shadow: 0 0 8px <%= profile.favColor1 %>; font-weight: bolder;"><%= profile.fname %> <%= profile.lname %></h1>
 
     </div>
-    <div class="row user-header">
-        <div class="col-12">
-        <div class="row info-header">
-            <div class="col-5" style="padding: 20px;">
-            <p class="lead mb-3"><i style="margin-right: 10px;;" class="far fa-envelope"></i><a href="mailto:<%= profile.email %>"><%= profile.email %></a></p>
-            <p class="lead mb-3"><i style="margin-right: 10px;" class="fas fa-phone"></i><a href="tel:<%= profile.phone1 %>"><%= profile.phone1 %></a></p>
-        </div>
-        <div class="col-5" style="padding: 20px;">
-            <p class="lead mb-3"><%= profile.town %>, <%= profile.state %> - <%= profile.country %></p>
+    <div class="user-header">
+        <div class="">
+        <div class="info-header">
+            <div class="" style="padding: 20px;">
+                <a href="mailto:<%= profile.email %>"><i style="margin-right: 10px;" class="far fa-envelope"></i><span><p><%= profile.email %></p></span></a>
+                <a href="mailto:<%= profile.phone1 %>"><i style="margin-right: 10px;" class="fas fa-phone"></i><span><p><%= profile.phone1 %></p></span></a>
+            </div>
+            <div class="" style="padding: 20px;">
+                <p class="lead mb-3"><%= profile.town %>, <%= profile.state %> - <%= profile.country %></p>
             <p class="lead mb-3"> Age: <%= profile.age %></p>
             <p class="lead mb-3"> <%= profile.gender %></p>
-            
         </div>
-        <div class="col-2" style="display: flex; flex-direction: row; align-items: center; padding-top: 20px;">
+        <div class="" style="padding-top: 20px;">
             <form action="/users/<%= profile._id %>/add-friend" method="POST">
                 <input type="text" name="friends" value="<%= profile._id %>" style="display: none;">
-                <input class="btn btn-success add-friend" type="submit" value="Add Friend" style="margin-bottom: 30px; border-radius: 10px;">
+                <button class="btn btn-block btn-success add-friend" type="submit"style="margin-bottom: 30px; border-radius: 10px; width: 90%; margin-left: 5%;">Add Friend</button>
             </form>
         </div>
     </div>
@@ -64,32 +100,52 @@
         </div>
 
     </div>
-    <div class="row spread-container">
-        <div class="col-6 spread-container-sub">
-            <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Social Life</h3>
-            <div class="list-item">
-                <img src="/images/system/instagram_1a1a1a.png" alt="Instagram" width="25px" height="25px">
-                <a href="<%= profile.social.instagram %>" target="_blank"><%= profile.social.instagram %></a>
-            </div>
-            <div class="list-item">
-                <img src="/images/system/facebook_1a1a1a.png" alt="Facebook" width="25px" height="25px">
-                <a href="<%= profile.social.facebook %>" target="_blank"><%= profile.social.facebook %></a>
-            </div>
-            <div class="list-item">
-                <img src="/images/system/twitter_1a1a1a.png" alt="Twitter" width="25px" height="25px">
-                <a href="<%= profile.social.twitter %>" target="_blank"><%= profile.social.twitter %></a>
-            </div>
+    <div class="spread-container">
+        <h3><%= profile.fname %>'s Social Life</h3>
+        <div class="spread-container-sub">
+            <% if(profile.social.instagram){ %>
+            <div class="social-list-item">
+                    <img src="/images/system/instagram_1a1a1a.png" alt="Instagram">
+                    <a href="<%= profile.social.instagram %>" target="_blank"><%= profile.social.instagram %></a>
+                </div>
+                    <% } else { %>
+                        <span></span>
+                    <% } %>
+            <% if(profile.social.facebook){ %>
+            <div class="social-list-item">
+                    <img src="/images/system/facebook_1a1a1a.png" alt="Facebook">
+                    <a href="<%= profile.social.facebook %>" target="_blank"><%= profile.social.facebook %></a>
+                </div>
+                    <% } else { %>
+                        <span></span>
+                    <% } %>
+            <% if(profile.social.twitter){ %>
+            <div class="social-list-item">
+                    <img src="/images/system/twitter_1a1a1a.png" alt="Twitter">
+                    <a href="<%= profile.social.twitter %>" target="_blank"><%= profile.social.twitter %></a>
+                </div>
+                    <% } else { %>
+                        <span></span>
+                    <% } %>
         </div>
-        <div class="col-6 spread-container-sub" style=" border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
-            <h3 style="text-align: center; padding: 20px;"><%= profile.fname %>'s Work Life</h3>
-            <div class="list-item">
-                <img src="/images/system/github_1a1a1a.png" alt="Github" width="25px" height="25px">
-                <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
-            </div>
-            <div class="list-item">
-                <img src="/images/system/linkedin_1a1a1a.png" alt="LinkedIn" width="25px" height="25px">
-                <a href="<%= profile.social.linkedin %>" target="_blank"><%= profile.social.linkedin %></a>
-            </div>
+        <h3 style="text-align: center; padding-top: 20px;"><%= profile.fname %>'s Work Life</h3>
+        <div class="spread-container-sub">
+            <% if(profile.social.github){ %>
+            <div class="social-list-item">
+                    <img src="/images/system/github_1a1a1a.png" alt="Github">
+                    <a href="<%= profile.social.github %>" target="_blank"><%= profile.social.github %></a>
+                </div>
+                <% } else { %>
+                    <span></span>
+                <% } %>
+                <% if(profile.social.linkedin){ %>
+            <div class="social-list-item">
+                    <img src="/images/system/linkedin_1a1a1a.png" alt="LinkedIn">
+                    <a href="<%= profile.social.linkedin %>" target="_blank"><%= profile.social.linkedin %></a>
+                </div>
+                <% } else { %>
+                    <span></span>
+                <% } %>
         </div>
     </div>
     
@@ -118,60 +174,36 @@
         </div>
     </div>
     
-    <div class="outer_cont_container">
-        <div class="cont_container">
-            <div class="cont_inner_container">
-        <% profile.friends.forEach(function(friend){ %>
-                <div id="userCard_<%=friend.id %>" class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image">
-                            <h3><%= friend.fname %> <%= friend.lname %></h3>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <p><%= friend.about %></p>
-                            <a href="/users/<%= friend.id %>">Profile</a>
-                            <div class="add-friend">
-                                <form action="/users/<%= profile._id %>/add-friend" method="POST">
-                                    <input type="text" name="friends" value="<%= profile._id %>" style="display: none;">
-                                    <button class="" type="submit">
-                                        <i class="fas fa-user-plus"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
-            </div>
-            </div>
-            </div>
-    <div class="row">
-        
-        <!-- 
-        <div class="col-5 friends">
-            
-                 <h5>Friend List:</h5>
-            <ul>
-                <% profile.friends.forEach(function(friend){ %>
-                    <li style="list-style: none;">
-                        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
-                            <div>
-                                <img src="/images/system/default-user_1a1a1a.png" alt="Default User" width="50px" height="50px">
-                                </i><a href="/users/<%= friend._id %>"><%= friend.fname %> <%= friend.lname %></a>
-                            </div>  
-                            
-                        </div>
-                    </li>
-                    <% }); %>
-                </ul>
-            </div>
-            -->
+        <!-- Friend List -->
+        <div class="friend-container">
+            <h2 style="text-align: center; margin-bottom: 20px;"><%= profile.fname %>'s' Friends</h2>
             <div class="row">
-            <div class="col-6">
-                <h5 style="text-align: center;">Top Posts</h5>
+                <div class="find-new-friends">
+                        <% profile.friends.forEach(function(friend){ %>
+                            <div class="possible-friend" style="box-shadow: 0 0 10px <%= friend.favColor1 %>;">
+                                <a href="/users/<%= friend.id %>">
+                                    <div class="possible-friend-image" style="border: groove 1px <%= friend.favColor1 %>; border-top: none;">
+                                        <% if (friend.user_image) { %>
+                                            <img src="/image/<%= friend.user_images[0].img.data   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+                                        <%} else { %>
+                                            <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="100%" style="box-shadow: 0 3px 10px <%= friend.favColor1 %>;" >
+                                            <% } %>
+                                    </div>
+                                <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>; border-top: solid 1px <%= friend.favColor1 %>; border-bottom: solid 1px <%= friend.favColor1 %>;"><%= friend.fname %> <%= friend.lname %></h3>
+                                <p><%= friend.town %>, <%= friend.state %></p>
+                                <p><%= friend.country %></p>
+                                <small><%= friend.gender %></small>
+                                <p><%= friend.email %></p>
+                                
+                            </a>
+                        </div>
+                                <% }); %>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+
+                <h5 style="text-align: center; width: 100%;">Top Posts</h5>
                 <ul>
                     <% posts.forEach(function(post){ %>
                         <li style="list-style: none;">
@@ -193,9 +225,8 @@
                         </li>
                         <% }); %>
                     </ul> 
-            </div>
-                <div class="col-6">
-                    <h5 style="text-align: center;">Top Articles</h5>
+
+                    <h5 style="text-align: center; width: 80%; margin-left: 10%; margin-top: 20px; border-top: solid 1px lightskyblue; padding-top: 20px;">Top Articles</h5>
                     <ul>
                         <% articles.forEach(function(article){ %>
                             <li style="list-style: none;">
@@ -223,4 +254,3 @@
             </div>
         </div>
     
-</div>
