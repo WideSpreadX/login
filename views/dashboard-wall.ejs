@@ -38,6 +38,7 @@
 </div>
 
 <div class="socialspread-posts">
+
 <h5>Recent Spreads</h5>
 <% data.forEach(function(post){ %>
     <div class="outer-post-container">
@@ -48,8 +49,9 @@
                         <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
                     </div>
                     <div class="user-avatar">
-                        <% if (post.author.profileImages) { %>
-                            <img src="/image/<%= post.author.profileImages.img.data  %>" alt="'s Avatar">
+                        <% if (post.author.user_avatar) { %>
+                            <p><%=profileImages.imageOwner %></p>
+                            <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
                             <%} else { %>
                             <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
                             <% } %>
@@ -93,8 +95,8 @@
                             <% post.comments.forEach(function(comment){ %>
                                 <div class="comment">
                                         <div class="comment-avatar">
-                                            <% if (post.author.profileImages) { %>
-                                                <img src="/image/<%= post.author.profileImages.img.data  %>" alt="'s Avatar">
+                                            <% if (comment.author.user_avatar) { %>
+                                                <img src="/image/<%= comment.author.user_avatar %>" alt="'s Avatar" width="60px">
                                                 <%} else { %>
                                                 <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="60px" >
                                                 <% } %>

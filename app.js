@@ -149,41 +149,9 @@ app.post('/upload', upload.single('user_image'), (req, res) => {
 });
 
 
-app.post('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
-  const imageOwner = req.user._id;
-  const obj = { 
-    imageOwner: req.user._id, 
-    img: { 
-        data: req.file.filename,
-        contentType: 'image/png'
-    } 
-} 
-  avatar.create(obj, (err, item) => { 
-    if (err) { 
-        console.log(err); 
-    } 
-    else { 
-        item.save(); 
-        console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
-        User.findByIdAndUpdate(imageOwner,
-          {$push: {user_avatar: req.file.id}},
-          {safe: true, upsert: true},
-          function(err, doc) {
-              if(err) {
-                  console.log(err)
-              } else {
-                  return
-              }
-          }
-      )
-        res.redirect('/dashboard'); 
-    } 
-})
-});
-
 
 /* Background Image Upload */
-app.post('/upload-background-image', upload.single('user_background_image'), (req, res) => {
+app.patch('/upload-background-image', upload.single('user_background_image'), (req, res) => {
     const imageOwner = req.user._id;
     const obj = { 
       imageOwner: req.user._id, 
@@ -201,8 +169,7 @@ app.post('/upload-background-image', upload.single('user_background_image'), (re
           console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
           const newImage = obj.img.data;
           User.findByIdAndUpdate(imageOwner,
-            {$push: {user_background_image: newImage}},
-            {safe: true, upsert: true},
+            {user_background_image: req.file.filename},
             function(err, doc) {
                 if(err) {
                     console.log(err)
@@ -212,6 +179,70 @@ app.post('/upload-background-image', upload.single('user_background_image'), (re
             }
         )
           res.redirect(`/users/update-profile/${imageOwner}`); 
+      }
+})
+});
+/* Profile Image Upload */
+app.patch('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
+    const imageOwner = req.user._id;
+    const obj = { 
+      imageOwner: req.user._id, 
+      img: { 
+          data: req.file.filename,
+          contentType: 'image/png'
+      } 
+  } 
+    userBackgroundImage.create(obj, (err, item) => { 
+      if (err) { 
+          console.log(err); 
+      } 
+      else { 
+          item.save(); 
+          console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
+          const newImage = obj.img.data;
+          User.findByIdAndUpdate(imageOwner,
+            {user_avatar: req.file.filename},
+            function(err, doc) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    return
+                }
+            }
+        )
+          res.redirect(`/dashboard`); 
+      }
+})
+});
+/* Profile Image Update */
+app.patch('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
+    const imageOwner = req.user._id;
+    const obj = { 
+      imageOwner: req.user._id, 
+      img: { 
+          data: req.file.filename,
+          contentType: 'image/png'
+      } 
+  } 
+    userBackgroundImage.create(obj, (err, item) => { 
+      if (err) { 
+          console.log(err); 
+      } 
+      else { 
+          item.save(); 
+          console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
+          const newImage = obj.img.data;
+          User.findByIdAndUpdate(imageOwner,
+            {user_avatar: req.file.filename},
+            function(err, doc) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    return
+                }
+            }
+        )
+          res.redirect(`/dashboard`); 
       }
 })
 });
@@ -258,10 +289,11 @@ app.get('/files', (req, res) => {
       return res.status(404).json({
         err: 'No files exist'
       });
-    }
+    } 
 
     // Files do exist
-    return res.json(files)
+    console.log(files)
+    return res.render('all-images', {files})
   })
 })
 

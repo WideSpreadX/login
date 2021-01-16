@@ -83,15 +83,9 @@ conn.once('open', () => {
         User.findById(id)
         .populate({
           path: 'friends',
-          model: 'User',
-          populate: {
-            path: 'user_avatar',
-            model: 'ProfileImage'
-          } 
+          model: 'User'
         })
         .populate('posts')
-        .populate('user_images')
-        .exec()
         .then(profile => {
                 res.render('dashboard', {
                 profile,
@@ -131,7 +125,8 @@ conn.once('open', () => {
       let checkAuthor = []
       const postAuthor = () => {
         for (i = 0; i < posts.length; i++) {
-          checkAuthor = posts[i].author
+          posts[i].author.push(checkAuthor)
+          /* ProfileImage.findOne({imageOwner: {$eq: checkAuthor}}) */
         }}
         
         const postAvatars = await Post.find({ "author": { "$in": friendIds } })
@@ -150,11 +145,7 @@ conn.once('open', () => {
       .sort({createdAt: 'desc'})
       .populate({
         path: 'author',
-        model: 'User',
-        populate: {
-          path: 'user_avatar',
-          model: 'ProfileImage'
-        }
+        model: 'User'
       }) 
       .populate({
         path: 'comments',
@@ -179,6 +170,7 @@ conn.once('open', () => {
             avatarImage,
             id,
             checkAuthor,
+            
           })
         }
       }); 
@@ -271,4 +263,39 @@ conn.once('open', () => {
 
   });
 
+  router.get('/socialspread', async (req, res) => {
+    const thisUser = req.user._id;
+    
+    const userFriends = await User.findById(thisUser).populate('friends').exec()
+    const friendId = userFriends.friends.map(friend);
+    function friend(id) {
+      return id._id
+    }
+    
+    let friendIds = []
+    friendIds.push(friendId.toString())
+    console.log(friendIds)
+    /*    const avatars =  Avatar.find({imageOwner: {$eq: friends._id}}) */
+    const avatars = friendIds.forEach(findAvatar)
+    
+    
+    function findAvatar(friendId) {
+      const friendAvatar = ProfileImage.findOne({imageOwner: {$eq: friendId }})
+      console.log(friendAvatar)  
+    }
+    
+    User.findById(thisUser)
+        .populate({
+          path: 'friends',
+          model: 'User',
+          populate: {
+            path: 'friends',
+            model: 'User'
+          } 
+        })
+        .exec()
+        .then(profile => 
+          res.render('socialspread-home', {currentPageTitle: 'SocialSpread', profile, userFriends, friendIds, avatars})
+        )
+  })
 module.exports = router;

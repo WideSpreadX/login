@@ -21,5 +21,25 @@
 <div class="social-tunnel">
     <h2>SocialTunnel</h2>
     
+    <% profile.friends.forEach(function(friend){ %>
+        <div style="padding: 7px;">
+            <div> 
+                <div> 
+                    <p><%= friend.fname %> <%= friend.lname %></p>
+                    <p><%= friend %></p>
+                    <p><%= friend.about %></p>
 
-</div>
+                    <% profile.friends.forEach(function(friendSub){ %>
+                    <h3 style="background: purple; color: #fff"><%= friendSub.fname %> <%= friendSub.lname %></h3>
+                    <% friendSub.friends.forEach(function(friendSubSub){ %>
+                        <p style="background: blue; color: #fff"><%= friendSubSub.fname %></p>
+                        <% }); %>
+                        <% }); %>
+                    <hr>
+                </div> 
+            </div> 
+            
+        </div>
+        <% }); %>
+        
+    </div>

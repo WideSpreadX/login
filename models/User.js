@@ -60,12 +60,10 @@ const UserSchema = new mongoose.Schema({
         twitter: String,
         pinterest: String
     },
-    user_profile_image: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
-    user_background_image: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
-    user_images: [{type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'}],
-    user_avatar: {type: mongoose.Schema.Types.ObjectId, ref: 'ProfileImage'},
-    avatar: String,
-    user_video: [{type: mongoose.Schema.Types.ObjectId, ref: 'Video'}],
+    user_background_image: String,
+    user_images: [String],
+    user_avatar: String,
+    user_video: [String],
     resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
     workouts: {type: mongoose.Schema.Types.ObjectId, ref: 'WorkoutSchedule'},
     date: {

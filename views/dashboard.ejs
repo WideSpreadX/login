@@ -95,19 +95,19 @@
     }
 }
 </style>
-
 <div class="user-background-image">
-    <% if (backgroundImage) { %>
-        <img src="/image/<%= backgroundImage.img.data %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+    <% if (profile.user_background_image) { %>
+        <img src="/image/<%= profile.user_background_image %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
         <%} else { %>
-        <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
-        <% } %>
-</div>
-<%- include('partials/mainHeaderSiteMenu') %>
-<%- include('partials/mainHeaderPageMenu') %>
+            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+            <% } %>
+        </div>
+        <%- include('partials/mainHeaderSiteMenu') %>
+        <%- include('partials/mainHeaderPageMenu') %>
 
 <br>
 <br>
+<a href="/socialspread">SocialSpread</a>
 <div class="row">
     <div class="col-8">
         <h2 class="lead mb-3">Welcome <%= fname %></h2>
@@ -120,14 +120,16 @@
 
 <!-- Profile Image -->
 <div class="user-avatar">
-    <% if (avatarImage) { %>
-        <img src="/image/<%= avatarImage.img.data  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+    <% if (profile.user_avatar) { %>
+        <img src="/image/<%= profile.user_avatar  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
         <%} else { %>
         <img src="images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
         <% } %>
 </div>
 
 <!-- Profile Image -->
+<% if (!avatarImage) { %>
+
         <div class="user-profile-image-form">
             
             <form action="/upload-avatar" method="post" enctype="multipart/form-data">
@@ -142,7 +144,22 @@
                         </div>
                 </form>
             </div>
-        
+            <%} else { %>
+                <div class="user-profile-image-form">
+                    <form action="/upload-avatar?_method=PATCH" method="POST" enctype="multipart/form-data">
+                        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                        <div class="custom-file-profile-image">
+                            <input type="file" name="user_profile_image" id="userProfileImage">
+                            <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="custom-file-profile-image-button">Change</button>
+                        </div>
+                </form>
+                    </form>
+                    </div>
+                <% } %>
 
 <div class="user-profile-routes">
     <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
@@ -189,33 +206,7 @@
             </form>
         </div>
     </div>
-        <!-- Friend List -->
-<div class="friend-container">
-    <h2 style="text-align: center; margin-bottom: 20px;">Your Friends</h2>
-    <div class="row">
-        <div class="find-new-friends">
-                <% profile.friends.forEach(function(friend){ %>
-                    <div class="possible-friend" style="box-shadow: 0 0 10px <%= friend.favColor1 %>;">
-                        <a href="/users/<%= friend.id %>">
-                            <div class="possible-friend-image" style="border: groove 1px <%= friend.favColor1 %>; border-top: none;">
-                                <% if (friend.user_image) { %>
-                                    <img src="/image/<%= friend.user_images[0].img.data   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
-                                <%} else { %>
-                                    <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="100%" style="box-shadow: 0 3px 10px <%= friend.favColor1 %>;" >
-                                    <% } %>
-                            </div>
-                        <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>; border-top: solid 1px <%= friend.favColor1 %>; border-bottom: solid 1px <%= friend.favColor1 %>;"><%= friend.fname %> <%= friend.lname %></h3>
-                        <p><%= friend.town %>, <%= friend.state %></p>
-                        <p><%= friend.country %></p>
-                        <small><%= friend.gender %></small>
-                        <p><%= friend.email %></p>
-                        
-                    </a>
-                </div>
-                        <% }); %>
-        </div>
-    </div>
-</div>
+
 
     <div class="row">
         <h1 style="text-align: center; width: 100%;">Find New Friends</h1>
@@ -225,13 +216,18 @@
             <div class="possible-friend-background"></div>
             <a href="/users/<%= friend.id %>">
                 <div class="possible-friend" style="box-shadow: 0 0 10px <%= friend.favColor1 %>;">
-                        <img src="/images/system/default-user_1a1a1a.png" alt="Default User Image" width="60px" style="box-shadow: 0 5px 10px <%= friend.favColor1 %>;">
+                    <div class="possible-friend-image" style="border: groove 1px <%= friend.favColor1 %>; border-top: none;">
+                        <% if (friend.user_avatar) { %>
+                            <img src="/image/<%= friend.user_avatar   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="60px">
+                        <%} else { %>
+                            <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="60px" style="box-shadow: 0 3px 10px <%= friend.favColor1 %>; background: #000" >
+                            <% } %>
+                    </div>
                         <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
                         <p><%= friend.town %>, <%= friend.state %></p>
                         <p><%= friend.country %></p>
                         <small><%= friend.gender %></small>
                         <p><%= friend.email %></p>
-                        
                     </a>
                     <div class="add-friend-container">
 
