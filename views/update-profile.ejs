@@ -1,38 +1,90 @@
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
+<style>
+        .user-profile-image-form {
+        max-width: 85vw;
+        margin-left: 2.5vw;
+        display: inline-flex;
+        position: relative;
+        background: rgba(255, 255, 255, 0.308);
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        backdrop-filter: blur(2px);
+        padding: 10px;
+        padding-bottom: 25px;
+        color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+    }
+    .custom-file-profile-image {
+        width: 55vw;
+        border: solid 1px white;
+        border-radius: 10px;
+    }
+    .custom-file-profile-image input {
+    }
+    .custom-file-profile-image {
+        width: 55vw;
+        
+    }
+    .custom-file-profile-image-button {
+        width: 20vw;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.432);
+        backdrop-filter: blur(4px);
+        outline: none;
+        border: none;
+    }
+    .current-image-background {
+        max-width: 300px;
+        max-height: 300px;
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.452);
+    }
+    .current-image-background img {
+        max-width: 300px;
+        max-height: 300px;
+        border-radius: 8px;
+    }
+</style>
+<div class="user-background-image">
+    <% if (currentUser.user_background_image) { %>
+        <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Avatar">
+        <%} else { %>
+            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+            <% } %>
         </div>
-    </div>
-</div>
+        <%- include('partials/mainHeaderSiteMenu') %>
+        <%- include('partials/mainHeaderPageMenu') %>
 <h1 style="text-align: center; margin-top: 30px;">Update Your Profile</h1>
 <div class="row">
 <div class="update-profile col-12">
 
-    <div class="user-background-image-form">
-        <h3>Change Your Background Image</h3>
+    <h3>Change Your Background Image</h3>
+    <div class="user-profile-image-form">
         <form action="/upload-background-image?_method=PATCH" method="post" enctype="multipart/form-data">
             <div class="custom-file-background-image">
                 <input type="file" name="user_background_image" id="userBackgroundImage">
-                <label for="userProfileImage" class="custom-file-label-choose-background-image">Choose Background Image</label>
+                <label for="userProfileImage" class="custom-file-label-choose-background-image"></label>
             </div>
-            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
             <div class="custom-file-background-image-button">
-                <input type="submit" value="Change" class="" style="margin-top: 15px;">
+                <div>
+                    <button type="submit" class="custom-file-profile-image-button">Change</button>
+                </div>
             </div>
         </form>
     </div>
+    <div class="current-image-background">
+        <% if (currentUser.user_background_image) { %>
+            <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Avatar">
+            <%} else { %>
+                <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+                <% } %>
+            </div>
     <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 <form action="/users/update-profile?_method=PATCH" method="POST">
 

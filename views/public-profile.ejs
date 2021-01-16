@@ -60,7 +60,15 @@
     overflow: hidden;
 }
 </style>
-
+<div class="user-background-image">
+    <% if (profile.user_background_image) { %>
+        <img src="/image/<%= profile.user_background_image %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+        <%} else { %>
+            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+            <% } %>
+        </div>
+        <%- include('partials/mainHeaderSiteMenu') %>
+        <%- include('partials/mainHeaderPageMenu') %>
 
 <div class="jumbotron mt-4">
     <div class="public-profile-avatar">
