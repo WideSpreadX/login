@@ -21,6 +21,41 @@
     .socialspread-posts h5 {
         text-align: center;
     }
+ 
+    .post-body p {
+        padding: 0;
+        padding-top: 20px;
+        font-size: 1.1rem;
+        color: #fff;
+    }
+    .post-actions {
+        text-align: center;        
+    }
+    .post-actions form {
+        width: 15%;
+    }
+    .post-actions a {
+       font-size: 1rem;
+    }
+    .comment-on-post {
+        padding: 0;
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: 20px;
+    }
+    .comment-avatar {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+    }
+    .comment h5 {
+        border-bottom: solid 1px lightskyblue;
+        padding-bottom: 10px;
+    }
+    .comment p {
+        color: #fff;
+    }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
 <%- include('partials/mainHeaderPageMenu') %>
@@ -41,22 +76,23 @@
 
 <h5>Recent Spreads</h5>
 <% data.forEach(function(post){ %>
-    <div class="outer-post-container">
+    <div class="outer-post-container" style="box-shadow: 0 0 10px <%= post.author.favColor1 %>">
                 <div class="ss-post">
   
-                    <div class="post-timestamp">
-                        
-                        <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
-                    </div>
-                    <div class="user-avatar">
+                    <div class="user-avatar"style="box-shadow: 0 0 10px <%= post.author.favColor1 %>; margin-top: 10px;">
                         <% if (post.author.user_avatar) { %>
                             <p><%=profileImages.imageOwner %></p>
                             <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
                             <%} else { %>
-                            <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
-                            <% } %>
-                    </div>
-                    <h3><%= post.author.fname %> <%= post.author.lname%></h3>
+                                <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
+                                <% } %>
+                </div>
+                </div>
+                            <h4 style="color: <%= post.author.favColor1 %>;"><%= post.author.fname %> <%= post.author.lname%></h4>
+                            <div class="post-timestamp">
+                                
+                                <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
+                            </div>
                     <div class="post-body">
                         <p><%= post.postBody %></p>
                     </div>
@@ -68,15 +104,13 @@
                                 <button type="submit"><i class="far fa-heart"></i></button>
                                 <span><%= post.likes %></span>
                             </form>
+                                <span><% if(id == post.author.id){ %>
+                                <a style="color: #fff;" href="/users/post/edit/<%= post.id%>"><small>Edit Post</small></a>
+                                <a href="/users/post/<%= post.id%>" style="text-shadow: 0 0 1px #fff;">Delete Post</a>
+                                <% } else { %>
+                                <span></span>
+                                <% } %></span>
                         </span>
-                        <p><span><a href="#"></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="/dashboard/wall/<%= post.id %>/comment"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span>
-                            <span style="float: right"><% if(id == post.author.id){ %>
-                            <a style="color: #fff;" href="/users/post/edit/<%= post.id%>"><small>Edit Post</small></a>
-                            <a href="/users/post/<%= post.id%>">&times;</a>
-                            <% } else { %>
-                            <p> Not Your Post</p>
-                            <% } %></span>
-                        </p>
                     </div>
                           
 
@@ -93,15 +127,19 @@
                         <div class="comments">
                 
                             <% post.comments.forEach(function(comment){ %>
-                                <div class="comment">
-                                        <div class="comment-avatar">
+                                <div class="comment" style="box-shadow: 0 0 5px <%= comment.author.favColor1 %>;">
+                                    <div class="comment-time">
+                                        <p><small><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></small></p>
+                                    </div>
+                                        <div class="comment-avatar" style="box-shadow: 0 0 5px <%= comment.author.favColor1 %>;">
                                             <% if (comment.author.user_avatar) { %>
                                                 <img src="/image/<%= comment.author.user_avatar %>" alt="'s Avatar" width="60px">
                                                 <%} else { %>
                                                 <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="60px" >
                                                 <% } %>
                                         </div>
-                                    <h5><%= comment.author.fname %> <%= comment.author.lname %></h5>
+                                    <h5 style="color: <%= comment.author.favColor1 %>;"><%= comment.author.fname %> <%= comment.author.lname %></h5>
+                                    
                                     <p><%= comment.commentBody %></p>
                                     <div class="comment-actions">
                                         <span class="like-button">
@@ -111,17 +149,13 @@
                                                 <span><%= comment.likes %></span>
                                             </form>
                                         </span>
-                                        <p><span><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="fas fa-share-alt"></i></a><a href="#"><i class="far fa-comment-alt"></i></a><a href="#"><i class="fas fa-plus"></i></a></span></p>
-                                        <div class="comment-time">
-                                            <p><small><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></small></p>
-                                        </div>
+                                    
                                     </div>
                                 </div>
                                 <% }); %>
                                 
                             </div>
                         </div>
-                </div>
                 </div>
 
 <% }); %>
