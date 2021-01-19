@@ -17,6 +17,8 @@ const companySchema = new mongoose.Schema({
     company_fax: String,
     company_main_email: String,
     company_website: String,
+    background_image: String,
+    sub_pages: [{type: mongoose.Schema.Types.ObjectId, ref: 'Subpage'}],
     departments: [String],
     job_applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'Resume'}],
     employees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],

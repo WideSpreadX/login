@@ -73,6 +73,9 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .sub-pages a {
+            color: lightskyblue;
+        }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -99,6 +102,12 @@
 
     <h1><%= company.company_name %></h1>
     <h5><%= company.company_type %></h5>
+
+    <div class="sub-pages">
+        <% subPages.forEach(function(page){ %>
+            <a href="/business/<%= company.id %>/<%= page.id %>"><%= page.page_name %></a>
+        <% }) %>
+        </div>
 <hr>
 <div class="row companySite-inner">
 
@@ -120,20 +129,8 @@
 <p><%= company.company_website %></p>
 </div>
 </div>
-<div class="add-new-subpage">
-    <form action="/business/add-subpage" method="post">
-        <input type="text" name="subpage_name">
-        <input type="text" name="companyId" value="<%= company._id %>">
-        <button type="submit">Add Subpage</button>
-    </form>
-</div>
-<div class="row companySite-nav nav-bar">
-    <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Services</a></li>
-    </ul>
-</div>
+
+
 <div class="nav-bar">
 
     <a href="/business/<%= company._id %>/add-employee">Apply for a Job</a>

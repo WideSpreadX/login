@@ -5,6 +5,7 @@ const {ensureAuthenticated } = require('../config/auth');
 // User Model
 const User = require('../models/User');
 const Company = require('../models/Company');
+const Subpage = require('../models/Subpage');
 const Resume = require('../models/Resume');
 const Item = require('../models/Item');
 const { populate } = require('../models/User');
@@ -52,26 +53,12 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
  router.get('/:companyId', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
+    const subPages = await Subpage.find({company_site: {$eq: companyId} })
     Company.findById(companyId)
     console.log(`Company Info: ${company}`)
-    res.render('business-home', {currentPageTitle: 'Business', company});
+    res.render('business-home', {currentPageTitle: 'Business', company, subPages});
 })
-router.post('/add-subpage', ensureAuthenticated, (req, res) => {
-    const companyId = req.body.companyId;
-    const subpageName = req.body.subpage_name;
-    Company.findByIdAndUpdate(companyId, 
-        {$push: {subpages: subpageName}},
-        {safe: true, upsert: true},
-        function(err, doc) {
-          if(err) {
-            console.log(err)
-          } else {
-            return
-          }
-        })
 
-        res.redirect(`/business/${companyId}`)
-})
 router.get('/:companyId/manage', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId).populate({
@@ -91,6 +78,48 @@ router.get('/:companyId/manage', async (req, res) => {
     console.log(`Company Info to Manage: ${company}`)
     res.render('business-manage', {currentPageTitle: 'Manage Company', company, jobApplicant});
 })
+router.get('/:companyId/add-subpage', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    
+    const company = await Company.findById(companyId)
+    
+    res.render('business-add-subpage', {company})
+})
+router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
+    const companyId = req.body.companyId;
+  
+    const subpage = new Subpage({
+        company_site: companyId,
+        page_name: req.body.page_name,
+        "page_body.page_header1": req.body.header1,
+        "page_body.page_body1": req.body.body1,
+        "page_body.page_header2": req.body.header2,
+        "page_body.page_body2": req.body.body2,
+        "page_body.page_header3": req.body.header3,
+        "page_body.page_body3": req.body.body3,
+        "page_side.phone1": req.body.phone1,
+        "page_side.phone2": req.body.phone2,
+        "page_side.phone3": req.body.phone3,
+        "page_side.email1": req.body.email1,
+        "page_side.email2": req.body.email2,
+        "page_side.email3": req.body.email3,
+        "page_side.email4": req.body.email4,
+        "page_side.fax1": req.body.fax1,
+        "page_side.fax2": req.body.fax2
+    })
+    subpage.save()
+    res.redirect(`/business/${companyId}/manage`);
+})
+
+router.get('/:companyId/:subPage', async (req, res) => {
+    const companyId = req.params.companyId;
+    const subPage = req.params.subPage;
+
+    const thisSubPage = await Subpage.findById(subPage)
+
+    res.render('company-subpage', {thisSubPage, companyId})
+});
+
 
 router.get('/:companyId/resume/applicant/:applicantId', async (req, res) => {
     const companyId = req.params.companyId;

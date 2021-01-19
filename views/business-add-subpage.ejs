@@ -1,0 +1,23 @@
+<h1>Add a Subpage for</h1>
+<h1><%= company.company_name %></h1>
+
+<form action="/business/<%= company.id %>/add-subpage" method="post">
+    <input type="text" name="page_name" placeholder="Page Name">
+    <input type="text" name="companyId" value="<%= company._id %>">
+    <input type="text" name="header1" placeholder="Header 1">
+    <textarea name="body1" cols="30" rows="10" placeholder="Body 1"></textarea>
+    <input type="text" name="header2" placeholder="Header 2">
+    <textarea name="body2" cols="30" rows="10" placeholder="Body 2"></textarea>
+    <input type="text" name="header3" placeholder="Header 3">
+    <textarea name="body3" cols="30" rows="10" placeholder="Body 3"></textarea>
+    <input type="text" name="phone1" placeholder="Phone 1">
+    <input type="text" name="phone2" placeholder="Phone 2">
+    <input type="text" name="phone3" placeholder="Phone 3">
+    <input type="text" name="email1" placeholder="Email 1">
+    <input type="text" name="email2" placeholder="Email 2">
+    <input type="text" name="email3" placeholder="Email 3">
+    <input type="text" name="email4" placeholder="Email 4">
+    <input type="text" name="fax1" placeholder="Fax 1">
+    <input type="text" name="fax2" placeholder="Fax 2">
+    <button type="submit">Add Subpage</button>
+</form>

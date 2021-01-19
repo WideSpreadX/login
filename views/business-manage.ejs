@@ -73,6 +73,9 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .add-new-subpage a {
+            color: lightskyblue;
+        }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -119,7 +122,6 @@
         </div>
     <% }); %>
 </div>
-<div class="nav-bar">
-
-
-</div>
+    <div class="add-new-subpage">
+        <a href="/business/<%= company._id %>/add-subpage">Add a Subpage</a>
+    </div>
