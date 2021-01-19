@@ -18,7 +18,11 @@ const itemSchema = new mongoose.Schema({
         depth: Number
     },
     weight: Number,
-    category: String
+    category: String,
+    supplier_website: String,
+    product_webpage: String,
+    total: Number,
+    need: Number
 });
 
 const Item = mongoose.model('Item', itemSchema);

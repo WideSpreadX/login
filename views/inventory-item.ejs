@@ -73,6 +73,19 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .current-inventory th {
+            text-align: center;
+        }
+        .inventory-item {
+            padding-top: 20px;
+        }
+        .inventory-item h2 {
+            color: lightskyblue;
+            text-align: center;
+        }
+        .inventory-item p {
+            color: #fff;
+        }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -82,44 +95,31 @@
 <div class="main-header-page-menu-container">
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
-            <a href="/business">Business Home</a>
-            <a href="/business/<%= company._id %>/add-employee">Add New Employee</a>
-            <a href="/business/<%= company._id %>/inventory">Inventory</a>
+            <a href="/business/your-desk">Your Desk</a>
+            <a href="/business/<%= company.id %>/inventory">Inventory</a>
         </div>
     </div>
     <p>Scroll left & right for more options</p>
 </div>
-<br>
-<br>
-<h1><%= company.company_name %></h1>
 
-<div class="current-employess">
-    <h2>Current Employees</h2>
-    <% company.employees.forEach(function(employee) { %>
-        <p>Employee: <%= employee.fname %></p>
-        <% }) %>
-</div>
-
-<div class="job-applicants">
-
-    <h2>Job Applicants</h2>
-    <% company.job_applicants.forEach(function(applicant){ %>
-        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
-            <div>
-                <div class="job-applicant-card">
-                    <a href="/business/<%= company._id %>/resume/applicant/<%= applicant.id %>">
-                        <h3><%= applicant.resumeOwner.fname %> <%= applicant.resumeOwner.lname %></h3>
-                        <p><%= applicant.resumeOwner.town %>, <%= applicant.resumeOwner.state %></p>
-                        <p><%= applicant.resumeOwner.country %></p>
-                        
-                        </a>
-                </div>
-            </div>  
-            
-        </div>
-    <% }); %>
-</div>
-<div class="nav-bar">
-
-
+<div class="inventory-item">
+    <h2><%= companyInventory.name %></h2>
+    <p>SKU#: <%= companyInventory.sku %></p>
+    <p>Description: <%= companyInventory.description %></p>
+    <p>Make: <%= companyInventory.make %></p>
+    <p>Model: <%= companyInventory.model %></p>
+    <p>Year: <%= companyInventory.year %></p>
+    <p>Price: <%= companyInventory.price %></p>
+    <p>Color 1: <%= companyInventory.color1 %></p>
+    <p>Color 2: <%= companyInventory.color2 %></p>
+    <p>Width: <%= companyInventory.dimensions.width %></p>
+    <p>Height: <%= companyInventory.dimensions.height %></p>
+    <p>Depth: <%= companyInventory.dimensions.depth %></p>
+    <p>Weight: <%= companyInventory.weight %></p>
+    <p>Category: <%= companyInventory.category %></p>
+    <p>Supplier Main Website: <a style="color: lightskyblue" href="<%= companyInventory.supplier_website %>" target="_blank"><%= companyInventory.supplier_website %></a></p>
+    <p>Product URL: <a style="color: lightskyblue" href="<%= companyInventory.product_webpage %>" target="_blank"><%= companyInventory.product_webpage %></a></p>
+    <p>Total: <%= companyInventory.total %></p>
+    <p>Need: <%= companyInventory.need %></p>
+    
 </div>

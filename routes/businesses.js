@@ -167,7 +167,11 @@ router.post('/:companyId/inventory', async (req, res) => {
             depth: req.body.depth
         },
         weight: req.body.weight,
-        category: req.body.category
+        category: req.body.category,
+        supplier_website: req.body.supplier_website,
+        product_webpage: req.body.product_webpage,
+        total: req.body.total,
+        need: req.body.need
     })
     item.save()
     await Company.findByIdAndUpdate(companyId,
@@ -185,5 +189,14 @@ router.post('/:companyId/inventory', async (req, res) => {
     res.redirect(`/business/${companyId}/inventory`)
 });
 
+router.get('/:companyId/inventory/:itemId', async (req, res) => {
+    const itemId = req.params.itemId;
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+    const companyInventory = await Item.findById(itemId);
+        console.log(`Company Info to Manage: ${company}`)
+        res.render('inventory-item', {currentPageTitle: 'Inventory', company, companyInventory})
+    ;
+});
 
 module.exports = router;
