@@ -1,32 +1,100 @@
+<style>
+    .page-title {
+        padding-top: 20px;
+        text-align: center;
+        width: 100%;
+    }
+    .main-header-page-menu-container {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.308);
+        backdrop-filter: blur(2px);
+        border-radius: 12px;
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        
+    }
+    .main-header-page-menu-inner {
+        padding: 10px;
+    }
+    .main-header-page-menu-inner a {
+        display: inline-flex;
+        padding: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.733);
+        transition: ease-in 0.4s;
+        background: rgba(135, 206, 250, 0.315);
+        backdrop-filter: blur(4px);
+        border-radius: 8px;
+        text-align: center;
+    }
+    .main-header-page-menu-inner a:hover {
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+        transition: ease-in 0.2s;
+    }
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
+    @media screen and (max-width: 500px) {
+        .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+            font-size: 0.6rem;
+        }
+        .main-header-page-menu-inner a {
+            text-align: center;
+        }
+        
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<div class="page-title">
+    <h1><%= currentPageTitle %></h1>
+</div>
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenuu">
+        <div class="main-header-page-menu-inner">
+            <a href="/business">Business Home</a>
+            <a href="/business/your-desk">Your Desk</a>
         </div>
     </div>
+    <p>Scroll left & right for more options</p>
 </div>
 
-<h1 style="text-align: center;"><%= currentPageTitle %></h1>
 
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-<a href="/users/add-to-resume/education/<%= resume.id %>">Add Education</a>
-<a href="/users/add-to-resume/work-history/<%= resume.id %>">Add Work History</a>
-    </div>
-</div>
 <div class="resume-container">
+    <div class="resume-name">
+        <h1><%= resume.resume_name %></h1>
+        <hr>
+    </div>
 <div class="resume-bio">
     <h2>Bio</h2>
    <p> <%= resume.bio %></p>
@@ -85,21 +153,13 @@
 
 
 <div class="resume-skills">
-
-
-            <div style="padding: 10px; margin: 5px; border-radius: 10px;">
-                <div>
-                    <div class="nav-bar">
-                        <%= resume.special_skill1 %>
-                        <%= resume.special_skill2 %>
-                        <%= resume.special_skill3 %>
-                        <%= resume.special_skill4 %>
-                        <%= resume.special_skill5 %>
-                    </div>
-                </div>  
-                
-            </div>
-        </li>
+    <div class="resume-skill">
+        <p><%= resume.special_skill1 %></p>
+        <p><%= resume.special_skill2 %></p>
+        <p><%= resume.special_skill3 %></p>
+        <p><%= resume.special_skill4 %></p>
+        <p><%= resume.special_skill5 %></p>
     </div>
+</div>
 
-    </div>
+</div>

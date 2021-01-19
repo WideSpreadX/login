@@ -85,7 +85,6 @@ router.get('/:companyId/manage', async (req, res) => {
                 model: 'Resume'
             }
         }
-        .populate('employees')
     });
     const jobApplicant = await Company.findById(companyId);
     Company.findById(companyId)
@@ -141,14 +140,10 @@ router.post('/:companyId/add-employee', ensureAuthenticated, async (req, res) =>
 router.get('/:companyId/inventory', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
-    
-
-    Company.findById(companyId).populate('inventory').exec(inventoryData => {
-    
+    const companyInventory = await Item.find({ for_company: { $eq: companyId } });
         console.log(`Company Info to Manage: ${company}`)
-        console.log(`Inventory Data: ${inventoryData}`)
-        res.render('inventory', {currentPageTitle: 'Inventory', company, inventoryData})
-    });
+        res.render('inventory', {currentPageTitle: 'Inventory', company, companyInventory})
+    ;
 });
 
 
@@ -156,6 +151,7 @@ router.post('/:companyId/inventory', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
     const item = new Item({
+        for_company: companyId,
         name: req.body.name,
         description: req.body.description,
         sku: req.body.sku,
@@ -186,7 +182,7 @@ router.post('/:companyId/inventory', async (req, res) => {
             }
         }
         )
-    res.redirect('/business')
+    res.redirect(`/business/${companyId}/inventory`)
 });
 
 
