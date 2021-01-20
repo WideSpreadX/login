@@ -6,6 +6,8 @@ const {ensureAuthenticated } = require('../config/auth');
 const axios = require('axios');
 const cheerio = require('cheerio');
 
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
 router.get('/', (req, res) => {
 
@@ -31,22 +33,52 @@ axios.get("https://www.oann.com/category/newsroom/").then(function(response) {
         // Save these results in an object that we'll push into the results array we defined earlier
          */
         results.push({
-        title: title,
-        articleImage: articleImage,
-        articleImageAlt: articleImageAlt,
-        link: link,
-/*         
-        newsPreview: newsPreview,
+            title: title,
+            articleImage: articleImage,
+            articleImageAlt: articleImageAlt,
+            link: link,
+            /*         
+            newsPreview: newsPreview,
         time: time
-         */
-        });
+        */
+    });
         });
         // Log the results once you've looped through each of the elements found with cheerio
         console.log(results);
-
-    res.render('news-home', {currentPageTitle: 'News', results});
-        });
+        
+        res.render('news-home', {currentPageTitle: 'News', results});
+    });
 });
+router.get('/international', (req, res) => {
+    const country = 'U.S.';
+
+    newsapi.v2.topHeadlines({
+        language: 'en',
+        country: 'us'
+      }).then(response => {
+        console.log(response)
+        res.render('news-international', {currentPageTitle: 'News', response, country});
+    });
+});
+router.post('/international', (req, res) => {
+    const country = req.body.country;
+
+        res.redirect(`/news/international/${country}`);
+});
+router.get('/international/:country', (req, res) => {
+    const country = req.params.country;
+
+    newsapi.v2.topHeadlines({
+        category: 'business',
+        language: 'en',
+        country: `${country}`
+      }).then(response => {
+        console.log(response)
+        res.render('news-international', {currentPageTitle: 'News', response, country});
+    });
+
+
+        });
 
 
     //  https://www.newsmax.com/newsfront/
@@ -122,47 +154,7 @@ router.get('/politics', (req, res) => {
         });
 })
 
-/* Election News */
 
-router.get('/election', (req, res) => {
-    axios.get("https://www.dailymail.co.uk/news/2020-election/index.html").then(function(response) {
-        const $ = cheerio.load(response.data);
-        const results = [];
-        $(".football-team-news").children('.article-small').each(function(i, element) {
-        
-            const articleImage = $(element).children('a').children('img').attr('src');
-            const time = $(element).children('.channel-date-container').children('span').text();
-            /*
-         const articleImageAlt = $(element).children('.m').children('a').children('img').attr('alt');
-        
-        // Save the text of the element in a "title" variable
-        */
-
-
-        const title = $(element).children('h2').text();
-        // In the currently selected element, look at its child elements (i.e., its a-tags),
-        // then save the values for any "href" attributes that the child elements may have
-        const link = $(element).children('h2').children('a').attr('href');
-        const newsPreview = $(element).children('p').text()
-        /*
-        
-        // Save these results in an object that we'll push into the results array we defined earlier */
-        results.push({
-            title: title,
-            articleImage: articleImage,
-            link: link,
-            newsPreview: newsPreview,
-            time: time
-            /*         
-            articleImageAlt: articleImageAlt,
-         */
-        });
-        });
-        // Log the results once you've looped through each of the elements found with cheerio
-        console.log(results);
-        res.render('news-election', {currentPageTitle: 'Election', results});
-        });
-})
 
 router.get('/technology', (req, res) => {
     axios.get("https://www.techradar.com/news").then(function(response) {
