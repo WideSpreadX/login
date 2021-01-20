@@ -73,8 +73,21 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .sub-pages {
+            padding: 5px;    
+            margin-top: 20px;
+        }
         .sub-pages a {
             color: lightskyblue;
+            margin-left: 10px;
+            padding-left: 10px;
+            border-left: solid 1px #fff;
+        }
+        .sub-pages a:first-of-type {
+            color: lightskyblue;
+            border: none;
+            padding: 0;
+            margin: 0;
         }
     }
 </style>
@@ -88,15 +101,12 @@
             <a href="/business">Business Home</a>
             <a href="/business/your-desk">Your Desk</a>
             <a href="/business/<%= company._id %>/manage">Manage Company</a>
-            <a href="/business/<%= company._id %>/add-employee">Apply for a Job</a>
+            <a href="/business/<%= company._id %>/apply-for-job">Apply for a Job</a>
         </div>
     </div>
     <p>Scroll left & right for more options</p>
 </div>
 
-<div class="nav-bar">
-    <a href="/business">Business Home</a>
-</div>
 
 <div class="companySite-container">
 
@@ -109,13 +119,13 @@
         <% }) %>
         </div>
 <hr>
-<div class="row companySite-inner">
+<div class="companySite-inner">
 
-    <div class="col-8">
+    <div class="">
         <p><%= company.company_bio %></p>
     </div>
 
-<div class="col-4 companyInfo">
+<div class="companyInfo">
 <p><%= company.company_street_1 %></p>
 <p><%= company.company_street_2 %></p>
 <p><%= company.company_suite_number %></p>
@@ -131,8 +141,5 @@
 </div>
 
 
-<div class="nav-bar">
 
-    <a href="/business/<%= company._id %>/add-employee">Apply for a Job</a>
-</div>
 </div>

@@ -34,6 +34,9 @@
     }
 
     @media screen and (max-width: 500px) {
+        .page-title h1 {
+            text-align: center;
+        }
         .main-header-page-menu-container {
             width: 100%;
             padding-left: 0;
@@ -73,8 +76,32 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .add-new-subpage {
+            margin-top: 20px;
+        }
         .add-new-subpage a {
             color: lightskyblue;
+            margin-left: 10px;
+            padding: 10px;
+        }
+
+        .current-employees {
+            padding-top: 30px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .current-employees table {
+            width: 100%;
+        }
+        .current-employees thead {
+            background: lightskyblue;
+        }
+        .current-employees th {
+            text-align: center;
+        }
+        .current-employees td {
+            border-bottom: solid 1px lightskyblue;
+            color: #fff;
         }
     }
 </style>
@@ -96,32 +123,56 @@
 <br>
 <h1><%= company.company_name %></h1>
 
-<div class="current-employess">
+<div class="add-new-subpage">
+    <h4>Subpages</h4>
+    <a href="/business/<%= company.id %>/add-subpage">Add a Subpage</a>
+    
+</div>
+
+
+<div class="current-employees">
     <h2>Current Employees</h2>
-    <% company.employees.forEach(function(employee) { %>
-        <p>Employee: <%= employee.fname %></p>
-        <% }) %>
+    <table>
+        <thead>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Link</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <% employee.employees.forEach(function(employee) { %>
+                <tr>
+                    <td style="width: 20%; text-align: center;"><%= employee.lname %></td>
+                    <td style="width: 20%; text-align: center;"><%= employee.fname %></td>
+                        <td><a style="color: lightskyblue" href="/users/<%= employee.id %>"><%= employee.id %></a></td>
+
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
 </div>
 
-<div class="job-applicants">
-
+<div class="current-employees">
     <h2>Job Applicants</h2>
-    <% company.job_applicants.forEach(function(applicant){ %>
-        <div style="padding: 10px; margin: 5px; border-radius: 10px;">
-            <div>
-                <div class="job-applicant-card">
-                    <a href="/business/<%= company._id %>/resume/applicant/<%= applicant.id %>">
-                        <h3><%= applicant.resumeOwner.fname %> <%= applicant.resumeOwner.lname %></h3>
-                        <p><%= applicant.resumeOwner.town %>, <%= applicant.resumeOwner.state %></p>
-                        <p><%= applicant.resumeOwner.country %></p>
-                        
-                        </a>
-                </div>
-            </div>  
-            
-        </div>
-    <% }); %>
+    <table>
+        <thead>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Resume</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <% employee.job_applicants.forEach(function(applicant) { %>
+                <tr>
+                    <td style="width: 20%; text-align: center;"><%= applicant.lname %></td>
+                    <td style="width: 20%; text-align: center;"><%= applicant.fname %></td>
+                        <td><a style="color: lightskyblue" href="/users/<%= applicant.resumeOwner.id %>/resume"><%= applicant.resumeOwner.id %></a></td>
+
+                    </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
 </div>
-    <div class="add-new-subpage">
-        <a href="/business/<%= company.id %>/add-subpage">Add a Subpage</a>
-    </div>
+

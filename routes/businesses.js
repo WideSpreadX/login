@@ -72,11 +72,19 @@ router.get('/:companyId/manage', async (req, res) => {
                 model: 'Resume'
             }
         }
-    });
-    const jobApplicant = await Company.findById(companyId);
-    Company.findById(companyId)
+    }).exec()
+    const employee = await Company.findById(companyId).populate({
+        path: 'employees job_applicants',
+        model: 'User'
+    })
+    .populate({
+        path: 'job_applicants',
+        model: 'User'
+    })
+    .exec()
+
     console.log(`Company Info to Manage: ${company}`)
-    res.render('business-manage', {currentPageTitle: 'Manage Company', company, jobApplicant});
+    res.render('business-manage', {currentPageTitle: 'Manage Company', company, employee});
 })
 
 
@@ -91,6 +99,31 @@ router.get('/:companyId/resume/applicant/:applicantId', async (req, res) => {
 })
 
 
+router.get('/:companyId/apply-for-job', ensureAuthenticated, async (req, res) => {
+    const applicant = req.user._id;
+    const company = req.params.companyId;
+    const applicantResumes = await Resume.find({resumeOwner: {$eq: applicant}});
+
+    res.render('apply-for-job', {applicant, company, applicantResumes})
+});
+router.patch('/:companyId/apply', ensureAuthenticated, async (req, res) => {
+    const company = req.params.companyId;
+    const resume = req.body.job_applicant;
+
+    const apply = await Company.findByIdAndUpdate(company,
+        {$addToSet: {job_applicants: resume}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+    apply.save();        
+    res.redirect(`/business/${company}`)
+})
 router.get('/:companyId/:resumeId/add-employee', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
@@ -192,7 +225,9 @@ router.get('/:companyId/add-subpage', ensureAuthenticated, async (req, res) => {
     const company = await Company.findById(companyId)
     
     res.render('business-add-subpage', {company})
-})
+});
+
+
 router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
     const companyId = req.body.companyId;
   
@@ -218,6 +253,13 @@ router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
     subpage.save()
     res.redirect(`/business/${companyId}/manage`);
 })
+router.get('/:companyId/edit-subpage', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    
+    const company = await Company.findById(companyId)
+    const subPages = await Subpage.find({for_company: {$eq: company}})
+    res.render('business-edit-subpage', {company, subPages})
+});
 
 router.get('/:companyId/:subPage', async (req, res) => {
     const companyId = req.params.companyId;

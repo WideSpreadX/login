@@ -1,0 +1,12 @@
+
+<%= applicantResumes._id %>
+<form action="/business/<%= company %>/apply?_method=PATCH" method="POST">
+    <p>Select the resume you'd like to apply with:</p>
+    <select>
+        <% applicantResumes.forEach(function(resume){ %>
+            <option name="job_applicant" value="<%= resume.id %>"><%= resume.resume_name %></option>
+            <% }) %>
+    </select>
+    
+    <button class="btn btn-block btn-success" style="margin-top: 20px;"DISABLED type="submit">Apply</button>
+</form>

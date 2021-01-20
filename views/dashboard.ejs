@@ -101,13 +101,13 @@
         <%} else { %>
             <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
             <% } %>
-        </div>
+</div>
 <%- include('partials/mainHeaderSiteMenu') %>
 <%- include('partials/mainHeaderPageMenu') %>
 
 <br>
 <br>
-<a href="/socialspread">SocialSpread</a>
+
 <div class="row">
     <div class="col-8">
         <h2 class="lead mb-3">Welcome <%= fname %></h2>
@@ -289,7 +289,7 @@
                     <input type="text" name="videoName" id="videoName" placeholder="Video Title" style="margin-top: 15px;">
                     <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
                     <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
-                    <input type="text" placeholder="DISABLED" style="text-align: center;">
+                    <button type="submit" disabled class="btn btn-block btn-success">Add Video</button>
                 </form>
             </div>
         </div>
