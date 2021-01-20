@@ -84,7 +84,7 @@
                     <div class="user-avatar"style="box-shadow: 0 0 10px <%= post.author.favColor1 %>; margin-top: 10px;">
                         <% if (post.author.user_avatar) { %>
                             <p><%=profileImages.imageOwner %></p>
-                            <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
+                            <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar" width="260px">
                             <%} else { %>
                                 <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
                                 <% } %>

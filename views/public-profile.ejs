@@ -73,7 +73,7 @@
 <div class="jumbotron mt-4">
     <div class="public-profile-avatar">
             <% if (avatarImage) { %>
-                <img src="/image/<%= avatarImage.img.data  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+                <img src="/image/<%= avatarImage.img.data  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="260px">
                 <%} else { %>
                 <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
                 <% } %>
