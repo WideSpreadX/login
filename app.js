@@ -215,7 +215,7 @@ app.patch('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
 })
 });
 /* Profile Image Update */
-app.patch('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
+app.patch('/upload-background-image', upload.single('user_profile_image'), (req, res) => {
     const imageOwner = req.user._id;
     const obj = { 
       imageOwner: req.user._id, 

@@ -44,6 +44,7 @@
         text-align: center;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.452);
+        z-index: -500;
     }
     .current-image-background img {
         max-width: 300px;
@@ -55,7 +56,11 @@
     <% if (currentUser.user_background_image) { %>
         <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Avatar">
         <%} else { %>
-            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+            <% if (currentUser.favColor1) { %> 
+            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= currentUser.favColor1 %>"></div>
+            <% } else { %>
+             <span></span>
+             <% } %>
             <% } %>
         </div>
         <%- include('partials/mainHeaderSiteMenu') %>
@@ -82,7 +87,7 @@
         <% if (currentUser.user_background_image) { %>
             <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Avatar">
             <%} else { %>
-                <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+                <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= currentUser.favColor1 %>"></div>
                 <% } %>
             </div>
     <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
