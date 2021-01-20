@@ -89,7 +89,55 @@
         border: groove 1px rgba(135, 206, 250, 0.555);
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
     }
+    .find-new-friends {
+        position: relative;
+    }
+    .find-new-friends {
+        min-height: 450px;
+    }
+    .new-friend {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        min-height: 400px;
+        margin-left: 20px;
+        border-radius: 15px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+    }
 
+    .possible-friend {
+        margin-top: -140px;
+        min-width: 300px;
+        box-shadow: 0 8px rgba(0, 0, 0, 0.445);
+        background: rgba(255, 255, 255, 0.37);
+        backdrop-filter: blur(2px);
+        z-index: 10;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+    .possible-friend p {
+        color: #fff;
+    }
+    .possible-friend-background {
+        backdrop-filter: blur(0px);
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    .possible-friend-image {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        left: 0;
+        width: 300px;
+        min-height: 100%;
+        border-radius: 15px;
+    }
+    .possible-friend-image img {
+        width: 300px;
+        min-height: 100%;
+        border-radius: 15px;
+    }
     .friend-container {
         margin-top: 20px;
     }
@@ -213,21 +261,29 @@
         <div class="find-new-friends">
             <% nearbyUsers.forEach(function(friend){ %>
                 <% if(nearbyUsers) { %>
-            <div class="possible-friend-background"></div>
+            <div class="new-friend">
+
+            
+            <div class="possible-friend-background">
+
+                <div class="possible-friend-image">
+                    <% if (friend.user_avatar) { %>
+                        <img src="/image/<%= friend.user_avatar   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="60px">
+                    <%} else { %>
+                        <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="60px"  >
+                        <% } %>
+                </div>
+            </div>
             <a href="/users/<%= friend.id %>">
-                <div class="possible-friend" style="box-shadow: 0 0 10px <%= friend.favColor1 %>;">
-                    <div class="possible-friend-image" style="border: groove 1px <%= friend.favColor1 %>; border-top: none;">
-                        <% if (friend.user_avatar) { %>
-                            <img src="/image/<%= friend.user_avatar   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="60px">
-                        <%} else { %>
-                            <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="60px" style="box-shadow: 0 3px 10px <%= friend.favColor1 %>; background: #000" >
-                            <% } %>
-                    </div>
+                <div class="possible-friend">
                         <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
+                        <% if (!friend.town && !friend.state && !friend.country) { %>
+                            <br>
+                            <br>
+                            <% } else { %> 
                         <p><%= friend.town %>, <%= friend.state %></p>
                         <p><%= friend.country %></p>
-                        <small><%= friend.gender %></small>
-                        <p><%= friend.email %></p>
+                            <% } %>
                     </a>
                     <div class="add-friend-container">
 
@@ -241,7 +297,7 @@
                         </div>
                     </div>
                     </div>
-            
+                </div>
                 <%} else { %>
                     <span></span> 
                     <% } %>
