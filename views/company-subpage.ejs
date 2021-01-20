@@ -1,7 +1,32 @@
-<h1><%= thisSubPage.page_name %></h1>
-<h3><%= thisSubPage.page_body.page_header1 %></h3>
-<p><%= thisSubPage.page_body.page_body1 %></p>
-<h3><%= thisSubPage.page_body.page_header2 %></h3>
-<p><%= thisSubPage.page_body.page_body2 %></p>
-<h3><%= thisSubPage.page_body.page_header3 %></h3>
-<p><%= thisSubPage.page_body.page_body3 %></p>
+<style>
+       @media screen and (max-width: 500px) {
+            .company-sub-main {
+            }
+            .company-sub-main h1 {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .company-sub-main h2 {
+                text-align: center;
+            }
+            .company-sub-main h3 {
+                margin-top: 30px;
+                text-align: center;
+            }
+            .company-sub-main p {
+                padding: 10px;
+            }
+       }
+</style>
+<div class="company-sub-main">
+
+    <h1><%= thisCompany.company_name %></h1>
+    <h2><%= thisSubPage.page_name %></h2>
+    <hr style="width: 80%; margin-left: 10%; border: solid 1px lightskyblue;">
+    <h3><%= thisSubPage.page_body.page_header1 %></h3>
+    <p><%= thisSubPage.page_body.page_body1 %></p>
+    <h3><%= thisSubPage.page_body.page_header2 %></h3>
+    <p><%= thisSubPage.page_body.page_body2 %></p>
+    <h3><%= thisSubPage.page_body.page_header3 %></h3>
+    <p><%= thisSubPage.page_body.page_body3 %></p>
+</div>

@@ -222,10 +222,10 @@ router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
 router.get('/:companyId/:subPage', async (req, res) => {
     const companyId = req.params.companyId;
     const subPage = req.params.subPage;
-
+    const thisCompany = await Company.findById(companyId)
     const thisSubPage = await Subpage.findById(subPage)
 
-    res.render('company-subpage', {thisSubPage, companyId})
+    res.render('company-subpage', {thisSubPage, companyId, thisCompany})
 });
 
 module.exports = router;
