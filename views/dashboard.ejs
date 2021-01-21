@@ -89,6 +89,14 @@
         border: groove 1px rgba(135, 206, 250, 0.555);
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
     }
+    .your-friends {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.301);
+        backdrop-filter: blur(2px);    
+    }
+    .your-friends a {
+        color: lightskyblue;
+    }
     .find-new-friends {
         position: relative;
     }
@@ -140,6 +148,27 @@
     }
     .friend-container {
         margin-top: 20px;
+    }
+    .add-friend-container {
+        display: inline-flex;
+    }
+    .add-friend button {
+        border-radius: 50%;
+        background: green;
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+        text-align: center;
+        color: #fff;
+    }
+    .remove-friend button {
+        border-radius: 50%;
+        background: red;
+        width: 40px;
+        height: 40px;
+        margin-left: 5px;
+        text-align: center;
+        color: #fff;
     }
 }
 </style>
@@ -255,7 +284,9 @@
         </div>
     </div>
 
-
+    <div class="your-friends">
+        <a href="/<%= profile.id %>/friends"><h3>Your Friends</h3></a>
+    </div>
     <div class="row">
         <h1 style="text-align: center; width: 100%;">Find New Friends</h1>
         <div class="find-new-friends">
@@ -281,20 +312,28 @@
                             <br>
                             <br>
                             <% } else { %> 
-                        <p><%= friend.town %>, <%= friend.state %></p>
-                        <p><%= friend.country %></p>
-                            <% } %>
-                    </a>
-                    <div class="add-friend-container">
-
-                        <div class="add-friend">
-                            <form action="/users/<%= profile._id %>/add-friend" method="POST">
+                                <p><%= friend.town %>, <%= friend.state %></p>
+                                <p><%= friend.country %></p>
+                                <% } %>
+                            </a>
+                            <div class="add-friend-container">
+                                <div class="add-friend">
+                                    <form action="/users/<%= profile._id %>/add-friend" method="POST">
+                                        <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
+                                        <button class="" type="submit">
+                                            <i class="fas fa-user-plus"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                        <div class="remove-friend">
+                            <form action="/users/<%= profile._id %>/remove-friend?_method=PATCH" method="POST">
                                 <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
                                 <button class="" type="submit">
-                                    <i class="fas fa-user-plus"></i>
+                                    <i class="fas fa-user-minus"></i>
                                 </button>
                             </form>
                         </div>
+
                     </div>
                     </div>
                 </div>
@@ -351,3 +390,18 @@
         </div>
     </div>
 
+
+<script>
+            friends.forEach(friendId);
+        function friendId(value) {
+          console.log(value)
+          nearbyUsers.forEach(getId)
+          function getId(id) {
+            console.log(id.id)
+          if (value == id.id) {
+            console.log(`This user is your friend ${value} - ${id.id}`)
+            }
+            
+          }
+        }
+</script>

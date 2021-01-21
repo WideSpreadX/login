@@ -95,7 +95,10 @@
 
     <h3>About Me Section</h3>
     <textarea name="about" id="aboutMe" cols="50" rows="10"><%= currentUser.about %></textarea>
-    
+    <div class="s-m-outlet">
+        <p>Current Occupation</p>
+        <input type="text" name="current_occupation" value="<%= currentUser.current_occupation %>">
+    </div>
     <div class="s-m-container">
 
     <h3>Social Media Outlets</h3>

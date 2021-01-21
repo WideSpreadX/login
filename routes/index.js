@@ -80,6 +80,21 @@ conn.once('open', () => {
         console.log("Users Posts: " + posts)
         console.log("Users Posts: " + profileImages) */
 
+        console.log(`Friend ID's ${friends}`)
+        friends.forEach(friendId);
+        function friendId(value) {
+          console.log(value)
+          nearbyUsers.forEach(getId)
+          function getId(id) {
+            console.log(id.id)
+          if (value == id.id) {
+            console.log(`This user is your friend ${value} - ${id.id}`)
+            }
+            
+          }
+        }
+        
+
         User.findById(id)
         .populate({
           path: 'friends',
@@ -201,6 +216,19 @@ conn.once('open', () => {
       res.redirect('/dashboard/wall')
     )
   })
+router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
+    const userId = req.params.userId;
+
+    const friendList = await User.findById(userId).populate({
+      path: 'friends',
+      model: 'User'
+    }).exec()
+    console.log(friendList);
+    
+    res.render('friends-page', {friendList, userId})
+
+});
+
 
 /* Comment Like */
   router.patch('/:commentId/like', ensureAuthenticated, (req, res) => {

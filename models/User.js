@@ -52,6 +52,7 @@ const UserSchema = new mongoose.Schema({
     likedPosts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     likedComments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
     about: String,
+    current_occupation: String,
     social: {
         github: String,
         linkedin: String,

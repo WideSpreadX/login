@@ -1,0 +1,56 @@
+<style>
+    a:active {
+        text-decoration: none;
+    }
+    .friend-container {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.397);
+        margin-top: 10px;
+        border-radius: 8px;
+        height: 100px;
+        display: inline-flex;
+        backdrop-filter: blur(2px);
+    }
+    .friend-image {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.582);
+        border-radius: 8px;
+    }
+    .friend-image img {
+        border-radius: 8px;
+        max-width: 100px;
+        max-height: 100px;
+        background: rgba(255, 255, 255, 0.582);
+    }
+    .friend-data h3 {
+        padding: 10px;
+        padding-bottom: 0;
+    }
+    .friend-data small {
+        padding: 0;
+        padding-left: 10px;
+        color: #fff;
+    }
+</style>
+<% friendList.friends.forEach(function(friend) { %>
+    <a href="/users/<%= friend.id %>">
+    
+    <div class="friend-container">
+        <div class="friend-image">
+            <% if(friend.user_avatar) { %>
+                <img src="/image/<%= friend.user_avatar %>" alt="<%= friend.fname %> <%= friend.lname %>">
+            <% } else { %>
+                <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar">
+            <% } %>
+        </div>
+        <div class="friend-data">
+            <h3 style="color: <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
+            <small><%= friend.town %>, <%= friend.state %></small><br>
+            <small><%= friend.current_occupation %></small>
+        </div>
+
+    </div>
+    </a>
+<% }) %>

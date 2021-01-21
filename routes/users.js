@@ -170,6 +170,35 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     )
 
 });
+  router.patch('/:id/remove-friend', (req, res) => {
+    let id = req.body.friends;
+    let userId = req.user._id;
+    console.log("req.body: " + id);
+    User.findOne({'_id': req.body.friends}, '_id', (err, newFriend) => {
+        console.log("newFriend ID - Step 1: " + newFriend._id);
+        console.log("currentUser ID - Step 2: " + userId);
+        if (err) {
+            return
+        } else {
+            User.findByIdAndUpdate(userId,
+                {$pull: {friends: req.body.friends}},
+                function(err, doc) {
+                    if(err){
+                    console.log(err);
+                    }else{
+                    
+                        return
+                    }
+                }
+                )
+                
+            }
+    })
+    .then(
+        res.redirect('/dashboard')
+    )
+
+});
 
 router.get('/update-profile/:id', ensureAuthenticated, async (req, res, next) => {
     const id = req.user._id
