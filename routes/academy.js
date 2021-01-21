@@ -228,11 +228,12 @@ router.post('/:courseId/:classId/add-flashcard', ensureAuthenticated, (req, res)
     res.redirect(`/academy/courses/${courseId}/${classId}`)
 });
 
-router.get('/:classId/flashcards', ensureAuthenticated, async (req, res) => {
+router.get('/:courseId/:classId/flashcards', ensureAuthenticated, async (req, res) => {
     const classId = req.params.classId;
+    const courseId = req.params.courseId;
     const thisClass = await Class.findById(classId);
     const flashcards = await Flashcard.find({class: {$eq: classId}});
-    res.render('flashcards', {currentPageTitle: 'Flashcards', flashcards, thisClass})
+    res.render('flashcards', {currentPageTitle: 'Flashcards', flashcards, thisClass, courseId})
 
 })
 

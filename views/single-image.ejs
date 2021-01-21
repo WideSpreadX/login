@@ -1,9 +1,4 @@
 <style>
-    .page-title {
-        padding-top: 20px;
-        text-align: center;
-        width: 100%;
-    }
     .main-header-page-menu-container {
         padding: 10px;
         background: rgba(255, 255, 255, 0.308);
@@ -24,7 +19,6 @@
         background: rgba(135, 206, 250, 0.315);
         backdrop-filter: blur(4px);
         border-radius: 8px;
-        text-align: center;
     }
     .main-header-page-menu-inner a:hover {
         text-decoration: none;
@@ -45,9 +39,6 @@
             color: rgba(255, 255, 255, 0.76);
             text-align: center;
             font-size: 0.6rem;
-        }
-        .main-header-page-menu-inner a {
-            text-align: center;
         }
         
         #mainHeaderPageMenu {
@@ -71,51 +62,26 @@
             margin-left: 5px;
             margin-right: 5px;
             margin-bottom: 10px;
-            text-align: center;
         }
-        .flip-card-front {
-            padding: 10px;
-            padding-top: 60px;
+        .single-image {
+            background: lime;
         }
-        .flip-card-back {
-            padding: 10px;
-            padding-top: 60px;
-        }
-        .flip-card-back p {
-            color: lightskyblue;    
-        }
+
     }
 </style>
-<%- include('partials/mainHeaderSiteMenu') %>
-<div class="page-title">
-    <h1><%= currentPageTitle %> for <%= thisClass.name %></h1>
-</div>
-
 <div class="main-header-page-menu-container">
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
             <a href="/academy">Your Desk</a>
-            <a href="/academy/courses/<%= courseId %>/<%= thisClass.id %>/">Back to Class</a>
+            <a href="/academy/tools">Tools</a>
             <a href="/academy/courses">All Courses</a>
-
         </div>
     </div>
     <p>Scroll left & right for more options</p>
 </div>
 
-<div class="flashcard-container">
+<h1 style="text-align: center; margin-top: 30px;"><%= currentPageTitle %></h1>
 
-    <% flashcards.forEach(function(flashcard) { %>
-        <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front easy">
-                <p><%= flashcard.question %></p>
-                
-            </div>
-            <div class="flip-card-back easy">
-                <p><%= flashcard.answer %></p>
-            </div>
-        </div>
-    </div>
-    <% }); %>
+<div class="single-image">
+    <img src="<%= readstream %>" alt="">
 </div>

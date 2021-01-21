@@ -73,6 +73,32 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .learning-point {
+            position: relative;
+        }
+        .learning-point-header {
+            display: inline-flex;
+        }
+        .learning-point-header h5 {
+            width: 85%;
+        }
+        .learning-point-actions {
+            padding: 10px;
+            font-size: 1.5rem;
+            position: absolute;
+            color: rgba(255, 255, 255, 0.404);
+            right: 20px;
+            top: 32px;
+        }
+        .bookmark {
+            display: block;
+            color: yellow;
+        }
+        .add-note {
+            padding-top: 10px;
+            display: block;
+            color: green;
+        }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -83,6 +109,7 @@
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
             <a href="/academy">Your Desk</a>
+            <a href="/academy/<%= thisCourseId %>/<%= thisClass.id %>/flashcards">Flashcards</a>
             <a href="/academy/courses">All Courses</a>
 
         </div>
@@ -90,19 +117,28 @@
     <p>Scroll left & right for more options</p>
 </div>
 
-<h2><%= thisClass.name %></h2>
+<h2 style="margin-top: 30px; text-align: center;"><%= thisClass.name %></h2>
 
 
-<div class="nav-bar">
-    <a href="/academy/<%= thisClass.id %>/flashcards">Flashcards</a>
-</div>
 
 <div class="learning-points">
     <ol class="class-chapter">
     <% learningPoints.forEach(function(point){ %>
         <li>
             <div class="learning-point">
-                <h5 class="collapsible-learning-point" ><%= point.section_header %> <span><i class="fas fa-angle-double-down"></i></span></h5>
+                <div class="learning-point-actions">
+                    <span><i class="far fa-bookmark bookmark"></i></span>
+                    <span><i class="fas fa-pencil-alt add-note"></i></span>
+                </div>
+                <div class="collapsible-learning-point">
+                    <div class="learning-point-header">
+                        <h5><%= point.section_header %></h5>
+                        <span><i class="fas fa-angle-double-down"></i></span>
+
+
+                    </div>
+
+                </div>
                 <p><%= point.section_body %></p>
                 <p style="color: blue;"><%= point.section_notes %></p>
                 <div class="learning-point-actions">
