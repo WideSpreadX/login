@@ -1,36 +1,93 @@
+<style>
+    .main-header-page-menu-container {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.308);
+        backdrop-filter: blur(2px);
+        border-radius: 12px;
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        
+    }
+    .main-header-page-menu-inner {
+        padding: 10px;
+    }
+    .main-header-page-menu-inner a {
+        display: inline-flex;
+        padding: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.733);
+        transition: ease-in 0.4s;
+        background: rgba(135, 206, 250, 0.315);
+        backdrop-filter: blur(4px);
+        border-radius: 8px;
+    }
+    .main-header-page-menu-inner a:hover {
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+        transition: ease-in 0.2s;
+    }
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
+    @media screen and (max-width: 500px) {
+        .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+            font-size: 0.6rem;
+        }
+        
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+        }
+        .s-m-outlet {
+            display: inline-flex;
+            margin-top: 10px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .s-m-outlet p {
+            color: #fff;
+            width: 200px;
+        }
+
+    }
+</style>
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenuu">
+        <div class="main-header-page-menu-inner">
+            <a href="/academy">Your Desk</a>
+            <a href="/academy/tools">Tools</a>
+            <a href="/academy/courses">All Courses</a>
         </div>
     </div>
+    <p>Scroll left & right for more options</p>
 </div>
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-12">
-                <a href="/academy">Your Desk</a>
-                <a href="/academy/courses">Courses</a>
-                <a href="#">Tools</a>
-                <a href="#">Help</a>
-            </div>
-
-        </div>
-    </div>
-</div>
-<h1><%= currentPageTitle %></h1>
+<h1 style="text-align: center; margin-top: 30px;"><%= currentPageTitle %></h1>
 
 <div class="row">
     <div class="update-profile col-12">
@@ -38,16 +95,17 @@
             <div class="s-m-outlet">
                 <p>Course Catagory</p>
                 <select name="subject" id="subject">
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="reading">Reading</option>
-                    <option value="language">Language</option>
-                    <option value="art">Art</option>
-                    <option value="music">Music</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="computer_science">Computer Science</option>
-                    <option value="health">Health</option>
+                    <option value="Math">Math</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Language">Language</option>
+                    <option value="Art">Art</option>
+                    <option value="Music">Music</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Health">Health</option>
+                    <option value="Yoga">Yoga</option>
                 </select>
                 
             </div>
@@ -69,7 +127,7 @@
                 <p>Credit Value</p>
                 <input type="number" name="credit_value">
             </div>
-            <input type="submit" value="Add Course">
+            <input style="margin-top: 20px;" class="btn btn-block btn-success" type="submit" value="Add Course">
         </form>
     </div>
 </div>

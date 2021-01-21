@@ -1,38 +1,95 @@
+<style>
+    .main-header-page-menu-container {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.308);
+        backdrop-filter: blur(2px);
+        border-radius: 12px;
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        
+    }
+    .main-header-page-menu-inner {
+        padding: 10px;
+    }
+    .main-header-page-menu-inner a {
+        display: inline-flex;
+        padding: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.733);
+        transition: ease-in 0.4s;
+        background: rgba(135, 206, 250, 0.315);
+        backdrop-filter: blur(4px);
+        border-radius: 8px;
+    }
+    .main-header-page-menu-inner a:hover {
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+        transition: ease-in 0.2s;
+    }
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
+    @media screen and (max-width: 500px) {
+        .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+            font-size: 0.6rem;
+        }
+        
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+        }
+        .s-m-outlet {
+            display: inline-flex;
+            margin-top: 10px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .s-m-outlet p {
+            color: #fff;
+            width: 100px;
+        }
+
+    }
+</style>
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenuu">
+        <div class="main-header-page-menu-inner">
+            <a href="/academy">Your Desk</a>
+            <a href="/academy/tools">Tools</a>
+            <a href="/academy/courses">All Courses</a>
         </div>
     </div>
+    <p>Scroll left & right for more options</p>
 </div>
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-12">
-                <a href="/academy">Your Desk</a>
-                <a href="/academy/courses">Courses</a>
-                <a href="#">Tools</a>
-                <a href="#">Help</a>
-            </div>
-
-        </div>
-    </div>
-</div>
-<h1><%= currentPageTitle %></h1>
-<h2><%= courseInfo %></h2>
-<h2><%= course %></h2>
+<h1 style="text-align: center; margin-top: 30px;"><%= currentPageTitle %></h1>
+<h4 style="text-align: center; color: #fff">to</h4>
+<h2><%= courseInfo.course %></h2>
 <div class="row">
     <div class="update-profile col-12">
         <form action="/academy/courses/<%= course %>/add-class" method="POST">
@@ -40,10 +97,11 @@
                 <p>Class Name</p>
                 <input type="text" name="name">
             </div>
-            <div class="s-m-outlet">
-                <textarea name="description" id="classDescription" cols="30" rows="10"></textarea>
+            <div style="display: block;">
+                <p style="color: #fff; text-align: center; padding-top: 10px;">Class Description</p>
+                <textarea style="display: block; width: 100%; margin-bottom: 20px;" name="description" id="classDescription" cols="30" rows="10"></textarea>
             </div>
-            <input type="submit" value="Add Class">
+            <input class="btn btn-block btn-success" type="submit" value="Add Class">
         </form>
     </div>
 </div>

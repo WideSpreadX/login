@@ -80,10 +80,10 @@ router.patch('/courses/:courseId/add-course', async (req, res) => {
         )
         res.redirect('/academy')
 })
-router.get('/courses/:courseId/add-class', ensureAuthenticated, (req, res) => {
+router.get('/courses/:courseId/add-class', ensureAuthenticated, async (req, res) => {
     const course = req.params.courseId;
-    const courseInfo = Course.findById({course})
-    Course.findById({course})
+    const courseInfo = await Course.findById(course)
+    await Course.findById(course)
     console.log(`Course Info: ${courseInfo}`)
     console.log(`Course: ${course}`)
     res.render('add-class', {currentPageTitle: 'Add New Class', course, courseInfo});
