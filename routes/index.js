@@ -15,6 +15,7 @@ const Comment = require('../models/Comment');
 const Resume = require('../models/Resume');
 const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
+const PhotoAlbum = require('../models/PhotoAlbum');
 const Avatar = require('../models/Avatar');
 const Video = require('../models/Video');
 
@@ -291,6 +292,35 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
 
   });
 
+  router.get('/photo-album/:user', ensureAuthenticated, async (req, res) => {
+    const user = req.params.user;
+    const thisUser = await User.findById(user);
+    const photoAlbums = await PhotoAlbum.find({albumnOwner: {$eq: user._id}});
+    console.log(photoAlbums)
+    res.render('photo-album', {photoAlbums, thisUser})
+  })
+
+  router.get('/photo-album/:user/:albumId', ensureAuthenticated, async (req, res) => {
+    const user = req.params.user;
+    const thisUser = await User.findById(user);
+    const albumId = req.params.albumId;
+    const photoAlbums = await PhotoAlbum.findById(albumId);
+    console.log(photoAlbums)
+    res.render('album', {photoAlbums, thisUser, albumId})
+  })
+  router.post('/photo-album', ensureAuthenticated, (req, res) => {
+    const user = req.user.id;
+    const photoAlbum = new PhotoAlbum({
+      albumOwner: req.user._id,
+      album_name: req.body.album_name,
+      album_description: req.body.album_description,
+      album_color: req.body.album_color,
+      private: req.body.private,
+    });
+    photoAlbum.save()
+
+    res.redirect(`/photo-album/${user}`);
+  })
   router.get('/socialspread', async (req, res) => {
     const thisUser = req.user._id;
     

@@ -16,6 +16,7 @@ const profileImage = require('./models/ProfileImage');
 const video = require('./models/Video');
 const avatar = require('./models/Avatar');
 const userBackgroundImage = require('./models/UserBackgroundImage');
+const PhotoAlbum = require('./models/PhotoAlbum');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -160,7 +161,7 @@ app.patch('/upload-background-image', upload.single('user_background_image'), (r
           contentType: 'image/png'
       } 
   } 
-    userBackgroundImage.create(obj, (err, item) => { 
+    photoAlbum.create(obj, (err, item) => { 
       if (err) { 
           console.log(err); 
       } 
@@ -214,7 +215,42 @@ app.patch('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
       }
 })
 });
-/* Profile Image Update */
+/* Photo Album Image Update */
+app.post('/upload-to-album/:userId/:albumId', upload.single('photos'), (req, res) => {
+    const user = req.user._id;
+    const userId = req.params.userId;
+    const albumId = req.params.albumId;
+    const albumOwner = req.user._id;
+    const obj = { 
+      albumOwner: req.user._id, 
+      img: { 
+          data: req.file.filename,
+          contentType: 'image/png'
+      } 
+  } 
+    userBackgroundImage.create(obj, (err, item) => { 
+      if (err) { 
+          console.log(err); 
+      } 
+      else { 
+          item.save(); 
+          console.log(`Image Owner: ${albumOwner} Image Data: ${obj.img.data}`);
+          const newImage = obj.img.data;
+          PhotoAlbum.findByIdAndUpdate(albumId,
+            {$addToSet: {photos: req.file.filename}},
+            {safe: true, upsert: true},
+            function(err, doc) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    return
+                }
+            }
+            )
+          res.redirect(`/photo-album/${user}`); 
+      }
+})
+});
 app.patch('/upload-background-image', upload.single('user_profile_image'), (req, res) => {
     const imageOwner = req.user._id;
     const obj = { 

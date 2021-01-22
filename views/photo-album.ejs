@@ -1,0 +1,141 @@
+<style>
+@media screen and (max-width: 500px) {
+    .photo-albums-container {
+        width: 100%;
+        overflow-y: scroll;
+    }
+    
+    .photo-album-container {
+        width: 100%;
+        max-height: 500px;
+        margin-top: 20px;
+        border-radius: 15px;
+        padding: 20px;
+    }
+    .photo-preview-slide {
+        display: inline-flex;
+        overflow-x: scroll;
+        min-width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    .photos {
+        padding: 5px;
+        height: 210px;
+        display: block;
+    }
+    .photo img {
+        max-width: 120px;
+        width: 120px;
+        max-height: 200px;
+        width: 120px;
+        margin-right: 10px;
+        border-radius: 8px;
+
+    }
+    .photo-album-image-form {
+        display: block;
+        background: rgba(255, 255, 255, 0.404);
+        backdrop-filter: blur(2px);
+        border-radius: 15px;
+        width: 80%;
+        margin-left: 10%;
+        text-align: center;
+        color:  #fff;    
+        text-shadow: 0 0 2px  #000;
+    }
+    .custom-file-profile-image-button {
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.404);
+        box-shadow: inset 0 0 10px 5px green;
+        border: none;
+        outline: none;
+        color: #fff;
+        width: 75%;
+        margin-left: 0 auto;
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+    .open-album {
+        width: 80%;
+        margin: 0 auto;
+        padding: 10px;
+        background:rgba(255, 255, 255, 0.404);
+        backdrop-filter: blur(2px);
+    }
+    .open-album a {
+        color: #fff;
+    }
+
+}
+
+</style>
+
+<div class="photo-albums-container">
+
+
+        <% photoAlbums.forEach(function(album) { %>
+    <div class="photo-album-container" style="background: <%= album.album_color %>;">
+        <h4><%= album.album_name %>
+            <% if (album.private === true) { %>
+                <small>Private</small>
+            <% } else { %>
+                <small>Public</small>
+            <% } %>
+        </h4>
+        <p><%= album.album_description %></p>
+        <div class="photo-preview-slider">
+            <div class="photo-preview-slide">
+                <% if(!album.photos) { %>
+                    <div class="photo-album-image-form">
+        
+                        <form action="/upload-to-album/<%= album.id %>" method="post" enctype="multipart/form-data">
+                            <input type="text" name="albumOwner" id="albumOwner" style="display: none;" value="">
+                            <div class="custom-file-profile-image">
+                                <input type="file" name="photos" id="photos">
+                                <label for="photos" class="custom-file-label-choose-profile-image">Upload an Image</label>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="custom-file-profile-image-button">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                <% } else { %>
+                    <% album.photos.forEach(function(photo) { %>
+                        <div class="photos">
+
+                            <div class="photo">
+                                <img src="/image/<%= photo %>" alt="">
+                            </div>
+                            
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+                <% } %>
+                <div class="open-album">
+                    <p><%= photoAlbums.id %></p>
+                    <a href="/photo-album/<%= thisUser.id %>/<%= album._id %>">Open Album</a>
+                </div>
+            </div>
+    <% }) %>
+</div>
+
+<div class="user-photo-album-form">
+    <form action="/photo-album" method="POST">
+        <p>Album Name</p>
+        <input type="text" name="album_name" placeholder="Name of Album">
+        <p>Album Description</p>
+        <textarea name="album_description" placeholder="Enter an optional description here..."></textarea>
+        <p>Album Color</p>
+        <input type="color" name="album_color">
+        <p>Would you like this album public or private?</p>
+        <input type="radio" id="privateFalse" name="private" value="false">
+            <label for="privateFalse">Public</label><br>
+        <input type="radio" id="privateTrue" name="private" value="true">
+            <label for="privateTrue">Private</label><br>
+        <button type="submit">Add Photos</button>
+    </form>
+</div>
