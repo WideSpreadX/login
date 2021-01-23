@@ -1,23 +1,59 @@
+<style>
+    .image-and-data-container {
+        width: 98vw;
+        padding: 10px;
+        padding-bottom: 0;
+        text-align: center;
+        margin-left: 1vw;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.404);
+        backdrop-filter: blur(2px);
+        border-radius: 15px;
+    }
+    .image-container {
+        width: 100%;
+        max-height: 300px;
+        text-align: center;
+    }
+    .image-container img {
+        max-height: 300px;
+        max-width: 100%;
+        border-radius: 15px;
+    }
+    .image-container p {
+        color: #fff;
+        text-align: center;
+    }
+    .delete-image button {
+        width: 80%;
+        height: 40px;
+        margin-left: 10%;
+        padding: 10px;
+        background: red;
+        border: groove 2px red;
+        border-bottom: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        text-align: center;
+        color: #fff
+    }
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
 <% files.forEach(function(image){ %>
-    <div style="padding: 7px;">
-        <div> 
-            <div> 
-                <div class="med-image"> 
-                    <a href="/files/<%= image.filename %>">
-                        <img src="/image/<%= image.filename %>" width="300px" height="300px"> 
-                    </a>
-                    <p><%= image.filename %></p>
-                    <p><%= image._id %></p>
-                    <p><%= image.uploadDate %></p>
-                </div> 
-                <div class="delete-image">
-                    <form action="/delete-image/<%= image._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-block btn-danger">Delete</button>
-                    </form>
-                </div>
+        <div class="image-and-data-container"> 
+            <div class="image-container"> 
+                <a href="/files/<%= image.filename %>">
+                    <img src="/image/<%= image.filename %>"> 
+                </a>
+                <p><%= image.filename %></p>
+                <p><%= image.uploadDate %></p>
             </div> 
+            <div class="delete-image">
+                <form action="/delete-image/<%= image._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-block btn-danger">Delete</button>
+                </form>
+            </div>
         </div> 
-        
-    </div>
     
     <% }); %>
