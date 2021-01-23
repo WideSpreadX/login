@@ -3,9 +3,18 @@
         <div> 
             <div> 
                 <div class="med-image"> 
-                    <img src="/image/<%= image.filename %>" width="300px" height="300px"> 
-                    
+                    <a href="/files/<%= image.filename %>">
+                        <img src="/image/<%= image.filename %>" width="300px" height="300px"> 
+                    </a>
+                    <p><%= image.filename %></p>
+                    <p><%= image._id %></p>
+                    <p><%= image.uploadDate %></p>
                 </div> 
+                <div class="delete-image">
+                    <form action="/delete-image/<%= image._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-block btn-danger">Delete</button>
+                    </form>
+                </div>
             </div> 
         </div> 
         

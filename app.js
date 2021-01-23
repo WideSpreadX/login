@@ -91,7 +91,7 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const filename = req.user.lname + '-' + req.user.fname + '_' + buf.toString('hex') + path.extname(file.originalname);
         const fileInfo = {
           filename: filename,
           bucketName: 'uploads'
@@ -343,10 +343,22 @@ app.get('/files/:filename', (req, res) => {
         }
     
         // Files do exist
-        return res.json(file)
+        return res.render('single-image-file', {file})
   })
 })
+app.delete('/delete-image/:fileId', (req,res) => {
+  const fileId = req.params.fileId;
+  console.log(`File ID being deleted: ${fileId}`);
+  gfs.remove({_id: fileId, root: 'uploads'}, (err, gridStore) => {
+    if(err) {
+      return res.status(404).json({err: err});
+    } else {
+      res.redirect('/files')
+    }
+});
 
+
+})
 app.get('/image/:filename', (req, res) => {
   gfs.files.findOne({filename: req.params.filename}, (err, file) => {
         // Check if Files
