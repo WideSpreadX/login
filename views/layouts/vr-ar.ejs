@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <title>WideSpread VR/AR</title>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css" id="style">
+
+    <style>
+        @media screen and (max-width: 500px) {
+            .outerThumbContainer {
+        position: fixed;
+        bottom: 0px;
+        right: 25px;
+        width: 50px;
+        height: 100px;
+        border-radius: 50%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="widespread-header">
+        <div class="logo">
+            <h1><a href="/vr-ar/dashboard" title="Go to your Dashboard">WideSpread</a></h1>
+        </div>
+
+        <div class="user-info">
+
+            <div class="user-menu dropdown-menu">
+                <button class="dropbtn-menu"><i class="fas fa-ellipsis-v"></i></button>
+                <div class="dropdown-content-menu">
+                <a href="#"><small style="font-size: 0.5rem;">Menu not hooked up yet</small></a>
+                <a href=""><i class="fas fa-house-user"></i></a>
+                <a href=""><i class="fas fa-car"></i></a>
+                <a href=""><i class="fas fa-briefcase"></i></a>
+                <a href=""><i class="fas fa-shopping-basket"></i></a>
+                <a href=""><i class="fas fa-address-card"></i></a>
+                <a href=""><i class="fas fa-vr-cardboard"></i></a>
+                <a href=""><i class="fas fa-address-book"></i></a>
+                <a href=""><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    <%- body %>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

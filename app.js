@@ -116,6 +116,7 @@ app.use('/socialspread', require('./routes/socialspread'));
 app.use('/flexfloor', require('./routes/flexfloor'));
 app.use('/spreadshield', require('./routes/spreadshield'));
 app.use('/wellness', require('./routes/wellness'));
+app.use('/vr-ar', require('./routes/vr-ar'));
 
 app.post('/upload', upload.single('user_image'), (req, res) => {
   const imageOwner = req.user._id;
