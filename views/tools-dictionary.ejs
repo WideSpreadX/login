@@ -1,0 +1,41 @@
+<style>
+    .lookup-word {
+        border-radius: 15px;
+        background:rgba(255, 255, 255, 0.300);
+    }
+    .lookup-word input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+    .lookup-word input:active {
+        outline: none;
+        border: none;
+
+    }
+    .lookup-word button {
+        width: 90%;
+        margin-left: 5%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+    }
+
+</style>
+<h3> Dictionary </h3>
+<div class="lookup-word">
+
+    <form method="POST" action="/tools/dictionary">
+        <input type="text" name="word" placeholder="Enter a word to lookup...">
+        <button type="submit">Lookup</button>
+    </form>
+    
+</div>

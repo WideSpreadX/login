@@ -1,0 +1,78 @@
+<style>
+    .lookup-word {
+        border-radius: 15px;
+        background:rgba(255, 255, 255, 0.300);
+    }
+    .lookup-word input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+    .lookup-word input:active {
+        outline: none;
+        border: none;
+
+    }
+    .lookup-word button {
+        width: 90%;
+        margin-left: 5%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+    }
+    .definition-container {
+        padding: 10px;
+        border-radius: 15px;
+
+    }
+    .definition-container h5 {
+        color: lightskyblue;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .definition-container p {
+        color: #fff;
+    }
+    .definition-container li {
+        color: #fff;
+    }
+</style>
+
+<h3 style="text-align: center;"> Dictionary </h3>
+
+<% if(returnedData) { %>
+<div class="lookup-word">
+    <form method="POST" action="/tools/dictionary">
+        <input type="text" name="word" placeholder="Enter a word to lookup...">
+        <button type="submit">Lookup</button>
+    </form>
+</div>
+<div class="definition-container">
+
+    <h5><%= returnedData.word %>:</h5>
+    <ol>
+        <% returnedData.results.forEach(function(definition) { %>
+            <li>
+                <p><em><%= definition.partOfSpeech %></em> - <%= definition.definition %></p>
+                <p></p>
+                
+                
+            </li>
+            
+            <% }) %>
+        </ol>
+    </div>
+
+<% } else { %>
+    <form method="POST" action="/tools/dictionary">
+        <input type="text" name="word" placeholder="Enter a word to lookup...">
+    </form>
+<% } %>

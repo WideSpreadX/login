@@ -110,12 +110,14 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/business', require('./routes/businesses'));
 app.use('/academy', require('./routes/academy'));
+app.use('/tools', require('./routes/tools'));
 app.use('/news', require('./routes/news'));
 app.use('/shopping', require('./routes/shopping'));
 app.use('/socialspread', require('./routes/socialspread'));
 app.use('/flexfloor', require('./routes/flexfloor'));
 app.use('/spreadshield', require('./routes/spreadshield'));
 app.use('/wellness', require('./routes/wellness'));
+app.use('/spreadbubble', require('./routes/spreadbubble'));
 app.use('/vr-ar', require('./routes/vr-ar'));
 
 app.post('/upload', upload.single('user_image'), (req, res) => {
