@@ -1,0 +1,158 @@
+<style>
+    .notebooks h1 {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .add-notebook {
+        width: 100%;
+        padding-top: 20px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+    }
+    .add-notebook h4 {
+        text-align: center;
+    }
+    .add-notebook p {
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .add-notebook input {
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+    
+    .add-notebook textarea {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-notebook button {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 30px;
+        padding: 10px;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .notebooks {
+        padding: 10px;
+        margin-top: 30px;
+    }
+    .notebook {
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+    .notebook h4 {
+        text-align: center;
+        padding: 20px;
+        padding-bottom: 0;
+    }
+    .notebook hr {
+        width: 80%;
+        margin-left: 10%;
+        background: #fff;
+    }
+    .notebook p {
+        color: #fff;
+        padding: 20px;
+        padding-top: 0;
+    }
+    .add-new-note {
+        background: rgba(255, 255, 255, 0.3);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        padding-top: 10px;
+        border-top: groove 2px lightskyblue;
+    }
+    .add-new-note input {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-new-note textarea {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-new-note button {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 30px;
+        padding: 10px;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .note-list {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .note {
+        width: 90%;
+        margin-left: 5%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 15px;
+    }
+    .note h6 {
+        text-align: center;
+        color: #fff;
+    }
+</style>
+
+<div class="add-notebook">
+    <h4>Add a New Notebook</h4>
+    <form action="/notebooks/new" method="POST">
+        <input type="text" name="notebookOwner" hidden value="<%= thisUser.id %>">
+        <input type="text" name="notebookName" placeholder="Name of Notebook">
+        <textarea name="notebookDescription" placeholder="Add a descripition of your notebook"></textarea>
+        <p>Notebook Color:</p>
+        <input type="color" name="notebookColor">
+        <button type="submit">Add Notebook</button>
+    </form>
+</div>
+<div class="notebooks">
+    <h1>Your Notebooks</h1>
+    <% notebooks.forEach(function(notebook) { %>
+        <div class="notebook" style="background: <%= notebook.notebookColor %>">
+            <h4><%= notebook.notebookName %></h4>
+            <hr>
+            <p><%= notebook.notebookDescription %></p>
+            <div class="note-list">
+                <% notebook.notes.forEach(function(note) { %>
+                    <div class="note" style="background: <%= note.noteColor %>">
+                        <h6><%= note.noteTitle %></h6>
+                        <p><%= note.noteBody %></p>
+                    </div>
+                <% }) %>
+            </div>
+            <div class="add-new-note">
+                <form action="/notebooks/note/new/<%= notebook.id %>" method="POST">
+                    <input type="text" name="noteTitle" placeholder="Note Title">
+                    <input type="text" name="noteCategory" placeholder="Note Category">
+                    <textarea name="noteBody" placeholder="Note..."></textarea>
+                    <input type="color" name="noteColor">
+                    <button type="submit">Add Note</button>
+                </form>
+            </div>
+        </div>
+
+    <% }) %>
+</div>

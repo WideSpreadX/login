@@ -51,6 +51,8 @@ const UserSchema = new mongoose.Schema({
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     likedPosts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     likedComments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
+    notebookCollection: [{type: mongoose.Schema.Types.ObjectId, ref: 'NotebookCollection'}],
+    todoLists: [{type: mongoose.Schema.Types.ObjectId, ref: 'TodoList'}],
     about: String,
     current_occupation: String,
     social: {
