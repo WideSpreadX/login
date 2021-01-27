@@ -68,5 +68,36 @@ router.post('/todos/:todoListId/add-todo', ensureAuthenticated, async (req, res)
     {$addToSet: {todos: {todoName: req.body.todoName, todoPriority: req.body.todoPriority, complete: false}}}
     );
   res.redirect('/tools/todos')
+});
+
+router.patch('/todos/check-off', ensureAuthenticated, (req, res) => {
+  const todoId = req.body.todoId;
+  Todo.update({'todos._id': todoId},
+  {'$set': {
+         'todos.$.complete': true,
+ }},
+ function(err) {
+  if(err){
+     console.log(err);
+     return res.send(err);
+   }
+   res.redirect('/tools/todos')
+});
+
+})
+router.patch('/todos/uncheck', ensureAuthenticated, (req, res) => {
+  const todoId = req.body.todoId;
+  Todo.update({'todos._id': todoId},
+  {'$set': {
+         'todos.$.complete': false,
+ }},
+ function(err) {
+  if(err){
+     console.log(err);
+     return res.send(err);
+   }
+   res.redirect('/tools/todos')
+});
+
 })
 module.exports = router;

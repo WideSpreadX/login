@@ -191,6 +191,17 @@
         border-radius: 8px;
         padding: 0;
     }
+    .update-todo button {
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #fff;
+    }
+    .update-todo span {
+        margin-left: 10px;
+    }
 </style>
 <h1>To Do Lists</h1>
 
@@ -226,7 +237,26 @@
                 <tbody>
                     <% todoList.todos.forEach(function(todo) { %>
                     <tr>
-                        <td><%= todo.todoName %></td>
+                        <td>
+                            <% if (todo.complete === false) { %>
+                            <div class="update-todo">
+                                <form action="/tools/todos/check-off?_method=PATCH" method="POST">
+                                    <input type="text" name="todoId" value="<%= todo.id %>" hidden>
+                                    <input type="text" name="todoComplete" hidden value="true">
+                                    
+                                    <button type="submit"><i class="far fa-square"></i><span><%= todo.todoName %></span</button>
+                                </form>
+                            </div>
+                            <% } else { %>
+                                <div class="update-todo">
+                                    <form action="/tools/todos/uncheck?_method=PATCH" method="POST">
+                                        <input type="text" name="todoId" value="<%= todo.id %>" hidden>
+                                        <input type="text" name="todoComplete" hidden value="false">
+                                        <button type="submit" style="text-decoration: line-through;"><i class="far fa-check-square"></i><span><%= todo.todoName %></span></button>
+                                    </form>
+                                </div>
+                            <% } %>
+                        </td>
                         <td><%= todo.todoPriority %></td>
                     </tr>
                     <% }) %>
