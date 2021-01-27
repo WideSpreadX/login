@@ -41,14 +41,14 @@ axios.request(options).then(function (response) {
 });
 });
 
-router.get('/todos', async (req, res) => {
+router.get('/todos', ensureAuthenticated, async (req, res) => {
   const user = req.user.id;
   const thisUser = await User.findById(user);
   const todoLists = await Todo.find({todoOwner: {$eq: user}})
   res.render('todo-lists', {thisUser, todoLists})
 })
 
-router.post('/todos/new', (req, res) => {
+router.post('/todos/new', ensureAuthenticated, (req, res) => {
   const todo = new Todo({
     todoOwner: req.body.todoOwner,
     todoName: req.body.todoName,
@@ -60,7 +60,7 @@ router.post('/todos/new', (req, res) => {
   res.redirect('/tools/todos')
 })
 
-router.post('/todos/:todoListId/add-todo', async (req, res) => {
+router.post('/todos/:todoListId/add-todo', ensureAuthenticated, async (req, res) => {
   const user = req.user.id;
   const todoListId = req.params.todoListId;
 
