@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); 
   
 const todoSchema = new mongoose.Schema({ 
-    todoFrom: {type: mongoose.Schema.Types.ObjectId, ref: 'TodoList'},
+    todoOwner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     todoName: String,
     todoDescription: String,
     todos: [{

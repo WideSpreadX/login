@@ -1,0 +1,255 @@
+<style>
+        .add-todo-list {
+        width: 100%;
+        padding-top: 20px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+    }
+    .add-todo-list h4 {
+        text-align: center;
+    }
+    .add-todo-list p {
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .add-todo-list input {
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+    
+    .add-todo-list textarea {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-todo-list button {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 30px;
+        padding: 10px;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .todos {
+        background: purple;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+    .todo {
+        padding: 10px;
+    }
+    .todo-list {
+        border-radius: 15px;        
+    }
+    .todo-list h5 {
+        text-align: center;
+    }
+    .todo-list p {
+        color: #fff;
+    }
+    .todo-table {
+        background:rgba(255, 255, 255, 0.3);
+        color: #fff;
+        margin-bottom: 30px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .todo-table th {
+        width: 10%;
+        text-align: center;
+        padding: 5px;
+    }
+    .todo-table tr {
+        border-bottom: solid 1px #fff;
+    }
+    .todo-table tr:last-of-type {
+        border: none;
+    }
+    .todo-table td {
+        padding: 5px;
+        width: 10%;
+        text-align: center;
+    }
+    .todo-table th:first-of-type {
+        width: 80%;
+    }
+    .todo-table td:first-of-type {
+        width: 80%;
+        text-align: left;
+        padding-left: 10px;
+    }
+    .todo-table tr:last-of-type td:last-of-type {
+        padding-right: 0;
+    }
+    .todo-table tr:last-of-type td:last-of-type button {
+        text-align: center;
+        margin-left: 8px;
+    }
+    .right-table-form {
+        display: inline-flex;
+        padding-right: 0;
+    }
+    .right-table-form button {
+        background: green;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    .todo-item {
+        background:rgba(255, 255, 255, 0.3);
+        color: #fff;
+    }
+    .todo-item-name {
+        background: lime;
+        padding: 5px;
+        padding-left: 10px;
+        width: 80%;
+    }
+    .todo-item-priority {
+        background: red;
+        width: 10%;
+        text-align: center;
+    }
+    .add-todo {
+        width: 100%;
+        padding-top: 20px;
+        border-top: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    .add-todo h4 {
+        text-align: center;
+    }
+    .add-todo p {
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .add-todo input {
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+    
+    .add-todo textarea {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-todo button {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 30px;
+        padding: 10px;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .add-todo-priority {
+        display: inline-flex;
+        width: 90%;
+        margin-left: 5%;
+    }
+    .add-todo-priority p {
+        text-align: center;
+        padding-right: 20px;
+    }
+    .add-todo-priority input {
+        width: 40%;
+        margin-left: 20px;
+        border-radius: 8px;
+        padding: 0;
+    }
+</style>
+<h1>To Do Lists</h1>
+
+<div class="add-todo-list">
+    <h4>Add a New To Do List</h4>
+    <form action="/tools/todos/new" method="POST">
+        <input type="text" name="todoOwner" hidden value="<%= thisUser.id %>">
+        <input type="text" name="todoName" placeholder="Name of To Do List">
+        <textarea name="todoDescription" placeholder="Description of To Do List"></textarea>
+        <p>When is this To Do list due?</p>
+        <input type="date" name="todoDue">
+        <p>To Do List Color:</p>
+        <input type="color" name="todoColor">
+        <button type="submit">Add To Do List</button>
+    </form>
+</div>
+<div class="todos">
+
+    <% todoLists.forEach(function(todoList) { %>
+        <div class="todo-list" style="background: <%= todoList.todoColor %>">
+            <div class="todo">
+                <h5><%= todoList.todoName %></h5>
+                <p><%= todoList.todoDescription %></p>
+            </div>
+        
+        <div class="todo-table">
+
+            <table>
+                <thead>
+                    <th>To Do</th>
+                    <th>Priority</th>
+                </thead>
+                <tbody>
+                    <% todoList.todos.forEach(function(todo) { %>
+                    <tr>
+                        <td><%= todo.todoName %></td>
+                        <td><%= todo.todoPriority %></td>
+                    </tr>
+                    <% }) %>
+                    <tr>
+                        <form action="/tools/todos/<%= todoList.id %>/add-todo" method="POST">
+                            <input type="text" name="todoOwner" hidden value="<%= thisUser.id %>">
+                          <td style="padding-top: 10px;">
+
+                              <div class="add-todo-name">
+                                  <input type="text" style="width: 100%" name="todoName" placeholder="Add a To Do...">
+                                </div>
+                            </td>
+                            <td style="padding-top: 10px;">
+                                <div class="right-table-form">
+
+                                    <div class="add-todo-priority">
+                                        <select name="todoPriority">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <input type="checkbox" name="todoComplete" hidden value="false">
+                                    <button type="submit">+</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+
+        </div>
+        <% }) %>
+    </div>
