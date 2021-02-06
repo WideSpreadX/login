@@ -1,3 +1,47 @@
-<h1>Tools Home</h1>
-<a href="/tools/dictionary"><h4>Dictionary</h4></a>
-<a href="/tools/todos"><h4>To Do Lists</h4></a>
+<style>
+    .page-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .toolbox-container {
+        margin-top: 20px;
+    }
+    .tool {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        padding-top: 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="page-title">
+    <h1>Tools Home</h1>
+</div>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
+<div class="toolbox-container">
+    <div class="tool">
+        <a href="/tools/todos"><h4><i class="far fa-list-alt"></i> To Do Lists</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/notebooks"><h4><i class="fas fa-book-open"></i> Notebooks</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/tools/dictionary"><h4><i class="fas fa-spell-check"></i> Dictionary</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/tools/calculator"><h4><i class="fas fa-calculator"></i> Calculator</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/tools/schedule"><h4><i class="far fa-calendar-alt"></i> Schedule</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/tools/code-editor"><h4><i class="fas fa-code"></i> Code Editor</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/tools/text-editor"><h4><i class="fas fa-paragraph"></i> Text Editor</h4></a>
+    </div>
+    <div class="tool">
+        <a href="/tools/photo-editor"><h4><i class="fas fa-magic"></i> Photo Editor</h4></a>
+    </div>
+</div>
