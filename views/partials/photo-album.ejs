@@ -1,0 +1,280 @@
+<style>
+    @media screen and (max-width: 500px) {
+        .photo-albums-container {
+            width: 100%;
+            overflow-y: scroll;
+        }
+        
+        .photo-album-container {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+        .album-details {
+            background: rgba(255, 255, 255, 0.404);
+            backdrop-filter: blur(2px);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom: groove 2px lightskyblue;
+    
+        }
+        .album-name {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .album-name h4 {
+            text-align: center;
+            text-shadow: 0 0 2px #000;
+            color: #fff;
+            padding-top: 10px;
+        }
+        .album-name p {
+            width: 100%;
+            text-align: center;
+            text-shadow: 0 0 2px #000;
+            color: #fff;
+            font-size: 0.9rem;
+            padding-bottom: 0;
+        }
+        .album-description {
+        }
+        .album-description p {
+            padding: 10px;
+            color: #fff;
+            text-shadow: 0 0 2px #000;
+        }
+        .photo-preview-slide {
+            display: inline-flex;
+            overflow-x: scroll;
+            min-width: 100%;
+            max-width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .photos {
+            padding: 5px;
+            width: 100%;
+            display: block;
+        }
+        .photo img {
+            max-width: 120px;
+            width: 120px;
+            max-height: 500px;
+            width: 120px;
+            margin-right: 10px;
+            border-radius: 8px;
+    
+        }
+        .photo-album-image-form {
+            display: block;
+            background: rgba(255, 255, 255, 0.404);
+            backdrop-filter: blur(2px);
+            border-radius: 15px;
+            width: 80%;
+            margin-left: 10%;
+            text-align: center;
+            color:  #fff;    
+            text-shadow: 0 0 2px  #000;
+        }
+        .custom-file-profile-image-button {
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.404);
+            box-shadow: inset 0 0 10px 5px green;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 75%;
+            margin-left: 0 auto;
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+        .open-album {
+            width: 80%;
+            height: 40px;
+            margin: 0 auto;
+            padding: 10px;
+            background: green;
+            border: groove 2px green;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+        }
+        .open-album a {
+            color: #fff;
+        }
+        .album-bottom {
+            background: rgba(255, 255, 255, 0.404);
+            backdrop-filter: blur(2px);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-top: groove 2px lightskyblue;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        .user-photo-album-form {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.404);
+            backdrop-filter: blur(2px);
+            border-radius: 15px;
+        }
+        .user-photo-album-form h4 {
+            text-align: center;
+            padding: 10px;
+            border-bottom: groove 2px lightskyblue;
+        }
+        .user-photo-album-form p {
+            margin-top: 20px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 1px #fff;
+        }
+        .album-form-details input {
+            width: 90%;
+            margin-left: 5%;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            padding: 5px;
+        }
+        .album-form-details textarea {
+            width: 90%;
+            margin-left: 5%;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            padding: 5px;
+        }
+        .album-form-color {
+            display: inline-flex;
+            width: 100%;
+            text-align: center;
+            padding-top: 10px;
+        }
+        .album-form-color p {
+            width: 50%;
+            text-align: right;
+        }
+        .album-form-color input {
+            margin-left: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+        .album-form-private {
+            display: inline-flex;
+            width: 100%;
+        }
+        .album-form-private-option {
+            width: 50%;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        .user-photo-album-form button {
+            width: 80%;
+            height: 40px;
+            margin-left: 10%;
+            padding: 10px;
+            background: green;
+            border: groove 2px green;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+            color: #fff
+        }
+    }
+    
+    </style>
+    <div class="user-photo-album-form">
+        <h4>Add a New Photo Album</h4>
+        <form action="/photo-album" method="POST">
+            <div class="album-form-details">
+                <p>Album Name</p>
+                <input type="text" name="album_name" placeholder="Name of Album">
+                <p>Album Description</p>
+                <textarea name="album_description" placeholder="Enter an optional description here..."></textarea>
+            </div>
+            <div class="album-form-color">
+                <p>Album Color:</p>
+                <input type="color" name="album_color">
+            </div>
+            <p>Would you like this album public or private?</p>
+            <div class="album-form-private">
+                <div class="album-form-private-option">
+                    <input type="radio" id="privateFalse" name="private" value="false">
+                    <label for="privateFalse">Public</label><br>
+                </div>
+                <div class="album-form-private-option">
+                    <input type="radio" id="privateTrue" name="private" value="true">
+                    <label for="privateTrue">Private</label><br>
+                </div>
+            </div>
+            <button type="submit">Add Photos</button>
+        </form>
+    </div>
+    <div class="photo-albums-container">
+    
+    
+            <% photoAlbums.forEach(function(album) { %>
+        <div class="photo-album-container" style="background: <%= album.album_color %>;">
+            <div class="album-details">
+            <div class="album-name">
+    
+                <h4><%= album.album_name %></h4>
+                        <% if (album.private === true) { %>
+                            <p style="color: red;">Private</p>
+                            <% } else { %>
+                                <p>Public</p>
+                                <% } %>
+            </div>
+            </div>
+            <div class="photo-preview-slider">
+                <div class="photo-preview-slide">
+                    <% if(!album.photos) { %>
+                        <div class="photo-album-image-form">
+            
+                            <form action="/upload-to-album/<%= album.id %>" method="post" enctype="multipart/form-data">
+                                <input type="text" name="albumOwner" id="albumOwner" style="display: none;" value="">
+                                <div class="custom-file-profile-image">
+                                    <input type="file" name="photos" id="photos">
+                                    <label for="photos" class="custom-file-label-choose-profile-image">Upload an Image</label>
+                                </div>
+                                
+                                <div>
+                                    <button type="submit" class="custom-file-profile-image-button">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    <% } else { %>
+                        <% album.photos.forEach(function(photo) { %>
+                            <div class="photos">
+    
+                                <div class="photo">
+                                    <img src="/image/<%= photo %>" alt="">
+                                </div>
+                                
+                            </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                    <% } %>
+                    <div class="album-bottom">
+    
+                        <div class="album-description">
+                            <p><%= album.album_description %></p>
+                        </div>
+                        <div class="open-album">
+                            <a href="/photo-album/<%= thisUser.id %>/<%= album._id %>">Open Album</a>
+                        </div>
+                    </div>
+                </div>
+        <% }) %>
+    </div>
+    
+    

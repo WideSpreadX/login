@@ -177,12 +177,14 @@
         width: 80%;
         margin: 0 auto;
         padding: 10px;
+        padding-top: 20px;
+        margin-bottom: 20px;
         background:rgba(255, 255, 255, 0.404);
         backdrop-filter: blur(2px);
         text-align: center;
         border-radius: 8px;
     }
-    .see-albums a {
+    .see-albums p {
         color: #fff;
     }
 }
@@ -298,25 +300,11 @@
             </form>
         </div>
     </div>
-    <div class="see-albums">
-        <a href="/photo-album/<%= profile._id %>">See Album's</a>
-    </div>
-    <div class="user-photo-album-form">
-        <form action="/photo-album" method="POST">
-            <p>Album Name</p>
-            <input type="text" name="album_name" placeholder="Name of Album">
-            <p>Album Description</p>
-            <textarea name="album_description" placeholder="Enter an optional description here..."></textarea>
-            <p>Album Color</p>
-            <input type="color" name="album_color">
-            <p>Would you like this album public or private?</p>
-            <input type="radio" id="privateFalse" name="private" value="false">
-                <label for="privateFalse">Public</label><br>
-            <input type="radio" id="privateTrue" name="private" value="true">
-                <label for="privateTrue">Private</label><br>
-            <button type="submit">Add Photos</button>
-        </form>
-    </div>
+    <a href="/photo-album/<%= profile._id %>">
+        <div class="see-albums">
+            <p>Your Photo Album's</p>
+        </div>
+    </a>
     <div class="your-friends">
         <a href="/<%= profile.id %>/friends"><h3>Your Friends</h3></a>
     </div>

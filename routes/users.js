@@ -124,7 +124,15 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     console.log("User ID: " + userId);
     const articles = await Article.find({author: {$eq: id}});
-   const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
+   const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate(
+       {
+        path: 'comments',
+        model: 'Comment',
+        populate: {
+            path: 'author',
+            model: 'User'
+  }}
+   ).exec();
    const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
    const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
    console.log(`Current Profile Avatar: ${avatarImage}`)
