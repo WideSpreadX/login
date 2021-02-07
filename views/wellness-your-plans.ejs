@@ -1,37 +1,98 @@
+<style>
+    .page-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.main-header-page-menu-container {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.308);
+        backdrop-filter: blur(2px);
+        border-radius: 12px;
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        
+    }
+    .main-header-page-menu-inner {
+        padding: 10px;
+    }
+    .main-header-page-menu-inner a {
+        display: inline-flex;
+        padding: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.733);
+        transition: ease-in 0.4s;
+        background: rgba(135, 206, 250, 0.315);
+        backdrop-filter: blur(4px);
+        border-radius: 8px;
+        width: auto;
+        min-width: 150px;
+        text-align: center;
+    }
+    .main-header-page-menu-inner a:hover {
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+        transition: ease-in 0.2s;
+    }
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
+    @media screen and (max-width: 500px) {
+        .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+            font-size: 0.6rem;
+        }
+        
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .main-header-page-menu-inner p {
+            text-align: center;
+            font-size: 1rem;
+        }
+    }
+</style>
+<div class="page-title">
+<h1><%= currentPageTitle %></h1>
+</div>
+<div class="main-header-page-menu-container">
+<div id="mainHeaderPageMenuu">
+    <div class="main-header-page-menu-inner">
+        <a href="/wellness/your-plans"><p>Your Plans</p></a>
+        <a href="/wellness/workout"><p>Workout</p></a>
+        <a href="/wellness/yoga"><p>Yoga</p></a>
+        <a href="/wellness/nutrition"><p>Nutrition</p></a>
     </div>
 </div>
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-12">
-                <a href="/wellness/your-plans">Your Plans</a>
-                <a href="/wellness/workout">Workout</a>
-                <a href="/wellness/yoga">Yoga</a>
-                <a href="/wellness/nutrition">Nutrution</a>
-            </div>
-
-        </div>
-    </div>
+<p>Scroll left & right for more options</p>
 </div>
 
-<h1 style="text-align: center; margin-bottom: 20px; margin-top: 30px;"><%= currentPageTitle %></h1>
+
 <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 <div class="row margin-bottom">
 <div class="col-4">

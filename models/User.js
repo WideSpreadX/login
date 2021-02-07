@@ -49,6 +49,9 @@ const UserSchema = new mongoose.Schema({
             ref: 'User'
     }],
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
+    inSpreads: [{
+        inSpread: {type: mongoose.Schema.Types.ObjectId, ref: 'InSpread'}
+    }],
     likedPosts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     likedComments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
     notebookCollection: [{type: mongoose.Schema.Types.ObjectId, ref: 'NotebookCollection'}],

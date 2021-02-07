@@ -21,6 +21,7 @@ const Article = require('../models/Article');
 const ProfileImage = require('../models/ProfileImage');
 const CommentImage = require('../models/CommentImage');
 const Avatar = require('../models/Avatar');
+const InSpread = require('../models/InSpread');
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -123,6 +124,8 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     const id = req.params.id
     const userId = req.user._id;
     console.log("User ID: " + userId);
+    const inSpreads = await InSpread.find({inSpreadTo: {$eq: id}}).populate('inSpreadFrom').exec();
+    console.log(`InSpreads: ${inSpreads}`)
     const articles = await Article.find({author: {$eq: id}});
    const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate(
        {
@@ -141,12 +144,34 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     .populate('user_images')
     .exec()
     .then(profile => {
-            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage})
+            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage, userId, inSpreads})
             console.log(profile);
         });
 })
 
+router.post('/:profileId/inspread/:spreaderId', ensureAuthenticated, async (req, res) => {
+    const spreadTo = req.params.profileId;
+    const spreadFrom = req.params.spreaderId;
 
+    const inSpread = new InSpread({
+        inSpreadFrom: spreadFrom,
+        inSpreadTo: spreadTo,
+        inSpreadBody: req.body.inSpreadBody
+    })
+    inSpread.save();
+    await User.findByIdAndUpdate(spreadTo,
+        {$addToSet: {inSpreads: inSpread._id}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+    res.redirect(`/users/${spreadTo}`);
+})
 
   router.post('/:id/add-friend', (req, res) => {
     let id = req.body.friends;

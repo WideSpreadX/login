@@ -39,7 +39,7 @@
     border-bottom: groove 2px lightskyblue;
 }
 .user-name h2 {
-    color: #fff;
+    color: rgb(40, 40, 40);
     padding-top: 10px;
 }
 .info-header {
@@ -153,6 +153,86 @@
 .possible-friend-image {
     overflow: hidden;
 }
+
+.post-on-wall {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    padding-top: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.post-on-wall h5 {
+    text-align: center;
+    color: #fff;
+    border-bottom: groove 2px lightskyblue;
+    margin-bottom: 10px;
+}
+.post-on-wall textarea {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    padding: 10px;
+}
+.post-on-wall button {
+    width: 80%;
+    margin-left: 10%;
+    background: green;
+    outline: none;
+    color: #fff;
+    border: groove 2px green;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.inspreads {
+}
+.inspread {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+.inspread-from {
+    display: inline-flex;
+}
+.inspread-from-image {
+    background: rgba(40, 40, 40, 0.3);
+    border: groove 2px lightskyblue;
+    border-right: solid 1px lightskyblue;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.452);
+    padding-left: 10px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+.inspread-from-image img {
+    display: inline-flex;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.inspread-body {
+    width: 100%;
+}
+.inspread-body h4 {
+    color: lightskyblue;
+    padding: 10px;
+    width: 100%;
+
+}
+.inspread-body p {
+    color: #fff;
+    padding-left: 20px;
+    padding-bottom: 0;
+}
+.inspread-body small {
+    color: #ccc;
+    padding: 10px;
+    padding-left: 20px;
+}
 .post-container {
     background: rgba(255, 255, 255, 0.3);
     width: 90%;
@@ -250,7 +330,7 @@
     <% if (profile.user_background_image) { %>
         <img src="/image/<%= profile.user_background_image %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
         <%} else { %>
-            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
+            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>; z-index: -20;"></div>
             <% } %>
         </div>
         <%- include('partials/mainHeaderSiteMenu') %>
@@ -397,7 +477,33 @@
                 </div>
             </div>
         </div>
-    <div class="row">
+
+        <div class="post-on-wall">
+            <h5>Spread Something to <%= profile.fname %></h5>
+            <form action="/users/<%= profile.id %>/inspread/<%= userId %> " method="post">
+                <textarea name="inSpreadBody" id="inSpreadBody" placeholder="Spread something..."></textarea>
+                <button type="submit">Spread It</button>
+            </form>
+        </div>
+        <div class="inspreads">
+            <% inSpreads.forEach(function(inSpread) { %>
+                <div class="inspread">
+                    <div class="inspread-from">
+                        <div class="inspread-from-image">
+                            <img src="/image/<%= inSpread.inSpreadFrom.user_avatar %>" alt="" width="40px" height="80px">
+                        </div>
+                        <div class="inspread-body">
+                        <h4><%= inSpread.inSpreadFrom.fname %> <%= inSpread.inSpreadFrom.lname %></h4>
+                        <p><%= inSpread.inSpreadBody %></p>
+                            <div class="inspread-time">
+                                <small><%= inSpread.inSpreadAt.toLocaleDateString() %></small>
+                                <small><%= inSpread.inSpreadAt.toLocaleTimeString() %></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
 
                 <h5 style="text-align: center; width: 100%;">Top Posts</h5>
                 <ul>
@@ -480,6 +586,5 @@
                             </li>
                             <% }); %>
                         </ul> 
-                </div>
             </div>
         </div>
