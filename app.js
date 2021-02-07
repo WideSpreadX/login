@@ -17,6 +17,7 @@ const video = require('./models/Video');
 const avatar = require('./models/Avatar');
 const userBackgroundImage = require('./models/UserBackgroundImage');
 const PhotoAlbum = require('./models/PhotoAlbum');
+const Audio = require('./models/Audio');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -91,7 +92,7 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-        const filename = req.user.lname + '-' + req.user.fname + '_' + buf.toString('hex') + path.extname(file.originalname);
+        const filename = req.user.lname + '-' + req.user.fname + '_' + req.user._id + '_' + buf.toString('hex') + path.extname(file.originalname);
         const fileInfo = {
           filename: filename,
           bucketName: 'uploads'
@@ -290,6 +291,8 @@ app.patch('/upload-background-image', upload.single('user_profile_image'), (req,
 /* Video Upload */
 app.post('/upload-video', upload.single('user_video'), (req, res) => {
   const videoOwner = req.user._id;
+  const uploadedVideo = req.file.user_video;
+  
   const obj = { 
     videoOwner: req.user._id, 
     video: { 
@@ -320,6 +323,39 @@ app.post('/upload-video', upload.single('user_video'), (req, res) => {
 }); 
 });
 
+app.post('/upload-audio', upload.single('user_audio'), async (req, res) => {
+const audioOwnerId = req.user._id;
+
+const obj = { 
+  audioOwner: audioOwnerId, 
+  audio_name: req.file.filename,
+  audio: { 
+      data: req.file.filename,
+      contentType: 'audio/mp3'
+  } 
+} 
+Audio.create(obj, (err, item) => { 
+  if (err) { 
+      console.log(err); 
+  } 
+  else { 
+      item.save(); 
+      console.log(`Audio Owner: ${audioOwnerId} Audio Data: ${obj.audio.data}`);
+      User.findByIdAndUpdate(audioOwnerId,
+        {$push: {user_audio: req.file.id}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+    )
+      res.redirect('/dashboard'); 
+  } 
+}); 
+}); 
 
 app.get('/files', (req, res) => {
   gfs.files.find().toArray((err, files) => {

@@ -70,6 +70,7 @@ const UserSchema = new mongoose.Schema({
     user_images: [String],
     user_avatar: String,
     user_video: [String],
+    user_audio: [String],
     resume: {type: mongoose.Schema.Types.ObjectId, ref: 'Resume'},
     workouts: {type: mongoose.Schema.Types.ObjectId, ref: 'WorkoutSchedule'},
     date: {

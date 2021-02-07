@@ -18,6 +18,7 @@ const ProfileImage = require('../models/ProfileImage');
 const PhotoAlbum = require('../models/PhotoAlbum');
 const Avatar = require('../models/Avatar');
 const Video = require('../models/Video');
+const Audio = require('../models/Audio');
 const InSpread = require('../models/InSpread');
 
 
@@ -68,6 +69,7 @@ conn.once('open', () => {
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const article = await Article.find({ author: { $eq: id } });
         const videos = await Video.find({videoOwner: {$eq: id }});
+        const audioTracks = await Audio.find({audioOwner: {$eq: id }});
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         const nearbyUsers = await User.find();
@@ -103,6 +105,7 @@ conn.once('open', () => {
           path: 'friends',
           model: 'User'
         })
+        .populate('user_audio')
         .populate('posts')
         .then(profile => {
                 res.render('dashboard', {
@@ -116,6 +119,7 @@ conn.once('open', () => {
                 id: req.user.id,
                 posts,
                 videos,
+                audioTracks,
                 resume,
                 article,
                 nearbyUsers,
@@ -305,8 +309,8 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
 
   router.get('/photo-album/:user/:albumId', ensureAuthenticated, async (req, res) => {
     const user = req.params.user;
-    const thisUser = await User.findById(user);
     const albumId = req.params.albumId;
+    const thisUser = await User.findById(user);
     const photoAlbums = await PhotoAlbum.findById(albumId);
     console.log(photoAlbums)
     res.render('album', {photoAlbums, thisUser, albumId})

@@ -448,6 +448,7 @@
         <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Post')">Post</button>
         <button class="tablinks" onclick="openCity(event, 'Article')">Article</button>
         <button class="tablinks" onclick="openCity(event, 'Video')">Video</button>
+        <button class="tablinks" onclick="openCity(event, 'Audio')">Audio</button>
       </div>
       <div id="Post" class="tabcontent">
           <div class="spread-post">
@@ -478,9 +479,24 @@
                 <div class="spread-file">
                     <input type="file" name="user_video" id="userVideo">
                 </div>
-                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                <input type="text" name="videoOwner" id="videoOwner" style="display: none;" value="<%= id %>">
                 <input type="text" name="videoName" id="videoName" placeholder="Video Title" style="margin-top: 15px;">
                 <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
+                <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
+                <button type="submit" disabled class="button" style="color: red;">Add Video</button>
+            </form>
+        </div>
+      </div>
+      <div id="Audio" class="tabcontent">
+        <div class="spread-post">
+    
+            <form action="/upload-audio" method="post" enctype="multipart/form-data">
+                <div class="spread-file">
+                    <input type="file" name="user_audio" id="userAudio">
+                </div>
+                <input type="text" name="audioOwner" id="audioOwner" style="display: none;" value="<%= id %>">
+                <input type="text" name="audio_name" id="audioName" placeholder="Track Title" style="margin-top: 15px;">
+                <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this track">
                 <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
                 <button type="submit" disabled class="button" style="color: red;">Add Video</button>
             </form>
@@ -619,52 +635,10 @@
 </div>
 
 
-  <!--   <div class="row">
-            <div class="col-12 user-posts">
-                <div class="create-post">
-                    <h5>Create New Post</h5>
-                    <form action="/users/<%= id %>/post" method="POST">
-                        <textarea required name="postBody" id="postBody" class="form-control"></textarea>
-                        <button class="btn-block block-button spread-it" type="submit">Spread It</button>
-                    </form>
-                </div>
-            </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-12 user-posts">
-            <div class="create-post">
-                <h5>Create New Article</h5>
-                <form action="/users/<%= id %>/article" method="POST">
-                    <input type="text" name="articleTitle" placeholder="Article Title" id="articleTitle"></input>
-                    <input type="text" name="articleHeader" id="articleHeader" placeholder="Article Header">
-                    <textarea required name="articleBody" id="articleBody" class="form-control"></textarea>
-                    <button class="btn-block block-button spread-it" type="submit">Spread It</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="nav-bar-outer">
-        <div class="nav-bar nav-bar-ws">
-            <div class="create-post">
-
-                <form action="/upload-video" method="post" enctype="multipart/form-data">
-                    <div class="custom-file">
-                        <input type="file" name="user_video" id="userVideo">
-                        <label for="userVideo" class="custom-file-label">Upload a Video</label>
-                    </div>
-                    <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                    <input type="text" name="videoName" id="videoName" placeholder="Video Title" style="margin-top: 15px;">
-                    <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
-                    <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
-                    <button type="submit" disabled class="btn btn-block btn-success">Add Video</button>
-                </form>
-            </div>
-        </div>
-    </div> -->
-
+ 
+<video id="videoPlayer" width="650" controls muted="muted" autoplay>
+    <source src="/mongo-video" type="video/mp4" />
+  </video>
 
     
 <script>
