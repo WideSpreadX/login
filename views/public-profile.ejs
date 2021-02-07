@@ -1,7 +1,17 @@
 <style>
+.spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
 .jumbotron {
     border-radius: 15px;
     background: transparent;
+    margin-bottom: 30px;
 }
 .name-header {
     width: 85%;
@@ -93,7 +103,22 @@
     color: #fff;
     margin-bottom: 0;
 }
-
+.user-images {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border-radius: 8px;
+    padding: 10px;
+    width: 300px;
+    border: groove 2px lightskyblue;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.61);
+}
+.user-images img {
+    border-radius: 8px;
+    max-width: 100%;
+}
+.friend-container {
+    margin-top: 30px;
+}
 .add-friend-container button {
     outline: none;
     border: none;
@@ -123,6 +148,7 @@
     width: 100%;
     background: rgba(255, 255, 255, 0.37);
     backdrop-filter: blur(2px);
+    margin-top: 30px;
 }
 .spread-container h3 {
     text-align: center;
@@ -433,14 +459,14 @@
     </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 spread-container-about" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
-            <h3 style="text-align: center; padding: 20px;">About <%= profile.fname %></h3>
-            <p style="padding: 30px"><%= profile.about %></p>
-        </div>
-
-    </div>
     <div class="spread-container">
+        <div class="col-12 spread-container-about" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
+            <h3 style="text-align: center; padding: 20px; padding-bottom: 10px;">About <%= profile.fname %></h3>
+            <p style="padding: 10px; margin-bottom: 30px;"><%= profile.about %></p>
+        </div>
+        <div class="spread-break">
+            <hr>
+        </div>
         <h3><%= profile.fname %>'s Social Life</h3>
         <div class="spread-container-sub">
             <% if(profile.social.instagram){ %>
@@ -468,6 +494,9 @@
                         <span></span>
                     <% } %>
         </div>
+        <div class="spread-break">
+            <hr>
+        </div>
         <h3 style="text-align: center; padding-top: 20px;"><%= profile.fname %>'s Work Life</h3>
         <div class="spread-container-sub">
             <% if(profile.social.github){ %>
@@ -491,7 +520,10 @@
     
 </div>
     
-    <hr class="my-4">
+<div class="spread-break">
+    <hr>
+</div>
+    <h5 style="text-align: center;"><%= profile.fname %>'s Photo's</h5>
     <div class="outer_cont_container" style="margin-top: 150px;">
         <div class="cont_container">
             <div class="cont_inner_container">
@@ -500,8 +532,8 @@
                 <div> 
                     <div> 
                         <a href="/image/<%= image.img.data %>">
-                            <div class="med-image"> 
-                                <img src="/image/<%= image.img.data %>" width="300px" height="300px"> 
+                            <div class="user-images"> 
+                                <img src="/image/<%= image.img.data %>"> 
                             </div> 
                         </a>
                     </div> 
@@ -514,10 +546,14 @@
             </div>
         </div>
     </div>
+
+    <div class="spread-break">
+        <hr>
+    </div>
     
         <!-- Friend List -->
         <div class="friend-container">
-            <h2 style="text-align: center; margin-bottom: 20px;"><%= profile.fname %>'s Friends</h2>
+            <h5 style="text-align: center; margin-bottom: 20px;"><%= profile.fname %>'s Friends</h5>
             <div class="row">
                 <div class="find-new-friends">
                         <% profile.friends.forEach(function(friend){ %>
