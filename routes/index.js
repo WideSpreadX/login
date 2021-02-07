@@ -65,11 +65,20 @@ conn.once('open', () => {
     router.get('/dashboard', ensureAuthenticated, async (req, res) => {
         const id = req.user._id;
         const friends = req.user.friends;
-        const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'});
+        const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate(
+          {
+            path: 'comments',
+            model: 'Comment',
+            populate: {
+              path: 'author',
+              model: 'User'
+            }
+          }
+        ).exec();
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
-        const article = await Article.find({ author: { $eq: id } });
+        const articles = await Article.find({ author: { $eq: id } });
         const videos = await Video.find({videoOwner: {$eq: id }});
-        const audioTracks = await Audio.find({audioOwner: {$eq: id }});
+        const audioTracks = await Audio.find({audioOwner: {$eq: id }}).populate();
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         const nearbyUsers = await User.find();
@@ -105,7 +114,6 @@ conn.once('open', () => {
           path: 'friends',
           model: 'User'
         })
-        .populate('user_audio')
         .populate('posts')
         .then(profile => {
                 res.render('dashboard', {
@@ -121,7 +129,7 @@ conn.once('open', () => {
                 videos,
                 audioTracks,
                 resume,
-                article,
+                articles,
                 nearbyUsers,
                 inSpreads,
                 currentPageTitle: 'Dashboard'

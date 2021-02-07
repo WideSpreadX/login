@@ -624,7 +624,7 @@
                 <% }) %>
         </div>
 
-                <h5 style="text-align: center; width: 100%;">Top Posts</h5>
+                <h5 style="text-align: center; width: 100%;"><%= profile.fname %>'s Posts</h5>
                 <ul>
                     <% posts.forEach(function(post){ %>
                         <div class="post-container">
@@ -681,7 +681,7 @@
                         <% }); %>
                     </ul> 
 
-                    <h5 style="text-align: center; width: 80%; margin-left: 10%; margin-top: 20px; border-top: solid 1px lightskyblue; padding-top: 20px;">Top Articles</h5>
+                    <h5 style="text-align: center; width: 80%; margin-left: 10%; margin-top: 20px; border-top: solid 1px lightskyblue; padding-top: 20px;"><%= profile.fname %>'s Articles</h5>
                         <% articles.forEach(function(article){ %>
                                 <div class="public-article">
                                     <div class="article">
@@ -699,5 +699,3 @@
                                     
                                 </div>
                             <% }); %>
-            </div>
-        </div>

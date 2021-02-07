@@ -514,7 +514,7 @@ router.post('/:id/article', ensureAuthenticated, (req, res) => {
 
 router.get('/articles/:articleId', ensureAuthenticated, async (req, res) => {
     const articleId = req.params.articleId;
-
+    const thisUser = req.user._id;
       
     const thisArticle = await Article.findById(articleId)
     console.log("Post ID: " + articleId);
@@ -534,7 +534,7 @@ router.get('/articles/:articleId', ensureAuthenticated, async (req, res) => {
   const articleAuthor = await User.findById(thisArticle.author)
       console.log("POST AUTHOR: " + articleAuthor.fname)
       
-      res.render('full-article', {thisArticle, articleAuthor, currentPageTitle: articleAuthor.fname + " " + articleAuthor.lname + "'s Article"})
+      res.render('full-article', {thisArticle, articleAuthor, thisUser, currentPageTitle: "An Article by:  " + articleAuthor.fname + " " + articleAuthor.lname})
 })
 
 

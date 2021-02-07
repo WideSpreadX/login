@@ -1,30 +1,93 @@
-
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
-    </div>
+<style>
+    .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.3);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    }
+    .go-back {
+        background:rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        border: groove 2px lightskyblue;
+        height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .go-back a {
+        width: 50%;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+    }
+    .author {
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+        margin-top: 20px;;
+    }
+    .article-container {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+    }
+    .article-header {
+        padding: 5px;
+    }
+    .article-header h2 {
+        text-align: center;
+        font-weight: bold;
+        color: lightskyblue;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+    .article-header h4 {
+        text-align: center;
+        color: #ccc;
+    }
+    .article-body {
+        border-top: groove 2px lightskyblue;
+    }
+    .article-body p {
+        color: #fff;
+        padding: 10px;
+        text-align: justify;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+    .article-body p::first-letter {
+        margin-left: 20px;
+    }
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
+<div class="go-back">
+    <% if (articleAuthor.id == thisUser) { %>
+        <a href="/dashboard">Your Dashboard</a>
+        <a href="/users/<%= articleAuthor.id %>">Your Profile</a>
+        <% } else { %>
+    <a href="/users/<%= articleAuthor.id %>"><%= articleAuthor.fname %>'s Profile</a>
+    <% } %>
+</div>
+<div class="author">
+    <p><%= currentPageTitle %></p>
 </div>
 
-<%= currentPageTitle %>
 <div class="article-container">
 <div class="article-header">
 
-    <h1><%= thisArticle.articleTitle %></h1>
-    <hr>
-    <h3><%= thisArticle.articleHeader %></h3>
+    <h2><%= thisArticle.articleTitle %></h2>
+    <div class="spread-break">
+        <hr>
+    </div>
+    
+    <h4><%= thisArticle.articleHeader %></h4>
 </div>
+<div class="article-body">
     <p><%= thisArticle.articleBody %></p>
+</div>
     
 </div>
