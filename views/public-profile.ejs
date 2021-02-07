@@ -173,6 +173,21 @@
     border-radius: 8px;
     padding: 10px;
 }
+.privacy-radio-header {
+    text-align: center;
+    color: #fff;
+    padding-top: 10px;
+}
+.privacy-radio-options {
+    display: inline-flex;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.privacy-radio {
+    width: 50%;
+    text-align: center;
+    color: #fff;
+}
 .post-on-wall button {
     width: 80%;
     margin-left: 10%;
@@ -186,6 +201,8 @@
 }
 
 .inspreads {
+    max-height: 500px;
+    overflow-y: scroll;
 }
 .inspread {
     background: rgba(255, 255, 255, 0.3);
@@ -530,19 +547,33 @@
             <h5>Spread Something to <%= profile.fname %></h5>
             <form action="/users/<%= profile.id %>/inspread/<%= userId %> " method="post">
                 <textarea name="inSpreadBody" id="inSpreadBody" placeholder="Spread something..."></textarea>
-                <button type="submit">Spread It</button>
+                <div class="privacy-radio-header">
+                    <p>Spread this to the Public or just <%= profile.fname %>?</p>
+                </div>
+                <div class="privacy-radio-options">
+                    <div class="privacy-radio">
+                        <input type="radio" id="public" name="private" value="false">
+                        <label for="public">Public</label><br>
+                    </div>
+                    <div class="privacy-radio">
+                        <input type="radio" id="private" name="private" value="true">
+                        <label for="private">Private</label><br>
+                    </div>
+                </div>
+                    <button type="submit">Spread It</button>
             </form>
         </div>
         <div class="inspreads">
             <% inSpreads.forEach(function(inSpread) { %>
+                <% if (inSpread.private == false) { %>
                 <div class="inspread">
                     <div class="inspread-from">
                         <div class="inspread-from-image">
                             <img src="/image/<%= inSpread.inSpreadFrom.user_avatar %>" alt="" width="40px" height="80px">
                         </div>
                         <div class="inspread-body">
-                        <h4><%= inSpread.inSpreadFrom.fname %> <%= inSpread.inSpreadFrom.lname %></h4>
-                        <p><%= inSpread.inSpreadBody %></p>
+                            <h4><%= inSpread.inSpreadFrom.fname %> <%= inSpread.inSpreadFrom.lname %></h4>
+                            <p><%= inSpread.inSpreadBody %></p>
                             <div class="inspread-time">
                                 <small><%= inSpread.inSpreadAt.toLocaleDateString() %></small>
                                 <small><%= inSpread.inSpreadAt.toLocaleTimeString() %></small>
@@ -550,7 +581,11 @@
                         </div>
                     </div>
                 </div>
-            <% }) %>
+                <% } else { %>
+                    <span></span>
+                    <% } %>
+                
+                <% }) %>
         </div>
 
                 <h5 style="text-align: center; width: 100%;">Top Posts</h5>

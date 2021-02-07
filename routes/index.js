@@ -18,6 +18,7 @@ const ProfileImage = require('../models/ProfileImage');
 const PhotoAlbum = require('../models/PhotoAlbum');
 const Avatar = require('../models/Avatar');
 const Video = require('../models/Video');
+const InSpread = require('../models/InSpread');
 
 
 // Welcome Page
@@ -70,6 +71,7 @@ conn.once('open', () => {
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         const nearbyUsers = await User.find();
+        const inSpreads = await InSpread.find({inSpreadTo: {$eq: id}}).populate('inSpreadFrom').exec();
         const backgroundImage = await UserBackgroundImage.findOne({ imageOwner: { $eq: id } });
       const allAvatars = await ProfileImage.find({friends: {$elemMatch: {_id: friends}}})
 
@@ -117,6 +119,7 @@ conn.once('open', () => {
                 resume,
                 article,
                 nearbyUsers,
+                inSpreads,
                 currentPageTitle: 'Dashboard'
                 })
                 console.log(`User Info: ${backgroundImage}`)

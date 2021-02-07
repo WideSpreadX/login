@@ -156,7 +156,8 @@ router.post('/:profileId/inspread/:spreaderId', ensureAuthenticated, async (req,
     const inSpread = new InSpread({
         inSpreadFrom: spreadFrom,
         inSpreadTo: spreadTo,
-        inSpreadBody: req.body.inSpreadBody
+        inSpreadBody: req.body.inSpreadBody,
+        private: req.body.private
     })
     inSpread.save();
     await User.findByIdAndUpdate(spreadTo,

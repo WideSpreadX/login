@@ -1,3 +1,4 @@
+
 <style>
 .user-profile-image-form {
     max-width: 200px;
@@ -81,7 +82,6 @@
     .user-images h1 {
         text-align: center;
         padding-top: 20px;
-        border-top: solid 1px lightskyblue;
     }
     .med-image {
         background: rgba(255, 255, 255, 0.288);
@@ -187,6 +187,170 @@
     .see-albums p {
         color: #fff;
     }
+    .inspread-container h5 {
+        text-align: center;
+    margin-bottom: 30px;
+    }
+    .inspreads {
+        max-height: 500px;
+    overflow-y: scroll;
+}
+
+.inspread {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+.inspread-from {
+    display: inline-flex;
+}
+.inspread-from-image {
+    background: rgba(40, 40, 40, 0.3);
+    border: groove 2px lightskyblue;
+    border-right: solid 1px lightskyblue;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.452);
+    padding-left: 10px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+.inspread-from-image img {
+    display: inline-flex;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.inspread-body {
+    width: 100%;
+}
+.inspread-body h4 {
+    color: lightskyblue;
+    padding: 10px;
+    width: 100%;
+
+}
+.inspread-body p {
+    color: #fff;
+    padding-left: 20px;
+    padding-bottom: 0;
+}
+.inspread-body small {
+    color: #ccc;
+    padding: 10px;
+    padding-left: 20px;
+}
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-bottom: 0;
+  padding-top: 20px;
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+
+}
+.spread-post {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    padding-top: 10px;
+    margin: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+.spread-post h5 {
+    text-align: center;
+}
+.spread-post textarea {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.spread-post input {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+
+}
+border-radius: 10px;
+}
+.spread-file input {
+    width: 90%;
+    outline: none;
+    border: none;
+    background: transparent;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: ease-in 0.5s;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    font-size: 1rem;
+}
+#userVideo {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.button {
+    width: 80%;
+    margin-left: 10%;
+    background: green;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: groove 2px green;
+    border-bottom: none;
+    outline: none;
+}
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 }
 </style>
 <div class="user-background-image">
@@ -262,6 +426,49 @@
 <div class="user-images">
 
     <hr>
+    <h5 style="text-align: center;">Spread Something</h5>
+    <div class="tab">
+        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Post')">Post</button>
+        <button class="tablinks" onclick="openCity(event, 'Article')">Article</button>
+        <button class="tablinks" onclick="openCity(event, 'Video')">Video</button>
+      </div>
+      <div id="Post" class="tabcontent">
+          <div class="spread-post">
+            <h5>Create New Post</h5>
+            <form action="/users/<%= id %>/post" method="POST">
+                <textarea required name="postBody" id="postBody" class="form-control" placeholder="Spread something..."></textarea>
+                <button class="button" type="submit">Spread It</button>
+            </form>
+        </div>
+      </div>
+      
+      <div id="Article" class="tabcontent">
+          <h5>Create New Article</h5>
+        <div class="spread-post">
+            <form action="/users/<%= id %>/article" method="POST">
+                <input type="text" name="articleTitle" placeholder="Article Title" id="articleTitle"></input>
+                <input type="text" name="articleHeader" id="articleHeader" placeholder="Article Header">
+                <textarea required name="articleBody" id="articleBody" class="form-control" placeholder="Article body..."></textarea>
+                <button class="button" type="submit">Spread It</button>
+            </form>
+        </div>
+      </div>
+      
+      <div id="Video" class="tabcontent">
+        <div class="spread-post">
+    
+            <form action="/upload-video" method="post" enctype="multipart/form-data">
+                <div class="spread-file">
+                    <input type="file" name="user_video" id="userVideo">
+                </div>
+                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+                <input type="text" name="videoName" id="videoName" placeholder="Video Title" style="margin-top: 15px;">
+                <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
+                <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
+                <button type="submit" disabled class="button" style="color: red;">Add Video</button>
+            </form>
+        </div>
+      </div>
     <h1>Your Photos</h1>
 
     <div class="outer_cont_container" style="margin-top: 150px;">
@@ -364,8 +571,31 @@
             <% }) %>
         </div>
     </div>
+<div class="inspread-container">
+    <h5>Spread To You</h5>
+    <div class="inspreads">
+        <% inSpreads.forEach(function(inSpread) { %>
+            <div class="inspread">
+                <div class="inspread-from">
+                    <div class="inspread-from-image">
+                        <img src="/image/<%= inSpread.inSpreadFrom.user_avatar %>" alt="" width="40px" height="80px">
+                    </div>
+                    <div class="inspread-body">
+                    <h4><%= inSpread.inSpreadFrom.fname %> <%= inSpread.inSpreadFrom.lname %></h4>
+                    <p><%= inSpread.inSpreadBody %></p>
+                        <div class="inspread-time">
+                            <small><%= inSpread.inSpreadAt.toLocaleDateString() %></small>
+                            <small><%= inSpread.inSpreadAt.toLocaleTimeString() %></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
 
-    <div class="row">
+
+  <!--   <div class="row">
             <div class="col-12 user-posts">
                 <div class="create-post">
                     <h5>Create New Post</h5>
@@ -409,5 +639,24 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
+
+    
+<script>
+    document.getElementById("defaultOpen").click();
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+</script>
+       

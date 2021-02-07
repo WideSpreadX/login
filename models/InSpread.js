@@ -10,6 +10,7 @@ const InSpreadSchema = new mongoose.Schema({
         ref: 'User'
     },
     inSpreadBody: String,
+    private: Boolean,
     inSpreadAt: {
         type: Date,
         default: Date.now()
