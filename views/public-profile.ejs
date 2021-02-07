@@ -324,7 +324,55 @@
     padding: 8px;
 }
 
+.public-article {
+}
+.article {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 20px;
+}
+.article h3, .article h5 {
+    padding: 5px;
+}
+.article h3 {
+    color: lightskyblue;
+}
+.article h5 {
+    color: #ccc;
+}
+.article p {
+    text-align: left;
+    padding: 15px;
+    color: #fff;
+}
+.article small {
+    color: #ccc;
+}
+.article-more {
+    background: green;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: groove 2px green;
+    border-bottom: none;
+}
+.article-more a {
+    color: #fff;
+    padding: 10px;
 
+}
+.article hr {
+    width: 80%;
+    margin-left: 10%;
+    background: lightskyblue;
+}
 </style>
 <div class="user-background-image">
     <% if (profile.user_background_image) { %>
@@ -563,28 +611,22 @@
                     </ul> 
 
                     <h5 style="text-align: center; width: 80%; margin-left: 10%; margin-top: 20px; border-top: solid 1px lightskyblue; padding-top: 20px;">Top Articles</h5>
-                    <ul>
                         <% articles.forEach(function(article){ %>
-                            <li style="list-style: none;">
-                                <div class="public-post-container">
-                                    <div class="public-post">
-                                        <img src="/images/system/default-post_1a1a1a.png" alt="Default Post" width="50px" height="50px">
-                                        <small class="d-inline"><%= article.createdAt.toLocaleDateString() %> - <%= article.createdAt.toLocaleTimeString('en-US') %></small>
+                                <div class="public-article">
+                                    <div class="article">
                                         <h3><%= article.articleTitle %></h3>
                                         <h5><%= article.articleHeader %></h5>
+                                        <div class="article-published">
+                                            <small class="d-inline"><%= article.createdAt.toLocaleDateString() %> - <%= article.createdAt.toLocaleTimeString('en-US') %></small>
+                                        </div>
+                                        <hr>
                                         <p><%= article.articleBody %></p>
-                                        <a href="/users/articles/<%= article.id %>">See More</a>
-                                        <div class="post-option-bar">
-                                            <i class="fas fa-copy"></i>
-                                            <i class="fas fa-hashtag"></i>
-                                            <i class="fas fa-plus"></i>
-                                            <i class="fas fa-share-alt"></i>
+                                        <div class="article-more">
+                                            <a href="/users/articles/<%= article.id %>">See More</a>
                                         </div>
                                     </div>  
                                     
                                 </div>
-                            </li>
                             <% }); %>
-                        </ul> 
             </div>
         </div>
