@@ -11,6 +11,8 @@ const Grid = require('gridfs-stream');
 const fs = require('fs');
 const User = require('../models/User');
 const Post = require('../models/Post');
+const Question = require('../models/Question');
+const Answer = require('../models/Answer');
 const Comment = require('../models/Comment');
 const Resume = require('../models/Resume');
 const Article = require('../models/Article');
@@ -91,7 +93,14 @@ conn.once('open', () => {
         const inSpreads = await InSpread.find({inSpreadTo: {$eq: id}}).populate('inSpreadFrom').exec();
         const backgroundImage = await UserBackgroundImage.findOne({ imageOwner: { $eq: id } });
       const allAvatars = await ProfileImage.find({friends: {$elemMatch: {_id: friends}}})
-
+        const questions = await Question.find({author: {$eq: id}}).populate({
+          path: 'answers',
+          model: 'Answer',
+          populate: {
+            path: 'author',
+            model: 'User'
+          }
+        }).exec();
         /* console.log(`All Avatars: ${allAvatars}`) */
         const getAvatars = await User.find()
         console.log("Dashboard Page")
@@ -132,6 +141,7 @@ conn.once('open', () => {
                 fname: req.user.fname,
                 id: req.user.id,
                 posts,
+                questions,
                 videos,
                 audioTracks,
                 resume,
