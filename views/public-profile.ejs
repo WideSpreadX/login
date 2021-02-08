@@ -579,6 +579,10 @@
             </div>
         </div>
 
+        <div class="spread-break">
+            <hr>
+        </div>
+        
         <div class="post-on-wall">
             <h5>Spread Something to <%= profile.fname %></h5>
             <form action="/users/<%= profile.id %>/inspread/<%= userId %> " method="post">
@@ -623,7 +627,10 @@
                 
                 <% }) %>
         </div>
-
+        <div class="spread-break">
+            <hr>
+        </div>
+        
                 <h5 style="text-align: center; width: 100%;"><%= profile.fname %>'s Posts</h5>
                 <ul>
                     <% posts.forEach(function(post){ %>
@@ -680,7 +687,10 @@
                             
                         <% }); %>
                     </ul> 
-
+                    <div class="spread-break">
+                        <hr>
+                    </div>
+                    
                     <h5 style="text-align: center; width: 80%; margin-left: 10%; margin-top: 20px; border-top: solid 1px lightskyblue; padding-top: 20px;"><%= profile.fname %>'s Articles</h5>
                         <% articles.forEach(function(article){ %>
                                 <div class="public-article">

@@ -1,0 +1,140 @@
+<style>
+        .question-container {
+        background: rgba(255, 255, 255, 0.3);
+        margin-bottom: 30px;
+        border-radius: 15px;
+    }
+    .question-category {
+        border-bottom: groove 2px lightskyblue;
+        margin-bottom: 30px;
+    }
+    .question-category p {
+        padding: 10px;
+        padding-bottom: 0;
+        color: lightskyblue;
+        font-weight: bolder;
+    }
+    .question {
+        padding: 15px;
+    }
+    .question-stats {
+    }
+    .question-resolved {
+        padding: 2px;
+    }
+    .question-resolved p {
+        color: rgba(255, 255, 255, 0.74);
+        padding: 5px;
+    }
+    .post-answer h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .post-answer textarea {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+    }
+    .post-answer input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+    }
+    .post-answer button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        color: #fff;
+        margin-top: 20px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .answers-container {
+        background: rgba(255, 255, 255, 0.3);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+    }
+    .answer-container {
+        background: rgba(0, 0, 0, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        margin-bottom: 10px;
+    }
+    .answer-container:last-of-type {
+        margin-bottom: 0;
+    }
+    .add-comment {}
+    .answer-body p {
+        color: #fff;
+        padding: 10px;
+    }
+    .answer-resources {
+        text-align: center;
+    }
+    .answer-resources a {
+        color: lightskyblue;
+    }
+    .answer-author p {
+        color: lightskyblue;
+        text-align: right;
+        padding: 10px;
+        padding-right: 30px;
+    }
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
+<div class="question-container">
+    <div class="question">
+        <h5><%= thisQuestion.question_body %></h5>
+    </div>
+    <div class="question-category">
+        <p>Category: <%= thisQuestion.category %></p>
+    </div>
+    <div class="question-author">
+    </div>
+    <div class="question-stats">
+        <div class="question-resolved">
+            <% if (thisQuestion.resolved == true) { %>
+                <p style="text-shadow: 0 0 3px green;">This question is resolved.</p>
+            <% } else { %>
+                <p style="text-shadow: 0 0 3px red;">This question hasn't been resolved yet.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="post-answer">
+        <h5>Do you know the answer?</h5>
+        <form action="/academy/question/<%= thisQuestion.id %>/answer" method="post">
+            <textarea name="answer_body" id="answerBody" placeholder="Answer..."></textarea>
+            <input type="url" name="resources" id="resources" placeholder="Add a resource URL...">
+            <button type="submit" class="answer-button">Answer</button>
+        </form>
+    </div>
+</div>
+
+<h1 style="text-align: center; margin-bottom: 30px;">Answers</h1>
+<div class="answers-container">
+<% answers.forEach(function(answer) { %>
+    <div class="answer-container">
+        <div class="answer-body">
+            <p><%= answer.answer_body %></p>
+        </div>
+        <div class="answer-resources">
+            <% answer.resources.forEach(function(resource) { %>
+            <a href="<%= resource %>" target="_blank"><%= resource %></a>
+            <% }) %>
+        </div>
+        <div class="answer-author">
+            <p><small><%= answer.author.fname %> <%= answer.author.lname %></small></p>
+        </div>
+    </div>
+    <div class="add-comment">
+    </div>
+<% }) %>
+</div>

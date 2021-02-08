@@ -22,6 +22,7 @@ const ProfileImage = require('../models/ProfileImage');
 const CommentImage = require('../models/CommentImage');
 const Avatar = require('../models/Avatar');
 const InSpread = require('../models/InSpread');
+const Question = require('../models/Question');
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -536,8 +537,6 @@ router.get('/articles/:articleId', ensureAuthenticated, async (req, res) => {
       
       res.render('full-article', {thisArticle, articleAuthor, thisUser, currentPageTitle: "An Article by:  " + articleAuthor.fname + " " + articleAuthor.lname})
 })
-
-
 
 
 // MUST BE AT BOTTOM BEFORE MODULE.EXPORTS

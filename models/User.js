@@ -49,6 +49,7 @@ const UserSchema = new mongoose.Schema({
             ref: 'User'
     }],
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
+    questions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
     inSpreads: [{
         inSpread: {type: mongoose.Schema.Types.ObjectId, ref: 'InSpread'}
     }],
@@ -67,6 +68,7 @@ const UserSchema = new mongoose.Schema({
         pinterest: String
     },
     user_background_image: String,
+    user_vr_background_image: String,
     user_images: [String],
     user_avatar: String,
     user_video: [String],

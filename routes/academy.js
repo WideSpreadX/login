@@ -9,6 +9,8 @@ const Class = require('../models/Class');
 const Flashcard = require('../models/Flashcard');
 const LearningPoint = require('../models/LearningPoint');
 const Quiz = require('../models/Quiz');
+const Question = require('../models/Question');
+const Answer = require('../models/Answer');
 
 
 router.get('/', ensureAuthenticated, async (req, res) => {
@@ -236,5 +238,44 @@ router.get('/:courseId/:classId/flashcards', ensureAuthenticated, async (req, re
     res.render('flashcards', {currentPageTitle: 'Flashcards', flashcards, thisClass, courseId})
 
 })
+router.post('/question', ensureAuthenticated, (req, res) => {
+    const question = new Question({
+        author: req.user._id,
+        question_body: req.body.question_body,
+        category: req.body.category,
+        resolved: false,
+    });
+    question.save()
+    res.redirect('/dashboard');
+})
 
+router.get('/questions', ensureAuthenticated, async (req, res) => {
+    const allQuestions = await Question.find({}).populate({
+        path: 'author',
+        model: 'User'
+    })
+    .exec()
+
+    res.render('all-questions', {allQuestions});
+})
+
+router.get('/question/:questionId', ensureAuthenticated, async (req, res) => {
+    const questionId = req.params.questionId;
+    const thisQuestion = await Question.findById(questionId).populate('author').populate('answers').exec();
+    const answers = await Answer.find({from_question: {$eq: questionId}}).populate('author').exec();
+    res.render('single-question', {thisQuestion, answers})
+
+})
+router.post('/question/:questionId/answer', ensureAuthenticated, async (req, res) => {
+    const questionId = req.params.questionId;
+    const answer = new Answer({
+        author: req.user._id,
+        from_question: questionId,
+        answer_body: req.body.answer_body,
+        resources: req.body.resources
+    });
+    answer.save()
+    res.redirect(`/academy/question/${questionId}`)
+
+})
 module.exports = router;

@@ -83,11 +83,33 @@
             </div>
         </form>
     </div>
-    <div class="current-image-background">
+    <div class="current-image-background" style="z-index: 100;">
         <% if (currentUser.user_background_image) { %>
-            <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Avatar">
+            <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Background Image">
             <%} else { %>
-                <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= currentUser.favColor1 %>"></div>
+                <div class="user-background-color" style="width: 100px; height: 100px; background: <%= currentUser.favColor1 %>"></div>
+                <% } %>
+            </div>
+    <h3>Change Your VR Background Image</h3>
+    <h3><small>Images must be equirectangular images - <a href="https://en.wikipedia.org/wiki/Equirectangular_projection" target="_blank">Learn More</a></small></h3>
+    <div class="user-profile-image-form">
+        <form action="/upload-vr-background-image?_method=PATCH" method="post" enctype="multipart/form-data">
+            <div class="custom-file-background-image">
+                <input type="file" name="user_vr_background_image" id="userVRBackgroundImage">
+                <label for="userVRProfileImage" class="custom-file-label-choose-background-image"></label>
+            </div>
+            <div class="custom-file-background-image-button">
+                <div>
+                    <button type="submit" class="custom-file-profile-image-button">Change</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="current-image-background" style="z-index: 101;">
+        <% if (currentUser.user_vr_background_image) { %>
+            <img src="/image/<%= currentUser.user_vr_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Background Image">
+            <%} else { %>
+                <div class="user-background-color" style="width: 100px; height: 100px; background: <%= currentUser.favColor1 %>"></div>
                 <% } %>
             </div>
     <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">

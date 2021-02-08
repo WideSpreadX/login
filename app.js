@@ -154,7 +154,6 @@ app.post('/upload', upload.single('user_image'), (req, res) => {
 });
 
 
-
 /* Background Image Upload */
 app.patch('/upload-background-image', upload.single('user_background_image'), (req, res) => {
     const imageOwner = req.user._id;
@@ -175,6 +174,39 @@ app.patch('/upload-background-image', upload.single('user_background_image'), (r
           const newImage = obj.img.data;
           User.findByIdAndUpdate(imageOwner,
             {user_background_image: req.file.filename},
+            function(err, doc) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    return
+                }
+            }
+        )
+          res.redirect(`/users/update-profile/${imageOwner}`); 
+      }
+})
+});
+
+/* Background Image Upload */
+app.patch('/upload-vr-background-image', upload.single('user_vr_background_image'), (req, res) => {
+    const imageOwner = req.user._id;
+    const obj = { 
+      imageOwner: req.user._id, 
+      img: { 
+          data: req.file.filename,
+          contentType: 'image/png'
+      } 
+  } 
+    userBackgroundImage.create(obj, (err, item) => { 
+      if (err) { 
+          console.log(err); 
+      } 
+      else { 
+          item.save(); 
+          console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
+          const newImage = obj.img.data;
+          User.findByIdAndUpdate(imageOwner,
+            {user_vr_background_image: req.file.filename},
             function(err, doc) {
                 if(err) {
                     console.log(err)
@@ -328,7 +360,7 @@ const audioOwnerId = req.user._id;
 
 const obj = { 
   audioOwner: audioOwnerId, 
-  audio_name: req.file.filename,
+  audio_name: req.body.audio_name,
   audio: { 
       data: req.file.filename,
       contentType: 'audio/mp3'
@@ -342,7 +374,7 @@ Audio.create(obj, (err, item) => {
       item.save(); 
       console.log(`Audio Owner: ${audioOwnerId} Audio Data: ${obj.audio.data}`);
       User.findByIdAndUpdate(audioOwnerId,
-        {$push: {user_audio: req.file.id}},
+        {$push: {user_audio: req.file.filename}},
         {safe: true, upsert: true},
         function(err, doc) {
             if(err) {
@@ -383,6 +415,29 @@ app.get('/files/:filename', (req, res) => {
     
         // Files do exist
         return res.render('single-image-file', {file})
+  })
+})
+
+app.get('/audio/:filename', (req, res) => {
+  gfs.files.findOne({filename: req.params.filename}, (err, file) => {
+        // Check if Files
+        if(!file || file.lenth === 0) {
+          return res.status(404).json({
+            err: 'That file does not exist'
+          });
+        }
+            // Files do exist
+            if(file.contentType === 'audio/mpeg' || file.contentType === 'audio/ogg') {
+              // Read the output to the stream
+              const readstream = gfs.createReadStream(file.filename);
+              readstream.pipe(res);
+            } else {
+              res.status(404).json({
+                err: 'Not an audio file'
+              })
+            }
+        // Files do exist
+        return res.render('single-audio-file', {file})
   })
 })
 app.delete('/delete-image/:fileId', (req,res) => {

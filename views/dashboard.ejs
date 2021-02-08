@@ -260,11 +260,14 @@
 }
 .tab {
   overflow: hidden;
+  overflow-x: scroll;
+  width: 100%;
   border: 1px solid #ccc;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  display: inline-flex;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -301,6 +304,10 @@
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
 
 }
+.tabcontent h5 {
+    text-align: center;
+    margin-bottom: 10px;
+}
 .spread-post {
     background: rgba(255, 255, 255, 0.3);
     box-shadow: none;
@@ -330,7 +337,31 @@
     padding: 10px;
 
 }
+.spread-post select {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.spread-post select:active {
+    max-height: 50px;
+    overflow-y: scroll;
 
+}
+.spread-post p {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.boolean-options {
+    display: inline-flex;
+    width: 100%;
+}
+.boolean-option {
+    width: 50%;
+    text-align: center;
+}
 .spread-file input {
     width: 90%;
     outline: none;
@@ -586,11 +617,15 @@
     <hr>
 </div>
     <h5 style="text-align: center;">Spread Something</h5>
+    <p style="width: 100%; text-align: center; font-size: 0.6rem; color: lightskyblue;">Scroll left & right for more Spreaders</p>
     <div class="tab">
         <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Post')">Post</button>
         <button class="tablinks" onclick="openCity(event, 'Article')">Article</button>
+        <button class="tablinks" onclick="openCity(event, 'Question')">Question</button>
+        <button class="tablinks" onclick="openCity(event, 'Poll')">Poll</button>
         <button class="tablinks" onclick="openCity(event, 'Video')">Video</button>
         <button class="tablinks" onclick="openCity(event, 'Audio')">Audio</button>
+        <button class="tablinks" onclick="openCity(event, 'Event')">Event</button>
       </div>
       <div id="Post" class="tabcontent">
           <div class="spread-post">
@@ -613,7 +648,49 @@
             </form>
         </div>
       </div>
-      
+            
+      <div id="Question" class="tabcontent">
+        <h5>Ask a Question</h5>
+      <div class="spread-post">
+          <form action="/academy/question" method="POST">
+              <textarea required name="question_body" id="questionBody" class="form-control" placeholder="What is your question?"></textarea>
+              <select name="category" id="category">
+                  <option value="Math">Math</option>
+                  <option value="Science">Science</option>
+                  <option value="History">History</option>
+                  <option value="Politics">Politics</option>
+                  <option value="Legal">Legal</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Geography">Geography</option>
+                  <option value="Construction">Construction</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Art">Art</option>
+                  <option value="Music">Music</option>
+                  <option value="Health">Health</option>
+                  <option value="Nature">Nature</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Automotive">Automotive</option>
+                  <option value="Other">Other</option>
+              </select>
+              <button class="button" type="submit">Spread It</button>
+          </form>
+      </div>
+    </div>
+          
+    <div id="Poll" class="tabcontent">
+        <h5>Create New Poll</h5>
+      <div class="spread-post">
+          <form action="/users/<%= id %>/poll" method="POST">
+            <textarea required name="pollBody" id="pollBody" class="form-control" placeholder="Poll question..."></textarea>
+            <input type="text" name="pollReply1" placeholder="Poll Reply 1" id="pollReply1"></input>
+            <input type="text" name="pollReply2" placeholder="Poll Reply 2" id="pollReply2"></input>
+            <input type="text" name="pollReply3" placeholder="Poll Reply 3" id="pollReply3"></input>
+            <input type="text" name="pollReply4" placeholder="Poll Reply 4" id="pollReply4"></input>
+              <button class="button" disabled type="submit">Spread It</button>
+          </form>
+      </div>
+    </div>
+          
       <div id="Video" class="tabcontent">
         <div class="spread-post">
     
@@ -640,11 +717,61 @@
                 <input type="text" name="audio_name" id="audioName" placeholder="Track Title" style="margin-top: 15px;">
                 <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this track">
                 <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
-                <button type="submit" disabled class="button" style="color: red;">Add Video</button>
+                <button type="submit"  class="button" style="color: red;">Add Audio</button>
             </form>
         </div>
       </div>
-
+      <div id="Event" class="tabcontent">
+        <h5>Create an Event</h5>
+      <div class="spread-post">
+          <form action="/users/<%= id %>/event" method="POST">
+                <input type="text" name="eventName" id="eventName" placeholder="Name of Event">
+              <textarea required name="eventDescription" id="eventDescription" class="form-control" placeholder="Describe your event..."></textarea>
+              <p>Party Type</p>
+              <select name="category" id="category">
+                  <option value="Birthday">Birthday</option>
+                  <option value="Holiday Party">Holiday Party</option>
+                  <option value="Cookout">Cookout</option>
+                  <option value="Dinner Party">Dinner Party</option>
+                  <option value="Celebration">Celebration</option>
+                  <option value="Fund Raiser">Fund Raiser</option>
+                  <option value="Music Performace">Music Performace</option>
+                  <option value="Tournament">Tournament</option>
+                  <option value="Meet-Up">Meet-Up</option>
+                  <option value="Specialty Party">Specialty Party</option>
+                  <option value="Baby Shower">Baby Shower</option>
+                  <option value="Funural">Funural</option>
+                  <option value="Celebration of Life">Celebration of Life</option>
+                  <option value="Other">Other</option>
+              </select>
+              <p>What day is your event?</p>
+              <input type="date" name="eventDate" id="eventDate">
+              <p>What time will your event begin?</p>
+              <input type="time" name="eventStart" id="eventStart">
+              <p>What time will your event end?</p>
+              <input type="time" name="eventEnd" id="eventEnd">
+              <p>Who would you like to invite?</p>
+              <p style="font-size: 0.6rem; color: red">Need to add multi-select</p>
+              <select name="invitees" id="invitees">
+                  <% profile.friends.forEach(function(friend) { %>
+                    <option value="<%= friend.id %>"><%= friend.fname %> <%= friend.lname %></option>
+                <% }) %>
+              </select>
+              <p>Is this event invite only?</p>
+              <div class="boolean-options">
+                  <div class="boolean-option">
+                      <p>Yes</p>
+                      <input type="radio" name="inviteOnly" id="inviteOnly" value="true">
+                    </div>
+                    <div class="boolean-option">
+                      <p>No</p>
+                      <input type="radio" name="inviteOnly" id="inviteOnly" value="false">
+                    </div>
+              </div>
+              <button class="button" disabled type="submit">Spread It</button>
+          </form>
+      </div>
+    </div>
       <div class="spread-break">
         <hr>
     </div>
@@ -854,7 +981,6 @@
 
 
 
-    
 <script>
     document.getElementById("defaultOpen").click();
     function openCity(evt, cityName) {

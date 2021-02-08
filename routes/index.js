@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
-
+const fs = require('fs');
 const User = require('../models/User');
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
@@ -61,6 +61,9 @@ conn.once('open', () => {
   }); 
   
   const upload = multer({ storage });
+
+
+
 // Dashboard
     router.get('/dashboard', ensureAuthenticated, async (req, res) => {
         const id = req.user._id;
@@ -78,7 +81,10 @@ conn.once('open', () => {
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const articles = await Article.find({ author: { $eq: id } });
         const videos = await Video.find({videoOwner: {$eq: id }});
-        const audioTracks = await Audio.find({audioOwner: {$eq: id }}).populate();
+        const userAudio = await User.findById(id).select('user_audio');
+        console.log(`userAudio: ${userAudio}`);
+        const audioTracks = await Audio.find({audioOwner: {$eq: id }});
+        console.log(`Audio Tracks: ${audioTracks}`)
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         const nearbyUsers = await User.find();
