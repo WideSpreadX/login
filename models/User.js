@@ -50,6 +50,7 @@ const UserSchema = new mongoose.Schema({
     }],
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     questions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
+    polls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Poll'}],
     inSpreads: [{
         inSpread: {type: mongoose.Schema.Types.ObjectId, ref: 'InSpread'}
     }],

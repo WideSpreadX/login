@@ -22,6 +22,7 @@ const Avatar = require('../models/Avatar');
 const Video = require('../models/Video');
 const Audio = require('../models/Audio');
 const InSpread = require('../models/InSpread');
+const Poll = require('../models/Poll');
 
 
 // Welcome Page
@@ -93,6 +94,7 @@ conn.once('open', () => {
         const inSpreads = await InSpread.find({inSpreadTo: {$eq: id}}).populate('inSpreadFrom').exec();
         const backgroundImage = await UserBackgroundImage.findOne({ imageOwner: { $eq: id } });
       const allAvatars = await ProfileImage.find({friends: {$elemMatch: {_id: friends}}})
+      const polls = await Poll.find({author: {$eq: id}})
         const questions = await Question.find({author: {$eq: id}}).populate({
           path: 'answers',
           model: 'Answer',
@@ -142,6 +144,7 @@ conn.once('open', () => {
                 id: req.user.id,
                 posts,
                 questions,
+                polls,
                 videos,
                 audioTracks,
                 resume,
@@ -351,6 +354,12 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
     photoAlbum.save()
 
     res.redirect(`/photo-album/${user}`);
+  })
+
+  router.get('/polls', ensureAuthenticated, async(req, res) => {
+    const allPolls = await Poll.find();
+
+    res.render('all-polls', {allPolls});
   })
   router.get('/socialspread', async (req, res) => {
     const thisUser = req.user._id;

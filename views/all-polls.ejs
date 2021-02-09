@@ -1,0 +1,101 @@
+<style>
+.poll-container {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.poll-question h5 {
+    color: #fff;
+    padding: 10px;
+}
+.poll-reply-options {
+    background: rgba(0, 0, 0, 0.3);
+    display: inline-flex;
+    width: 100%;
+    padding-top: 20px;
+}
+.poll-option {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    margin-bottom: 10px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #fff;
+    border-radius: 8px;
+    width: 45%;
+    margin-left: 2.5%;
+}
+.poll-container button {
+    background: green;
+    width: 80%;
+    margin-left: 10%;
+    border: groove 2px green;
+    border-bottom: none;
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-top: 10px;
+}
+</style>
+<h1 style="text-align: center;">All Polls</h1>
+
+<div class="all-polls">
+    <% allPolls.forEach(function(poll) { %>
+        <div class="poll-container">
+            <div class="poll-question">
+                <h5><%= poll.poll_body %></h5>
+            </div>
+            <div class="poll-reply-options">
+                <form action="/users/<%= poll.id %>/poll-response?_method=PATCH" method="post">
+                        <label class="poll-option">
+                            <input type="radio" name="votes" value="1">
+                            <span><%= poll.poll_reply1.reply_option %></span>
+                        </label>
+                        <label class="poll-option">
+                            <input type="radio" name="votes" value="2">
+                            <span><%= poll.poll_reply2.reply_option %></span>
+                        </label>
+                        <label class="poll-option">
+                            <input type="radio" name="votes" value="3">
+                            <span><%= poll.poll_reply3.reply_option %></span>
+                        </label>
+                        <label class="poll-option">
+                            <input type="radio" name="votes" value="4">
+                            <span><%= poll.poll_reply4.reply_option %></span>
+                        </label>
+                        <label class="poll-option">
+                            <input type="radio" name="votes" value="5">
+                            <span><%= poll.poll_reply5.reply_option %></span>
+                        </label>
+                        <label class="poll-option">
+                            <input type="radio" name="votes" value="6">
+                            <span><%= poll.poll_reply6.reply_option %></span>
+                        </label>
+                        <button type="submit">Vote</button>
+                </form>
+            </div>
+        </div>
+        <% poll.votes.forEach(function(vote) { %>
+            <% if (poll.votes.vote_for === "1") { %>
+            <h1>1</h1>
+            <% } else if(poll.votes.vote_for === "2"){ %>
+            <h1>2</h1>
+        <% } else if(poll.votes.vote_for === "3"){ %>
+            <h1>3</h1>
+        <% } else if(poll.votes.vote_for === "4"){ %>
+            <h1>4</h1>
+        <% } else if(poll.votes.vote_for === "5"){ %>
+            <h1>5</h1>
+            <% } else if(poll.votes.vote_for === "5"){ %>
+                <h1>6</h1>
+                <% } else { %>
+                    <% } %>
+                    <% }) %>
+                    <p style="color: #fff"><%= poll.votes %></p>        
+                    
+            <% }) %>
+        </div>

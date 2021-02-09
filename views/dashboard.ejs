@@ -584,6 +584,37 @@
     border-bottom: none;
 
 }
+.poll-container {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.poll-question h5 {
+    color: #fff;
+    padding: 10px;
+}
+.poll-reply-options {
+    background: rgba(0, 0, 0, 0.3);
+    display: inline-flex;
+    width: 100%;
+    padding-top: 20px;
+}
+.poll-option {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    margin-bottom: 10px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #fff;
+    border-radius: 8px;
+    width: 45%;
+    margin-left: 2.5%;
+}
+
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
   from {opacity: 0;}
@@ -841,16 +872,58 @@
     </div>
           
     <div id="Poll" class="tabcontent">
+        <div class="spreaded">
+            <h5>Your Polls</h5>
+            <p><a href="/polls">All Polls</a></p>
+            <% polls.forEach(function(poll) { %>
+                <div class="poll-container">
+                    <div class="poll-question">
+                        <h5><%= poll.poll_body %></h5>
+                    </div>
+                    <div class="poll-reply-options">
+                        <form action="/users/<%= poll.id %>/poll-response?_method=PATCH" method="POST">
+                            <label class="poll-option">
+                                <input type="radio" name="votes" value="1">
+                                <span><%= poll.poll_reply1.reply_option %></span>
+                            </label>
+                            <label class="poll-option">
+                                <input type="radio" name="votes" value="2">
+                                <span><%= poll.poll_reply2.reply_option %></span>
+                            </label>
+                            <label class="poll-option">
+                                <input type="radio" name="votes" value="3">
+                                <span><%= poll.poll_reply3.reply_option %></span>
+                            </label>
+                            <label class="poll-option">
+                                <input type="radio" name="votes" value="4">
+                                <span><%= poll.poll_reply4.reply_option %></span>
+                            </label>
+                            <label class="poll-option">
+                                <input type="radio" name="votes" value="5">
+                                <span><%= poll.poll_reply5.reply_option %></span>
+                            </label>
+                            <label class="poll-option">
+                                <input type="radio" name="votes" value="6">
+                                <span><%= poll.poll_reply6.reply_option %></span>
+                            </label>
+                            <button class="button" style="margin-top: 10px;" type="submit">Vote</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
         <div class="new-spread">
         <h5>Create New Poll</h5>
       <div class="spread-post">
           <form action="/users/<%= id %>/poll" method="POST">
-            <textarea required name="pollBody" id="pollBody" class="form-control" placeholder="Poll question..."></textarea>
-            <input type="text" name="pollReply1" placeholder="Poll Reply 1" id="pollReply1"></input>
-            <input type="text" name="pollReply2" placeholder="Poll Reply 2" id="pollReply2"></input>
-            <input type="text" name="pollReply3" placeholder="Poll Reply 3" id="pollReply3"></input>
-            <input type="text" name="pollReply4" placeholder="Poll Reply 4" id="pollReply4"></input>
-              <button class="button" disabled type="submit">Spread It</button>
+            <textarea required name="poll_body" required id="pollBody" class="form-control" placeholder="Poll question..."></textarea>
+            <input type="text" name="poll_reply1" required placeholder="Poll Reply 1" id="poll_reply1"></input>
+            <input type="text" name="poll_reply2" required placeholder="Poll Reply 2" id="poll_reply2"></input>
+            <input type="text" name="poll_reply3" placeholder="Poll Reply 3" id="poll_reply3"></input>
+            <input type="text" name="poll_reply4" placeholder="Poll Reply 4" id="poll_reply4"></input>
+            <input type="text" name="poll_reply5" placeholder="Poll Reply 5" id="poll_reply4"></input>
+            <input type="text" name="poll_reply6" placeholder="Poll Reply 6" id="poll_reply4"></input>
+              <button class="button" type="submit">Spread It</button>
           </form>
         </div>
       </div>

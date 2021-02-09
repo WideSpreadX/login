@@ -22,7 +22,7 @@ const ProfileImage = require('../models/ProfileImage');
 const CommentImage = require('../models/CommentImage');
 const Avatar = require('../models/Avatar');
 const InSpread = require('../models/InSpread');
-const Question = require('../models/Question');
+const Poll = require('../models/Poll');
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -498,6 +498,38 @@ router.post('/:id/post/:postId/comment', ensureAuthenticated, async (req, res) =
         )
 }); */
 
+router.post('/:userId/poll', ensureAuthenticated, async (req, res) => {
+    const userId = req.params.userId;
+    const poll = new Poll({
+        author: req.user._id,
+        poll_body: req.body.poll_body,
+        "poll_reply1.reply_option": req.body.poll_reply1,
+        "poll_reply2.reply_option": req.body.poll_reply2,
+        "poll_reply3.reply_option": req.body.poll_reply3,
+        "poll_reply4.reply_option": req.body.poll_reply4,
+        "poll_reply5.reply_option": req.body.poll_reply5,
+        "poll_reply6.reply_option": req.body.poll_reply6,
+    })
+    poll.save()
+    res.redirect('/dashboard')
+})
+router.patch('/:pollId/poll-response', ensureAuthenticated, (req, res) => {
+    const pollId = req.params.pollId;
+    const votedBy = req.user._id;
+
+    Poll.findByIdAndUpdate(pollId, 
+        {$push: {votes: {$each: [{vote_for: req.body.votes, voted_by: votedBy}]}}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return;
+            }
+        }
+    )
+    res.redirect('/dashboard');
+})
 router.post('/:id/article', ensureAuthenticated, (req, res) => {
     const userId = req.user._id;
     const article = new Article({
