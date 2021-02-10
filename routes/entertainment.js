@@ -35,4 +35,9 @@ axios.request(options).then(function (response) {
 });
 });
 
+router.get('/movies/movie/run-hide-fight', (req, res) => {
+    const movie = 'https://www.2embed.ru/embed/tmdb/movie?id=629017';
+
+    res.render('rhf', {movie});
+})
 module.exports = router;
