@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 
 
+router.get('/', (req, res) => {
+    res.render('ent-home');
+})
 router.get('/movies', (req, res) => {
     res.render('movies-home');
 })
