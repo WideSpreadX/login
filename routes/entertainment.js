@@ -4,12 +4,23 @@ const {ensureAuthenticated } = require('../config/auth');
 const mongoose = require('mongoose');
 const axios = require('axios');
 
+
 router.get('/movies', (req, res) => {
+    res.render('movies-home');
+})
+router.post('/movies/search', (req, res) => {
+    const movie = req.body.movie;
+    const movieString = req.body.movie;
+    console.log(movieString.replace(/\s/g, '+'));
+    const convertedString = movieString.replace(/\s/g, '+')
+    res.redirect(`/entertainment/movies/${convertedString}`);
+})
+router.get('/movies/:movie', (req, res) => {
     const movie = req.params.movie;
     const apiKey = 'd3722e71'
 	const options = {
   method: 'GET',
-  url: `http://www.omdbapi.com/?apikey=${apiKey}&t=the+hangover`
+  url: `http://www.omdbapi.com/?apikey=${apiKey}&t=${movie}`
 };
 
 axios.request(options).then(function (response) {
