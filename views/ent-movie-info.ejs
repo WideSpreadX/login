@@ -1,0 +1,62 @@
+<style>
+    p {
+        color: #fff;
+    }
+    .movie-poster {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -50;
+        background-image: url('<%= returnedData.Poster %>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .movie-ratings {
+        display: inline-flex;
+        width: 100%;
+    }
+    .movie-ratings p {
+    }
+
+</style>
+<div class="movie-poster">
+</div>
+<div class="movie-container">
+    <div class="movie-data">
+        <div class="movie-title">
+            <h1><%= returnedData.Title %></h1>
+            <p><%= returnedData.Year %></p>
+        </div>
+        <div class="movie-plot">
+            <h5>Plot</h5>
+            <p><%= returnedData.Plot %></p>
+        </div>
+        <div class="movie-stats">
+            <p><%= returnedData.Type %></p>
+            <p>Rated: <%= returnedData.Rated %></p>
+            <p>Released: <%= returnedData.Released %></p>
+            <p>Runtime: <%= returnedData.Runtime %></p>
+            <p>Genre: <%= returnedData.Genre %></p>
+            <p>Box Office: <%= returnedData.BoxOffice %></p>
+            <p>Production Company: <%= returnedData.Production %></p>
+            <p>Awards: <%= returnedData.Awards %></p>
+            <p>Language: <%= returnedData.Language %></p>
+            <h5>Ratings</h5>
+            <div class="movie-ratings">
+                <% returnedData.Ratings.forEach(function(rating) { %>
+                    <p><%= rating.Source %>: <%= rating.Value %></p>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="movie-crew">
+            <h5>Cast & Crew</h5>
+            <p>Director: <%= returnedData.Director %></p>
+            <p>Writer: <%= returnedData.Writer %></p>
+            <p>Cast: <%= returnedData.Actors %></p>
+        </div>
+    </div>
+</div>
