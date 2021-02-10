@@ -1,6 +1,38 @@
-<h1>Movies</h1>
-
-<form action="/entertainment/movies/search" method="POST">
-    <input type="text" name="movie" id="movie" placeholder="Search for movies...">
-    <button type="submit">Search</button>
-</form>
+<style>
+    .movie-search {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        padding-bottom: 0;
+        width: 100%;
+    }
+    .movie-search input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        padding: 5px;
+    }
+    .movie-search button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        margin-bottom: 0;
+        color: #fff;
+        margin-top: 10px;
+        border-top-left-radius: 8px;  
+        border-top-right-radius: 8px;  
+    }
+</style>
+<h1 style="text-align: center;">Movies</h1>
+<div class="movie-search">
+    <form action="/entertainment/movies/search" method="POST">
+        <input type="text" name="movie" id="movie" placeholder="Search for movies...">
+        <button type="submit">Search</button>
+    </form>
+</div>
