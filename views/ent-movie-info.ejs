@@ -73,6 +73,10 @@
         max-width: 90vw;
         text-align: center;
         padding-top: 10px;
+        border-radius: 8px;
+    }
+    .video-stream iframe {
+        border-radius: 8px;
 
     }
 </style>
@@ -85,6 +89,9 @@
 <div class="movie-poster">
 </div>
 <div class="movie-container">
+    <div class="video-stream">
+        <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
     <div class="movie-data">
         <div class="movie-title">
             <h1><%= returnedData.Title %></h1>
@@ -132,6 +139,3 @@
     </div>
 </div>
 
-<div class="video-stream">
-    <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>
-</div>
