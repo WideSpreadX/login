@@ -97,6 +97,23 @@
         color: #fff;
         outline: none;
     }
+    .add-to-list p {
+        width: 80%;
+        margin-top: 10px;
+        margin-left: 10%;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+    }
+    .add-to-list a {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+    }
 </style>
 <div class="movie-search">
     <form action="/entertainment/movies/search" method="POST">
@@ -120,6 +137,7 @@
                 <input type="text" name="movie_title" value="<%= movie %>" hidden>
                 <button>Add to List</button>
             </form>
+            <p><a href="/yourspread">See Your List</a></p>
         </div>
         <div class="spread-break">
             <hr>
