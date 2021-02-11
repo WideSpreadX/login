@@ -1,13 +1,32 @@
 <style>
+        .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    }
     .create-spread-post {
         margin-bottom: 30px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding-top: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+
     }
     .create-spread-post h5 {
         text-align: center;
     }
     .create-spread-post textarea {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 20px;
         border-radius: 10px;
-        background: rgba(255, 255, 255, 0.295);
+        background: #fff;
         backdrop-filter: blur(2px);
         color: #fff;
     }
@@ -16,14 +35,58 @@
         box-shadow: inset 0 0 10px lightskyblue;
         color: #fff;
     }
+    .create-spread-post button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+    }
+    .outer-post-container {
+        position: relative;
+        padding: 0;
+    }
+    .ss-post {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -10;
+        border-radius: 8px;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    .user-avatar {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+    .user-avatar img {
+        width: 100%;
+    }
     .socialspread-posts {
+    }
+    .spread-header {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        padding-bottom: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        backdrop-filter: blur(2px);
     }
     .socialspread-posts h5 {
         text-align: center;
     }
- 
+    .post-body {
+        margin-top: 50px;
+    }
     .post-body p {
-        padding: 0;
+        padding: 15px;
         padding-top: 20px;
         font-size: 1.1rem;
         color: #fff;
@@ -37,24 +100,98 @@
     .post-actions a {
        font-size: 1rem;
     }
+    .comment-container {
+        width: 100%;
+    }
     .comment-on-post {
-        padding: 0;
-        width: 95%;
-        margin-left: 2.5%;
+        padding: 10px;
+        padding-bottom: 0;
+        width: 100%;
         margin-top: 20px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        box-shadow: none;
+        border-radius: 0;
+        background:rgba(255, 255, 255, 0.3);
+    }
+    .comment-on-post textarea {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(2px);
+        color: #fff;
+        box-shadow: none;
+        outline: none;
+        border: none;
+    }
+    .comment-on-post button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+    }
+    .comments {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 90%;
+        margin-left: 5%;
+        
+
+    }
+    .comment {
+        padding: 0;
+        border-radius: 0;
+        background:rgba(0, 0, 0, 0.3);
+        box-shadow: none;
+        border-radius: 3px;
+    }
+    .comment-by {
+        display: inline-flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .comment-by-data {
+        width: 100%;
+    }
+    .comment-by-data h5 {
+        padding-left: 10px;
+        width: 100%;
+    }
+    .comment-by-data p {
+        padding-left: 10px;
+        width: 100%;
     }
     .comment-avatar {
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        width: 60px;
         overflow: hidden;
     }
     .comment h5 {
-        border-bottom: solid 1px lightskyblue;
         padding-bottom: 10px;
+        width: 90%;
     }
     .comment p {
         color: #fff;
+    }
+    .comment-time p {
+        text-align: left;
+    }
+    .comment-body {
+        width: 80%;
+        margin-left: 20%;
+    }
+    .comment-body p {
+        
+        border-radius: 8px;
+        padding: 8px;
     }
 </style>
 
@@ -62,39 +199,47 @@
 <%- include('partials/mainHeaderPageMenu') %>
 
 <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">SocialSpread</h2>
-<hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 
+<div class="spread-break">
+    <hr>
+</div>
 
 
 <div class="create-spread-post">
-    <h5>Spread Something</h5>
+    <h5 style="text-align: center; margin-bottom: 20px;">Spread Something</h5>
     <form action="/users/<%= id %>/post" method="POST">
         <textarea required name="postBody" id="postBody" class="form-control"></textarea>
-        <button class="btn-block block-button spread-it" type="submit">Spread It</button>
+        <button type="submit">Spread It</button>
     </form>
+</div>
+
+<div class="spread-break">
+    <hr>
 </div>
 
 <div class="socialspread-posts">
 
 <h5>Recent Spreads</h5>
 <% data.forEach(function(post){ %>
-    <div class="outer-post-container" style="box-shadow: 0 0 10px <%= post.author.favColor1 %>">
+    <div class="outer-post-container" style="box-shadow: inset 0 0 3px <%= post.author.favColor1 %>; border-top: groove 2px <%= post.author.favColor1 %>; border-bottom: groove 2px <%= post.author.favColor1 %>;">
                 <div class="ss-post">
   
                     <div class="user-avatar"style="box-shadow: 0 0 10px <%= post.author.favColor1 %>; margin-top: 10px;">
                         <% if (post.author.user_avatar) { %>
-                            <p><%=profileImages.imageOwner %></p>
-                            <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar" width="260px">
+                            <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
                             <%} else { %>
-                                <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
+                                <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" >
                                 <% } %>
                 </div>
                 </div>
-                            <h4 style="color: <%= post.author.favColor1 %>;"><%= post.author.fname %> <%= post.author.lname%></h4>
-                            <div class="post-timestamp">
-                                
-                                <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
-                            </div>
+                    <div class="spread-header" style="border-bottom: groove 2px <%= post.author.favColor1 %>">
+
+                        <a href="/users/<%= post.author.id %>"><h4 style="color: <%= post.author.favColor1 %>; border-bottom: solid 1px <%= post.author.favColor1 %>"><%= post.author.fname %> <%= post.author.lname%></h4></a>
+                        <div class="post-timestamp">
+                            
+                            <small class="post-span"><%= post.createdAt.toLocaleDateString() %> - <%= post.createdAt.toLocaleTimeString() %></small>
+                        </div>
+                    </div>
                     <div class="post-body">
                         <p><%= post.postBody %></p>
                     </div>
@@ -120,29 +265,37 @@
                     <div class="comment-on-post">
                         <h4>Leave a comment</h4>
                         <form action="/users/<%= post.author.id %>/post/<%= post.id %>/comment" method="POST">
-                            <textarea required name="commentBody" id="commentBody" class="form-control" style="color: #fff"></textarea>
-                            <button class="btn-block block-button spread-it" type="submit">Spread More</button>
+                            <textarea required name="commentBody" id="commentBody" style="color: #fff"></textarea>
+                            <button type="submit">Spread More</button>
                             <input type="text" name="fromPost" value="<%= post.id %>" hidden="true">
                         </form>
 
                     </div>
                         <div class="comments">
-                
+                            <h5>Comments</h5>
                             <% post.comments.forEach(function(comment){ %>
-                                <div class="comment" style="box-shadow: 0 0 5px <%= comment.author.favColor1 %>;">
-                                    <div class="comment-time">
-                                        <p><small><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></small></p>
-                                    </div>
-                                        <div class="comment-avatar" style="box-shadow: 0 0 5px <%= comment.author.favColor1 %>;">
+                                <div class="comment" style="border-top: groove 2px <%= comment.author.favColor1 %>; border-bottom: groove 2px <%= comment.author.favColor1 %>;"">
+
+                                    <div class="comment-by">
+
+                                        <div class="comment-avatar" style="border: groove 2px <%= comment.author.favColor1 %>; border-left: none;">
                                             <% if (comment.author.user_avatar) { %>
                                                 <img src="/image/<%= comment.author.user_avatar %>" alt="'s Avatar" width="60px">
                                                 <%} else { %>
-                                                <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="60px" >
-                                                <% } %>
-                                        </div>
-                                    <h5 style="color: <%= comment.author.favColor1 %>;"><%= comment.author.fname %> <%= comment.author.lname %></h5>
-                                    
-                                    <p><%= comment.commentBody %></p>
+                                                    <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" width="60px" >
+                                                    <% } %>
+                                               </div>
+                                               <div class="comment-by-data">
+
+                                                   <a href="/users/<%= comment.author.id %>"><h5 style="color: <%= comment.author.favColor1 %>"><%= comment.author.fname %> <%= comment.author.lname %></h5></a>
+                                                   <div class="comment-time">
+                                                       <p><small><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                   <div class="comment-body">
+                                                       <p style="border-top: groove 2px <%= comment.author.favColor1 %>; border-bottom: groove 2px <%= comment.author.favColor1 %>;"><%= comment.commentBody %></p>
+                                                    </div>
                                     <div class="comment-actions">
                                         <span class="like-button">
                                             <form action="/<%= comment.id %>/like?_method=PATCH" method="post">
@@ -151,7 +304,7 @@
                                                 <span><%= comment.likes %></span>
                                             </form>
                                         </span>
-                                    
+                                        
                                     </div>
                                 </div>
                                 <% }); %>
