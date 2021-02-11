@@ -1,23 +1,224 @@
+<style>
+    .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+    .page-title  h1 {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .main-header-page-menu-container {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.308);
+        backdrop-filter: blur(2px);
+        border-radius: 12px;
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        
+    }
+    .main-header-page-menu-inner {
+        padding: 10px;
+    }
+    .main-header-page-menu-inner a {
+        display: inline-flex;
+        padding: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.733);
+        transition: ease-in 0.4s;
+        background: rgba(135, 206, 250, 0.315);
+        backdrop-filter: blur(4px);
+        border-radius: 8px;
+        text-align: center;
+    }
+    .main-header-page-menu-inner a:hover {
+        text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+        transition: ease-in 0.2s;
+    }
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
+    @media screen and (max-width: 500px) {
+        .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+            font-size: 0.6rem;
+        }
+        .main-header-page-menu-inner a {
+            text-align: center;
+        }
+        
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .spreadshield-about {
+            margin-bottom: 70px;
+        }
+        .spreadshield-about h2 {
+            padding: 20px;
+            text-align: center;
+
+        }
+        .about-container {
+            margin-bottom: 10px;
+        }
+        .about-container h5 {
+            text-align: center;
+            padding: 20px;
+        }
+        .about-container p {
+            margin-bottom: 10px;
+            color: #fff;
+            padding: 20px;
+        }
+        .about-container p::first-letter {
+            margin-left: 10px;
+        }
+        .spreadshield-request {
+            background: rgba(255, 255, 255, 0.3);
+            padding-top: 20px;
+            border-radius: 15px;
+        }
+        .spreadshield-request p {
+            width: 100%;
+            text-align: center;
+        }
+        .spreadshield-request input {
+            width: 90%;
+            margin-left: 5%;
+            padding: 5px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .spreadshield-packages {
+            margin-bottom: 10px;
+            display: inline-flex;
+            width: 100%;
+        }
+        .package {
+            width: 50%;
+
+        }
+        .spreadshield-packages input {
+        }
+        .spreadshield-request label {
+            width: 90%;
+            text-align: center;
+            color: #fff;
+        }
+        .spreadshield-request button {
+            width: 80%;
+            margin-left: 10%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: groove 2px green;
+            border-bottom: none;
+            outline: none;
+            background: green;
+            color: #fff;
+        }
+    }
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenuu">
+        <div class="main-header-page-menu-inner">
+            <a href="/spreadshield/driver">SpreadShield Driver</a>
+            <a href="/spreadshield/entertainment">SpeadShield Entertainment</a>
+            <a href="/spreadshield/communications">SpeadShield Communications</a>
+
+        </div>
+    </div>
+    <p>Scroll left & right for more options</p>
+</div>
+
+<div class="page-title">
+    <h1><%= currentPageTitle %></h1>
+</div>
+
+<div class="spreadshield-about">
+    <h2>Welcome to SpreadShield!!</h2>
+    <div class="spread-break">
+        <hr>
+    </div>
+    <div class="about-container">
+        <h5>What is SpreadShield?</h5>
+        <p>SpreadShield is the windshield in your car... with dynamic data you can interact with as an overlay. As a driver using SpreadShield, see you navigational directions with arrows that actually where the turn is from your perspective, not a birds-eye-view from a 2D map or a picture that makes you look for matching road layouts while trying to avoid an accident.</p>
+        <p>With optional front and rear camera setups, even if you can't see something, your vehicle will! It'll even highlight the person/object that's in your path right on your windshield. Add the auto-stop feature that will pull your brake pedal to the floor calculating current speed and distance to object in your path. You don't need to buy new car to make it self-driving. All you need is some hardware from WideSpread!</p>
+        <p>Driver assistance isn't all the SpreadShield is built for... we have the passengers in mind as well! You can always watch a movie on WideSpread... you can also put it up on the windshield, out of view of the driver. Or you can go full screen (fullshield) in park or auto-drive mode, it's like having a 50" TV sitting on the hood of your car! Changing the brightness will also allow you change the opacity of your windshield.</p>
+        <p>Get the communications package! Video chat without missing out on the scenery! The video feed can go right onto the windshield, pull down the included sunvisors that have an integrated camera and 2nd touchscreen display that mirrors all the data projected to the windshield so you can interact with the data! As a quick example, lets say your driving past a store you would like to call, there is a map marker that shows up on your windshield that lines up with that store, the front facing camera video feed is the fullscreen background for the touchscreen, that same marker will show up on the touchscreen, when you touch the marker, more information about that store will show up: Store name, phone number, hours, website, reviews along with save & share options. Click on the phone option, and it's calling, click on the website, ...I'm sure you already know what happens!!</p>
+        <p>This is just scratching the surface of SpreadShield!</p>
+    </div>
+    <div class="spread-break">
+        <hr>
+    </div>
+    <div class="about-container">
+        <h5>How to Use SpreadShield</h5>
+        <p>Choose your device, choose your SpreadShield purpose and place it level on your dashboard where you need it. Cellphone, tablet, laptop tablets, mount a flatscreen monitor.</p>
+        <h6 style="color: lightskyblue; text-align: center;padding: 10px;">SpreadShield Hardware COMING SOON!!</h6>
+        <h5>Request More SpreadShield Information</h5>
+        <div class="spreadshield-request">
+            <form action="/spreadshield/request-unit" method="post">
+                <input type="text" name="fname" placeholder="First Name">
+                <input type="text" name="lname" placeholder="Last Name">
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="phone" placeholder="Phone (optional)">
+                <input type="text" name="make" placeholder="Car Make">
+                <input type="text" name="model" placeholder="Car Model">
+                <input type="text" name="year" placeholder="Car Year">
+<!--                 <p>Which packages are you interested in?</p>
+                <div class="spreadshield-packages">
+                    <div class="package">
+                        <input type="checkbox" name="driver_package" id="driverPackage">
+                        <label for="driverPackage">Driver Package</label>
+                    </div>
+                    <div class="package">
+                        <input type="checkbox" name="passenger_package" id="passengerPackage">
+                        <label for="passengerPackage">Passenger Package</label>
+                    </div>
+                    <div class="package">
+                        <input type="checkbox" name="communications_package" id="communicationsPackage">
+                        <label for="communicationsPackage">Communications Package</label>
+                    </div>
+                    <div class="package">
+                        <input type="checkbox" name="driver_assistance" id="driverAssistance">
+                        <label for="driverAssistance">Driver Assistance Package</label>
+                    </div>
+            </div> -->
+                <button type="submit">Request Information</button>
+            </form>
         </div>
     </div>
 </div>
 
-<h1><%= currentPageTitle %></h1>
-<div class="spreadshield-container">
-    <h2>SpreadShield Home</h2>
-</div>
