@@ -83,6 +83,20 @@
         border-radius: 8px;
 
     }
+    .add-to-list {
+        width: 100%;
+    }
+    .add-to-list button {
+        width: 80%;
+        margin-left: 10%;
+        border: none;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        border-radius: 8px;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        outline: none;
+    }
 </style>
 <div class="movie-search">
     <form action="/entertainment/movies/search" method="POST">
@@ -100,6 +114,13 @@
         <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>
     </div>
     <div class="movie-data">
+        <div class="add-to-list">
+            <form action="/entertainment/movies/save" method="post">
+                <input type="text" name="movie_name" value="<%= returnedData.Title %>" hidden>
+                <input type="text" name="movie_title" value="<%= movie %>" hidden>
+                <button>Add to List</button>
+            </form>
+        </div>
         <div class="spread-break">
             <hr>
         </div>

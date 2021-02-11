@@ -3,7 +3,7 @@ const router = express.Router();
 const {ensureAuthenticated } = require('../config/auth');
 const mongoose = require('mongoose');
 const axios = require('axios');
-
+const User = require('../models/User');
 
 router.get('/', (req, res) => {
     res.render('ent-home');
@@ -30,7 +30,7 @@ axios.request(options).then(function (response) {
     const returnedData = response.data;
 	console.log(returnedData);
 
-    res.render('ent-movie-info', {returnedData});
+    res.render('ent-movie-info', {returnedData, movie});
 }).catch(function (error) {
 	console.error(error);
 });
@@ -41,4 +41,15 @@ router.get('/movies/movie/run-hide-fight', (req, res) => {
 
     res.render('rhf', {movie});
 })
+
+router.post('/movies/save', ensureAuthenticated, async (req, res) => {
+    const user = req.user._id;
+    const movieLink = req.body.movie_title;
+    const movieName = req.body.movie_name;
+    await User.findByIdAndUpdate(user, 
+            {$addToSet: {movie_list: {movie_link: movieLink, movie_name: movieName}}},
+        )
+    res.redirect(`/entertainment/movies/${movieName}`)
+})
+
 module.exports = router;

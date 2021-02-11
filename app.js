@@ -121,6 +121,7 @@ app.use('/wellness', require('./routes/wellness'));
 app.use('/vr-ar', require('./routes/vr-ar'));
 app.use('/notebooks', require('./routes/notebooks'));
 app.use('/entertainment', require('./routes/entertainment'));
+app.use('/yourspread', require('./routes/yourspread'));
 
 app.post('/upload', upload.single('user_image'), (req, res) => {
   const imageOwner = req.user._id;
