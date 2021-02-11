@@ -3,15 +3,19 @@
         padding: 10px;
     }
     .movie-container {
-        margin-bottom: 20px;
         padding: 10px;
     }
-    .movie-container a {
+    .movie-container p {
         padding: 10px;
         border-top: groove 2px lightskyblue;
         border-bottom: groove 2px lightskyblue;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 8px;
+        text-align: center;
+        box-shadow: inset 0 0 8px 5px rgba(255, 255, 255, 0.5);
+    }
+    .movie-container a {
+        color: #fff;
     }
 </style>
 <h1 style="text-align: center;">YourSpread</h1>
@@ -19,7 +23,7 @@
 
     <% userInfo.movie_list.forEach(function(movie) { %>
         <div class="movie-container">
-            <a href="/entertainment/movies/<%= movie.movie_link %>"><%= movie.movie_name %></a>
+            <p><a href="/entertainment/movies/<%= movie.movie_link %>"><%= movie.movie_name %></a></p>
         </div>
         <% }) %>
 </div>
