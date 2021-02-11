@@ -1,4 +1,5 @@
 <style>
+
     .spread-break hr {
     background: lightskyblue;
     box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
@@ -11,6 +12,7 @@
     h5 {
         text-align: center;
     }
+    
     .movie-search {
         background: rgba(255, 255, 255, 0.3);
         border-radius: 8px;
@@ -66,7 +68,13 @@
     }
     .movie-ratings p {
     }
+    .video-stream {
+        width: 100%;
+        max-width: 90vw;
+        text-align: center;
+        padding-top: 10px;
 
+    }
 </style>
 <div class="movie-search">
     <form action="/entertainment/movies/search" method="POST">
@@ -122,4 +130,8 @@
         <p>Awards: <%= returnedData.Awards %></p>
         <p>Language: <%= returnedData.Language %></p>
     </div>
+</div>
+
+<div class="video-stream">
+    <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>
 </div>

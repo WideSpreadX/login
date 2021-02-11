@@ -29,6 +29,7 @@ router.get('/movies/:movie', (req, res) => {
 axios.request(options).then(function (response) {
     const returnedData = response.data;
 	console.log(returnedData);
+
     res.render('ent-movie-info', {returnedData});
 }).catch(function (error) {
 	console.error(error);
