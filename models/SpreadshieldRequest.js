@@ -9,10 +9,7 @@ const SpreadshieldRequestSchema = new mongoose.Schema({
     make: String,
     model: String,
     year: String,
-    driver_package: Boolean,
-    passenger_package: Boolean,
-    communications_package: Boolean,
-    driver_assistance: Boolean,
+    questions: String
 });
 
 const SpreadshieldRequest = mongoose.model('SpreadshieldRequest', SpreadshieldRequestSchema);

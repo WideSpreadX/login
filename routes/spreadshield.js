@@ -20,10 +20,7 @@ router.post('/request-unit', (req, res) => {
         make: requestData.make,
         model: requestData.model,
         year: requestData.year,
-/*         driver_package: requestData.driver_package,
-        passenger_package: requestData.passenger_package,
-        communications_package: requestData.communications_package,
-        driver_assistance: requestData.driver_assistance, */
+        questions: requestData.questions
     })
     spreadshieldRequest.save()
     res.redirect('/spreadshield')
