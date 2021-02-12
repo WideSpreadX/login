@@ -180,6 +180,12 @@
     </div>
     <div class="company-header">
         <h1><%= company.company_name %></h1>
+        <div class="sub-pages">
+            <% subPages.forEach(function(page){ %>
+                <a href="/business/<%= company.id %>/<%= page.id %>"><%= page.page_name %></a>
+            <% }) %>
+            </div>
+    <hr>
         <div class="logo">
             <% if (company.background_image) { %>
                 <img src="/image/<%= company.logo %>" alt="">
@@ -191,12 +197,7 @@
         <h5><%= company.company_type %></h5>
     </div>
 
-    <div class="sub-pages">
-        <% subPages.forEach(function(page){ %>
-            <a href="/business/<%= company.id %>/<%= page.id %>"><%= page.page_name %></a>
-        <% }) %>
-        </div>
-<hr>
+
 <div class="companySite-inner">
 
     <div class="company-bio">
