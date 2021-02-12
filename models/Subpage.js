@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const subPageSchema = new mongoose.Schema({
     company_site: { type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
     page_name: String,
+    page_type: String,
     page_body: {
         page_header1: String,
         page_body1: String,
@@ -21,10 +22,27 @@ const subPageSchema = new mongoose.Schema({
         email3: String,
         email4: String,
         fax1: String,
-        fax2: String
+        fax2: String,
+        main_office: {
+            street: String,
+            city: String,
+            state: String,
+            country: String,
+            zip: String,
+        },
+        sub_office: {
+            street: String,
+            city: String,
+            state: String,
+            country: String,
+            zip: String
+        }
     },
+    store_items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item'}],
+    main_link_background: String,
     page_background: String,
-    page_slideshow: [String]
+    page_slideshow: [String],
+    vr: Boolean
 });
 
 const Subpage = mongoose.model('Subpage', subPageSchema);

@@ -74,7 +74,7 @@ router.get('/:companyId/manage', async (req, res) => {
         }
     }).exec()
     const employee = await Company.findById(companyId).populate({
-        path: 'employees job_applicants',
+        path: 'employees',
         model: 'User'
     })
     .populate({
@@ -270,6 +270,40 @@ router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
     })
     subpage.save()
     res.redirect(`/business/${companyId}/manage`);
+});
+
+router.get('/:companyId/add-vr', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    
+    const company = await Company.findById(companyId)
+    
+    res.render('business-add-subpage-vr', {company})
+});
+router.post('/:companyId/add-vr', ensureAuthenticated, (req, res) => {
+    const companyId = req.body.companyId;
+    
+    const vrSubpage = new Subpage({
+        page_name: req.body.page_name,
+        "page_body.page_header1": req.body.header1,
+        "page_body.page_body1": req.body.body1,
+        "page_body.page_header2": req.body.header2,
+        "page_body.page_body2": req.body.body2,
+        "page_body.page_header3": req.body.header3,
+        "page_body.page_body3": req.body.body3,
+        "page_side.phone1": req.body.phone1,
+        "page_side.phone2": req.body.phone2,
+        "page_side.phone3": req.body.phone3,
+        "page_side.email1": req.body.email1,
+        "page_side.email2": req.body.email2,
+        "page_side.email3": req.body.email3,
+        "page_side.email4": req.body.email4,
+        "page_side.fax1": req.body.fax1,
+        "page_side.fax2": req.body.fax2,
+        vr: true
+    })
+    subpage.save()
+    res.redirect(`/business/${companyId}/manage`);
+    
 })
 router.get('/:companyId/edit-subpage', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;

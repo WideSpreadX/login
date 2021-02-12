@@ -1,23 +1,160 @@
-<h1>Add a Subpage for</h1>
-<h1><%= company.company_name %></h1>
+<style>
+    .header h1 {
+        text-align: center;
+    }
+    .add-subpage-container {
+        width: 100%;
+        display: inline-flex;
+        border-left: groove 1px lightskyblue;
+        border-right: groove 1px lightskyblue;
+        background:rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        overflow-x: scroll;
+    }
+    .add-subpage {
+        min-width: 100%;
+        margin-right: 20px;
+        max-height: 400px;
+        overflow-y: scroll;
+        position: relative;
+        
+    }
+    .add-subpage input, .add-subpage textarea {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        outline: none;
+        border: none;
+        padding: 5px;
+    }
+    .add-subpage form {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+    }
+    .add-subpage h5 {
+        padding: 10px;
+        text-align: center;
+    }
+    .add-subpage button {
+        background: green;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: groove 2px green;
+    border-bottom: none;
+    color: #fff;
+    }
+</style>
+<div class="header">
+    <h1>Add a Subpage for</h1>
+    <h1><%= company.company_name %></h1>
+</div>
 
-<form action="/business/<%= company.id %>/add-subpage" method="post">
-    <input type="text" name="page_name" placeholder="Page Name">
-    <input type="text" name="companyId" value="<%= company._id %>">
-    <input type="text" name="header1" placeholder="Header 1">
-    <textarea name="body1" cols="30" rows="10" placeholder="Body 1"></textarea>
-    <input type="text" name="header2" placeholder="Header 2">
-    <textarea name="body2" cols="30" rows="10" placeholder="Body 2"></textarea>
-    <input type="text" name="header3" placeholder="Header 3">
-    <textarea name="body3" cols="30" rows="10" placeholder="Body 3"></textarea>
-    <input type="text" name="phone1" placeholder="Phone 1">
-    <input type="text" name="phone2" placeholder="Phone 2">
-    <input type="text" name="phone3" placeholder="Phone 3">
-    <input type="text" name="email1" placeholder="Email 1">
-    <input type="text" name="email2" placeholder="Email 2">
-    <input type="text" name="email3" placeholder="Email 3">
-    <input type="text" name="email4" placeholder="Email 4">
-    <input type="text" name="fax1" placeholder="Fax 1">
-    <input type="text" name="fax2" placeholder="Fax 2">
-    <button type="submit">Add Subpage</button>
-</form>
+<p style="text-align: center; color: lightskyblue;"><small>Scroll left & right for more Subpage Types</small></p>
+<div class="add-subpage-container">
+
+    <div class="add-subpage">
+        <form action="/business/<%= company.id %>/add-subpage" method="post">
+        <h5>Add an Info Page</h5>
+            <input type="text" name="page_style" value="text" hidden>
+            <input type="text" name="companyId" value="<%= company._id %>" hidden>
+            <input type="text" name="page_name" placeholder="Page Name">
+            <input type="text" name="header1" placeholder="Header 1">
+            <textarea name="body1" placeholder="Body 1"></textarea>
+            <input type="text" name="header2" placeholder="Header 2">
+            <textarea name="body2" placeholder="Body 2"></textarea>
+            <input type="text" name="header3" placeholder="Header 3">
+            <textarea name="body3" placeholder="Body 3"></textarea>
+            <input type="text" name="phone1" placeholder="Phone 1">
+            <input type="text" name="phone2" placeholder="Phone 2">
+            <input type="text" name="phone3" placeholder="Phone 3">
+            <input type="text" name="email1" placeholder="Email 1">
+            <input type="text" name="email2" placeholder="Email 2">
+            <input type="text" name="email3" placeholder="Email 3">
+            <input type="text" name="email4" placeholder="Email 4">
+            <input type="text" name="fax1" placeholder="Fax 1">
+            <input type="text" name="fax2" placeholder="Fax 2">
+            <button type="submit">Add Subpage</button>
+        </form>
+</div>
+
+
+    <div class="add-subpage">
+        <form action="/business/<%= company.id %>/add-subpage" method="post">
+        <h5>Add a Store</h5>
+        <p><small>Once you create your store setup, you may begin adding your items from the Manage Business page</small></p>
+            <input type="text" name="page_style" value="store" hidden>
+            <input type="text" name="companyId" value="<%= company._id %>" hidden>
+            <input type="text" name="page_name" placeholder="Page Name">
+            <input type="text" name="header1" placeholder="Category 1">
+            <input type="text" name="header2" placeholder="Category 2">
+            <input type="text" name="header3" placeholder="Category 3">
+            <button type="submit">Add Subpage</button>
+        </form>
+    </div>
+
+    <div class="add-subpage">
+        <form action="/business/<%= company.id %>/add-subpage" method="post">
+        <h5>Add a Photo Gallery</h5>
+        <p><small>Once you create your gallery setup, you may begin adding your photos to the albums from the Manage Business page</small></p>
+            <input type="text" name="page_style" value="gallery" hidden>
+            <input type="text" name="companyId" value="<%= company._id %>" hidden>
+            <input type="text" name="page_name" placeholder="Page Name">
+            <input type="text" name="header1" placeholder="Category 1">
+            <input type="text" name="header2" placeholder="Category 2">
+            <input type="text" name="header3" placeholder="Category 3">
+            <button type="submit">Add Subpage</button>
+        </form>
+    </div>
+    
+    <div class="add-subpage">
+        <form action="/business/<%= company.id %>/add-subpage" method="post">
+        <h5>Add a Contact Page</h5>
+        <p><small>Once you create your gallery setup, you may begin adding your photos to the albums from the Manage Business page</small></p>
+            <input type="text" name="page_style" value="contact" hidden>
+            <input type="text" name="companyId" value="<%= company._id %>" hidden>
+            <input type="text" name="page_name" placeholder="Page Name">
+            <input type="text" name="phone1" placeholder="Phone 1">
+            <input type="text" name="phone2" placeholder="Phone 2">
+            <input type="text" name="phone3" placeholder="Phone 3">
+            <input type="text" name="email1" placeholder="Email 1">
+            <input type="text" name="email2" placeholder="Email 2">
+            <input type="text" name="email3" placeholder="Email 3">
+            <input type="text" name="email4" placeholder="Email 4">
+            <input type="text" name="fax1" placeholder="Fax 1">
+            <input type="text" name="fax2" placeholder="Fax 2">
+            <p>Main Office Address</p>
+            <input type="text" name="main_office_street" placeholder="Street">
+            <input type="text" name="main_office_city" placeholder="City">
+            <input type="text" name="main_office_state" placeholder="State">
+            <input type="text" name="main_office_country" placeholder="Country">
+            <input type="text" name="main_office_zip" placeholder="Zip">
+            <p>Second Office Address</p>
+            <input type="text" name="sub_office_street" placeholder="Street">
+            <input type="text" name="sub_office_city" placeholder="City">
+            <input type="text" name="sub_office_state" placeholder="State">
+            <input type="text" name="sub_office_country" placeholder="Country">
+            <input type="text" name="sub_office_zip" placeholder="Zip">
+            <button type="submit">Add Subpage</button>
+        </form>
+    </div>
+
+    
+    <div class="add-subpage">
+        <form action="/business/<%= company.id %>/add-subpage" method="post">
+        <h5>Add a Message Board</h5>
+            <input type="text" name="page_style" value="message_board" hidden>
+            <input type="text" name="companyId" value="<%= company._id %>" hidden>
+            <input type="text" name="page_name" placeholder="Page Name">
+            <input type="text" name="header1" placeholder="Topic 1">
+            <input type="text" name="header2" placeholder="Topic 2">
+            <input type="text" name="header3" placeholder="Topic 3">
+            <button type="submit">Add Subpage</button>
+        </form>
+    </div>
+
+
+    </div>
