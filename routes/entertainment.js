@@ -11,6 +11,32 @@ router.get('/', (req, res) => {
 router.get('/movies', (req, res) => {
     res.render('movies-home');
 })
+router.get('/movies-user', async (req, res) => {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    console.log(`User Movies: ${user.movie_list}`);
+    const movieList = user.movie_list; 
+    /*  
+    for(let link of movieList){
+        const movieLink = link.movie_link;
+
+            const apiKey = 'd3722e71'
+            const options = {
+          method: 'GET',
+          url: `http://www.omdbapi.com/?apikey=${apiKey}&t=${movieLink}`
+        };
+        
+        axios.request(options).then(function (response) {
+            const returnedData = response.data;
+            console.log(returnedData);
+            
+        }).catch(function (error) {
+            console.error(error);
+        });    
+    } */
+    res.render('movies-home-user', {movieList});
+
+})
 router.post('/movies/search', (req, res) => {
     const movie = req.body.movie;
     const movieString = req.body.movie;

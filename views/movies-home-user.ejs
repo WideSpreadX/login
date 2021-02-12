@@ -44,3 +44,13 @@
         <button type="submit">Search</button>
     </form>
 </div>
+<div class="user-movies">
+    <% if (movieList) { %>
+    <h3>Your Movie Collection</h3>
+    <% movieList.forEach(function(movie) { %>
+        <a href="/entertainment/movies/<%= movie.movie_link %>"><h5><%= movie.movie_name %></h5></a>
+        <% }) %>
+    <% } else { %>
+        <p>You don't have any movies saved yet...</p>
+    <% } %>
+    </div>
