@@ -1,6 +1,39 @@
 <style>
+    .your-collections-container {
+        width: 90vw;
+        overflow-x: scroll;
+        border-left: groove 1px lightskyblue;
+        border-right: groove 1px lightskyblue;
+        border-radius: 8px;
+        background:rgba(0, 0, 0, 0.3)
+    }
+    .your-collections {
+        display: inline-flex;
+    }
+    .collection {
+        width: 90vw;
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+    .post-list {
+        padding: 10px;
+    }
+    .post-list h5 {
+        text-align: center;
+        padding: 20px;
+    }
+    .post-list h6 {
+        text-align: center;
+    }
+    .post-container p {
+        color: #fff;
+    }
     .movie-list {
         padding: 10px;
+    }
+    .movie-list h5 {
+        text-align: center;
+        padding: 20px;
     }
     .movie-container {
         padding: 10px;
@@ -17,13 +50,56 @@
     .movie-container a {
         color: #fff;
     }
+    
 </style>
-<h1 style="text-align: center;">YourSpread</h1>
-<div class="movie-list">
-
-    <% userInfo.movie_list.forEach(function(movie) { %>
-        <div class="movie-container">
-            <p><a href="/entertainment/movies/<%= movie.movie_link %>"><%= movie.movie_name %></a></p>
+<h1 style="text-align: center; margin-bottom: 30px;">YourSpread</h1>
+<p style="text-align: center; color: lightskyblue;"><small>Scroll left & right for more collections</small></p>
+<div class="your-collections-container">
+<div class="your-collections">
+    
+<!-- Saved Posts -->
+    <div class="collection">
+        <div class="post-list">
+            <h5>Saved Posts</h5>
+                <% userInfo.saved_posts.forEach(function(post) { %>
+                    <div class="post-container">
+                        <h6><%= post.author.fname %> <%= post.author.lname %></h6>
+                        <p><%= post.postBody %></p>
+                    </div>
+                <% }) %>
+            </div>
         </div>
-        <% }) %>
+            
+<!-- Saved Articles -->
+    <div class="collection">
+        <div class="post-list">
+            <h5>Saved Posts</h5>
+                <% userInfo.saved_articles.forEach(function(article) { %>
+                    <div class="post-container">
+                        <a href="/users/articles/<%= article.id %>">
+                            <h3><%= article.title %></h3>
+                            <h6><%= article.header %></h6>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+            
+<!-- Movie List -->
+<div class="collection">
+
+    <div class="movie-list">
+        <h5>Your Movies</h5>
+        <% userInfo.movie_list.forEach(function(movie) { %>
+            <div class="movie-container">
+                <p><a href="/entertainment/movies/<%= movie.movie_link %>"><%= movie.movie_name %></a></p>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+        
+        
+        
+        
+    </div>
 </div>

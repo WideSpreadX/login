@@ -165,7 +165,7 @@ conn.once('open', () => {
       const id = req.user._id;
       const resume = await Resume.find({ resumeOwner: { $eq: id } });
       const article = await Article.find({ author: { $eq: id } });
-      
+      const thisUser = await User.findById(id);
       /* const findUserAvatar = await profileImages[0]._id; */
       
       /* const userAvatar = await ProfileImage.find({ _id: { $eq: findUserAvatar } }); */
@@ -220,7 +220,7 @@ conn.once('open', () => {
             avatarImage,
             id,
             checkAuthor,
-            
+            thisUser
           })
         }
       }); 
@@ -251,6 +251,46 @@ conn.once('open', () => {
       res.redirect('/dashboard/wall')
     )
   })
+
+
+router.patch('/wall/post/:postId/save', ensureAuthenticated, (req, res) => {
+  const userId = req.user.id;
+  const postId = req.params.postId;
+
+  User.findByIdAndUpdate(userId,
+    {$addToSet: {saved_posts: postId}},
+    {safe: true, upsert: true},
+    function(err, doc) {
+      if(err) {
+        console.log(err)
+      } else {
+        return
+      }
+    }
+    ).then(
+      res.redirect(`/dashboard/wall/post/${postId}`)
+    )
+});
+router.patch('/:articleId/save', ensureAuthenticated, (req, res) => {
+  const userId = req.user.id;
+  const articleId = req.params.articleId;
+
+  User.findByIdAndUpdate(userId,
+    {$addToSet: {saved_articles: articleId}},
+    {safe: true, upsert: true},
+    function(err, doc) {
+      if(err) {
+        console.log(err)
+      } else {
+        return
+      }
+    }
+    ).then(
+      res.redirect(`/users/articles/${articleId}`)
+    )
+});
+
+
 router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
     const userId = req.params.userId;
 

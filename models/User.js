@@ -42,13 +42,30 @@ const UserSchema = new mongoose.Schema({
             ref: 'Course',
             final_grade: Number
         }],
-        gpa: Number
+        gpa: Number,
+        previous_education: [
+            {
+                school: {
+                    name: String,
+                    city: String,
+                    state: String,
+                    graduation_year: String,
+                    gpa: String,
+                    awards: [
+                        String
+                    ]
+                }
+            }
+        ]
     },
     friends: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
     }],
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
+    saved_posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
+    saved_articles: [{type: mongoose.Schema.Types.ObjectId, ref: 'Article'}],
+    saved_lessons: [{type: mongoose.Schema.Types.ObjectId, ref: 'LearningPoint'}],
     questions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
     polls: [{type: mongoose.Schema.Types.ObjectId, ref: 'Poll'}],
     inSpreads: [{

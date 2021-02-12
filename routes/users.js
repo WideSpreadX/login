@@ -451,6 +451,34 @@ router.delete('/post/:postId', async (req, res) => {
 
 });
 
+router.get('/comment/edit/:commentId', async (req, res) => {
+    const commentId = req.params.commentId;
+    const postId = req.body.postId;
+    const comment = await Comment.findById(commentId);
+    console.log(`Comment: ${comment}`)
+    res.render('edit-comment', {comment})
+})
+router.patch('/comment/edit/:commentId', async (req, res) => {
+    try {
+    const comment = req.params.commentId;
+    const updates = req.body;
+    const options = {new: true};
+    await Comment.findByIdAndUpdate(comment, updates, options);
+    res.redirect('/dashboard/wall')
+} catch (error) {
+    console.log(error);
+}
+
+});
+// Deleting Posts
+router.delete('/comment/:commentId', async (req, res) => {
+    const comment = req.params.commentId;
+
+    await Comment.findByIdAndDelete(comment);
+    res.redirect('/dashboard')
+
+});
+
 router.post('/:id/post/:postId/comment', ensureAuthenticated, async (req, res) => {
     const postId = req.params.postId;
     const userId = req.user._id;
