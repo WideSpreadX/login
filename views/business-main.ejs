@@ -68,10 +68,89 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .company-container-card {
+            position: relative;
+            background: transparent;
+            border-radius: 15px;
+            box-shadow: none;
+            margin-bottom: 20px;
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -20;
+            text-align: center;
+        }
+        .background-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            max-height: fit-content;
+            max-width: fit-content;
+
+        }
+        .company-header {
+            background: rgba(255, 255, 255, 0.3);
+            border-bottom: groove 2px lightskyblue;
+            padding: 10px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            display: inline-flex;
+            width: 100%;
+        }
+        .company-name {
+            width: 70%;
+        }
+        .logo {
+            width: 30%;
+        }
+        .logo img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .company-bio {
+            box-shadow: none;
+            margin-top: 10px;
+            padding: 10px;
+        }
+        .company-bio p {
+            color: #fff;
+        }
+        .company-contact {
+            background: rgba(255, 255, 255, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-radius: 0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .company-contact p {
+            color: #fff;
+        }
+        .company-contact a {
+            color: #fff;
+        }
+        .business-footer {
+            width: 100%;
+        }
+        .business-footer p {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .business-footer a {
+            color: #fff;
+        }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
-<h1><%= currentPageTitle %></h1>
+<h1 style="text-align: center;"><%= currentPageTitle %></h1>
 <div class="main-header-page-menu-container">
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
@@ -86,11 +165,29 @@
 
 <% companies.forEach(function(company){ %>
     <div class="company-container-card">
-        <a style="text-decoration: none;" href="/business/<%= company._id %>">
-            <h2><%= company.company_name %></h2>
-            <h5><%= company.company_type %></h5>
-        </a>
-        <hr>
+        <div class="background-image">
+            <% if (company.background_image) { %>
+                    <img src="/image/<%= company.background_image %>" alt="">
+            <% } else { %>
+                <span style="display: none;"></span>
+            <% } %>
+        </div>
+        <div class="company-header">
+            <div class="company-name">
+                <a style="text-decoration: none;" href="/business/<%= company._id %>">
+                    <h2><%= company.company_name %></h2>
+                    <h5><%= company.company_type %></h5>
+                </a>
+            </div>
+            <div class="logo">
+                <% if (company.logo) { %>
+                        <img src="/image/<%= company.logo %>" alt="">
+                <% } else { %>
+                    <span style="display: none;"></span>
+                <% } %>
+            </div>
+        </div>
+        
         <div class="company-bio">
             <p><%= company.company_bio %></p>
         </div>
@@ -99,14 +196,11 @@
             <p><i class="fas fa-phone"></i><a href="tel:<%= company.company_phone %>"><%= company.company_phone %></a></p>
             <p><i class="far fa-envelope"></i><a href="mailto:<%= company.company_main_email %>"><%= company.company_main_email %></a></p>
         </div>
-        <div class="employee-portal">
-            <a href="/business/employee/:id">Employee Portal</a>
-        </div>
     </div>
 <% }); %>
 
 
 
 <div class="business-footer">
-    <a href="/business/add-new-business">Add New Business</a>
+    <p><a href="/business/add-new-business">Add New Business</a></p>
 </div>

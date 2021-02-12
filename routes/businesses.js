@@ -87,6 +87,12 @@ router.get('/:companyId/manage', async (req, res) => {
     res.render('business-manage', {currentPageTitle: 'Manage Company', company, employee});
 })
 
+router.get('/:companyId/manage/public-page', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+
+    res.render('business-manage-public-page', {company});
+})
 
 router.get('/:companyId/resume/applicant/:applicantId', async (req, res) => {
     const companyId = req.params.companyId;
@@ -225,6 +231,14 @@ router.get('/:companyId/add-subpage', ensureAuthenticated, async (req, res) => {
     const company = await Company.findById(companyId)
     
     res.render('business-add-subpage', {company})
+});
+
+router.get('/:companyId/edit-subpage', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    
+    const company = await Company.findById(companyId)
+    
+    res.render('business-edit-subpage', {company})
 });
 
 

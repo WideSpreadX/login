@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.get('/movies', (req, res) => {
     res.render('movies-home');
 })
-router.get('/movies-user', async (req, res) => {
+router.get('/movies-user', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId);
     console.log(`User Movies: ${user.movie_list}`);

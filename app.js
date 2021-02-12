@@ -18,6 +18,7 @@ const avatar = require('./models/Avatar');
 const userBackgroundImage = require('./models/UserBackgroundImage');
 const PhotoAlbum = require('./models/PhotoAlbum');
 const Audio = require('./models/Audio');
+const Company = require('./models/Company');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -221,6 +222,75 @@ app.patch('/upload-vr-background-image', upload.single('user_vr_background_image
       }
 })
 });
+
+/* Company Background Image Upload */
+app.patch('/upload-company-background-image/:companyId', upload.single('background_image'), (req, res) => {
+  const companyId = req.params.companyId;
+  const obj = { 
+    imageOwner: companyId, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  userBackgroundImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${companyId} Image Data: ${obj.img.data}`);
+        const newImage = obj.img.data;
+        Company.findByIdAndUpdate(companyId,
+          {background_image: req.file.filename},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect(`/business/${companyId}/manage/public-page`); 
+    }
+})
+});
+
+
+/* Company Logo Upload */
+app.patch('/upload-company-logo/:companyId', upload.single('logo'), (req, res) => {
+  const companyId = req.params.companyId;
+  const obj = { 
+    imageOwner: companyId, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  userBackgroundImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${companyId} Image Data: ${obj.img.data}`);
+        const newImage = obj.img.data;
+        Company.findByIdAndUpdate(companyId,
+          {logo: req.file.filename},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect(`/business/${companyId}/manage/public-page`); 
+    }
+})
+});
+
+
 /* Profile Image Upload */
 app.patch('/upload-avatar', upload.single('user_profile_image'), (req, res) => {
     const imageOwner = req.user._id;

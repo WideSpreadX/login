@@ -34,7 +34,11 @@
     }
 
     @media screen and (max-width: 500px) {
+        .page-title {
+            width: 100%;
+        }
         .page-title h1 {
+            width: 100%;
             text-align: center;
         }
         .main-header-page-menu-container {
@@ -76,6 +80,25 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .company-name h1 {
+            text-align: center;
+            padding: 20px;
+        }
+        .manage-public-page {
+            width: 100%:
+        }
+        .manage-public-page p {
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            border-radius: 8px;
+        }
+        .manage-public-page a {
+            color: #fff;
+        }
         .add-new-subpage {
             margin-top: 20px;
         }
@@ -89,6 +112,9 @@
             padding-top: 30px;
             margin-top: 10px;
             width: 100%;
+        }
+        .current-employees h2 {
+            text-align: center;
         }
         .current-employees table {
             width: 100%;
@@ -121,15 +147,17 @@
 </div>
 <br>
 <br>
-<h1><%= company.company_name %></h1>
-
-<div class="add-new-subpage">
-    <h4>Subpages</h4>
-    <a href="/business/<%= company.id %>/add-subpage">Add a Subpage</a>
-    
+<div class="company-name">
+    <h1><%= company.company_name %></h1>
 </div>
 
+<div class="manage-public-page">
+    <p><a href="/business/<%= company.id %>/manage/public-page">Manage Public Page</a></p>
+</div>
 
+<div class="employee-portal">
+    <a href="/business/employee/:id">Employee Portal</a>
+</div>
 <div class="current-employees">
     <h2>Current Employees</h2>
     <table>

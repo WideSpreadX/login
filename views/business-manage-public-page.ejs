@@ -1,0 +1,136 @@
+<style>
+    .page-background-image {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        margin-bottom: 20px;
+    }
+    .page-background-image h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .user-profile-image-form {
+        max-width: 85vw;
+        margin-left: 2.5vw;
+        display: inline-flex;
+        position: relative;
+        background: rgba(0, 0, 0, 0.3);
+        border: groove 1px rgba(135, 206, 250, 0.555);
+        backdrop-filter: blur(2px);
+        padding: 10px;
+        color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+    }
+    .custom-file-profile-image {
+        width: 55vw;
+        border: none;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .custom-file-profile-image input {
+    }
+    .custom-file-profile-image {
+        width: 55vw;
+        
+    }
+    .custom-file-profile-image-button {
+        width: 20vw;
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        background: rgba(0, 128, 0, 0.3);
+        backdrop-filter: blur(4px);
+        outline: none;
+        border: none;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        color: #fff;
+    }
+    .company-background-image-preview {
+        width: 100%;
+        text-align: center;
+    }
+    .company-background-image-preview img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .subpage-actions {
+        margin-top: 20px;
+    }
+    .subpage-actions h4 {
+        text-align: center;
+        padding: 15px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+</style>
+
+
+<div class="page-background-image">
+    <h5>Change Logo</h5>
+    <div class="user-profile-image-form">
+            
+        <form action="/upload-company-logo/<%= company.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= company.id %>">
+                    <div class="custom-file-profile-image">
+                        <input type="file" name="logo" id="logoImage">
+                        <label for="logoImage" class="custom-file-label-choose-profile-image">Choose Logo</label>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="custom-file-profile-image-button">Change</button>
+                    </div>
+            </form>
+        </div>
+        <% if (company.logo) { %>
+            <div class="company-background-image-preview">
+                <img src="/image/<%= company.logo %>" alt="">
+            </div>
+        <% } else { %>
+            <span></span>
+        <% } %>
+</div>
+
+
+<div class="page-background-image">
+    <h5>Change Company Public Page Background Image</h5>
+    <div class="user-profile-image-form">
+            
+        <form action="/upload-company-background-image/<%= company.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= company.id %>">
+                    <div class="custom-file-profile-image">
+                        <input type="file" name="background_image" id="companyBackgroundImage">
+                        <label for="companyBackgroundImage" class="custom-file-label-choose-profile-image">Choose Background Image</label>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="custom-file-profile-image-button">Change</button>
+                    </div>
+            </form>
+        </div>
+        <% if (company.background_image) { %>
+            <div class="company-background-image-preview">
+                <img src="/image/<%= company.background_image %>" alt="">
+            </div>
+        <% } else { %>
+            <span></span>
+        <% } %>
+</div>
+
+<div class="subpage-actions">
+    
+    <a href="/business/<%= company.id %>/add-subpage"><h4>Add Subpages</h4></a>
+    <a href="/business/<%= company.id %>/edit-subpage"><h4>Edit Subpages</h4></a>
+</div>
+
+<div class="edit-subpage">
+</div>

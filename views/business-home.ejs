@@ -73,6 +73,46 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -20;
+            text-align: center;
+        }
+        .background-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            max-height: fit-content;
+            max-width: fit-content;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        .company-site-container {
+        }
+        .company-header {
+            text-align: center;
+            width: 100%;
+            padding-top: 30px;
+        }
+        .company-header h1 {
+            text-align: center;
+            width: 100%;
+        }
+        .logo {
+            width: 100%;
+        }
+        .logo img {
+            width: 100%;
+        }
+        .company-header h5 {
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
         .sub-pages {
             padding: 5px;    
             margin-top: 20px;
@@ -88,6 +128,28 @@
             border: none;
             padding: 0;
             margin: 0;
+        }
+        .company-bio {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+            padding: 10px;
+            border-radius: 8px;
+            color: #fff;
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+        }
+        .company-info {
+            background: rgba(255, 255, 255, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 70px;
+        }
+        .company-info p {
+            color: #fff;
+            text-align: right;
         }
     }
 </style>
@@ -108,10 +170,26 @@
 </div>
 
 
-<div class="companySite-container">
+<div class="company-site-container">
+    <div class="background-image">
+        <% if (company.background_image) { %>
+            <img src="/image/<%= company.background_image %>" alt="">
+    <% } else { %>
+        <span style="display: none;"></span>
+    <% } %>
+    </div>
+    <div class="company-header">
+        <h1><%= company.company_name %></h1>
+        <div class="logo">
+            <% if (company.background_image) { %>
+                <img src="/image/<%= company.logo %>" alt="">
+        <% } else { %>
+            <span style="display: none;"></span>
+        <% } %>
+        </div>
 
-    <h1><%= company.company_name %></h1>
-    <h5><%= company.company_type %></h5>
+        <h5><%= company.company_type %></h5>
+    </div>
 
     <div class="sub-pages">
         <% subPages.forEach(function(page){ %>
@@ -121,11 +199,11 @@
 <hr>
 <div class="companySite-inner">
 
-    <div class="">
+    <div class="company-bio">
         <p><%= company.company_bio %></p>
     </div>
 
-<div class="companyInfo">
+<div class="company-info">
 <p><%= company.company_street_1 %></p>
 <p><%= company.company_street_2 %></p>
 <p><%= company.company_suite_number %></p>
