@@ -1,89 +1,174 @@
+<style>
+@media screen and (max-width: 500px) {
+    .main-header-page-menu-container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 5px;
+        box-shadow: inset 0 0 4px black;
+        border: none;
+        border-left: groove 1px lightskyblue;
+        border-right: groove 1px lightskyblue;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    .main-header-page-menu-container p {
+        color: rgba(255, 255, 255, 0.76);
+        text-align: center;
+    }
+    .main-header-page-menu-inner {
+        display: inline-flex;
+    }
+    .main-header-page-menu-inner a {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    #mainHeaderPageMenu {
+        width: 100%;
+        position: relative;
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
+    }
+
+    .main-header-page-menu-inner {
+        display: inline-flex;
+        max-width: 100%;
+        min-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+        width: 100%;
+    }
+    .main-header-page-menu-inner a {
+        position: relative;
+        padding: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .info {
+        padding: 10px;
+        color: #fff;
+    }
+    .new-company-form {
+        background: rgba(255, 255, 255, 0.3);
+        margin-bottom: 70px;
+        border-radius: 15px;
+        padding-top: 20px;
+    }
+    .new-company-form p {
+        color: #fff;
+        text-align: center;
+    }
+    .new-company-form input {
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        margin-bottom: 10px;
+    }
+    .new-company-form textarea {
+        width: 90%;
+        height: 150px;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        margin-bottom: 10px;
+    }
+    .new-company-form select {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 10px;
+    }
+    .new-company-form button {
+        width: 80%;
+        margin-left: 10%;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+        background: green;
+    }
+}
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<h1 style="text-align: center;"><%= currentPageTitle %></h1>
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenu">
+        <div class="main-header-page-menu-inner">
+            <a href="/business/your-desk">Your Desk</a>
+            <a href="/business">Business Home</a>
+            <a href="/news/business">Business News</a>
         </div>
     </div>
+    <p><small style="color: lightskyblue;">Scroll left & right for more options</small></p>
+</div>
+<h1 style="text-align: center; margin-top: 50px; margin-bottom: 50px;">Business</h1>
+<h1><%= currentPageTitle %></h1>
+
+<div class="info">
+    <p>You must be the business owner to add a new business.</p>
 </div>
 
-<h1><%= currentPageTitle %></h1>
-<div class="row">
+<div class="new-company-form">
 
-<div class="update-profile col-12">
-<p>You must be the business owner to add a new business.</p>
 <form action="/business/add-new-business" method="post">
-    <div class="s-m-outlet">
-        <p>Company Name</p>
-        <input type="text" name="company_name" id="company_name">
-    </div>
-    <div class="s-m-outlet">
-        <p>Company Bio</p>
-        <textarea name="company_bio" id="company_bio" cols="30" rows="10"></textarea>
-    </div>
-    <div class="s-m-outlet">
-        <p>Address</p>
-        <input type="text" name="company_street_1" id="company_street_1" value="Address Line 1">
-    </div>
-    <div class="s-m-outlet">
-        <input type="text" name="company_street_2" id="company_street_2" value="Address Line 2">
-    </div>
-    <div class="s-m-outlet">
-        <input type="text" name="company_suite_number" id="company_suite_number" value="Suite Number">
-    </div>
-    <div class="s-m-outlet">
-        <input type="text" name="company_city" id="company_city" value="City">
-    </div>
-    <div class="s-m-outlet">
-        <input type="text" name="company_state" id="company_state" value="State">
-    </div>
-    <div class="s-m-outlet">
-        <input type="text" name="company_zip" id="company_zip" value="Postal Code">
-    </div>
-    <div class="s-m-outlet">
-        <input type="text" name="company_country" id="company_country" value="Country">
-    </div>
-    <div class="s-m-outlet">
+        <input type="text" name="company_name" id="company_name" placeholder="Company Name">
+        <textarea name="company_bio" placeholder="Company Bio..."></textarea>
+        <input type="text" name="company_street_1" id="company_street_1" placeholder="Address Line 1">
+        <input type="text" name="company_street_2" id="company_street_2" placeholder="Address Line 2">
+        <input type="text" name="company_suite_number" id="company_suite_number" placeholder="Suite Number">
+        <input type="text" name="company_city" id="company_city" placeholder="City">
+        <input type="text" name="company_state" id="company_state" placeholder="State">
+        <input type="text" name="company_zip" id="company_zip" placeholder="Postal Code">
+        <input type="text" name="company_country" id="company_country" placeholder="Country">
         <p>Company Type</p>
         <select name="company_type" id="company_type">
-            <option value="construction">Construction</option>
-            <option value="landscape">Landscape</option>
-            <option value="hospitality">Hospitality</option>
-            <option value="cleaning">Cleaning</option>
-            <option value="retail">Retail</option>
-            <option value="financial">Financial</option>
-            <option value="automotive">Automotive</option>
-            <option value="technology">Technology</option>
-            <option value="internet">Internet</option>
+            <option value="Construction">Construction</option>
+            <option value="Landscape">Landscape</option>
+            <option value="Hospitality">Hospitality</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Retail">Retail</option>
+            <option value="Financial">Financial</option>
+            <option value="Automotive">Automotive</option>
+            <option value="Technology">Technology</option>
+            <option value="Internet">Internet</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Dispensary">Dispensary</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Medical">Medical</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Material Supply">Material Supply</option>
+            <option value="Rental">Rental</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Bar">Bar</option>
+            <option value="Night Club">Night Club</option>
+            <option value="Golf Course">Golf Course</option>
+            <option value="Country Club">Country Club</option>
+            <option value="Gas Station">Gas Station</option>
+            <option value="Museum">Museum</option>
+            <option value="Tour Guide">Tour Guide</option>
+            <option value="Law Office">Law Office</option>
+            <option value="Machanic">Machanic</option>
+            <option value="Architect">Architect</option>
+            <option value="Repair">Repair</option>
+            <option value="Consulting">Consulting</option>
         </select>
-    </div>
-    <div class="s-m-outlet">
-        <p>EIN/Tax ID #</p>
-        <input type="text" name="ein" id="ein">
-    </div>
-    <div class="s-m-outlet">
-        <p>Phone</p>
-        <input type="tel" name="company_phone" id="company_phone">
-    </div>
-    <div class="s-m-outlet">
-        <p>Fax</p>
-        <input type="tel" name="company_fax" id="company_fax">
-    </div>
-    <div class="s-m-outlet">
-        <p>Main Email</p>
-        <input type="email" name="company_main_email" id="company_main_email">
-    </div>
-    <input type="submit" value="Add Company">
+        <input type="text" name="ein" id="ein" placeholder="EIN/Tax ID #">
+        <input type="tel" name="company_phone" id="company_phone" placeholder="Main Phone Number">
+        <input type="tel" name="company_fax" id="company_fax" placeholder="Main Fax Number">
+        <input type="email" name="company_main_email" id="company_main_email" placeholder="Main Email Address">
+    <button type="submit">Add Company</button>
 </form>
-</div>
 </div>

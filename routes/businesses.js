@@ -81,6 +81,10 @@ router.get('/:companyId/manage', async (req, res) => {
         path: 'job_applicants',
         model: 'User'
     })
+    .populate({
+        path: 'companyOwner',
+        model: 'User'
+    })
     .exec()
 
     console.log(`Company Info to Manage: ${company}`)

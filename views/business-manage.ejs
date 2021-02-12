@@ -107,7 +107,44 @@
             margin-left: 10px;
             padding: 10px;
         }
-
+        .company-owner {
+            display: inline-flex;
+            width: 100%;
+            background:rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+        }
+        .owner-image {
+            width: 25%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .owner-image img {
+            width: 100%;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border: groove 1px lightskyblue;
+            border-left: none;
+        }
+        .owner-info {
+            width: 75%;
+            padding: 10px;
+        }
+        .owner-info h5 {
+            text-align: center;
+            padding: 10px;
+        }
+        .owner-info p {
+            padding-left: 10px;    
+        }
+        .owner-info i {
+            color: lightskyblue;
+            margin-right: 5px;
+        }
+        .owner-info a {
+            color: lightskyblue;
+        }
         .current-employees {
             padding-top: 30px;
             margin-top: 10px;
@@ -154,7 +191,28 @@
 <div class="manage-public-page">
     <p><a href="/business/<%= company.id %>/manage/public-page">Manage Public Page</a></p>
 </div>
-
+<div class="company-owner">
+    <div class="owner-image">
+        <% if(employee.companyOwner.user_avatar) { %>
+            <img src="/image/<%= employee.companyOwner.user_avatar %>" alt="<%= employee.companyOwner.fname %> <%= employee.companyOwner.lname %>">
+        <% } else { %>
+            <img src="/images/system/default-user_1a1a1a.png" alt="<%= employee.companyOwner.fname %> <%= employee.companyOwner.lname %>">
+        <% } %>
+    </div>
+    <div class="owner-info">
+        <a href="/users/<%= employee.companyOwner.id %>"><h5><%= employee.companyOwner.fname %> <%= employee.companyOwner.lname %></h5></a>
+        <% if (employee.companyOwner.phone1) { %>
+            <p><i class="fas fa-phone"></i><a href="tel:<%= employee.companyOwner.phone1 %>"><%= employee.companyOwner.phone1 %></a></p>
+        <% } else { %>
+            <span style="display: none;"></span>
+        <% } %>
+        <% if (employee.companyOwner.email) { %>
+            <p><i class="far fa-envelope"></i><a href="mailto:<%= employee.companyOwner.email %>"><%= employee.companyOwner.email %></a></p>
+        <% } else { %>
+            <span style="display: none;"></span>
+        <% } %>
+    </div>
+</div>
 <div class="employee-portal">
     <a href="/business/employee/:id">Employee Portal</a>
 </div>
