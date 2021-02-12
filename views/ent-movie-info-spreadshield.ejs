@@ -1,0 +1,133 @@
+<style>
+    .spreadshield {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99998;
+        background: #000;
+    }
+    .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    }
+    h5 {
+        text-align: center;
+    }
+    
+    .movie-search {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        padding-bottom: 0;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .movie-search input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        padding: 5px;
+    }
+    .movie-search button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        margin-bottom: 0;
+        color: #fff;
+        margin-top: 10px;
+        border-top-left-radius: 8px;  
+        border-top-right-radius: 8px;  
+    }
+    p {
+        color: #fff;
+    }
+    .movie-title {
+        margin-bottom: 20px;
+    }
+    .movie-title h1 {
+        text-align: center;
+    }
+    .movie-poster {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -50;
+        background-image: url('<%= returnedData.Poster %>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 8px;
+    }
+    .movie-ratings {
+        display: inline-flex;
+        width: 100%;
+    }
+    .movie-ratings p {
+    }
+    .video-stream {
+        width: 100vw;
+        height: 100vh;
+    }
+    .video-stream iframe {
+        border-radius: 8px;
+        min-width: 100vw;
+        height: 100%; 
+    }
+    .add-to-list {
+        width: 100%;
+    }
+    .add-to-list button {
+        width: 80%;
+        margin-left: 10%;
+        border: none;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        border-radius: 8px;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        outline: none;
+    }
+    
+    .add-to-list p {
+        width: 80%;
+        margin-top: 10px;
+        margin-left: 10%;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+    }
+    .add-to-list a {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+    }
+</style>
+<div class="spreadshield">
+
+    <div class="video-stream">
+        <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0"></iframe>
+    </div>
+   
+
+</div>

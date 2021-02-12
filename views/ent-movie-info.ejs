@@ -46,6 +46,19 @@
     p {
         color: #fff;
     }
+    .spreadshield-link p {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
+    }
+    .spreadshield-link a {
+        color: lightskyblue;
+    }
     .movie-title {
         margin-bottom: 20px;
     }
@@ -97,6 +110,7 @@
         color: #fff;
         outline: none;
     }
+    
     .add-to-list p {
         width: 80%;
         margin-top: 10px;
@@ -126,6 +140,9 @@
 <div class="movie-container">
     <div class="movie-title">
         <h1><%= returnedData.Title %></h1>
+    </div>
+    <div class="spreadshield-link">
+        <p><a href="/entertainment/movies/<%= movie %>/spreadshield">Watch on SpreadShield</a></p>
     </div>
     <div class="video-stream">
         <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>

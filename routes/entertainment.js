@@ -42,6 +42,25 @@ router.get('/movies/movie/run-hide-fight', (req, res) => {
     res.render('rhf', {movie});
 })
 
+router.get('/movies/:movie/spreadshield', async (req, res) => {
+    const movie = req.params.movie;
+
+    const apiKey = 'd3722e71'
+	const options = {
+  method: 'GET',
+  url: `http://www.omdbapi.com/?apikey=${apiKey}&t=${movie}`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+	console.log(returnedData);
+
+    res.render('ent-movie-info-spreadshield', {returnedData, movie});
+}).catch(function (error) {
+	console.error(error);
+});
+})
+
 router.post('/movies/save', ensureAuthenticated, async (req, res) => {
     const user = req.user._id;
     const movieLink = req.body.movie_title;
