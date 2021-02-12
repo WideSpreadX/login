@@ -34,15 +34,22 @@
             padding-left: 0;
             padding-right: 0;
             box-shadow: inset 0 0 4px black;
+            border: none;
+            border-left: groove 1px lightskyblue;
+            border-right: groove 1px lightskyblue;
+            background: rgba(0, 0, 0, 0.3);
         }
         .main-header-page-menu-container p {
-            margin: 0 auto;
             color: rgba(255, 255, 255, 0.76);
             text-align: center;
-            font-size: 0.6rem;
         }
         .main-header-page-menu-inner a {
             text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
         }
         
         #mainHeaderPageMenu {
@@ -104,10 +111,10 @@
         .company-name {
             width: 70%;
         }
-        .logo {
+        .company-logo {
             width: 30%;
         }
-        .logo img {
+        .company-logo img {
             max-width: 100%;
             border-radius: 8px;
         }
@@ -154,10 +161,11 @@
 <div class="main-header-page-menu-container">
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
-            <a href="/business/your-desk">Your Desk</a>
+            <p><a href="/business/your-desk">Your Desk</a></p>
+            <p><a href="/news/business">Business News</a></p>
         </div>
     </div>
-    <p>Scroll left & right for more options</p>
+    <p><small style="color: lightskyblue;">Scroll left & right for more options</small></p>
 </div>
 <h1 style="text-align: center; margin-top: 50px; margin-bottom: 50px;">Business</h1>
 
@@ -179,7 +187,7 @@
                     <h5><%= company.company_type %></h5>
                 </a>
             </div>
-            <div class="logo">
+            <div class="company-logo">
                 <% if (company.logo) { %>
                         <img src="/image/<%= company.logo %>" alt="">
                 <% } else { %>
