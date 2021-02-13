@@ -133,7 +133,7 @@ router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) 
     console.log(`Quizzes: ${quizzes}`)
     learningPoints
     .exec(
-        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisClass, thisCourseId, quizzes})
+        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisClass, thisCourse, thisCourseId, quizzes})
         )
 });
 

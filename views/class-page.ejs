@@ -99,8 +99,24 @@
             display: block;
             color: green;
         }
+        .course-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -25;
+        width: 100vw;
+        height: 100vh;
+    }
+    .course-background img {
+        height: 100vh;
+        min-width: 100vw;
+    }
     }
 </style>
+
+<div class="course-background" style="background: <%= thisCourse.course_colors.accent %>">
+    <img src="/image/<%= thisCourse.background_image %>" alt="">
+</div>
 <%- include('partials/mainHeaderSiteMenu') %>
 <div class="page-title">
     <h1><%= currentPageTitle %></h1>
