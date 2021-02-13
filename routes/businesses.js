@@ -91,11 +91,29 @@ router.get('/:companyId/manage', async (req, res) => {
     res.render('business-manage', {currentPageTitle: 'Manage Company', company, employee});
 })
 
-router.get('/:companyId/manage/public-page', ensureAuthenticated, async (req, res) => {
+router.get('/:companyId/manage/public-page', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
+    const subpages = await Subpage.find({company_site: {$eq: companyId}});
+    console.log(`Current Subpages: ${subpages}`)
+    res.render('business-manage-public-page', {company, subpages});
+})
 
-    res.render('business-manage-public-page', {company});
+router.get('/:companyId/:subpageId/edit', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params._id;
+    const subpageId = req.params._id;
+     const company =  await Company.findById(companyId);
+    const subpage = await Subpage.findById(subpageId);
+    console.log(company)
+    console.log(subpage)
+    res.render('subpage-edit', {subpage, company});
+})
+
+router.delete('/:companyId/:subpageId/delete', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params._id;
+    const subpageId = req.params._id;
+    await Subpage.findByIdAndDelete(subpageId);
+    res.redirect(`/business/${companyId}/manage/public-page`);
 })
 
 router.get('/:companyId/resume/applicant/:applicantId', async (req, res) => {
@@ -252,6 +270,7 @@ router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
     const subpage = new Subpage({
         company_site: companyId,
         page_name: req.body.page_name,
+        page_type: req.body.page_type,
         "page_body.page_header1": req.body.header1,
         "page_body.page_body1": req.body.body1,
         "page_body.page_header2": req.body.header2,
@@ -266,7 +285,17 @@ router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
         "page_side.email3": req.body.email3,
         "page_side.email4": req.body.email4,
         "page_side.fax1": req.body.fax1,
-        "page_side.fax2": req.body.fax2
+        "page_side.fax2": req.body.fax2,
+        "page_side.main_office.street": req.body.main_office_street,
+        "page_side.main_office.city": req.body.main_office_city,
+        "page_side.main_office.state": req.body.main_office_state,
+        "page_side.main_office.country": req.body.main_office_country,
+        "page_side.main_office.zip": req.body.main_office_zip,
+        "page_side.sub_office.street": req.body.sub_office_street,
+        "page_side.sub_office.city": req.body.sub_office_city,
+        "page_side.sub_office.state": req.body.sub_office_state,
+        "page_side.sub_office.country": req.body.sub_office_country,
+        "page_side.sub_office.zip": req.body.sub_office_zip,
     })
     subpage.save()
     res.redirect(`/business/${companyId}/manage`);
@@ -283,7 +312,9 @@ router.post('/:companyId/add-vr', ensureAuthenticated, (req, res) => {
     const companyId = req.body.companyId;
     
     const vrSubpage = new Subpage({
+        company_site: companyId,
         page_name: req.body.page_name,
+        page_type: req.body.page_type,
         "page_body.page_header1": req.body.header1,
         "page_body.page_body1": req.body.body1,
         "page_body.page_header2": req.body.header2,
@@ -299,6 +330,16 @@ router.post('/:companyId/add-vr', ensureAuthenticated, (req, res) => {
         "page_side.email4": req.body.email4,
         "page_side.fax1": req.body.fax1,
         "page_side.fax2": req.body.fax2,
+        "page_side.main_office.street": req.body.main_office_street,
+        "page_side.main_office.city": req.body.main_office_city,
+        "page_side.main_office.state": req.body.main_office_state,
+        "page_side.main_office.country": req.body.main_office_country,
+        "page_side.main_office.zip": req.body.main_office_zip,
+        "page_side.sub_office.street": req.body.sub_office_street,
+        "page_side.sub_office.city": req.body.sub_office_city,
+        "page_side.sub_office.state": req.body.sub_office_state,
+        "page_side.sub_office.country": req.body.sub_office_country,
+        "page_side.sub_office.zip": req.body.sub_office_zip,
         vr: true
     })
     subpage.save()

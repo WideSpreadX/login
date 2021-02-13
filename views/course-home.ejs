@@ -109,7 +109,20 @@
     <% }); %>
 <br>
 <br>
-<br>
+<div class="user-profile-image-form">
+            
+    <form action="/upload-course-image/<%= courseData.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+        <input type="text" name="for_course" id="backgroundImage" style="display: none;" value="<%= courseData.id %>">
+                <div class="custom-file-profile-image">
+                    <input type="file" name="background_image" id="backgroundImageUpload">
+                    <label for="backgroundImageUpload" class="custom-file-label-choose-profile-image">Choose Background</label>
+                </div>
+                
+                <div>
+                    <button type="submit" class="custom-file-profile-image-button">Change</button>
+                </div>
+        </form>
+    </div>
 <br>
 <hr>
 <div class="nav-bar to-do">

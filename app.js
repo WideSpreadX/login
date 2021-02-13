@@ -19,6 +19,7 @@ const userBackgroundImage = require('./models/UserBackgroundImage');
 const PhotoAlbum = require('./models/PhotoAlbum');
 const Audio = require('./models/Audio');
 const Company = require('./models/Company');
+const Course = require('./models/Course');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -388,6 +389,40 @@ app.patch('/upload-background-image', upload.single('user_profile_image'), (req,
         )
           res.redirect(`/dashboard`); 
       }
+})
+});
+
+
+/* Academy Course Background Image */
+app.patch('/upload-course-image/:courseId', upload.single('background_image'), (req, res) => {
+  const courseId = req.params.courseId;
+  const obj = { 
+    imageOwner: courseId, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  userBackgroundImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${courseId} Image Data: ${obj.img.data}`);
+        const newImage = obj.img.data;
+        Course.findByIdAndUpdate(courseId,
+          {background_image: req.file.filename},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect(`/academy/courses/${courseId}`); 
+    }
 })
 });
 

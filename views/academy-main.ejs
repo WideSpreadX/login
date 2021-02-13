@@ -68,6 +68,70 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .student-course {
+            padding: 0;
+            border-radius: 8px;
+            box-shadow: none;
+            overflow: hidden;
+            position: relative;
+        }
+        .course-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -20;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            border-radius: 8px;
+
+        }
+        .course-background-image img {
+            width: 100%;
+        }
+        .course-header {
+            background:rgba(255, 255, 255, 0.3);
+            border-bottom: groove 2px lightskyblue;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .course-stats {
+            color: #fff;
+            padding: 10px;
+        }
+        .go-to-course {
+            background: green;
+            width: 80%;
+            margin-left: 10%;
+            text-align: center;
+            padding: 8px;
+            padding-bottom: 1px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: groove 2px green;
+            border-bottom: none;
+        }
+        .go-to-course a {
+            color: #fff;
+        }
+        .academy-footer {
+            width: 100%;
+        }
+        .academy-footer a {
+            color: #fff;
+        }
+        .academy-footer p {
+            width: 90%;
+            margin-left: 5%;
+            border-radius: 8px;;
+            padding: 5px;
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            background:rgba(255, 255, 255, 0.3);
+            color: #fff;
+            text-align: center;
+        }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -83,30 +147,35 @@
     <p>Scroll left & right for more options</p>
 </div>
 <div class="students-current-courses">
+
     <h1>Your Current Courses</h1>
     <% academyInfo.academy_info.current_courses.forEach(function(course){ %>
         <div class="student-course">
-
-            <h2><%= course.subject %></h2>
-            <h2><%= course.course %></h2>
-            <p>Difficulty: <%= course.difficulty %></p>
-            <p>Credits: <%= course.credit_value %></p>
-            <p>Current Grade: <%= course.current_grade %>%</p>
+            <div class="course-background-image">
+                <img src="/image/<%= course.background_image %>" alt="">
+                <% if (course.background_image) { %>
+                <% } else { %>
+                    <p>NO IMAGE</p>
+                <% } %>
+            </div>
+            <div class="course-header">
+                <h2><%= course.course %></h2>
+                <h5><%= course.subject %></h5>
+            </div>
+            <div class="course-stats">
+                <p>Difficulty: <%= course.difficulty %></p>
+                <p>Credits: <%= course.credit_value %></p>
+                <p>Current Grade: <%= course.current_grade %>%</p>
+            </div>
             <div class="go-to-course">
-                <div class="nav-bar">
-                    <a href="/academy/courses/<%= course.id %>">Go to Class</a>
-                </div>
+                    <p><a href="/academy/courses/<%= course.id %>">Go to Class</a></p>
             </div>
             </div>
 
     <% }); %>
 </div>
-<div class="nav-bar">
-    <a href="/academy/courses">All Courses</a>
-</div>
 
 <div class="academy-footer">
-    <div class="nav-bar">
-        <a href="/academy/add-course">Add New Course</a>
-    </div>
+    <a href="/academy/courses"><p>All Courses</p></a>
+    <a href="/academy/add-course"><p>Add New Course</p></a>
 </div>

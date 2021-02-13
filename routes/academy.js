@@ -40,6 +40,7 @@ router.get('/add-course', ensureAuthenticated, (req, res) => {
 
 router.post('/add-course', ensureAuthenticated, (req, res) => {
     const course = new Course({
+        courseCreator: req.user._id,
         subject: req.body.subject,
         course: req.body.course,
         difficulty: req.body.difficulty,

@@ -71,7 +71,58 @@
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.3);
     }
+    .current-subpages {
+    }
+    .current-subpages h4 {
+        padding: 10px;
+        text-align: center;
+    }
+    .subpage {
+        display: inline-flex;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+    .subpage-name {
+        width: 75%;
+        border-right: solid 1px lightskyblue;
+    }
+    .subpage-name h5 {
+        padding: 5px;
+        padding-top: 15px;
+    }
+    .subpage-options {
+        text-align: center;
+        width: 25%;
+    }
+    .subpage-options p {
+        width: 100%;
+    }
+    .subpage-options form {
+        width: 100%;
+        border-top: solid 1px lightskyblue;
+        padding-top: 15px;
+    }
+    .subpage-options button {
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+    .subpage-options button i {
+        font-size: 2rem;
 
+    }
+    .current-subpages i {
+        color: lightskyblue;
+        width: 50%;
+        font-size: 1rem;
+        text-align: center;
+        padding-top: 15px;
+    }
 </style>
 
 
@@ -126,6 +177,19 @@
         <% } %>
 </div>
 
+<div class="current-subpages">
+    <h4>Current Subpages</h4>
+    <% subpages.forEach(function(subpage) { %>
+        <div class="subpage">
+            <div class="subpage-name">
+                <h5><%= subpage.page_name %></h5>
+            </div>
+            <div class="subpage-options">
+                <p><span><a href="/business/<%= company.id %>/<%= subpage.id %>"><i class="far fa-eye"></i></a></span><span><a href="/business/<%= company.id %>/<%= subpage.id %>/edit"><i class="far fa-edit"></i></a></span><span><span><form action="/business/<%= company.id %>/<%= subpage.id %>?_method=DELETE" method="post"><button disabled><i class="far fa-trash-alt" style="color: red"></i></button></form></span></small></p>
+            </div>
+        </div>
+    <% }) %>
+</div>
 <div class="subpage-actions">
     <a href="/business/<%=company.id %>/add-vr"><h4>Add VR Page</h4></a>
     <a href="/business/<%= company.id %>/add-subpage"><h4>Add Subpages</h4></a>

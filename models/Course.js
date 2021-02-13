@@ -7,7 +7,8 @@ const courseSchema = new mongoose.Schema({
     course: String,
     difficulty: String,
     classes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Class'}],
-    credit_value: Number
+    credit_value: Number,
+    background_image: String
 });
 
 const Course = mongoose.model('Course', courseSchema);
