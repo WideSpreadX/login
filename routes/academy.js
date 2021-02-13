@@ -235,8 +235,9 @@ router.get('/:courseId/:classId/flashcards', ensureAuthenticated, async (req, re
     const classId = req.params.classId;
     const courseId = req.params.courseId;
     const thisClass = await Class.findById(classId);
+    const thisCourse = await Course.findById(courseId);
     const flashcards = await Flashcard.find({class: {$eq: classId}});
-    res.render('flashcards', {currentPageTitle: 'Flashcards', flashcards, thisClass, courseId})
+    res.render('flashcards', {currentPageTitle: 'Flashcards', flashcards, thisClass, thisCourse, courseId})
 
 })
 router.post('/question', ensureAuthenticated, (req, res) => {

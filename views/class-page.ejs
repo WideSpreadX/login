@@ -39,17 +39,21 @@
             padding-left: 0;
             padding-right: 0;
             box-shadow: inset 0 0 4px black;
+            background: rgba(0, 0, 0, 0.3);
         }
         .main-header-page-menu-container p {
             margin: 0 auto;
             color: rgba(255, 255, 255, 0.76);
             text-align: center;
             font-size: 0.6rem;
+            
         }
         .main-header-page-menu-inner a {
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
             text-align: center;
+            background: rgba(255, 255, 255, 0.3);
         }
-        
         #mainHeaderPageMenu {
             width: 100%;
             position: relative;
@@ -73,22 +77,46 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        .learning-points {
+            color: #fff;
+        }
         .learning-point {
             position: relative;
+            box-shadow: none;
+            padding: 0;
+        }
+        .collapsible-learning-point {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+        }
+        .collapsible-learning-point:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .active {
+            border-bottom: none;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .learning-point p, .learning-point small {
+            border-bottom: groove 2px lightskyblue;
+            transition: ease-in 0.5s;
         }
         .learning-point-header {
             display: inline-flex;
+            width: 90%;
+            max-width: 90%;
+            min-height: 40px;
         }
         .learning-point-header h5 {
             width: 85%;
         }
         .learning-point-actions {
-            padding: 10px;
             font-size: 1.5rem;
             position: absolute;
             color: rgba(255, 255, 255, 0.404);
             right: 20px;
-            top: 32px;
+            top: 12px;
         }
         .bookmark {
             display: block;
