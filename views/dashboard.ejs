@@ -48,6 +48,60 @@
     transition: ease-in 0.4s;
 }
 @media screen and (max-width: 500px) {
+
+    .vday-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e80202;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .vday-container h3 {
+        width: 100%;
+        position: absolute;
+        top: 30px;
+        text-align: center;
+    }
+    .vday-container h1 {
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        text-align: center;
+    }
+    .heart {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.2);
+        background: #e80202;
+    }
+    .heart::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: 0 -20px 10px rgba(0, 0, 0, 0.1);
+        background: #e80202;
+    }
+    .heart::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: 20 0px 10px rgba(0, 0, 0, 0.1);
+        background: #e80202;
+    }
+
     .user-background-image {
         z-index: -800;
     }
@@ -696,6 +750,12 @@
             <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
             <% } %>
 </div>
+
+<div class="vday-container">
+    <h3>Happy Valentines Day</h3>
+    <h1><%= fname %></h1>
+    <div class="heart"></div>
+</div>
 <%- include('partials/mainHeaderSiteMenu') %>
 <%- include('partials/mainHeaderPageMenu') %>
 
@@ -1221,8 +1281,35 @@
         <% }) %>
     </div>
 </div>
-
-
+<script src="/js/anime.js"></script>
+<script>
+    const vdayContainer = document.querySelector('.vday-container');
+        for (var i = 1; i <= 100; i++) {
+            const hearts = document.createElement('div');
+            hearts.classList.add('heart');
+            vdayContainer.appendChild(hearts)
+        }
+    
+    function animateHearts(){
+        anime({
+            targets: '.heart',
+            translateX: function(){
+                return anime.random(-700, 700)
+            },
+            translateY: function(){
+                return anime.random(-500, 500)
+            },
+            rotate: 45,
+            scale: function(){
+                return anime.random(1,5)
+            },
+            easing: 'easeInOutBack',
+            duration: 3000,
+            delay: anime.stagger(10),
+            complete: animateHearts,
+        })
+    }
+</script>
 
 <script>
     document.getElementById("defaultOpen").click();
