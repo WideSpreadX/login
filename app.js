@@ -168,7 +168,7 @@ app.patch('/upload-background-image', upload.single('user_background_image'), (r
           contentType: 'image/png'
       } 
   } 
-    photoAlbum.create(obj, (err, item) => { 
+    userBackgroundImage.create(obj, (err, item) => { 
       if (err) { 
           console.log(err); 
       } 
