@@ -9,7 +9,8 @@ const classSchema = new mongoose.Schema({
     segments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Segment'}],
     questions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
     test: {type: mongoose.Schema.Types.ObjectId, ref: 'Test'},
-    attendance: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+    attendance: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    class_color: String
 });
 
 const Class = mongoose.model('Class', classSchema);

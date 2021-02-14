@@ -37,6 +37,7 @@ const UserSchema = new mongoose.Schema({
             ref: 'Course',
             current_grade: Number
         }],
+        class_notes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Notebook'}],
         completed_courses: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Course',

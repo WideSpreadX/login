@@ -51,6 +51,6 @@ router.post('/note/new/:notebookId', async (req, res) => {
             }
         }
         )
-    res.redirect('/notebooks');
+        res.redirect(req.get('referer'));
 })
 module.exports = router;

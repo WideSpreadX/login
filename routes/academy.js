@@ -11,6 +11,8 @@ const LearningPoint = require('../models/LearningPoint');
 const Quiz = require('../models/Quiz');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
+const Note = require('../models/Note');
+const Notebook = require('../models/Notebook');
 
 
 router.get('/', ensureAuthenticated, async (req, res) => {
@@ -92,6 +94,23 @@ router.get('/courses/:courseId/add-class', ensureAuthenticated, async (req, res)
     res.render('add-class', {currentPageTitle: 'Add New Class', course, courseInfo});
 });
 
+router.post('/:courseId/:classId/new-notebook', ensureAuthenticated, async (req, res) => {
+    const courseId = req.params.courseId;
+    const classId = req.params.classId;
+
+    const courseData = await Course.findById(courseId);
+    const className = await Class.findById(classId);
+    const notebook = await new Notebook({
+        notebookOwner: req.user.id,
+        forClass: classId,
+        notebookName: className.name,
+        notebookDescription: req.body.notebookDescription,
+        notebookImage: courseData.background_image 
+    })
+    notebook.save()
+    res.redirect(`/academy/courses/${courseId}/${classId}`);
+})
+
 router.post('/courses/:courseId/add-class', ensureAuthenticated, async (req, res) => {
     const thisCourseId = req.params.courseId;
     const creator = req.user._id;
@@ -122,18 +141,18 @@ router.post('/courses/:courseId/add-class', ensureAuthenticated, async (req, res
 
 
 router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
     const classId = req.params.classId;
     const thisCourseId = req.params.courseId;
     const thisClass = await Class.findById(classId);
     const thisCourse = await Course.findById(thisCourseId);
-    console.log(`This Class is: ${thisClass}`)
-    console.log(`for Course: ${thisCourse}`)
+    const courseNotebooks = await Notebook.find({notebookOwner: {$eq: userId}, forClass: {$eq: classId}}).populate('notes').exec()
     const learningPoints = await LearningPoint.find({class: {$eq: classId}})
     const quizzes = await Quiz.find({forLearningPoint: {$eq: learningPoints._id }})
     console.log(`Quizzes: ${quizzes}`)
     learningPoints
     .exec(
-        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisClass, thisCourse, thisCourseId, quizzes})
+        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisClass, thisCourse, thisCourseId, quizzes, courseNotebooks})
         )
 });
 
@@ -158,6 +177,8 @@ router.get('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
     res.render('academy-add-learning-point')
 
 });
+
+
 
 router.post('/:courseId/:classId/add-quiz', ensureAuthenticated, (req, res) => {
     const courseId = req.body.courseId;
