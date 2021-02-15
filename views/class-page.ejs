@@ -132,6 +132,13 @@
             display: block;
             color: yellow;
         }
+        .learning-point-actions button {
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+        }
         .add-note {
             padding-top: 10px;
             display: block;
@@ -291,15 +298,24 @@
 <div class="spread-break">
     <hr>
 </div>
+
 <div class="learning-points">
     <ol class="class-chapter">
     <% learningPoints.forEach(function(point){ %>
         <li>
             <div class="learning-point">
                 <div class="learning-point-actions">
-                    <span><i class="far fa-bookmark bookmark"></i></span>
-                    <form action="/academy/<%= thisCourseId %>/<%= thisClass.id %>/<%= point.id %>/add-note?_method=PATCH" method="post"></form>
-                    <span><i class="fas fa-pencil-alt add-note"></i></span>
+                    <% if (point.id != thisUser.academy_info.bookmarked_learning_points) { %>
+                    <form action="/academy/<%= thisClass.id %>/<%= point.id %>/bookmark" method="post">
+                        <input type="text" name="for_class" value="<%= point.id %>" hidden>
+                        <button><span><i class="far fa-bookmark bookmark"></i></span></button>
+                    </form>
+                    <% } else { %>
+                        <form action="/academy/<%= thisClass.id %>/<%= point.id %>/remove-bookmark" method="post">
+                            <input type="text" name="for_class" value="<%= point.id %>" hidden>
+                            <button><span><i class="fas fa-bookmark bookmark"></i></span></button>
+                        </form>
+                    <% } %>
                 </div>
                 <div class="collapsible-learning-point">
                     <div class="learning-point-header">

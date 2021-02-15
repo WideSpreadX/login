@@ -144,6 +144,7 @@ router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) 
     const userId = req.user._id;
     const classId = req.params.classId;
     const thisCourseId = req.params.courseId;
+    const thisUser = await User.findById(userId);
     const thisClass = await Class.findById(classId);
     const thisCourse = await Course.findById(thisCourseId);
     const courseNotebooks = await Notebook.find({notebookOwner: {$eq: userId}, forClass: {$eq: classId}}).populate('notes').exec()
@@ -152,7 +153,7 @@ router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) 
     console.log(`Quizzes: ${quizzes}`)
     learningPoints
     .exec(
-        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisClass, thisCourse, thisCourseId, quizzes, courseNotebooks})
+        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisUser, thisClass, thisCourse, thisCourseId, quizzes, courseNotebooks})
         )
 });
 
@@ -178,7 +179,26 @@ router.get('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
 
 });
 
+router.post('/:classId/:learningPointId/bookmark', ensureAuthenticated, (req, res) => {
+    const user = req.user._id;
+    const classId = req.params.classId;
+    const learningPointId = req.params. learningPointId;
 
+    User.findByIdAndUpdate(user,
+        {$push: {"academy_info.bookmarked_learning_points": learningPointId}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                
+                return
+            }
+        }
+        )
+
+        res.redirect(req.get('referer'));
+})
 
 router.post('/:courseId/:classId/add-quiz', ensureAuthenticated, (req, res) => {
     const courseId = req.body.courseId;

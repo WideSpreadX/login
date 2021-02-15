@@ -57,7 +57,8 @@ const UserSchema = new mongoose.Schema({
                     ]
                 }
             }
-        ]
+        ],
+        bookmarked_learning_points: [{type: mongoose.Schema.Types.ObjectId, ref: 'LearningPoint'}]
     },
     friends: [{
             type: mongoose.Schema.Types.ObjectId,
