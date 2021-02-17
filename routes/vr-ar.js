@@ -24,8 +24,9 @@ const Video = require('../models/Video');
 router.get('/vr-dashboard', async (req, res) => {
     const user = req.user.id;
     const thisUser = await User.findById(user);
+    const userFriends = await User.findById(user).populate('friends').exec();
     console.log(thisUser)
-    res.render('./vr-ar/vr-dashboard', {layout: './layouts/vr-ar', thisUser});
+    res.render('./vr-ar/vr-dashboard', {layout: './layouts/vr-ar', thisUser, userFriends});
 });
 
 

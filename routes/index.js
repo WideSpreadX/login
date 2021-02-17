@@ -23,7 +23,7 @@ const Video = require('../models/Video');
 const Audio = require('../models/Audio');
 const InSpread = require('../models/InSpread');
 const Poll = require('../models/Poll');
-
+const axios = require('axios')
 
 // Welcome Page
 router.get('/', (req, res) => {
@@ -81,6 +81,20 @@ conn.once('open', () => {
             }
           }
         ).exec();
+
+
+        const weatherKey = process.env.WEATHER_API_KEY;
+        const options = {
+        method: 'GET',
+        url: `api.openweathermap.org/data/2.5/weather?zip=32163,us&appid=${weatherKey}`
+      };
+      
+      const weather = axios.request(options).then(function (response) {
+          const returnedData = response.data;
+        console.log(returnedData);
+      }).catch(function (error) {
+        console.error(error);
+      });
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const articles = await Article.find({ author: { $eq: id } });
         const videos = await Video.find({videoOwner: {$eq: id }});
@@ -151,6 +165,7 @@ conn.once('open', () => {
                 articles,
                 nearbyUsers,
                 inSpreads,
+                weather,
                 currentPageTitle: 'Dashboard'
                 })
                 console.log(`User Info: ${backgroundImage}`)

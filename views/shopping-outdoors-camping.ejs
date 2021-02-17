@@ -1,34 +1,104 @@
+<style>
+    @media screen and (max-width: 500px) {
+    .page-title h1 {
+        text-align: center;
+    }
+    .main-header-page-menu-container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .main-header-page-menu-container p {
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.76);
+        text-align: center;
+        font-size: 0.6rem;
+        color: lightskyblue;
+    }
+    .main-header-page-menu-inner a {
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    #mainHeaderPageMenu {
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        position: relative;
+        border-left: 1px groove lightskyblue;
+        border-right: 1px groove lightskyblue;
+        border-radius: 8px;
+    }
 
-<div class="nav-bar-outer">
-    <div class="nav-bar nav-bar-ws">
-        <div class="row">
-            <div class="col-10">
-                <a href="/dashboard/wall">YourSpread</a>
-                <a href="/academy">Academy</a>
-                <a href="/business">Business</a>
-                <a href="/news">News</a>
-                <a href="/shopping">Shopping</a>
-                <a href="/wellness">Wellness</a>
-            </div>
-            <div class="col-2">
-                <a href="/users/logout" class="logout-button" style="padding-left: 10px; padding-right: 10px; text-shadow: 0 0 4px red; color: rgba(255, 255, 255, 0.712);">Logout</a>
-            </div>
-        </div>
+    .main-header-page-menu-inner {
+        display: inline-flex;
+        max-width: 100%;
+        min-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+        width: 100%;
+    }
+    .main-header-page-menu-inner a {
+        position: relative;
+        padding: 10px;
+        width: 150px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 8px;
+        color: #fff;
+    }
+
+    .spread-break hr {
+background: lightskyblue;
+box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+width: 80%;
+margin-left: 10%;
+border-radius: 50%;
+margin-top: 40px;
+margin-bottom: 30px;
+}
+
+.back-home {
+    padding: 10px;
+}
+.back-home h5 {
+    text-align: center;
+}
+.shopping-container {
+    width: 100%;
+}
+.shopping-container h5 {
+    text-align: center;
+    padding: 20px;
+}
+}
+</style>
+<%- include('partials/mainHeaderSiteMenu') %>
+<div class="page-title">
+<h1><%= currentPageTitle %></h1>
+</div>
+<div class="back-home">
+    <a href="/shopping"><h5>Go Back to Shopping Home</h5></a>
+    
+</div>
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenu">
+        <div class="main-header-page-menu-inner">
+            <a href="/shopping/outdoors-camping/tents">Tents</a>
+            <a href="/shopping/outdoors-camping/sleeping-bags">Sleeping Bags</a>
+            <a href="/shopping/outdoors-camping/survival-tools">Survival Tools</a>
+            <a href="/shopping/outdoors-camping/firearms">Firearms</a>
     </div>
 </div>
+<p>Scroll left & right for more options</p>
+</div>
 
-<h1><%= currentPageTitle %></h1>
-<div class="nav-bar-outer">
-  <div class="nav-bar nav-bar-ws">
-      <div class="row">
-          <div class="col-12">
-              <a href="/shopping/outdoors-camping/tents">Tents</a>
-              <a href="/shopping/outdoors-camping/sleeping-bags">Sleeping Bags</a>
-              <a href="/shopping/outdoors-camping/survival-tools">Survival Tools</a>
-              <a href="/shopping/outdoors-camping/firearms">Firearms</a>
-          </div>
-      </div>
-  </div>
+
+<div class="shopping-container">
+<h5>Your Wishlist</h5>
 </div>
 
 

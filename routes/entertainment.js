@@ -16,24 +16,7 @@ router.get('/movies-user', ensureAuthenticated, async (req, res) => {
     const user = await User.findById(userId);
     console.log(`User Movies: ${user.movie_list}`);
     const movieList = user.movie_list; 
-    /*  
-    for(let link of movieList){
-        const movieLink = link.movie_link;
 
-            const apiKey = 'd3722e71'
-            const options = {
-          method: 'GET',
-          url: `http://www.omdbapi.com/?apikey=${apiKey}&t=${movieLink}`
-        };
-        
-        axios.request(options).then(function (response) {
-            const returnedData = response.data;
-            console.log(returnedData);
-            
-        }).catch(function (error) {
-            console.error(error);
-        });    
-    } */
     res.render('movies-home-user', {movieList});
 
 })
@@ -62,12 +45,26 @@ axios.request(options).then(function (response) {
 });
 });
 
-router.get('/movies/movie/run-hide-fight', (req, res) => {
-    const movie = 'https://www.2embed.ru/embed/tmdb/movie?id=629017';
 
-    res.render('rhf', {movie});
+
+router.get('/movies/:movie/vr', async (req, res) => {
+    const movie = req.params.movie;
+
+    const apiKey = 'd3722e71'
+	const options = {
+  method: 'GET',
+  url: `http://www.omdbapi.com/?apikey=${apiKey}&t=${movie}`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+	console.log(returnedData);
+
+    res.render('ent-movie-info-vr', {layout: './layouts/vr-ar', returnedData, movie});
+}).catch(function (error) {
+	console.error(error);
+});
 })
-
 router.get('/movies/:movie/spreadshield', async (req, res) => {
     const movie = req.params.movie;
 

@@ -1,97 +1,98 @@
 <style>
-    .page-title {
-    text-align: center;
-    margin-bottom: 30px;
-}
-.main-header-page-menu-container {
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.308);
-        backdrop-filter: blur(2px);
-        border-radius: 12px;
-        border: groove 1px rgba(135, 206, 250, 0.555);
-        
-    }
-    .main-header-page-menu-inner {
-        padding: 10px;
-    }
-    .main-header-page-menu-inner a {
-        display: inline-flex;
-        padding: 10px;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.733);
-        transition: ease-in 0.4s;
-        background: rgba(135, 206, 250, 0.315);
-        backdrop-filter: blur(4px);
-        border-radius: 8px;
-        width: auto;
-        min-width: 150px;
+    @media screen and (max-width: 500px) {
+    .page-title h1 {
         text-align: center;
     }
-    .main-header-page-menu-inner a:hover {
-        text-decoration: none;
+    .main-header-page-menu-container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .main-header-page-menu-container p {
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.76);
+        text-align: center;
+        font-size: 0.6rem;
+        color: lightskyblue;
+    }
+    .main-header-page-menu-inner a {
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    #mainHeaderPageMenu {
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        position: relative;
+        border-left: 1px groove lightskyblue;
+        border-right: 1px groove lightskyblue;
+        border-radius: 8px;
+    }
+
+    .main-header-page-menu-inner {
+        display: inline-flex;
+        max-width: 100%;
+        min-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+        width: 100%;
+    }
+    .main-header-page-menu-inner a {
+        position: relative;
+        padding: 10px;
+        width: 150px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 8px;
         color: #fff;
-        text-shadow: 0 0 3px lightskyblue;
-        transition: ease-in 0.2s;
     }
 
-    @media screen and (max-width: 500px) {
-        .main-header-page-menu-container {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-            box-shadow: inset 0 0 4px black;
-        }
-        .main-header-page-menu-container p {
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.76);
-            text-align: center;
-            font-size: 0.6rem;
-        }
-        
-        #mainHeaderPageMenu {
-            width: 100%;
-            position: relative;
+    .spread-break hr {
+background: lightskyblue;
+box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+width: 80%;
+margin-left: 10%;
+border-radius: 50%;
+margin-top: 40px;
+margin-bottom: 30px;
+}
 
-        }
-
-        .main-header-page-menu-inner {
-            display: inline-flex;
-            max-width: 100%;
-            min-width: 100%;
-            overflow-x: scroll;
-            padding: 10px;
-            width: 100%;
-        }
-        .main-header-page-menu-inner a {
-            position: relative;
-            padding: 10px;
-            width: 150px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .main-header-page-menu-inner p {
-            text-align: center;
-            font-size: 1rem;
-        }
-    }
+.back-home {
+    padding: 10px;
+}
+.back-home h5 {
+    text-align: center;
+}
+.shopping-container {
+    width: 100%;
+}
+.shopping-container h5 {
+    text-align: center;
+    padding: 20px;
+}
+}
 </style>
+<%- include('partials/mainHeaderSiteMenu') %>
 <div class="page-title">
 <h1><%= currentPageTitle %></h1>
 </div>
+<div class="back-home">
+    <a href="/shopping"><h5>Go Back to Shopping Home</h5></a>
+    
+</div>
 <div class="main-header-page-menu-container">
-<div id="mainHeaderPageMenuu">
-    <div class="main-header-page-menu-inner">
-        <a href="/wellness/your-plans"><p>Your Plans</p></a>
-        <a href="/wellness/workout"><p>Workout</p></a>
-        <a href="/wellness/yoga"><p>Yoga</p></a>
-        <a href="/wellness/nutrition"><p>Nutrition</p></a>
+    <div id="mainHeaderPageMenu">
+        <div class="main-header-page-menu-inner">
+        <a href="/wellness/your-plans">Your Plans</a>
+        <a href="/wellness/workout">Workout</a>
+        <a href="/wellness/yoga">Yoga</a>
+        <a href="/wellness/nutrition">Nutrition</a>
     </div>
 </div>
 <p>Scroll left & right for more options</p>
 </div>
 
-
-
-<h2>Yoga Poses</h2>

@@ -87,7 +87,34 @@ router.get('/clothing/reebok',(req, res) => {
 });
 
 
+/* Electronics */
+const bby = require('bestbuy')(process.env.BEST_BUY_API_KEY);
 
+
+router.get('/electronics', async (req, res) => {
+
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics'});
+})
+router.get('/electronics/tv', (req, res) => {
+
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics TV'});
+})
+router.get('/electronics/appliances', (req, res) => {
+
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics Appliances'});
+})
+router.get('/electronics/phones-tablets', (req, res) => {
+
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics Phones & Tablets'});
+})
+router.get('/electronics/cameras', (req, res) => {
+
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics Cameras'});
+})
+router.get('/electronics/computers', (req, res) => {
+
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics Computers'});
+})
 
 /* 
                 Outdoors & Camping

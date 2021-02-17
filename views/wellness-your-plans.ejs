@@ -1,509 +1,117 @@
 <style>
-    .page-title {
-    text-align: center;
-    margin-bottom: 30px;
-}
-.main-header-page-menu-container {
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.308);
-        backdrop-filter: blur(2px);
-        border-radius: 12px;
-        border: groove 1px rgba(135, 206, 250, 0.555);
-        
-    }
-    .main-header-page-menu-inner {
-        padding: 10px;
-    }
-    .main-header-page-menu-inner a {
-        display: inline-flex;
-        padding: 10px;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.733);
-        transition: ease-in 0.4s;
-        background: rgba(135, 206, 250, 0.315);
-        backdrop-filter: blur(4px);
-        border-radius: 8px;
-        width: auto;
-        min-width: 150px;
+    @media screen and (max-width: 500px) {
+    .page-title h1 {
         text-align: center;
     }
-    .main-header-page-menu-inner a:hover {
-        text-decoration: none;
+    .main-header-page-menu-container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .main-header-page-menu-container p {
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.76);
+        text-align: center;
+        font-size: 0.6rem;
+        color: lightskyblue;
+    }
+    .main-header-page-menu-inner a {
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    #mainHeaderPageMenu {
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        position: relative;
+        border-left: 1px groove lightskyblue;
+        border-right: 1px groove lightskyblue;
+        border-radius: 8px;
+    }
+
+    .main-header-page-menu-inner {
+        display: inline-flex;
+        max-width: 100%;
+        min-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+        width: 100%;
+    }
+    .main-header-page-menu-inner a {
+        position: relative;
+        padding: 10px;
+        width: 150px;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 8px;
         color: #fff;
-        text-shadow: 0 0 3px lightskyblue;
-        transition: ease-in 0.2s;
     }
 
-    @media screen and (max-width: 500px) {
-        .main-header-page-menu-container {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-            box-shadow: inset 0 0 4px black;
-        }
-        .main-header-page-menu-container p {
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.76);
-            text-align: center;
-            font-size: 0.6rem;
-        }
-        
-        #mainHeaderPageMenu {
-            width: 100%;
-            position: relative;
+    .spread-break hr {
+background: lightskyblue;
+box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+width: 80%;
+margin-left: 10%;
+border-radius: 50%;
+margin-top: 40px;
+margin-bottom: 30px;
+}
 
-        }
-
-        .main-header-page-menu-inner {
-            display: inline-flex;
-            max-width: 100%;
-            min-width: 100%;
-            overflow-x: scroll;
-            padding: 10px;
-            width: 100%;
-        }
-        .main-header-page-menu-inner a {
-            position: relative;
-            padding: 10px;
-            width: 150px;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .main-header-page-menu-inner p {
-            text-align: center;
-            font-size: 1rem;
-        }
-    }
+.back-home {
+    padding: 10px;
+}
+.back-home h5 {
+    text-align: center;
+}
+.shopping-container {
+    width: 100%;
+}
+.shopping-container h5 {
+    text-align: center;
+    padding: 20px;
+}
+}
 </style>
+<%- include('partials/mainHeaderSiteMenu') %>
 <div class="page-title">
 <h1><%= currentPageTitle %></h1>
 </div>
+<div class="back-home">
+    <a href="/shopping"><h5>Go Back to Shopping Home</h5></a>
+    
+</div>
 <div class="main-header-page-menu-container">
-<div id="mainHeaderPageMenuu">
-    <div class="main-header-page-menu-inner">
-        <a href="/wellness/your-plans"><p>Your Plans</p></a>
-        <a href="/wellness/workout"><p>Workout</p></a>
-        <a href="/wellness/yoga"><p>Yoga</p></a>
-        <a href="/wellness/nutrition"><p>Nutrition</p></a>
+    <div id="mainHeaderPageMenu">
+        <div class="main-header-page-menu-inner">
+        <a href="/wellness/your-plans">Your Plans</a>
+        <a href="/wellness/workout">Workout</a>
+        <a href="/wellness/yoga">Yoga</a>
+        <a href="/wellness/nutrition">Nutrition</a>
     </div>
 </div>
 <p>Scroll left & right for more options</p>
 </div>
 
 
-<hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
-<div class="row margin-bottom">
-<div class="col-4">
-    
-    <div class="dragTo-container">
-        <h2>Available Exercises</h2>
-        <div class="dragTo">
-            
-            <% workouts.forEach(function(workout){ %>
-                <div class="draggable" draggable="true">
-                    <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
-                    <h4><%= workout.exercise %></h4>
-                </div>
-                <% }); %>
-            </div>
-            <small>Drag & Drop an exercise to the day you'd like.</small>
-        </div>
-    </div>
-    <div class="col-4">
-<div class="dragTo-container">
-    <h3>Sunday</h3>
-    <div class="dragTo">
-        
-    </div>
-</div>
-<div class="dragTo-container">
-    <h3>Monday</h3>
-    <div class="dragTo">
-        
-    </div>
-</div>
-<div class="dragTo-container">
-    <h3>Tuesday</h3>
-    <div class="dragTo">
-        
-    </div>
-</div>
-<div class="dragTo-container">
-    <h3>Wednesday</h3>
-    <div class="dragTo">
-        
-    </div>
-</div>
-    </div>
-    <div class="col-4">
-<div class="dragTo-container">
-    <h3>Thursday</h3>
-    <div class="dragTo">
-        
-    </div>
-</div>
-<div class="dragTo-container">
-    <h3>Friday</h3>
-    <div class="dragTo">
-        
-    </div>
-</div>
-<div class="dragTo-container">
-    <h3>Saturday</h3>
-    <form action="/wellness/your-plan/exercise" method="POST">
-        <div class="dragTo">
 
-            
-        </div>
-        <div class="submit-button">
-            <button class="btn-block block-button spread-it center" type="submit">Add Workouts</button>
-        </div>
-    </form>
-</div>
-    </div>
-    </div>
-    
-<!-- <h2>Your Fitness Schedule</h2>
-<div class="user-workout">
-    <div class="create-workout">
-        <form action="/wellness/your-plans/add" method="post">
-            <div class="day">
-                <h5>Sunday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="Bench Press" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="Curl"/>
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="leg_press"/>
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="overheadpress"  />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="shrugs"  />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="sunday.exercises[]" value="legcurl"  />
-                </span>
-            </div>
-            </div>
-            <div class="day">
-                <h5>Monday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="Bench Press" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="Curl" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="leg_press" name="legpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="squats" name="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="overheadpress" name="overheadpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="shrugs" name="shrugs" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="monday.exercises[]" value="legcurl" name="legcurl" />
-                </span>
-            </div>
-            </div>
-           
-            <div class="day">
-                <h5>Tuesday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="Bench Press" name="benchpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="Curl" name="curl" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="leg_press" name="legpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="squats" name="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="overheadpress" name="overheadpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="shrugs" name="shrugs" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="tuesday.exercises[]" value="legcurl" name="legcurl" />
-                </span>
-            </div>
-            </div>
-            <div class="day">
-                <h5>Wednesday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="Bench Press" name="benchpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="Curl" name="curl" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="leg_press" name="legpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="squats" name="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="overheadpress" name="overheadpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="shrugs" name="shrugs" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="wednesday.exercises[]" value="legcurl" name="legcurl" />
-                </span>
-            </div>
-            </div>
-            <div class="day">
-                <h5>Thursday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="Bench Press" name="benchpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="Curl" name="curl" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="leg_press" name="legpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="squats" name="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="overheadpress" name="overheadpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="shrugs" name="shrugs" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="thursday.exercises[]" value="legcurl" name="legcurl" />
-                </span>
-            </div>
-            </div>
-            <div class="day">
-                <h5>Friday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="Bench Press" name="benchpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="Curl" name="curl" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="leg_press" name="legpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="squats" name="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="overheadpress" name="overheadpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="shrugs" name="shrugs" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="friday.exercises[]" value="legcurl" name="legcurl" />
-                </span>
-            </div>
-            </div>
-            <div class="day">
-                <h5>Saturday</h5>
-            <div class="checkbox">
-                <span>
-                    <label for="benchpress">Bench Press</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="Bench Press" name="benchpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="curl">Curl</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="Curl" name="curl" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legpress">Leg Press</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="leg_press" name="legpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="squats">Squats</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="squats" name="squats" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="overheadpress">Overhead Press</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="overheadpress" name="overheadpress" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="shrugs">Shrugs</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="shrugs" name="shrugs" />
-                </span>
-            </div>
-            <div class="checkbox">
-                <span>
-                    <label for="legcurl">Leg Curl</label>
-                    <input class="checker" type="checkbox" name="saturday.exercises[]" value="legcurl" name="legcurl" />
-                </span>
-            </div>
-            </div>
-            <input type="text" value="<%= user.id %>" hidden="true">
-            <button class="btn-block block-button spread-it" type="submit">Add Workouts</button>
-        </form>
-    </div>
-</div> -->
-<hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
-<div class="exercise-form">
 
-    <form action="/wellness/your-plans/exercise" method="post">
-        <div class="row">
-            <div class="col-7">
-                <label for="exercise">Add an Exercise</label>
-                <input type="text" name="exercise" id="exercise" required="true">
-            </div>
-            <div class="col-5">
-                <button class="btn-block block-button spread-it" type="submit">Add Exercise</button>
-            </div>
-        </div>
-    </form>
+<div class="spread-break">
+    <hr>
+</div>
+
+<% workouts.forEach(function(workout){ %>
+    <div class="draggable" draggable="true">
+        <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
+        <h4><%= workout.exercise %></h4>
+    </div>
+    <% }); %>
+
+<div class="spread-break">
+    <hr>
 </div>
 
 

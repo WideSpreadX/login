@@ -1,4 +1,4 @@
-<a-scene>
+<a-scene  loading-screen="dotsColor: lightskyblue; backgroundColor: black">
     <a-assets>
         <img id="backgroundImg" src="/image/<%= thisUser.user_vr_background_image %>">
         <img id="profileImg" src="/image/<%= thisUser.user_avatar %>">
@@ -7,8 +7,9 @@
       rotation="0 160 0" scale="0.8 0.8 0.8"></a-curvedimage>
     <a-entity
   geometry="primitive: plane; width: 1; height: auto"
-  material="color: #000"
+  material="color: <%= thisUser.favColor1 %>"
   text="value: Welcome <%= thisUser.fname %>; align: center;" visible="true"position="0 2 -1 "></a-entity>
+
     <a-text value="<%= thisUser.fname %>" position="0 1 -3" scale="3 0 3"></a-text>
     <a-sky src="#backgroundImg"></a-sky>
 </a-scene>

@@ -107,6 +107,8 @@
         }
         .logo img {
             width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
         .company-header h5 {
             padding: 10px;
@@ -180,6 +182,7 @@
     </div>
     <div class="company-header">
         <h1><%= company.company_name %></h1>
+        <h5><%= company.company_type %></h5>
         <div class="sub-pages">
             <% subPages.forEach(function(page){ %>
                 <a href="/business/<%= company.id %>/<%= page.id %>"><%= page.page_name %></a>
@@ -194,7 +197,6 @@
         <% } %>
         </div>
 
-        <h5><%= company.company_type %></h5>
     </div>
 
 
