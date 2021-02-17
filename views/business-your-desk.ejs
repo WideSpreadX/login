@@ -1,17 +1,79 @@
 <style>
     @media screen and (max-width: 500px) {
+        .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+        .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: groove 1px lightskyblue;
+            border-right: groove 1px lightskyblue;
+            border-radius: 8px;
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: lightskyblue;
+            text-align: center;
+            font-size: 0.6rem;
+            
+        }
+        .main-header-page-menu-inner a {
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #fff;
+        }
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .page-title {
+            text-align: center;
+            margin-top: 20px;
+        }
         .resume-new {
             display: block;
         }
         .resume-new a {
             display: block;
             margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.329);
+            background: rgba(0, 255, 0, 0.3);
             backdrop-filter: blur(2px);
             padding: 10px;
-            border-radius: 10px;
-            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.616);
-            color: rgba(0, 255, 0, 0.616);
+            border-radius: 8px;
+            color: #fff;
+            border-top: groove 2px green;
+            border-bottom: groove 2px green;
         }
         .resume-list {
             padding: 10px;
@@ -22,20 +84,36 @@
             border-radius: 10px;
         }
         .resume-list-item {
-            background: rgba(255, 255, 255, 0.329);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(2px);
             padding: 10px;
             border-radius: 10px;
             margin-top: 10px;
-            border: groove 1px rgba(135, 206, 250, 0.555);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
         }
     }
 </style>
-<div class="current-page-title">
-    <h1><%= currentPageTitle %></h1>
-    <hr>
+
+<%- include('partials/mainHeaderSiteMenu') %>
+
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenuu">
+        <div class="main-header-page-menu-inner">
+            <a href="/business">Business Home</a>
+            <a href="/business/your-desk">Your Desk</a>
+        </div>
+    </div>
+    <p>Scroll left & right for more options</p>
 </div>
 
+<div class="page-title">
+    <h1><%= currentPageTitle %></h1>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
     <div class="resume-new">
         <a class="btn btn-dark" href="/users/new-resume/<%= userData.id %>">Add New Resume</a>
     </div>

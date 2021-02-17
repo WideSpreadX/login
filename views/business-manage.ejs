@@ -34,6 +34,15 @@
     }
 
     @media screen and (max-width: 500px) {
+        .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
         .page-title {
             width: 100%;
         }
@@ -158,9 +167,19 @@
         }
         .current-employees thead {
             background: lightskyblue;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
         .current-employees th {
             text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .current-employees th:first-of-type {
+            border-top-left-radius: 8px;
+        }
+        .current-employees th:last-of-type {
+            border-top-right-radius: 8px;
         }
         .current-employees td {
             border-bottom: solid 1px lightskyblue;
@@ -176,7 +195,6 @@
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
             <a href="/business">Business Home</a>
-            <a href="/business/<%= company._id %>/add-employee">Add New Employee</a>
             <a href="/business/<%= company._id %>/inventory">Inventory</a>
         </div>
     </div>
@@ -189,7 +207,7 @@
 </div>
 
 <div class="manage-public-page">
-    <p><a href="/business/<%= company.id %>/manage/public-page">Manage Public Page</a></p>
+    <p><a href="/business/<%= company.id %>/manage/public-page">Manage Public Pages</a></p>
 </div>
 <div class="company-owner">
     <div class="owner-image">
@@ -216,6 +234,11 @@
 <div class="employee-portal">
     <a href="/business/employee/:id">Employee Portal</a>
 </div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
 <div class="current-employees">
     <h2>Current Employees</h2>
     <table>
@@ -223,7 +246,6 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Link</th>
-            <th></th>
         </thead>
         <tbody>
             <% employee.employees.forEach(function(employee) { %>
@@ -239,6 +261,10 @@
         </table>
 </div>
 
+<div class="spread-break">
+    <hr>
+</div>
+
 <div class="current-employees">
     <h2>Job Applicants</h2>
     <table>
@@ -246,7 +272,6 @@
             <th>Last Name</th>
             <th>First Name</th>
             <th>Resume</th>
-            <th></th>
         </thead>
         <tbody>
             <% employee.job_applicants.forEach(function(applicant) { %>

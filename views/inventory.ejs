@@ -39,17 +39,21 @@
             padding-left: 0;
             padding-right: 0;
             box-shadow: inset 0 0 4px black;
+            background: rgba(0, 0, 0, 0.3);
         }
         .main-header-page-menu-container p {
             margin: 0 auto;
-            color: rgba(255, 255, 255, 0.76);
+            color: lightskyblue;
             text-align: center;
             font-size: 0.6rem;
+            
         }
         .main-header-page-menu-inner a {
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
             text-align: center;
+            background: rgba(255, 255, 255, 0.3);
         }
-        
         #mainHeaderPageMenu {
             width: 100%;
             position: relative;
@@ -73,19 +77,61 @@
             margin-bottom: 10px;
             text-align: center;
         }
+
         .current-inventory {
             padding-top: 30px;
             margin-top: 10px;
         }
         .current-inventory thead {
             background: lightskyblue;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
         .current-inventory th {
             text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .current-inventory th:first-of-type {
+            border-top-left-radius: 8px;
+        }
+        .current-inventory th:last-of-type {
+            border-top-right-radius: 8px;
         }
         .current-inventory td {
             border-bottom: solid 1px lightskyblue;
             color: #fff;
+        }
+        .add-form {
+            padding: 0;
+        }
+        .add-form button {
+            box-shadow: none;
+
+        }
+        .add-to-inventory {
+            margin-top: 20px;
+            border-top: groove 2px lightskyblue;
+            background:rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+        }
+        .add-to-inventory h5 {
+            text-align: center;
+            padding: 15px;
+            padding-bottom: 5px;
+        }
+        .add-to-inventory button {
+            width: 80%;
+        margin-left: 10%;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        background: green;
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin-top: 10px;
+        color: #fff;
         }
     }
 </style>
@@ -94,7 +140,7 @@
     <h1><%= currentPageTitle %></h1>
 </div>
 <div class="main-header-page-menu-container">
-    <div id="mainHeaderPageMenuu">
+    <div id="mainHeaderPageMenu">
         <div class="main-header-page-menu-inner">
             <a href="/business/your-desk">Your Desk</a>
             <a href="/business/<%= company.id %>/inventory">Inventory</a>
@@ -126,7 +172,8 @@
     </table>
 </div>
 
-    
+    <div class="add-to-inventory">
+        <h5>Add New Item</h5>
     <form action="/business/<%=company.id %>/inventory" method="post" class="add-form">
     <input type="text" name="name" id="itemName" placeholder="Name of Item">
     <input type="text" name="description" id="itemDescription" placeholder="Item Description">
@@ -148,3 +195,4 @@
     <input type="number" name="need" id="need" placeholder="Need" value="<%= companyInventory.need%>">
     <button type="submit">Add to Inventory</button>
 </form>
+</div>

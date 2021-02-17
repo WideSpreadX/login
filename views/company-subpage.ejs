@@ -9,6 +9,24 @@
     margin-top: 40px;
     margin-bottom: 30px;
 }
+.background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -20;
+            text-align: center;
+        }
+        .background-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            max-height: fit-content;
+            max-width: fit-content;
+            min-width: 100%;
+            min-height: 100%;
+        }
             .company-sub-main {
             }
             .images {
@@ -58,6 +76,13 @@
             }
        }
 </style>
+<div class="background-image">
+    <% if (thisCompany.background_image) { %>
+        <img src="/image/<%= thisCompany.background_image %>" alt="">
+<% } else { %>
+    <span style="display: none;"></span>
+<% } %>
+</div>
 <div class="company-sub-main">
     <h1><%= thisCompany.company_name %></h1>
     <h3><%= thisSubPage.page_name %></h3>
