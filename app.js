@@ -19,6 +19,7 @@ const userBackgroundImage = require('./models/UserBackgroundImage');
 const PhotoAlbum = require('./models/PhotoAlbum');
 const Audio = require('./models/Audio');
 const Company = require('./models/Company');
+const Subpage = require('./models/Subpage');
 const Course = require('./models/Course');
 const fs = require('fs');
 
@@ -422,6 +423,41 @@ app.patch('/upload-course-image/:courseId', upload.single('background_image'), (
           }
       )
         res.redirect(`/academy/courses/${courseId}`); 
+    }
+})
+});
+
+
+app.post('/upload-subpage/:subpageId/subpage-upload', upload.single('subpage_image'), (req, res) => {
+  const subpageId = req.params.subpageId;
+  const companyId = req.body.companyId;
+  const obj = { 
+    imageOwner: subpageId, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  userBackgroundImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${subpageId} Image Data: ${obj.img.data}`);
+        const newImage = obj.img.data;
+        Subpage.findByIdAndUpdate(subpageId,
+          {$addToSet: {page_images: req.file.filename}},
+          {upsert: true, new: true},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect(`/business/${companyId}/${subpageId}/edit`); 
     }
 })
 });

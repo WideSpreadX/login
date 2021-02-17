@@ -41,7 +41,7 @@ const subPageSchema = new mongoose.Schema({
     store_items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item'}],
     main_link_background: String,
     page_background: String,
-    page_slideshow: [String],
+    page_images: [String],
     vr: Boolean
 });
 

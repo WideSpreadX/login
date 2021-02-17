@@ -1,12 +1,52 @@
 <style>
        @media screen and (max-width: 500px) {
+        .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
             .company-sub-main {
+            }
+            .images {
+                margin-bottom: 30px;
+            }
+            .images p  {
+                text-align: center;
+                color: lightskyblue;
+            }
+            .subpage-images {
+                width: 100%;
+                display: inline-flex;
+                overflow-x: scroll;
+                max-height: 400px;
+                border-radius: 8px;
+                border-left: groove 1px lightskyblue;
+                border-right: groove 1px lightskyblue;
+
+            }
+            .image {
+                max-height: 400px;
+                width: 300px;
+                min-width: 300px;
+                padding: 5px;
+                border-radius: 8px;
+            }
+            .image img {
+                width: 100%;
+                border-radius: 8px;
             }
             .company-sub-main h1 {
                 margin-bottom: 10px;
                 text-align: center;
             }
             .company-sub-main h2 {
+                text-align: center;
+            }
+            .company-sub-main h5 {
                 text-align: center;
             }
             .company-sub-main h3 {
@@ -19,14 +59,25 @@
        }
 </style>
 <div class="company-sub-main">
-
     <h1><%= thisCompany.company_name %></h1>
-    <h2><%= thisSubPage.page_name %></h2>
-    <hr style="width: 80%; margin-left: 10%; border: solid 1px lightskyblue;">
-    <h3><%= thisSubPage.page_body.page_header1 %></h3>
+    <h3><%= thisSubPage.page_name %></h3>
+    <div class="images">
+        <div class="subpage-images">
+            <% thisSubPage.page_images.forEach(function(image) { %>
+                <div class="image">
+                    <img src="/image/<%= image %>" alt="">
+                </div>
+                <% }) %>
+            </div>
+            <p><small>Scroll left & right for more images.</small></p>
+        </div>
+    <div class="spread-break">
+        <hr>
+    </div>
+    <h5><%= thisSubPage.page_body.page_header1 %></h5>
     <p><%= thisSubPage.page_body.page_body1 %></p>
-    <h3><%= thisSubPage.page_body.page_header2 %></h3>
+    <h5><%= thisSubPage.page_body.page_header2 %></h5>
     <p><%= thisSubPage.page_body.page_body2 %></p>
-    <h3><%= thisSubPage.page_body.page_header3 %></h3>
+    <h5><%= thisSubPage.page_body.page_header3 %></h5>
     <p><%= thisSubPage.page_body.page_body3 %></p>
 </div>

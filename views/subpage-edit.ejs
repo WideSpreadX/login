@@ -1,6 +1,156 @@
-<h1><%= company %></h1>
-<h1><%= subpage %></h1>
+<style>
+    .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+    .page-title {
+        text-align: center;
+        padding: 20px;
+        padding-bottom: 0;
+    }
+    .edit-page-container {
+    }
+    .edit-page {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .edit-page h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .edit-page p {
+        text-align: center;
+        padding: 0;
+        margin-top: 10px;
+        font-size: 1rem;
+        color: #fff;
+    }
+    .edit-page input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+        outline: none;
+        border: none;
+    }
+    .edit-page textarea {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+        outline: none;
+        border: none;
+    }
+    .edit-page button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin-top: 10px;
+    }
+    .subpage-images {
+        width: 100%;
+        display: inline-flex;
+        overflow-x: scroll;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-left: groove 1px lightskyblue;
+        border-right: groove 1px lightskyblue;
+        padding: 20px;
+    }
+    .subpage-image {
+        max-width: 200px;
+        max-height: 400px;
+        border-radius: 8px;
+        padding: 5px;
+        background:rgba(255, 255, 255, 0.3)
+    }
+    .subpage-image img {
+        width: 100%;
+        max-width: 100%;
+    }
+    .add-subpage-image {
+        display: inline-flex;
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 20px;
+        padding-top: 10px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+    }
+    .add-subpage-image input {
+        width: 90%;
+        margin-left: 5%;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-subpage-image button {
+        width: 80%;
+        margin-left: 10%;
+        border: groove 2px green;
+        border-bottom: none;
+        outline: none;
+        background: green;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin-top: 10px;
+        color: #fff;
+    }
+</style>
 
-<h1>Edit Subpage</h1>
+<div class="page-title">
+    <h1>Edit Subpage</h1>
+</div>
 
-<p style="color: red">Sorry, you cannot edit pages yet... If you must, you can delete the page and make a new one</p>
+<div class="spread-break">
+    <hr>
+</div>
+<div class="edit-page-container">
+
+<div class="edit-page">
+    <h5><%= subpage.page_name %></h5>
+    <form action="/business/<%= company.id %>/<%= subpage.id %>/edit?_method=PATCH" method="post">
+        <p>Page Name</p>
+        <input type="text" name="page_name" value="<%= subpage.page_name %>">
+        <p>Page Type</p>
+        <input type="text" name="page_type" value="<%= subpage.page_type %>">
+        <p>Header 1</p>
+        <input type="text" name="page_body.page_header1" value="<%= subpage.page_body.page_header1 %>">
+        <p>Body 1</p>
+        <textarea name="page_body.page_body1" value="<%= subpage.page_body.page_body1 %>"></textarea>
+        <p>Header 2</p>
+        <input type="text" name="page_body.page_header2" value="<%= subpage.page_body.page_header2 %>">
+        <p>Body 2</p>
+        <textarea name="page_body.page_body2" value="<%= subpage.page_body.page_body2 %>"></textarea>
+        <p>Header 3</p>
+        <input type="text" name="page_body.page_header3" value="<%= subpage.page_body.page_header3 %>">
+        <p>Body 3</p>
+        <textarea name="page_body.page_body3" value="<%= subpage.page_body.page_body3 %>"></textarea>
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+<div class="add-subpage-image">
+    <form action="/upload-subpage/<%= subpage.id %>/subpage-upload" method="post" enctype="multipart/form-data">
+        <input type="text" name="companyId" value="<%= company.id %>">
+        <input type="file" name="subpage_image">
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+
+</div>

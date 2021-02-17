@@ -100,9 +100,9 @@ router.get('/:companyId/manage/public-page', async (req, res) => {
 })
 
 router.get('/:companyId/:subpageId/edit', ensureAuthenticated, async (req, res) => {
-    const companyId = req.params._id;
-    const subpageId = req.params._id;
-     const company =  await Company.findById(companyId);
+    const companyId = req.params.companyId;
+    const subpageId = req.params.subpageId;
+    const company =  await Company.findById(companyId);
     const subpage = await Subpage.findById(subpageId);
     console.log(company)
     console.log(subpage)
@@ -110,8 +110,8 @@ router.get('/:companyId/:subpageId/edit', ensureAuthenticated, async (req, res) 
 })
 
 router.delete('/:companyId/:subpageId/delete', ensureAuthenticated, async (req, res) => {
-    const companyId = req.params._id;
-    const subpageId = req.params._id;
+    const companyId = req.params.companyId;
+    const subpageId = req.params.subpageId;
     await Subpage.findByIdAndDelete(subpageId);
     res.redirect(`/business/${companyId}/manage/public-page`);
 })
@@ -263,6 +263,19 @@ router.get('/:companyId/edit-subpage', ensureAuthenticated, async (req, res) => 
     res.render('business-edit-subpage', {company})
 });
 
+router.patch('/:companyId/:subpageId/edit', async (req, res) => {
+    try {
+        const companyId = req.params.companyId;
+        const subpageId = req.params.subpageId;
+        const updates = req.body;
+        const options = {new: true};
+        await Subpage.findByIdAndUpdate(subpageId, updates, options);
+        
+        res.redirect(`/business/${companyId}/manage/public-page`)
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 router.post('/:companyId/add-subpage', ensureAuthenticated, (req, res) => {
     const companyId = req.body.companyId;
