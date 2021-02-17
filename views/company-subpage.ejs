@@ -61,6 +61,10 @@
 <div class="company-sub-main">
     <h1><%= thisCompany.company_name %></h1>
     <h3><%= thisSubPage.page_name %></h3>
+    <div class="spread-break">
+        <hr>
+    </div>
+    <% if (thisSubPage.page_images.length > 0 ) { %>
     <div class="images">
         <div class="subpage-images">
             <% thisSubPage.page_images.forEach(function(image) { %>
@@ -74,6 +78,9 @@
     <div class="spread-break">
         <hr>
     </div>
+    <% } else { %>
+        <span style="display: none;"></span>
+    <% } %>
     <h5><%= thisSubPage.page_body.page_header1 %></h5>
     <p><%= thisSubPage.page_body.page_body1 %></p>
     <h5><%= thisSubPage.page_body.page_header2 %></h5>
