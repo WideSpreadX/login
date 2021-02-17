@@ -88,12 +88,14 @@ router.get('/clothing/reebok',(req, res) => {
 
 
 /* Electronics */
-const bby = require('bestbuy')(process.env.BEST_BUY_API_KEY);
 
 
 router.get('/electronics', async (req, res) => {
-
-    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics'});
+    const bby = require('bestbuy')(process.env.BEST_BUY_API_KEY);
+    bby.products('search=tv',{show:'sku,name,salePrice,modelNumber,image'}).then(function(data){
+      console.log(data);
+    });
+    res.render('shopping-electronics', {currentPageTitle: 'Shopping Electronics', data});
 })
 router.get('/electronics/tv', (req, res) => {
 
@@ -128,7 +130,7 @@ router.get('/outdoors-camping', (req, res) => {
    $('.jss442').each(function(i, element) {
         const test = $(element).html();
         const item = $(element).children('a').children('.jss453').children('.jss452').text();
-        const itemImage = $(element).children('a').children('.jss453').children('.jss446').children('.jss447').children('.jss456').children('img').attr('src');
+        const itemImage = $(element).children('a').children('.jss453').children('.jss446').children('.jss447').children('.jss456').children('jss457').attr('src');
         const link = $(element).children('a').attr('href');
         const price = $(element).children('a').children('.jss453').children('.jss476').children('span').text();
 /*         

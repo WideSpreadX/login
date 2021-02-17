@@ -102,5 +102,16 @@ margin-bottom: 30px;
 <h5>Your Wishlist</h5>
 </div>
 
-
+<div class="products">
+    <% data.forEach(function(item) { %>
+        <div class="item-container">
+            <div class="item-image">
+               
+            </div>
+            <div class="item-name">
+                <h6><%= data.name %></h6>
+            </div>
+        </div>
+    <% }) %>
+</div>
 
