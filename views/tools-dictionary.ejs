@@ -1,4 +1,53 @@
 <style>
+        .page-title {
+        padding: 20px;
+        text-align: center;
+    }
+
+            .main-header-page-menu-container {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: inset 0 0 4px black;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .main-header-page-menu-container p {
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.76);
+            text-align: center;
+            font-size: 0.6rem;
+            
+        }
+        .main-header-page-menu-inner a {
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        #mainHeaderPageMenu {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .main-header-page-menu-inner {
+            display: inline-flex;
+            max-width: 100%;
+            min-width: 100%;
+            overflow-x: scroll;
+            padding: 10px;
+            width: 100%;
+        }
+        .main-header-page-menu-inner a {
+            position: relative;
+            padding: 10px;
+            width: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
     .lookup-word {
         border-radius: 15px;
         background:rgba(255, 255, 255, 0.300);
@@ -30,7 +79,14 @@
     }
 
 </style>
-<h3> Dictionary </h3>
+<%- include('partials/mainHeaderSiteMenu') %>
+<%- include('partials/mainHeaderPageMenu') %>
+
+<div class="page-title">
+    <h1>Dictionary</h1>
+</div>
+
+
 <div class="lookup-word">
 
     <form method="POST" action="/tools/dictionary">
