@@ -17,7 +17,7 @@
   <div class="vr-curtain" style="position: fixed; width: 100vw; height: 100vh; background: <%= thisUser.favColor1 %>; z-index: -1;"></div>
   <div style="width: 100%; height: 100%; overflow-y: scroll; position: fixed; left: 0; top: 0; z-index: -10; overflow: hidden">
     <div id="htmlElement" style="background: <%= thisUser.favColor1 %>; color: #fff; font-size: 48px; text-align: center;">
-      <h1><%= thisUser.fname %>'s' Friends</h1>
+      <h1><%= thisUser.fname %>'s Friends</h1>
         <% thisUser.friends.forEach(function(friend) { %>
             <p><small><%= friend.fname %> <%= friend.lname %></small></p>
         <% }) %>
@@ -25,7 +25,7 @@
   </div>
   <div style="width: 100%; height: 100%; overflow-y: scroll; position: fixed; left: 0; top: 0; z-index: -10; overflow: hidden">
     <div id="userPosts" style="background: <%= thisUser.favColor1 %>; color: #fff; font-size: 48px; text-align: center;">
-      <h1><%= thisUser.fname %>'s' Posts</h1>
+      <h1><%= thisUser.fname %>'s Posts</h1>
         <% thisUser.posts.forEach(function(post) { %>
             <p><small><%= post.postBody %></small></p>
         <% }) %>
