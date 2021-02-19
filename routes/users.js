@@ -139,14 +139,12 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
    ).exec();
    const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
    const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
-   console.log(`Current Profile Avatar: ${avatarImage}`)
     User.findById(id)
     .populate('friends')
     .populate('user_images')
     .exec()
     .then(profile => {
             res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage, userId, inSpreads})
-            console.log(profile);
         });
 })
 
@@ -208,7 +206,6 @@ router.post('/:profileId/inspread/:spreaderId', ensureAuthenticated, async (req,
   router.patch('/:id/remove-friend', (req, res) => {
     let id = req.body.friends;
     let userId = req.user._id;
-    console.log("req.body: " + id);
     User.findOne({'_id': req.body.friends}, '_id', (err, newFriend) => {
         console.log("newFriend ID - Step 1: " + newFriend._id);
         console.log("currentUser ID - Step 2: " + userId);
@@ -239,7 +236,6 @@ router.get('/update-profile/:id', ensureAuthenticated, async (req, res, next) =>
     const id = req.user._id
     const currentUser = await User.findById(id);
 
-    console.log(`Current user to update: ${id} - ${currentUser.fname}`)
 
     res.render('update-profile', {currentPageTitle: 'Update Your Profile', id: id, currentUser});
 });
@@ -265,7 +261,6 @@ router.get('/new-resume/:userId', ensureAuthenticated, async (req, res) => {
     const userId = req.params.userId;
     const user = await User.findById(userId)
     User.findById(userId)
-    console.log(`This Userrrrrr: ${user}`)
     res.render('new-resume', {currentPageTitle: 'New Resume', user})
 })
 router.post('/new-resume', ensureAuthenticated, async (req, res) => {
@@ -355,7 +350,6 @@ router.get('/resumes', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     const resume = await Resume.find({resumeOwner: {$eq: userId}})
     Resume.find({resumeOwner: {$eq: userId}})
-    console.log(`Resumes: ${resume}`)
     res.render('resumes', {currentPageTitle: 'Your Resumes', resume})
 })
 

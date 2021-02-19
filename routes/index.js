@@ -119,7 +119,6 @@ conn.once('open', () => {
         }).exec();
         /* console.log(`All Avatars: ${allAvatars}`) */
         const getAvatars = await User.find()
-        console.log("Dashboard Page")
 
 /*         console.log("Users Resume: " + resume)
         console.log("Users Posts: " + posts)
@@ -168,9 +167,6 @@ conn.once('open', () => {
                 weather,
                 currentPageTitle: 'Dashboard'
                 })
-                console.log(`User Info: ${backgroundImage}`)
-               /*  console.log(`User Friends ---------------- ${profile.friends}`) */
-                /* console.log(`User Images: ${profileImages}`) */
 
             });
             
@@ -191,20 +187,12 @@ conn.once('open', () => {
       const postAuthor = () => {
         for (i = 0; i < posts.length; i++) {
           posts[i].author.push(checkAuthor)
-          /* ProfileImage.findOne({imageOwner: {$eq: checkAuthor}}) */
         }}
         
         const postAvatars = await Post.find({ "author": { "$in": friendIds } })
-        /* console.log(`Post Author: ${postAvatars}`) */
         const profileImages = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
         const avatarImage = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
-/*         console.log(`Profile Images: ${profileImages}`)
-        console.log(`All Posts: ${posts}`) */
-        
-        /*         console.log(`Avatar Images: ${avatarImage}`)
-        console.log(`Avatar Image ID's: ${avatarImage}`) */
-        
-        
+
       const comments = await Comment.find({fromPost: {$eq: posts._id} })
       const allPosts = await Post.find({ "author": { "$in": friendIds } })
       .sort({createdAt: 'desc'})
@@ -225,7 +213,6 @@ conn.once('open', () => {
         if(err){
           return console.log(err);
         } else {
-          /* console.log(`id: ${id} === post.author._id ${postAuthor(posts)}`) */
           return res.render('dashboard-wall', {
             currentPageTitle: 'YourSpread',
             data,
@@ -313,8 +300,6 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
       path: 'friends',
       model: 'User'
     }).exec()
-    console.log(friendList);
-    
     res.render('friends-page', {friendList, userId})
 
 });
@@ -364,7 +349,6 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
     })
     
     .exec(function (err, data){
-      console.log(`Data: ${data}`)
       if(err){
         return console.log(err);
       } else {
@@ -394,7 +378,6 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
     const albumId = req.params.albumId;
     const thisUser = await User.findById(user);
     const photoAlbums = await PhotoAlbum.findById(albumId);
-    console.log(photoAlbums)
     res.render('album', {photoAlbums, thisUser, albumId})
   })
   router.post('/photo-album', ensureAuthenticated, (req, res) => {
@@ -428,7 +411,6 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
     let friendIds = []
     friendIds.push(friendId.toString())
     console.log(friendIds)
-    /*    const avatars =  Avatar.find({imageOwner: {$eq: friends._id}}) */
     const avatars = friendIds.forEach(findAvatar)
     
     

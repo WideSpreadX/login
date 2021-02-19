@@ -9,25 +9,6 @@ const cheerio = require('cheerio');
 
 
 router.get('/', (req, res) => {
-/* axios.get("https://www.reebok.com/us/men?grid=true").then(function(response) {
-        const $ = cheerio.load(response.data);
-        const results = [];
-
-        $('.gl-product-card-container').each(function(i, element) {
-
-        const item = $(element).children('.gl-product-card').children('.gl-product-card__details').children('a').children('.gl-product-card__details-main').children('span').text();
-        const link = $(element).children('.gl-product-card').children('.gl-product-card__details').children('a').attr('href');
-        const itemImage = $(element).children('.gl-product-card').children('.gl-product-card__assets').children('a').children('img').attr('src');
-        const price = $(element).children('.gl-product-card').children('.gl-product-card__details').children('a').children('.gl-product-card__details-main').children(".gl-price").children('.gl-price-item').text();
-        results.push({
-        item: item,
-        link: link,
-        price: price,
-        itemImage: itemImage,
-        });
-        });
-         console.log(results);
-}); */
     res.render('shopping-home', {currentPageTitle: 'Shopping Home'});
 });
 
@@ -63,25 +44,8 @@ router.get('/clothing/reebok',(req, res) => {
                     itemImage: itemImage,
                     itemImageAlt: itemImageAlt
                      
+            });
         });
-      /*
-   $('.gl-product-card-container').each(function(i, element) {
-        const test = $
-        const item = $(element).children('.gl-product-card').children('.gl-product-card__details').children('a').children('.gl-product-card__details-main').children('span').text();
-        const link = $(element).children('.gl-product-card').children('.gl-product-card__details').children('a').attr('href');
-        const itemImage = $(element).children('.gl-product-card').children('.gl-product-card__assets').children('a').children('img').attr('src');
-        const itemImageAlt = $(element).children('.gl-product-card').children('.gl-product-card__assets').children('a').children('img').attr('alt');
-        const price = $(element).children('.gl-product-card').children('.gl-product-card__details').children('a').children('.gl-product-card__details-main').children(".gl-price").children('.gl-price-item').text();
-        results.push({
-        item: item,
-        link: link,
-        price: price,
-        itemImage: itemImage,
-        itemImageAlt: itemImageAlt,
-        });
-         */
-        });
-         console.log(results);
     res.render('shopping-reebok', {currentPageTitle: 'Reebok', results});
 });
 });
@@ -133,26 +97,14 @@ router.get('/outdoors-camping', (req, res) => {
         const itemImage = $(element).children('a').children('.jss453').children('.jss446').children('.jss447').children('.jss456').children('jss457').attr('src');
         const link = $(element).children('a').attr('href');
         const price = $(element).children('a').children('.jss453').children('.jss476').children('span').text();
-/*         
-        const test2 = $(element).children('');
-        const itemImage = $(element).children('');
-        const itemImageAlt = $(element).children('');
-        const price = $(element).children('');
-        const reload = $(element).children('');
-*/
+
                 results.push({
                     link: link,
                     item: item,
                     price: price,
                     itemImage: itemImage,
-/*
-                    test:test
-                    itemImageAlt: itemImageAlt
-                 */
-                     
+            });
         });
-        });
-         console.log(results);
     res.render('shopping-outdoors-camping', {currentPageTitle: 'Shopping Outdoors & Camping', results, featuredResults, tentResults})
 });
     const tentResults = axios.get('https://www.ems.com/brands/eastern-mountain-sports/shop-all/camping-gear/tents/');
@@ -188,19 +140,14 @@ router.get('/outdoors-camping/firearms/shotguns', (req, res) => {
                     test: test,
                     item: item,
                     link: link,
-/*
-                    price: price,
-                    itemImage: itemImage,
-                    test:test
-                    itemImageAlt: itemImageAlt
-                 */
-                     
+                });
         });
-        });
-         console.log(results);
          res.render('shopping-shotguns', {currentPageTitle: 'Shopping Shotguns', results})
 });
 });
+
+
+
 module.exports = router;
 
 

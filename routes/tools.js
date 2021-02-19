@@ -34,7 +34,6 @@ router.get('/dictionary-definition/:word', (req, res) => {
 
 axios.request(options).then(function (response) {
     const returnedData = response.data;
-	console.log(returnedData);
     res.render('tools-dictionary-word', {returnedData});
 }).catch(function (error) {
 	console.error(error);

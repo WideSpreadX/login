@@ -13,7 +13,6 @@ const { populate } = require('../models/User');
 
 router.get('/', async (req, res) => {
     const companies = await Company.find({});
-    console.log(`Companies: ${companies}`)
     res.render('business-main', {currentPageTitle: 'Business', companies});
 })
 
@@ -55,7 +54,6 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
     const company = await Company.findById(companyId);
     const subPages = await Subpage.find({company_site: {$eq: companyId} })
     Company.findById(companyId)
-    console.log(`Company Info: ${company}`)
     res.render('business-home', {currentPageTitle: 'Business', company, subPages});
 })
 
@@ -87,7 +85,6 @@ router.get('/:companyId/manage', async (req, res) => {
     })
     .exec()
 
-    console.log(`Company Info to Manage: ${company}`)
     res.render('business-manage', {currentPageTitle: 'Manage Company', company, employee});
 })
 
@@ -95,7 +92,6 @@ router.get('/:companyId/manage/public-page', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
     const subpages = await Subpage.find({company_site: {$eq: companyId}});
-    console.log(`Current Subpages: ${subpages}`)
     res.render('business-manage-public-page', {company, subpages});
 })
 
@@ -104,8 +100,6 @@ router.get('/:companyId/:subpageId/edit', ensureAuthenticated, async (req, res) 
     const subpageId = req.params.subpageId;
     const company =  await Company.findById(companyId);
     const subpage = await Subpage.findById(subpageId);
-    console.log(company)
-    console.log(subpage)
     res.render('subpage-edit', {subpage, company});
 })
 
@@ -122,7 +116,6 @@ router.get('/:companyId/resume/applicant/:applicantId', async (req, res) => {
     const resumeOwner = await Resume.findById(applicantId).populate('resumeOwner')
     const resume = await Resume.findById(applicantId);
     const company = await Company.findById(companyId);
-    console.log(`Company Departments: ${company.departments}`)
     res.render('business-see-applicant', {currentPageTitle: 'Job Applicant', resume, resumeOwner, company})
 })
 
@@ -157,11 +150,9 @@ router.get('/:companyId/:resumeId/add-employee', async (req, res) => {
     const company = await Company.findById(companyId);
     const resumeId = req.params.resumeId;
     const resumeObject = Resume.findById(resumeId).populate('resumeOwner');
-    console.log(`Resume Owner: ${resumeOwner}`);
     const userId = req.user._id;
     User.findById(userId);
     Company.findById(companyId)
-    console.log(`Company Info to Manage: ${company}`)
     res.render('add-employee', {currentPageTitle: 'Add New Employee', company, userId, resumeOwner})
 })
 
@@ -190,7 +181,6 @@ router.get('/:companyId/inventory', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
     const companyInventory = await Item.find({ for_company: { $eq: companyId } });
-        console.log(`Company Info to Manage: ${company}`)
         res.render('inventory', {currentPageTitle: 'Inventory', company, companyInventory})
     ;
 });
@@ -243,7 +233,6 @@ router.get('/:companyId/inventory/:itemId', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
     const companyInventory = await Item.findById(itemId);
-        console.log(`Company Info to Manage: ${company}`)
         res.render('inventory-item', {currentPageTitle: 'Inventory', company, companyInventory})
     ;
 });

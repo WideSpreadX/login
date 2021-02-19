@@ -31,7 +31,6 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 
 router.get('/courses', ensureAuthenticated, async (req, res) => {
     const courses = await Course.find({});
-    console.log(`Courses: ${courses}`)
     res.render('academy-all-courses', {currentPageTitle: 'All Courses', courses})
 });
 
@@ -54,7 +53,6 @@ router.post('/add-course', ensureAuthenticated, (req, res) => {
 
 router.get('/courses/:courseId', ensureAuthenticated, (req, res) => {
     const thisCourse = req.params.courseId;
-    console.log(`Course ID: ${thisCourse}`)
     const course = Course.findById(thisCourse);
     Course.findById(thisCourse)
     .populate('classes')
@@ -65,7 +63,6 @@ router.get('/courses/:courseId', ensureAuthenticated, (req, res) => {
 /*             console.log(`This is the selected course: ${courseData.course}`);
             console.log(`These are the Classes in this Course: ${courseClasses}`); */
             res.render('course-home', {courseData, courseClasses})
-            console.log(`courseData: ${courseData.classes.name}`);
         });
 })
 router.patch('/courses/:courseId/add-course', async (req, res) => {
@@ -89,8 +86,6 @@ router.get('/courses/:courseId/add-class', ensureAuthenticated, async (req, res)
     const course = req.params.courseId;
     const courseInfo = await Course.findById(course)
     await Course.findById(course)
-    console.log(`Course Info: ${courseInfo}`)
-    console.log(`Course: ${course}`)
     res.render('add-class', {currentPageTitle: 'Add New Class', course, courseInfo});
 });
 
@@ -121,7 +116,6 @@ router.post('/courses/:courseId/add-class', ensureAuthenticated, async (req, res
         description: req.body.description
     })
     aClass.save()
-    console.log(`New Class: ${aClass}`)
     await Course.findByIdAndUpdate(thisCourseId,
             {$addToSet: {classes: aClass._id}},
             {safe: true, upsert: true},
@@ -150,7 +144,6 @@ router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) 
     const courseNotebooks = await Notebook.find({notebookOwner: {$eq: userId}, forClass: {$eq: classId}}).populate('notes').exec()
     const learningPoints = await LearningPoint.find({class: {$eq: classId}})
     const quizzes = await Quiz.find({forLearningPoint: {$eq: learningPoints._id }})
-    console.log(`Quizzes: ${quizzes}`)
     learningPoints
     .exec(
         res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisUser, thisClass, thisCourse, thisCourseId, quizzes, courseNotebooks})
@@ -170,7 +163,6 @@ router.post('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
     })
     
     learningPoint.save()
-    console.log(`New Learning Point: ${learningPoint}`)
     res.redirect(`/academy/courses/${courseId}/${classId}`)
 });
 router.get('/:classId/add-learning-point', ensureAuthenticated, (req, res) => {
@@ -223,7 +215,6 @@ router.post('/:courseId/:classId/add-quiz', ensureAuthenticated, (req, res) => {
             difficulty5: req.body.difficulty5,
     })
     learningPointQuiz.save()
-    console.log(`New Quiz: ${learningPointQuiz}`)
     res.redirect(`/academy/courses/${courseId}/${classId}`)
 });
 
@@ -268,7 +259,6 @@ router.post('/:courseId/:classId/add-flashcard', ensureAuthenticated, (req, res)
         difficulty: req.body.difficulty
     })
     flashcard.save()
-    console.log(`New Class: ${flashcard}`)
     res.redirect(`/academy/courses/${courseId}/${classId}`)
 });
 

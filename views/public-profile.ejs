@@ -8,10 +8,26 @@
     margin-top: 40px;
     margin-bottom: 30px;
 }
+.vr-profile-link {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.vr-profile-link a {
+    color: #fff;
+    text-align: center;
+}
 .jumbotron {
-    border-radius: 15px;
+    border-radius: 8px;
     background: transparent;
     margin-bottom: 30px;
+    backdrop-filter: none;
 }
 .name-header {
     width: 85%;
@@ -145,9 +161,12 @@
 .spread-container {
     padding: 5px;
     padding-top: 15px;
+    padding-bottom: 15px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.37);
+    background: rgba(0, 0, 0, 0.37);
     backdrop-filter: blur(2px);
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
     margin-top: 30px;
 }
 .spread-container h3 {
@@ -164,6 +183,8 @@
     padding: 5px;
     margin-top: 5px;
     border-radius: 5px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
 }
 .social-list-item img {
     width: 20px;
@@ -489,7 +510,9 @@
         </div>
         <%- include('partials/mainHeaderSiteMenu') %>
         <%- include('partials/mainHeaderPageMenu') %>
-
+<div class="vr-profile-link">
+    <a href="/vr-ar/<%= profile.id %>"><%= profile.fname %>'s VR Profile</a>
+</div>
 <div class="jumbotron mt-4">
     <div class="user-header">
         <div class="user-name">
