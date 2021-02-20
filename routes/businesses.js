@@ -10,6 +10,7 @@ const Resume = require('../models/Resume');
 const Item = require('../models/Item');
 const Appointment = require('../models/Appointment');
 const Department = require('../models/Department');
+const DepartmentTeam = require('../models/DepartmentTeam');
 const { populate } = require('../models/User');
 
 
@@ -141,9 +142,10 @@ router.get('/:companyId/manage/departments/:departmentId', ensureAuthenticated, 
             }
         }
     ).populate('employees').exec()
+    const teams = await DepartmentTeam.find({in_department: {$eq: departmentId}}).populate('manager').populate('employess').exec()
     const inventory = await Item.find({for_company: {$eq: companyId}})
     const department = await Department.findById(departmentId).populate('manager').populate('employees').populate('vehicles').exec()
-    res.render('company-single-department', {company, department, inventory})
+    res.render('company-single-department', {company, department, inventory, teams})
 });
 router.post('/:companyId/manage/departments/:departmentId', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;
@@ -153,12 +155,41 @@ router.post('/:companyId/manage/departments/:departmentId', ensureAuthenticated,
 
     res.redirect(`/business/${companyId}/manage/departments/${departmentId}`)
 });
+
+router.patch('/:companyId/manage/departments/:departmentId/add-team', ensureAuthenticated, async (req, res) => {
+    const company = req.params.companyId;
+    const department = req.params.departmentId;
+
+    const teamDepartment = new DepartmentTeam({
+        in_department: department,
+        name: req.body.name,
+        team_leader: req.body.team_leader,
+        team_color: req.body.team_color
+    });
+    teamDepartment.save()
+
+    res.redirect(`/business/${company}/manage/departments/${department}`);
+});
+
+router.get('/:companyId/manage/departments/:departmentId/:teamId', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const departmentId = req.params.departmentId;
+    const teamId = req.params.teamId;
+
+    const company = await Company.findById(companyId)
+    const department = await Department.findById(departmentId).populate('employees').populate('manager').exec()
+    const teamDepartment = await DepartmentTeam.findById(teamId).populate('team_leader').populate('employees').exec()
+
+    res.render('company-team', {company, department, teamDepartment});
+    
+})
+
 router.patch('/:companyId/manage/departments/:departmentId/add-vehicle', ensureAuthenticated, async (req, res) => {
     const company = req.params.companyId;
     const department = req.params.departmentId;
 
     const addVehicle = await Department.findByIdAndUpdate(department,
-        {$addToSet: {$set:{vehicles: req.body.vehicles}}},
+        {$addToSet: {vehicles: req.body.vehicles}},
         {safe: true, upsert: true},
         function(err, doc) {
             if(err) {
@@ -188,6 +219,25 @@ router.patch('/:companyId/manage/departments/:departmentId/add-employee', ensure
         )
     addToDepartment.save();        
     res.redirect(`/business/${company}/manage/departments/${department}`)
+});
+router.patch('/:companyId/manage/departments/:departmentId/:teamId/add-employee', ensureAuthenticated, async (req, res) => {
+    const company = req.params.companyId;
+    const department = req.params.departmentId;
+    const team = req.params.teamId;
+
+    const addToDepartmentTeam = await DepartmentTeam.findByIdAndUpdate(team,
+        {$addToSet: {employees: req.body.employees}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+    addToDepartmentTeam.save();        
+    res.redirect(`/business/${company}/manage/departments/${department}/${team}`)
 });
 router.get('/:companyId/manage', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;

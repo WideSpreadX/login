@@ -123,40 +123,47 @@ margin-top: 20px;
     <hr>
 </div>
 
-<div class="employees">
-    <h5>Employees</h5>
-    <% department.employees.forEach(function(employee) { %>
-        <div class="employee">
-            <h5><a href="/users/<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></a></h5>
-        </div>
-    <% }) %>
-</div>
 
-<div class="spread-break">
-    <hr>
-</div>
 <div class="employees">
-    <h5>Vehicles</h5>
-    <% department.vehicles.forEach(function(vehicle) { %>
-        <div class="employee">
-            <h5><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></h5>
-        </div>
+    <h5>Teams</h5>
+        <% teams.forEach(function(team) { %>
+            <div class="employee">
+                <h5><a href="/business/<%= company.id %>/manage/departments/<%= department.id %>/<%= team.id %>"><%= team.name %></a></h5>
+            </div>
         <% }) %>
     </div>
     <div class="spread-break">
         <hr>
     </div>
+    <div class="add-employee">
+        <h5>Add an Employee</h5>
+        <form action="/business/<%= company.id %>/manage/departments/<%= department.id %>/add-employee?_method=PATCH" method="post">
+            <p style="text-align: center; margin-top: 10px; margin-bottom: 0; color: #fff;">Employee</p>
+            <select name="employees">
+                <% company.employees.forEach(function(employee) { %>
+                    <option value="<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></option>
+                <% }) %>
+            </select>
+            <button type="submit">Add to Department</button>
+        </form>
+    </div>
+<% if (department.employees.length >= 0) { %>
 <div class="add-employee">
-    <h5>Add an Employee</h5>
-    <form action="/business/<%= company.id %>/manage/departments/<%= department.id %>/add-employee?_method=PATCH" method="post">
-        <select name="employees">
-            <% company.employees.forEach(function(employee) { %>
+    <h5>Add a Team</h5>
+    <form action="/business/<%= company.id %>/manage/departments/<%= department.id %>/add-team?_method=PATCH" method="post">
+        <input type="text" name="name" placeholder="Team Name">
+        <p style="text-align: center; margin-top: 10px; margin-bottom: 0; color: #fff;">Team Leader</p>
+        <select name="team_leader">
+            <% department.employees.forEach(function(employee) { %>
                 <option value="<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></option>
             <% }) %>
         </select>
-        <button type="submit">Add to Department</button>
+        <button type="submit">Add Team</button>
     </form>
 </div>
+<% } else { %>
+    <span style="display: none;"></span>
+<% } %>
 <div class="add-employee">
     <h5>Add a Vehicle</h5>
     <form action="/business/<%= company.id %>/manage/departments/<%= department.id %>/add-vehicle?_method=PATCH" method="post">
