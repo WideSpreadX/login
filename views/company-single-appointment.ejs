@@ -61,7 +61,11 @@
 </div>
 
 <div class="appointment">
-    <h6>Appointment at <%= appointment.scheduled_for.toLocaleDateString() %></h6>
+    <% if (appointment.scheduled_for) { %>
+        <h6>Appointment at <%= appointment.scheduled_for.toLocaleDateString() %></h6>
+    <% } else { %>
+        <span></span>
+    <% } %>
     <h5><%= appointment.appointment_by.fname %>'s Notes</h5>
     <p><%= appointment.notes_before %></p>
     <h5>Our Notes</h5>
@@ -69,14 +73,14 @@
 
     <div class="update-appointment">
         <form action="/business/<%= company.id %>/manage/appointments/<%= appointment.id %>" method="post">
-            <input type="text" name="notes_after" placeholder="Add additional notes...">
+            <input type="text" name="notes_after" placeholder="Add additional notes..." value="<%= appointment.notes_after %>">
             <select name="appointment_given_to">
                 <% company.employees.forEach(function(employee) { %>
                     <option value="<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></option>
                 <% }) %>
             </select>
             <p>Reschedule Appointment</p>
-            <input type="date" name="scheduled_for">
+            <input type="date" name="scheduled_for" value="<%= appointment.scheduled_for %>">
             <button type="submit">Update</button>
         </form>
     </div>
