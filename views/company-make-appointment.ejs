@@ -1,0 +1,82 @@
+<style>
+    .page-title {
+        padding: 20px;
+        text-align: center;
+    }
+    .back {
+        background:rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+    }
+    .back a {
+        color: #fff;
+            text-align: center;
+    }
+    .make-appointment {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding-top: 10px;
+    }
+    .make-appointment p {
+        text-align: center;
+        color: #fff;
+        margin-top: 20px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .make-appointment input {
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        margin-top: 10px;
+        outline: none;
+        border: none;
+    }
+    .make-appointment textarea {
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        margin-top: 10px;
+        outline: none;
+        border: none;
+    }
+    .make-appointment button {
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 20px;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+        padding: 2px;
+        padding-top: 4px;
+        margin-bottom: 0;
+        text-align: center;
+    }
+</style>
+
+<div class="page-title">
+    <h1>Make an Appointment</h1>
+</div>
+<div class="back">
+    <a href="/business/<%= company.id %>">Back to <%= company.company_name %> Home</a>
+</div>
+<div class="make-appointment">
+    <form action="/business/<%= company.id %>/make-appointment" method="post">
+        <input type="text" name="reason" placeholder="Reason for Appointment">
+        <textarea name="notes_before" placeholder="Additional notes you'd like to add..."></textarea>
+        <p>When is good for you?</p>
+        <input type="date" name="scheduled_for">
+        <button type="submit">Request Appointment</button>
+    </form>
+</div>

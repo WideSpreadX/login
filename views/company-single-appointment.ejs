@@ -1,0 +1,83 @@
+<style>
+    .page-title {
+        text-align: center;
+        padding: 20px;
+    }
+    .page-title p {
+        color: #fff;
+    }
+        .appointment {
+        background: rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        padding-bottom: 0;
+    }
+    .appointment h5 {
+        padding: 10px;
+    }
+    .appointment h6 {
+        text-align: center;
+        padding: 10px;
+    }
+    .appointment p {
+        padding: 5px;
+        color: #fff;
+    }
+    .appointment input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .appointment select {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .appointment button {
+        margin-top: 20px;
+            background: green;
+            width: 80%;
+            margin-left: 10%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: groove 2px green;
+            border-bottom: none;
+            outline: none;
+            color: #fff;
+    }
+</style>
+
+<div class="page-title">
+    <h3><%= appointment.appointment_by.fname %> <%= appointment.appointment_by.lname %></h3>
+    <p>requested</p>
+    <h5><%= appointment.reason %></h5>
+</div>
+
+<div class="appointment">
+    <h6>Appointment at <%= appointment.scheduled_for.toLocaleDateString() %></h6>
+    <h5><%= appointment.appointment_by.fname %>'s Notes</h5>
+    <p><%= appointment.notes_before %></p>
+    <h5>Our Notes</h5>
+    <p><%= appointment.notes_after %></p>
+
+    <div class="update-appointment">
+        <form action="/business/<%= company.id %>/manage/appointments/<%= appointment.id %>" method="post">
+            <input type="text" name="notes_after" placeholder="Add additional notes...">
+            <select name="appointment_given_to">
+                <% company.employees.forEach(function(employee) { %>
+                    <option value="<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></option>
+                <% }) %>
+            </select>
+            <p>Reschedule Appointment</p>
+            <input type="date" name="scheduled_for">
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</div>

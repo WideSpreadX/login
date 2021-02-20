@@ -157,12 +157,49 @@
         .owner-info a {
             color: lightskyblue;
         }
+        .upcoming-appointments h5 {
+            text-align: center;
+        }
+        .upcoming-appointments table {
+            width: 100%;
+        }
+        .upcoming-appointments thead {
+            background: lightskyblue;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .upcoming-appointments th {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .upcoming-appointments th:first-of-type {
+            border-top-left-radius: 8px;
+        }
+        .upcoming-appointments th:last-of-type {
+            border-top-right-radius: 8px;
+        }
+        .upcoming-appointments td {
+            border-bottom: solid 1px lightskyblue;
+            color: #fff;
+            padding-left: 5px;
+        }
+        .upcoming-appointments a {
+            color: lightskyblue;
+        }
+        .upcoming-appointments td:last-of-type {
+            text-align: center;
+        }
+
+
+
+
         .current-employees {
             padding-top: 30px;
             margin-top: 10px;
             width: 100%;
         }
-        .current-employees h2 {
+        .current-employees h5 {
             text-align: center;
         }
         .current-employees table {
@@ -186,6 +223,23 @@
         }
         .current-employees td {
             border-bottom: solid 1px lightskyblue;
+            color: #fff;
+        }
+        .manage-appointments {
+            margin-top: 20px;
+            background: green;
+            width: 80%;
+            margin-left: 10%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: groove 2px green;
+            border-bottom: none;
+            color: #fff;
+        }
+        .manage-appointments p {
+            text-align: center;
+        }
+        .manage-appointments a {
             color: #fff;
         }
     }
@@ -242,8 +296,35 @@
     <hr>
 </div>
 
+<div class="upcoming-appointments">
+    <h5>Upcoming Appointments</h5>
+    <table>
+        <thead>
+            <tr>
+                <th>Requested By</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(function(appointment) { %>
+                <tr>
+                    <td><%= appointment.appointment_by.fname %> <%= appointment.appointment_by.lname %></td>
+                    <td><a href="/business/<%= company.id %>/manage/appointments/<%= appointment.id %>"><%= appointment.reason %></a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="manage-appointments">
+            <p><a href="/business/<%= company.id %>/manage/appointments">Manage Appointments</a></p>
+        </div>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
 <div class="current-employees">
-    <h2>Current Employees</h2>
+    <h5>Current Employees</h5>
     <table>
         <thead>
             <th>Last Name</th>
@@ -255,7 +336,7 @@
                 <tr>
                     <td style="width: 20%; text-align: center;"><%= employee.lname %></td>
                     <td style="width: 20%; text-align: center;"><%= employee.fname %></td>
-                        <td><a style="color: lightskyblue" href="/users/<%= employee.id %>"><%= employee.id %></a></td>
+                        <td><p style="color: lightskyblue; text-align: center; width: 100%; padding: 0; margin: 0;"><a style="color: lightskyblue; text-align: center; width: 100%;" href="/users/<%= employee.id %>">Go To Profile</a></p></td>
 
                     </tr>
                 <% }) %>
@@ -269,7 +350,7 @@
 </div>
 
 <div class="current-employees">
-    <h2>Job Applicants</h2>
+    <h5>Job Applicants</h5>
     <table>
         <thead>
             <th>Last Name</th>

@@ -8,6 +8,7 @@ const Company = require('../models/Company');
 const Subpage = require('../models/Subpage');
 const Resume = require('../models/Resume');
 const Item = require('../models/Item');
+const Appointment = require('../models/Appointment');
 const { populate } = require('../models/User');
 
 
@@ -57,8 +58,61 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
     res.render('business-home', {currentPageTitle: 'Business', company, subPages});
 })
 
-router.get('/:companyId/manage', async (req, res) => {
+
+/* Make an Appointment */
+router.get('/:companyId/make-appointment', async (req, res) => {
     const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+
+    res.render('company-make-appointment', {company});
+})
+
+router.post('/:companyId/make-appointment', ensureAuthenticated, (req, res) => {
+    const user = req.user._id;
+    const companyId = req.params.companyId;
+
+    const appointment = new Appointment({
+        appointment_by: user,
+        appointment_for: companyId,
+        reason: req.body.reason,
+        notes_before: req.body.notes_before,
+        scheduled_for: req.body.scheduled_for
+    });
+    appointment.save()
+
+    res.redirect(`/business/${companyId}`);
+})
+
+router.get('/:companyId/manage/appointments', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const appointments = await Appointment.find({appointment_for: {$eq: companyId}}).populate('appointment_by').exec()
+    const company = await Company.findById(companyId).populate('employees').exec()
+    
+    res.render('company-all-appointments', {appointments, company});
+});
+
+router.get('/:companyId/manage/appointments/:appointmentId', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const appointmentId = req.params.appointmentId;
+    const company = await Company.findById(companyId).populate('employees').exec()
+    const appointment = await Appointment.findById(appointmentId).populate('appointment_by').exec()
+    
+    res.render('company-single-appointment', {appointment, company});
+});
+
+router.post('/:companyId/manage/appointments/:appointmentId', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const appointmentId = req.params.appointmentId;
+    const updates = req.body;
+    await Appointment.findByIdAndUpdate(appointmentId, updates);
+    
+    res.redirect(`/business/${companyId}/manage/appointments/${appointmentId}`);
+});
+
+router.get('/:companyId/manage', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const appointments = await Appointment.find({appointment_for: {$eq: companyId}}).populate('appointment_by').exec()
+
     const company = await Company.findById(companyId).populate({
         path: 'job_applicants',
         model: 'Resume',
@@ -85,7 +139,7 @@ router.get('/:companyId/manage', async (req, res) => {
     })
     .exec()
 
-    res.render('business-manage', {currentPageTitle: 'Manage Company', company, employee});
+    res.render('business-manage', {currentPageTitle: 'Manage Company', company, employee, appointments});
 })
 
 router.get('/:companyId/manage/public-page', async (req, res) => {

@@ -159,6 +159,19 @@
             border-top: groove 2px lightskyblue;
             border-bottom: groove 2px lightskyblue;
         }
+        .make-appointment {
+            background:rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .make-appointment a {
+            color: #fff;
+            text-align: center;
+        }
         .company-info {
             background: rgba(255, 255, 255, 0.3);
             border-top: groove 2px lightskyblue;
@@ -225,6 +238,9 @@
         <p><%= company.company_bio %></p>
     </div>
 
+    <div class="make-appointment">
+        <a href="/business/<%= company.id %>/make-appointment">Make an Appointment</a>
+    </div>
 <div class="company-info">
 <p><%= company.company_street_1 %></p>
 <p><%= company.company_street_2 %></p>

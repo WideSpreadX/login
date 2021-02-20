@@ -24,5 +24,5 @@ function freshDeck() {
 
 const deck = new Deck()
 
-console.log(deck.cards);
+/* console.log(deck.cards); */
 
