@@ -1,0 +1,171 @@
+<style>
+    .page-title {
+        text-align: center;
+        padding: 20px;
+    }
+    .spread-break hr {
+background: lightskyblue;
+box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+width: 80%;
+margin-left: 10%;
+border-radius: 50%;
+margin-top: 40px;
+margin-bottom: 30px;
+}
+.manager {
+    color: #fff;
+}
+.manager h5 {
+    text-align: center;
+}
+.manager a {
+    color: #fff;
+}
+.employees {
+
+}
+.employees h5 {
+    text-align: center;
+    padding: 10px;
+}
+.employee {
+background:rgba(255, 255, 255, 0.3);
+border-radius: 8px;
+border-top: groove 2px lightskyblue;
+border-bottom: groove 2px lightskyblue;
+margin-bottom: 20px;
+}
+.employee h5 {
+text-align: center;
+padding: 10px;
+    color: #fff;
+margin-bottom: 0;
+}
+.employee a {
+    color: #fff;
+}
+.department p {
+color: #fff;
+text-align: center;
+}
+.manage-department {
+margin-top: 20px;
+    background: green;
+    width: 80%;
+    margin-left: 10%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: groove 2px green;
+    border-bottom: none;
+    color: #fff;
+}
+.manage-department p {
+text-align: center;
+margin-bottom: 0;
+}
+.manage-department a {
+color: #fff;
+}
+.add-employee {
+background: rgba(255, 255, 255, 0.3);
+border-radius: 8px;
+margin-top: 20px;
+}
+.add-employee h5 {
+text-align: center;
+padding: 10px;
+}
+.add-employee input {
+width: 90%;
+margin-left: 5%;
+padding: 5px;
+border-radius: 8px;
+outline: none;
+border: none;
+margin-top: 10px;
+}
+.add-employee select {
+margin-top: 10px;
+width: 90%;
+margin-left: 5%;
+padding: 5px;
+border-radius: 8px;
+outline: none;
+border: none;
+}
+.add-employee button {
+margin-top: 20px;
+    background: green;
+    width: 80%;
+    margin-left: 10%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: groove 2px green;
+    border-bottom: none;
+    color: #fff;
+}
+</style>
+
+<div class="page-title">
+<h1><%= company.company_name %></h1>
+<h5><%= department.name %></h5>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="manager">
+    <h5>Manager: <a href="/users/<%= department.manager.id %>"><%= department.manager.fname %> <%= department.manager.lname %></a></h5>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="employees">
+    <h5>Employees</h5>
+    <% department.employees.forEach(function(employee) { %>
+        <div class="employee">
+            <h5><a href="/users/<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></a></h5>
+        </div>
+    <% }) %>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+<div class="employees">
+    <h5>Vehicles</h5>
+    <% department.vehicles.forEach(function(vehicle) { %>
+        <div class="employee">
+            <h5><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></h5>
+        </div>
+        <% }) %>
+    </div>
+    <div class="spread-break">
+        <hr>
+    </div>
+<div class="add-employee">
+    <h5>Add an Employee</h5>
+    <form action="/business/<%= company.id %>/manage/departments/<%= department.id %>/add-employee?_method=PATCH" method="post">
+        <select name="employees">
+            <% company.employees.forEach(function(employee) { %>
+                <option value="<%= employee.id %>"><%= employee.fname %> <%= employee.lname %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Add to Department</button>
+    </form>
+</div>
+<div class="add-employee">
+    <h5>Add a Vehicle</h5>
+    <form action="/business/<%= company.id %>/manage/departments/<%= department.id %>/add-vehicle?_method=PATCH" method="post">
+        <select name="vehicles">
+            <% inventory.forEach(function(item) { %>
+                <option value="<%= item.id %>"><%= item.name %></option>
+            <% }) %>
+        </select>
+        <button type="submit" disabled>Add to Department</button>
+    </form>
+</div>
+

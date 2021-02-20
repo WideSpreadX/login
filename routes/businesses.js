@@ -9,6 +9,7 @@ const Subpage = require('../models/Subpage');
 const Resume = require('../models/Resume');
 const Item = require('../models/Item');
 const Appointment = require('../models/Appointment');
+const Department = require('../models/Department');
 const { populate } = require('../models/User');
 
 
@@ -109,6 +110,85 @@ router.post('/:companyId/manage/appointments/:appointmentId', ensureAuthenticate
     res.redirect(`/business/${companyId}/manage/appointments/${appointmentId}`);
 });
 
+router.get('/:companyId/manage/departments', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId).populate('departments').populate('employees').exec()
+    const departments = await Department.find({in_company: {$eq: companyId}}).populate('manager').exec()
+    res.render('company-all-departments', {company, departments})
+})
+router.post('/:companyId/manage/departments', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    
+    const department = new Department({
+        in_company: companyId,
+        name: req.body.name,
+        manager: req.body.manager
+    });
+    department.save()
+
+    res.redirect(`/business/${companyId}/manage/departments`)
+});
+router.get('/:companyId/manage/departments/:departmentId', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const departmentId = req.params.departmentId;
+    const company = await Company.findById(companyId).populate(
+        {
+            path: 'departments',
+            model: 'Department',
+            populate: {
+                path: 'manager',
+                model: 'User'
+            }
+        }
+    ).populate('employees').exec()
+    const inventory = await Item.find({for_company: {$eq: companyId}})
+    const department = await Department.findById(departmentId).populate('manager').populate('employees').populate('vehicles').exec()
+    res.render('company-single-department', {company, department, inventory})
+});
+router.post('/:companyId/manage/departments/:departmentId', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const departmentId = req.params.departmentId;
+    const updates = req.body;
+    await Department.findByIdAndUpdate(departmentId, updates);
+
+    res.redirect(`/business/${companyId}/manage/departments/${departmentId}`)
+});
+router.patch('/:companyId/manage/departments/:departmentId/add-vehicle', ensureAuthenticated, async (req, res) => {
+    const company = req.params.companyId;
+    const department = req.params.departmentId;
+
+    const addVehicle = await Department.findByIdAndUpdate(department,
+        {$addToSet: {$set:{vehicles: req.body.vehicles}}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+    addVehicle.save();        
+    res.redirect(`/business/${company}/manage/departments/${department}`)
+});
+router.patch('/:companyId/manage/departments/:departmentId/add-employee', ensureAuthenticated, async (req, res) => {
+    const company = req.params.companyId;
+    const department = req.params.departmentId;
+
+    const addToDepartment = await Department.findByIdAndUpdate(department,
+        {$addToSet: {employees: req.body.employees}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+    addToDepartment.save();        
+    res.redirect(`/business/${company}/manage/departments/${department}`)
+});
 router.get('/:companyId/manage', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;
     const appointments = await Appointment.find({appointment_for: {$eq: companyId}}).populate('appointment_by').exec()
@@ -124,7 +204,9 @@ router.get('/:companyId/manage', ensureAuthenticated, async (req, res) => {
                 model: 'Resume'
             }
         }
-    }).exec()
+    })
+    .populate('departments')
+    .exec()
     const employee = await Company.findById(companyId).populate({
         path: 'employees',
         model: 'User'

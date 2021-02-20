@@ -191,7 +191,21 @@
             text-align: center;
         }
 
-
+        .departments {
+            text-align: center;
+            width: 100%;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            border-radius: 8px;
+        }
+        .departments p {
+            margin-bottom: 0;
+        }
+        .departments a {
+            color: #fff;
+        }
 
 
         .current-employees {
@@ -319,6 +333,13 @@
         </div>
 </div>
 
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="departments">
+    <p><a href="/business/<%= company.id %>/manage/departments">Manage Departments</a></p>
+</div>
 <div class="spread-break">
     <hr>
 </div>
