@@ -6,6 +6,7 @@ const movieSchema = new mongoose.Schema({
     poster: String,
     genre: String,
     rated: String,
+    spread_genre: String
 }); 
   
   

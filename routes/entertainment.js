@@ -13,7 +13,12 @@ router.get('/movies', async (req, res) => {
     const movies = await Movie.find()
     const comedies = await Movie.find({genre: {$eq: "Comedy"}})
     const action = await Movie.find({genre: {$eq: "Action, Thriller"}})
-    res.render('movies-home', {movies, comedies, action});
+    const actionSciFi = await Movie.find({genre: {$eq: "Action, Sci-Fi"}})
+    const actionAdventure = await Movie.find({genre: {$eq: "Action, Adventure"}})
+    const horrorMysteryThriller = await Movie.find({genre: {$eq: "Horror, Mystery, Thriller"}})
+
+
+    res.render('movies-home', {movies, comedies, action, actionSciFi, actionAdventure, horrorMysteryThriller});
 })
 router.get('/movies-user', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
