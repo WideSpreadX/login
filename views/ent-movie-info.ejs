@@ -200,3 +200,14 @@
     </div>
 </div>
 
+
+<div class="add-to-recommended">
+    <form action="/entertainment/movies/add-to-recommended" method="post">
+        <input type="text" name="name" value="<%= returnedData.Title %>">
+        <input type="text" name="link" value="<%= movie %>">
+        <input type="text" name="poster" value="<%= returnedData.Poster %>">
+        <input type="text" name="genre" value="<%= returnedData.Genre %>">
+        <input type="text" name="rated" value="<%= returnedData.Rated %>">
+        <button type="submit">Add</button>
+    </form>
+</div>

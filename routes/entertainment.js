@@ -4,12 +4,16 @@ const {ensureAuthenticated } = require('../config/auth');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const User = require('../models/User');
+const Movie = require('../models/Movie');
 
 router.get('/', (req, res) => {
     res.render('ent-home');
 })
-router.get('/movies', (req, res) => {
-    res.render('movies-home');
+router.get('/movies', async (req, res) => {
+    const movies = await Movie.find()
+    const comedies = await Movie.find({genre: {$eq: "Comedy"}})
+    const action = await Movie.find({genre: {$eq: "Action, Thriller"}})
+    res.render('movies-home', {movies, comedies, action});
 })
 router.get('/movies-user', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
@@ -87,6 +91,22 @@ router.post('/movies/save', ensureAuthenticated, async (req, res) => {
             {$addToSet: {movie_list: {movie_link: movieLink, movie_name: movieName}}},
         )
     res.redirect(`/entertainment/movies/${movieName}`)
+});
+
+router.post('/movies/add-to-recommended', ensureAuthenticated, (req, res) => {
+    const movieString = req.body.name;
+    const convertedString = movieString.replace(/\s/g, '+');
+    const movie = new Movie({
+        name: movieString,
+        link: convertedString,
+        poster: req.body.poster,
+        genre: req.body.genre,
+        rated: req.body.rated
+    })
+    movie.save()
+
+    res.redirect('/entertainment/movies');
+
 })
 
 module.exports = router;

@@ -54,3 +54,19 @@
         <p>You don't have any movies saved yet...</p>
     <% } %>
     </div>
+
+    <div class="recommended-movies">
+        <% movies.forEach(function(movie) { %>
+            <div class="movie">
+                <div class="movie-background">
+                    <img src="<%= movie.poster %>" alt="">
+                </div>
+                <div class="movie-title">
+                    <h5><%= movie.name %></h5>
+                </div>
+                <div class="movie-rating">
+                    <p><%= movie.rated %></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
