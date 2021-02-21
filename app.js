@@ -27,6 +27,12 @@ const { response } = require('express');
 
 
 const app = express();
+const server = require('http').Server(app)
+const io = require('socket.io')(server);
+
+
+
+
 
 require('./config/passport')(passport);
 // DB Config
@@ -620,6 +626,16 @@ app.get('/image/:filename', (req, res) => {
   })
 })
 
-const PORT = process.env.PORT || 5000;
 
+
+io.on('connection', socket => {
+  socket.on('join-room', () => {
+      console.log('joined room')
+  })
+})
+
+
+const PORT = process.env.PORT || 5000;
+const SPREADCHAT_PORT = process.env.PORT || 4000;
+server.listen(SPREADCHAT_PORT, console.log(`SpreadChat Server started on ${SPREADCHAT_PORT}`))
 app.listen(PORT, console.log(`Server started on ${PORT}`));

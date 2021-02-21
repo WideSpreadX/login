@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../models/User');
 const SpreadRoom = require('../models/SpreadRoom');
 const {ensureAuthenticated } = require('../config/auth');
+const {v4: uuidv4} = require('uuid')
+const socket = require('socket.io');
 
 
 router.get('/', ensureAuthenticated, async (req, res) => {
@@ -30,10 +32,38 @@ router.post('/video/create-spreadroom', ensureAuthenticated, async (req, res) =>
     res.redirect('/spreadchat/video');
 });
 
+router.post('/video/private', ensureAuthenticated, (req, res) => {
+    const thisUser = req.user._id;
+    const contact = req.body.userId;
+    const spreadroom = uuidv4();
+    console.log(`This User: ${thisUser}`);
+    console.log(`Contact: ${contact}`);
+    console.log(`SpreadRoom: ${spreadroom}`);
+
+    res.redirect(`/spreadchat/video/private/${spreadroom}/${thisUser}/${contact}`)
+})
+router.get('/video/private/:spreadroomId/:thisUser/:contact', ensureAuthenticated, async (req, res) => {
+    const thisUser = req.params.thisUser;
+    const contact = req.params.contact;
+    const spreadroomId = req.params.spreadroomId;
+
+    res.render('spreadroom-private', {spreadroomId, thisUser, contact});
+});
+
 router.get('/video/:spreadroomId', ensureAuthenticated, async (req, res) => {
     const spreadroomId = req.params.spreadroomId;
     const spreadroom = await SpreadRoom.findById(spreadroomId);
-
+    socket.emit('join-room', ROOM_ID);
+    socket.join(spreadroomId)
+    socket.to(spreadroomId).boradcast.emit('user-connected');
+    socket.on('user-connected', () => {
+        connectToNewUser();
+    })
+    const connectToNewUser = () => {
+        /* LEFT OFF HERE - 1:23:45 in video */
+    }
     res.render('spreadroom', {spreadroom});
-})
+});
+
+
 module.exports = router;

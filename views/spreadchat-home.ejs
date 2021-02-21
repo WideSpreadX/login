@@ -112,7 +112,11 @@
             </div>
             <div class="chat-options">
                 <div class="option">
-                    <p><a href="/spreadchat/video/<%= friend.id %>"><i class="fas fa-video"></i></a></p>
+                    <form action="/spreadchat/video/private" method="post">
+                        <input type="text" name="userId" value="<%= friend.id %>">
+                        <button type="submit"><i class="fas fa-video"></i></button>
+                    </form>
+                    
                     <p><a href="/spreadchat/audio/<%= friend.id %>"><i class="fas fa-phone-alt"></i></a></p>
                     <p><a href="/spreadchat/text/<%= friend.id %>"><i class="far fa-comments"></i></a></p>
                 </div>

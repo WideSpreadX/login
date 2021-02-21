@@ -1,0 +1,68 @@
+<style>
+    .page-title {
+        text-align: center;
+        padding: 20px;
+        padding-top: 0;
+    }
+    #contact-stream {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -7999;
+        background: blue;
+    }
+    #contact-stream video {
+        width: 100%;
+    }
+    #video-stream {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 100px;
+        height: 150px;
+        z-index: -7900;
+    }
+    #video-stream video {
+        border-radius: 8px;
+        width: 100%;
+    }
+</style>
+<script>
+    const ROOM_ID = '<%= spreadroomId %>';
+</script>
+<div class="page-title">
+    <h5>SpreadRoom</h5>
+    <p>Private</p>
+</div>
+
+<div id="video-stream"></div>
+<div id="contact-stream"></div>
+
+
+<script src="../socket.io/socket.io.js"></script>
+<script>
+    const myVideo = document.createElement('video');
+    myVideo.muted = true;
+    const videoGrid = document.getElementById('video-stream');
+    let myVideoStream;
+    
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    }).then(stream => {
+        myVideoStream = stream;
+        addVideoStream(myVideo, stream);
+    })
+    
+    
+    
+    const addVideoStream = (video, stream) => {
+        video.srcObject = stream;
+        video.addEventListener('loadedmetadata', () => {
+            video.play()
+        })
+        videoGrid.append(video)
+    }
+</script>
