@@ -1,0 +1,122 @@
+<style>
+    .page-title {
+        text-align: center;
+        padding: 20px;
+    }
+    .spreadchat {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        margin-top: 30px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+    }
+    .type {
+        width: 90%;
+        margin-left: 5%;
+        background: rgba(0, 0, 0, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .type p {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .type a {
+        color: #fff;
+    }
+    .friend-list {
+        width: 100%;
+        background:rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        margin-top: 30px;
+        padding: 10px;
+    }
+    .friend {
+        width: 90%;
+        margin-left: 5%;
+        height: 100px;
+        margin-bottom: 10px;
+        background:rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        position: relative;
+    }
+    .user-image {
+        width: 50px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .user-image img {
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .user-name {
+        position: absolute;
+        left: 50px;
+        top: 10px;
+        width: 70%;
+    }
+    .chat-options {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .option {
+        padding-right: 5px;
+    }
+    .option p {
+        margin-bottom: 0;
+        padding: 5px;
+    }
+    .option i {
+        color: #fff;
+        text-shadow: 0 0 3px lightskyblue;
+    }
+</style>
+
+<div class="page-title">
+    <h1>SpreadChat</h1>
+</div>
+<div class="spreadchat">
+    <div class="chat-types">
+        <div class="type">
+            <p><a href="/spreadchat/video">Video Chat</a></p>
+        </div>
+        <div class="type">
+            <p><a href="/spreadchat/audio">Audio Chat</a></p>
+        </div>
+        <div class="type">
+            <p><a href="/spreadchat/text">Text Chat</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="friend-list">
+    <% user.friends.forEach(function(friend) { %>
+        <div class="friend">
+            <div class="user-image">
+                <img src="/image/<%= friend.user_avatar %>" alt="">
+            </div>
+            <div class="user-name">
+                <h5><%= friend.fname %> <%= friend.lname %></h5>
+            </div>
+            <div class="chat-options">
+                <div class="option">
+                    <p><a href="/spreadchat/video/<%= friend.id %>"><i class="fas fa-video"></i></a></p>
+                    <p><a href="/spreadchat/audio/<%= friend.id %>"><i class="fas fa-phone-alt"></i></a></p>
+                    <p><a href="/spreadchat/text/<%= friend.id %>"><i class="far fa-comments"></i></a></p>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>

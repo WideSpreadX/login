@@ -404,6 +404,9 @@
     <% }) %>
     </div>
 </div>
+
+
+<% if (thisUser != thisClass.classCreator) { %>
 <div class="add-learning-content to-do">
 <div class="to-do-data">
     <p>Create Teacher-Admin-Page and move this content to it. Will need to change route data. Move 'Create Quiz' forms there and remove the drop-down feature.</p>
@@ -460,7 +463,9 @@
     </form>
 </div>
 
-
+<% } else { %>
+    <span></span>
+<% } %>
 
 <script>
     var coll = document.getElementsByClassName("collapsible-learning-point");

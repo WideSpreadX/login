@@ -131,7 +131,7 @@ router.post('/courses/:courseId/add-class', ensureAuthenticated, async (req, res
             
     
     res.redirect(`/academy/courses/${thisCourseId}`);
-})
+});
 
 
 router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) => {

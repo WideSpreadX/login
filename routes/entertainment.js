@@ -19,7 +19,8 @@ router.get('/movies', async (req, res) => {
 
 
     res.render('movies-home', {movies, comedies, action, actionSciFi, actionAdventure, horrorMysteryThriller});
-})
+});
+
 router.get('/movies-user', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId);
@@ -27,7 +28,17 @@ router.get('/movies-user', ensureAuthenticated, async (req, res) => {
 
     res.render('movies-home-user', {movieList});
 
-})
+});
+
+router.get('/movies/kids', async (req, res) => {
+    const movies = await Movie.find({rated: {$eq: "PG"}})
+    const comedies = await Movie.find({rated: {$eq: "PG"}, genre: {$eq: "Comedy"}})
+
+
+
+    res.render('movies-home-kids', {movies, comedies});
+});
+
 router.post('/movies/search', (req, res) => {
     const movie = req.body.movie;
     const movieString = req.body.movie;
