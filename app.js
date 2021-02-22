@@ -27,8 +27,7 @@ const { response } = require('express');
 
 
 const app = express();
-const server = require('http').Server(app)
-const io = require('socket.io')(server);
+
 
 
 
@@ -636,6 +635,4 @@ io.on('connection', socket => {
 
 
 const PORT = process.env.PORT || 5000;
-const SPREADCHAT_PORT = process.env.PORT || 4000;
-server.listen(SPREADCHAT_PORT, console.log(`SpreadChat Server started on ${SPREADCHAT_PORT}`))
 app.listen(PORT, console.log(`Server started on ${PORT}`));

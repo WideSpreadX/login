@@ -4,7 +4,6 @@ const User = require('../models/User');
 const SpreadRoom = require('../models/SpreadRoom');
 const {ensureAuthenticated } = require('../config/auth');
 const {v4: uuidv4} = require('uuid')
-const socket = require('socket.io');
 
 
 router.get('/', ensureAuthenticated, async (req, res) => {
@@ -53,15 +52,7 @@ router.get('/video/private/:spreadroomId/:thisUser/:contact', ensureAuthenticate
 router.get('/video/:spreadroomId', ensureAuthenticated, async (req, res) => {
     const spreadroomId = req.params.spreadroomId;
     const spreadroom = await SpreadRoom.findById(spreadroomId);
-    socket.emit('join-room', ROOM_ID);
-    socket.join(spreadroomId)
-    socket.to(spreadroomId).boradcast.emit('user-connected');
-    socket.on('user-connected', () => {
-        connectToNewUser();
-    })
-    const connectToNewUser = () => {
-        /* LEFT OFF HERE - 1:23:45 in video */
-    }
+
     res.render('spreadroom', {spreadroom});
 });
 
