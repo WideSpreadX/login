@@ -697,6 +697,18 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     padding: 10px;
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.weather h6 {
+    color:rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 1px lightskyblue;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    text-align: center;
+    padding: 5px;
+    padding-bottom: 10px;
     border-bottom: groove 2px lightskyblue;
 }
 .weather-data {
@@ -705,10 +717,12 @@
 }
 .weather-info {
     width: 80%;
+    padding-bottom: 10px;
 }
 .weather-info p {
     padding: 5px;
     padding-left: 15px;
+    margin-bottom: 0;
 }
 .weather-icons {
     width: 20%;
@@ -752,6 +766,7 @@
 
 <div class="weather">
     <h5>Current Weather</h5>
+    <h6><%= weather.name %></h6>
     <div class="weather-data">
         <div class="weather-info">
             <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %>&#8457;</p>
@@ -767,7 +782,9 @@
     </div>
 </div>
         
-
+<div class="spread-break">
+    <hr>
+</div>
 
 <!-- Profile Image -->
 <div class="user-avatar">
