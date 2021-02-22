@@ -627,11 +627,6 @@ app.get('/image/:filename', (req, res) => {
 
 
 
-io.on('connection', socket => {
-  socket.on('join-room', () => {
-      console.log('joined room')
-  })
-})
 
 
 const PORT = process.env.PORT || 5000;
