@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const {ensureAuthenticated } = require('../config/auth');
+const User = require('../models/User');
+
 
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -200,7 +202,37 @@ router.get('/health', (req, res) => {
     res.render('news-health', {currentPageTitle: 'Health', results});
     });
 });
-    
+
+
+router.get('/weather', ensureAuthenticated, async (req, res) => {
+    const id = req.user._id;
+    const user = await User.findById(id);
+    const userZip = user.zip;
+    const userUnits = user.measuring_system;
+     const weatherKey = process.env.WEATHER_API_KEY;
+    const options = {
+    method: 'GET',
+    url: `http://api.openweathermap.org/data/2.5/weather?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
+  };
+  const weather = await axios.request(options).then(function (response) {
+      const returnedData = response.data;
+      return returnedData;
+  }).catch(function (error) {
+    console.error(error);
+  }); 
+    const forecastOptions = {
+    method: 'GET',
+    url: `http://api.openweathermap.org/data/2.5/forecast?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
+  };
+  const forecast = await axios.request(forecastOptions).then(function (response) {
+      const returnedData = response.data;
+        return returnedData;
+      }).catch(function (error) {
+        console.error(error);
+      }); 
+
+    res.render('weather-home', {weather, forecast});
+});
 
 
 /* 

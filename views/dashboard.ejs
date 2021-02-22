@@ -730,6 +730,61 @@
 .weather-icons img {
     width: 90%;
 }
+.weather-link p {
+    background: green;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: groove 2px green;
+    border-bottom: none;
+    text-align: center;
+    padding: 5px;
+}
+.weather-link a {
+    color: #fff;
+}
+.forecast-container {
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background:rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border-top: groove 2px lightskyblue;
+}
+.forecast-container h5 {
+    border-radius: 0;
+    padding-bottom: 10px;
+}
+.weather-forecast {
+    display: inline-flex;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 10px;
+    border-radius: 8px;
+    border-left: groove 1px lightskyblue;
+    border-right: groove 1px lightskyblue;
+    overflow-x: scroll;
+    background:rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+}
+.weather-forecast-day {
+    width: 150px;
+    min-width: 150px;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: solid 1px #ccc;
+    text-align: center;
+    color: #fff; 
+    padding-top: 10px;
+}
+.weather-forecast-day:last-of-type {
+    border-right: none;
+}
+.forecast-day {
+    
+}
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
   from {opacity: 0;}
@@ -769,8 +824,8 @@
     <h6><%= weather.name %></h6>
     <div class="weather-data">
         <div class="weather-info">
-            <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %>&#8457;</p>
-            <p style="color: #fff"><i class="fas fa-wind"></i> <%= weather.wind.speed %>mph</p>
+            <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %> &#8457;</p>
+            <p style="color: #fff"><i class="fas fa-wind"></i> <%= weather.wind.speed %> mph</p>
         </div>
         <div class="weather-icons">
             <% weather.weather.forEach(function(item) { %>
@@ -778,6 +833,30 @@
                     <img src="https://openweathermap.org/img/wn/<%= item.icon %>.png" alt="<%= item.main %>">
                 </div>
             <% }) %>
+        </div>
+    </div>
+    <div class="forecast-container">
+
+    <h5>Forecast</h5>
+        <div class="weather-forecast">
+            <% forecast.list.forEach(function(day) { %>
+                <div class="weather-forecast-day">
+                    <div class="day-container">
+                        <p class="forecast-day"><small><%= day.dt_txt %></small></p>
+                    </div>
+                    <div class="forecast-icon">
+                        <% day.weather.forEach(function(icon) { %>
+                        <img src="https://openweathermap.org/img/wn/<%= icon.icon %>.png" alt="<%= day.weather.main %>">
+                        <% }) %>
+                    </div>
+                    <div class="forecast-temp">
+                        <p><i class="fas fa-thermometer-three-quarters"></i> <%= day.main.temp %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="weather-link">
+            <p><a href="/news/weather">More Weather</a></p>
         </div>
     </div>
 </div>

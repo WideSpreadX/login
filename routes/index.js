@@ -98,6 +98,17 @@ conn.once('open', () => {
       }).catch(function (error) {
         console.error(error);
       }); 
+        const forecastOptions = {
+        method: 'GET',
+        url: `http://api.openweathermap.org/data/2.5/forecast?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
+      };
+      const forecast = await axios.request(forecastOptions).then(function (response) {
+          const returnedData = response.data;
+            return returnedData;
+          }).catch(function (error) {
+            console.error(error);
+          }); 
+
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const articles = await Article.find({ author: { $eq: id } });
         const videos = await Video.find({videoOwner: {$eq: id }});
@@ -168,6 +179,7 @@ conn.once('open', () => {
                 nearbyUsers,
                 inSpreads,
                 weather,
+                forecast,
                 currentPageTitle: 'Dashboard'
                 })
 
