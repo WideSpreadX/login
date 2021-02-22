@@ -32,6 +32,7 @@ router.get('/', (req, res) => {
 
 const db = require('../config/keys').MongoURI;
 const UserBackgroundImage = require('../models/UserBackgroundImage');
+const { response } = require('express');
 const conn = mongoose.createConnection(db)
 let gfs;
 conn.once('open', () => {
@@ -83,25 +84,27 @@ conn.once('open', () => {
         ).exec();
 
 
-        const weatherKey = process.env.WEATHER_API_KEY;
+        const user = await User.findById(id);
+        const userZip = user.zip;
+        const userUnits = user.measuring_system;
+         const weatherKey = process.env.WEATHER_API_KEY;
         const options = {
         method: 'GET',
-        url: `api.openweathermap.org/data/2.5/weather?zip=32163,us&appid=${weatherKey}`
+        url: `http://api.openweathermap.org/data/2.5/weather?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
       };
-      
-      const weather = axios.request(options).then(function (response) {
+      const weather = await axios.request(options).then(function (response) {
           const returnedData = response.data;
-        console.log(returnedData);
+          return returnedData;
       }).catch(function (error) {
         console.error(error);
-      });
+      }); 
         const resume = await Resume.find({ resumeOwner: { $eq: id } });
         const articles = await Article.find({ author: { $eq: id } });
         const videos = await Video.find({videoOwner: {$eq: id }});
         const userAudio = await User.findById(id).select('user_audio');
-        console.log(`userAudio: ${userAudio}`);
+        /* console.log(`userAudio: ${userAudio}`); */
         const audioTracks = await Audio.find({audioOwner: {$eq: id }});
-        console.log(`Audio Tracks: ${audioTracks}`)
+        /* console.log(`Audio Tracks: ${audioTracks}`) */
         const profileImages = await ProfileImage.find({ imageOwner: { $eq: id } });
         const avatarImage = await Avatar.findOne({ imageOwner: { $eq: id } });
         const nearbyUsers = await User.find();
@@ -124,15 +127,15 @@ conn.once('open', () => {
         console.log("Users Posts: " + posts)
         console.log("Users Posts: " + profileImages) */
 
-        console.log(`Friend ID's ${friends}`)
+        /* console.log(`Friend ID's ${friends}`) */
         friends.forEach(friendId);
         function friendId(value) {
-          console.log(value)
+          /* console.log(value) */
           nearbyUsers.forEach(getId)
           function getId(id) {
-            console.log(id.id)
+            /* console.log(id.id) */
           if (value == id.id) {
-            console.log(`This user is your friend ${value} - ${id.id}`)
+            /* console.log(`This user is your friend ${value} - ${id.id}`) */
             }
             
           }
