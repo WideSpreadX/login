@@ -376,34 +376,6 @@
 <div class="spread-break">
     <hr>
 </div>
-<div class="quiz">
-    <h2 style="text-align: center;">Quiz Yourself</h2>
-    <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
-    <div class="quiz-container">
-    <% quizzes.forEach(function(quiz){ %>
-        <form action="/academy/<%= thisCourseId %>/<%= thisClass.id %>/<%= quiz.id %>/take-quiz" method="post">
-            <input type="text" value="<%= quiz.id %>">
-            <input type="text" value="<%= quiz.forLearningPoint %>">
-        <ol>
-            <li>
-                <p><%= quiz.question1 %><span><small>  <%= quiz.difficulty1 %></small></span></p>
-                <input type="text" name="studentAnswer1" placeholder="Your Answer">
-            </li>
-            <li>
-                <p><%= quiz.question2 %><span><small>  <%= quiz.difficulty2 %></small></span></p>
-                <input type="text" name="studentAnswer2" placeholder="Your Answer">
-            </li>
-            <li>
-                <p><%= quiz.question3 %><span><small>  <%= quiz.difficulty3 %></small></span></p>
-                <input type="text" name="studentAnswer3" placeholder="Your Answer">
-            </li>
-            
-        </ol>
-        <button type="submit">Hand in Quiz</button>
-    </form>
-    <% }) %>
-    </div>
-</div>
 
 
 <% if (thisUser != thisClass.classCreator) { %>
@@ -439,26 +411,63 @@
 
 
 
-<div class="add-quiz nav-bar">
-    <button>Create Quiz</button>
+
+<div style="text-align: center; color: #fff;" class="add-questions">
+    <h5><a style="text-align: center; color: #fff;" href="/academy/<%= thisCourseId %>/<%= thisClass.id %>/<%= quiz.id %>/add">Add to Quiz</a></h5>
+</div>
+<div class="add-quiz">
+    <h5>Create Quiz</h5>
 
     <form action="/academy/<%= thisCourseId %>/<%= thisClass.id %>/add-quiz" method="post" class="add-form">
         <input type="text" name="classId" value="<%= thisClass.id %>">
         <input type="text" name="courseId" value="<%= thisCourseId %>">
-        <select name="forLearningPoint" id="forLearningPoint">
-            <% learningPoints.forEach(function(point){ %>
-                <option value="<%= point.id %>"><%= point.section_header%> - <%= point.id %></option>
-            <% })%>
-        </select>
-        <input type="text" name="question1" id="question1" placeholder="Question 1">
+
+<!-- 
+        <input type="text" name="question" placeholder="Question">
+        <input type="text" name="option1" placeholder="Option 1">
+        <input type="text" name="option2" placeholder="Option 2">
+        <input type="text" name="option3" placeholder="Option 3">
+        <input type="text" name="option4" placeholder="Option 4">
+        <input type="text" name="answer" placeholder="Answer">
+        <p>Difficulty</p>
+        <p><small>(1 - easy/ 5 - hard)</small></p>
+        <input type="number" name="difficulty"> -->
+        
+<!--         <input type="text" name="question1" id="question1" placeholder="Question 1">
+        <input type="text" name="question1_option1" id="question1_option1" placeholder="Option 1">
+        <input type="text" name="question1_option2" id="question1_option2" placeholder="Option 2">
+        <input type="text" name="question1_option3" id="question1_option3" placeholder="Option 3">
+        <input type="text" name="question1_option4" id="question1_option4" placeholder="Option 4">
         <input type="text" name="answer1" id="answer1" placeholder="Answer 1">
         <input type="number" name="difficulty1" id="difficulty1" placeholder="Difficulty (1-3)">
         <input type="text" name="question2" id="question2" placeholder="Question 2">
+        <input type="text" name="question2_option1" id="question2_option1" placeholder="Option 1">
+        <input type="text" name="question2_option2" id="question2_option2" placeholder="Option 2">
+        <input type="text" name="question2_option3" id="question2_option3" placeholder="Option 3">
+        <input type="text" name="question2_option4" id="question2_option4" placeholder="Option 4">
         <input type="text" name="answer2" id="answer2" placeholder="Answer 2">
         <input type="number" name="difficulty2" id="difficulty2" placeholder="Difficulty (1-3)">
         <input type="text" name="question3" id="question3" placeholder="Question 3">
+        <input type="text" name="question3_option1" id="question3_option1" placeholder="Option 1">
+        <input type="text" name="question3_option2" id="question3_option2" placeholder="Option 2">
+        <input type="text" name="question3_option3" id="question3_option3" placeholder="Option 3">
+        <input type="text" name="question3_option4" id="question3_option4" placeholder="Option 4">
         <input type="text" name="answer3" id="answer3" placeholder="Answer 3">
         <input type="number" name="difficulty3" id="difficulty3" placeholder="Difficulty (1-3)">
+        <input type="text" name="question4" id="question4" placeholder="Question 4">
+        <input type="text" name="question4_option1" id="question4_option1" placeholder="Option 1">
+        <input type="text" name="question4_option2" id="question4_option2" placeholder="Option 2">
+        <input type="text" name="question4_option3" id="question4_option3" placeholder="Option 3">
+        <input type="text" name="question4_option4" id="question4_option4" placeholder="Option 4">
+        <input type="text" name="answer4" id="answer4" placeholder="Answer 4">
+        <input type="number" name="difficulty4" id="difficulty4" placeholder="Difficulty (1-3)">
+        <input type="text" name="question5" id="question5" placeholder="Question 5">
+        <input type="text" name="question5_option1" id="question5_option1" placeholder="Option 1">
+        <input type="text" name="question5_option2" id="question5_option2" placeholder="Option 2">
+        <input type="text" name="question5_option3" id="question5_option3" placeholder="Option 3">
+        <input type="text" name="question5_option4" id="question5_option4" placeholder="Option 4">
+        <input type="text" name="answer3" id="answer3" placeholder="Answer 3">
+        <input type="number" name="difficulty5" id="difficulty5" placeholder="Difficulty (1-3)"> -->
         <button type="submit"><i class="fas fa-plus"></i>  Add Quiz</button>
     </form>
 </div>

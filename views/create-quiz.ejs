@@ -1,0 +1,163 @@
+<style>
+    .add-question {
+        width: 100%;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .add-question h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .add-question input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .add-question p {
+        margin-bottom: 0;
+        text-align: center;
+        color: #fff;
+    }
+
+    .add-question button {
+        background: green;
+            width: 80%;
+            margin-left: 10%;
+            text-align: center;
+            padding: 8px;
+            padding-bottom: 1px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: groove 2px green;
+            box-shadow: inset 0 2px 2px 1px rgba(0, 0, 0, 0.445);
+            border-bottom: none;
+            margin-top: 20px;
+            color: #fff;
+    }
+    .option {
+        display: inline-flex;
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+    .option p {
+        width: 10%;
+        padding-top: 15px;
+    }
+    .option input {
+        width: 90%;
+    }
+    .answer {
+        display: inline-flex;
+        width: 90%;
+        margin-left: 5%;
+    }
+    .answer-title {
+        margin-top: 20px;
+        text-align: center;
+        color: #fff;
+    }
+    .answer-option {
+        display: inline-flex;
+        width: 25%;
+    }
+    .answer-option p {
+        width: 50%;
+        text-align: right;
+        padding: 5px;
+    }
+    .answer-option input {
+        width: 50%;
+        text-align: left;
+        padding-top: 20px;
+        margin-left: 0;
+    }
+    .difficulty {
+        margin-top: 20px;
+        text-align: center;
+        color: #fff;
+    }
+    .current-questions {
+        background: blue;
+        color: #fff;
+    }
+    .current-question {
+        margin-bottom: 20px;
+        background: #000;
+    }
+</style>
+
+<div class="current-questions">
+    <% quiz.questions.forEach(function(question) { %>
+        <div class="current-question">
+            <p><%= question.question %></p>
+            <div class="current-options">
+                <% question.options.forEach(function(option) { %>
+                    <div class="current-option">
+                        <p><%= option %></p>
+                    </div>
+                    <% }) %>
+            </div>
+            <div class="current-answer">
+                <p><%= question.answer %></p>
+            </div>
+            <div class="current-difficulty">
+                <p><%= question.difficulty %></p>
+            </div>
+
+        </div>
+    <% }) %>
+</div>
+<div class="add-question">
+    <h5>Add a Question</h5>
+    <form action="/academy/<%= course.id %>/<%= thisClass.id %>/<%= quiz.id %>/add?_method=PATCH" method="post">
+        <input type="text" name="question" placeholder="Question">
+        <div class="option">
+            <p>A</p>
+            <input type="text" name="option1" placeholder="Option 1">
+        </div>
+        <div class="option">
+            <p>B</p>
+            <input type="text" name="option2" placeholder="Option 2">
+        </div>
+        <div class="option">
+            <p>C</p>
+            <input type="text" name="option3" placeholder="Option 3">
+        </div>
+        <div class="option">
+            <p>D</p>
+            <input type="text" name="option4" placeholder="Option 4">
+        </div>
+        <div class="answer-title">
+            <p>Answer:</p>
+        </div>
+            <div class="answer">
+            <div class="answer-option">
+                <p>A</p>
+                <input type="radio" name="answer" value="0">
+            </div>
+            <div class="answer-option">
+                <p>B</p>
+                <input type="radio" name="answer" value="1">
+            </div>
+            <div class="answer-option">
+                <p>C</p>
+                <input type="radio" name="answer" value="2">
+            </div>
+            <div class="answer-option">
+                <p>D</p>
+                <input type="radio" name="answer" value="3">
+            </div>
+        </div>
+        <div class="difficulty">
+            <p>Difficulty</p>
+            <p><small>(1 - easy/ 5 - hard)</small></p>
+            <input type="number" name="difficulty">
+        </div>
+        <button type="submit">Add Question</button>
+    </form>
+</div>

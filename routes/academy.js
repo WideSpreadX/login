@@ -143,11 +143,10 @@ router.get('/courses/:courseId/:classId', ensureAuthenticated, async (req, res) 
     const thisCourse = await Course.findById(thisCourseId);
     const courseNotebooks = await Notebook.find({notebookOwner: {$eq: userId}, forClass: {$eq: classId}}).populate('notes').exec()
     const learningPoints = await LearningPoint.find({class: {$eq: classId}})
-    const quizzes = await Quiz.find({forLearningPoint: {$eq: learningPoints._id }})
-    learningPoints
-    .exec(
-        res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisUser, thisClass, thisCourse, thisCourseId, quizzes, courseNotebooks})
-        )
+    const quiz = await Quiz.findOne({forClass: {$eq: classId }})
+
+    res.render('class-page', {currentPageTitle: 'Classroom', learningPoints, thisUser, thisClass, thisCourse, thisCourseId, quiz, courseNotebooks})
+        
 });
 
 
@@ -196,34 +195,88 @@ router.post('/:courseId/:classId/add-quiz', ensureAuthenticated, (req, res) => {
     const courseId = req.body.courseId;
     const classId = req.params.classId;
 
-    const learningPointQuiz = new Quiz({
-        forLearningPoint: req.body.forLearningPoint,
-            question1: req.body.question1,
+    const quiz = new Quiz({
+        forClass: req.body.classId,
+
+/*             question1: req.body.question1,
+            question1_option1: req.body.question1_option1,
+            question1_option2: req.body.question1_option2,
+            question1_option3: req.body.question1_option3,
+            question1_option4: req.body.question1_option4,
             answer1: req.body.answer1,
             difficulty1: req.body.difficulty1,
             question2: req.body.question2,
+            question2_option1: req.body.question2_option1,
+            question2_option2: req.body.question2_option2,
+            question2_option3: req.body.question2_option3,
+            question2_option4: req.body.question2_option4,
             answer2: req.body.answer2,
             difficulty2: req.body.difficulty2,
             question3: req.body.question3,
+            question3_option1: req.body.question3_option1,
+            question3_option2: req.body.question3_option2,
+            question3_option3: req.body.question3_option3,
+            question3_option4: req.body.question3_option4,
             answer3: req.body.answer3,
             difficulty3: req.body.difficulty3,
             question4: req.body.question4,
+            question4_option1: req.body.question4_option1,
+            question4_option2: req.body.question4_option2,
+            question4_option3: req.body.question4_option3,
+            question4_option4: req.body.question4_option4,
             answer4: req.body.answer4,
             difficulty4: req.body.difficulty4,
             question5: req.body.question5,
+            question5_option1: req.body.question5_option1,
+            question5_option2: req.body.question5_option2,
+            question5_option3: req.body.question5_option3,
+            question5_option4: req.body.question5_option4,
             answer5: req.body.answer5,
-            difficulty5: req.body.difficulty5,
+            difficulty5: req.body.difficulty5, */
     })
-    learningPointQuiz.save()
+    quiz.save()
     res.redirect(`/academy/courses/${courseId}/${classId}`)
 });
 
-router.get('/:learningPointId/add-quiz', ensureAuthenticated, (req, res) => {
-    const learningPointId = req.params.learningPointId;
-    res.render('academy-add-quiz')
+router.get('/:courseId/:classId/:quizId/add', ensureAuthenticated, async (req, res) => {
+    const courseId = req.params.courseId;
+    const classId = req.params.classId;
+    const quizId = req.params.quizId;
+
+    const course = await Course.findById(courseId);
+    const thisClass = await Class.findById(classId);
+    const quiz = await Quiz.findOne({forClass: {$eq: classId}});
 
 
+    res.render('create-quiz', {course, thisClass, quiz, quizId});
 });
+
+router.patch('/:courseId/:classId/:quizId/add', ensureAuthenticated, async (req, res) => {
+    const courseId = req.params.courseId;
+    const classId = req.params.classId;
+    const quizId = req.params.quizId;
+    const questionData = {
+        question: req.body.question,
+        options: [req.body.option1, req.body.option2, req.body.option3, req.body.option4],
+        answer: req.body.answer,
+        difficulty: req.body.difficulty
+    }
+    const updateQuiz = await Quiz.findByIdAndUpdate(quizId,
+        {$addToSet: {questions: questionData}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+        )
+    updateQuiz.save();   
+    
+    res.redirect(`/academy/${courseId}/${classId}/${quizId}/add`);
+});
+
 router.post('/:courseId/:classId/:quizId/take-quiz', ensureAuthenticated, (req, res) => {
     const courseId = req.params.courseId;
     const classId = req.params.classId;

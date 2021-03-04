@@ -216,16 +216,18 @@ router.get('/weather', ensureAuthenticated, async (req, res) => {
   };
   const weather = await axios.request(options).then(function (response) {
       const returnedData = response.data;
+      console.log(`Current Weather: ${weather}`);
       return returnedData;
-  }).catch(function (error) {
-    console.error(error);
-  }); 
+    }).catch(function (error) {
+        console.error(error);
+    }); 
     const forecastOptions = {
-    method: 'GET',
-    url: `http://api.openweathermap.org/data/2.5/forecast?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
-  };
-  const forecast = await axios.request(forecastOptions).then(function (response) {
-      const returnedData = response.data;
+        method: 'GET',
+        url: `http://api.openweathermap.org/data/2.5/forecast?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
+    };
+    const forecast = await axios.request(forecastOptions).then(function (response) {
+        const returnedData = response.data;
+        console.log(`Weather Forecast: ${forecast}`);
         return returnedData;
       }).catch(function (error) {
         console.error(error);
