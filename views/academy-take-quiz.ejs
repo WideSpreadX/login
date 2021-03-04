@@ -1,0 +1,42 @@
+<style>
+    .quiz-container {
+        width: 100%;
+        min-height: 200px;
+        background: blue;
+    }
+    .quiz-container p {
+        color: #fff;
+    }
+    .option {
+        padding-left: 30px;
+    }
+    ol {
+        list-style-type: upper-alpha;
+        color: black;
+    }
+</style>
+<div class="page-title">
+    <h1>Take Quiz</h1>
+</div>
+<div class="quiz-container">
+    <% quiz.questions.forEach(function(question) { %>
+        <p><%= question.question %></p>
+        <div class="options">
+            <div class="option">
+                <p>A: <%= question.options[0] %></p>
+            </div>
+            <div class="option">
+                <p>B: <%= question.options[1] %></p>
+            </div>
+            <div class="option">
+                <p>C: <%= question.options[2] %></p>
+            </div>
+            <div class="option">
+                <p>D: <%= question.options[3] %></p>
+            </div>
+        </div>
+        <div class="answer">
+            <p>Answer: </p>
+        </div>
+    <% }) %>
+</div>

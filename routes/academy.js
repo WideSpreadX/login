@@ -277,6 +277,16 @@ router.patch('/:courseId/:classId/:quizId/add', ensureAuthenticated, async (req,
     res.redirect(`/academy/${courseId}/${classId}/${quizId}/add`);
 });
 
+router.get('/courses/:courseId/:classId/:quizId', ensureAuthenticated, async (req, res) => {
+    const user = req.user._id;
+    const courseId = req.params.courseId;
+    const classId = req.params.classId;
+    const quizId = req.params.quizId;
+
+    const quiz = await Quiz.findById(quizId);
+
+    res.render('academy-take-quiz', {quiz})
+})
 router.post('/:courseId/:classId/:quizId/take-quiz', ensureAuthenticated, (req, res) => {
     const courseId = req.params.courseId;
     const classId = req.params.classId;
