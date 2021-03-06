@@ -1,0 +1,41 @@
+<style>
+
+</style>
+
+<div class="page-title">
+    <h1>Video Upload</h1>
+</div>
+
+<div class="video-upload">
+    <form action="/entertainment/videos/upload-it" method="post">
+        <input type="file" name="" id="picker">
+        <input type="text" name="title" placeholder="Video Title">
+        <input type="text" name="description" placeholder="Video Description">
+        <button type="submit">Upload Video</button>
+    </form>
+</div>
+
+
+<script>
+    import * as UpChunk from '@mux/upchunk';
+
+const picker = document.getElementById('picker');
+
+picker.onchange = () => {
+  const getUploadUrl = () =>
+    fetch('/the-backend-endpoint').then(res => {
+      res.ok ? res.text() : throw new Error('Error getting an upload URL :(')
+    });
+
+  const upload = UpChunk.createUpload({
+    endpoint: getUploadUrl,
+    file: picker.files[0],
+    chunkSize: 5120, // Uploads the file in ~5mb chunks
+  });
+
+  // subscribe to events
+  upload.on('error', err => {
+    console.error('💥 🙀', err.detail);
+  });
+}  
+</script>

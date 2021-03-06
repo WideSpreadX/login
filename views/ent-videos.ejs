@@ -45,6 +45,7 @@
         display: inline-flex;
         width: 100%;
         margin-bottom: 20px;
+        padding-left: 0;
     }
     .left {
         width: 20%;
@@ -54,6 +55,8 @@
     }
     .user-image img {
         width: 100%;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
     }
     .right {
         width: 80%;
@@ -87,7 +90,7 @@
   controls
   style="width: 100%; max-width: 700px;"
 ></video>
-
+<!-- NEED TO CHANGE <%= user %> info to Comment.populate('author') -->
 <div class="video-comments">
     <h5>Comments</h5>
     <div class="comments">
@@ -95,15 +98,32 @@
             <div class="left">
 
                 <div class="user-image">
-                    <img src="/images/system/default-user_1a1a1a.png" alt="">
+                    <img src="/image/<%= user.user_avatar %>" alt="">
                 </div>
             </div>
             <div class="right">
                 <div class="user-name">
-                    <h6>Jon Olson</h6>
+                    <h6><%= user.fname %> <%= user.lname %></h6>
                 </div>
                 <div class="comment-body">
                     <p>This is a comment on the video.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="left">
+
+                <div class="user-image">
+                    <img src="/image/<%= user.user_avatar %>" alt="">
+                </div>
+            </div>
+            <div class="right">
+                <div class="user-name">
+                    <h6><%= user.fname %> <%= user.lname %></h6>
+                </div>
+                <div class="comment-body">
+                    <p>This is a different comment on the video.</p>
                 </div>
             </div>
         </div>

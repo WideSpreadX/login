@@ -1,10 +1,22 @@
 <style>
-    .entertainment-categories {
+    .slider-container {
+        text-align: center;
         background: rgba(0, 0, 0, 0.3);
-        padding: 10px;
         border-radius: 8px;
         border-left: groove 1px lightskyblue;
         border-right: groove 1px lightskyblue;
+        padding: 20px;
+    }
+    .slider-container p {
+        padding-top: 15px;
+        color: lightskyblue;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .slider-container small {
+        color: lightskyblue;
+    }
+    .entertainment-categories {
     }
     .entertainment-categories a {
         background: rgba(255, 255, 255, 0.3);
@@ -13,12 +25,17 @@
         color: #fff;
         padding: 8px;
         border-radius: 8px;
+        margin-left: 8px;
     }
 </style>
 <h1 style="text-align: center; margin-bottom: 30px;">Entertainment</h1>
-<div class="entertainment-categories">
-    <a href="/entertainment/movies">Movies</a>
-    <a href="/entertainment/videos">Videos</a>
-    <a href="/entertainment/tv">TV</a>
-    <a href="/entertainment/music">Music</a>
+<div class="slider-container">
+
+    <div class="entertainment-categories">
+        <a href="/entertainment/movies">Movies</a>
+        <a href="/entertainment/tv">TV</a>
+        <a href="/entertainment/videos/<%= user.id %>">Videos</a>
+        <a href="/entertainment/music">Music</a>
+    </div>
+    <p><small>Scroll left & right for more options</small></p>
 </div>

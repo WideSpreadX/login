@@ -1,0 +1,56 @@
+<style>
+    
+    .upload-video {
+        width: 90%;
+        margin-left: 5%;
+        background: rgba(255, 255, 255, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+    .upload-video a {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+    }
+    .user-data {
+       /*  background: rgb(117, 8, 150); */
+        width: 100%;
+        height: 300px;
+        min-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-data p {
+        color: #fff;
+    }
+    .new-videos {
+        width: 100%;
+        height: 300px;
+        min-height: 300px;
+        /* background: blue; */
+    }
+</style>
+
+<div class="page-title">
+    <h1>Video Dashboard</h1>
+</div>
+<div class="upload-video">
+    <a href="/entertainment/videos/<%= user.id %>/upload">Upload a Video</a>
+</div>
+<div class="user-data">
+    <div class="user-uploads">
+        <h5>Your Uploads</h5>
+        <% userVideo.forEach(function(video) { %>
+            <div class="user-video">
+                <video src="<%= video.source %>"></video>
+            </div>
+        <% }) %>
+    </div>
+    <p><%= user %></p>
+</div>
+<div class="new-videos">
+
+</div>
