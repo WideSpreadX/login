@@ -1,4 +1,140 @@
 <style>
+
+    /* DESKTOP STYLE */
+
+      @media screen and (min-width: 1200px) {
+    .widespread-header {
+      text-align: center;
+      padding: 0;
+    }
+    .logo {
+      margin: 0;
+      width: 95%;
+    }
+    .logo h1 {
+      margin: 0;
+    }
+    .user-background-color {
+        z-index: -300;
+    }
+    .your-friends {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .your-friends a h5 {
+        padding: 10px;
+        width: 50%;
+        margin-left: 25%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .find-new-friends {
+        padding: 10px;
+        display: inline-flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 90%;
+        height: 350px;
+        min-height: 350px;
+        max-height: 350px;
+    }
+    .new-friend {
+        margin-left: 20px;
+        position: relative;
+        height: 90%;
+    }
+    .possible-friend-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .possible-friend-image {
+        width: 100%;
+        height: 300px;
+        max-height: 300px;
+        min-height: 300px;
+        overflow-y: hidden;
+        border-radius: 8px;
+    }
+    
+    .possible-friend-image img {
+        width: 100%;
+    }
+    
+    .possible-friend {
+        border-radius: 8px;
+        width: 100%;
+        height: 300px;
+        min-height: 300px;
+        max-height: 300px;
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: none;
+        opacity: 1.0;
+    }
+    .possible-friend h3 {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(2px);
+        color: #fff;
+    }
+    .possible-friend-data {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background:rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .possible-friend-data p {
+        margin-bottom: 0;
+        padding: 0;
+    }
+    .add-friend-container {
+        display: inline-flex;
+        width: 100%;
+    }
+    .add-friend {
+        width: 50%;
+    }
+    .add-friend button {
+        background: rgba(0, 128, 0, 0.3);
+        width: 40px;
+        height: 40px;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        color: #fff;
+        box-shadow: none;
+        
+    }
+    .remove-friend {
+        width: 50%;
+    }
+    .remove-friend button {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 0, 0, 0.3);
+        border: none;
+        border-top: groove 2px red;
+        border-bottom: groove 2px red;
+        outline: none;
+        color: #fff;
+    }
+  }
+
+
+
+/* CELL PHONE STYLE */
+
 .spread-break hr {
     background: lightskyblue;
     box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
@@ -819,6 +955,10 @@
     <hr>
 </div>
 
+
+<% if (!profile.zip) { %>
+<span style="display: none;"></span>
+<% } else { %>
 <div class="weather">
     <h5>Current Weather</h5>
     <h6><%= weather.name %></h6>
@@ -860,7 +1000,11 @@
         </div>
     </div>
 </div>
-        
+    
+<% } %>
+
+
+
 <div class="spread-break">
     <hr>
 </div>
@@ -1314,33 +1458,35 @@
             <a href="/users/<%= friend.id %>">
                 <div class="possible-friend">
                         <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
+                        <div class="possible-friend-data">
+
                         <% if (!friend.town && !friend.state && !friend.country) { %>
                             <br>
                             <br>
-                            <% } else { %> 
+                            <% } else { %>
                                 <p><%= friend.town %>, <%= friend.state %></p>
                                 <p><%= friend.country %></p>
                                 <% } %>
                             </a>
                             <div class="add-friend-container">
-                                <div class="add-friend">
-                                    <form action="/users/<%= profile._id %>/add-friend" method="POST">
+                                    <div class="add-friend">
+                                        <form action="/users/<%= profile._id %>/add-friend" method="POST">
+                                            <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
+                                            <button class="" type="submit">
+                                                <i class="fas fa-user-plus"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                <div class="remove-friend">
+                                    <form action="/users/<%= profile._id %>/remove-friend?_method=PATCH" method="POST">
                                         <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
                                         <button class="" type="submit">
-                                            <i class="fas fa-user-plus"></i>
+                                            <i class="fas fa-user-minus"></i>
                                         </button>
                                     </form>
                                 </div>
-                        <div class="remove-friend">
-                            <form action="/users/<%= profile._id %>/remove-friend?_method=PATCH" method="POST">
-                                <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
-                                <button class="" type="submit">
-                                    <i class="fas fa-user-minus"></i>
-                                </button>
-                            </form>
+                            </div>
                         </div>
-
-                    </div>
                     </div>
                 </div>
                 <%} else { %>

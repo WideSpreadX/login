@@ -263,6 +263,30 @@
             border-bottom: none;
             color: #fff;
     }
+
+    .take-quiz {
+        border-radius: 8px;
+        background:rgba(255, 255, 255, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        width: 90%;
+        margin-left: 5%;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .take-quiz a {
+        color: #fff;
+    }
+    .add-quiz {
+        text-align: center;
+    }
+    .add-quiz button {
+        background: rgba(0, 128, 0, 0.5);
+        border: groove 2px green;
+        width: 90%;
+        margin-left: 5%;
+    }
     }
 </style>
 
@@ -374,10 +398,18 @@
         </div>
     <% }) %>
 </div>
+
 <div class="spread-break">
     <hr>
 </div>
 
+<div class="take-quiz">
+    <a href="/academy/courses/<%= thisCourseId %>/<%= thisClass.id %>/<%= quiz.id %>">Take Quiz</a>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
 
 <% if (thisUser != thisClass.classCreator) { %>
 <div class="add-learning-content to-do">
@@ -413,15 +445,12 @@
 
 
 
-<div style="text-align: center; color: #fff;" class="add-questions">
-    <h5><a style="text-align: center; color: #fff;" href="/academy/<%= thisCourseId %>/<%= thisClass.id %>/<%= quiz.id %>/add">Add to Quiz</a></h5>
-</div>
+
 <div class="add-quiz">
-    <h5>Create Quiz</h5>
 
     <form action="/academy/<%= thisCourseId %>/<%= thisClass.id %>/add-quiz" method="post" class="add-form">
-        <input type="text" name="classId" value="<%= thisClass.id %>">
-        <input type="text" name="courseId" value="<%= thisCourseId %>">
+        <input type="text" name="classId" value="<%= thisClass.id %>" hidden>
+        <input type="text" name="courseId" value="<%= thisCourseId %>" hidden>
 
 <!-- 
         <input type="text" name="question" placeholder="Question">
@@ -469,13 +498,17 @@
         <input type="text" name="question5_option4" id="question5_option4" placeholder="Option 4">
         <input type="text" name="answer3" id="answer3" placeholder="Answer 3">
         <input type="number" name="difficulty5" id="difficulty5" placeholder="Difficulty (1-3)"> -->
-        <button type="submit"><i class="fas fa-plus"></i>  Add Quiz</button>
+        <button type="submit">Create Quiz</button>
     </form>
 </div>
 
 <% } else { %>
     <span></span>
 <% } %>
+
+<div style="text-align: center; color: #fff;" class="add-questions">
+    <h5><a style="text-align: center; color: #fff;" href="/academy/<%= thisCourseId %>/<%= thisClass.id %>/<%= quiz.id %>/add">Add to Quiz</a></h5>
+</div>
 
 <script>
     var coll = document.getElementsByClassName("collapsible-learning-point");

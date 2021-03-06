@@ -30,7 +30,7 @@ router.get('/movies-user', ensureAuthenticated, async (req, res) => {
 
 });
 
-router.get('/movies/kids', async (req, res) => {
+router.get('/kids/movies', async (req, res) => {
     const movies = await Movie.find({rated: {$eq: "PG"}})
     const comedies = await Movie.find({rated: {$eq: "PG"}, genre: {$eq: "Comedy"}})
 
@@ -124,5 +124,11 @@ router.post('/movies/add-to-recommended', ensureAuthenticated, (req, res) => {
     res.redirect('/entertainment/movies');
 
 })
+
+router.get('/videos', (req, res) => {
+    res.render('ent-videos');
+});
+
+
 
 module.exports = router;
