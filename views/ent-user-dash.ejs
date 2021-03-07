@@ -1,5 +1,7 @@
 <style>
-    
+    .page-title {
+        text-align: center;
+    }
     .upload-video {
         width: 90%;
         margin-left: 5%;
@@ -19,12 +21,39 @@
     .user-data {
        /*  background: rgb(117, 8, 150); */
         width: 100%;
-        height: 300px;
-        min-height: 300px;
-        overflow-y: scroll;
     }
     .user-data p {
         color: #fff;
+    }
+    .user-uploads {
+        background: rgba(255, 255, 255, 0.3);
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 8px;
+        overflow-y: scroll;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        height: 300px;
+        min-height: 300px;
+    }
+    .user-video {
+        background: rgba(0, 0, 0, 0.3);
+        margin-top: 10px;
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        border-bottom: groove 2px lightskyblue;
+        padding-bottom: 20px;
+    }
+    .user-video video {
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-bottom: groove 2px lightskyblue;
+        border-top-right-radius: 8px;
+    }
+    .video-title {
+        padding-top: 10px;
     }
     .new-videos {
         width: 100%;
@@ -40,16 +69,20 @@
 <div class="upload-video">
     <a href="/entertainment/videos/<%= user.id %>/upload">Upload a Video</a>
 </div>
+<h5 style="text-align: center;">Your Uploads</h5>
 <div class="user-data">
     <div class="user-uploads">
-        <h5>Your Uploads</h5>
         <% userVideo.forEach(function(video) { %>
             <div class="user-video">
-                <video src="<%= video.source %>"></video>
+                <video src="https://stream.mux.com/<%= video.asset %>.m3u8  " controls></video>
+                <div class="video-info">
+                    <div class="video-title">
+                        <h5><%= video.title %></h5>
+                    </div>
+                </div>
             </div>
         <% }) %>
     </div>
-    <p><%= user %></p>
 </div>
 <div class="new-videos">
 

@@ -11,7 +11,7 @@ const { Video } = new Mux(process.env.MUX_TOKEN_ID, process.env.MUX_TOKEN_SECRET
 const upChunk = require('@mux/upchunk');
 const { json, send } = require('micro');
 const uuid = require('uuid');
-
+const fs = require('fs');
 
 
 
@@ -164,6 +164,7 @@ router.get('/videos/:userId/upload', ensureAuthenticated, async (req, res) => {
 
 router.post('/videos/upload-it', (req, res) => {
     const user = req.user._id;
+    const file = req.body.source;
 
     Video.Uploads.create({
         cors_origin: 'https://widespread-beta.herokuapp.com', 
@@ -171,16 +172,26 @@ router.post('/videos/upload-it', (req, res) => {
           playback_policy: 'public'
         }
       }).then(upload => {
+        
           // upload.url is what you'll want to return to your client.
-          console.log(`Video URL: ${upload.url}`);
-        const userVideo = new UserVideo({
+          console.log(`Video URL: ${upload}`);
+          const playbackId = Video.Assets.create({input: 'https://storage.googleapis.com/muxdemofiles/mux-video-intro.mp4'});
+
+          const userVideo = new UserVideo({
             creator: user,
             title: req.body.title,
             description: req.body.description,
-            source: upload.url
-        })
-        userVideo.save()
-        
+            source: upload.url,
+            asset: upload.id,
+            playback_id: playbackId
+          })
+          userVideo.save()
+
+          console.log(`Playback ID: ${playbackId}`)
+/*              axios.post(`https://api.mux.com/video/v1/assets`).then(function(response) {
+            
+          }) */
+
         res.redirect(`/entertainment/videos/${user}`);
       });
 });  
@@ -189,6 +200,7 @@ router.get('/videos/:userId/upload-done', async (req, res) => {
     const userId = req.params.userId;
     const user = await User.findById(userId);
 
+    const db = await UserVideo.find({creator: {$eq: userId}});
     const { type: eventType, data: eventData } = await json(req);
 
     switch (eventType) {

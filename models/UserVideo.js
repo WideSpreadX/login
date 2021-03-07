@@ -9,10 +9,14 @@ const UserVideoSchema = new mongoose.Schema({
     likes: Number,
     dislikes: Number,
     source: String,
+    uploadId: String,
+    metadata: String,
+    asset: String,
+    filename: String,
     createdAt: {
         type: Date,
         default: Date.now()
-    },
+    }
 
 });
 
