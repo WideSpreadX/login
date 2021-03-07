@@ -287,7 +287,6 @@ h1,h2,h3,h4,h5,h6 {
 .login-input {
     border: solid 0.5px #000;
     border-radius: 10px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
 }
 .login-button {
     box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
@@ -1903,6 +1902,7 @@ h1,h2,h3,h4,h5,h6 {
         top: 0;
         left: 0;
         overflow: hidden;
+        overflow-y: scroll;
     }
     /* Video Background */
     .video-background {
@@ -1928,7 +1928,6 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
     transition: ease-in 0.3s;
     backdrop-filter: blur(2);
-    opacity: 0.6;
     background: rgba(204, 204, 204, 0.199);
 }
 .create-account:hover {
@@ -1941,7 +1940,6 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: 25px;
     color: rgba(255, 255, 255, 0.795);
     background: rgba(0, 0, 0, 0.685);
-    backdrop-filter: blur(6px);
     border-radius: 2px;
     border-top: solid 1px lightskyblue;
     border-bottom: solid 1px lightskyblue;

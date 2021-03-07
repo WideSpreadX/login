@@ -34,8 +34,7 @@
       box-shadow: none;
       background: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(2px);
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
+      box-shadow: none;
       color: #fff;
     }
     .login-input:focus {
@@ -58,6 +57,7 @@
       outline: none;
       border-radius: 8px;
     }
+
   }
   @media screen and (max-width: 1199px) {
     .widespread-header {
@@ -72,15 +72,20 @@
       margin: 0;
     }
     .video-background {
-      background: lime;
     }
     .video-background video {
       min-height: 100vh;
       width: auto;
     }
+    #vidBackground {
+      min-width: 100vw;
+    }
     .create-account {
-      width: 80%;
-      margin-left: 10%
+      width: 90%;
+      margin-left: 5%;
+      box-shadow: none;
+      border-top: groove 2px lightskyblue;
+      border-bottom: groove 2px lightskyblue;
     }
     .create-account img {
       width: 300px;
@@ -94,9 +99,8 @@
     }
     .create-account-btns {
       background: transparent;
-      width: 80%;
-      margin-left: 10%;
-
+      width: 100%;
+      padding: 0;
     }
     .create-account-btns a {
       border-radius: 8px;
@@ -105,25 +109,12 @@
       background: rgba(255, 255, 255, 0.3);
       transition: ease-in 0.5s;
     }
-    .login-input {
-      box-shadow: none;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-      color: #fff;
-    }
-    .login-input:focus {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(2px);
-    }
+
     .login-button {
       box-shadow: none;
       background: rgba(0, 128, 0, 0.3);
       border-top: groove 2px green;
       border-bottom: groove 2px green;
-      margin-top: 50px;
     }
     .alert-warning {
       color: #fff;
@@ -134,9 +125,80 @@
       outline: none;
       border-radius: 8px;
     }
+    .form-container {
+      border-radius: 8px;
+      border-left: groove 1px lightskyblue;
+      border-right: groove 1px lightskyblue;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(2px);
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 90%;
+      margin-left: 5%;
+    }
+    .input-scroller {
+    }
+    small {
+      color: lightskyblue;
+    }
+    .input-group {
+      display: inline-flex;
+      width: 250px;
+      min-width: 250px;
+      margin-right: 20px;
+      padding-left: 20px;
+      padding: 10px;
+    }
+    .input-data {
+      width: 180px;
+    }
+    .input-data input {
+      width: 180px;
+      padding: 5px;
+      color: #fff;
+    }
+    .next-button {
+      width: 30px;
+      text-align: center;
+      padding-left: 10px;
+    }
+    .next-button p {
+      font-size: 2.5rem;
+      margin-bottom: 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+    .next-button i {
+      animation: flash 5s infinite;
+      transition: ease-in 0.5s;
+    }
+    .next-button button {
+      animation: slowflash 5s infinite;
+    }
+    .next-button button {
+      background: rgba(0, 128, 0, 0.3);
+      border: none;
+      outline: none;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border: groove 2px green;
+      border-right: none;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.75), inset 2px 0 4px rgba(255, 255, 255, 0.5);
+    }
+    @keyframes flash {
+      0%   {color: green;}
+      50%  {color: #fff;}
+      100% {color: green;}
+}
+    @keyframes slowflash {
+      0%   {color: green;}
+  50%  {color: #fff;}
+  100% {color: green;}
   }
+}
 </style>
-<div class="inner-container" style="height: auto; margin-bottom: 30px; ">
+<div class="inner-container" style="height: auto; margin-bottom: 500px; ">
   <div class="video-background">
     <video autoplay muted loop id="vidBackground">
         <source src="/videos/space-particles_1a1a1a.mp4" type="video/mp4">
@@ -154,64 +216,96 @@
         </h1>
         <%- include ('./partials/messages') %>
         <form action="/users/register" method="POST">
-          <div class="form-group">
-            <label for="name" style="color: #fff"> First Name</label>
-            <input
+          <div class="form-container">
+          <small>Scroll right to advance to the next input</small>
+          <div class="input-scroller" style="display: inline-flex; width: 100%; overflow-x: scroll;">
+          <div class="input-group">
+            <div class="input-data">
+
+              <label for="name" style="color: #fff"> First Name</label>
+              <input
               type="name"
               id="fname"
               name="fname"
-              class="form-control login-input"
+              class="input-control login-input"
               placeholder="Enter First Name"
               value="<%= typeof name != 'undefined' ? fname : '' %>"
-            />
+              />
+            </div>
+            <div class="next-button">
+              <p><i class="fas fa-angle-double-right"></i></p>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="name" style="color: #fff"> Last Name</label>
-            <input
+          <div class="input-group">
+            <div class="input-data">
+
+              <label for="name" style="color: #fff"> Last Name</label>
+              <input
               type="name"
               id="lname"
               name="lname"
-              class="form-control login-input"
+              class="input-control login-input"
               placeholder="Enter Last Name"
               value="<%= typeof name != 'undefined' ? lname : '' %>"
-            />
+              />
+            </div>
+            <div class="next-button">
+              <p><i class="fas fa-angle-double-right"></i></p>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="email" style="color: #fff">Email</label>
-            <input
+          <div class="input-group">
+            <div class="input-data">
+
+              <label for="email" style="color: #fff">Email</label>
+              <input
               type="email"
               id="email"
               name="email"
-              class="form-control login-input"
+              class="input-control login-input"
               placeholder="Enter Email"
               value="<%= typeof email != 'undefined' ? email : '' %>"
-            />
+              />
+            </div>
+            <div class="next-button">
+              <p><i class="fas fa-angle-double-right"></i></p>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="password" style="color: #fff">Password</label>
-            <input
+          <div class="input-group">
+            <div class="input-data">
+
+              <label for="password" style="color: #fff">Password</label>
+              <input
               type="password"
               id="password"
               name="password"
-              class="form-control login-input"
+              class="input-control login-input"
               placeholder="Create Password"
               value="<%= typeof password != 'undefined' ? password : '' %>"
-            />
+              />
+            </div>
+            <div class="next-button">
+              <p><i class="fas fa-angle-double-right"></i></p>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="password2" style="color: #fff">Confirm Password</label>
-            <input
+          <div class="input-group">
+            <div class="input-data">
+
+              <label for="password2" style="color: #fff">Confirm Password</label>
+              <input
               type="password"
               id="password2"
               name="password2"
-              class="form-control login-input"
+              class="input-control login-input"
               placeholder="Confirm Password"
               value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
-            />
+              />
+            </div>
+            <div class="next-button">
+              <p><button type="submit"><i style="color: rgba(255, 255, 255, 0.7); text-shadow: 0 0 2px rgba(0, 128, 0, 0.726);" class="fas fa-sign-in-alt"></i></button></p>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-block login-button">
-            Register
-          </button>
+        </div>
+        </div>
         </form>
         <p class="lead mt-4">Have An Account? <a href="/users/login" style="color: lightskyblue; background: none; border: none;">Login</a></p>
       </div>
