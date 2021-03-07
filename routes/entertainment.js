@@ -245,4 +245,9 @@ router.get('/videos/:userId/upload-done', async (req, res) => {
   res.render('ent-video-upload-complete', {item, eventType, eventData});
 });
 
+/* Music */
+router.get('/music', (req, res) => {
+  res.render('ent-music-home');
+})
+
 module.exports = router;
