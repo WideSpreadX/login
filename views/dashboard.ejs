@@ -936,6 +936,43 @@
     .user-background-color {
         z-index: -801;
     }
+
+    .dashboard-container {
+        width: 95%;
+        margin-left: 2.5%;
+        text-align: center;
+    }
+    .dashboard-container h2 {
+        padding: 15px;
+    }
+    .dashboard-container p {
+        padding: 10px;
+        color: #fff;
+    }
+    .dashboard-container p a {
+        border: none;
+        padding: 0;
+        background: none;
+        width: none;
+        border-radius: 0;
+        margin: 0;
+        color: lightskyblue;
+    }
+    .dashboard-container a {
+        width: 100%;
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+    }
+    .dashboard-container video {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
     .user-profile-image-form {
         max-width: 85vw;
         margin-left: 2.5vw;
@@ -1705,8 +1742,15 @@
 
 </div>
 
-<h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
-<div class="spread-break">
+<div class="dashboard-container">
+    <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
+    <a class="btn btn-dark" href="/vr-ar/vr-dashboard">Go To Your VR Dashboard</a>
+    <p>Here's a quick preview of the VR Dashboard. It's pretty bare right now, but eventually, everything you have here in 2D, will be there in VR for you too!</p>
+    <video src="https://scontent-mia3-1.cdninstagram.com/v/t50.2886-16/157591890_1101139743693474_6972359598471492049_n.mp4?_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=106&_nc_ohc=XzkdwIkZj9sAX-jTI-e&oe=604891E0&oh=6e87549d7aef27aa1862cc5be2b52317" controls></video>
+    <p>Want to add a VR background? If you don't have access to a 360&#176; Camera, you can easily download an equirectangular image <a href="https://duckduckgo.com/?q=equirectangular+images&atb=v166-1&iar=images&iaf=size%3AWallpaper%2Clayout%3AWide&iax=images&ia=images" target="_blank">here</a>. Once you found one you like, go to "<a href="/users/update-profile/<%= profile.id %>">Update Your Profile</a>" and use the upload form for "VR Background Image".</p>
+</div>
+
+    <div class="spread-break">
     <hr>
 </div>
 
@@ -1812,26 +1856,12 @@
     <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
 </div>
 
-
 <div class="spread-break">
     <hr>
 </div>
 
-<div class="its-messy" style="color: #fff; background: rgba(255, 0, 0, 0.3); border-radius: 8px; padding: 10px;">
-    <p>    Welcome to WideSpread! Please excuse any mess I may have overlooked or didn't get to yet.. WideSpread is still under construction, but feel free to explore and enjoy! Do your best to try and break things (just let me know on SocialSpread or send me an InSpread (working title...) so I can fix it.</p>
-    <p>    I'm Jon, and I'll be the first person in the "Find New Friends" slider lower down on your Dashboard, feel free to add me to get new feature updates.. don't hesitate to ever ask me any questions or make recommendations for something you would like to be added... WideSpreads conception was built around helping any and everyone anyway possible! Not judge people by their looks like how Facebook got started...</p>
-    <p>    Also, feel free to check out some demo videos and screenshots to hopefully give some guidance until I build walkthroughs and explain things... <a href="https://www.instagram.com/widespread_os/" target="_blank" style="color: lightskyblue;">WideSpread OS</a> (Yeah, yeah, it's Instagram... time to put them in their place... the trash!)</p>
-    <div class="spread-break">
-        <hr style="background: red;">
-    </div>
-    <div class="spreadshield-demos">
-        <h5>WideSpread Cameo</h5>
-        <h6>First Draft</h6>
-        <p>If anyone likes editing videos, feel free to make a cool video for WideSpread.</p>
-        <video src="https://scontent-mia3-2.cdninstagram.com/v/t50.2886-16/10000000_875779629658749_7440147872372310342_n.mp4?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=uWFXYTnUKXsAX-3ZpNb&oe=60489C2B&oh=2c9c505df035402abfe62575bfad50ae" autoplay controls></video>
-    </div>
-      
-</div>
+
+
 <div class="spread-break">
     <hr>
 </div>
@@ -2291,6 +2321,22 @@
             </div>
         <% }) %>
     </div>
+</div>
+
+<div class="its-messy" style="color: #fff; background: rgba(255, 0, 0, 0.3); border-radius: 8px; padding: 10px;">
+    <p>    Welcome to WideSpread! Please excuse any mess I may have overlooked or didn't get to yet.. WideSpread is still under construction, but feel free to explore and enjoy! Do your best to try and break things (just let me know on SocialSpread or send me an InSpread (working title...) so I can fix it.</p>
+    <p>    I'm Jon, and I'll be the first person in the "Find New Friends" slider lower down on your Dashboard, feel free to add me to get new feature updates.. don't hesitate to ever ask me any questions or make recommendations for something you would like to be added... WideSpreads conception was built around helping any and everyone anyway possible! Not judge people by their looks like how Facebook got started...</p>
+    <p>    Also, feel free to check out some demo videos and screenshots to hopefully give some guidance until I build walkthroughs and explain things... <a href="https://www.instagram.com/widespread_os/" target="_blank" style="color: lightskyblue;">WideSpread OS</a> (Yeah, yeah, it's Instagram... time to put them in their place... the trash!)</p>
+    <div class="spread-break">
+        <hr style="background: red;">
+    </div>
+    <div class="spreadshield-demos">
+        <h5>WideSpread Cameo</h5>
+        <h6>First Draft</h6>
+        <p>If anyone likes editing videos, feel free to make a cool video for WideSpread.</p>
+        <video src="https://scontent-mia3-2.cdninstagram.com/v/t50.2886-16/10000000_875779629658749_7440147872372310342_n.mp4?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=uWFXYTnUKXsAX-3ZpNb&oe=60489C2B&oh=2c9c505df035402abfe62575bfad50ae" controls></video>
+    </div>
+    
 </div>
 
 
