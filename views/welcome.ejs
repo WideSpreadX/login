@@ -48,23 +48,42 @@
       text-align: center;
       padding: 0;
     }
+    .logo-container {
+      position: fixed;
+      z-index: -1;
+      width: 100vw;
+      height: 100vw;
+      bottom: 100px;
+      left: 0;
+    }
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+    }
     .logo {
       margin: 0;
-      width: 95%;
     }
     .logo h1 {
       margin: 0;
     }
     .video-background {
-      background: lime;
+      background: #000;
     }
     .video-background video {
       min-height: 100vh;
       width: auto;
     }
     .create-account {
-      width: 80%;
-      margin-left: 10%
+      width: 90%;
+      margin-left: 5%;
+      margin-top: 60px;
+      padding-top: 0;
+      border-top: groove 2px lightskyblue;
+      border-bottom: groove 2px lightskyblue;
+      border-radius: 8px;
+      box-shadow: none;
+      backdrop-filter: blur(2px);
+      background: rgba(0, 0, 0, 0.3);
     }
     .create-account img {
       width: 300px;
@@ -72,6 +91,13 @@
     }
     .create-account p {
       color: #fff;
+      border-top: none;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      width: 100%;
+      border-bottom: groove 2px lightskyblue;
     }
     .create-account-btns {
       background: transparent;
@@ -85,6 +111,10 @@
       border-bottom: groove 2px lightskyblue;
       background: rgba(255, 255, 255, 0.3);
       transition: ease-in 0.5s;
+      padding: 10px;
+      display: block;
+      margin-top: 10px;
+      color: #fff;
     }
   }
 </style>
@@ -98,14 +128,16 @@
             <!-- Space Particles - Video by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Pixabay</a> -->
             <!-- Earth Particles - Video by <a href="https://pixabay.com/users/llensgraf-2065862/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Leif Lensgraf</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Pixabay</a> -->
 </div>
+<div class="logo-container">
+  <img width="160px" height="160px" src="/images/system/widespread_logo_1d.png" alt="WideSpread Logo">
+</div>
 <div class="row mt-5">
     <div class="create-account">
         <div class="text-center">
-            <img width="160px" height="160px" src="/images/system/widespread_logo_1d.png" alt="WideSpread Logo">
             <p>Create an account or login</p>
             <div class="create-account-btns">
-                <a href="/users/login" class="btn btn-secondary btn-block mb-2 blur" style="color: #fff;">Login</a>
-                <a href="/users/register" class="btn btn-primary btn-block mb-2 blur">Register</a>
+                <a href="/users/login">Login</a>
+                <a href="/users/register">Register</a>
             </div>
         </div>
     </div>
