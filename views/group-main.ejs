@@ -1,0 +1,234 @@
+<style>
+    .page-description {
+        width: 90%;
+        margin-left: 5%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .page-description p {
+        padding: 10px;
+        color: #fff;
+    }
+
+
+    .create-new-group {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 30px;
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        border-bottom: groove 2px lightskyblue;
+        position: relative;
+      z-index: 12;
+
+    }
+    .create-new-group h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .create-new-group input {
+        width: 100%;
+        border: none;
+        background: rgba(0, 0, 0, 0.3);
+        outline: none;
+        padding: 5px;
+        color: #fff;
+        margin-bottom: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        transition: ease-in 0.3s;
+    }
+    .create-new-group input::placeholder {
+        color: #fff;
+    }
+    .create-new-group input:focus {
+        background: rgba(135, 206, 250, 0.3);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.75);
+        transition: ease-in 0.3s;
+    }
+    .color-choices {
+        width: 100%;
+        display: inline-flex;
+        padding-bottom: 20px;
+    }
+    .color-choice {
+        width: 50%;
+        text-align: center;
+    }
+    .color-choice p {
+        color: #fff;
+    }
+    .create-new-group input[type="color"] {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+    }
+    .create-new-group textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        transition: ease-in 0.3s;
+    }
+    .create-new-group textarea::placeholder {
+        color: #fff;
+    }
+    .create-new-group textarea:focus {
+        background: rgba(135, 206, 250, 0.3);
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.75);
+        transition: ease-in 0.3s;
+    }
+    .public-choice {
+        width: 100%;
+        display: inline-flex;
+        padding: 10px;
+    }
+    .public-choice span:first-of-type {
+        width: 90%;
+        text-align: left;
+        color: #fff;
+    }
+    .public-choice span:last-of-type {
+        width: 10%;
+        text-align: left;
+    }
+    .fee-choice {
+        width: 100%;
+        display: inline-flex;
+        padding: 10px;
+    }
+    .fee-choice span:first-of-type {
+        width: 90%;
+        text-align: left;
+        color: #fff;
+    }
+    .fee-choice span:last-of-type {
+        width: 10%;
+        text-align: left;
+    }
+    .fee-occurences {
+    }
+    .frequency-option {
+        width: 100%;
+        display: inline-flex;
+        padding: 10px;
+        max-height: 40px;
+    }
+    .frequency-option p {
+        width: 90%;
+        color: #fff;
+        text-align: center;
+    }
+    .frequency-option input {
+        width: 10%;
+        text-align: center;
+    }
+    .create-button {
+        box-shadow: inset 0 0 8px #fff;
+      background: rgba(0, 128, 0, 0.3);
+      border-radius: 8px;
+      border-bottom: groove 2px green;
+      border-left: solid 1px green;
+      border-right: solid 1px green;
+      margin-top: -2px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      width: 80%;
+      margin-left: 10%;
+      position: relative;
+      z-index: 8;
+      padding: 10px;
+      color: #fff;
+      transition: ease-in 0.3s;
+    }
+    .create-button:active {
+        background: rgba(0, 128, 0, 0.15);
+      outline: none;
+      border: none;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.75);
+      color: #ccc;
+      animation-name: click;
+      animation-duration: 1s;
+    }
+    @keyframes click {
+  0%   {transform: rotateX(0deg);}
+  40%  {transform: rotateX(30deg);}
+  100%   {transform: rotateX(10deg);}
+  }
+</style>
+
+
+<div class="page-title">
+    <h1>Groups</h1>
+</div>
+
+<div class="page-description">
+    <p>This is where people can form specialized groups for anything. Form it, build it up, organize it, enjoy it. Think of "Groups" like WideSpread Business, just geared toward hobbies and activities etc.</p>
+</div>
+
+<div class="create-new-group">
+    <h5>Create a Group</h5>
+    <form action="/groups/new" method="post">
+        <input type="text" name="name" placeholder="Name of group...">
+        <textarea name="description" placeholder="Add a description of your group..."></textarea>
+        <div class="color-choices">
+            <div class="color-choice">
+                <p>Main Color</p>
+                <input type="color" name="main_color">
+            </div>
+            <div class="color-choice">
+                <p>Accent Color</p>
+                <input type="color" name="accent_color">
+            </div>
+        </div>
+        <input type="text" name="group_focus" placeholder="Groups main focus...">
+        <div class="public-choice"><span><p>Is this Group open to the public?</p></span><span><input type="checkbox" name="public" id=""></span></div>
+        <div class="fee-choice"><span><p>Does this Group have any fees?</p></span><span><input type="checkbox" name="fees" id=""></span></div>
+        <input type="text" name="fee_cost" placeholder="If you have fees, how much?">
+        <div class="fee-occurences">
+            <div class="frequency-option">
+                <p>Single Initial Fee</p>
+                <input type="radio" name="fee_frequency" value="initial">
+            </div>
+            <div class="frequency-option">
+                <p>Monthly</p>
+                <input type="radio" name="fee_frequency" value="monthly">
+
+            </div>
+            <div class="frequency-option">
+                <p>Bi-Monthly</p>
+                <input type="radio" name="fee_frequency" value="bi-monthly">
+
+            </div>
+            <div class="frequency-option">
+                <p>Quarterly</p>
+                <input type="radio" name="fee_frequency" value="quarterly">
+
+            </div>
+            <div class="frequency-option">
+                <p>Bi-Quarterly</p>
+                <input type="radio" name="fee_frequency" value="bi-quarterly">
+            </div>
+            <div class="frequency-option">
+                <p>Annually</p>
+                <input type="radio" name="fee_frequency" value="annually">
+            </div>
+            <div class="frequency-option">
+                <p>Bi-Annually</p>
+                <input type="radio" name="fee_frequency" value="bi-annually">
+            </div>
+        </div>
+    </div>
+        <button type="submit" class="create-button">Create Group</button>
+    </form>
+<div class="all-groups">
+
+</div>

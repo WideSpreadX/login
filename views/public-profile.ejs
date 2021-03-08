@@ -546,6 +546,24 @@
     </div>
         </div>
     </div>
+
+    <div class="weather">
+        <h5>Current Weather</h5>
+        <h6><%= weather.name %></h6>
+        <div class="weather-data">
+            <div class="weather-info">
+                <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %> &#8457;</p>
+                <p style="color: #fff"><i class="fas fa-wind"></i> <%= weather.wind.speed %> mph</p>
+            </div>
+            <div class="weather-icons">
+                <% weather.weather.forEach(function(item) { %>
+                    <div class="weather-icon">
+                        <img src="https://openweathermap.org/img/wn/<%= item.icon %>.png" alt="<%= item.main %>">
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
     <div class="spread-container">
         <div class="col-12 spread-container-about" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
             <h3 style="text-align: center; padding: 20px; padding-bottom: 10px;">About <%= profile.fname %></h3>

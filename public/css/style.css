@@ -223,7 +223,7 @@ h1,h2,h3,h4,h5,h6 {
 .widespread-header {
     background-image: linear-gradient( black, rgba(0, 0, 0, 0.932), rgba(0, 0, 0, 0.863), rgba(0, 0, 0, 0.685));
     position: fixed;
-    z-index: 10000;
+    z-index: 8000;
     top: -10px;
     width: 90vw;
     margin-left: 5vw;

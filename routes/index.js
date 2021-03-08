@@ -23,7 +23,7 @@ const Video = require('../models/Video');
 const Audio = require('../models/Audio');
 const InSpread = require('../models/InSpread');
 const Poll = require('../models/Poll');
-const axios = require('axios')
+const axios = require('axios');
 
 // Welcome Page
 router.get('/', (req, res) => {

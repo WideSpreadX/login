@@ -10,6 +10,8 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
+const axios = require('axios');
+
 
 // User Model
 const User = require('../models/User');
@@ -124,9 +126,20 @@ router.get('/logout', (req, res) => {
 router.get('/:id', ensureAuthenticated, async (req, res) => {
     const id = req.params.id
     const userId = req.user._id;
-    console.log("User ID: " + userId);
+    const user = await User.findById(userId);
+    const userZip = user.zip;
+    const weatherKey = process.env.WEATHER_API_KEY;
+    const options = {
+    method: 'GET',
+    url: `http://api.openweathermap.org/data/2.5/weather?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
+  };
+  const weather = await axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    return returnedData;
+}).catch(function (error) {
+  console.error(error);
+}); 
     const inSpreads = await InSpread.find({inSpreadTo: {$eq: id}}).populate('inSpreadFrom').exec();
-    console.log(`InSpreads: ${inSpreads}`)
     const articles = await Article.find({author: {$eq: id}});
    const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate(
        {
@@ -144,7 +157,7 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     .populate('user_images')
     .exec()
     .then(profile => {
-            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage, userId, inSpreads})
+            res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage, userId, inSpreads, weather})
         });
 })
 
