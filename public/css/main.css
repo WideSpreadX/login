@@ -1,0 +1,98 @@
+.side-note {
+    border-top: groove 2px yellow;
+    border-bottom: groove 2px yellow;
+    border-radius: 8px;
+    background: rgba(255, 255, 0, 0.3);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-height: 225px;
+    overflow: hidden;
+}
+.side-note h6 {
+    color: yellow;
+    text-align: center;
+    padding: 5px;
+    border-bottom: groove 2px yellow;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: rgba(255, 255, 255, 0.3);
+}
+.side-note p {
+    padding: 10px;
+    max-height: 100px;
+    overflow-y: scroll;
+    color: #fff;
+}
+.page-title {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+
+/* Main Page Menus */
+
+.main-header-page-menu-container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    border-left: groove 1px lightskyblue;
+    border-right: groove 1px lightskyblue;
+    box-shadow: inset 0 0 4px black;
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+.main-header-page-menu-container p {
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.76);
+    text-align: center;
+    font-size: 0.6rem;
+    
+}
+.main-header-page-menu-inner a {
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 8px;
+    width: 125px;
+    min-width: 125px;
+    max-width: 250px;
+}
+
+#mainHeaderPageMenu {
+    width: 100%;
+    position: relative;
+
+}
+
+.main-header-page-menu-inner {
+    display: inline-flex;
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: scroll;
+    padding: 10px;
+    width: 100%;
+}
+.main-header-page-menu-inner a {
+    position: relative;
+    padding: 10px;
+    width: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}

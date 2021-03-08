@@ -28,14 +28,36 @@
         margin-left: 8px;
     }
 </style>
-<h1 style="text-align: center; margin-bottom: 30px;">Entertainment</h1>
-<div class="slider-container">
+<div class="page-title">
+    <h1>Entertainment</h1>
+</div>
 
-    <div class="entertainment-categories">
-        <a href="/entertainment/movies">Movies</a>
-        <a href="/entertainment/tv">TV</a>
-        <a href="/entertainment/videos/<%= user.id %>">Videos</a>
-        <a href="/entertainment/music">Music</a>
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenu">
+        <div class="main-header-page-menu-inner">
+            <a href="/entertainment">Entertainment Home</a>
+            <a href="/entertainment/movies">Movies</a>
+            <a href="/entertainment/tv">TV Shows</a>
+            <a href="/entertainment/videos/<%= user.id %>">Videos</a>
+            <a href="/entertainment/music">Music</a>
+            <a href="/entertainment/podcasts">Podcasts</a>
+            <a href="/entertainment/audio-books">Audio Books</a>
+            <a href="/entertainment/sports">Sports</a>
+
+        </div>
     </div>
-    <p><small>Scroll left & right for more options</small></p>
+    <p>Scroll left & right for more options</p>
+</div>
+
+<div class="entertainment-news">
+    <div class="articles">
+        <div class="article">
+            <h5>DUMMY ARTICLE 1</h5>
+            <p>Dummy article 1 preview</p>
+        </div>
+        <div class="article">
+            <h5>DUMMY ARTICLE 2</h5>
+            <p>Dummy article 2 preview</p>
+        </div>
+    </div>
 </div>

@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
     res.render('ent-home', {user});
 })
 router.get('/movies', async (req, res) => {
+
     const movies = await Movie.find()
     const comedies = await Movie.find({genre: {$eq: "Comedy"}})
     const action = await Movie.find({genre: {$eq: "Action, Thriller"}})
@@ -139,6 +140,12 @@ router.post('/movies/add-to-recommended', ensureAuthenticated, (req, res) => {
 
 })
 
+router.get('/tv', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+
+  res.render('ent-tv-home', {user})
+})
 router.get('/videos', async (req, res) => {
     const userId = req.user._id;
 
@@ -248,6 +255,37 @@ router.get('/videos/:userId/upload-done', async (req, res) => {
 /* Music */
 router.get('/music', (req, res) => {
   res.render('ent-music-home');
-})
+});
+
+/* Podcasts */
+
+router.get('/podcasts', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+
+  res.render('ent-podcasts-home', {user});
+});
+
+
+/* Audio Books */
+
+router.get('/audio-books', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+
+  res.render('ent-audio-books-home', {user});
+});
+
+
+/* Sports */
+
+router.get('/sports', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+
+  res.render('ent-sports-home', {user});
+});
+
+
 
 module.exports = router;

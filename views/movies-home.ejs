@@ -115,13 +115,35 @@
         margin-bottom: 0;
     }
 </style>
-<h1 style="text-align: center;">Movies</h1>
+<div class="page-title">
+    <h5>Entertainment</h5>
+    <h1>Movies</h1>
+</div>
+
+<div class="main-header-page-menu-container">
+    <div id="mainHeaderPageMenu">
+        <div class="main-header-page-menu-inner">
+            <a href="/entertainment">Entertainment Home</a>
+            <a href="/entertainment/movies">Movies</a>
+            <a href="/entertainment/tv">TV Shows</a>
+            <a href="/entertainment/videos">Videos</a>
+            <a href="/entertainment/music">Music</a>
+            <a href="/entertainment/podcasts">Podcasts</a>
+            <a href="/entertainment/audio-books">Audio Books</a>
+            <a href="/entertainment/sports">Sports</a>
+  
+        </div>
+    </div>
+    <p>Scroll left & right for more options</p>
+  </div>
+  
 <div class="movie-search">
     <form action="/entertainment/movies/search" method="POST">
         <input type="text" name="movie" id="movie" placeholder="Search for movies...">
         <button type="submit">Search</button>
     </form>
 </div>
+
 
 <div class="spread-break">
     <hr>
@@ -259,4 +281,13 @@
             </a>
             </div>
     <% }) %>
+</div>
+
+
+<div class="spread-break">
+    <hr>
+</div>
+<div class="side-note">
+    <h6>Want to see more movies on this page?</h6>
+    <p>At the bottom of every movie page, is a button to add it as a selection for everyone so they don't have to search for it everytime. (I've put maybe 40 to start it out, but adding movies is a job in it's own, so, community project!)</p>
 </div>
