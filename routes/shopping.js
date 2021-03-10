@@ -3,13 +3,52 @@ const router = express.Router();
 
 const {ensureAuthenticated } = require('../config/auth');
 
+const unirest = require("unirest");
 const axios = require('axios');
 const cheerio = require('cheerio');
 
 
 
 router.get('/', (req, res) => {
-    res.render('shopping-home', {currentPageTitle: 'Shopping Home'});
+    
+/*     const aliExp = unirest("GET", "https://aliexpress19.p.rapidapi.com/products/33061907177");
+    
+    aliExp.headers({
+        "x-rapidapi-key": "7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79",
+        "x-rapidapi-host": "aliexpress19.p.rapidapi.com",
+        "useQueryString": true
+    });
+    
+    
+    aliExp.end(function (res) {
+        if (res.error) throw new Error(res.error);
+        console.log(res.body);
+    })
+
+ */
+    const  AmazonReq = unirest("GET", "https://amazon-products1.p.rapidapi.com/search");
+
+    AmazonReq.query({
+        "country": "US",
+        "query": "bikini",
+        "page": "1"
+    });
+    
+    AmazonReq.headers({
+        "x-rapidapi-key": "7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79",
+        "x-rapidapi-host": "amazon-products1.p.rapidapi.com",
+        "useQueryString": true
+    });
+    
+    
+    AmazonReq.end(function (res) {
+        if (res.error) throw new Error(res.error);
+    
+    });
+
+    console.log(`AMAZON: ${AmazonReq.results}`)
+    
+    res.render('shopping-home', {currentPageTitle: 'Shopping Home', /* aliExp, */ AmazonReq})
 });
 
 

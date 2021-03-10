@@ -173,12 +173,14 @@
     <p><small>Scroll left & right for more</small></p>
     <div class="slider" style="border-left: groove 2px <%= group.colors.main %>; border-right: groove 2px <%= group.colors.main %>;">
         <% group.members.forEach(function(member) { %>
+            <a href="/users/<%= member.id %>">
             <div class="member-card">
                 <div class="card-background">
                     <img src="/image/<%= member.user_avatar %>" alt="">
                 </div>
                 <h6><%= member.fname %> <%= member.lname %></h6>
             </div>
+        </a>
         <% }) %>
     </div>
 </div>
