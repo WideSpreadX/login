@@ -57,4 +57,10 @@ router.patch('/:groupId/join', ensureAuthenticated, async (req, res) => {
         newMember.save()
         res.redirect(`/groups/${groupId}`);
 });
+
+router.get('/:groupId/upload-image', ensureAuthenticated, async (req, res) => {
+    const groupId = req.params.groupId;
+    const group = await Group.findById(groupId);
+    res.render('group-upload-image', {group});
+});
 module.exports = router;

@@ -62,8 +62,32 @@
         color: #fff;
 
     }
-    
-
+    small {
+        width: 100%;
+        text-align: center;
+        color: lightskyblue;
+    }
+    .group-images {
+        margin-top: 20px;
+        width: 90%;
+        margin-left: 5%;
+        padding: 5px;
+        display: inline-flex;
+        overflow-x: scroll;
+        border-radius: 8px;;
+    }
+    .group-image {
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        margin-right: 10px;
+        padding-left: 10px;
+    }
+    .group-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
     .member-join {
         margin-bottom: 20px;
     }
@@ -92,9 +116,7 @@
     }
     .slider {
         width: 90%;
-        max-height: 200px;
-        min-height: 200px;
-        height: 200px;
+
         display: inline-flex;
         border-radius: 8px;
         overflow-x: scroll;
@@ -142,6 +164,25 @@
         text-align: center;
     }
 
+    .settings-bar {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        border-left: groove 2px lightskyblue;
+        border-right: groove 2px lightskyblue;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.3);
+        display: inline-flex;
+        overflow-x: scroll;
+    }
+    .settings-bar a {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        color: #fff;
+        padding: 10px;
+    }
 </style>
 
 <div class="page-color" style="background: <%= group.colors.main %>"></div>
@@ -168,6 +209,17 @@
     <p><%= group.description %></p>
 </div>
 
+<p style="text-align: center;"><small>Scroll left & right for more photos</small></p>
+<div class="group-images" style="border-left: groove 2px <%= group.main_color %>; border-right: groove 2px <%= group.main_color %>;">
+    <% group.main_images.forEach(function(image) { %>
+        <div class="group-image">
+            <img src="/image/<%= image %>" alt="">
+        </div>
+    <% }) %>
+</div>
+
+
+
 <div class="members">
     <h5>Group Members</h5>
     <p><small>Scroll left & right for more</small></p>
@@ -185,6 +237,8 @@
     </div>
 </div>
 
+
+
 <div class="spread-break">
     <hr>
 </div>
@@ -199,4 +253,9 @@
 
 <div class="member-join">
     <h5>Group Comments</h5>
+</div>
+
+
+<div class="settings-bar">
+    <a href="/groups/<%= group.id %>/upload-image">Add an Image</a>
 </div>

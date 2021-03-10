@@ -35,6 +35,7 @@ const GroupSchema = new mongoose.Schema({
             }]
         }]
     },
+    main_images: [String],
     createdAt: {
         type: Date,
         default: Date.now()

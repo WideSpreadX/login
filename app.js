@@ -21,6 +21,7 @@ const Audio = require('./models/Audio');
 const Company = require('./models/Company');
 const Subpage = require('./models/Subpage');
 const Course = require('./models/Course');
+const Group = require('./models/Group');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -466,6 +467,42 @@ app.post('/upload-subpage/:subpageId/subpage-upload', upload.single('subpage_ima
           }
       )
         res.redirect(`/business/${companyId}/${subpageId}/edit`); 
+    }
+})
+});
+
+
+/* Group Page Image Upload */
+app.post('/upload/groups/:groupId/upload-image', upload.single('main_images'), (req, res) => {
+  const groupId = req.params.groupId;
+  const group = req.body.group;
+  const obj = { 
+    imageOwner: group, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  userBackgroundImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image Owner: ${groupId} Image Data: ${obj.img.data}`);
+        const newImage = obj.img.data;
+        Group.findByIdAndUpdate(groupId,
+          {$addToSet: {main_images: req.file.filename}},
+          {upsert: true, new: true},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect(`/groups/${groupId}`); 
     }
 })
 });
