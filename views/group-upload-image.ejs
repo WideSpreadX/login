@@ -58,7 +58,7 @@
                         </div>                    
             </form>
         </div>
-        <% if (group.main_images <= 0) { %>
+        <% if (group.main_images) { %>
             <div class="group-images">
                 <% group.main_images.forEach(function(image) { %>
                     <div class="group-image">
