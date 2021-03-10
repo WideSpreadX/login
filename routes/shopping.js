@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
     
 
 
-    console.log(`AMAZON: ${AmazonReq.results}`)
     
     res.render('shopping-home', {currentPageTitle: 'Shopping Home'})
 });
