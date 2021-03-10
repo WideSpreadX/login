@@ -12,7 +12,63 @@
         color: #fff;
     }
 
+    .all-groups {
+        margin-top: 20px;
+        padding: 10px;
+    }
+    .all-groups h3 {
+        text-align: center;
+        padding: 12px;
+    }
+    .all-groups a {
+        text-decoration: none;
+    }
+    .all-groups a:active {
+        text-decoration: none;
 
+    }
+    .group {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        margin-bottom: 20px;
+    }
+    .group-header {
+        background: blue;
+        display: inline-flex;
+        width: 100%;
+        background:rgba(255, 255, 255, 0.3);
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .group-name {
+        width: 70%;
+    }
+    .group-name h6 {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 0;
+        text-shadow: 0 0 2px #000;
+    }
+    .group-focus {
+        width: 30%;
+    }
+    .group-focus p {
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 0;
+        color: #fff;
+        text-align: right;
+    }
+    .group-description {
+        backdrop-filter: blur(2px);
+        padding: 15px;
+        color: #fff;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
     .create-new-group {
         width: 90%;
         margin-left: 5%;
@@ -230,5 +286,23 @@
         <button type="submit" class="create-button">Create Group</button>
     </form>
 <div class="all-groups">
-
+    <h3>All Groups</h3>
+    <% allGroups.forEach(function(group) { %>
+        <a href="/groups/<%= group.id %>">
+        <div class="group" style="border-top: groove 2px <%= group.colors.main %>; border-bottom: groove 2px <%= group.colors.main %>;">
+            <div class="group-header" style="border-bottom: groove 2px <%= group.colors.main %>;">
+                <div class="group-name">
+                    <h6 style="color: <%= group.colors.accent %>"><%= group.group_name %></h6>
+                </div>
+                <div class="group-focus">
+                    <p><small><%= group.focus %></small></p>
+                </div>
+            </div>
+            <div class="group-description">
+                <p><%= group.description %></p>
+            </div>
+            
+        </div>
+    </a>
+    <% }) %>
 </div>

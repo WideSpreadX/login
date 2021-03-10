@@ -1,0 +1,200 @@
+<style>
+    .page-color {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: -500;
+    }
+    .page-description {
+        width: 90%;
+        margin-left: 5%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .page-description p {
+        padding: 10px;
+        color: #fff;
+    }
+
+    .all-groups {
+        margin-top: 20px;
+        padding: 10px;
+    }
+    .all-groups h3 {
+        text-align: center;
+        padding: 12px;
+    }
+    .group {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        margin-bottom: 20px;
+    }
+    .group-header {
+        width: 100%;
+        text-align: center;
+    }
+    .group-name {
+        width: 100%;
+    }
+    .group-name h6 {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 0;
+        text-shadow: 0 0 2px #000;
+    }
+    .group-focus {
+        width: 100%;
+    }
+    .group-focus p {
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 0;
+        color: #fff;
+    }
+    .group-description {
+        padding: 15px;
+        color: #fff;
+
+    }
+    
+
+    .member-join {
+        margin-bottom: 20px;
+    }
+    .member-join button {
+        width: 80%;
+        margin-left: 10%;
+        border: none;
+        outline: none;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        border-radius: 8px;
+        background: rgba(0, 128, 0, 0.3);
+    }
+    .member-join h5 {
+        text-align: center;
+        margin-bottom: 0;
+        padding: 10px;
+        color: #fff;
+    }
+    .members {
+        width: 100%;
+    }
+    .members h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .slider {
+        width: 90%;
+        max-height: 200px;
+        min-height: 200px;
+        height: 200px;
+        display: inline-flex;
+        border-radius: 8px;
+        overflow-x: scroll;
+        padding: 5px;
+    }
+    .members p {
+
+        text-align: center;
+    }
+    .members p small {
+        color: lightskyblue;
+    }
+    .member-card {
+        position: relative;
+        height: 180px;
+        min-height: 180px;
+        max-height: 180px;
+        margin-right: 20px;
+        padding-left: 20px;
+        border-radius: 8px;
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+    }
+    .card-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -50;
+    }
+    .card-background img {
+        width: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        border-radius: 8px;
+    }
+    .member-card h6 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+</style>
+
+<div class="page-color" style="background: <%= group.colors.main %>"></div>
+<div class="page-title">
+    <div class="group-header" style="border-bottom: groove 2px <%= group.colors.main %>;">
+        <div class="group-name">
+            <h6 style="color: <%= group.colors.accent %>"><%= group.group_name %></h6>
+        </div>
+        <div class="group-focus">
+            <p><small><%= group.focus %></small></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="member-join">
+    
+    <form action="/groups/<%= group.id %>/join?_method=PATCH" method="post">
+        <button type="submit"><h5>Join Group</h5></button>
+    </form>
+</div>
+
+<div class="group-description">
+    <p><%= group.description %></p>
+</div>
+
+<div class="members">
+    <h5>Group Members</h5>
+    <p><small>Scroll left & right for more</small></p>
+    <div class="slider" style="border-left: groove 2px <%= group.colors.main %>; border-right: groove 2px <%= group.colors.main %>;">
+        <% group.members.forEach(function(member) { %>
+            <div class="member-card">
+                <div class="card-background">
+                    <img src="/image/<%= member.user_avatar %>" alt="">
+                </div>
+                <h6><%= member.fname %> <%= member.lname %></h6>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="member-join">
+    <h5>Upcoming Events</h5>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="member-join">
+    <h5>Group Comments</h5>
+</div>
