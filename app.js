@@ -27,8 +27,10 @@ const fs = require('fs');
 const { response } = require('express');
 
 
-const app = express();
+const app = require("express")();
+const server = require("http").createServer(app);
 
+const io = require("socket.io")(server)
 
 
 
@@ -37,6 +39,7 @@ const app = express();
 require('./config/passport')(passport);
 // DB Config
 const db = require('./config/keys').MongoURI;
+const { ensureAuthenticated } = require('./config/auth');
 
 // Connect to MongoDB
 mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
@@ -664,8 +667,40 @@ app.get('/image/:filename', (req, res) => {
 })
 
 
+app.get('/textchat/:userId/:friendId', ensureAuthenticated, async (req, res) => {
+  const userId = req.params.userId;
+  const user = await User.findById(userId);
+  const friendId = req.params.friendId;
+  const friend = await User.findById(friendId);
+
+  io.on("connection", socket => { console.log('a user connected'); });
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
+
+io.on('connection', (socket) => {
+  
+  console.log(`${user.fname} ${user.lname} connected`);
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+    console.log(`${msg}`)
+  });
+});
+  res.render('text-chat', {user, friend})
+})
+
+
+
 
 
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.log(`Server started on ${PORT}`));
+server.listen(PORT, console.log(`Server started on ${PORT}`));
