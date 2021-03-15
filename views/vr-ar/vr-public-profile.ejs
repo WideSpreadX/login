@@ -1,5 +1,6 @@
+
 <a-scene  loading-screen="dotsColor: lightskyblue; backgroundColor: black">
-    <a-assets>
+  <a-assets>
         <img id="backgroundImg" src="/image/<%= thisUser.user_vr_background_image %>">
         <img id="profileImg" src="/image/<%= thisUser.user_avatar %>">
       </a-assets>
@@ -10,16 +11,17 @@
   material="color: <%= thisUser.favColor1 %>"
   text="value:<%= thisUser.fname %> <%= thisUser.lname %>; align: center;" visible="true"position="0 2 -1 "></a-entity>
   
-  <a-entity geometry="primitive: plane" material="shader: html; target: #htmlElement" position="-3 2 -1 " rotation="0 45 0" scale="2 1 0.1"></a-entity>
-  <a-entity geometry="primitive: plane" material="shader: html; target: #userPosts" position="3 2 -1 " rotation="0 -45 0" scale="2 1 0.1"></a-entity>
+  <a-entity geometry="primitive: plane" material="shader: html; target: #htmlElement" position="-3 2 -1 " rotation="0 45 0" scale="2 1 0.1" opacity="0.8"></a-entity>
+  <a-entity geometry="primitive: plane" material="shader: html; target: #userPosts" position="3 2 -1 " rotation="0 -45 0" scale="2 1 0.1" opacity="0.8"></a-entity>
   <a-sky src="#backgroundImg"></a-sky>
+  <a-camera><a-cursor color="lightskyblue"></a-cursor></a-camera>
   </a-scene>
   <div class="vr-curtain" style="position: fixed; width: 100vw; height: 100vh; background: <%= thisUser.favColor1 %>; z-index: -1;"></div>
   <div style="width: 100%; height: 100%; overflow-y: scroll; position: fixed; left: 0; top: 0; z-index: -10; overflow: hidden">
     <div id="htmlElement" style="background: <%= thisUser.favColor1 %>; color: #fff; font-size: 48px; text-align: center;">
       <h1><%= thisUser.fname %>'s Friends</h1>
         <% thisUser.friends.forEach(function(friend) { %>
-            <p><small><%= friend.fname %> <%= friend.lname %></small></p>
+            <p><small><a href="/<%= friend.id %>"><%= friend.fname %> <%= friend.lname %></a></small></p>
         <% }) %>
     </div>
   </div>

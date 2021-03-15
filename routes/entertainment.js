@@ -17,6 +17,7 @@ const fs = require('fs');
 
 
 
+
 router.get('/', async (req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId);
@@ -47,11 +48,12 @@ router.get('/movies-user', ensureAuthenticated, async (req, res) => {
 
 router.get('/kids/movies', async (req, res) => {
     const movies = await Movie.find({rated: {$eq: "PG"}})
+    const gMovies = await Movie.find({rated: {$eq: "G"}})
     const comedies = await Movie.find({rated: {$eq: "PG"}, genre: {$eq: "Comedy"}})
 
 
 
-    res.render('movies-home-kids', {movies, comedies});
+    res.render('movies-home-kids', {movies, gMovies, comedies});
 });
 
 router.post('/movies/search', (req, res) => {
@@ -76,6 +78,9 @@ axios.request(options).then(function (response) {
 	console.error(error);
 });
 });
+
+
+
 
 
 
@@ -143,9 +148,118 @@ router.post('/movies/add-to-recommended', ensureAuthenticated, (req, res) => {
 router.get('/tv', async (req, res) => {
   const userId = req.user._id;
   const user = await User.findById(userId);
+  const apiKey = process.env.TMDB_API_KEY
+	const options = {
+  method: 'GET',
+  url: `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
+};
 
-  res.render('ent-tv-home', {user})
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('ent-tv-home', {returnedData, user});
+}).catch(function (error) {
+	console.error(error);
+});
+
+});
+
+router.post('/tv/search', (req, res) => {
+  const show = req.body.show
+
+  res.redirect(`/entertainment/tv/search/${show}`);
+
+});
+
+
+router.get('/tv/search/:show', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+    const show = req.params.show;
+
+    const apiKey = process.env.TMDB_API_KEY
+	const options = {
+  method: 'GET',
+  url: `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${show}`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('ent-tv-search-results', {returnedData, show});
+}).catch(function (error) {
+	console.error(error);
+});
+
+});
+
+router.get('/tv/:showId', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+    const showId = req.params.showId;
+
+    const apiKey = process.env.TMDB_API_KEY
+	const options = {
+  method: 'GET',
+  url: `https://api.themoviedb.org/3/tv/${showId}?api_key=${apiKey}`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('ent-tv-show', {returnedData, showId});
+}).catch(function (error) {
+	console.error(error);
+});
+
 })
+
+router.get('/tv/:showId/:seasonId', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+  const showId = req.params.showId;
+  const seasonId = req.params.seasonId;
+
+    const apiKey = process.env.TMDB_API_KEY
+	const options = {
+  method: 'GET',
+  url: `https://api.themoviedb.org/3/tv/${showId}/season/${seasonId}?api_key=${apiKey}`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('ent-tv-show-season', {returnedData, showId});
+}).catch(function (error) {
+	console.error(error);
+});
+
+})
+
+router.get('/tv/:showId/:seasonId/:episodeId', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+  const showId = req.params.showId;
+  const seasonId = req.params.seasonId;
+  const episodeId = req.params.episodeId;
+
+    const apiKey = process.env.TMDB_API_KEY
+	const options = {
+  method: 'GET',
+  url: `https://api.themoviedb.org/3/tv/${showId}/season/${seasonId}/episode/${episodeId}?api_key=${apiKey}`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('ent-tv-show-episode', {returnedData, showId});
+}).catch(function (error) {
+	console.error(error);
+});
+
+})
+
+
 router.get('/videos', async (req, res) => {
     const userId = req.user._id;
 

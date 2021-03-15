@@ -4,7 +4,8 @@ const User = require('../models/User');
 const SpreadRoom = require('../models/SpreadRoom');
 const {ensureAuthenticated } = require('../config/auth');
 const {v4: uuidv4} = require('uuid')
-
+const http = require('http').createServer(express);
+const io = require('socket.io')(http);
 
 router.get('/', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
@@ -12,6 +13,12 @@ router.get('/', ensureAuthenticated, async (req, res) => {
     res.render('spreadchat-home', {user})
 });
 
+
+router.get('/text', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const user = await User.findById(userId).populate('friends').exec()
+    res.render('spreadchat-text', {user})
+})
 /* Video Chat */
 router.get('/video', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
@@ -55,6 +62,24 @@ router.get('/video/:spreadroomId', ensureAuthenticated, async (req, res) => {
 
     res.render('spreadroom', {spreadroom});
 });
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+  });
+  
+  io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
+  });
+
+
+  io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+      io.emit('chat message', msg);
+    });
+  });
 
 
 module.exports = router;

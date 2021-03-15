@@ -1,0 +1,158 @@
+<style>
+            .spread-break hr {
+    background: lightskyblue;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    }
+
+    
+    .show-search {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        padding-bottom: 0;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .show-search input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        padding: 5px;
+    }
+    .show-search button {
+        width: 80%;
+        margin-left: 10%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        margin-bottom: 0;
+        color: #fff;
+        margin-top: 10px;
+        border-top-left-radius: 8px;  
+        border-top-right-radius: 8px;  
+    }
+    h5 {
+        text-align: center;
+        color: #fff;
+    }
+    .show-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        z-index: -80;
+    }
+    .show-container h3 {
+        text-align: center;
+        padding: 10px;
+    }
+    .show-container p {
+        color: #fff;
+    }
+    .show-image img {
+        max-width: 100%;
+        width: 100%;
+        max-height: 100%;
+        min-height: 100%;
+    }
+    .episodes {
+        display: inline-flex;
+        overflow-x: scroll;
+        width: 90%;
+        margin-left: 5%;
+        height: auto;
+        overflow-y: hidden;
+    }
+    .episode {
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        height: 300px;
+        min-height: 300px;
+        max-height: 300px;
+        position: relative;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+    .episode-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -25;
+    }
+    .episode-image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+    .episode h5 {
+        background: rgba(255, 255, 255, 0.3);
+        border-bottom: groove 2px lightskyblue;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        z-index: 10;
+        padding: 5px;
+        text-align: center;
+        color: #fff;
+        backdrop-filter: blur(2px);
+    }
+    .episode p {
+        background:rgba(255, 255, 255, 0.3);
+        color: #fff;
+        padding: 10px;
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow-y: scroll;
+        margin-bottom: 0;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        backdrop-filter: blur(2px);
+    }
+
+</style>
+
+<div class="show-search">
+    <form action="/entertainment/tv/search" method="POST">
+        <input type="text" name="show" id="show" placeholder="Search for shows...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div class="show-container">
+    <div class="show-image">
+        <img src="https://image.tmdb.org/t/p/w500<%= returnedData.poster_path %>" alt="">
+    </div>
+
+</div>
+
+<h5>Episodes</h5>
+<div class="episodes">
+    <% returnedData.episodes.forEach(function(episode) { %>
+        <a href="/entertainment/tv/<%= showId %>/<%= episode.season_number %>/<%= episode.episode_number %>">
+        <div class="episode">
+            <div class="episode-image">
+                <img src="https://image.tmdb.org/t/p/w500<%= episode.still_path %>" alt="">
+            </div>
+            <h5><%= episode.name %></h5>
+            <p><%= episode.overview %></p>
+        </div>
+    </a>
+    <% }) %>
+</div>
