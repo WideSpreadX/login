@@ -22,6 +22,7 @@ const Company = require('./models/Company');
 const Subpage = require('./models/Subpage');
 const Course = require('./models/Course');
 const Group = require('./models/Group');
+const Chat = require('./models/Chat');
 const fs = require('fs');
 
 const { response } = require('express');
@@ -667,34 +668,37 @@ app.get('/image/:filename', (req, res) => {
 })
 
 
-app.get('/textchat/:userId/:friendId', ensureAuthenticated, async (req, res) => {
-  const userId = req.params.userId;
+
+
+app.get('/textchat/:chatId', ensureAuthenticated, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
-  const friendId = req.params.friendId;
-  const friend = await User.findById(friendId);
+  const chatId = req.params.chatId;
+  const chat = await Chat.findById(chatId);
 
-  io.on("connection", socket => { console.log('a user connected'); });
 
+
+/* 
 io.on('connection', (socket) => {
   console.log('a user connected');
 });
-
+ */
 io.on('connection', (socket) => {
   
   console.log(`${user.fname} ${user.lname} connected`);
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    console.log(`${user.fname} ${user.lname} disconnected`);
   });
 });
 
 
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
-    console.log(`${msg}`)
+    io.emit('chat message', (msg));
+    console.log(`${user.fname}: ${msg}`)
   });
 });
-  res.render('text-chat', {user, friend})
+  res.render('text-chat', {user, chat})
 })
 
 

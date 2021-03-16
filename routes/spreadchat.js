@@ -3,7 +3,8 @@ const router = express.Router();
 const User = require('../models/User');
 const SpreadRoom = require('../models/SpreadRoom');
 const {ensureAuthenticated } = require('../config/auth');
-const {v4: uuidv4} = require('uuid')
+const {v4: uuidv4} = require('uuid');
+const Chat = require('../models/Chat');
 
 const app = express();
 const server = require('http').Server(app);
@@ -13,18 +14,61 @@ const io = require('socket.io')(server);
 router.get('/', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId).populate('friends').exec()
-    res.render('spreadchat-home', {user})
+    const chat = await Chat.find({users: {$eq: user.friends}})
+    
+
+    res.render('spreadchat-home', {user, chat})
 });
 
 
 router.get('/text', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     const user = await User.findById(userId).populate('friends').exec()
-    
-    res.render('spreadchat-text', {user})
+  const chat = await Chat.find({users: {$eq: userId}});    
+    res.render('spreadchat-text', {user, chat})
     
 });
 
+router.post('/add', ensureAuthenticated, async (req, res) => {
+  const user1 = req.body.user1;
+  const user2 = req.body.user2;
+  const room_id = req.body.roomId;
+
+  const chat = new Chat({
+    users: [req.body.user1, req.body.user2],
+    room: req.body.room,
+    private: req.body.private,
+    room_id: req.body.roomId,
+  })
+  chat.save()
+  await User.findByIdAndUpdate(user1,
+    {$addToSet: {chats: room_id}},
+    {safe: true, upsert: true},
+    function(err, doc) {
+        if(err){
+            console.log(err);
+        }else{
+            
+            return
+        }
+    }
+    )
+  await User.findByIdAndUpdate(user2,
+    {$addToSet: {chats: room_id}},
+    {safe: true, upsert: true},
+    function(err, doc) {
+        if(err){
+            console.log(err);
+        }else{
+            
+            return
+        }
+    }
+    )
+
+  res.redirect('/spreadchat/text')
+
+})
 
 /* Video Chat */
 router.get('/video', ensureAuthenticated, async (req, res) => {

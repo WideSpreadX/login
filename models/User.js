@@ -64,6 +64,7 @@ const UserSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
     }],
+    chats: [String],
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     saved_posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
     saved_articles: [{type: mongoose.Schema.Types.ObjectId, ref: 'Article'}],

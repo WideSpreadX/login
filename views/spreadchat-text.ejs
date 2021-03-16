@@ -1,20 +1,88 @@
 <style>
+    .current-conversations {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .current-conversations h5 {
+        margin-bottom: 20px;
+    }
 
-    #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
-    #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
-    #input:focus { outline: none; }
-    #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
-
-    #messages { list-style-type: none; margin: 0; padding: 0; }
-    #messages > li { padding: 0.5rem 1rem; }
-    #messages > li:nth-child(odd) { background: #efefef; }
+    .current-conversations p {
+        background: rgba(0, 0, 0, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 10px;
+    
+    }
+    .current-conversations a {
+        color: lightskyblue;
+    }
+    .friends {
+        width: 100%;
+    }
+    .friend {
+        display: inline-flex;
+        width: 100%;
+        padding: 10px;
+        padding-right: 0;
+        border-bottom: solid 1px lightskyblue;
+    }
+    .friend a {
+        width: 80%;
+        color: #fff;
+    }
+    .friend form {
+        width: 20%;
+    }
+    .friend button {
+        outline: none;
+        border: groove 2px green;
+        border-right: none;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        width: 100%;
+    }
 </style>
 
+<div class="current-conversations">
+    <h5>Your Conversations</h5>
+
+    <% chat.forEach(function(chat) { %>
+        <p><a href="/textchat/<%= chat.id %>"><%= chat.room %></a></p>    
+    <% }) %>
+    </div>
+
+<div class="friends-in-convos" style="display: none;">
+
+<% chat.forEach(function(chats) { %>
+<% chats.users.forEach(function(friend) { %>
+    <% if(user.id != friend) { %>
+    <p><%= friend %></p>
+    <% } %>
+<% }) %>
+<% }) %>
+</div>
 <div class="friends">
 
     <% user.friends.forEach(function(friend) { %>
         <div class="friend">
-            <a href="/textchat/<%= user.id %>/<%= friend.id %>"><%= friend.id %></a>
+            <a href="#"><%= friend.fname %> <%= friend.lname %></a>
+            <form action="/spreadchat/add" method="post">
+                <input type="text" name="room" value="<%= user.fname %> & <%= friend.fname %>" hidden>
+                <input type="text" name="user1" value="<%= user.id %>" hidden>
+                <input type="text" name="user2" value="<%= friend.id %>" hidden>
+                <input type="text" name="roomId" value="<%= user.id %>_<%= friend.id %>" hidden>
+                <input type="checkbox" name="private" value="true" checked hidden>
+                <button type="submit">Chat</button>
+            </form>
         </div>
         <% }) %>
         

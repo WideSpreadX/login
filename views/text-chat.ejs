@@ -7,12 +7,11 @@
 
     #messages { list-style-type: none; margin: 0; padding: 0; }
     #messages > li { padding: 0.5rem 1rem; }
-    #messages > li:nth-child(odd) { background: #efefef; }
+    #messages > li { color: #fff;}
+    #messages > li:nth-child(odd) { background: #efefef; color: #333}
 </style>
 
-
-<h5><%= user.fname %> <%= user.lname %></h5>
-<h5><%= friend.fname %> <%= friend.lname %></h5>
+<h5 style="text-align: center;"><%= chat.room %></h5>
 <ul id="messages"></ul>
 <form id="form" action="">
   <input id="input" autocomplete="off" /><button>Send</button>
@@ -38,7 +37,6 @@
   
     socket.on('chat message', function(msg) {
       var item = document.createElement('li');
-
       item.textContent = msg;
       messages.appendChild(item);
       window.scrollTo(0, document.body.scrollHeight);
