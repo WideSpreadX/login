@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {ensureAuthenticated } = require('../config/auth');
+const axios = require('axios');
 // User Model
 const User = require('../models/User');
 const Course = require('../models/Course');
@@ -373,5 +374,68 @@ router.post('/question/:questionId/answer', ensureAuthenticated, async (req, res
     answer.save()
     res.redirect(`/academy/question/${questionId}`)
 
-})
+});
+
+router.get('/encyclopedia', (req, res) => {
+    /* const searchTerm = req.params.term; */
+const options = {
+  method: 'GET',
+  url: `https://en.wikipedia.org/w/rest.php/v1/search/title?q=learn&limit=50`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('encyclopedia', {returnedData});
+}).catch(function (error) {
+	console.error(error);
+});
+});
+
+router.post('/encyclopedia/search', (req, res) => {
+    const searchTerm = req.body.search;
+	const options = {
+  method: 'GET',
+  url: `https://en.wikipedia.org/w/rest.php/v1/search/title?q=${searchTerm}&limit=50`
+};
+
+axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('encyclopedia', {returnedData});
+}).catch(function (error) {
+	console.error(error);
+});
+});
+
+router.get('/encyclopedia/:pageKey', async (req, res) => {
+    const pageKey = req.params.pageKey;
+	const options = {
+  method: 'GET',
+  url: `https://en.wikipedia.org/w/rest.php/v1/page/${pageKey}/html`
+};
+await axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('encyclopedia-result', {returnedData});
+}).catch(function (error) {
+	console.error(error);
+});
+});
+
+router.get('/encyclopedia/images/:pageKey', async (req, res) => {
+    const pageKey = req.params.pageKey;
+	const options = {
+  method: 'GET',
+  url: `https://en.wikipedia.org/w/rest.php/v1/page/${pageKey}/links/media`
+};
+await axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('encyclopedia-result', {returnedData});
+}).catch(function (error) {
+	console.error(error);
+});
+});
+
 module.exports = router;

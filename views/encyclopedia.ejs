@@ -1,0 +1,39 @@
+<style>
+    .page-title {
+        text-align: center;
+    }
+    .search {
+        margin-bottom: 30px;
+    }
+    .result {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="page-title">
+    <h1>Encyclopedia</h1>
+</div>
+<div class="search">
+    <form action="/academy/encyclopedia/search" method="post">
+        <input type="text" name="search" placeholder="Search Encyclopedia...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+<% if (returnedData) { %>
+<% returnedData.pages.forEach(function(page) { %>
+    <div class="result">
+        <a href="/academy/encyclopedia/<%= page.key %>">
+            <h5><%= page.title %></h5>
+            <p><%= page.description %></p>    
+        </a>
+        <p><a href="/academy/encyclopedia/images/<%= page.key %>">Images</a></p>
+        </div>
+<% }) %>
+<% } else { %>
+    <span></span>
+<% } %>
