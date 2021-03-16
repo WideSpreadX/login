@@ -36,7 +36,6 @@ const io = require("socket.io")(server)
 
 
 
-
 require('./config/passport')(passport);
 // DB Config
 const db = require('./config/keys').MongoURI;
@@ -677,12 +676,6 @@ app.get('/textchat/:chatId', ensureAuthenticated, async (req, res) => {
   const chat = await Chat.findById(chatId);
 
 
-
-/* 
-io.on('connection', (socket) => {
-  console.log('a user connected');
-});
- */
 io.on('connection', (socket) => {
   
   console.log(`${user.fname} ${user.lname} connected`);
@@ -695,14 +688,32 @@ io.on('connection', (socket) => {
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', (msg));
-    console.log(`${user.fname}: ${msg}`)
+    /* console.log(`${user.fname}: ${msg}`) */
   });
 });
   res.render('text-chat', {user, chat})
+});
+
+
+app.post('/new-message/:chatId', ensureAuthenticated, async (req, res) => {
+  const chatId = req.params.chatId;
+  const message = req.body.message;
+  const sent_by = req.body.sent_by;
+  console.log(message)
+  await Chat.findByIdAndUpdate(chatId,
+    {$push: {messages: message}},
+    {safe: true, upsert: true},
+    function(err, doc) {
+        if(err){
+            console.log(err);
+        }else{
+            
+            return
+        }
+    }
+    )
+    res.redirect(req.get('referer'));
 })
-
-
-
 
 
 

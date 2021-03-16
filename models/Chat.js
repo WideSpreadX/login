@@ -9,17 +9,7 @@ const ChatSchema = new mongoose.Schema({
         unique: true
     },
     private: Boolean,
-    messages: [
-        {
-            sent_by: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-            sent_at: {
-                type: Date,
-                default: Date.now()
-            },
-            body: String,
-            likes: Number
-        }
-    ]
+    messages: [String]
 });
 
 const Chat = mongoose.model('Chat', ChatSchema);

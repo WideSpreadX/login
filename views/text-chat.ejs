@@ -12,9 +12,14 @@
 </style>
 
 <h5 style="text-align: center;"><%= chat.room %></h5>
-<ul id="messages"></ul>
-<form id="form" action="">
-  <input id="input" autocomplete="off" /><button>Send</button>
+<ul id="messages">
+    <% chat.messages.forEach(function(message) { %>
+        <li><%= message %></li>
+    <% }) %>
+</ul>
+<form id="form" action="/new-message/<%= chat.id %>" method="POST">
+    <input type="text" name="sent_by" value="<%= user.id %>" hidden>
+  <input id="input" autocomplete="off" name="message" /><button>Send</button>
 </form>
 
 
@@ -27,11 +32,11 @@
     var form = document.getElementById('form');
     var input = document.getElementById('input');
   
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+    form.addEventListener('submit', function() {
+      
       if (input.value) {
         socket.emit('chat message', input.value);
-        input.value = '';
+        
       }
     });
   
