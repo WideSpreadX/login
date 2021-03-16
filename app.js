@@ -673,7 +673,14 @@ app.get('/textchat/:chatId', ensureAuthenticated, async (req, res) => {
   const userId = req.user._id;
   const user = await User.findById(userId);
   const chatId = req.params.chatId;
-  const chat = await Chat.findById(chatId);
+  const chat = await Chat.findById(chatId).populate({ 
+    path: 'messages',
+    populate: {
+      path: 'sent_by',
+      model: 'User'
+    } 
+ })
+ .exec()
 
 
 io.on('connection', (socket) => {
@@ -697,8 +704,10 @@ io.on('connection', (socket) => {
 
 app.post('/new-message/:chatId', ensureAuthenticated, async (req, res) => {
   const chatId = req.params.chatId;
-  const message = req.body.message;
-  const sent_by = req.body.sent_by;
+  const message = {
+      message_body: req.body.message,
+      sent_by: req.body.sent_by
+  }
   console.log(message)
   await Chat.findByIdAndUpdate(chatId,
     {$push: {messages: message}},

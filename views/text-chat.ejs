@@ -5,16 +5,25 @@
     #input:focus { outline: none; }
     #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
 
-    #messages { list-style-type: none; margin: 0; padding: 0; }
+    #messages { list-style-type: none; margin: 0; padding: 0; box-shadow: 0 0 15px #000; border-radius: 8px;}
     #messages > li { padding: 0.5rem 1rem; }
-    #messages > li { color: #fff;}
+    #messages > li { color: #fff; border-bottom: groove 2px lightskyblue; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);}
     #messages > li:nth-child(odd) { background: #efefef; color: #333}
+    #messages > li:first-of-type {border-top-left-radius: 8px; border-top-right-radius: 8px;}
+    #messages > li:last-of-type {border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; border-bottom: none}
 </style>
 
 <h5 style="text-align: center;"><%= chat.room %></h5>
 <ul id="messages">
     <% chat.messages.forEach(function(message) { %>
-        <li><%= message %></li>
+        <li>
+            <div class="sent-by">
+                <span><p style="color: lightskyblue; text-shadow: 0 0 2px #000;"><%= message.sent_by.fname %> <%= message.sent_by.lname %><span><small style="color: #ccc; text-shadow: 0 0 2px #000;"> - <%= message.sent_at.toLocaleTimeString() %></small></span></p></span>
+            </div>
+            <div class="message-body">
+                <%= message.message_body %>
+            </div>
+        </li>
     <% }) %>
 </ul>
 <form id="form" action="/new-message/<%= chat.id %>" method="POST">
