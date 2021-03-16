@@ -1,0 +1,53 @@
+.introjs-showElement {
+    border: groove 1px lightskyblue;
+    border-radius: 8px;
+    padding: 5px;
+}
+.introjs-tooltip {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    box-shadow: 0 0 10px rgba(135, 206, 250, 0.644);
+}
+.introjs-tooltip-header {
+    background: rgba(255, 255, 255, 0.3);
+    border-bottom: groove 2px lightskyblue;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.introjs-tooltip-title {
+}
+.introjs-tooltip-title h1 {
+    color: lightskyblue;
+}
+.introjs-skipbutton {
+    color: red;
+}
+.introjs-tooltiptext {
+    color: #fff;
+    text-shadow: 0 0 1px #000;
+}
+.introjs-bullets {
+}
+.introjs-bullets {
+}
+.presentation a {
+}
+
+.introjs-tooltipbuttons {
+    background: rgba(135, 206, 250, 0.3);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top: groove 2px lightskyblue;
+}
+.introjs-button {
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background: #000;
+    box-shadow: 0 0 5px rgba(135, 206, 250, 0.5);
+    color: lightskyblue;
+    text-shadow: 0 0 2px #fff;
+}

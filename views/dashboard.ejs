@@ -1734,7 +1734,9 @@
 
 
 <%- include('partials/mainHeaderSiteMenu') %>
-<%- include('partials/mainHeaderPageMenu') %>
+<div class="intro-message" data-title="Page Slider Menu" data-intro="Slide this menu left and right to access more features. SocialSpread, YourSpread, SpreadChat(Real-time text, audio, video chat), Tools(Notes, ToDo's, Encyclopedia, Dictionary, etc.), SpreadShield & FlexFloor.">
+    <%- include('partials/mainHeaderPageMenu') %>
+</div>
 
 <br>
 <br>
@@ -1870,11 +1872,11 @@
 </div>
     <h5 style="text-align: center;">Spread Something</h5>
     <p style="width: 100%; text-align: center; font-size: 0.6rem; color: lightskyblue;">Scroll left & right for more Spreaders</p>
-    <div class="tab">
-        <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Post')">Post</button>
-        <button class="tablinks" onclick="openCity(event, 'Article')">Article</button>
-        <button class="tablinks" onclick="openCity(event, 'Question')">Question</button>
-        <button class="tablinks" onclick="openCity(event, 'Poll')">Poll</button>
+    <div class="tab" data-title="The Spreader" data-intro="This is where you can Spread things!">
+        <button data-title="SocialSpread" data-intro="Post something you want to tell the world!" class="tablinks" id="defaultOpen" onclick="openCity(event, 'Post')">Post</button>
+        <button data-title="Articles" data-intro="Would you like to write an article? Here is where it can happen!"  class="tablinks" onclick="openCity(event, 'Article')">Article</button>
+        <button data-title="Questions" data-intro="Have a question? Have some answers? Ask anything you'd like. Help others by answering their questions."  class="tablinks" onclick="openCity(event, 'Question')">Question</button>
+        <button data-title="The Polls" data-intro="See what the world thinks about everything! Create your own poll here." class="tablinks" onclick="openCity(event, 'Poll')">Poll</button>
         <button class="tablinks" onclick="openCity(event, 'Video')">Video</button>
         <button class="tablinks" onclick="openCity(event, 'Audio')">Audio</button>
         <button class="tablinks" onclick="openCity(event, 'Event')">Event</button>
@@ -2303,7 +2305,7 @@
             <% }) %>
         </div>
     </div>
-<div class="inspread-container">
+<div class="inspread-container" data-title="InSpreads" data-intro="This is where all your InSpreads will be, both public and private. (InSpreads are messages directed at you from your public profile.)">
     <h5>Spread To You</h5>
     <div class="inspreads">
         <% inSpreads.forEach(function(inSpread) { %>
@@ -2332,20 +2334,7 @@
     <p>    Also, feel free to check out some demo videos and screenshots to hopefully give some guidance until I build walkthroughs and explain things... <a href="https://www.instagram.com/widespread_os/" target="_blank" style="color: lightskyblue;">WideSpread OS</a> (Yeah, yeah, it's Instagram... time to put them in their place... the trash!)</p>
     <div class="spread-break">
         <hr style="background: red;">
-    </div>
-    <div class="spreadshield-demos">
-        <h5>WideSpread Cameo</h5>
-        <h6>First Draft</h6>
-        <p>If anyone likes editing videos, feel free to make a cool video for WideSpread.</p>
-        <video src="https://scontent-mia3-2.cdninstagram.com/v/t50.2886-16/10000000_875779629658749_7440147872372310342_n.mp4?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=uWFXYTnUKXsAX-3ZpNb&oe=60489C2B&oh=2c9c505df035402abfe62575bfad50ae" controls></video>
-        <div class="spread-break">
-            <hr>
-        </div>
-        <p>Here's a quick preview of the VR Dashboard. It's pretty bare right now, but eventually, everything you have here in 2D, will be there in VR for you too!</p>
-        <video src="https://scontent-mia3-1.cdninstagram.com/v/t50.2886-16/157591890_1101139743693474_6972359598471492049_n.mp4?_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=106&_nc_ohc=XzkdwIkZj9sAX-jTI-e&oe=604891E0&oh=6e87549d7aef27aa1862cc5be2b52317" controls></video>
-        <p>Want to add a VR background? If you don't have access to a 360&#176; Camera, you can easily download an equirectangular image <a href="https://duckduckgo.com/?q=equirectangular+images&atb=v166-1&iar=images&iaf=size%3AWallpaper%2Clayout%3AWide&iax=images&ia=images" target="_blank">here</a>. Once you found one you like, go to "<a href="/users/update-profile/<%= profile.id %>">Update Your Profile</a>" and use the upload form for "VR Background Image".</p>
-    </div>
-    
+    </div>    
 </div>
 
 
@@ -2366,3 +2355,6 @@
     }
 </script>
 
+<script>
+    introJs().start();
+</script>
