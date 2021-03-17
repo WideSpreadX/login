@@ -98,5 +98,10 @@ router.patch('/todos/uncheck', ensureAuthenticated, (req, res) => {
    res.redirect('/tools/todos')
 });
 
-})
+});
+
+
+router.get('/calculator', (req, res) => {
+  res.render('tools-calculator')
+});
 module.exports = router;
