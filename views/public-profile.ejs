@@ -119,6 +119,50 @@
     color: #fff;
     margin-bottom: 0;
 }
+.qr-code {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+.qr-code img {
+    width: 100%;
+}
+.weather {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    border-radius: 8px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+}
+.weather h5 {
+    padding: 5px;
+    text-align: center;
+    border-bottom: groove 2px lightskyblue;
+    background: rgba(255, 255, 255, 0.3);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+}
+.weather h6 {
+    padding: 5px;
+}
+.weather-data {
+    padding: 5px;
+    padding-left: 15px;
+    width: 100%;
+    display: inline-flex;
+}
+.weather-info {
+    width: 80%;
+}
+.weather-icons {
+    width: 20%;
+}
 .user-images {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(2px);
@@ -547,8 +591,9 @@
         </div>
     </div>
 
+
     <div class="weather">
-        <h5>Current Weather</h5>
+        <h5 style="color: <%= profile.favColor1 %>"><%= profile.fname %>'s Current Weather</h5>
         <h6><%= weather.name %></h6>
         <div class="weather-data">
             <div class="weather-info">
@@ -563,7 +608,7 @@
                 <% }) %>
             </div>
         </div>
-
+    </div>
     <div class="spread-container">
         <div class="col-12 spread-container-about" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
             <h3 style="text-align: center; padding: 20px; padding-bottom: 10px;">About <%= profile.fname %></h3>
@@ -599,6 +644,7 @@
                         <span></span>
                     <% } %>
         </div>
+        
         <div class="spread-break">
             <hr>
         </div>
@@ -622,8 +668,10 @@
                 <% } %>
         </div>
     </div>
-    
-</div>
+    <h5 style="text-align: center;">Share Profile</h5>
+    <div class="qr-code">
+        <img src="https://qrtag.net/api/qr_transparent_6.svg?url=https://widespread-beta.herokuapp.com/users/<%= profile.id %>" alt="qrtag">
+    </div>
     
 <div class="spread-break">
     <hr>
