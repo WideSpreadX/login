@@ -275,10 +275,24 @@
     .post-data p {
         color: #fff;
     }
+    .post-header {
+        width: 100%;
+        display: inline-flex;
+    }
+    .edit-post {
+        width: 30%;
+        display: inline-flex;
+    }
+    .edit-post span {
+        width: 50%;
+        text-align: center;
+        font-size: 1.5rem;
+    }
     .post-time {
        padding: 5px;
        font-size: 0.5rem;
        text-align: right;
+       width: 70%;
     }
     .post-time p {
         margin-bottom: 0;;
@@ -365,13 +379,30 @@
        margin-bottom: 0;
        color: #fff;
    }
-   .comment-time {
+   .comment-header {
+        width: 100%;
+        display: inline-flex;
+    }
+    .edit-comment {
+        width: 25%;
+        display: inline-flex;
+        font-size: 1.2rem;
+    }
+    .edit-comment span {
+        width: 50%;
+        text-align: center;
+    }
+
+    .comment-time {
        padding: 5px;
+       text-align: right;
+       width: 75%;
     }
     .comment-time p {
-        margin-bottom: 0;
+        margin-bottom: 0;;
+        font-size: 0.8rem;
         color: lightskyblue;
-   }
+    }
    .comment-body {
        padding: 10px;
        padding-bottom: 0;
@@ -422,6 +453,14 @@
        padding: 5px;
        border-bottom-left-radius: 8px;
        border-bottom-right-radius: 8px;
+   }
+   .testing-block {
+       background: lime;
+       padding: 5px;
+   }
+   .block {
+       background: black;
+       color: #fff;
    }
 </style>
 
@@ -580,7 +619,8 @@
                 </div>
 
 <% }); %> -->
-<% data.forEach(function(post){ %>
+
+    <% data.forEach(function(post){ %>
     <div class="post-container">
         <div class="post">
             <div class="post-author-data">
@@ -598,8 +638,26 @@
                     </div>
                 </div>
                 <div class="post-data">
-                    <div class="post-time">
-                        <p><small><%= post.createdAt.toLocaleTimeString() %> <%= post.createdAt.toLocaleDateString() %></small></p>
+                    <div class="post-header">
+                        <div class="edit-post">
+                            <span>
+                                <% if(id == post.author.id){ %>
+                                    <a style="color: #fff;" href="/users/post/edit/<%= post.id%>"><small><i class="far fa-edit" style="color: yellow"></i></small></a>
+                                <% } else { %>
+                                    <span></span>
+                                <% } %>
+                            </span>
+                            <span>
+                                <% if(id == post.author.id){ %>
+                                    <a href="/users/post/<%= post.id%>" style="text-shadow: 0 0 1px #fff;"><small><i class="far fa-trash-alt" style="color: red"></i></small></a>
+                                <% } else { %>
+                                    <span></span>
+                                <% } %>
+                            </span>
+                        </div>
+                        <div class="post-time">
+                            <p><small><%= post.createdAt.toLocaleTimeString() %> <%= post.createdAt.toLocaleDateString() %></small></p>
+                        </div>
                     </div>
                     <div class="post-body">
                         <p><%= post.postBody %></p>
@@ -614,7 +672,7 @@
                         </span>
                         <div class="like-button">
                             <span class="like-button">
-                                <form action="/wall/post/<%= post.id %>/save?_method=PATCH" method="post">
+                                <form action="/dashboard/wall/post/<%= post.id %>/save?_method=PATCH" method="post">
                                     <input type="text" name="saved_posts" value="<%= post.id %>" hidden="true">
                                     <button type="submit"><i class="far fa-bookmark"></i></button>
                                 </form>
@@ -639,8 +697,31 @@
                                 <p><%= comment.author.fname %> <%= comment.author.lname %></p>
                             </div>
                         </a>
-                        <div class="comment-time">
-                            <p><small><%= comment.createdAt.toLocaleTimeString() %> <%= comment.createdAt.toLocaleDateString() %></small></p>
+                        <div class="comment-header">
+                            <div class="edit-comment">
+                                <span>
+                                    <% if(id == comment.author.id){ %>
+                                        <a style="color: #fff;" href="/users/comment/<%= comment.id%>/edit"><small><i class="far fa-edit" style="color: yellow"></i></small></a>
+                                    <% } else { %>
+                                        <span></span>
+                                    <% } %>
+                                </span>
+                                <span>
+                                    <% if(id == comment.author.id){ %>
+                                        <span class="like-button">
+                                            <form action="/users/comment/<%= comment.id%>/delete?_method=DELETE" method="post">
+                                                <input type="text" name="comment" value="<%= comment.id %>" hidden="true">
+                                                <button type="submit"><i class="far fa-trash-alt" style="color: red"></i></button>
+                                            </form>
+                                        </span>
+                                    <% } else { %>
+                                        <span></span>
+                                    <% } %>
+                                </span>
+                            </div>
+                            <div class="comment-time">
+                                <p><small><%= comment.createdAt.toLocaleTimeString() %> <%= comment.createdAt.toLocaleDateString() %></small></p>
+                            </div>
                         </div>
                         <div class="comment-body">
                             <p><%= comment.commentBody %></p>
@@ -666,4 +747,8 @@
         </div>
     </div>
 <% }) %>
+
 </div>
+ 
+
+ 

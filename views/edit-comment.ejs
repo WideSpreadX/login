@@ -26,7 +26,7 @@
 </style>
 <h1>Edit Comment</h1>
 <div class="edit-form">
-    <form action="/users/comment/edit/<%= comment.id %>?_method=PATCH" method="POST">
+    <form action="/users/comment/<%= comment.id %>/edit?_method=PATCH" method="POST">
         <textarea name="commentBody"><%= comment.commentBody %></textarea>
         <button>ReSpread</button>
     </form>

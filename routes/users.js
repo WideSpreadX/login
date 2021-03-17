@@ -454,18 +454,18 @@ router.delete('/post/:postId', async (req, res) => {
     const post = req.params.postId;
 
     await Post.findByIdAndDelete(post);
-    res.redirect('/dashboard')
+    res.redirect('/dashboard/wall')
 
 });
 
-router.get('/comment/edit/:commentId', async (req, res) => {
+router.get('/comment/:commentId/edit', async (req, res) => {
     const commentId = req.params.commentId;
     const postId = req.body.postId;
     const comment = await Comment.findById(commentId);
     console.log(`Comment: ${comment}`)
     res.render('edit-comment', {comment})
 })
-router.patch('/comment/edit/:commentId', async (req, res) => {
+router.patch('/comment/:commentId/edit', async (req, res) => {
     try {
     const comment = req.params.commentId;
     const updates = req.body;
@@ -478,11 +478,11 @@ router.patch('/comment/edit/:commentId', async (req, res) => {
 
 });
 // Deleting Posts
-router.delete('/comment/:commentId', async (req, res) => {
-    const comment = req.params.commentId;
+router.delete('/comment/:commentId/delete', async (req, res) => {
+    const comment = req.body.comment;
 
     await Comment.findByIdAndDelete(comment);
-    res.redirect('/dashboard')
+    res.redirect('/dashboard/wall')
 
 });
 

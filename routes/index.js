@@ -204,11 +204,6 @@ conn.once('open', () => {
           posts[i].author.push(checkAuthor)
         }}
         
-        const postAvatars = await Post.find({ "author": { "$in": friendIds } })
-        const profileImages = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
-        const avatarImage = await ProfileImage.find({ imageOwner: { "$in": friendIds } });
-
-      const comments = await Comment.find({fromPost: {$eq: posts._id} })
       const allPosts = await Post.find({ "author": { "$in": friendIds } })
       .sort({createdAt: 'desc'})
       .populate({
@@ -231,12 +226,7 @@ conn.once('open', () => {
           return res.render('dashboard-wall', {
             currentPageTitle: 'YourSpread',
             data,
-            allPosts,
-            comments,
-            profileImages,
-            avatarImage,
             id,
-            checkAuthor,
             thisUser
           })
         }
@@ -270,7 +260,7 @@ conn.once('open', () => {
   })
 
 
-router.patch('/wall/post/:postId/save', ensureAuthenticated, (req, res) => {
+router.patch('/dashboard/wall/post/:postId/save', ensureAuthenticated, (req, res) => {
   const userId = req.user.id;
   const postId = req.params.postId;
 
@@ -285,7 +275,7 @@ router.patch('/wall/post/:postId/save', ensureAuthenticated, (req, res) => {
       }
     }
     ).then(
-      res.redirect(`/dashboard/wall/post/${postId}`)
+      res.redirect(`/dashboard/wall`)
     )
 });
 router.patch('/:articleId/save', ensureAuthenticated, (req, res) => {
