@@ -46,7 +46,7 @@
         border-top-right-radius: 8px;
         color: #fff;
     }
-    .outer-post-container {
+   /*  .outer-post-container {
         position: relative;
         padding: 0;
     }
@@ -207,7 +207,222 @@
     }
     .edit-post span {
         margin-left: 10px;
+    } */
+    .socialspread-posts {
+        z-index: 0;
+        position: relative;
     }
+   .post-container {
+       padding: 0;
+       border: none;
+   }
+   .post {
+       padding: 0;
+       height: 300px;
+       position: relative;
+       margin-top: 30px;
+       z-index: 5;
+       border-radius: 8px;
+       overflow: hidden;
+       box-shadow: 0 8px 8px rgba(0, 0, 0, 0.7);
+       border-top: groove 2px lightskyblue;
+       border-bottom: groove 2px lightskyblue;
+   }
+   .post-author-data {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+   }
+   .author-image {
+       position: absolute;
+       z-index: 6;
+       width: 100%;
+       height: 300px;
+       top: 0;
+       left: 0;
+   }
+   .author-image img {
+       width: 100%;
+       height: auto;
+       max-height: 300px;
+   }
+   .author-info {
+       background: rgba(0, 0, 0, 0.3);
+       backdrop-filter: blur(2px);
+       width: 100%;
+       position: relative;
+       z-index: 7;
+       padding: 10px;
+       text-align: center;
+       border-bottom: groove 2px lightskyblue;
+   }
+   .author-info h5 {
+       margin-bottom: 0;
+   }
+   .post-data {
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       width: 100%;
+       background: rgba(0, 0, 0, 0.3);
+       z-index: 9;
+       border-top: groove 2px lightskyblue;
+       backdrop-filter: blur(2px);
+       max-height: 200px;
+       overflow-y: scroll;
+    }
+    .post-data p {
+        color: #fff;
+    }
+    .post-time {
+       padding: 5px;
+       font-size: 0.5rem;
+       text-align: right;
+    }
+    .post-time p {
+        margin-bottom: 0;;
+        color: lightskyblue;
+    }
+    .post-body p {
+       padding: 10px;
+       padding-bottom: 5px;
+       padding-top: 5px;
+       font-size: 1rem;
+       margin-bottom: 0;
+   }
+   .post-actions {
+       width: 100%;
+       display: inline-flex;
+   }
+   .post-actions>.like-button {
+       width: 80px;
+       margin-left: 5px;
+       color: lightskyblue;
+   }
+
+   .comments-container {
+       background: rgba(255, 255, 255, 0.3);
+       max-height: 200px;
+       overflow-y: scroll;
+       width: 90%;
+        padding: 5px;
+        margin-left: 5%;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom: groove 2px lightskyblue;
+        box-shadow: 0 8px 8px #000;
+   }
+   .comments-container h6 {
+       padding: 8px;
+       text-align: center;
+       margin-top: 5px;
+   }
+   .comment {
+       border-radius: 8px;
+       box-shadow: none;
+       margin-top: 10px;
+       position: relative;
+       padding: 0;
+       overflow: hidden;
+       display: inline-flex;
+       width: 100%;
+       z-index: 1;
+       border-top: groove 2px lightskyblue;
+    }
+    .comment-author-image {
+        position: absolute;
+        z-index: 5;
+        width: 20%;
+        height: 100%;
+        max-height: 120px;
+        border-bottom-left-radius: 8px;
+        overflow: hidden;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .comment-author-image img {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        max-height: 120px;
+   }
+   .comment-data {
+       z-index: 6;
+       width: 80%;
+       margin-left: 20%;
+       background: rgba(0, 0, 0, 0.3);
+       border-bottom-left-radius: 8px;
+       border-bottom-right-radius: 8px;
+       min-height: 130px;
+       border-bottom: groove 2px lightskyblue;
+   }
+   .comment-author {
+       padding: 10px;
+       padding-bottom: 5px;
+       border-bottom: groove 1px lightskyblue;
+   }
+   .comment-author p {
+       margin-bottom: 0;
+       color: #fff;
+   }
+   .comment-time {
+       padding: 5px;
+    }
+    .comment-time p {
+        margin-bottom: 0;
+        color: lightskyblue;
+   }
+   .comment-body {
+       padding: 10px;
+       padding-bottom: 0;
+       color: #fff;
+   }
+   .like-button i {
+       color: lightskyblue;
+   }
+   .likes-count {
+       color: lightskyblue;
+   }
+   .spread-comment {
+       width: 80%;
+       margin-left: 10%;
+   }
+   .spread-comment textarea {
+       width: 100%;
+       border-bottom-left-radius: 8px;
+       border-bottom-right-radius: 8px;
+       padding: 5px;
+       border: none;
+       border-bottom: groove 2px lightskyblue;
+       margin-bottom: 0;
+       transition: ease-in 0.3s;
+       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+       background: rgba(135, 206, 250, 0.3);
+    }
+    .spread-comment textarea::placeholder {
+        color: #fff;
+        text-shadow: 0 0 1px #000;
+    }
+    .spread-comment textarea:focus {
+        outline: none;
+        border: none;
+        border-bottom: groove 2px lightskyblue;
+        box-shadow: inset 0 0 10px rgba(135, 206, 250, 0.5), 0 4px 4px rgba(0, 0, 0, 0.5);
+        background:rgba(0, 0, 0, 0.3);
+        transition: ease-in 0.3s;
+   }
+   .spread-comment button {
+       width: 90%;
+       margin-left: 5%;
+       background: rgba(0, 128, 0, 0.3);
+       border: groove 2px green;
+       border-top: none;
+       margin-top: -10px;
+       color: #fff;
+       padding: 5px;
+       border-bottom-left-radius: 8px;
+       border-bottom-right-radius: 8px;
+   }
 </style>
 
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -235,8 +450,9 @@
 <div class="socialspread-posts">
 
 <h5>Recent Spreads</h5>
+<!-- 
 <% data.forEach(function(post){ %>
-    <div class="outer-post-container" style="box-shadow: inset 0 0 3px <%= post.author.favColor1 %>; border-top: groove 2px <%= post.author.favColor1 %>; border-bottom: groove 2px <%= post.author.favColor1 %>;">
+        <div class="outer-post-container" style="box-shadow: inset 0 0 3px <%= post.author.favColor1 %>; border-top: groove 2px <%= post.author.favColor1 %>; border-bottom: groove 2px <%= post.author.favColor1 %>;">
                 <div class="ss-post">
   
                     <div class="user-avatar"style="box-shadow: 0 0 10px <%= post.author.favColor1 %>; margin-top: 10px;">
@@ -363,5 +579,91 @@
                         </div>
                 </div>
 
-<% }); %>
+<% }); %> -->
+<% data.forEach(function(post){ %>
+    <div class="post-container">
+        <div class="post">
+            <div class="post-author-data">
+                <div class="author-image">
+                    <% if (post.author.user_avatar) { %>
+                        <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
+                        <%} else { %>
+                            <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" >
+                            <% } %>
+                        </div>
+                        <div class="author-info">
+                    <a href="/users/<%= post.author.id %>">
+                        <h5><%= post.author.fname %> <%= post.author.lname %></h5>
+                    </a>
+                    </div>
+                </div>
+                <div class="post-data">
+                    <div class="post-time">
+                        <p><small><%= post.createdAt.toLocaleTimeString() %> <%= post.createdAt.toLocaleDateString() %></small></p>
+                    </div>
+                    <div class="post-body">
+                        <p><%= post.postBody %></p>
+                    </div>
+                    <div class="post-actions">
+                        <span class="like-button">
+                            <form action="/dashboard/wall/post/<%= post.id %>/like?_method=PATCH" method="post">
+                                <input type="text" name="likedBy" value="<%= id %>" hidden="true">
+                                <button type="submit"><i class="far fa-heart"></i></button>
+                                <span><%= post.likes %></span>
+                            </form>
+                        </span>
+                        <div class="like-button">
+                            <span class="like-button">
+                                <form action="/wall/post/<%= post.id %>/save?_method=PATCH" method="post">
+                                    <input type="text" name="saved_posts" value="<%= post.id %>" hidden="true">
+                                    <button type="submit"><i class="far fa-bookmark"></i></button>
+                                </form>
+                            </span>
+                        </div>
+                </div>
+                </div>
+        </div>
+        <div class="comments-container">
+            <h6>Comments</h6>
+            <% post.comments.forEach(function(comment) { %>
+                <div class="comment">
+                    <div class="comment-author-image">
+                        <a href="/users/<%= comment.author.id %>">
+                            <img src="/image/<%= comment.author.user_avatar %>" alt="'s Avatar">
+                        </a>
+                    </div>
+                    
+                    <div class="comment-data">
+                        <a href="/users/<%= comment.author.id %>">
+                            <div class="comment-author">
+                                <p><%= comment.author.fname %> <%= comment.author.lname %></p>
+                            </div>
+                        </a>
+                        <div class="comment-time">
+                            <p><small><%= comment.createdAt.toLocaleTimeString() %> <%= comment.createdAt.toLocaleDateString() %></small></p>
+                        </div>
+                        <div class="comment-body">
+                            <p><%= comment.commentBody %></p>
+                        </div>
+                        <span class="like-button">
+                            <form action="/<%= comment.id %>/like?_method=PATCH" method="post">
+                                <input type="text" name="likedBy" value="<%= id %>" hidden="true">
+                                <button type="submit"><i class="far fa-heart"></i></button>
+                                <span class="likes-count"><%= comment.likes %></span>
+                            </form>
+                        </span>
+                    </div>
+
+                </div>
+            <% }) %>
+        </div>
+        <div class="spread-comment">
+            <form action="/users/<%= post.author.id %>/post/<%= post.id %>/comment" method="POST">
+                <textarea required name="commentBody" id="commentBody" style="color: #fff" placeholder="Add a comment..."></textarea>
+                <button type="submit">Comment</button>
+                <input type="text" name="fromPost" value="<%= post.id %>" hidden="true">
+            </form>
+        </div>
+    </div>
+<% }) %>
 </div>
