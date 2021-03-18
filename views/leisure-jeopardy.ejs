@@ -110,10 +110,13 @@
     </div>
 </div>
 
+<div class="popular-categories">
+    <a href="/leisure/games/jeopardy/questions/42">Sports</a>
+</div>
 <div class="jeopardy-stage">
     <h1>Categories</h1>
 <% returnedData.forEach(function(category) { %>
-    <a href="/leisure/games/jeopardy/page/questions/<%= category.id %>">
+    <a href="/leisure/games/jeopardy/questions/<%= category.id %>">
         <div class="category">
             <h5><%= category.title %></h5>
             <p><small>Questions: <%= category.clues_count %></small></p>
