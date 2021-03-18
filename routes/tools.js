@@ -100,6 +100,10 @@ router.patch('/todos/uncheck', ensureAuthenticated, (req, res) => {
 
 });
 
+router.get('/code-editor', (req, res) => {
+  res.render('tools-code-editor')
+});
+
 
 router.get('/calculator', (req, res) => {
   res.render('tools-calculator')

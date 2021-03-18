@@ -1,0 +1,90 @@
+<style>
+  textarea {
+    width: 100%;
+    min-height: 250px;
+    overflow: scroll;
+    padding: 5px;
+    display: inline-block;
+    background: #000;
+    outline: none;
+    font-family: Courier, sans-serif;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  #html {
+      color: lightskyblue;
+  }
+  #htmlTab>textarea::placeholder {
+      color: lightskyblue;
+  }
+  #css {
+      color: rgb(255, 75, 255);
+    }
+    #cssTab>textarea::placeholder {
+      color: rgb(255, 75, 255);
+  }
+  #js {
+      color: rgb(39, 218, 39);
+    }
+    #jsTab>textarea::placeholder {
+      color: rgb(39, 218, 39);
+  }
+  .tab {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+  }
+  .tabcontent {
+      border: solid 1px lightskyblue;
+      border-top: none;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+  }
+  iframe {
+    bottom: 0;
+    position: relative;
+    width: 100%;
+    border: solid 1px lightskyblue;
+    border-radius: 8px;
+    margin-top: 10px;
+    height: 35em;
+  }
+</style>
+
+
+<div class="tab">
+    <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'htmlTab')">HTML</button>
+    <button class="tablinks" onclick="openCity(event, 'cssTab')">CSS</button>
+    <button class="tablinks" onclick="openCity(event, 'jsTab')">JavaScript</button>
+</div>
+<div id="htmlTab" class="tabcontent">
+    <textarea id="html" placeholder="Enter your HTML code..."></textarea>
+</div>
+<div id="cssTab" class="tabcontent">
+    <textarea id="css" placeholder="Enter your CSS code..."></textarea>
+</div>
+<div id="jsTab" class="tabcontent">
+    <textarea id="js" placeholder="Enter your JavaScript code..."></textarea>
+</div>
+
+<iframe id="code"></iframe>
+
+
+<script>
+    document.getElementById("defaultOpen").click();
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+</script>
+
+<script src="/js/code-editor.js"></script>
