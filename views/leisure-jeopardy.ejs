@@ -1,0 +1,54 @@
+<style>
+     .flip-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+        }
+        .flip-card-front {
+            padding: 10px;
+            padding-top: 30px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .flip-card-front p {
+            font-weight: bolder;
+            font-size: 1.2rem;
+        }
+        .flip-card-back p {
+            font-weight: bolder;
+            font-size: 1.2rem;
+        }
+        .flip-card-back {
+            padding: 10px;
+            padding-top: 60px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.7);
+        }
+        .flip-card-back p {
+            color: #333;
+            font-weight: bolder;    
+        }
+    p {
+        color: #fff;
+    }
+    h5 {
+        color: gold;
+    }
+</style>
+
+<div class="jeopardy-stage">
+    <div class="flashcard-container">
+<% returnedData.forEach(function(question) { %>
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front easy">
+                <h5><small><%= question.category.title %></small></h5>
+                <p><%= question.question %></p>
+        </div>
+        <div class="flip-card-back easy">
+            <p><%= question.answer %></p>
+        </div>
+    </div>
+</div>
+<% }) %>
+
+</div>
+</div>

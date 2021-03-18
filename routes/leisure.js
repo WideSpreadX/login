@@ -35,4 +35,21 @@ router.get('/casino', (req, res) => {
 })
 
 
+/* Casino */
+router.get('/games/jeopardy', (req, res) => {
+	const options = {
+        method: 'GET',
+        url: `https://jservice.io/api/clues`
+        };
+
+        axios.request(options).then(function (response) {
+            const returnedData = response.data;
+            console.log(returnedData)
+            res.render('leisure-jeopardy', {returnedData});
+        }).catch(function (error) {
+            console.error(error);
+        });
+})
+
+
 module.exports = router;
