@@ -38,7 +38,7 @@ router.get('/casino', (req, res) => {
 /* Jeopardy */
 
 
-router.get('/games/jeopardy/:page', (req, res) => {
+router.get('/games/jeopardy/page/:page', (req, res) => {
     const page = req.params.page || "0"
 	const options = {
         method: 'GET',
@@ -53,7 +53,6 @@ router.get('/games/jeopardy/:page', (req, res) => {
             console.error(error);
         });
 });
-
 
 router.get('/games/jeopardy/questions/:category', (req, res) => {
     const category = req.params.category;
