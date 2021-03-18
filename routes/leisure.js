@@ -35,11 +35,14 @@ router.get('/casino', (req, res) => {
 })
 
 
-/* Casino */
-router.get('/games/jeopardy', (req, res) => {
+/* Jeopardy */
+
+
+router.get('/games/jeopardy/:page', (req, res) => {
+    const page = req.params.page || "0"
 	const options = {
         method: 'GET',
-        url: `https://jservice.io/api/clues`
+        url: `https://jservice.io/api/categories?count=100&offset=${page}`,
         };
 
         axios.request(options).then(function (response) {
@@ -49,7 +52,25 @@ router.get('/games/jeopardy', (req, res) => {
         }).catch(function (error) {
             console.error(error);
         });
-})
+});
+
+
+router.get('/games/jeopardy/questions/:category', (req, res) => {
+    const category = req.params.category;
+
+	const options = {
+        method: 'GET',
+        url: `https://jservice.io/api/clues?category=${category}`,
+        };
+
+        axios.request(options).then(function (response) {
+            const returnedData = response.data;
+            console.log(returnedData)
+            res.render('leisure-jeopardy-category', {returnedData});
+        }).catch(function (error) {
+            console.error(error);
+        });
+});
 
 
 module.exports = router;
