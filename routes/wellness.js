@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 
 const {ensureAuthenticated } = require('../config/auth');
 
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
 router.get('/your-plans', async (req, res) => {
     const user = req.user._id;
      const workouts = await Workout.find({});
-     const workoutSchedule = await WorkoutSchedule.find({user: {$eq: user}})
+     const workoutSchedule = await WorkoutSchedule.findOne({user: {$eq: user}}).populate('sunday').populate('monday').populate('monday').populate('tuesday').populate('wednesday').populate('thursday').populate('friday').populate('saturday').exec()
     res.render('wellness-your-plans', {currentPageTitle: 'Your Plans', user, workouts, workoutSchedule});
 });
 router.post('/your-plans/exercise', ensureAuthenticated, async (req,res) => {
@@ -34,7 +35,11 @@ router.post('/your-plans/exercise', ensureAuthenticated, async (req,res) => {
 })
 router.post('/your-plans/add', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
-    const exercise = Workout.findById({
+
+
+
+
+/*     const exercise = Workout.findById({
        exercise: {$eq: req.body} 
     })
 
@@ -60,9 +65,189 @@ router.post('/your-plans/add', ensureAuthenticated, async (req, res) => {
                 return
             }
         }
-        )
+        ) */
         res.redirect('/wellness/your-plans');
 });
+
+router.patch('/your-plans/add/sunday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.sunday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {sunday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+router.patch('/your-plans/add/monday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.monday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {monday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+router.patch('/your-plans/add/tuesday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.tuesday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {tuesday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+router.patch('/your-plans/add/wednesday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.wednesday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {wednesday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+router.patch('/your-plans/add/thursday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.thursday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {thursday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+router.patch('/your-plans/add/friday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.friday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {friday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+router.patch('/your-plans/add/saturday', async (req, res) => {
+    const userId = req.user._id;
+    const exercisesAdded = req.body.saturday;
+    exercisesAdded.forEach(turnObjectId);
+
+    function turnObjectId(item, index, arr) {
+        arr[index] = mongoose.Types.ObjectId(item)
+    }
+    console.log(exercisesAdded)
+     const added = await WorkoutSchedule.findOneAndUpdate({user: userId},
+        {$addToSet: {saturday: exercisesAdded }},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                0
+                return
+            }
+        }
+        )
+    added.save()
+    res.redirect('/wellness/your-plans')
+});
+
+
+
+
+
 router.get('/workout', (req, res) => {
 
     axios.get("https://www.muscleandfitness.com/athletes-celebrities/news/").then(function(response) {

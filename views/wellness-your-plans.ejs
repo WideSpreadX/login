@@ -26,8 +26,6 @@
         background: rgba(0, 0, 0, 0.3);
         width: 100%;
         position: relative;
-        border-left: 1px groove lightskyblue;
-        border-right: 1px groove lightskyblue;
         border-radius: 8px;
     }
 
@@ -74,16 +72,146 @@ margin-bottom: 30px;
     text-align: center;
     padding: 20px;
 }
+.tab {
+  width: 100%;
+  display: inline-flex;
+  overflow-x: scroll;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.tabcontent {
+  padding-bottom: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.tabcontent h5 {
+  text-align: center;
+  padding: 10px;
+}
+.tabcontent button {
+  width: 60%;
+  margin-left: 20%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: rgba(0, 128, 0, 0.3);
+  border: groove 2px green;
+  border-bottom: none;
+  outline: none;
+  color: #fff;
+  padding: 10px;
+}
+.exercise {
+  width: 100%;
+  display: inline-flex;
+  padding: 10px;
+}
+.exercise input {
+  width: 10%;
+}
+.exercise h6 {
+  width: 90%;
+}
+.exercise-list {
+  max-height: 500px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-top: groove 2px lightskyblue;
+  border-bottom: groove 2px lightskyblue;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.current-exercises {
+  background:rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+}
+.current-exercises p {
+  color: #fff;
+  padding: 5px;
+  margin-right: 5px;
+  
+}
+.current-exercise {
+  display: inline-flex;
+  margin-right: 15px;
+  margin-top: 10px;
+  border-top: groove 2px lightskyblue;
+  border-bottom: groove 2px lightskyblue;
+  padding: 5px;
+  background:rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}
+.current-exercise p {
+  margin-bottom: 0;
+  min-width: fit-content;
+  margin-bottom: 0;
+  line-height: 30px;
+
+}
+.remove {
+  width: auto;
+  line-height: 40px;
+}
+.remove button {
+  width: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  color: red;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  
+}
+.add-new-exercise {
+  background:rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  padding-bottom: 0;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+}
+.add-new-exercise h5 {
+  text-align: center;
+  padding: 10px;
+}
+.add-new-exercise input {
+  width: 90%;
+  border-radius: 8px;
+  padding: 5px;
+  margin-left: 5%;
+  margin-bottom: 20px;
+}
+.add-new-exercise button {
+  width: 80%;
+  margin-left: 10%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: rgba(0, 128, 0, 0.3);
+  border: groove 2px green;
+  border-bottom: none;
+  outline: none;
+  color: #fff;
+  padding: 10px;
+}
 }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
 <div class="page-title">
 <h1><%= currentPageTitle %></h1>
 </div>
+
 <div class="back-home">
-    <a href="/shopping"><h5>Go Back to Shopping Home</h5></a>
-    
+    <a href="/wellness"><h5>Go Back to Wellness Home</h5></a>
 </div>
+
 <div class="main-header-page-menu-container">
     <div id="mainHeaderPageMenu">
         <div class="main-header-page-menu-inner">
@@ -99,61 +227,226 @@ margin-bottom: 30px;
 
 
 
-<div class="spread-break">
-    <hr>
+
+<h2 style="text-align: center; padding: 10px;">Your Workout Schedule</h2>
+
+
+<div class="tab">
+  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'sundayAdd')">Sunday</button>
+  <button class="tablinks" onclick="openCity(event, 'mondayAdd')">Monday</button>
+  <button class="tablinks" onclick="openCity(event, 'tuesdayAdd')">Tuesday</button>
+  <button class="tablinks" onclick="openCity(event, 'wednesdayAdd')">Wednesday</button>
+  <button class="tablinks" onclick="openCity(event, 'thursdayAdd')">Thursday</button>
+  <button class="tablinks" onclick="openCity(event, 'fridayAdd')">Friday</button>
+  <button class="tablinks" onclick="openCity(event, 'saturdayAdd')">Saturday</button>
 </div>
 
-<% workouts.forEach(function(workout){ %>
-    <div class="draggable" draggable="true">
-        <input type="checkbox" name="exercises" value="<%= workout.exercise %>" hidden="true">
-        <h4><%= workout.exercise %></h4>
+<div id="sundayAdd" class="tabcontent">
+  <h5>Sunday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.sunday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
     </div>
-    <% }); %>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/sunday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="sunday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+<div id="mondayAdd" class="tabcontent">
+  <h5>Monday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.monday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
+    </div>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/monday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="monday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+
+
+<div id="tuesdayAdd" class="tabcontent">
+  <h5>Tuesday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.tuesday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
+    </div>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/tuesday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="tuesday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+<div id="wednesdayAdd" class="tabcontent">
+  <h5>Wednesday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.wednesday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
+    </div>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/wednesday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="wednesday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+<div id="thursdayAdd" class="tabcontent">
+  <h5>Thursday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.thursday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
+    </div>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/thursday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="thursday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+<div id="fridayAdd" class="tabcontent">
+  <h5>Friday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.friday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
+    </div>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/friday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="friday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+<div id="saturdayAdd" class="tabcontent">
+  <h5>Saturday</h5>
+    <div class="current-exercises">
+      <% workoutSchedule.saturday.forEach(function(exercise) { %>
+        <div class="current-exercise">
+          <p><%= exercise.exercise %></p>
+        </div>
+      <% }) %>  
+    </div>
+    <div class="spread-break">
+      <hr>
+    </div>
+    <form action="/wellness/your-plans/add/saturday?_method=PATCH" method="post">
+      <div class="exercise-list">
+        <% workouts.forEach(function(workout){ %>
+          <div class="exercise">
+            <input type="checkbox" name="saturday" value="<%= workout.id %>">
+            <h6><%= workout.exercise %></h6>
+          </div>
+        <% }); %>
+      </div>
+      <button type="submit">Update Workout</button>
+  </form>
+</div>
+
+
+
+
+
 
 <div class="spread-break">
     <hr>
 </div>
 
-
+<div class="add-new-exercise">
+  <h5>Add a New Exercise</h5>
+  <form action="/wellness/your-plans/exercise" method="post">
+    <input type="text" name="exercise" placeholder="Exercise name...">
+    <button type="submit">Add Exercise</button>
+  </form>
+</div>
 <script>
-    
-const draggables = document.querySelectorAll('.draggable')
-const containers = document.querySelectorAll('.dragTo')
-
-draggables.forEach(draggable => {
-  draggable.addEventListener('dragstart', () => {
-    draggable.classList.add('dragging')
-  })
-
-  draggable.addEventListener('dragend', () => {
-    draggable.classList.remove('dragging')
-  })
-})
-
-containers.forEach(container => {
-  container.addEventListener('dragover', e => {
-    e.preventDefault()
-    const afterElement = getDragAfterElement(container, e.clientY)
-    const draggable = document.querySelector('.dragging')
-    if (afterElement == null) {
-      container.appendChild(draggable)
-    } else {
-      container.insertBefore(draggable, afterElement)
+  document.getElementById("defaultOpen").click();
+  function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
     }
-  })
-})
-
-function getDragAfterElement(container, y) {
-  const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
-
-  return draggableElements.reduce((closest, child) => {
-    const box = child.getBoundingClientRect()
-    const offset = y - box.top - box.height / 2
-    if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child }
-    } else {
-      return closest
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-  }, { offset: Number.NEGATIVE_INFINITY }).element
-}
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
 </script>
