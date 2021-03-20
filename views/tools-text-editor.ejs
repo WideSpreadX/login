@@ -42,6 +42,22 @@
     padding: 5px;
 
 }
+.file-options {
+    width: 100%;
+    margin-top: 20px;
+    display: inline-flex;
+}
+.file-options a {
+    width: 20%;
+    font-size: 2rem;
+    color: lightskyblue;
+    text-align: center;
+}
+.file-options i {
+    font-size: 2rem;
+    color: lightskyblue;
+    text-shadow: 0 0 4px #000;
+}
 
 
 </style>
@@ -51,6 +67,13 @@
   <div id="editor">
   </div>
   
+  <div class="file-options">
+      <a href="#"><i class="far fa-save"></i></a>
+      <a href="#"><i class="fas fa-share-alt"></i></a>
+      <a href="#"><i class="fas fa-print"></i></a>
+      <a href="#"><i class="far fa-file-pdf"></i></a>
+      <a href="#"><i class="far fa-trash-alt"></i></a>
+  </div>
   <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>  
   <script>
 var toolbarOptions = [
