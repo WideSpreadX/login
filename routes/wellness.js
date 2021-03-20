@@ -10,6 +10,7 @@ const cheerio = require('cheerio');
 const User = require('../models/User');
 const Workout = require('../models/Workout');
 const WorkoutSchedule = require('../models/WorkoutSchedule');
+const Exercise = require('../models/Exercise');
 
 router.get('/', (req, res) => {
     res.render('wellness-home', {currentPageTitle: 'Wellness Home'});
@@ -23,6 +24,12 @@ router.get('/your-plans', async (req, res) => {
      const workoutSchedule = await WorkoutSchedule.findOne({user: {$eq: user}}).populate('sunday').populate('monday').populate('monday').populate('tuesday').populate('wednesday').populate('thursday').populate('friday').populate('saturday').exec()
     res.render('wellness-your-plans', {currentPageTitle: 'Your Plans', user, workouts, workoutSchedule});
 });
+router.get('/your-plans/history', async (req, res) => {
+    const user = req.user._id;
+    const exercises = await Exercise.find({for_user: {$eq: user}})
+
+    res.render('wellness-workout-history', {exercises})
+})
 router.post('/your-plans/exercise', ensureAuthenticated, async (req,res) => {
     const userId = req.user._id;
 
@@ -301,6 +308,301 @@ router.get('/your-plans/session/saturday', async (req, res) => {
     res.render('wellness-workout-saturday', {workout})
 });
 
+router.post('/your-plans/session/sunday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/sunday`)
+
+});
+
+router.post('/your-plans/session/sunday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/sunday`)
+
+});
+
+router.post('/your-plans/session/monday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/monday`)
+
+});
+
+router.post('/your-plans/session/tuesday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/tuesday`)
+
+});
+
+router.post('/your-plans/session/wednesday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/wednesday`)
+
+});
+
+router.post('/your-plans/session/thursday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/thursday`)
+
+});
+
+router.post('/your-plans/session/friday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/friday`)
+
+});
+
+router.post('/your-plans/session/saturday/update/:exerciseId', async (req, res) => {
+    const user = req.user._id;
+    const exerciseId = req.params.exerciseId;
+    const exercise = await Workout.findById(exerciseId);
+
+    const newExerciseSession = new Exercise({
+        for_user: user,
+        exercise: req.body.exercise,
+        exercise_id: exerciseId,
+        set1: {
+            weight: req.body.weight1,
+            reps: req.body.reps1
+        },
+        set2: {
+            weight: req.body.weight2,
+            reps: req.body.reps2
+        },
+        set3: {
+            weight: req.body.weight3,
+            reps: req.body.reps3
+        },
+        set4: {
+            weight: req.body.weight4,
+            reps: req.body.reps4
+        },
+        set5: {
+            weight: req.body.weight5,
+            reps: req.body.reps5
+        },
+        date: Date.now()
+
+    })
+    newExerciseSession.save()
+    res.redirect(`/wellness/your-plans/session/saturday`)
+
+});
 
 router.get('/workout', (req, res) => {
 
