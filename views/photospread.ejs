@@ -1,0 +1,62 @@
+<style>
+    .page-title h1 {
+        text-align: center;
+        padding: 20px;
+    }
+    .image-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+        width: 100vw;
+        height: 100vh;
+        padding-top: 100px;
+        
+    }
+    .image {
+        position: relative;
+        width: 100vw;
+        left: 0;
+        height: auto;
+    }
+    .image img {
+        z-index: 1;
+        width: 100%;
+    }
+    .image-location {
+        top: 20px;
+        left: 0;
+        position: absolute;
+        z-index: 2;
+        text-align: left;
+        padding: 10px;
+        color: #fff;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
+    }
+    .image-location a {
+        color: #fff;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<div class="page-title">
+    <h1>PhotoSpread</h1>
+</div>
+
+<div class="image-container">
+
+    <% returnedData.forEach(function(data) { %>
+        <div class="image">
+            <img src="<%= data.urls.small %>" alt="">
+            <div class="image-location">
+                <h5><%= data.user.name %></h5>
+                <% if (data.user.instagram_username) { %>
+                    <p><a href="https://instagram.com/<%= data.user.instagram_username %>"><i class="fab fa-instagram"></i> <%= data.user.instagram_username %></a></p>
+                <% } else { %>
+                    <span></span>
+                <% } %>
+            </div>
+        </div>
+            <% }) %>
+</div>

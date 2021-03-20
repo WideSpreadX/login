@@ -125,6 +125,21 @@
         color: #fff;
         padding: 10px;
     }
+    .add-to-list {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .add-to-list button {
+        width: 80%;
+        margin-left: 10%;
+        border: none;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        border-radius: 8px;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        outline: none;
+    }
 </style>
 
 <div class="show-search">
@@ -134,6 +149,14 @@
     </form>
 </div>
 
+<div class="add-to-list">
+    <form action="/entertainment/tv/save" method="post">
+        <input type="text" name="link" value="<%= returnedData.id %>" hidden>
+        <input type="text" name="poster" value="<%= returnedData.poster_path %>" hidden>
+        <input type="text" name="name" value="<%= returnedData.name %>" hidden>
+        <button type="submit">Add to Your List</button>
+    </form>
+</div>
 <div class="show-container">
     <div class="show-image">
         <img src="https://image.tmdb.org/t/p/w500<%= returnedData.poster_path %>" alt="">

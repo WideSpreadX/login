@@ -188,6 +188,7 @@
             <form action="/entertainment/movies/save" method="post">
                 <input type="text" name="movie_name" value="<%= returnedData.Title %>" hidden>
                 <input type="text" name="movie_title" value="<%= movie %>" hidden>
+                <input type="text" name="movie_poster" value="<%= returnedData.Poster %>" hidden>
                 <button>Add to List</button>
             </form>
             <p><a href="/yourspread">See Your List</a></p>

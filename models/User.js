@@ -96,7 +96,15 @@ const UserSchema = new mongoose.Schema({
     movie_list: [
         {
             movie_link: String,
-            movie_name: String
+            movie_name: String,
+            movie_poster: String
+        }
+    ],
+    show_list: [
+        {
+            show_link: String,
+            show_name: String,
+            show_poster: String
         }
     ],
     user_audio: [String],

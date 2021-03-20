@@ -30,6 +30,8 @@
     }
     .movie-list {
         padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
     }
     .movie-list h5 {
         text-align: center;
@@ -50,7 +52,26 @@
     .movie-container a {
         color: #fff;
     }
-    
+    .show-container {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .show-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -25;
+    }
+    .show-image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
 </style>
 <h1 style="text-align: center; margin-bottom: 30px;">YourSpread</h1>
 <p style="text-align: center; color: lightskyblue;"><small>Scroll left & right for more collections</small></p>
@@ -91,7 +112,10 @@
     <div class="movie-list">
         <h5>Your Movies</h5>
         <% userInfo.movie_list.forEach(function(movie) { %>
-            <div class="movie-container">
+            <div class="show-container">
+                <div class="show-image">
+                    <img src="<%= movie.movie_poster %>" alt="">
+                </div>
                 <p><a href="/entertainment/movies/<%= movie.movie_link %>"><%= movie.movie_name %></a></p>
             </div>
             <% }) %>

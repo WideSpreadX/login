@@ -124,8 +124,9 @@ router.post('/movies/save', ensureAuthenticated, async (req, res) => {
     const user = req.user._id;
     const movieLink = req.body.movie_title;
     const movieName = req.body.movie_name;
+    const moviePoster = req.body.movie_poster;
     await User.findByIdAndUpdate(user, 
-            {$addToSet: {movie_list: {movie_link: movieLink, movie_name: movieName}}},
+            {$addToSet: {movie_list: {movie_link: movieLink, movie_name: movieName, movie_poster: moviePoster}}},
         )
     res.redirect(`/entertainment/movies/${movieName}`)
 });
@@ -150,6 +151,7 @@ router.get('/tv', async (req, res) => {
   const userId = req.user._id;
   const user = await User.findById(userId);
   const tvShow = await Show.find();
+  const userShows = await User.findById(userId).select('user_shows');
   const apiKey = process.env.TMDB_API_KEY
 	const options = {
   method: 'GET',
@@ -159,12 +161,25 @@ router.get('/tv', async (req, res) => {
 axios.request(options).then(function (response) {
     const returnedData = response.data;
     console.log(returnedData)
-    res.render('ent-tv-home', {returnedData, user, tvShow});
+    res.render('ent-tv-home', {returnedData, user, tvShow, userShows});
 }).catch(function (error) {
 	console.error(error);
 });
 
 });
+
+router.post('/tv/save', ensureAuthenticated, async (req, res) => {
+  const user = req.user._id;
+  const showLink = req.body.link;
+  const showName = req.body.name;
+  const showPoster = req.body.poster;
+  await User.findByIdAndUpdate(user, 
+          {$addToSet: {show_list: {show_link: showLink, show_name: showName, show_poster: showPoster}}},
+      )
+  res.redirect(`/entertainment/tv/${showLink}`)
+});
+
+
 
 router.post('/tv/add-to-recommended', ensureAuthenticated, (req, res) => {
   const showString = req.body.name;

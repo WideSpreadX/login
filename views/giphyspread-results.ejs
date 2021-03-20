@@ -1,0 +1,53 @@
+<style>
+    .search {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    padding: 10px;
+    padding-bottom: 0;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.search input {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+.search button {
+    width: 80%;
+    margin-left: 10%;
+    background: green;
+    border: groove 2px green;
+    border-bottom: none;
+    margin-bottom: 0;
+    color: #fff;
+    margin-top: 10px;
+    border-top-left-radius: 8px;  
+    border-top-right-radius: 8px;  
+}
+.gif-container {
+    width: 100%;
+}
+.gif-container img {
+    width: 100%;
+}
+</style>
+
+
+<div class="search">
+<form action="/socialspread/giphyspread/search" method="post">
+    <input type="text" name="search" placeholder="Search Giphy GIF's...">
+    <button type="submit">Search</button>
+</form>
+</div>
+<% returnedData.data.forEach(function(data) { %>
+<div class="gif-container">
+    <a target="_blank" href="<%= data.embed_url %>">
+        <img src="https://i.giphy.com/media/<%= data.id %>/giphy-preview.gif" alt="">
+    </a>
+</div>
+<% }) %>
