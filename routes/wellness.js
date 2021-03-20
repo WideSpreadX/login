@@ -27,9 +27,18 @@ router.get('/your-plans', async (req, res) => {
 router.get('/your-plans/history', async (req, res) => {
     const user = req.user._id;
     const exercises = await Exercise.find({for_user: {$eq: user}})
+    const curls = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Curl');
+    const benchPress = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Bench Press');
+    const overheadPress = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Overhead Press');
+    const militaryPress = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Military Press');
+    const legPress = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Leg Press');
+    const legExtensions = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Leg Extensions');
+    const shrugs = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Shrugs');
+    const lunges = await Exercise.find({for_user: {$eq: user}}).where('exercise').in('Lunges');
+    res.render('wellness-workout-history', {exercises, curls, benchPress, overheadPress, militaryPress, legPress, legExtensions, shrugs, lunges})
+});
 
-    res.render('wellness-workout-history', {exercises})
-})
+
 router.post('/your-plans/exercise', ensureAuthenticated, async (req,res) => {
     const userId = req.user._id;
 

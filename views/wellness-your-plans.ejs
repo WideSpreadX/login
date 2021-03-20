@@ -236,7 +236,7 @@ margin-bottom: 30px;
 <p>Scroll left & right for more options</p>
 </div>
 
-
+<p style="color: #fff; padding: 15px; background: rgba(255, 255, 0, 0.3); border-radius: 8px;"><i class="fas fa-info-circle"></i> There are only testing Exercises in the database so far. Feel free to add your own Exercise with the form at the bottom of this page.</p>
 
 <div class="session">
   <p><a href="/wellness/your-plans/history">Workout History</a></p>
@@ -244,7 +244,7 @@ margin-bottom: 30px;
 
 <h2 style="text-align: center; padding: 10px;">Your Workout Schedule</h2>
 
-
+<p style="color: #fff; padding: 15px;">Click on a day you'd like to populate with exercises, then add the exercises. Once you have finished with 1 day, do the same for the next day you want to work out. Repeat until you're happy with your workout schedule.</p>
 <div class="tab">
   <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'sundayAdd')">Sunday</button>
   <button class="tablinks" onclick="openCity(event, 'mondayAdd')">Monday</button>
@@ -465,7 +465,7 @@ margin-bottom: 30px;
 <div class="add-new-exercise">
   <h5>Add a New Exercise</h5>
   <form action="/wellness/your-plans/exercise" method="post">
-    <input type="text" name="exercise" placeholder="Exercise name...">
+    <input required type="text" name="exercise" placeholder="Exercise name...">
     <button type="submit">Add Exercise</button>
   </form>
 </div>

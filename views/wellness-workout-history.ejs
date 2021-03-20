@@ -34,39 +34,363 @@
         padding: 5px;
         color: #fff;
     }
-  
+    .single-exercise {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .single-exercise table {
+        width: 100%;
+    }
+    .single-exercise th {
+        background: lightskyblue;
+        color: #fff;
+        text-align: center;
+        padding: 3px;
+    }
+    .single-exercise th:first-of-type {
+        border-top-left-radius: 8px;
+    }
+    .single-exercise th:last-of-type {
+        border-top-right-radius: 8px;
+    }
+    .single-exercise td {
+        color: #fff;
+        text-align: center;
+        padding: 3px;
+        border-right: solid 1px lightskyblue;
+    }
+    .single-exercise td:last-of-type {
+        border: none;
+    }
+    .tab {
+  width: 100%;
+  display: inline-flex;
+  overflow-x: scroll;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.tabcontent {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.tabcontent h5 {
+    padding: 10px;
+}
 </style>
 
-<h1>Your Workout History</h1>
 
-<div class="exercises">
-    <% exercises.forEach(function(exercise) { %>
-        <div class="exercise">
-            <h5><%= exercise.exercise %></h5>
-            <p><%= exercise.date.toLocaleDateString() %></p>
-            <table>
-                <tr>
-                    <th>Set 1</th>
-                    <th>Set 2</th>
-                    <th>Set 3</th>
-                    <th>Set 4</th>
-                    <th>Set 5</th>
-                </tr>
-                <tr>
-                    <td><%= exercise.set1.weight %>lbs.</td>
-                    <td><%= exercise.set2.weight %>lbs.</td>
-                    <td><%= exercise.set3.weight %>lbs.</td>
-                    <td><%= exercise.set4.weight %>lbs.</td>
-                    <td><%= exercise.set5.weight %>lbs.</td>
-                </tr>
-                <tr>
-                    <td>x<%= exercise.set1.reps %></td>
-                    <td>x<%= exercise.set2.reps %></td>
-                    <td>x<%= exercise.set3.reps %></td>
-                    <td>x<%= exercise.set4.reps %></td>
-                    <td>x<%= exercise.set5.reps %></td>
-                </tr>
-            </table>
-        </div>
-    <% }) %>
+<h1 style="text-align: center; padding: 20px;">Your Workout History</h1>
+
+
+
+<div class="tab">
+    <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'curls')">Curls</button>
+    <button class="tablinks" onclick="openCity(event, 'benchPress')">Bench Press</button>
+    <button class="tablinks" onclick="openCity(event, 'overheadPress')">Overhead Press</button>
+    <button class="tablinks" onclick="openCity(event, 'militaryPress')">Military Press</button>
+    <button class="tablinks" onclick="openCity(event, 'legPress')">Leg Press</button>
+    <button class="tablinks" onclick="openCity(event, 'shrugs')">Shrugs</button>
+    <button class="tablinks" onclick="openCity(event, 'lunges')">Lunges</button>
+  </div>
+
+  <div id="curls" class="tabcontent">
+<h5 style="text-align: center;">Curls</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% curls.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
 </div>
+
+  <div id="benchPress" class="tabcontent">
+<h5 style="text-align: center;">Bench Press</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% benchPress.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+  <div id="overheadPress" class="tabcontent">
+<h5 style="text-align: center;">Overhead Press</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% overheadPress.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+  <div id="militaryPress" class="tabcontent">
+<h5 style="text-align: center;">Military Press</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% militaryPress.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+  <div id="legPress" class="tabcontent">
+<h5 style="text-align: center;">Leg Press</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% legPress.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+  <div id="shrugs" class="tabcontent">
+<h5 style="text-align: center;">Shrugs</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% shrugs.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+  <div id="lunges" class="tabcontent">
+<h5 style="text-align: center;">Lunges</h5>
+<div class="single-exercise">
+    <table>
+        <tr>
+            <th>Set 1</th>
+            <th>Set 2</th>
+            <th>Set 3</th>
+            <th>Set 4</th>
+            <th>Set 5</th>
+        </tr>
+            <% lunges.forEach(function(exercise) { %>
+            <tr><td style="color: lightskyblue;" colspan="5"><%= exercise.date.toLocaleDateString() %></td></tr>
+    
+            <tr>
+                <td><%= exercise.set1.weight %>lbs.</td>
+                <td><%= exercise.set2.weight %>lbs.</td>
+                <td><%= exercise.set3.weight %>lbs.</td>
+                <td><%= exercise.set4.weight %>lbs.</td>
+                <td><%= exercise.set5.weight %>lbs.</td>
+            </tr>
+
+            <tr style="border-bottom: solid 1px lightskyblue">
+                <td>x<%= exercise.set1.reps %></td>
+                <td>x<%= exercise.set2.reps %></td>
+                <td>x<%= exercise.set3.reps %></td>
+                <td>x<%= exercise.set4.reps %></td>
+                <td>x<%= exercise.set5.reps %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+
+
+    <h5 style="text-align: center;">Most Recent Exercises</h5>
+<div class="exercises">
+      
+        <% exercises.forEach(function(exercise) { %>
+            <div class="exercise">
+                <h5><%= exercise.exercise %></h5>
+                <p style="color: lightskyblue;"><%= exercise.date.toLocaleDateString() %></p>
+                <table>
+                    <tr>
+                        <th>Set 1</th>
+                        <th>Set 2</th>
+                        <th>Set 3</th>
+                        <th>Set 4</th>
+                        <th>Set 5</th>
+                    </tr>
+                    <tr>
+                        <td><%= exercise.set1.weight %>lbs.</td>
+                        <td><%= exercise.set2.weight %>lbs.</td>
+                        <td><%= exercise.set3.weight %>lbs.</td>
+                        <td><%= exercise.set4.weight %>lbs.</td>
+                        <td><%= exercise.set5.weight %>lbs.</td>
+                    </tr>
+                    <tr>
+                        <td>x<%= exercise.set1.reps %></td>
+                        <td>x<%= exercise.set2.reps %></td>
+                        <td>x<%= exercise.set3.reps %></td>
+                        <td>x<%= exercise.set4.reps %></td>
+                        <td>x<%= exercise.set5.reps %></td>
+                    </tr>
+                </table>
+            </div>
+        <% }) %>
+    
+
+
+
+    
+</div>
+
+
+<script>
+    document.getElementById("defaultOpen").click();
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+  
