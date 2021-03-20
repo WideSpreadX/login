@@ -1,0 +1,79 @@
+<style>
+    h5 {
+        text-align: center;
+        padding: 10px;
+    }
+#editor {
+  font-size: 18px;
+  height: 375px;
+  border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: groove 2px lightskyblue;
+    border-top: none;
+    color: #fff;
+}
+
+#toolbar .ql-font span[data-label="Aref Ruqaa"]::before {
+  font-family: "Aref Ruqaa";
+}
+#toolbar .ql-font span[data-label="Mirza"]::before {
+  font-family: "Mirza";
+}
+#toolbar .ql-font span[data-label="Roboto"]::before {
+  font-family: "Roboto";
+}
+
+.ql-font-mirza {
+  font-family: "Mirza";
+}
+.ql-font-roboto {
+  font-family: "Roboto";
+}
+.ql-toolbar.ql-snow {
+    border: none;
+    border-top: groove 2px lightskyblue;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.ql-toolbar {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 5px;
+
+}
+
+
+</style>
+
+    <h5>Text Editor</h5>
+  
+  <div id="editor">
+  </div>
+  
+  <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>  
+  <script>
+var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+    var editor = new Quill('#editor', {
+      modules: { toolbar: toolbarOptions },
+      theme: 'snow'
+    });
+  </script>

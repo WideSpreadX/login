@@ -108,4 +108,11 @@ router.get('/code-editor', (req, res) => {
 router.get('/calculator', (req, res) => {
   res.render('tools-calculator')
 });
+
+
+router.get('/text-editor', (req, res) => {
+  res.render('tools-text-editor')
+});
+
+
 module.exports = router;
