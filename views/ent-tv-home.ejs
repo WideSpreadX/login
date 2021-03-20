@@ -164,7 +164,6 @@
                             <div class="show-title">
                                 <h5> <%= show.name %></h5>
                             </div>
-                            <p><%= show.id %></p>
                         </div>
                     </a>
         <% }) %>
@@ -176,7 +175,29 @@
 </div>
 
 <div class="your-shows">
-    <h5>Your Shows</h5>
+    <h5>Recommended Shows</h5>
+    <div class="slider">
+        <% tvShow.forEach(function(show) { %>
+            <a href="/entertainment/tv/<%= show.link %>">
+                <div class="show-container">
+                    <div class="show-image">
+                        <img width="200px" height="300px" src="https://image.tmdb.org/t/p/w500<%= show.poster %>" alt="">
+                    </div>
+                    <div class="show-title">
+                        <h5> <%= show.name %></h5>
+                    </div>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="your-shows">
+    <h5 style="text-align: center;">Your Shows</h5>
     <div class="slider">
 
     </div>

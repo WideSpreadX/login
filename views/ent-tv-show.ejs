@@ -108,7 +108,23 @@
         text-align: center;
         color: #fff;
     }
-
+    .add-to-recommended {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 70vw
+    }
+    .add-to-recommended button {
+        background: rgba(0, 128, 0, 0.3);
+        border: none;
+        outline: none;
+        width: 95%;
+        border-top-right-radius: 8px;
+        border-top: groove 2px green;
+        border-right: groove 2px green;
+        color: #fff;
+        padding: 10px;
+    }
 </style>
 
 <div class="show-search">
@@ -141,4 +157,13 @@
             </div>
         </a>
     <% }) %>
+</div>
+
+<div class="add-to-recommended">
+    <form action="/entertainment/tv/add-to-recommended" method="post">
+        <input type="text" name="name" value="<%= returnedData.name %>" hidden>
+        <input type="text" name="link" value="<%= returnedData.id %>" hidden>
+        <input type="text" name="poster" value="<%= returnedData.poster_path %>" hidden>
+        <button type="submit">Add to WideSpread Collection</button>
+    </form>
 </div>

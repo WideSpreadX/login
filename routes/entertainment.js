@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 const User = require('../models/User');
 const Movie = require('../models/Movie');
+const Show = require('../models/Show');
 const UserVideo = require('../models/UserVideo');
 const Mux = require('@mux/mux-node');
 const { Video } = new Mux(process.env.MUX_TOKEN_ID, process.env.MUX_TOKEN_SECRET);
@@ -148,6 +149,7 @@ router.post('/movies/add-to-recommended', ensureAuthenticated, (req, res) => {
 router.get('/tv', async (req, res) => {
   const userId = req.user._id;
   const user = await User.findById(userId);
+  const tvShow = await Show.find();
   const apiKey = process.env.TMDB_API_KEY
 	const options = {
   method: 'GET',
@@ -157,12 +159,27 @@ router.get('/tv', async (req, res) => {
 axios.request(options).then(function (response) {
     const returnedData = response.data;
     console.log(returnedData)
-    res.render('ent-tv-home', {returnedData, user});
+    res.render('ent-tv-home', {returnedData, user, tvShow});
 }).catch(function (error) {
 	console.error(error);
 });
 
 });
+
+router.post('/tv/add-to-recommended', ensureAuthenticated, (req, res) => {
+  const showString = req.body.name;
+  const convertedString = showString.replace(/\s/g, '+');
+  const show = new Show({
+      name: showString,
+      link: req.body.link,
+      poster: req.body.poster,
+  })
+  show.save()
+
+  res.redirect('/entertainment/tv');
+
+});
+
 
 router.post('/tv/search', (req, res) => {
   const show = req.body.show
