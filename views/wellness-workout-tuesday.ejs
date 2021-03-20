@@ -1,0 +1,98 @@
+<style>
+    .exercise {
+        width: 100%;
+        margin-bottom: 20px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    .exercise h5 {
+        text-align: center;
+        padding: 10px;
+        border-bottom: groove 2px lightskyblue;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
+        margin-bottom: 0;
+    }
+    .exercise-table{
+        width: 100%;
+        display: inline-flex;
+        width: 100%;
+    }
+    .exercise table {
+        width: 80%;
+    }
+    .exercise th {
+        text-align: center;
+        color: lightskyblue;
+    }
+    .exercise td {
+        max-width: 18%;
+        margin-left: 1%;
+        
+    }
+    .exercise input {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 4px;
+        outline: none;
+        border: none;
+        margin-bottom: 5px;
+
+    }
+    .exercise button {
+        width: 15%;
+        margin-left: 5%;
+        outline: none;
+        border: none;
+        border-left: groove 2px green;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        
+    }
+</style>
+
+<h1 style="text-align: center; padding: 20px;">Tuesday</h1>
+<div class="workout-session">
+    <% workout.tuesday.forEach(function(exercise) { %>
+        <div class="exercise">
+            <h5> <%= exercise.exercise %></h5>
+            <form action="/wellness/your-plans/session/tuesday/update/<%= exercise.id %>" method="post">
+                <div class="exercise-table">
+                <table>
+                    <tr>
+                        <th>Set 1</th>
+                        <th>Set 2</th>
+                        <th>Set 3</th>
+                        <th>Set 4</th>
+                        <th>Set 5</th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" name="weight1" placeholder="Lbs."></td>
+                        <td><input type="number" name="weight2" placeholder="Lbs."></td>
+                        <td><input type="number" name="weight3" placeholder="Lbs."></td>
+                        <td><input type="number" name="weight4" placeholder="Lbs."></td>
+                        <td><input type="number" name="weight5" placeholder="Lbs."></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" name="reps1" placeholder="Reps"></td>
+                        <td><input type="number" name="reps2" placeholder="Reps"></td>
+                        <td><input type="number" name="reps3" placeholder="Reps"></td>
+                        <td><input type="number" name="reps4" placeholder="Reps"></td>
+                        <td><input type="number" name="reps5" placeholder="Reps"></td>
+                    </tr>
+                </table>
+                <button type="submit">Add</button>
+            </div>
+            </form>
+        </div>
+    <% }) %>
+    <br>
+
+</div>

@@ -245,7 +245,61 @@ router.patch('/your-plans/add/saturday', async (req, res) => {
 });
 
 
+router.get('/your-plans/session/sunday', async (req, res) => {
+    const user = req.user._id;
 
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('sunday').populate('sunday').exec()
+
+    res.render('wellness-workout-sunday', {workout})
+});
+
+router.get('/your-plans/session/monday', async (req, res) => {
+    const user = req.user._id;
+
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('monday').populate('monday').exec()
+
+    res.render('wellness-workout-monday', {workout})
+});
+
+router.get('/your-plans/session/tuesday', async (req, res) => {
+    const user = req.user._id;
+
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('tuesday').populate('tuesday').exec()
+
+    res.render('wellness-workout-tuesday', {workout})
+});
+
+router.get('/your-plans/session/wednesday', async (req, res) => {
+    const user = req.user._id;
+
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('wednesday').populate('wednesday').exec()
+
+    res.render('wellness-workout-wednesday', {workout})
+});
+
+router.get('/your-plans/session/thursday', async (req, res) => {
+    const user = req.user._id;
+
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('thursday').populate('thursday').exec()
+
+    res.render('wellness-workout-thursday', {workout})
+});
+
+router.get('/your-plans/session/friday', async (req, res) => {
+    const user = req.user._id;
+
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('friday').populate('friday').exec()
+
+    res.render('wellness-workout-friday', {workout})
+});
+
+router.get('/your-plans/session/saturday', async (req, res) => {
+    const user = req.user._id;
+
+    const workout = await WorkoutSchedule.findOne({user: {$eq: user}}).select('saturday').populate('saturday').exec()
+
+    res.render('wellness-workout-saturday', {workout})
+});
 
 
 router.get('/workout', (req, res) => {
