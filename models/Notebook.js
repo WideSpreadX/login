@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const notebookSchema = new mongoose.Schema({ 
     notebookOwner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     forClass: {type: mongoose.Schema.Types.ObjectId, ref: 'Class'},
-    notebookName: String,
+    notebookName: {
+        type: String,
+        unique: true
+    },
     notebookDescription: String,
     notebookTags: [String],
     notebookColor: String,

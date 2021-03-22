@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
   
 const noteSchema = new mongoose.Schema({ 
     noteFrom: {type: mongoose.Schema.Types.ObjectId, ref: 'NoteCollection'},
-    noteTitle: String,
+    noteTitle: {
+        type: String,
+        unique: true
+    },
     noteCategory: String,
     noteTags: [String],
     noteColor: String,
