@@ -71,32 +71,75 @@
             margin-bottom: 10px;
             text-align: center;
         }
-
+        .news-articles {
+            margin-top: 50px;
+        }
         .article {
             position: relative;
             width: 100%;
-            height: 300px;
-            margin-top: 20px;
+            min-height: 350px;
+            margin-bottom: 20px;
         }
         .article-image {
-            position: absolute;
+            position: relative;
             z-index: 80;
             text-align: center;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
         }
         .article-image img {
-            border-radius: 12px;
-            
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        .article-header {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.253);
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+            border-bottom-right-radius: 8px;
+            padding: 5px;
+            padding-top: 10px;
+            border-top: groove 2px lightskyblue;
+            text-shadow: 0 0 2px #000;
         }
         .article-info {
-            position: absolute;
-            z-index: 81;
-            top: 50px;
-            width: 100%;
+            position: relative;
+            z-index: 3;
+            width: 90%;
+            margin-left: 5%;
             text-align: center;
             background: rgba(0, 0, 0, 0.253);
             backdrop-filter: blur(2px);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            padding-bottom: 10px;
+            border-bottom: groove 2px lightskyblue;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+        .article-info p {
+            padding: 10px;
+            padding-top: 0;
+            color: #fff;
+        }
+        .article-time {
+            padding: 10px;
+            padding-bottom: 0;
+            color: lightskyblue;
+        }
+        .article-info p {
+            padding-bottom: 0;
+        }
+        .article-info small {
+            color: lightskyblue;
         }
     }
 </style>
@@ -123,22 +166,22 @@
 <div class="news-articles">
 
     <% results.forEach(function(article){ %>
+
         <div class="article">
-            <div class="">
-                <div class="article-image">
-                    <img src="<%= article.articleImage %>" alt="<%= article.articleImageAlt %>">
+            <div class="article-image">
+                <img src="<%= article.articleImage %>" alt="">
+
+                <div class="article-header">
+                    <a href="<%= article.link %>" target="_blank"><h6><%= article.title %></h6> </a>
                 </div>
             </div>
-            <div class=""></div>
             <div class="">
                 <div class="article-info">
-                    <small><%= article.time %></small>
-                    <a href="<%= article.link %>" target="_blank"><h5><%= article.title %></h5> </a>
+                    <div class="article-time"><p><small><%= article.time %></small></p></div>
                     <p><%= article.newsPreview %></p>
                 </div>
             </div>
         </div>
-        
         <% }); %>
     </div>
 
