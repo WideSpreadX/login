@@ -74,6 +74,21 @@ margin-bottom: 30px;
     text-align: center;
     padding: 20px;
 }
+.pose {
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+}
+.pose img {
+    width: 300px;
+    height: 300px;
+    border: none;
+    border-radius: 8px;
+}
 }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -97,3 +112,11 @@ margin-bottom: 30px;
 <p>Scroll left & right for more options</p>
 </div>
 
+
+<% yogaPoses.forEach(function(pose) { %>
+    <div class="pose">
+        <h5><%= pose.english_name %></h5>
+        <p><%= pose.sanskrit_name %></p>
+        <img src="<%= pose.img_url %>" alt="">
+    </div>
+<% }) %>

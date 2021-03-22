@@ -181,7 +181,7 @@
         <p><a href="/entertainment/movies/<%= movie %>/spreadshield">Watch on SpreadShield</a></p>
     </div>
     <div class="video-stream">
-        <iframe src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>
+        <iframe id="videoFrame" src="https://www.2embed.ru/embed/imdb/movie?id=<%= returnedData.imdbID %>" frameborder="0" allowfullscreen="true"></iframe>
     </div>
     <div class="movie-data">
         <div class="add-to-list">
@@ -248,3 +248,10 @@
         <button type="submit">Add to WideSpread Collection</button>
     </form>
 </div>
+
+
+<script>
+    var iframe = document.getElementById("videoFrame");
+    var elmnt = iframe.contentWindow.document.querySelector(".alert");
+    elmnt.style.display = "none";
+</script>
