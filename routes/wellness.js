@@ -686,10 +686,10 @@ router.get('/nutrition', (req, res) => {
       axios.request(options).then(function (response) {
           const returnedData = response.data;
       
-          res.render('wellness-nutrition', {currentPageTitle: 'Nutrition', returnedData});
-      }).catch(function (error) {
-          console.error(error);
-      }); */
+        }).catch(function (error) {
+            console.error(error);
+        }); */
+        res.render('wellness-nutrition', {currentPageTitle: 'Nutrition', returnedData});
     
 });
 
