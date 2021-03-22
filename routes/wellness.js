@@ -43,7 +43,8 @@ router.post('/your-plans/exercise', ensureAuthenticated, async (req,res) => {
     const userId = req.user._id;
 
     const exercise = new Workout({
-        exercise: req.body.exercise
+        exercise: req.body.exercise,
+        category: req.body.category
     })
     exercise.save()
     console.log(`Exercise Added: ${exercise}`)

@@ -260,12 +260,16 @@ margin-bottom: 30px;
   <div class="session">
     <p><a href="/wellness/your-plans/session/sunday">Start Session</a></p>
   </div>
-    <div class="current-exercises">
+  <div class="current-exercises">
+    <% if (workoutSchedule) { %>
       <% workoutSchedule.sunday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
       <% }) %>  
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -289,11 +293,15 @@ margin-bottom: 30px;
     <p><a href="/wellness/your-plans/session/monday">Start Session</a></p>
   </div>
     <div class="current-exercises">
+      <% if (workoutSchedule) { %>
       <% workoutSchedule.monday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
       <% }) %>  
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -319,11 +327,15 @@ margin-bottom: 30px;
     <p><a href="/wellness/your-plans/session/tuesday">Start Session</a></p>
   </div>
     <div class="current-exercises">
+      <% if (workoutSchedule) { %>
       <% workoutSchedule.tuesday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
       <% }) %>  
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -347,11 +359,15 @@ margin-bottom: 30px;
     <p><a href="/wellness/your-plans/session/wednesday">Start Session</a></p>
   </div>
     <div class="current-exercises">
+      <% if (workoutSchedule) { %>
       <% workoutSchedule.wednesday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
-      <% }) %>  
+      <% }) %> 
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -375,11 +391,15 @@ margin-bottom: 30px;
     <p><a href="/wellness/your-plans/session/thursday">Start Session</a></p>
   </div>
     <div class="current-exercises">
+      <% if (workoutSchedule) { %>
       <% workoutSchedule.thursday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
       <% }) %>  
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -403,11 +423,15 @@ margin-bottom: 30px;
     <p><a href="/wellness/your-plans/session/friday">Start Session</a></p>
   </div>
     <div class="current-exercises">
+      <% if (workoutSchedule) { %>
       <% workoutSchedule.friday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
       <% }) %>  
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -431,11 +455,15 @@ margin-bottom: 30px;
     <p><a href="/wellness/your-plans/session/saturday">Start Session</a></p>
   </div>
     <div class="current-exercises">
+      <% if (workoutSchedule) { %>
       <% workoutSchedule.saturday.forEach(function(exercise) { %>
         <div class="current-exercise">
           <p><%= exercise.exercise %></p>
         </div>
       <% }) %>  
+      <% } else { %>
+        <span></span>
+      <% } %>
     </div>
     <div class="spread-break">
       <hr>
@@ -466,6 +494,7 @@ margin-bottom: 30px;
   <h5>Add a New Exercise</h5>
   <form action="/wellness/your-plans/exercise" method="post">
     <input required type="text" name="exercise" placeholder="Exercise name...">
+    <input required type="text" name="category" placeholder="Exercise category...">
     <button type="submit">Add Exercise</button>
   </form>
 </div>
