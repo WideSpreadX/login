@@ -1,0 +1,46 @@
+<style>
+    .food-item {
+        text-align: center;
+    }
+    th {
+        background: lightskyblue;
+        padding: 5px;
+    }
+    th:first-of-type {
+        border-top-left-radius: 8px;
+    }
+    th:last-of-type {
+        border-top-right-radius: 8px;
+    }
+    td {
+        color: #fff;
+        border-bottom: solid 1px lightskyblue;
+        text-align: left;
+    }
+    td:last-of-type {
+        text-align: right;
+    }
+</style>
+
+<div class="food-item">
+    <h5><%= returnedData.description %></h5>
+    <% if (returnedData.wweiaFoodCategory) { %>
+    <p><%= returnedData.wweiaFoodCategory.wweiaFoodCategoryDescription %></p>
+    <% } else { %>
+        <span></span>
+    <% } %>
+    <div class="nutrient">
+    <table>
+        <tr>
+            <th>Nutrient</th>
+            <th>Amount</th>
+        </tr>
+            <% returnedData.foodNutrients.forEach(function(nutrient) { %>
+                <tr>
+                    <td><%= nutrient.nutrient.name %></td>
+                    <td><%= nutrient.amount %> <%= nutrient.nutrient.unitName %></td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>

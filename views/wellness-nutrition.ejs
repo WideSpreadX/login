@@ -74,6 +74,21 @@ margin-bottom: 30px;
     text-align: center;
     padding: 20px;
 }
+.food {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 5px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+}
+.food a {
+    color: lightskyblue;
+}
+.food p {
+    color: lightskyblue;
+    margin-bottom: 0;
+}
 }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -98,4 +113,7 @@ margin-bottom: 30px;
 </div>
 
 
-
+<form action="/wellness/nutrition/search" method="post">
+    <input type="text" name="search" placeholder="Search for foods...">
+    <button type="submit">Search</button>
+</form>

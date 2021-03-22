@@ -1,0 +1,26 @@
+<style>
+    .food {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 5px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+}
+.food a {
+    color: lightskyblue;
+}
+.food p {
+    color: lightskyblue;
+    margin-bottom: 0;
+}
+</style>
+
+<% returnedData.foods.forEach(function(food) { %>
+    <div class="food">
+        <a href="/wellness/nutrition/food/<%= food.fdcId %>">
+            <h5><%= food.description %></h5>
+            <p><%= food.brandOwner %></p>
+        </a>
+    </div>
+<% }) %>

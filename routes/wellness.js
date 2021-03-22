@@ -11,6 +11,7 @@ const User = require('../models/User');
 const Workout = require('../models/Workout');
 const WorkoutSchedule = require('../models/WorkoutSchedule');
 const Exercise = require('../models/Exercise');
+const { join } = require('path');
 
 router.get('/', (req, res) => {
     res.render('wellness-home', {currentPageTitle: 'Wellness Home'});
@@ -675,8 +676,62 @@ router.get('/yoga', (req, res) => {
 
 // Nutrition
 router.get('/nutrition', (req, res) => {
-    user = req.user._id;
-
-    res.render('wellness-nutrition', {currentPageTitle: 'Nutrition'});
+    const user = req.user._id;
+/*     const apiKey = process.env.DATA_GOV_API_KEY;
+	const options = {
+        method: 'GET',
+        url: `https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${apiKey}`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+      
+          res.render('wellness-nutrition', {currentPageTitle: 'Nutrition', returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      }); */
+    
 });
+
+router.post('/nutrition/search', (req, res) => {
+    const query = req.body.search;
+    const convertedString = query.replace(/\s/g, '%20');
+
+    res.redirect(`/wellness/nutrition/search/${convertedString}`);
+});
+
+router.get('/nutrition/search/:query', (req, res) => {
+    const query = req.params.query;
+    const apiKey = process.env.DATA_GOV_API_KEY;
+	const options = {
+        method: 'GET',
+        url: `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${query}`
+      };
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+      
+          res.render('wellness-nutrition-results', {currentPageTitle: 'Nutrition', returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+
+})
+router.get('/nutrition/food/:foodId', (req, res) => {
+    const foodId = req.params.foodId;
+    const apiKey = process.env.DATA_GOV_API_KEY;
+	const options = {
+        method: 'GET',
+        url: `https://api.nal.usda.gov/fdc/v1/food/${foodId}?api_key=${apiKey}`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+      
+          res.render('wellness-nutrition-item', {currentPageTitle: 'Nutrition', returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+
+    
+})
 module.exports = router;
