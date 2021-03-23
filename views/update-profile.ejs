@@ -113,7 +113,9 @@
         width: 100%;
         display: inline-flex;
         overflow-x: scroll;
+        margin-top: 20px;
     }
+    
     .vr-iframe {
         width: 100%;
         min-width: 100%;
@@ -123,6 +125,7 @@
         border-right: groove 2px lightskyblue;
         background:rgba(0, 0, 0, 0.3);
         border-radius: 8px;
+        margin-right: 10px;
     }
     .vr-iframe iframe {
         width: 100%;
@@ -175,7 +178,7 @@
                 <% } %>
             </div>
     <h3>Change Your VR Background Image</h3>
-    <h3><small>Images must be equirectangular images - <a href="https://en.wikipedia.org/wiki/Equirectangular_projection" target="_blank">Learn More</a></small></h3>
+    <h3><small>Images must be equirectangular images - <a style="color: lightskyblue;" href="https://en.wikipedia.org/wiki/Equirectangular_projection" target="_blank">Learn More</a></small></h3>
     <div class="user-profile-image-form">
         <form action="/upload-vr-background-image?_method=PATCH" method="post" enctype="multipart/form-data">
             <div class="custom-file-background-image">
@@ -197,15 +200,17 @@
                 <% } %>
             </div>
 
-    <form action="/users/new-vr-image-url" method="post">
+    <form style="display: none;" action="/users/new-vr-image-url" method="post">
         <input type="url" name="url" placeholder="Enter Image URL">
         <input type="text" name="image_name" placeholder="Image Name">
+        <input type="url" name="demo_page" placeholder="Demo Page URL">
         <button type="submit">Add</button>
     </form>
+    <h5 style="margin-top: 20px; text-align: center;">Default VR Background Images</h5>
     <div class="vr-backgrounds-container">
         <% vrOptions.forEach(function(background) { %>
             <div class="vr-iframe">
-                <iframe allowfullscreen allowvr="yes" frameborder="0" id="<%= background.image_preview %>" src="https://ws-equi-images.herokuapp.com/apartment_1a.html">
+                <iframe allowfullscreen allowvr="yes" frameborder="0" id="<%= background.image_preview %>" src="<%= background.demo_page %>">
                 </iframe>
             </div>
     <% }) %>

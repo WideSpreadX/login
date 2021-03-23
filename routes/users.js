@@ -258,10 +258,12 @@ router.get('/update-profile/:id', ensureAuthenticated, async (req, res, next) =>
 router.post('/new-vr-image-url', ensureAuthenticated, (req, res) => {
     const imageUrl = req.body.url;
     const imageName = req.body.image_name;
+    const demoPage = req.body.demo_page;
     const user = req.user._id;
     const newImageUrl = new VrBackgroundImageUrl({
         vr_image_url: imageUrl,
-        image_name: imageName
+        image_name: imageName,
+        demo_page: demoPage
     });
     newImageUrl.save()
     res.redirect(`/users/update-profile/${user}`);
