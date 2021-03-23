@@ -689,7 +689,7 @@ router.get('/nutrition', (req, res) => {
         }).catch(function (error) {
             console.error(error);
         }); */
-        res.render('wellness-nutrition', {currentPageTitle: 'Nutrition', returnedData});
+        res.render('wellness-nutrition', {currentPageTitle: 'Nutrition'});
     
 });
 

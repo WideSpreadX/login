@@ -1,4 +1,40 @@
 <style>
+    .search {
+        border-radius: 15px;
+        background:rgba(255, 255, 255, 0.300);
+        margin-bottom: 30px;
+    }
+    .search input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+    .search input:active {
+        outline: none;
+        border: none;
+
+    }
+    .search button {
+        width: 90%;
+        margin-left: 5%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+    }
+    .search-criteria {
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 30px;
+        border-bottom: groove 2px lightskyblue;
+    }
     .food {
     text-align: center;
     background: rgba(0, 0, 0, 0.3);
@@ -6,6 +42,7 @@
     padding: 5px;
     border-top: groove 2px lightskyblue;
     border-bottom: groove 2px lightskyblue;
+    margin-bottom: 15px;
 }
 .food a {
     color: lightskyblue;
@@ -15,6 +52,18 @@
     margin-bottom: 0;
 }
 </style>
+
+<div class="search">
+    <form action="/wellness/nutrition/search" method="post">
+        <input type="text" name="search" placeholder="Search for foods...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div class="search-criteria">
+    <h6>Results for:</h6>
+    <h5><%= returnedData.foodSearchCriteria.query %></h5>
+</div>
 
 <% returnedData.foods.forEach(function(food) { %>
     <div class="food">
