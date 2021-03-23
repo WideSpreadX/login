@@ -114,12 +114,24 @@
         display: inline-flex;
         overflow-x: scroll;
     }
-    iframe {
+    .vr-iframe {
+        width: 100%;
+        min-width: 100%;
+        min-height: 300px;
+        padding: 5px;
+        border-left: groove 2px lightskyblue;
+        border-right: groove 2px lightskyblue;
+        background:rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    .vr-iframe iframe {
         width: 100%;
         max-width: 100%;
+        height: 100%;
+        max-height: 100%;
         margin-right: 10px;
         border-radius: 8px;
-        
+               
     }
 </style>
 <div class="user-background-image">
@@ -192,8 +204,10 @@
     </form>
     <div class="vr-backgrounds-container">
         <% vrOptions.forEach(function(background) { %>
-            <iframe frameborder="0" id="<%= background.image_preview %>" src="https://ws-equi-images.herokuapp.com/apartment_1a.html">
-            </iframe>
+            <div class="vr-iframe">
+                <iframe allowfullscreen allowvr="yes" frameborder="0" id="<%= background.image_preview %>" src="https://ws-equi-images.herokuapp.com/apartment_1a.html">
+                </iframe>
+            </div>
     <% }) %>
     </div>
     <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
