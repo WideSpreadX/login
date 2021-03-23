@@ -1,4 +1,13 @@
 <style>
+        .spread-break hr {
+background: lightskyblue;
+box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+width: 80%;
+margin-left: 10%;
+border-radius: 50%;
+margin-top: 40px;
+margin-bottom: 30px;
+}
         .page-title {
         padding: 20px;
         text-align: center;
@@ -177,6 +186,8 @@
     .update-section {
         background: rgba(0, 0, 0, 0.3);
         border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
     }
     .update-section h3 {
         text-align: center;
@@ -255,7 +266,6 @@
   padding: 0;
   border-top: groove 2px lightskyblue;
     border-bottom: groove 2px lightskyblue;
-    z-index: 30;
 }
 
 .custom-select select {
@@ -391,7 +401,7 @@
 /* Style the indicator (dot/circle) */
 .radio-container .checkmark:after {
  	top: 10%;
-	left: 12%;
+	left: 10%;
 	width: 80%;
 	height: 80%;
 	border-radius: 50%;
@@ -406,7 +416,7 @@
         margin-left: 5%;
         background: rgba(0, 128, 0, 0.3);
         border: groove 2px green;
-        border-bottom: none;
+        border-top: none;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
         color: #fff;
@@ -488,12 +498,16 @@
                     <img src="<%= background.vr_image_url %>" alt="">
                 </div>
                 <div class="vr-image-name">
+                    <a href="<%= background.demo_page %>" target="_blank">
                     <h5><%= background.image_name %></h5>
+                </a>
                 </div>
             </div>
         <% }) %>
     </div>
-    <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+   <div class="spread-break">
+       <hr>
+   </div>
 <div class="update-section">
 <form action="/users/update-profile?_method=PATCH" method="POST">
 
@@ -503,6 +517,10 @@
     <div class="s-m-outlet" style="margin-top: 20px;">
         <p>Current Occupation</p>
         <input type="text" name="current_occupation" value="<%= currentUser.current_occupation %>">
+    </div>
+
+    <div class="spread-break">
+        <hr>
     </div>
     <div class="s-m-container">
 
@@ -533,6 +551,10 @@
         <p>Pinterest</p>
         <input type="url" name="social.pinterest" value="<%= currentUser.social.pinterest %>">
     </div>    
+    </div>
+
+    <div class="spread-break">
+        <hr>
     </div>
 
     <div class="s-m-container">
@@ -612,6 +634,10 @@
             <input type="text" name="country" value="<%= currentUser.country %>">
         </div>
         
+    <div class="spread-break">
+        <hr>
+    </div>
+
         <div class="s-m-container">
             <h3>Contact Information</h3>
             <div class="s-m-outlet">
@@ -640,6 +666,10 @@
             </div>
 
         </div>
+        
+    <div class="spread-break">
+        <hr>
+    </div>
 
         <div class="s-m-container">
             <h3>Personal Details</h3>
