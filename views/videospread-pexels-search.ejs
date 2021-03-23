@@ -1,0 +1,38 @@
+<style>
+    .search {
+        border-radius: 15px;
+        background:rgba(255, 255, 255, 0.300);
+    }
+    .search input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+    .search input:active {
+        outline: none;
+        border: none;
+
+    }
+    .search button {
+        width: 90%;
+        margin-left: 5%;
+        background: green;
+        border: groove 2px green;
+        border-bottom: none;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: #fff;
+    }
+</style>
+
+<div class="search">
+    <form action="/socialspread/videospread/pexels/search" method="post">
+        <input type="text" name="search" placeholder="Search for videos...">
+        <button type="submit">Search</button>
+    </form>
+</div>

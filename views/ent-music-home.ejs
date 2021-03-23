@@ -23,7 +23,7 @@
           <a href="/entertainment">Entertainment Home</a>
           <a href="/entertainment/movies">Movies</a>
           <a href="/entertainment/tv">TV Shows</a>
-          <a href="/entertainment/videos/<%= user.id %>">Videos</a>
+          <a href="/entertainment/videos">Videos</a>
           <a href="/entertainment/music">Music</a>
           <a href="/entertainment/podcasts">Podcasts</a>
           <a href="/entertainment/audio-books">Audio Books</a>
@@ -36,39 +36,7 @@
 
 
 
-<iframe src="https://open.spotify.com/embed/artist/1mfDfLsMxYcOOZkzBxvSVW" width="100%" height="600px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<iframe src="https://open.spotify.com/embed/artist/6x2LnllRG5uGarZMsD4iO8" width="100%" height="600px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<iframe src="https://open.spotify.com/embed/artist/64KEffDW9EtZ1y2vBYgq8T" width="100%" height="600px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<iframe src="https://open.spotify.com/embed/artist/329e4yvIujISKGKz1BZZbO" width="100%" height="600px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-<!-- <script src="https://sdk.scdn.co/spotify-player.js"></script>
-<script>
-    window.onSpotifyWebPlaybackSDKReady = () => {
-  const token = 'BQDilhkpFkYmYfYuubJD8SX6PZGpm7ChKGddrulwZWxbWPqEPvgi1Zeko9mPLajhOQEoigd-z8HqPUCexiMA4qb8TvxexajurgSTGunF6uSZOzYnJzNE0ded9x_SIbw62mov9k8dI3Trs3K4QxXgKci0P_UyDxcEzqIwL8vuTBFNQQM1x-I';
-  const player = new Spotify.Player({
-    name: 'Web Playback SDK Quick Start Player',
-    getOAuthToken: cb => { cb(token); }
-  });
-
-  // Error handling
-  player.addListener('initialization_error', ({ message }) => { console.error(message); });
-  player.addListener('authentication_error', ({ message }) => { console.error(message); });
-  player.addListener('account_error', ({ message }) => { console.error(message); });
-  player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-  // Playback status updates
-  player.addListener('player_state_changed', state => { console.log(state); });
-
-  // Ready
-  player.addListener('ready', ({ device_id }) => {
-    console.log('Ready with Device ID', device_id);
-  });
-
-  // Not Ready
-  player.addListener('not_ready', ({ device_id }) => {
-    console.log('Device ID has gone offline', device_id);
-  });
-
-  // Connect to the player!
-  player.connect();
-};
-</script> -->
+<% returnedData.data.forEach(function(song) { %>
+  <p><%= song.title %></p>
+  <p><a href="<%= song.link %>"><%= song.link %></a></p>
+<% }) %>

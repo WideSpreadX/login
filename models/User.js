@@ -89,7 +89,10 @@ const UserSchema = new mongoose.Schema({
         pinterest: String
     },
     user_background_image: String,
+    user_background_image_url: String,
+    user_background_video_url: String,
     user_vr_background_image: String,
+    user_vr_background_image_url: String,
     user_images: [String],
     user_avatar: String,
     user_video: [String],

@@ -4,14 +4,16 @@
         padding: 20px;
     }
     .image-container {
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: 300px;
         left: 0;
         overflow-y: scroll;
         width: 100vw;
-        height: 100vh;
-        padding-top: 100px;
         
+    }
+    .image-container h5 {
+        text-align: center;
+        padding: 10px;
     }
     .image {
         position: relative;
@@ -38,14 +40,32 @@
         color: #fff;
         text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     }
+    .search-engines {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 5px;
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    margin-bottom: 15px;
+}
+.search-engines a {
+    color: lightskyblue;
+}
+.search-engines p {
+    color: lightskyblue;
+    margin-bottom: 0;
+}
 </style>
 
 <div class="page-title">
     <h1>PhotoSpread</h1>
 </div>
-
+<div class="search-engines">
+    <p><a href="/socialspread/photospread/pexels">Pexels</a></p>
+</div>
 <div class="image-container">
-
+    <h5>Recent Images</h5>
     <% returnedData.forEach(function(data) { %>
         <div class="image">
             <img src="<%= data.urls.small %>" alt="">

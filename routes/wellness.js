@@ -677,18 +677,7 @@ router.get('/yoga', (req, res) => {
 // Nutrition
 router.get('/nutrition', (req, res) => {
     const user = req.user._id;
-/*     const apiKey = process.env.DATA_GOV_API_KEY;
-	const options = {
-        method: 'GET',
-        url: `https://api.nal.usda.gov/fdc/v1/foods/list?api_key=${apiKey}`
-      };
-      
-      axios.request(options).then(function (response) {
-          const returnedData = response.data;
-      
-        }).catch(function (error) {
-            console.error(error);
-        }); */
+
         res.render('wellness-nutrition', {currentPageTitle: 'Nutrition'});
     
 });

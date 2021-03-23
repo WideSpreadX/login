@@ -1,0 +1,68 @@
+<style>
+    .admin-users {
+        width: 100%;
+        margin-top: 30px;
+        background: lime;
+        padding: 5px;
+    }
+    .admin-user {
+        width: 100%;
+        max-height: 100px;
+        margin-bottom: 10px;
+        background: blue;
+        padding: 10px;
+        
+    }
+    .admin-header {
+        display: inline-flex;
+        width: 100%;
+    }
+    .left-header {
+        width: 90%;
+    }
+    .left-header h6 {
+        color: lightskyblue;
+    }
+    .admin-header h3 {
+        width: 10%;
+    }
+</style>
+<% if (thisUser) { %>
+    <h5>You are an admin</h5>
+    <% } else { %>
+        <h5>You do not have Admin Access</h5>
+        <% } %>
+
+<form action="/admin/add-new" method="post">
+    <input type="text" name="userId" value="<%= thisUser.id %>">
+    <p>Admin Type</p>
+    <select name="admin_type">
+        <option value="business_owner">Business Owner</option>
+        <option value="business_manager">Business Manager</option>
+        <option value="business_employee">Business Employee</option>
+        <option value="teacher">Teacher</option>
+        <option value="teacher_aid">Teachers Aid</option>
+        <option value="parent">Parent</option>
+        <option value="child">Child</option>
+        <option value="widespread">WideSpread</option>
+    </select>
+    <input type="number" name="security_clearance" placeholder="Security Clearance">
+    <input type="text" name="admin_link" value="/admin/users/<%= thisUser.id %>">
+    
+    <button type="submit">Add</button>
+</form>
+<div class="admin-users">
+<% adminUsers.forEach(function(user) { %>
+    <a href="<%= user.admin_link %>">
+    <div class="admin-user">
+        <div class="admin-header">
+            <div class="left-header">
+                <h5><%= user.admin_id.fname %> <%= user.admin_id.lname %></h5>
+                <h6><%= user.admin_type %></h6>
+            </div>
+            <h3><%= user.security_clearance %></h3>
+        </div>
+    </div>
+</a>
+<% }) %>
+</div>

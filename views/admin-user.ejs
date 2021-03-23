@@ -1,0 +1,28 @@
+<style>
+
+</style>
+
+<% if (user = adminId.admin_id) { %>
+    <h5><%= adminUser.admin_id.fname %> <%= adminUser.admin_id.lname %></h5>
+    
+    <% if (businessOwner) {  %>
+        <h3>Your Companies</h3>
+        <% businessOwner.forEach(function(business) { %>
+    <h5><%= business.company_name %></h5>
+    <% }) %>
+    <% } else { %>
+        <span></span>
+    <% } %>
+
+    <% if (courseCreator) { %>
+        <h3>Your Courses</h3>
+        <% courseCreator.forEach(function(course) { %>
+    <h5><%= course.course %></h5>
+    <% }) %>
+    <% } else { %>
+        <span></span>
+    <% } %>
+    
+<% } else { %>
+    <h5>You do not have access to this page.</h5>
+<% } %>

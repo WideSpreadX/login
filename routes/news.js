@@ -53,7 +53,7 @@ router.get('/international/:country', (req, res) => {
     const country = req.params.country;
 
     newsapi.v2.topHeadlines({
-        category: 'business',
+        category: 'general',
         language: 'en',
         country: `${country}`
       }).then(response => {

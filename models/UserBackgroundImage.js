@@ -7,6 +7,7 @@ const userBackgroundImageSchema = new mongoose.Schema({
         data: Buffer, 
         contentType: String 
     },
+    image_description: String
 }); 
   
 //UserBackgroundImage is a model which has a schema imageSchema 

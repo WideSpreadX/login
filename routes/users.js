@@ -25,6 +25,8 @@ const CommentImage = require('../models/CommentImage');
 const Avatar = require('../models/Avatar');
 const InSpread = require('../models/InSpread');
 const Poll = require('../models/Poll');
+const UserBackgroundImage = require('../models/UserBackgroundImage');
+const VrBackgroundImageUrl = require('../models/VrBackgroundUrl');
 
 // Login Page
 router.get('/login', (req, res) => {
@@ -248,11 +250,22 @@ router.post('/:profileId/inspread/:spreaderId', ensureAuthenticated, async (req,
 router.get('/update-profile/:id', ensureAuthenticated, async (req, res, next) => {
     const id = req.user._id
     const currentUser = await User.findById(id);
-
-
-    res.render('update-profile', {currentPageTitle: 'Update Your Profile', id: id, currentUser});
+    const vrBackgroundOptions = await UserBackgroundImage.find()
+    const vrOptions = await VrBackgroundImageUrl.find()
+    res.render('update-profile', {currentPageTitle: 'Update Your Profile', id: id, currentUser, vrBackgroundOptions, vrOptions});
 });
 
+router.post('/new-vr-image-url', ensureAuthenticated, (req, res) => {
+    const imageUrl = req.body.url;
+    const imageName = req.body.image_name;
+    const user = req.user._id;
+    const newImageUrl = new VrBackgroundImageUrl({
+        vr_image_url: imageUrl,
+        image_name: imageName
+    });
+    newImageUrl.save()
+    res.redirect(`/users/update-profile/${user}`);
+})
 
 router.patch('/update-profile', ensureAuthenticated, async (req, res, next) => {
     try {

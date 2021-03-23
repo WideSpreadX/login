@@ -120,6 +120,7 @@ const upload = multer({ storage });
 
 // Routes
 app.use('/', require('./routes/index'));
+app.use('/admin', require('./routes/admin'));
 app.use('/users', require('./routes/users'));
 app.use('/business', require('./routes/businesses'));
 app.use('/academy', require('./routes/academy'));

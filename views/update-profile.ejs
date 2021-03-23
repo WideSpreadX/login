@@ -109,6 +109,18 @@
     h3 {
         padding: 15px;
     }
+    .vr-backgrounds-container {
+        width: 100%;
+        display: inline-flex;
+        overflow-x: scroll;
+    }
+    iframe {
+        width: 100%;
+        max-width: 100%;
+        margin-right: 10px;
+        border-radius: 8px;
+        
+    }
 </style>
 <div class="user-background-image">
     <% if (currentUser.user_background_image) { %>
@@ -172,6 +184,18 @@
                 <div class="user-background-color" style="width: 100px; height: 100px; background: <%= currentUser.favColor1 %>"></div>
                 <% } %>
             </div>
+
+    <form action="/users/new-vr-image-url" method="post">
+        <input type="url" name="url" placeholder="Enter Image URL">
+        <input type="text" name="image_name" placeholder="Image Name">
+        <button type="submit">Add</button>
+    </form>
+    <div class="vr-backgrounds-container">
+        <% vrOptions.forEach(function(background) { %>
+            <iframe frameborder="0" id="<%= background.image_preview %>" src="https://ws-equi-images.herokuapp.com/apartment_1a.html">
+            </iframe>
+    <% }) %>
+    </div>
     <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
 <form action="/users/update-profile?_method=PATCH" method="POST">
 
@@ -363,3 +387,5 @@
     }
     setSelectIndex(document.getElementById("state"), "<%= currentUser.state %>")
 </script>
+
+

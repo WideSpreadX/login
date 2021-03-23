@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const {ensureAuthenticated } = require('../config/auth');
 
 const axios = require('axios');
-
+const { createClient } = require('pexels');
 const User = require('../models/User');
 const Post = require('../models/Post');
 
@@ -18,6 +18,7 @@ router.get('/user/:id', ensureAuthenticated, (req, res) => {
     const friends = req.user.friends;
     res.render('socialspread-user', {currentPageTitle: 'SocialSpread'})
 });
+
 
 router.get('/photospread', (req, res) => {
     const apiKey = process.env.UNSPLASH_ACCESS_TOKEN
@@ -34,6 +35,57 @@ axios.request(options).then(function (response) {
 	console.error(error);
 });
 
+});
+
+router.get('/photospread/pexels', (req, res) => {
+    res.render('photospread-pexels');
+});
+router.post('/photospread/pexels/search', (req, res) => {
+    const query = req.body.search;
+
+    res.redirect(`/socialspread/photospread/pexels/search/${query}`);
+});
+
+router.get('/photospread/pexels/search/:query', (req, res) => {
+    const client = createClient(process.env.PEXELS_API_KEY);
+
+    const query = req.params.query;
+
+    client.photos.search({ query, per_page: 50 }).then(photos => {
+        console.log(photos)
+        res.render('photospread-pexels-results', {photos})
+    });
+});
+
+
+
+router.get('/photospread/pexels/single/:imageId', (req, res) => {
+    const imageId = req.params.imageId;
+    const client = createClient(process.env.PEXELS_API_KEY);
+    client.photos.show({ id: imageId }).then(photo => {
+        console.log(photo);
+        res.render('photospread-pexels-single', {photo})
+    });
+});
+
+
+router.get('/videospread/pexels/search', (req, res) => {
+    res.render('videospread-pexels-search')
+});
+
+router.post('/videospread/pexels/search', (req, res) => {
+    const query = req.body.search;
+
+    res.redirect(`/socialspread/videospread/pexels/search/${query}`)
+});
+
+router.get('/videospread/pexels/search/:term', (req, res) => {
+    const query = req.params.term;
+    const client = createClient(process.env.PEXELS_API_KEY);
+    client.videoes.search({ query, per_page: 1 }).then(videos => {
+        console.log(videos);
+        res.render('videospread-pexels-results', {videos});
+    });
 });
 
 router.get('/giphyspread', (req, res) => {
