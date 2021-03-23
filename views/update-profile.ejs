@@ -111,6 +111,7 @@
     }
     .vr-backgrounds-container {
         width: 100%;
+        min-height: 200px;
         display: inline-flex;
         overflow-x: scroll;
         margin-top: 20px;
@@ -136,8 +137,283 @@
         border-radius: 8px;
                
     }
+    .bg-option {
+        width: 100%;
+        min-width: 100%;
+        max-height: 300px;
+        margin-right: 10px;
+        position: relative;
+    }
+    .vr-image {
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+    .vr-image img {
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        min-height: 100px;
+    }
+    .vr-image-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 11;
+        width: 100%;
+        min-width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        backdrop-filter: blur(2px);
+        background:rgba(0, 0, 0, 0.3);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .update-section {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+    }
+    .update-section h3 {
+        text-align: center;
+        padding: 10px;
+    }
+    .update-section h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .update-section textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        color: #fff;
+        padding: 5px;
+        transition: ease-in 0.3s;
+    }
+    .update-section textarea:focus {
+        outline: none;
+        border: none;
+        background: rgba(135, 206, 250, 0.3);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        border-top: groove 2px #fff;
+        border-bottom: groove 2px #fff;
+        transition: ease-in 0.3s;
+    }
+    .s-m-container {
+        margin-top: 30px;
+    }
+    .s-m-outlet {
+        display: block;
+    }
+    .s-m-outlet p {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .s-m-outlet input {
+        width: 100%;
+        border: none;
+        outline: none;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        color: #fff;
+        padding: 5px;
+        transition: ease-in 0.3s;
+        margin-bottom: 15px;
+    }
+    .s-m-outlet input:focus {
+        outline: none;
+        border: none;
+        background: rgba(135, 206, 250, 0.3);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        border-top: groove 2px #fff;
+        border-bottom: groove 2px #fff;
+        transition: ease-in 0.3s;
+    }
+    .s-m-outlet input[type="radio"] {
+        background: lime;
+        width: 100%;
+    }
+    .custom-select {
+  position: relative;
+  font-family: Arial;
+  background:rgba(255, 255, 255, 0.3);
+  margin-bottom: 30px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    z-index: 30;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  transition: ease-in 0.3s;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+  transition: ease-in 0.3s;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent rgba(0, 0, 0, 0.7) transparent;
+  top: 7px;
+  transition: ease-in 0.3s;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(255, 255, 255, 0.3) transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: ease-in 0.3s;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background: rgba(135, 206, 250, 0.3);
+  border-bottom: groove 2px #fff;
+  backdrop-filter: blur(4px);
+  max-height: 310px;
+  overflow-y: scroll;
+  top: 100%;
+  left: 5%;
+  right: 5%;
+  margin-top: 2px;
+  z-index: 20;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transition: ease-in 0.3s;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.radios {
+    width: 100%;
+    display: inline-flex;
+    margin-top: 20px;
+}
+/* The container */
+.radio-container {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 40%;
+  margin-left: 5%;
+}
+
+/* Hide the browser's default radio button */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border: solid 1px rgba(135, 206, 250, 0.3);
+}
+
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .checkmark {
+  background-color: lightskyblue;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+  background-color: rgba(135, 206, 250, 0.5);
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+ 	top: 10%;
+	left: 12%;
+	width: 80%;
+	height: 80%;
+	border-radius: 50%;
+	background: rgba(135, 206, 250, 0.9);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.5), 0 0 6px rgba(0, 0, 0, 0.5);
+}
+.s-m-outlet input[type="color"] {
+    height: 50px;
+}
+.update-btn button {
+    width: 90%;
+        margin-left: 5%;
+        background: rgba(0, 128, 0, 0.3);
+        border: groove 2px green;
+        border-bottom: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        color: #fff;
+        padding: 5px;
+}
 </style>
-<div class="user-background-image">
+<!-- <div class="user-background-image">
     <% if (currentUser.user_background_image) { %>
         <img src="/image/<%= currentUser.user_background_image %>" alt="<%= currentUser.fname %> <%= currentUser.lname %>'s Avatar">
         <%} else { %>
@@ -153,8 +429,6 @@
 <div class="page-title">
     <h1>Update Your Profile</h1>
 </div>
-<div class="row">
-<div class="update-profile col-12">
 
     <h3>Change Your Background Image</h3>
     <div class="user-profile-image-form">
@@ -209,16 +483,22 @@
     <h5 style="margin-top: 20px; text-align: center;">Default VR Background Images</h5>
     <div class="vr-backgrounds-container">
         <% vrOptions.forEach(function(background) { %>
-            <div class="vr-iframe">
-                <iframe allowfullscreen allowvr="yes" frameborder="0" id="<%= background.image_preview %>" src="<%= background.demo_page %>">
-                </iframe>
+            <div class="bg-option">
+                <div class="vr-image">
+                    <img src="<%= background.vr_image_url %>" alt="">
+                </div>
+                <div class="vr-image-name">
+                    <h5><%= background.image_name %></h5>
+                </div>
             </div>
-    <% }) %>
-    </div>
+        <% }) %>
+    </div> -->
     <hr style="border-color: rgba(135, 206, 250, 0.623); margin-top: 40px; margin-bottom: 40px; width: 80%; margin-left: 10%;">
+<div class="update-section">
 <form action="/users/update-profile?_method=PATCH" method="POST">
 
     <h3>About Me Section</h3>
+    <h5>Your Bio</h5>
     <textarea name="about" id="aboutMe" cols="50" rows="10"><%= currentUser.about %></textarea>
     <div class="s-m-outlet" style="margin-top: 20px;">
         <p>Current Occupation</p>
@@ -226,7 +506,7 @@
     </div>
     <div class="s-m-container">
 
-    <h3>Social Media Outlets</h3>
+    <h5>Social Media Outlets</h5>
     
     <div class="s-m-outlet">
         <p>Github</p>
@@ -263,9 +543,11 @@
         </div>
         
         <div class="s-m-outlet">
-
             <p>State</p>
-            <select id="state" name="state">
+        </div>
+        <div class="custom-select">
+
+            <select name="state">
                 <option value="AL">AL</option>
                 <option value="AK">AK</option>
                 <option value="AZ">AZ</option>
@@ -332,10 +614,11 @@
         
         <div class="s-m-container">
             <h3>Contact Information</h3>
-
             <div class="s-m-outlet">
                 <p>Phone Number</p>
-                <input type="tel" name="phone1" id="phone1" value="<%= currentUser.phone1 %>">
+                <input style="margin-bottom: 5px;" type="tel" name="phone1" id="phone1" value="<%= currentUser.phone1 %>">
+            </div>
+            <div class="custom-select">
                 <select name="phoneType1" id="phoneType1" value="<%= currentUser.phoneType1 %>">
                     <option value="home">Home</option>
                     <option value="cell">Cell</option>
@@ -344,8 +627,10 @@
                 </select>
             </div>
             <div class="s-m-outlet">
-                <p>Secondary Number</p>
-                <input type="tel" name="phone2" id="phone2" value="<%= currentUser.phone2 %>">
+                <p>Second Number</p>
+                <input  style="margin-bottom: 5px;" type="tel" name="phone2" id="phone2" value="<%= currentUser.phone2 %>">
+            </div>
+            <div class="custom-select">
                 <select name="phoneType2" id="phoneType2" value="<%= currentUser.phoneType2 %>">
                     <option value="home">Home</option>
                     <option value="cell">Cell</option>
@@ -364,16 +649,23 @@
             </div>
             <div class="s-m-outlet">
                 <p>Gender</p>
-                
-                <input type="radio" id="male" name="gender" value="Male">
-                <label for="Male">Male</label>
-                <input style="margin-left: 10px;" type="radio" id="Female" name="gender" value="Female">
-                <label for="Female">Female</label><br>   
+            </div>
+            <div class="radios">
+                <label class="radio-container">Male
+                    <input type="radio" name="gender" value="Male">
+                    <span class="checkmark"></span>
+                  </label>
+                <label class="radio-container">Female
+                    <input type="radio" name="gender" value="Female">
+                    <span class="checkmark"></span>
+                  </label> 
             </div>
         </div>
         <div class="s-m-outlet">
 
             <p style="width:auto; margin-right: 10px;">Relationship Status</p>
+        </div>
+        <div class="custom-select">
             <select name="relationshipStatus" value="<%= currentUser.relationshipStatus %>">
                 <option value="single">Single</option>
                 <option value="relationship">In a Relationship</option>
@@ -383,28 +675,97 @@
                 <option value="divorced">Widower</option>
             </select>
         </div>
-        <div class="s-m-outlet">
+        <div class="s-m-outlet" style="margin-bottom: 0;">
             <p>Favorite Colors</p>
             <input type="color" name="favColor1" id="favColor1" value="<%= currentUser.favColor1 %>"><input type="color" name="favColor2" id="favColor2" value="<%= currentUser.favColor2 %>"><input type="color" name="favColor3" id="favColor3" value="<%= currentUser.favColor3 %>">
+            
         </div>
         <br>
     </div>
-
-        <input type="submit" value="Update Profile" style="margin-top: 40px; display: block; width: 100%;">
+</div>
+<div class="update-btn">
+    <button type="submit">Update Profile</button>
+</div>
     </form>
-</div>
-</div>
+
 
 <script>
-    function setSelectIndex(s, v) {
-        for(let i = 0; i < s.options.length; i++) {
-            if( s.options[i].text == v) {
-                s.options[i] = true;
-                return;
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
             }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
         }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
     }
-    setSelectIndex(document.getElementById("state"), "<%= currentUser.state %>")
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
 </script>
-
-
