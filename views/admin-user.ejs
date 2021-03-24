@@ -1,24 +1,134 @@
 <style>
-
+    .spread-break hr {
+        background: lightskyblue;
+        box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
+        width: 80%;
+        margin-left: 10%;
+        border-radius: 50%;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+    .spread-link {
+        width: 100%;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        padding: 10px;
+    }
+    .spread-link p {
+        margin-bottom: 0;
+    }
+    .spread-link a {
+        color: lightskyblue;
+    }
+    .admin-panel {
+        margin-bottom: 20px;
+    }
+    .admin-panel h3 {
+        text-align: center;
+        padding: 15px;
+    }
+    .admin-section {
+        background:rgba(0, 0, 0, 0.534);
+        margin-bottom: 10px;
+        position: relative;
+        height: auto;
+        min-height: 204px;
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .business-logo {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        text-align: center;
+    }
+    .business-logo img {
+        max-width: 200px;
+        max-height: 200px;
+        border-radius: 8px;
+    }
+    .business-name {
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        padding: 10px;
+        background:rgba(0, 0, 0, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .course-logo {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        text-align: center;
+        overflow: hidden;
+    }
+    .course-logo img {
+        width: 100%;
+        min-width: 100%;
+        border-radius: 8px;
+    }
 </style>
 
 <% if (user = adminId.admin_id) { %>
-    <h5><%= adminUser.admin_id.fname %> <%= adminUser.admin_id.lname %></h5>
-    
+    <h3>ADMIN: <%= adminUser.admin_id.fname %> <%= adminUser.admin_id.lname %></h3>
+    <h5>Security Clearance: <%= adminUser.security_clearance %></h5>
+    <h6>Admin Type: <%= adminUser.admin_type %></h6>
+    <div class="spread-break">
+        <hr>
+    </div>
     <% if (businessOwner) {  %>
+        <div class="admin-panel">
         <h3>Your Companies</h3>
         <% businessOwner.forEach(function(business) { %>
-    <h5><%= business.company_name %></h5>
+            <div class="admin-section" style="background: <%= business.colors.main %>;">
+                <div class="business-logo">
+                    <img src="/image/<%= business.logo %>" alt="">
+                </div>
+                <div class="business-name">
+                    <h5><%= business.company_name %></h5>
+                </div>
+
+            </div>
     <% }) %>
+</div>
     <% } else { %>
         <span></span>
     <% } %>
-
     <% if (courseCreator) { %>
+        <div class="spread-break">
+            <hr>
+        </div>
+        <div class="admin-panel">
         <h3>Your Courses</h3>
         <% courseCreator.forEach(function(course) { %>
-    <h5><%= course.course %></h5>
+            <div class="admin-section">
+                <div class="course-logo">
+                    <img src="/image/<%= course.background_image %>" alt="">
+                </div>
+                <div class="business-name">
+                    <h5><%= course.course %></h5>
+                </div>
+            </div>
     <% }) %>
+        </div>
+    <div class="spread-link">
+        <a href="/academy/add-course"><p>Add New Course</p></a>
+    </div>
     <% } else { %>
         <span></span>
     <% } %>

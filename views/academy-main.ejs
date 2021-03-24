@@ -78,7 +78,12 @@
             background: transparent;
         }
         .students-current-courses {
-            margin-top: 30px;
+            margin-top: 10px;
+            box-shadow: none;
+        }
+        .students-current-courses h3 {
+            text-align: center;
+            padding: 10px;
         }
         .student-course {
             padding: 0;
@@ -151,20 +156,28 @@
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
-<h1><%= currentPageTitle %></h1>
+
 <div class="main-header-page-menu-container">
     <div id="mainHeaderPageMenu">
         <div class="main-header-page-menu-inner">
             <a href="/academy">Your Desk</a>
             <a href="/academy/courses">All Courses</a>
+            <a href="/notebooks">Your Notebooks</a>
+            <a href="/tools/dictionary">Dictionary</a>
+            <a href="/tools/encyclopedia">Encyclopedia</a>
+            <a href="/tools/calculator">Calculator</a>
+
 
         </div>
     </div>
     <p>Scroll left & right for more options</p>
 </div>
+<div class="page-title">
+    <h1><%= currentPageTitle %></h1>
+</div>
 <div class="students-current-courses">
 
-    <h1>Your Current Courses</h1>
+    <h3>Your Current Courses</h3>
     <% academyInfo.academy_info.current_courses.forEach(function(course){ %>
         <div class="student-course">
             <div class="course-background-image">
@@ -193,5 +206,5 @@
 
 <div class="academy-footer">
     <a href="/academy/courses"><p>All Courses</p></a>
-    <a href="/academy/add-course"><p>Add New Course</p></a>
+    
 </div>

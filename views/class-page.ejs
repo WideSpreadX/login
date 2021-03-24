@@ -34,6 +34,10 @@
     }
 
     @media screen and (max-width: 500px) {
+        .page-title {
+            text-align: center;
+            padding: 20px;
+        }
         .main-header-page-menu-container {
             width: 100%;
             padding-left: 0;
@@ -301,9 +305,12 @@
     <div id="mainHeaderPageMenuu">
         <div class="main-header-page-menu-inner">
             <a href="/academy">Your Desk</a>
-            <a href="/academy/<%= thisCourseId %>/<%= thisClass.id %>/flashcards">Flashcards</a>
             <a href="/academy/courses">All Courses</a>
-
+            <a href="/academy/<%= thisCourseId %>/<%= thisClass.id %>/flashcards">Flashcards</a>
+            <a href="/notebooks">Your Notebooks</a>
+            <a href="/tools/dictionary">Dictionary</a>
+            <a href="/tools/encyclopedia">Encyclopedia</a>
+            <a href="/tools/calculator">Calculator</a>
         </div>
     </div>
     <p>Scroll left & right for more options</p>

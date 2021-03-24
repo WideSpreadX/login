@@ -36,6 +36,11 @@ const companySchema = new mongoose.Schema({
             have: Number,
             need: Number
         }]
+    },
+    colors: {
+        main: String,
+        accent: String,
+        offset: String
     }
 });
 
