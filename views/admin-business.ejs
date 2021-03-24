@@ -1,0 +1,63 @@
+<style>
+    body {
+        background: <%= business.colors.accent %>
+    }
+    .employees {
+    }
+    .employees h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .employees p {
+        color: #fff;
+        margin-bottom: 0;
+        border-bottom: solid 1px lightskyblue;
+    }
+    .inventory h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .item p {
+        color: #fff;
+        border-bottom: solid 1px lightskyblue;
+    }
+</style>
+
+<h3><%= business.company_name %></h3>
+<h5>ADMIN: <%= adminUser.admin_id.fname %> <%= adminUser.admin_id.lname %></h5>
+
+<div class="employees">
+    <h5>Employees</h5>
+    <% business.employees.forEach(function(employee) { %>
+        <div class="employee">
+            <p><%= employee.fname %> <%= employee.lname %></p>
+        </div>
+    <% }) %>
+
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<div class="inventory">
+<h5>Inventory</h5>
+<table style="color: #fff; border-bottom: groove 2px lightskyblue; border-radius: 8px;">
+    <tr style="text-align: center; background: lightskyblue;">
+        <th style="width: 90%; border-top-left-radius: 8px; padding: 5px;">Item</th>
+        <th style="width: 10%; padding: 5px; border-top-right-radius: 8px; border-left: solid 1px #fff;">Quantity</th>
+    </tr>
+<% inventory.forEach(function(item) { %>
+    <tr style="border-bottom: solid 1px rgba(255, 255, 255, 0.3);">
+        <td style="width: 90%;"><%= item.name %></td>
+        <td style="text-align: center; border-left: solid 1px #fff; width: 10%; padding: 5px;"><%= item.total %></td>
+    </tr>
+<% }) %>
+</table>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<a href="/business/<%= business._id %>/manage" style="color: lightskyblue;">Manage Company</a>

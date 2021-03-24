@@ -18,6 +18,7 @@ const Avatar = require('../models/Avatar');
 const InSpread = require('../models/InSpread');
 const Poll = require('../models/Poll');
 const Course = require('../models/Course');
+const Item = require('../models/Item');
 const UserBackgroundImage = require('../models/UserBackgroundImage');
 
 
@@ -51,5 +52,18 @@ router.get('/users/:userId', ensureAuthenticated, async (req, res) => {
     const courseCreator = await Course.find({courseCreator: {$eq: user}});
 
     res.render('admin-user', {user, adminId, adminUser, businessOwner, courseCreator})
+});
+
+router.get('/users/:userId/:businessId', ensureAuthenticated, async (req, res) => {
+    const userId = req.params.userId;
+    const businessId = req.params.businessId;
+    const adminUser = await Admin.findOne({admin_id: {$eq: userId}}).populate('admin_id').exec();
+    const business = await Company.findById(businessId).populate({
+        path: 'employees',
+        model: 'User'
+    }).exec()
+    const inventory = await Item.find({for_company: {$eq: businessId}})
+
+    res.render('admin-business', {adminUser, business, inventory});
 });
 module.exports = router;
