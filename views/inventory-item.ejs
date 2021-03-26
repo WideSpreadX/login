@@ -107,6 +107,28 @@
     <p>Scroll left & right for more options</p>
 </div>
 
+
+<div class="add-item-image">
+    <form action="/upload-item-image/<%= company.id %>/<%= companyInventory.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= companyInventory.id %>">
+                <div class="custom-file-profile-image">
+                    <input type="file" name="item_image" id="companyItemImage">
+                    <label for="companyItemImage" class="custom-file-label-choose-profile-image">Choose Item Image</label>
+                </div>
+                
+                <div>
+                    <button type="submit" class="custom-file-profile-image-button">Change</button>
+                </div>
+        </form>
+</div>
+
+<% if (companyInventory.item_main_image) { %>
+    <div class="item-image">
+        <img src="/image/<%= companyInventory.item_main_image %>" width="300px" height="200px" alt="">
+    </div>
+<% } else { %>
+    <span></span>
+<% } %>
 <div class="inventory-item">
     <h2><%= companyInventory.name %></h2>
     <p>SKU#: <%= companyInventory.sku %></p>

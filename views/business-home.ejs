@@ -196,7 +196,7 @@
         <div class="main-header-page-menu-inner">
             <a href="/business">Business Home</a>
             <a href="/business/your-desk">Your Desk</a>
-            
+            <a href="/business/<%= company._id %>/store">Store</a>
             <a href="/business/<%= company._id %>/apply-for-job">Apply for a Job</a>
         </div>
     </div>
@@ -217,7 +217,7 @@
         <h5><%= company.company_type %></h5>
         <div class="sub-pages">
             <% subPages.forEach(function(page){ %>
-                <a href="/business/<%= company.id %>/<%= page.id %>"><%= page.page_name %></a>
+                <a href="/business/<%= company.id %>/sub/<%= page.id %>"><%= page.page_name %></a>
             <% }) %>
             </div>
     <hr>

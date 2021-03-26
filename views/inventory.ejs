@@ -197,3 +197,30 @@
     <button type="submit">Add to Inventory</button>
 </form>
 </div>
+
+
+    <div class="add-to-inventory">
+        <h5>Add New Store Item</h5>
+    <form action="/business/<%=company.id %>/inventory/for-sale" method="post" class="add-form">
+    <input type="text" name="name" id="itemName" placeholder="Name of Item">
+    <input type="text" name="description" id="itemDescription" placeholder="Item Description">
+    <input type="text" name="sku" id="itemSku" placeholder="Item SKU">
+    <input type="text" name="make" id="itemMake" placeholder="Make">
+    <input type="text" name="model" id="itemModel" placeholder="Model">
+    <input type="text" name="year" id="itemYear" placeholder="Year">
+    <input type="number" name="price" id="itemPrice" placeholder="Price Each">
+    <input type="color" name="color1" id="itemColor1" placeholder="Main Color">
+    <input type="color" name="color2" id="itemColor2" placeholder="Secondary Color">
+    <input type="text" name="width" id="itemWidth" placeholder="Width">
+    <input type="text" name="height" id="itemHeight" placeholder="Height">
+    <input type="text" name="depth" id="itemDepth" placeholder="Depth">
+    <input type="text" name="weight" id="itemWeight" placeholder="Weight">
+    <input type="text" name="category" id="itemCategory" placeholder="Item Category">
+    <input type="text" name="supplier_website" id="supplierWebsite" placeholder="Supplier Website">
+    <input type="text" name="product_webpage" id="productWebpage" placeholder="Product Webpage">
+    <input type="number" name="total" id="total" placeholder="Total" value="<%= companyInventory.total%>">
+    <input type="radio" name="for_sale" checked value="true">
+    <button type="submit">Add to Inventory</button>
+</form>
+</div>
+  

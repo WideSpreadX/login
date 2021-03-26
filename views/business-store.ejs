@@ -1,0 +1,45 @@
+<style>
+
+</style>
+
+<form action="/business/user-cart/<%= companyId %>" method="post">
+    <input type="text" name="for_user" value="<%= userId %>">
+    <button type="submit">Create Cart</button>
+</form>
+<div class="store">
+    <div class="items">
+        <% companyStore.forEach(function(item) { %>
+            <% if (item.for_sale == true) { %>
+            <div class="item">
+                <% if (item.item_main_image) { %>
+<!--                     <div class="item-image">
+                        <img src="/image/<%= item.item_main_image %>" width="300px" height="200px" alt="">
+                    </div> -->
+                <% } else { %>
+                    <span></span>
+                <% } %>
+                <div class="item-data">
+                    <h5><%= item.name %></h5>
+                    <p><%= item.description %></p>
+                </div>
+                <div class="item-price">
+                    <div class="price">
+                        <h6>$<%= item.price %>.00</h6>
+                    </div>
+                    <div class="add-to-cart">
+                        <form action="/business/<%= companyId %>/store/<%= item.id %>/add-to-cart/<%= cart.id %>?_method=PATCH" method="post">
+                            <input type="text" name="item" value="<%= item.id %>">
+                            <p>Quantity</p>
+                            <input type="number" name="quantity">
+                            <button type="submit"><i class="fas fa-cart-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <% } else { %>
+                <span style="display: none;"></span>
+            <% } %>
+        <% }) %>
+    </div>
+</div>

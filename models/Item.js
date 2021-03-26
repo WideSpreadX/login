@@ -51,7 +51,9 @@ const itemSchema = new mongoose.Schema({
     supplier_website: String,
     product_webpage: String,
     total: Number,
-    need: Number
+    need: Number,
+    for_sale: Boolean,
+    item_main_image: String
 });
 
 const Item = mongoose.model('Item', itemSchema);

@@ -1,0 +1,57 @@
+<style>
+
+    .admin-user {
+        background: blue;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    .course-data {
+        background: purple;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    .course-data h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .course-data h6 {
+        padding: 5px;
+
+    }
+    .classes {
+        background: red;
+        color: #000;
+        margin-bottom: 20px;
+    }
+    .class {
+        background: green;
+        color: #fff;
+        margin-bottom: 10px;
+        border-radius: 8px;
+
+    }
+    .class h5 {
+        text-align: center;
+        padding: 10px;
+    }
+</style>
+
+<div class="admin-user">
+    <h3><%= course.course %></h3>
+    <h5>ADMIN: <%= adminUser.admin_id.fname %> <%= adminUser.admin_id.lname %> </h5>
+</div>
+
+<div class="course-data">
+    <h5>Course Subject: <%= course.subject %></h5>
+    <h6>Course Difficulty: <%= course.difficulty %></h6>
+    <h6>Credit Value: <%= course.credit_value %></h6>
+    
+    <div class="spread-break">
+        <hr>
+    </div>
+
+    <h5>Classes</h5>
+    <div class="classes">
+        
+    </div>
+</div>

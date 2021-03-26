@@ -8,6 +8,7 @@ const Company = require('../models/Company');
 const Subpage = require('../models/Subpage');
 const Resume = require('../models/Resume');
 const Item = require('../models/Item');
+const Cart = require('../models/Cart');
 const Appointment = require('../models/Appointment');
 const Department = require('../models/Department');
 const DepartmentTeam = require('../models/DepartmentTeam');
@@ -281,7 +282,7 @@ router.get('/:companyId/manage/public-page', async (req, res) => {
     res.render('business-manage-public-page', {company, subpages});
 })
 
-router.get('/:companyId/:subpageId/edit', ensureAuthenticated, async (req, res) => {
+router.get('/:companyId/sub/:subpageId/edit', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;
     const subpageId = req.params.subpageId;
     const company =  await Company.findById(companyId);
@@ -289,7 +290,7 @@ router.get('/:companyId/:subpageId/edit', ensureAuthenticated, async (req, res) 
     res.render('subpage-edit', {subpage, company});
 })
 
-router.delete('/:companyId/:subpageId/delete', ensureAuthenticated, async (req, res) => {
+router.delete('/:companyId/sub/:subpageId/delete', ensureAuthenticated, async (req, res) => {
     const companyId = req.params.companyId;
     const subpageId = req.params.subpageId;
     await Subpage.findByIdAndDelete(subpageId);
@@ -331,7 +332,7 @@ router.patch('/:companyId/apply', ensureAuthenticated, async (req, res) => {
     apply.save();        
     res.redirect(`/business/${company}`)
 })
-router.get('/:companyId/:resumeId/add-employee', async (req, res) => {
+router.get('/:companyId/resume/:resumeId/add-employee', async (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
     const resumeId = req.params.resumeId;
@@ -414,6 +415,49 @@ router.post('/:companyId/inventory', async (req, res) => {
     res.redirect(`/business/${companyId}/inventory`)
 });
 
+router.post('/:companyId/inventory/for-sale', async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+    const item = new Item({
+        for_company: companyId,
+        name: req.body.name,
+        description: req.body.description,
+        sku: req.body.sku,
+        make: req.body.make,
+        model: req.body.model,
+        year: req.body.year,
+        price: req.body.price,
+        color1: req.body.color1,
+        color2: req.body.color2,
+        dimensions: {
+            width: req.body.width,
+            height: req.body.height,
+            depth: req.body.depth
+        },
+        weight: req.body.weight,
+        category: req.body.category,
+        supplier_website: req.body.supplier_website,
+        product_webpage: req.body.product_webpage,
+        total: req.body.total,
+        need: req.body.need,
+        for_sale: req.body.for_sale
+    })
+    item.save()
+    await Company.findByIdAndUpdate(companyId,
+        {$addToSet: {inventory: item._id}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                
+                return
+            }
+        }
+        )
+    res.redirect(`/business/${companyId}/inventory`)
+});
+
 router.get('/:companyId/inventory/:itemId', async (req, res) => {
     const itemId = req.params.itemId;
     const companyId = req.params.companyId;
@@ -438,7 +482,7 @@ router.get('/:companyId/edit-subpage', ensureAuthenticated, async (req, res) => 
     res.render('business-edit-subpage', {company})
 });
 
-router.patch('/:companyId/:subpageId/edit', async (req, res) => {
+router.patch('/:companyId/sub/:subpageId/edit', async (req, res) => {
     try {
         const companyId = req.params.companyId;
         const subpageId = req.params.subpageId;
@@ -542,13 +586,56 @@ router.get('/:companyId/edit-subpage', ensureAuthenticated, async (req, res) => 
     res.render('business-edit-subpage', {company, subPages})
 });
 
-router.get('/:companyId/:subPage', async (req, res) => {
+router.get('/:companyId/sub/:subPage', async (req, res) => {
     const companyId = req.params.companyId;
     const subPage = req.params.subPage;
     const thisCompany = await Company.findById(companyId)
     const thisSubPage = await Subpage.findById(subPage)
 
     res.render('company-subpage', {thisSubPage, companyId, thisCompany})
+});
+
+
+/* E-Commerce */
+router.post('/user-cart/:businessId', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const businessId = req.params.businessId;
+    const cart = new Cart({
+        for_user: userId
+    });
+    cart.save()
+    res.redirect(`/business/${businessId}/store`)
+})
+router.get('/:companyId/store', async (req, res) => {
+    const userId = req.user._id;
+    const companyId = req.params.companyId;
+    const companyStore = await Item.find({for_company: {$eq: companyId}});
+    const cart = await Cart.find({for_user: {$eq: userId}});
+    res.render('business-store', {userId, companyStore, companyId, cart});
+});
+
+router.patch('/:companyId/store/:itemId/add-to-cart/:cartId', ensureAuthenticated, async (req, res) => {
+    const user = req.user._id;
+    const compnayId = req.params.companyId;
+    const itemId = req.params.itemId;
+    const cartId = req.params.cartId;
+
+    const company = await Company.findById(compnayId);
+    const item = await Item.findById(itemId);
+    const cart = await Cart.findByIdAndUpdate(cartId, 
+        {$addToSet: {"in_cart.item": item._id, "quantity": req.body.quantity}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err){
+                console.log(err);
+            }else{
+                
+                return
+            }
+        }
+        );
+
+    res.redirect(`/business/${compnayId}/store`);
 });
 
 module.exports = router;

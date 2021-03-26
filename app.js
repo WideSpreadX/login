@@ -22,6 +22,7 @@ const Company = require('./models/Company');
 const Subpage = require('./models/Subpage');
 const Course = require('./models/Course');
 const Group = require('./models/Group');
+const Item = require('./models/Item');
 const Chat = require('./models/Chat');
 const fs = require('fs');
 
@@ -239,11 +240,12 @@ app.patch('/upload-vr-background-image', upload.single('user_vr_background_image
 })
 });
 
-/* Company Background Image Upload */
-app.patch('/upload-company-background-image/:companyId', upload.single('background_image'), (req, res) => {
+/* Inventory/For Sale Item Image Upload */
+app.patch('/upload-item-image/:companyId/:itemId', upload.single('item_image'), (req, res) => {
   const companyId = req.params.companyId;
+  const itemId = req.params.itemId;
   const obj = { 
-    imageOwner: companyId, 
+    imageOwner: itemId, 
     img: { 
         data: req.file.filename,
         contentType: 'image/png'
@@ -255,10 +257,10 @@ app.patch('/upload-company-background-image/:companyId', upload.single('backgrou
     } 
     else { 
         item.save(); 
-        console.log(`Image Owner: ${companyId} Image Data: ${obj.img.data}`);
+        console.log(`Image Owner: ${itemId} Image Data: ${obj.img.data}`);
         const newImage = obj.img.data;
-        Company.findByIdAndUpdate(companyId,
-          {background_image: req.file.filename},
+        Item.findByIdAndUpdate(itemId,
+          {item_main_image: req.file.filename},
           function(err, doc) {
               if(err) {
                   console.log(err)
@@ -267,7 +269,7 @@ app.patch('/upload-company-background-image/:companyId', upload.single('backgrou
               }
           }
       )
-        res.redirect(`/business/${companyId}/manage/public-page`); 
+        res.redirect(`/business/${companyId}/inventory/${itemId}`); 
     }
 })
 });

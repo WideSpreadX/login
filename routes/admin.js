@@ -20,6 +20,8 @@ const Poll = require('../models/Poll');
 const Course = require('../models/Course');
 const Item = require('../models/Item');
 const UserBackgroundImage = require('../models/UserBackgroundImage');
+const Class = require('../models/Class');
+const LearningPoint = require('../models/LearningPoint');
 
 
 router.get('/', ensureAuthenticated, async (req, res) => {
@@ -54,7 +56,7 @@ router.get('/users/:userId', ensureAuthenticated, async (req, res) => {
     res.render('admin-user', {user, adminId, adminUser, businessOwner, courseCreator})
 });
 
-router.get('/users/:userId/:businessId', ensureAuthenticated, async (req, res) => {
+router.get('/users/:userId/business/:businessId', ensureAuthenticated, async (req, res) => {
     const userId = req.params.userId;
     const businessId = req.params.businessId;
     const adminUser = await Admin.findOne({admin_id: {$eq: userId}}).populate('admin_id').exec();
@@ -66,4 +68,18 @@ router.get('/users/:userId/:businessId', ensureAuthenticated, async (req, res) =
 
     res.render('admin-business', {adminUser, business, inventory});
 });
+
+router.get('/users/:userId/course/:courseId', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const courseId = req.params.courseId;
+    const adminUser = await Admin.findOne({admin_id: {$eq: userId}}).populate('admin_id').exec();
+    const course = await Course.findById(courseId).populate('classes').exec();
+    const classes = await Class.find({in_course: {$eq: courseId}});
+    console.log(classes)
+    const learningPoint = await LearningPoint.find({class: {$eq: classes._id}})
+    console.log(learningPoint)
+    res.render('admin-course', {adminUser, course, classes, learningPoint});
+    
+});
+
 module.exports = router;
