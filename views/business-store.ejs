@@ -1,4 +1,96 @@
 <style>
+    .store {
+        width: 100%;
+    }
+    .items {
+        width: 100%;
+        box-shadow: none;
+        position: relative;
+        margin-top: 30px;
+    }
+    .item {
+        width: 100%;
+        height: auto;
+        min-height: 150px;
+        box-shadow: none;
+        position: relative;
+    }
+    .item-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: 100%;
+        box-shadow: none;
+        height: auto;
+        z-index: 1;
+    }
+    .item-image img {
+        box-shadow: none;
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+
+    }
+    .item-image img:hover {
+        box-shadow: none;
+    }
+    .item-data {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        z-index: 2;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        text-align: center;
+    }
+    .item-data h5 {
+        padding: 10px;
+        padding-bottom: 0;
+    }
+    .item-data p {
+        margin-bottom: 0;
+        color: #fff;
+    }
+    .item-price {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        display: inline-flex;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        border-top: groove 2px lightskyblue;
+        padding: 10px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .price {
+        width: 40%;
+    }
+    .add-to-cart {
+        width: 60%;
+
+    }
+    .add-to-cart input[type="number"] {
+        width: 40%;
+        padding: 5px;
+        border-radius: 8px;
+    }
+    .add-to-cart button {
+        width: 50%;
+        border-radius: 8px;
+        background: green;
+        outline: none;
+        border: none;
+        color: #fff;
+        padding: 5px;
+    }
 
 </style>
 
@@ -13,7 +105,7 @@
             <div class="item">
                 <% if (item.item_main_image) { %>
                      <div class="item-image">
-                        <img src="/image/<%= item.item_main_image %>" width="300px" height="200px" alt="">
+                        <img src="/image/<%= item.item_main_image %>" alt="">
                     </div>
                 <% } else { %>
                     <span></span>
@@ -28,9 +120,8 @@
                     </div>
                     <div class="add-to-cart">
                         <form action="/business/<%= companyId %>/store/<%= item.id %>/add-to-cart/<%= cart.id %>?_method=PATCH" method="post">
-                            <input type="text" name="item" value="<%= item.id %>">
-                            <p>Quantity</p>
-                            <input type="number" name="quantity">
+                            <input type="text" name="item" value="<%= item.id %>" hidden>
+                            <input type="number" name="quantity" placeholder="Quantity">
                             <button type="submit"><i class="fas fa-cart-plus"></i></button>
                         </form>
                     </div>
