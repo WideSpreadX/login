@@ -45,30 +45,32 @@
         margin-left: 20px;
         position: relative;
         height: 90%;
+        width: 80px;
     }
     .possible-friend-background {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 80px;
         height: 100%;
     }
     .possible-friend-image {
-        width: 100%;
-        height: 300px;
-        max-height: 300px;
-        min-height: 300px;
+        width: 80px;
+        height: 120px;
+        max-height: 120;
+        min-height: 120px;
         overflow-y: hidden;
-        border-radius: 8px;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
     }
     
     .possible-friend-image img {
-        width: 100%;
+        width: 80px;
     }
     
     .possible-friend {
         border-radius: 8px;
-        width: 100%;
+        width: 80px;
         height: 300px;
         min-height: 300px;
         max-height: 300px;
@@ -182,7 +184,9 @@
     margin: -10px;
     opacity: 0.7;
     transition: ease-in 0.4s;
+
 }
+
 @media screen and (max-width: 1199px) {
 
    
@@ -1705,6 +1709,116 @@
 }
 .forecast-day {
     
+}
+.find-new-friends {
+    height: 100%;
+    padding-bottom: 20px;
+}
+.new-friend {
+    max-width: 80px;
+    height: 20px;
+    position: relative;
+    margin-bottom: 30px;
+    opacity: 1.0;
+}
+.possible-friend-background {
+    width: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    min-height: 100px;
+    border-top: groove 2px lightskyblue;
+    border-radius: 8px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.possible-friend-image {
+    width: 80px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.possible-friend-image img {
+    width: 80px;
+    height: auto;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    z-index: 5;
+    border-radius: 8px;
+}
+
+.possible-friend {
+    width: 80px;
+    max-width: 80px;
+    position: relative;
+    top: 140px;
+    height: 250px;
+    left: 0;
+    min-width: 30px;
+    background: none;
+    background:rgba(255, 255, 255, 0.3);
+    width: 100%;
+    border-top: groove 2px #fff;
+    border-bottom: groove 2px #fff;
+    z-index: 2;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.5);
+}
+.possible-friend a {
+    width: 80px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+.possible-friend h3 {
+    width: 120px;
+    transform: rotate(270deg);
+    margin: 0;
+    position: absolute;
+    top: 30px;
+    font-size: 0.8rem;
+    left: 8px;
+    padding: 5px;
+    border-top: groove 2px lightskyblue;
+    border-right: groove 2px lightskyblue;
+    border-left: groove 2px lightskyblue;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    z-index: 6;
+}
+.possible-friend-data {
+    margin: 0;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    width: 80px;
+}
+
+.add-friend-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+.add-friend {
+    display: block;
+
+}
+.remove-friend {
+    display: block;
 }
 .spreadshield-demos {
             width: 95%;
