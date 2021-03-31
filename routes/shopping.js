@@ -12,8 +12,6 @@ const stripePublicKey = process.env.STRIPE_PUBLISHABLE_KEY;
 
 router.get('/', (req, res) => {
     
-    console.log(`SECRET KEY: ${stripeSecretKey}`)
-    console.log(`PUBLIC KEY: ${stripePublicKey}`)
 
     
     res.render('shopping-home', {currentPageTitle: 'Shopping Home'})

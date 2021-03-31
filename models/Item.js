@@ -32,7 +32,10 @@ const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
     for_company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     description: String,
     sku: String,
     make: /* {type: mongoose.Schema.Types.ObjectId, ref: 'Company'} */String,
@@ -42,18 +45,24 @@ const itemSchema = new mongoose.Schema({
     color1: String,
     color2: String,
     dimensions: {
+        units: String,
         width: Number,
         height: Number,
         depth: Number
     },
-    weight: Number,
+    weight: {
+        units: String,
+        value: Number
+    },
     category: String,
     supplier_website: String,
     product_webpage: String,
+    product_image_url: String,
     total: Number,
     need: Number,
     for_sale: Boolean,
-    item_main_image: String
+    item_main_image: String,
+    item_images: [String]
 });
 
 const Item = mongoose.model('Item', itemSchema);

@@ -1,0 +1,90 @@
+<style>
+    .store {
+    }
+    .item {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .item-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .item-header h5 {
+        text-align: center;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        border-bottom: groove 2px lightskyblue;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .item-image {
+        width: 100%;
+        text-align: center;
+    }
+    .item-data {
+        display: inline-flex;
+        width: 100%;
+        padding-top: 15px;
+    }
+    .item-description {
+        width: 75%;
+        background: rgba(135, 206, 250, 0.3);
+        color: #fff;
+        padding: 8px;
+        max-height: 100px;
+        overflow-y: scroll;
+        border-top-right-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+    .item-price {
+        width: 25%;
+        text-align: right;
+        padding-right: 5px;
+    }
+</style>
+
+<div class="page-title">
+    <h1><%= company.company_name %></h1>
+</div>
+<div class="store">
+
+<% storeItems.forEach(function(item) { %>
+    <% if (item.for_sale == true) { %>
+        <div class="item">
+            <img src="/image/<%= item.item_card_background %>" alt="">
+            <p style="position: absolute; top: 0; left: 0; z-index: 200;"><%= item.item_card_background %></p>
+            <div class="card-background">
+            </div>
+            <div class="item-header">
+                <h5><%= item.name %></h5>
+            </div>
+            <div class="item-image">
+                <img src="/image/<%= item.item_main_image %>" width="300px" alt="">
+            </div>
+            <div class="item-data">
+                <div class="item-description">
+                    <p><%= item.description %></p>
+                </div>
+                <div class="item-price">
+                    <h6>$<%= item.price %></h6>
+                    <div class="add-to-cart">
+                        <p style="text-align: center; font-size: 2rem; color: green; margin-top: 20px;">
+                            <i class="fas fa-cart-plus"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <% } else { %>
+        <span style="display: none;"></span>
+    <% } %>
+<% }) %>
+</div>

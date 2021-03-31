@@ -23,20 +23,14 @@ const companySchema = new mongoose.Schema({
     departments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Department'}],
     job_applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'Resume'}],
     employees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-    inventory: {
-        office: [{
+    inventory: [
+        {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Item',
             have: Number,
             need: Number
-        }],
-        sale: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Item',
-            have: Number,
-            need: Number
-        }]
-    },
+        }
+    ],
     colors: {
         main: String,
         accent: String,

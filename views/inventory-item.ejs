@@ -34,6 +34,14 @@
     }
 
     @media screen and (max-width: 500px) {
+        h5, h6 {
+            text-align: center;
+            padding: 10px;
+        }
+        input[type="color"] {
+            min-height: 40px;
+            padding: 5px;
+        }
         .main-header-page-menu-container {
             width: 100%;
             padding-left: 0;
@@ -78,19 +86,68 @@
             text-align: center;
         }
 
+        input {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: groove 2px lightskyblue;
+            border-bottom: groove 2px lightskyblue;
+            border-radius: 8px;
+        }
+        button {
+            background: rgba(0, 128, 0, 0.3);
+            border: groove 2px green;
+            border-top: none;
+            outline: none;
+            padding: 5px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            color: #fff;
+            width: 80%;
+            margin-left: 10%;
+        }
         .current-inventory th {
             text-align: center;
         }
         .inventory-item {
             padding-top: 20px;
         }
-        .inventory-item h2 {
-            color: lightskyblue;
+        .inventory-item h3 {
             text-align: center;
+            padding: 15px;
         }
         .inventory-item p {
             color: #fff;
         }
+        .item-image {
+            width: 100%;
+
+        }
+        .item-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+  .form-control-lg {
+      height: 20px;
+      background:rgba(0, 0, 0, 0.3);
+  }
+  .input-group-text {
+      background: lightskyblue;
+      border: none;
+      outline: none;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+  }
+  .input-group-text i {
+      color: #fff;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+  .btn-primary {
+    border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+  }
     }
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -108,41 +165,23 @@
 </div>
 
 
-<div class="add-item-image">
-    <form action="/upload-item-image/<%= company.id %>/<%= companyInventory.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
-        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= companyInventory.id %>">
-                <div class="custom-file-profile-image">
-                    <input type="file" name="item_image" id="companyItemImage">
-                    <label for="companyItemImage" class="custom-file-label-choose-profile-image">Choose Item Image</label>
-                </div>
-                
-                <div>
-                    <button type="submit" class="custom-file-profile-image-button">Change</button>
-                </div>
-        </form>
-</div>
 
-<% if (companyInventory.item_main_image) { %>
-    <div class="item-image">
-        <img src="/image/<%= companyInventory.item_main_image %>" width="300px" height="200px" alt="">
-    </div>
-<% } else { %>
-    <span></span>
-<% } %>
+
+
 <div class="inventory-item">
-    <h2><%= companyInventory.name %></h2>
-    <p>SKU#: <%= companyInventory.sku %></p>
+    <h3><%= companyInventory.name %></h3>
     <p>Description: <%= companyInventory.description %></p>
+    <p>SKU#: <%= companyInventory.sku %></p>
     <p>Make: <%= companyInventory.make %></p>
     <p>Model: <%= companyInventory.model %></p>
     <p>Year: <%= companyInventory.year %></p>
     <p>Price: <%= companyInventory.price %></p>
     <p>Color 1: <%= companyInventory.color1 %></p>
     <p>Color 2: <%= companyInventory.color2 %></p>
-    <p>Width: <%= companyInventory.dimensions.width %></p>
-    <p>Height: <%= companyInventory.dimensions.height %></p>
-    <p>Depth: <%= companyInventory.dimensions.depth %></p>
-    <p>Weight: <%= companyInventory.weight %></p>
+    <p>Width: <%= companyInventory.dimensions.width %> <%= companyInventory.dimensions.units %>.</p>
+    <p>Height: <%= companyInventory.dimensions.height %> <%= companyInventory.dimensions.units %>.</p>
+    <p>Depth: <%= companyInventory.dimensions.depth %> <%= companyInventory.dimensions.units %>.</p>
+    <p>Weight: <%= companyInventory.weight.value %><%= companyInventory.weight.units %></p>
     <p>Category: <%= companyInventory.category %></p>
     <p>Supplier Main Website: <a style="color: lightskyblue" href="<%= companyInventory.supplier_website %>" target="_blank"><%= companyInventory.supplier_website %></a></p>
     <p>Product URL: <a style="color: lightskyblue" href="<%= companyInventory.product_webpage %>" target="_blank"><%= companyInventory.product_webpage %></a></p>
@@ -150,3 +189,58 @@
     <p>Need: <%= companyInventory.need %></p>
     
 </div>
+
+<div class="spread-break">
+    <hr>
+</div>
+<% if (companyInventory.item_main_image) { %>
+    <div class="item-image">
+        <img src="/image/<%= companyInventory.item_main_image %>">
+    </div>
+<% } else { %>
+    <span></span>
+<% } %>
+<div class="add-item-image">
+    <form action="/upload-item-image/<%= company.id %>/<%= companyInventory.id %>?_method=PATCH" method="post" enctype="multipart/form-data" id="file-upload-form" class="uploader">
+        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= companyInventory.id %>">
+                    <input type="file" name="item_image" id="file-upload">
+
+                <div>
+                    <button type="submit">Change</button>
+                </div>
+        </form>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<h5>Add A SpreadCard Background Image</h5>
+<div class="add-item-image">
+    <form action="/upload-item-card-background/<%= companyInventory.id %>" method="post" enctype="multipart/form-data" id="file-upload-form" class="uploader">
+        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= companyInventory.id %>">
+                    <input type="file" name="item_card_image" id="card-file-upload">
+
+                <div>
+                    <button type="submit">Add Card Background</button>
+                </div>
+        </form>
+</div>
+<h6>Or...</h6>
+<h5>Choose A Background Color Below</h5>
+
+<form action="/business/<%= company.id %>/inventory/<%= companyInventory.id %>/update?_method=PATCH" method="post">
+    <input type="color" name="item_card_color" id="">
+</form>
+<h6>Choose Your Font Color Below</h6>
+<form action="/business/<%= company.id %>/inventory/<%= companyInventory.id %>/update?_method=PATCH" method="post">
+    <input type="color" name="item_card_font-color" id="">
+</form>
+<!-- <div class="form-group" x-data="{ fileName: '' }">
+    <div class="input-group shadow">
+      <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-sm"></i></span>
+      <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="img[]" class="d-none">
+      <input type="text" class="form-control form-control-lg" placeholder="Upload Image" x-model="fileName">
+      <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+    </div>
+  </div> -->

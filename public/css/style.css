@@ -554,9 +554,7 @@ h1,h2,h3,h4,h5,h6 {
     transition: ease-in 0.3s;
 }
 .add-form {
-    margin: 20px;
-    padding: 20px;
-    margin-top: 40px;
+    margin-bottom: 10px;
 
 }
 .add-form input {
@@ -564,13 +562,9 @@ h1,h2,h3,h4,h5,h6 {
     padding: 8px;
     margin-top: 10px;
     width: 100%;
-    border-radius: 10px;
 }
 .add-form button {
-    border-radius: 10px;
-    margin: 20px;
     padding: 10px;
-    display: block;
     color: #ccc;
     box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
     background: #111;
@@ -1775,20 +1769,10 @@ h1,h2,h3,h4,h5,h6 {
     background: lime;
 }
 .item-image {
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
-     max-width: 150px;
-     border-radius: 10px;
 }
 .item-image img {
-     max-width: 150px;
-     border-radius: 10px;
-     opacity: 0.8;
-     transition: ease-in 0.4s;
  }
  .item-image img:hover {
-     opacity: 1.0;
-     transition: ease-in 0.4s;
-     box-shadow: 0 0 10px white;
  }
  .thumbMenuContainer {
     display: none;

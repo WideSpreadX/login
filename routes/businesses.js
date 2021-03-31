@@ -388,14 +388,19 @@ router.post('/:companyId/inventory', async (req, res) => {
         color1: req.body.color1,
         color2: req.body.color2,
         dimensions: {
+            units: req.body.measurement_units,
             width: req.body.width,
             height: req.body.height,
             depth: req.body.depth
         },
-        weight: req.body.weight,
+        weight: {
+            units: req.body.weight_units,
+            value: req.body.weight,
+        },
         category: req.body.category,
         supplier_website: req.body.supplier_website,
         product_webpage: req.body.product_webpage,
+        product_image_url: req.body.product_image_url,
         total: req.body.total,
         need: req.body.need
     })
@@ -438,6 +443,7 @@ router.post('/:companyId/inventory/for-sale', async (req, res) => {
         category: req.body.category,
         supplier_website: req.body.supplier_website,
         product_webpage: req.body.product_webpage,
+        product_image_url: req.body.product_image_url,
         total: req.body.total,
         need: req.body.need,
         for_sale: req.body.for_sale
@@ -456,6 +462,30 @@ router.post('/:companyId/inventory/for-sale', async (req, res) => {
         }
         )
     res.redirect(`/business/${companyId}/inventory`)
+});
+
+router.get('/:companyId/store', async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+    const storeItems = await Item.find({for_company: {$eq: companyId}});
+    res.render('company-store', {company, storeItems})
+});
+
+router.get('/:companyId/store/inventory', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const company = await Company.findById(companyId);
+    const storeItems  = await Item.find({for_company: {$eq: companyId}});
+
+    res.render('inventory-item', {company, storeItems});
+})
+router.get('/:companyId/store/inventory/:itemId', ensureAuthenticated, async (req, res) => {
+    const companyId = req.params.companyId;
+    const itemId = req.params.itemId;
+    const company = await Company.findById(companyId);
+    const itemData  = await Item.findById(itemId);
+
+    res.render('inventory-item', {company, itemData});
+
 });
 
 router.get('/:companyId/inventory/:itemId', async (req, res) => {
@@ -616,11 +646,11 @@ router.get('/:companyId/store', async (req, res) => {
 
 router.patch('/:companyId/store/:itemId/add-to-cart/:cartId', ensureAuthenticated, async (req, res) => {
     const user = req.user._id;
-    const compnayId = req.params.companyId;
+    const companyId = req.params.companyId;
     const itemId = req.params.itemId;
     const cartId = req.params.cartId;
 
-    const company = await Company.findById(compnayId);
+    const company = await Company.findById(companyId);
     const item = await Item.findById(itemId);
     const cart = await Cart.findByIdAndUpdate(cartId, 
         {$addToSet: {"in_cart.item": item._id, "quantity": req.body.quantity}},
@@ -635,7 +665,7 @@ router.patch('/:companyId/store/:itemId/add-to-cart/:cartId', ensureAuthenticate
         }
         );
 
-    res.redirect(`/business/${compnayId}/store`);
+    res.redirect(`/business/${companyId}/store`);
 });
 
 module.exports = router;

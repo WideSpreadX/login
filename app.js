@@ -479,6 +479,39 @@ app.post('/upload-subpage/:subpageId/subpage-upload', upload.single('subpage_ima
 });
 
 
+app.post('/upload-item-card-background/:itemId', upload.single('item_card_image'), (req, res) => {
+  const itemId = req.params.itemId;
+  const companyId = req.body.companyId;
+  const obj = { 
+    imageOwner: itemId, 
+    img: { 
+        data: req.file.filename,
+        contentType: 'image/png'
+    } 
+} 
+  userBackgroundImage.create(obj, (err, item) => { 
+    if (err) { 
+        console.log(err); 
+    } 
+    else { 
+        item.save(); 
+        console.log(`Image for Item: ${itemId} Image Data: ${obj.img.data}`);
+        const newImage = obj.img.data;
+        Item.findByIdAndUpdate(itemId,
+          {item_card_background: req.file.filename},
+          function(err, doc) {
+              if(err) {
+                  console.log(err)
+              } else {
+                  return
+              }
+          }
+      )
+        res.redirect(`/business/${companyId}/store/inventory/${itemId}`); 
+    }
+})
+});
+
 /* Group Page Image Upload */
 app.post('/upload/groups/:groupId/upload-image', upload.single('main_images'), (req, res) => {
   const groupId = req.params.groupId;
