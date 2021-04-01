@@ -2,6 +2,9 @@
     .spread-container {
         background: #000;
         width: 100%;
+        height: 150px;
+        min-height: 150px;
+        max-height: 6000px;
         box-shadow: none;
     }
     .spread-container h5 {
@@ -11,18 +14,6 @@
     .spread-container a {
         color: #fff;
     }
-    .add-universe {
-        width: 100%;
-        background: lime;
-    }
-    .add-universe input {
-        width: 100%;
-        display: block;
-    }
-    .list {
-        background: blue;
-
-    }
 </style>
 
 <div class="spread-container">
@@ -31,8 +22,8 @@
     <a href="/aether">Aether Home</a>
 
     <div class="add-universe">
-        <form action="/aether/universe/add" method="post">
-            <input type="text" name="name" placeholder="Name of Universe">
+        <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/add" method="post">
+            <input type="text" name="name" placeholder="Name of Galaxy">
             <input type="number" name="dimXpos" placeholder="Dimension X Positive">
             <input type="number" name="dimXneg" placeholder="Dimension X Negative">
             <input type="number" name="dimXspeed" placeholder="Dimension X Speed">
@@ -42,18 +33,14 @@
             <input type="number" name="dimZpos" placeholder="Dimension Z Positive">
             <input type="number" name="dimZneg" placeholder="Dimension Z Negative">
             <input type="number" name="dimZspeed" placeholder="Dimension Z Speed">
+            <input type="number" name="posX" placeholder="Position X">
+            <input type="number" name="posY" placeholder="Position Y">
+            <input type="number" name="posZ" placeholder="Position Z">
+            <input type="number" name="rotX" placeholder="Rotation X">
+            <input type="number" name="rotY" placeholder="Rotation Y">
+            <input type="number" name="rotZ" placeholder="Rotation Z">
             <input type="number" name="time" placeholder="Age in Years">
-            <button type="submit">Add Universe</button>
+            <button type="submit">Add Galaxy</button>
         </form>
     </div>
-    
-    
-    <div class="list">
-        
-        <% universes.forEach(function(universe) { %>
-            <div class="list-item">
-                <p><a href="/aether/universe/<%= universe.id %>"><%= universe.name %></a></p>
-            </div>
-            <% }) %>
-        </div>
-    </div>
+</div>
