@@ -4,34 +4,76 @@
     }
     .friend-container {
         width: 100%;
-        background: rgba(255, 255, 255, 0.397);
-        margin-top: 10px;
+        background: rgba(0, 0, 0, 0.397);
+        margin-top: 20px;
         border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
         height: 100px;
         display: inline-flex;
         backdrop-filter: blur(2px);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
     }
     .friend-image {
         width: 100px;
-        height: 100px;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.582);
+        text-align: left;
         border-radius: 8px;
+        min-height: 100%;
+        background: rgba(255, 255, 255, 0.582);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        box-shadow: 4px 0 4px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
     }
     .friend-image img {
         border-radius: 8px;
-        max-width: 100px;
-        max-height: 100px;
-        background: rgba(255, 255, 255, 0.582);
+        width: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        border-right: solid 1px lightskyblue;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
-    .friend-data h3 {
+    .friend-data {
+        width: 100%;
+    }
+    .friend-data h5 {
         padding: 10px;
-        padding-bottom: 0;
+        padding-bottom: 5px;
+        width: 100%;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        border-top-right-radius: 8px;
     }
     .friend-data small {
         padding: 0;
         padding-left: 10px;
         color: #fff;
+    }
+    .contact-user-bar {
+        background: rgba(135, 206, 250, 0.3);
+        display: inline-flex;
+        width: 90%;
+        margin-left: 5%;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .contact-type {
+        width: 25%;
+        box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+        text-align: center;
+        padding: 5px;
+        padding-top: 10px;
+    }
+    .contact-type:first-of-type {
+        border-bottom-left-radius: 8px;
+    }
+    .contact-type:last-of-type {
+        border-bottom-right-radius: 8px;
+    }
+    .contact-type i {
+        color: #fff;
+        font-size: 1.5rem;
     }
 </style>
 <% friendList.friends.forEach(function(friend) { %>
@@ -46,11 +88,29 @@
             <% } %>
         </div>
         <div class="friend-data">
-            <h3 style="color: <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
+            <h5 style="color: <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h5>
+            <% if (friend.town) { %>
             <small><%= friend.town %>, <%= friend.state %></small><br>
+            <% } else { %>
+                <small><%= friend.state %></small><br>
+            <% } %>
             <small><%= friend.current_occupation %></small>
         </div>
 
     </div>
     </a>
+    <div class="contact-user-bar">
+        <div class="contact-type">
+            <i class="far fa-envelope"></i>
+        </div>
+        <div class="contact-type">
+            <i class="far fa-comment-alt"></i>
+        </div>
+        <div class="contact-type">
+            <i class="fas fa-video"></i>
+        </div>
+        <div class="contact-type">
+            <i class="fas fa-phone"></i>
+        </div>
+    </div>
 <% }) %>
