@@ -19,6 +19,7 @@ const companySchema = new mongoose.Schema({
     company_website: String,
     background_image: String,
     logo: String,
+    item_card_background: String,
     sub_pages: [{type: mongoose.Schema.Types.ObjectId, ref: 'Subpage'}],
     departments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Department'}],
     job_applicants: [{type: mongoose.Schema.Types.ObjectId, ref: 'Resume'}],

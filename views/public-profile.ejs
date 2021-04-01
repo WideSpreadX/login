@@ -647,6 +647,7 @@
     </div>
 
 
+    <% if (weather) { %>
     <div class="weather">
         <h5 style="color: <%= profile.favColor1 %>"><%= profile.fname %>'s Current Weather</h5>
         <h6><%= weather.name %></h6>
@@ -664,6 +665,9 @@
             </div>
         </div>
     </div>
+    <% } else { %>
+        <span style="display: none;"></span>
+    <% } %>
     <div class="spread-container">
         <div class="col-12 spread-container-about" style=" border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
             <h3 style="text-align: center; padding: 20px; padding-bottom: 10px;">About <%= profile.fname %></h3>
