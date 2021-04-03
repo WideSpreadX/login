@@ -1,19 +1,14 @@
 <style>
-    .add-universe {
-        width: 100%;
-        background: blue;
+    p {
+        color: #fff;
     }
-    .add-universe input {
-        width: 100%;
-        display: block;
-    }
+
 </style>
 
-<h5><%= universe %></h5>
-
+<p><%= solarSystem%></p>
 <div class="add-universe">
-    <form action="/aether/universe/<%= universe.id %>/galaxy/add" method="post">
-        <input type="text" name="name" placeholder="Name of Galaxy">
+    <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/add" method="post">
+        <input type="text" name="name" placeholder="Name of Planet">
         <input type="number" name="dimXpos" placeholder="Dimension X Positive">
         <input type="number" name="dimXneg" placeholder="Dimension X Negative">
         <input type="number" name="dimXspeed" placeholder="Dimension X Speed">
@@ -30,12 +25,6 @@
         <input type="number" name="rotY" placeholder="Rotation Y">
         <input type="number" name="rotZ" placeholder="Rotation Z">
         <input type="number" name="time" placeholder="Age in Years">
-        <button type="submit">Add Galaxy</button>
+        <button type="submit">Add Planet</button>
     </form>
 </div>
-
-<% universe.galaxies.forEach(function(galaxy) { %>
-    <div class="list-item">
-        <p><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>"><%= galaxy.name %></a></p>
-    </div>
-<% }) %>

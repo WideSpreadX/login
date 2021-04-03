@@ -1,0 +1,22 @@
+<style>
+    p {
+        color: #fff;
+    }
+
+</style>
+
+<h1><%= place.name %> Home</h1>
+
+<div class="add-universe">
+    <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/add" method="post">
+        <input type="text" name="name" placeholder="Name of Unit">
+        <input type="number" name="posX" placeholder="Position X">
+        <input type="number" name="posY" placeholder="Position Y">
+        <input type="number" name="posZ" placeholder="Position Z">
+        <input type="number" name="time" placeholder="Age in Years">
+        <input type="text" name="leader" placeholder="Unit Owner">
+        <input type="number" name="floor" placeholder="Floor Number">
+        <input type="number" name="unit" placeholder="Unit Number">
+        <button type="submit">Add Unit</button>
+    </form>
+</div>
