@@ -1,0 +1,50 @@
+<style>
+    p {
+        color: #fff;
+    }
+
+</style>
+
+<h5><%= unit.name %> Home</h5>
+
+
+<a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %>"><%= unit.name %></a>
+<p>/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %></p>
+
+
+<div class="add-universe">
+    <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/add" method="post">
+        <input type="text" name="name" placeholder="Name of Unit">
+        <input type="number" name="dimXpos" placeholder="Dimension X Positive">
+        <input type="number" name="dimXneg" placeholder="Dimension X Negative">
+        <input type="number" name="dimYpos" placeholder="Dimension Y Positive">
+        <input type="number" name="dimYneg" placeholder="Dimension Y Negative">
+        <input type="number" name="dimZpos" placeholder="Dimension Z Positive">
+        <input type="number" name="dimZneg" placeholder="Dimension Z Negative">
+        <input type="number" name="gpsX" placeholder="Position X">
+        <input type="number" name="gpsY" placeholder="Position Y">
+        <input type="number" name="gpsZ" placeholder="Position Z">
+        <input type="text" name="address" placeholder="Address">
+        <input type="text" name="floor" placeholder="Floor">
+        <input type="text" name="unit" placeholder="Unit">
+        <input type="number" name="time" placeholder="Age in Years">
+        <select name="placeType" id="placeType">
+            <option value="Commercial">Commercial</option>
+            <option value="Industrial">Industrial</option>
+            <option value="Residential">Residential</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Medical">Medical</option>
+            <option value="Security">Security</option>
+            <option value="Storage">Storage</option>
+            <option value="Maintenence">Maintenence</option>
+            <option value="Travel">Travel</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Stadium">Stadium</option>
+            <option value="Museum">Museum</option>
+            <option value="Library">Library</option>
+            <option value="Utility">Utility</option>
+        </select>
+        <input type="text" name="leader" placeholder="Place Owner">
+        <button type="submit">Add Unit</button>
+    </form>
+</div>

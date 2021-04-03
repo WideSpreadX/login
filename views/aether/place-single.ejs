@@ -7,6 +7,11 @@
 
 <h1><%= place.name %> Home</h1>
 
+<% units.forEach(function(unit) { %>
+    <div class="unit">
+        <h5><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %>"><%= unit.name %></a></h5>
+    </div>
+<% }) %>
 <div class="add-universe">
     <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/add" method="post">
         <input type="text" name="name" placeholder="Name of Unit">
