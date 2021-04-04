@@ -5,15 +5,17 @@
 
 </style>
 
-<% cities.forEach(function(city) { %>
-    <p><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>"><%= city.name  %></a></p>
+<h5><%= solarSystem.name %> Home</h5>
+<% planets.forEach(function(planet) { %>
+    <div class="planet">
+        <p style="color: lime;"><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>"><%= planet.name %></a></p>
+    </div>
 <% }) %>
-<h1><%= sector.name %> Home</h1>
 
 <div class="add-universe">
-    <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/add" method="post">
-        <input type="text" name="name" placeholder="Name of City">
-        <input type="text" name="sector" placeholder="For Sector" value="<%= sector.id %>">
+    <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/add" method="post">
+        <input type="text" name="name" placeholder="Name of Planet">
+        <input type="text" name="solar_system" placeholder="For Solar System" value="<%= solarSystem.id %>">
         <input type="number" name="dimXpos" placeholder="Dimension X Positive">
         <input type="number" name="dimXneg" placeholder="Dimension X Negative">
         <input type="number" name="dimXspeed" placeholder="Dimension X Speed">
@@ -29,8 +31,11 @@
         <input type="number" name="rotX" placeholder="Rotation X">
         <input type="number" name="rotY" placeholder="Rotation Y">
         <input type="number" name="rotZ" placeholder="Rotation Z">
+        <input type="number" name="srtX" placeholder="Single Rotation Time X">
+        <input type="number" name="srtY" placeholder="Single Rotation Time Y">
+        <input type="number" name="srtZ" placeholder="Single Rotation Time Z">
+        <input type="number" name="dayLength" placeholder="Length of Day in Seconds">
         <input type="number" name="time" placeholder="Age in Years">
-        <input type="text" name="leader" placeholder="City Leader">
-        <button type="submit">Add City</button>
+        <button type="submit">Add Planet</button>
     </form>
 </div>

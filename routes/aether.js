@@ -26,6 +26,7 @@ router.get('/universe', async (req, res) => {
 });
 
 
+
 router.post('/universe/add', async (req, res) => {
     const universeData = req.body;
 
@@ -60,13 +61,15 @@ router.post('/universe/add', async (req, res) => {
 router.get('/universe/:universeId', async (req, res) => {
     const universeId = req.params.universeId;
     const universe = await Universe.findById(universeId).populate('galaxies').exec();
-    res.render('./aether/universe-home', {universe})
+    const galaxies = await Galaxy.find({universe: {$eq: universeId}})
+    res.render('./aether/universe-single', {universe, galaxies})
 })
 router.post('/universe/:universeId/galaxy/add', async (req, res) => {
     const universeId = req.params.universeId;
 
     const galaxy = new Galaxy({
         name: req.body.name,
+        universe: req.body.universe,
         dimensions: {
             x: {
                 pos: req.body.dimXpos,
@@ -125,6 +128,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/add', async (re
 
     const solarSystem = new SolarSystem({
         name: req.body.name,
+        galaxy: req.body.galaxy,
         dimensions: {
             x: {
                 pos: req.body.dimXpos,
@@ -165,6 +169,15 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/add', async (re
     res.redirect(`/aether/universe/${universeId}/galaxy/${galaxyId}`)
 });
 
+
+/* 
+    ALPHA CENTAURI DATA
+
+    1R = 695700 km;
+
+
+*/
+
 router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId', async (req, res) => {
     const universeId = req.params.universeId;
     const galaxyId = req.params.galaxyId;
@@ -173,9 +186,10 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId',
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
     const solarSystem = await SolarSystem.findById(solarSystemId);
-    const planets = await Planet.find();
+    const planets = await Planet.find({solar_system: {$eq: solarSystemId}});
+    console.log(`PLANETS: ${planets}`)
 
-    res.render('./aether/planet-home', {universe, galaxy, solarSystem, planets})
+    res.render('./aether/solar-system-single', {universe, galaxy, solarSystem, planets})
 });
 
 router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/planet/add', async (req, res) => {
@@ -185,6 +199,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
 
     const planet = new Planet({
         name: req.body.name,
+        solar_system: req.body.solar_system,
         dimensions: {
             x: {
                 pos: req.body.dimXpos,
@@ -209,12 +224,20 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
             rotation: {
                 x: req.body.rotX,
                 y: req.body.rotY,
-                z: req.body.rotZ
+                z: req.body.rotZ,
+                single_rotation_time: {
+                    x: req.body.srtX,
+                    y: req.body.srtY,
+                    z: req.body.srtZ
+                }
+            },
+            orbital_period: {
+                day_length: req.body.dayLength
             },
             time: {
                 age: req.body.time
             },
-            solar_systems: []
+            sectors: []
         }
     });
     planet.save();
@@ -232,12 +255,13 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/p
     const galaxyId = req.params.galaxyId;
     const solarSystemId = req.params.solarSystemId;
     const planetId = req.params.planetId;
-    const sectors = await Sector.find();
+    const sectors = await Sector.find({planet: {$eq: planetId}});
     
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
     const solarSystem = await SolarSystem.findById(solarSystemId);
     const planet = await Planet.findById(planetId);
+    
 
     res.render('./aether/planet-single', {universe, galaxy, solarSystem, planet, sectors})
 });
@@ -252,6 +276,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
 
     const sector = new Sector({
         name: req.body.name,
+        sector: req.body.sector,
         dimensions: {
             x: {
                 pos: req.body.dimXpos,
@@ -327,6 +352,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
 
     const city = new City({
         name: req.body.name,
+        sector: req.body.sector,
         dimensions: {
             x: {
                 pos: req.body.dimXpos,
@@ -450,6 +476,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
 
     const place = new Place({
         name: req.body.name,
+        city: req.body.city,
         dimensions: {
             x: {
                 pos: req.body.dimXpos,

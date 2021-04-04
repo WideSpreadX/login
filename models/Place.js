@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
     name: String,
-    zone: { type: mongoose.Schema.Types.ObjectId, ref: 'Zone'},
+    city: { type: mongoose.Schema.Types.ObjectId, ref: 'City'},
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     ws_zone_data: {
         ws_id: String,

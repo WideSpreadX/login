@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const planetSchema = new mongoose.Schema({
     name: String,
+    solar_system: { type: mongoose.Schema.Types.ObjectId, ref: 'SolarSystem'},
     dimensions: {
         x: {
           pos:  Number,
@@ -42,6 +43,10 @@ const planetSchema = new mongoose.Schema({
             y: Number,
             z: Number
         }
+    },
+    orbital_period: {
+        day_length: Number,
+        
     },
     sectors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Sector'}]
 });

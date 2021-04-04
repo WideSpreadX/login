@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const galaxySchema = new mongoose.Schema({
     name: String,
+    universe: { type: mongoose.Schema.Types.ObjectId, ref: 'Universe'},
     dimensions: {
         x: {
           pos:  Number,
@@ -38,7 +39,8 @@ const galaxySchema = new mongoose.Schema({
         y: Number,
         z: Number
     },
-    solar_systems: [{ type: mongoose.Schema.Types.ObjectId, ref: 'SolarSystem'}]
+    solar_systems: [{ type: mongoose.Schema.Types.ObjectId, ref: 'SolarSystem'}],
+    image: String,
 });
 
 const Galaxy = mongoose.model('Galaxy', galaxySchema);

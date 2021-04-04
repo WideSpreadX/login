@@ -15,6 +15,7 @@
 <div class="add-universe">
     <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/add" method="post">
         <input type="text" name="name" placeholder="Name of Unit">
+        <input type="text" name="place" placeholder="For Place" value="<%= place.id %>">
         <input type="number" name="posX" placeholder="Position X">
         <input type="number" name="posY" placeholder="Position Y">
         <input type="number" name="posZ" placeholder="Position Z">

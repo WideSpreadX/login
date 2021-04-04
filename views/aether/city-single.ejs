@@ -15,6 +15,7 @@
 <div class="add-universe">
     <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/add" method="post">
         <input type="text" name="name" placeholder="Name of Place">
+        <input type="text" name="city" placeholder="For City" value="<%= city.id %>">
         <input type="number" name="dimXpos" placeholder="Dimension X Positive">
         <input type="number" name="dimXneg" placeholder="Dimension X Negative">
         <input type="number" name="dimXspeed" placeholder="Dimension X Speed">

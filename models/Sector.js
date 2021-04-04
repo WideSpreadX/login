@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const sectorSchema = new mongoose.Schema({
     name: String,
+    planet: { type: mongoose.Schema.Types.ObjectId, ref: 'Planet'},
     dimensions: {
         x: {
           pos:  Number,
