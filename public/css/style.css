@@ -31,10 +31,12 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 15px;
-    border-radius: 7px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    width: 5px;
+    border-radius: 8px;
+    border-left: groove 2px lightskyblue;
+    border-right: groove 2px lightskyblue;
     background: #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 ::-webkit-scrollbar:hover {
     background: #333;
@@ -42,15 +44,15 @@ body {
     /* Track */
 
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    box-shadow: inset 4px 4px 8px rgba(135, 206, 250, 0.582), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    border-radius: 2px;
+    box-shadow: inset 4px 4px 8px rgba(135, 206, 250, 0.582), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, 0 0 6px rgba(0, 0, 0, 0.5), inset -2px -2px 2px #222;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgba(17, 17, 17, 0.705); 
     border-radius: 7px;
-    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    box-shadow:  inset 0 0 10px #111,  0 0 10px 6px rgba(135, 206, 250, 0.75), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
     transition: ease-in 0.4s;
 }
 

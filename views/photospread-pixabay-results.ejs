@@ -118,8 +118,10 @@
 
 <div class="image-container">
 <% returnedData.hits.forEach(function(image) { %>
+    <a href="/socialspread/photospread/pexels/single/<%= image.id %>">
     <div class="image">
         <img src="<%= image.largeImageURL %>" alt="">
     </div>
+</a>
 <% }) %>
 </div>

@@ -1,4 +1,152 @@
 <style>
+     @media screen and (min-width: 501px) {
+    .search {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 300px;
+        z-index: 20;
+    }
+    .search-input {
+        position: relative;
+        border-radius: 8px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background:rgba(135, 206, 250, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    }
+    .search input {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 5px;
+        outline: none;
+        border: none;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        color: #fff;
+        transition: ease-in 0.3s;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        
+    }
+    .search input::placeholder {
+        color: #fff;
+    }
+    .search input:focus {
+        background: rgba(135, 206, 250, 0.3);
+        border-top: groove 2px #fff;
+        border-bottom: groove 2px #fff;
+        transition: ease-in 0.3s;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+.search input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-top: groove 2px #fff;
+    border-bottom: groove 2px #fff;
+    transition: ease-in 0.3s;
+    }
+    .search input:active {
+        outline: none;
+        border: none;
+
+    }
+
+    button {
+    width: 20%;
+    margin-left: 78%;
+    background: rgba(0, 128, 0, 0.3);
+    border: groove 2px green;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #fff;
+    
+}
+
+.image-container {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+        padding-top: 200px;
+        padding-bottom: 200px;
+        text-align: center;
+    }
+    .image {
+        max-width: 300px;
+        min-width: 300px;
+        width: 300px;
+        height: 100%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+
+    }
+    .image img {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+    .page-nav {
+        position: absolute;
+        top: 100px;
+        right: 5%;
+        width: 50%;
+        display: inline-flex;
+        overflow-x: scroll;
+        z-index: 25;
+        padding: 10px;
+        border-left: groove 2px lightskyblue;
+        border-right: groove 2px lightskyblue;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.3);
+        margin-bottom: 30px;
+    }
+    .page-nav h6 {
+        width: 200px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        text-align: center;
+        margin-right: 10px;
+    }
+    .page-nav a {
+        color: lightskyblue;
+    }
+    .image-slider {
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .image {
+        display: flex;
+        align-content: center;
+        margin-right: 5px;
+    }
+    .image img {
+        border-radius: 8px;
+        margin-bottom: 5px;
+    }
+}
+ @media screen and (max-width: 500px) {
     .search {
     position: absolute;
     bottom: 10px;
@@ -106,6 +254,7 @@
     .page-nav a {
         color: lightskyblue;
     }
+ }
 </style>
 
 <div class="page-nav">
@@ -115,9 +264,7 @@
     <h6><a href="#">Imgur</a></h6>
 </div>
 
-<div class="spread-break">
-    <hr>
-</div>
+
 
 <div class="search">
     <div class="search-input">
@@ -129,9 +276,19 @@
 </div>
 
 <div class="image-container">
-    <% photos.photos.forEach(function(image) { %>
-        <div class="image">
-            <img src="<%= image.src.original %>" alt="">
+    <% if (photos) { %>
+        <div class="image-slider">
+            <% photos.photos.forEach(function(image) { %>
+                <a href="/socialspread/photospread/pexels/single/<%= image.id %>">
+                <div class="image">
+                    <img src="<%= image.src.original %>" alt="">
+                </div>
+            </a>
+            <% }) %>
         </div>
-    <% }) %>
-    </div>
+            <% } else { %>
+                <span><a href="https://www.pexels.com">
+                    <img src="https://images.pexels.com/lib/api/pexels.png" />
+                </a></span>
+                <% } %>
+            </div>
