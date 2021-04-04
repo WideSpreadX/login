@@ -421,6 +421,14 @@ axios.request(options).then(function (response) {
 });
 });
 
+
+
+router.get('/music/listen', (req, res) => {
+  res.render('ent-music-listen')
+});
+router.get('/music/create', (req, res) => {
+  res.render('ent-music-create')
+});
 /* Podcasts */
 
 router.get('/podcasts', async (req, res) => {
