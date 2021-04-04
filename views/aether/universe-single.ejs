@@ -123,8 +123,9 @@
 
     <div class="add-universe">
         <h5>Add a Galaxy</h5>
-        <form action="/aether/universe/add" method="post">
+        <form action="/aether/universe/<%= universe.id %>/galaxy/add" method="post">
             <input type="text" name="name" placeholder="Name of Galaxy">
+            <input type="text" name="universe" placeholder="Universe ID" value="<%= universe.id %>">
             <input type="number" name="dimXpos" placeholder="Dimension X Positive">
             <input type="number" name="dimXneg" placeholder="Dimension X Negative">
             <input type="number" name="dimXspeed" placeholder="Dimension X Speed">

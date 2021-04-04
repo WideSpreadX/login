@@ -117,7 +117,7 @@ router.get('/universe/:universeId/galaxy/:galaxyId', async (req, res) => {
 
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
-    const solarSystem = await SolarSystem.find();
+    const solarSystem = await SolarSystem.find({galaxy: {$eq: galaxyId}});
 
     res.render('./aether/galaxy-home', {universe, galaxy, solarSystem})
 });
