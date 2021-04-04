@@ -2,49 +2,73 @@
     p {
         color: #fff;
     }
-
+    .list {
+        width: 100%;
+    }
+    .unit-container {
+        width: 100%;
+        border-radius: 8px;
+    }
+    .unit-header {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        padding: 5px;
+        border-bottom: groove 2px lightskyblue;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .unit-header h3 {
+        text-align: center;
+        color: #fff;
+    }
+    .unit-header h5 {
+        color: #fff;
+        text-align: center;
+    }
+    .list-item {
+        width: 90%;
+        margin-left: 5%;
+    background: rgba(135, 206, 250, 0.3);
+    border-left: groove 2px lightskyblue;
+    border-right: groove 2px lightskyblue;
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: groove 2px lightskyblue;
+    border-top: solid 1px rgba(255, 255, 255, 0.5);
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.list-item p {
+    margin-bottom: 0;
+}
+.list-item a {
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 0 18px rgba(135, 206, 250, 0.5);
+}
+.list-data {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
 </style>
 
-<h5><%= unit.name %> Home</h5>
 
+<div class="list">
 
-<a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %>"><%= unit.name %></a>
-<p>/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %></p>
-
-
-<div class="add-universe">
-    <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/add" method="post">
-        <input type="text" name="name" placeholder="Name of Unit">
-        <input type="number" name="dimXpos" placeholder="Dimension X Positive">
-        <input type="number" name="dimXneg" placeholder="Dimension X Negative">
-        <input type="number" name="dimYpos" placeholder="Dimension Y Positive">
-        <input type="number" name="dimYneg" placeholder="Dimension Y Negative">
-        <input type="number" name="dimZpos" placeholder="Dimension Z Positive">
-        <input type="number" name="dimZneg" placeholder="Dimension Z Negative">
-        <input type="number" name="gpsX" placeholder="Position X">
-        <input type="number" name="gpsY" placeholder="Position Y">
-        <input type="number" name="gpsZ" placeholder="Position Z">
-        <input type="text" name="address" placeholder="Address">
-        <input type="text" name="floor" placeholder="Floor">
-        <input type="text" name="unit" placeholder="Unit">
-        <input type="number" name="time" placeholder="Age in Years">
-        <select name="placeType" id="placeType">
-            <option value="Commercial">Commercial</option>
-            <option value="Industrial">Industrial</option>
-            <option value="Residential">Residential</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Medical">Medical</option>
-            <option value="Security">Security</option>
-            <option value="Storage">Storage</option>
-            <option value="Maintenence">Maintenence</option>
-            <option value="Travel">Travel</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Stadium">Stadium</option>
-            <option value="Museum">Museum</option>
-            <option value="Library">Library</option>
-            <option value="Utility">Utility</option>
-        </select>
-        <input type="text" name="leader" placeholder="Place Owner">
-        <button type="submit">Add Unit</button>
-    </form>
+    <div class="list-item">
+        <p><%= unit.name %></p>
+    </div>
+    <div class="list-data">
+        <p><%= unit %></p>
+    </div>
 </div>

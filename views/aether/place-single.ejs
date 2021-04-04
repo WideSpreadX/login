@@ -5,14 +5,28 @@
 
 </style>
 
-<h1><%= place.name %> Home</h1>
 
+<div class="page-header">
+    <h1><%= place.name %> Home</h1>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+<h5>Units</h5>
 <% units.forEach(function(unit) { %>
-    <div class="unit">
-        <h5><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %>"><%= unit.name %></a></h5>
-    </div>
+        <div class="list-item">
+            <p><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/<%= unit.id %>"><%= unit.name %></a></p>
+        </div>
 <% }) %>
+
+<div class="spread-break">
+    <hr>
+</div>
+
 <div class="add-universe">
+    <h5>Add a New Unit</h5>
     <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>/city/<%= city.id %>/place/<%= place.id %>/unit/add" method="post">
         <input type="text" name="name" placeholder="Name of Unit">
         <input type="text" name="place" placeholder="For Place" value="<%= place.id %>">
@@ -23,6 +37,6 @@
         <input type="text" name="leader" placeholder="Unit Owner">
         <input type="number" name="floor" placeholder="Floor Number">
         <input type="number" name="unit" placeholder="Unit Number">
+    </div>
         <button type="submit">Add Unit</button>
     </form>
-</div>

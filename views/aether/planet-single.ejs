@@ -2,15 +2,131 @@
     p {
         color: #fff;
     }
+    .page-header {
+        width: 100%;
+        text-align: center;
 
+    }
+    .unit-container {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .unit-header {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        padding: 5px;
+        border-bottom: groove 2px lightskyblue;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .unit-header h3 {
+        text-align: center;
+        color: #fff;
+    }
+    .unit-header a {
+        color: #fff;
+    }
+    .unit-header h5 {
+        color: #fff;
+        text-align: center;
+    }
+    .add-universe {
+        background: rgba(0, 0, 0, 0.3);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+    }
+    .add-universe h5 {
+        text-align: center;
+        padding: 10px;
+    }
+    .add-universe input {
+        width: 100%;
+        border: none;
+        outline: none;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        color: #fff;
+        padding: 5px;
+        transition: ease-in 0.3s;
+        margin-bottom: 15px;
+    }
+    .add-universe input:focus {
+        outline: none;
+        border: none;
+        background: rgba(135, 206, 250, 0.3);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        border-top: groove 2px #fff;
+        border-bottom: groove 2px #fff;
+        transition: ease-in 0.3s;
+    }
+    .add-universe input::placeholder {
+        color: #fff;
+    }
+    button {
+        width: 90%;
+        margin-left: 5%;
+        background: rgba(0, 128, 0, 0.3);
+        border: groove 2px green;
+        border-top: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        color: #fff;
+        padding: 5px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.list-item {
+    background: rgba(135, 206, 250, 0.3);
+    border-left: groove 2px #fff;
+    border-right: groove 2px #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.list-item p {
+    margin-bottom: 0;
+}
+.list-item a {
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 0 18px rgba(135, 206, 250, 0.5);
+}
 </style>
 
-<h1><%= planet.name %> Home</h1>
+
+<div class="page-header">
+    <h1><%= planet.name %> Home</h1>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
+
+
+<h5>Sectors</h5>
 <% sectors.forEach(function(sector) { %>
-    <p><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>"><%= sector.name %></a></p>
+    <div class="list-item">
+        <p><a href="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/<%= sector.id %>"><%= sector.name %></a></p>
+    </div>
 
 <% }) %>
+
+<div class="spread-break">
+    <hr>
+</div>
+
 <div class="add-universe">
+    <h5>Add a Sector</h5>
     <form action="/aether/universe/<%= universe.id %>/galaxy/<%= galaxy.id %>/solar-system/<%= solarSystem.id %>/planet/<%= planet.id %>/sector/add" method="post">
         <input type="text" name="name" placeholder="Name of Sector">
         <input type="text" name="planet" placeholder="For Planet" value="<%= planet.id %>">
@@ -31,6 +147,6 @@
         <input type="number" name="rotZ" placeholder="Rotation Z">
         <input type="number" name="time" placeholder="Age in Years">
         <input type="text" name="leader" placeholder="Sector Leader">
+    </div>
         <button type="submit">Add Sector</button>
     </form>
-</div>
