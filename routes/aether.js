@@ -255,12 +255,12 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/p
     const galaxyId = req.params.galaxyId;
     const solarSystemId = req.params.solarSystemId;
     const planetId = req.params.planetId;
-    const sectors = await Sector.find({planet: {$eq: planetId}});
     
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
     const solarSystem = await SolarSystem.findById(solarSystemId);
     const planet = await Planet.findById(planetId);
+    const sectors = await Sector.find({planet: {$eq: planetId}});
     
 
     res.render('./aether/planet-single', {universe, galaxy, solarSystem, planet, sectors})
@@ -276,6 +276,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
 
     const sector = new Sector({
         name: req.body.name,
+        planet: req.body.planet,
         sector: req.body.sector,
         dimensions: {
             x: {
@@ -320,6 +321,7 @@ router.post('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/
 });
 
 
+/* GET SECTOR BY ID */
 
 router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/planet/:planetId/sector/:sectorId', async (req, res) => {
     const universeId = req.params.universeId;
@@ -328,13 +330,12 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/p
     const planetId = req.params.planetId;
     const sectorId = req.params.sectorId;
     const sector = await Sector.findById(sectorId);
-    const cities = await City.find();
-    const cityZones = await CityZone.find();
+    const cities = await City.find({sector: {$eq: sectorId}});
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
     const solarSystem = await SolarSystem.findById(solarSystemId);
     const planet = await Planet.findById(planetId);
-    res.render('./aether/sector-single', {universe, galaxy, solarSystem, planet, sector, cities, cityZones})
+    res.render('./aether/sector-single', {universe, galaxy, solarSystem, planet, sector, cities})
 });
 
 
@@ -406,14 +407,13 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/p
     const sectorId = req.params.sectorId;
     const cityId = req.params.cityId;
     const sector = await Sector.findById(sectorId);
-    const city = await City.findById(cityId);
-    const cityZones = await CityZone.find();
+    const city = await City.find({sector: {$eq: sectorId}});
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
     const solarSystem = await SolarSystem.findById(solarSystemId);
     const planet = await Planet.findById(planetId);
-    const places = await Place.find();
-    res.render('./aether/city-single', {universe, galaxy, solarSystem, planet, sector, city, cityZones, places})
+    const places = await Place.find({city: {$eq: cityId}});
+    res.render('./aether/city-single', {universe, galaxy, solarSystem, planet, sector, city, places, cityId})
 });
 
 
@@ -458,7 +458,7 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/p
     const solarSystem = await SolarSystem.findById(solarSystemId);
     const planet = await Planet.findById(planetId);
     const place = await Place.findById(placeId);
-    const units = await Unit.find();
+    const units = await Unit.find({place: {$eq: placeId}});
     res.render('./aether/place-single', {universe, galaxy, solarSystem, planet, sector, city, cityZones, place, units})
 });
 
