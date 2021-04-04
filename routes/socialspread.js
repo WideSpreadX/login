@@ -69,6 +69,89 @@ router.get('/photospread/pexels/single/:imageId', (req, res) => {
 });
 
 
+
+/* PIXABAY */
+
+router.get('/photospread/pixabay', (req, res) => {
+    const pixabayKey = process.env.PIXABAY_API_KEY;
+    const options = {
+        method: 'GET',
+        url: `https://pixabay.com/api/?key=${pixabayKey}&q=beach`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+          console.log(returnedData)
+          res.render('photospread-pixabay', {returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+
+router.post('/photospread/pixabay/search', (req, res) => {
+    const query = req.body.search;
+    res.redirect(`/socialspread/photospread/pixabay/photos/${query}`);
+});
+
+router.get('/photospread/pixabay/photos/:query', (req, res) => {
+    const query = req.params.query;
+    const pixabayKey = process.env.PIXABAY_API_KEY;
+    const options = {
+        method: 'GET',
+        url: `https://pixabay.com/api/?key=${pixabayKey}&q=${query}&per_page=10`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+          console.log(returnedData)
+          res.render('photospread-pixabay-results', {returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+
+router.get('/videospread/pixabay', (req, res) => {
+    const pixabayKey = process.env.PIXABAY_API_KEY;
+    const options = {
+        method: 'GET',
+        url: `https://pixabay.com/api/videos/?key=${pixabayKey}&q=future`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+          console.log(returnedData)
+          res.render('videospread-pixabay', {returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+router.post('/videospread/pixabay/search', (req, res) => {
+    const query = req.body.search;
+    res.redirect(`/socialspread/videospread/pixabay/videos/${query}`);
+});
+
+router.get('/videospread/pixabay/videos/:query', (req, res) => {
+    const query = req.params.query;
+    const pixabayKey = process.env.PIXABAY_API_KEY;
+    const options = {
+        method: 'GET',
+        url: `https://pixabay.com/api/videos/?key=${pixabayKey}&q=${query}&per_page=10`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+          console.log(returnedData)
+          res.render('videospread-pixabay-results', {returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+
+
 router.get('/videospread/pexels/search', (req, res) => {
     res.render('videospread-pexels-search')
 });

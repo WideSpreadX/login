@@ -1,0 +1,97 @@
+<style>
+    .search {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 70%;
+    z-index: 20;
+}
+.search-input {
+    border-radius: 8px;
+    background:rgba(255, 255, 255, 0.300);
+    border-top: groove 2px lightskyblue;
+    border-bottom: groove 2px lightskyblue;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+.search input {
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    padding: 5px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    
+}
+.search input::placeholder {
+    color: #fff;
+}
+    .search input {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-left: 5%;
+        padding: 5px;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+    }
+    .search input:active {
+        outline: none;
+        border: none;
+
+    }
+
+    button {
+    width: 90%;
+    margin-left: 5%;
+    background: rgba(0, 128, 0, 0.3);
+    border: groove 2px green;
+    border-bottom: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #fff;
+    
+}
+    .video-container {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+    .video {
+        width: 100%;
+    }
+    .video video {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+</style>
+
+
+    <div class="search">
+        <div class="search-input">
+            <form action="/socialspread/videospread/pixabay/search" method="post">
+                <input type="text" name="search" placeholder="Search for videos...">
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+<div class="video-container">
+    <% returnedData.hits.forEach(function(video) { %>
+        <div class="video">
+            <video controls allowfullscreen src="<%= video.videos.large.url %>"></video>
+        </div>
+    <% }) %>
+    </div>
