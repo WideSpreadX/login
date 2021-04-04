@@ -99,7 +99,7 @@ router.get('/photospread/pixabay/photos/:query', (req, res) => {
     const pixabayKey = process.env.PIXABAY_API_KEY;
     const options = {
         method: 'GET',
-        url: `https://pixabay.com/api/?key=${pixabayKey}&q=${query}&per_page=10`
+        url: `https://pixabay.com/api/?key=${pixabayKey}&q=${query}&per_page=100`
       };
       
       axios.request(options).then(function (response) {
@@ -111,6 +111,60 @@ router.get('/photospread/pixabay/photos/:query', (req, res) => {
       });
 });
 
+
+/* IMGUR */
+
+/* router.get('/photospread/imgur/tags', (req, res) => {
+    const imgurId = process.env.IMGUR_CLIENT_ID;
+    const imgurSecret = process.env.IMGUR_CLIENT_SECRET;
+    const options = {
+        method: 'GET',
+        'Authorization': `Client-ID ${imgurId}`,
+        'X-Mashape-Key': '9aa43ff752795bad54d9364e5e4eacff835bbba7',
+        url: `https://api.imgur.com/3/gallery.json`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+          console.log(returnedData)
+          res.render('photospread-imgur', {returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+
+router.post('/photospread/imgur/search', (req, res) => {
+    const query = req.body.search;
+    res.redirect(`/socialspread/photospread/imgur/photos/${query}`);
+});
+
+router.get('/photospread/imgur/photos/:tag', (req, res) => {
+    const query = req.params.tag;
+    const imgurId = process.env.IMGUR_CLIENT_ID;
+    const imgurSecret = process.env.IMGUR_CLIENT_SECRET;
+    const options = {
+        method: 'GET',
+        'Authorization': imgurSecret,
+        'X-Mashape-Key': '9aa43ff752795bad54d9364e5e4eacff835bbba7',
+        url: `https://api.imgur.com/3/gallery/t/${query}`
+      };
+      
+      axios.request(options).then(function (response) {
+          const returnedData = response.data;
+          console.log(returnedData)
+          res.render('photospread-pixabay-tag-results', {returnedData});
+      }).catch(function (error) {
+          console.error(error);
+      });
+});
+
+ */
+
+
+
+
+/* VideoSpread */
 
 router.get('/videospread/pixabay', (req, res) => {
     const pixabayKey = process.env.PIXABAY_API_KEY;
@@ -128,6 +182,8 @@ router.get('/videospread/pixabay', (req, res) => {
       });
 });
 
+
+
 router.post('/videospread/pixabay/search', (req, res) => {
     const query = req.body.search;
     res.redirect(`/socialspread/videospread/pixabay/videos/${query}`);
@@ -138,7 +194,7 @@ router.get('/videospread/pixabay/videos/:query', (req, res) => {
     const pixabayKey = process.env.PIXABAY_API_KEY;
     const options = {
         method: 'GET',
-        url: `https://pixabay.com/api/videos/?key=${pixabayKey}&q=${query}&per_page=10`
+        url: `https://pixabay.com/api/videos/?key=${pixabayKey}&q=${query}&per_page=50`
       };
       
       axios.request(options).then(function (response) {
