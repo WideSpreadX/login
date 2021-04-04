@@ -406,12 +406,12 @@ router.get('/universe/:universeId/galaxy/:galaxyId/solar-system/:solarSystemId/p
     const planetId = req.params.planetId;
     const sectorId = req.params.sectorId;
     const cityId = req.params.cityId;
-    const sector = await Sector.findById(sectorId);
-    const city = await City.find({sector: {$eq: sectorId}});
     const universe = await Universe.findById(universeId);
     const galaxy = await Galaxy.findById(galaxyId);
     const solarSystem = await SolarSystem.findById(solarSystemId);
     const planet = await Planet.findById(planetId);
+    const sector = await Sector.findById(sectorId);
+    const city = await City.findById(cityId);
     const places = await Place.find({city: {$eq: cityId}});
     res.render('./aether/city-single', {universe, galaxy, solarSystem, planet, sector, city, places, cityId})
 });
