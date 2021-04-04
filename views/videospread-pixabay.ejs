@@ -66,6 +66,9 @@
         top: 0;
         left: 0;
         overflow-y: scroll;
+        padding-top: 175px;
+        padding-bottom: 200px;
+        
     }
     .video {
         width: 100%;
@@ -76,8 +79,46 @@
         min-width: 100%;
     }
 
+    .page-nav {
+        position: absolute;
+        top: 100px;
+        left: 5%;
+        width: 90%;
+        display: inline-flex;
+        overflow-x: scroll;
+        z-index: 25;
+        padding: 10px;
+        border-left: groove 2px lightskyblue;
+        border-right: groove 2px lightskyblue;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+    }
+    .page-nav h6 {
+        width: 200px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        text-align: center;
+        margin-right: 10px;
+    }
+    .page-nav a {
+        color: lightskyblue;
+    }
 </style>
 
+<div class="page-nav">
+    <h6><a href="/socialspread/photospread">PhotoSpread</a></h6>
+    <h6><a href="/socialspread/photospread/pexels">Pexels</a></h6>
+    <h6><a href="/socialspread/photospread/pixabay">Pixabay</a></h6>
+    <h6><a href="#">Imgur</a></h6>
+</div>
+
+<div class="spread-break">
+    <hr>
+</div>
 
     <div class="search">
         <div class="search-input">

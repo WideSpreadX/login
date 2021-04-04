@@ -38,7 +38,14 @@ axios.request(options).then(function (response) {
 });
 
 router.get('/photospread/pexels', (req, res) => {
-    res.render('photospread-pexels');
+    const client = createClient(process.env.PEXELS_API_KEY);
+
+    const query = 'beach';
+
+    client.photos.search({ query, per_page: 100 }).then(photos => {
+        console.log(photos)
+        res.render('photospread-pexels', {photos});
+    });
 });
 router.post('/photospread/pexels/search', (req, res) => {
     const query = req.body.search;
@@ -51,7 +58,7 @@ router.get('/photospread/pexels/search/:query', (req, res) => {
 
     const query = req.params.query;
 
-    client.photos.search({ query, per_page: 50 }).then(photos => {
+    client.photos.search({ query, per_page: 100 }).then(photos => {
         console.log(photos)
         res.render('photospread-pexels-results', {photos})
     });
