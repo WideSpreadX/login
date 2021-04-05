@@ -170,25 +170,40 @@
     max-width: 200px;
 }
 .user-avatar {
-    max-width: 200px;
-    margin: 0 auto;
+    max-width: 220px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     overflow: hidden;
-    padding: 10px;
-    box-shadow: 0 -4px 10px rgba(255, 255, 255, 0.75);
+    padding: 20px;
+    padding-bottom: 0;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 -2px 2px 4px rgba(0, 0, 0, 0.5);
     border-top: groove 2px lightskyblue;
 }
 .user-avatar img {
     width: 200px;
     margin: -10px;
-    opacity: 0.7;
-    transition: ease-in 0.4s;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 -2px 2px 2px rgba(0, 0, 0, 0.5);
+
+}
+
+.route {
+    width: 95%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+
+}
+.route a {
 
 }
 
 @media screen and (max-width: 1199px) {
 
+    
    
     .user-background-image {
         z-index: -800;
@@ -202,7 +217,8 @@
         display: inline-flex;
         position: relative;
         background: rgba(0, 0, 0, 0.3);
-        border: groove 1px rgba(135, 206, 250, 0.555);
+        border-top: groove 1px rgba(135, 206, 250, 0.5);
+        border-bottom: groove 1px rgba(135, 206, 250, 0.5);
         backdrop-filter: blur(2px);
         padding: 10px;
         color: #fff;
@@ -240,21 +256,37 @@
     }
     .user-profile-routes {
         background: rgba(0, 0, 0, 0.3);
-        width: auto;
-        margin: 0 auto;
+        width: 100%;
         padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
-    }
-    .user-profile-routes a {
-        margin-left: 5px;
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(4px);
-        width: 45%;
         border-radius: 8px;
+        backdrop-filter: blur(2px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        display: inline-flex;
+    }
+    .route {
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
         border-top: groove 2px lightskyblue;
         border-bottom: groove 2px lightskyblue;
+        text-align: center;
+
+    }
+    .route:first-of-type {
+        margin-left: 0;
+    }
+    .route a {
+        width: 100%;
+        background: none;
+        border: none;
+        color: #fff;
+    }
+    .user-profile-routes a {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 0;
+
 
     }
     .cont_container {
@@ -825,7 +857,6 @@
 }
 .weather {
     width: 100%;
-    margin-bottom: 30px;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(2px);
     border-radius: 8px;
@@ -869,16 +900,17 @@
 }
 .weather-icons img {
     width: 90%;
+    filter: drop-shadow( 0 0 5px lightskyblue); 
+
 }
 .weather-link p {
     background: rgba(0, 128, 0, 0.5);
     width: 80%;
     margin-left: 10%;
-    margin-top: 20px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     border: groove 2px green;
-    border-bottom: none;
+    border-top: none;
     text-align: center;
     padding: 5px;
 }
@@ -917,6 +949,8 @@
     border-right: solid 1px #ccc;
     text-align: center;
     color: #fff; 
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     padding-top: 10px;
 }
 .weather-forecast-day:last-of-type {
@@ -987,12 +1021,13 @@
         display: inline-flex;
         position: relative;
         background: rgba(0, 0, 0, 0.3);
-        border: groove 1px rgba(135, 206, 250, 0.555);
         backdrop-filter: blur(2px);
         padding: 10px;
         color: #fff;
         border-radius: 8px;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
     }
     .custom-file-profile-image {
         width: 55vw;
@@ -1025,22 +1060,15 @@
     }
     .user-profile-routes {
         background: rgba(0, 0, 0, 0.3);
-        width: auto;
-        margin: 0 auto;
+        width: 100%;
         padding: 10px;
-        margin-bottom: 20px;
         border-radius: 10px;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
     }
     .user-profile-routes a {
         margin-left: 5px;
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(4px);
-        width: 45%;
+        width: 100%;
         border-radius: 8px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-
     }
     .cont_container {
         border-left: groove 1px lightskyblue;
@@ -1610,8 +1638,7 @@
 }
 .weather {
     width: 100%;
-    margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(2px);
     border-radius: 8px;
 }
@@ -1654,16 +1681,16 @@
 }
 .weather-icons img {
     width: 90%;
+    filter: drop-shadow( 0 0 5px lightskyblue);
 }
 .weather-link p {
     background: rgba(0, 128, 0, 0.5);
     width: 80%;
     margin-left: 10%;
-    margin-top: 20px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     border: groove 2px green;
-    border-bottom: none;
+    border-top: none;
     text-align: center;
     padding: 5px;
 }
@@ -1674,13 +1701,13 @@
     width: 100%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    background:rgba(255, 255, 255, 0.3);
+    background:rgba(135, 206, 250, 0.5);
     backdrop-filter: blur(2px);
-    border-top: groove 2px lightskyblue;
 }
 .forecast-container h5 {
     border-radius: 0;
     padding-bottom: 10px;
+
 }
 .weather-forecast {
     display: inline-flex;
@@ -1697,12 +1724,16 @@
 .weather-forecast-day {
     width: 150px;
     min-width: 150px;
-    margin-right: 20px;
-    padding-right: 20px;
+    margin-right: 10px;
+    padding-right: 10px;
     border-right: solid 1px #ccc;
     text-align: center;
     color: #fff; 
     padding-top: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.3);
 }
 .weather-forecast-day:last-of-type {
     border-right: none;
@@ -1852,19 +1883,13 @@
     <%- include('partials/mainHeaderPageMenu') %>
 </div>
 
-<br>
-<br>
 
-<div class="row">
-    <div class="col-8">
-        <h2 class="lead mb-3" id="top">Welcome <%= fname %></h2>
-    </div>
 
-</div>
-<p style="text-align: center;"><a style="color: lightskyblue;" href="#itsMessy">A quick Welcome from WideSpread!</a></p>
+
+
 
 <div class="dashboard-container">
-    <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
+    <h5 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h5>
     <a class="btn btn-dark" href="/vr-ar/vr-dashboard">Go To Your VR Dashboard</a>
 </div>
 
@@ -1873,58 +1898,7 @@
 </div>
 
 
-<% if (!profile.zip) { %>
-<span style="display: none;"></span>
-<% } else { %>
-<div class="weather">
-    <h5>Current Weather</h5>
-    <h6><%= weather.name %></h6>
-    <div class="weather-data">
-        <div class="weather-info">
-            <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %> &#8457;</p>
-            <p style="color: #fff"><i class="fas fa-wind"></i> <%= weather.wind.speed %> mph</p>
-        </div>
-        <div class="weather-icons">
-            <% weather.weather.forEach(function(item) { %>
-                <div class="weather-icon">
-                    <img src="https://openweathermap.org/img/wn/<%= item.icon %>.png" alt="<%= item.main %>">
-                </div>
-            <% }) %>
-        </div>
-    </div>
-    <div class="forecast-container">
-
-    <h5>Forecast</h5>
-        <div class="weather-forecast">
-            <% forecast.list.forEach(function(day) { %>
-                <div class="weather-forecast-day">
-                    <div class="day-container">
-                        <p class="forecast-day"><small><%= day.dt_txt %></small></p>
-                    </div>
-                    <div class="forecast-icon">
-                        <% day.weather.forEach(function(icon) { %>
-                        <img src="https://openweathermap.org/img/wn/<%= icon.icon %>.png" alt="<%= day.weather.main %>">
-                        <% }) %>
-                    </div>
-                    <div class="forecast-temp">
-                        <p><i class="fas fa-thermometer-three-quarters"></i> <%= day.main.temp %></p>
-                    </div>
-                </div>
-            <% }) %>
-        </div>
-        <div class="weather-link">
-            <p><a href="/news/weather">More Weather</a></p>
-        </div>
-    </div>
-</div>
-    
-<% } %>
-
-
-
-<div class="spread-break">
-    <hr>
-</div>
+<h2 class="lead mb-3" id="top">Welcome <%= fname %></h2>
 
 <!-- Profile Image -->
 <div class="user-avatar">
@@ -1970,8 +1944,12 @@
                 <% } %>
 
 <div class="user-profile-routes">
-    <a class="btn btn-dark" href="/users/<%= id %>">See Your Profile</a>
-    <a class="btn btn-dark" href="/users/update-profile/<%= id %>">Update Your Profile</a>
+    <div class="route">
+        <a href="/users/<%= id %>">See Your Profile</a>
+    </div>
+    <div class="route">
+        <a href="/users/update-profile/<%= id %>">Update Your Profile</a>
+    </div>
 </div>
 
 
@@ -2352,6 +2330,56 @@
         <hr>
     </div>
 
+    <% if (!profile.zip) { %>
+        <span style="display: none;"></span>
+        <% } else { %>
+        <div class="weather">
+            <h5>Current Weather</h5>
+            <h6><%= weather.name %></h6>
+            <div class="weather-data">
+                <div class="weather-info">
+                    <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %> &#8457;</p>
+                    <p style="color: #fff"><i class="fas fa-wind"></i> <%= weather.wind.speed %> mph</p>
+                </div>
+                <div class="weather-icons">
+                    <% weather.weather.forEach(function(item) { %>
+                        <div class="weather-icon">
+                            <img src="https://openweathermap.org/img/wn/<%= item.icon %>.png" alt="<%= item.main %>">
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="forecast-container">
+        
+            <h5>Forecast</h5>
+                <div class="weather-forecast">
+                    <% forecast.list.forEach(function(day) { %>
+                        <div class="weather-forecast-day">
+                            <div class="day-container">
+                                <p class="forecast-day"><small><%= day.dt_txt %></small></p>
+                            </div>
+                            <div class="forecast-icon">
+                                <% day.weather.forEach(function(icon) { %>
+                                <img src="https://openweathermap.org/img/wn/<%= icon.icon %>.png" alt="<%= day.weather.main %>">
+                                <% }) %>
+                            </div>
+                            <div class="forecast-temp">
+                                <p><i class="fas fa-thermometer-three-quarters"></i> <%= day.main.temp %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+                <div class="weather-link">
+                    <p><a href="/news/weather">More Weather</a></p>
+                </div>
+            
+        <% } %>
+
+        <div class="spread-break">
+            <hr>
+        </div>
     <div class="your-friends">
         <a href="/<%= profile.id %>/friends"><h5>Your Friends</h5></a>
     </div>

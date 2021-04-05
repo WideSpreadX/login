@@ -1,6 +1,6 @@
 
 body, html {
-     background: rgba(0, 0, 0, 0.5);
+     background: rgba(0, 0, 0, 0.6);
     padding: 0;
     margin: 0;
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
@@ -232,7 +232,6 @@ h1,h2,h3,h4,h5,h6 {
     height: 85px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: inset 0 0 20px rgba(135, 206, 250, 0.521),  0 0 20px rgba(135, 206, 250, 0.521), 0 0 40px rgba(135, 206, 250, 0.329);
 }
 .widespread-header .logo {
     position: absolute;
@@ -509,13 +508,11 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 5px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
+    background: lime;
 }
 
 .user-profile-image-form form {
-    /* background: lime; */
 }
 
 .custom-file-profile-image input {
@@ -814,6 +811,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .user-profile-image-form {
     max-width: 200px;
+    
 }
 .user-avatar {
     max-width: 200px;
@@ -825,8 +823,6 @@ h1,h2,h3,h4,h5,h6 {
     width: 200px;
     min-width: 200px;
     margin: -10px;
-    opacity: 0.7;
-    transition: ease-in 0.4s;
 }
 .public-profile-avatar {
     max-width: 200px;
@@ -913,10 +909,7 @@ h1,h2,h3,h4,h5,h6 {
     backdrop-filter: blur(6px);
     border-radius: 2px;
 }
-.user-avatar img:hover {
-    opacity: 1.0;
-    transition: ease-in 0.4s;
-}
+=
 
 .name-header {
     background: #000;
@@ -1847,13 +1840,18 @@ h1,h2,h3,h4,h5,h6 {
         min-height: 100vh;
         margin:0;
         margin-left: 5vw;
-        padding-bottom: 70px
+        padding-bottom: 70px;
         left: 80px;
     }
     .widespread-header {
         padding-left: 0;
-        box-shadow: 0 0 10px lightskyblue;
-        background-image: linear-gradient( black, rgba(0, 0, 0, 0.781), rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.336));
+        width: 100%;
+        margin-left: 0;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.5), inset 0 -2px 2px rgba(255, 255, 255, 0.25);
+        border-bottom: groove 2px lightskyblue;
+        background-image: linear-gradient( lightskyblue, lightskyblue,  rgba(135, 206, 250, 0.75),  rgba(135, 206, 250, 0.65), rgba(135, 206, 250, 0.5),  rgba(135, 206, 250, 0.35), rgba(135, 206, 250, 0.25), rgba(135, 206, 250, 0.1), rgba(135, 206, 250, 0.05));
     }
     .logo {
         width: 95%;
