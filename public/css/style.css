@@ -230,8 +230,8 @@ h1,h2,h3,h4,h5,h6 {
     width: 90vw;
     margin-left: 5vw;
     height: 85px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 .widespread-header .logo {
     position: absolute;
@@ -1835,13 +1835,12 @@ h1,h2,h3,h4,h5,h6 {
 }
      
     .container {
-        width: 90vw;
+        width: 100vw;
         min-width: 90vw;
         min-height: 100vh;
         margin:0;
-        margin-left: 5vw;
         padding-bottom: 70px;
-        left: 80px;
+        padding-top: 150px;
     }
     .widespread-header {
         padding-left: 0;
@@ -1849,9 +1848,10 @@ h1,h2,h3,h4,h5,h6 {
         margin-left: 0;
         border-bottom-left-radius: 2px;
         border-bottom-right-radius: 2px;
-        box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.5), inset 0 -2px 2px rgba(255, 255, 255, 0.25);
+        box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.5), inset 0 -2px 2px rgba(155, 89, 89, 0.25);
         border-bottom: groove 2px lightskyblue;
         background-image: linear-gradient( lightskyblue, lightskyblue,  rgba(135, 206, 250, 0.75),  rgba(135, 206, 250, 0.65), rgba(135, 206, 250, 0.5),  rgba(135, 206, 250, 0.35), rgba(135, 206, 250, 0.25), rgba(135, 206, 250, 0.1), rgba(135, 206, 250, 0.05));
+        backdrop-filter: blur(2px);
     }
     .logo {
         width: 95%;
@@ -1860,13 +1860,14 @@ h1,h2,h3,h4,h5,h6 {
     .logo h1 {
         left: 0;
         padding-left: 0;
+        color: lime;
     }
     .widespread-header .logo h1 a {
         margin-left: 0;
     }
     .logo a {
         color: rgba(135, 206, 250, 0.795);
-        text-shadow: 0 0 3px #fff;
+        text-shadow: 0 0 3px lightskyblue;
         margin-left: 0;
 
     }

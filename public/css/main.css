@@ -1,3 +1,19 @@
+/* Site Container */
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.178);
+}
+
+/* Side Notes */
 .side-note {
     border-top: groove 2px yellow;
     border-bottom: groove 2px yellow;
@@ -23,11 +39,6 @@
     overflow-y: scroll;
     color: #fff;
 }
-.page-title {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-}
 
 .spread-break hr {
     background: lightskyblue;
@@ -42,7 +53,7 @@
 
 /* Main Page Menus */
 
-.main-header-page-menu-container {
+/* .main-header-page-menu-container {
     width: 100%;
     padding-left: 0;
     padding-right: 0;
@@ -95,4 +106,15 @@
     margin-right: 5px;
     margin-bottom: 10px;
     text-align: center;
+}
+ */
+
+/* Page Titles */
+.page-title {
+    position: relative;
+    background: lime;
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    padding: 20px;
 }
