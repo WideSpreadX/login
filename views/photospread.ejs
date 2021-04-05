@@ -203,6 +203,18 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
         width: 100%;
         text-align: left;
     }
+    .location {
+        max-width: 70%;
+        padding: 10px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+    .location p{
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
     .image-location a {
         color: #fff;
         text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -263,14 +275,17 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
             <div class="image-location">
                 <div class="artist-name">
                     <h5><%= data.user.name %></h5>
+                    <% if (data.user.location) { %>
+                        <div class="location">
+                            <p><%= data.user.location %></p>
+                        </div>
+                        <% } else { %>
+                            <span style="display: none;"></span>
+                    <% } %>
                     <div class="artist-link">
                         <a href="https://instagram.com/<%= data.user.instagram_username %>"><i class="fab fa-instagram"></i><%= data.user.instagram_username %></a>
                     </div>
-                    <% if (data.user.location) { %>
-                        <span style="display: none;"></span>
-                    <% } else { %>
-                        <h6><%= data.user.location %></h6>
-                    <% } %>
+
                 </div>
                 <div class="spread-menu">
                     <div class="menu">

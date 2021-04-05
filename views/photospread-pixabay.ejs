@@ -1,4 +1,143 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <style>
+.spread-menu input {position: absolute; display: none}
+.spread-menu button {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.menu {
+  margin: 0 auto;
+  position: absolute;
+  top: 5%;
+  right: 15%;
+  margin-top: 0;
+  z-index: 3001;
+}
+.btn::after {
+    transform: translateX(-75px) translateY(75px);
+}
+.btn {
+    z-index: 3002;
+  width: 40px;
+  max-width: 40px;
+  height: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(135, 206, 250, 0.3);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 2px lightskyblue;
+}
+
+.material-icons.md-36 { 
+    font-size: 18px;
+    color: #fff;
+
+}
+
+.btn {
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  
+  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.btn:not(:first-child) {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  z-index: -2;
+  transform: translateX(-85px) translateY(85px);
+  -webkit-transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+  transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+}
+.btn i {
+    color: #fff;
+    font-size: 1.2rem;
+}
+.btn:nth-child(2) {top:0px;-webkit-transition-delay: 0s;transition-delay: 0s}
+.btn:nth-child(3) {top:0px;left:0px;-webkit-transition-delay: 0.1s;transition-delay: 0.1s}
+.btn:nth-child(4) {left:0px;;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
+.btn:nth-child(5) {top:0px;left:0px;-webkit-transition-delay: 0.3s;transition-delay: 0.3s}
+.btn:nth-child(6) {top:0px;-webkit-transition-delay: 0.4s;transition-delay: 0.4s}
+.btn:nth-child(7) {top:0px;left:0px;-webkit-transition-delay: 0.5s;transition-delay: 0.5s}
+.btn:nth-child(8) {left:0px;-webkit-transition-delay: 0.6s;transition-delay: 0.6s}
+.btn:nth-child(9) {top:0px;left:0px;-webkit-transition-delay: 0.7s;transition-delay: 0.7s}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(2) {
+  top:-70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(3) {
+  top:-40px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(4) {
+  left:70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(5) {
+  top :50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(6) {
+  top:70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(7) {
+  top:50px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(8) {
+  left:-70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(9) {
+  top:-40px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.menuBtn, .closeBtn {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.closeBtn {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+input#toggle:checked ~ #show-menu .btn .menuBtn {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+input#toggle:checked ~ #show-menu .btn .closeBtn {
+  transform: translateY(0px);
+  opacity: 1;
+}
     .search {
     position: absolute;
     bottom: 10px;
@@ -13,6 +152,9 @@
     border-bottom: groove 2px lightskyblue;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }
+.search-input input {
+    display: block;
+}
 .search input {
     width: 90%;
     margin-top: 10px;
@@ -25,8 +167,10 @@
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(2px);
     color: #fff;
+    display: block;
     
 }
+
 .search input::placeholder {
     color: #fff;
 }
@@ -59,6 +203,7 @@
     color: #fff;
     
 }
+
     .image-container {
         width: 100vw;
         height: 100vh;
@@ -71,12 +216,21 @@
     }
     .image {
         width: 100%;
+        height: 100%;
         overflow: hidden;
+        position: relative;
+        z-index: 500;
     }
     .image img {
         width: 100%;
         max-width: 100%;
         min-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100%;
+        z-index: 501;
     }
     .image:first-of-type {
         border-top-left-radius: 8px;
@@ -88,7 +242,31 @@
         border-bottom: groove 2px red;
         box-shadow: 0 20px 20px rgba(255, 0, 0, 0.5), 0 6px 6px #000;
     }
-
+    .image-location {
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 2;
+        text-align: left;
+        padding: 5px;
+        color: #fff;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border-bottom: groove 1px lightskyblue;
+        box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        display: inline-flex;
+        z-index: 502;
+    }
+    .artist-name h6 {
+        color: lightskyblue;
+        font-size: 0.6rem;
+    }
+    .artist-link p {
+    }
+    .artist-link a {
+        color: #fff;
+    }
     .page-nav {
         position: absolute;
         top: 100px;
@@ -126,10 +304,6 @@
     <h6><a href="#">Imgur</a></h6>
 </div>
 
-<div class="spread-break">
-    <hr>
-</div>
-
 
 
     <div class="search">
@@ -140,11 +314,63 @@
             <button type="submit">Search</button>
         </form>
     </div>
-    
-<div class="image-container">
-    <% returnedData.hits.forEach(function(image) { %>
-        <div class="image">
-            <img src="<%= image.largeImageURL %>" alt="">
-        </div>
-    <% }) %>
+
+
+    <div class="image-container">
+        <h5>Newest Images</h5>
+        <% returnedData.hits.forEach(function(data) { %>
+            <div class="image">
+                <img src="<%= data.largeImageURL %>" alt="">
+                <div class="image-location">
+                    <div class="artist-name">
+                        <div class="artist-link">
+                            <p><a href="<%= data.pageURL %>"><%= data.user %></a></p>
+                        </div>
+                        <% if (data.tags) { %>
+                            <h6><%= data.tags %></h6>
+                        <% } else { %>
+                            <span style="display: none;"></span>
+                        <% } %>
+                    </div>
+                    <div class="spread-menu">
+                        <div class="menu">
+        <input type="checkbox" id="<%= data.id %>" class="toggle"/>
+        <label id="show-menu" for="<%= data.id %>">
+          <div class="btn">
+            <i class="fas fa-project-diagram toggleBtn menuBtn"></i>
+            <i class="material-icons md-36 toggleBtn closeBtn">close</i>
+          </div>
+          <div class="btn" title="Make your background image - Dashboard & Public Profile">
+              <form action="/users/change-main-background-image-url?_method=PATCH" method="post">
+                <input type="text" name="bgImage" value="<%= data.largeImageURL %>" hidden>
+                <button type="submit"><i class="far fa-image"></i></button>
+            </form>
+          </div>
+          <div class="btn" title="Like this">
+            <i class="far fa-heart"></i>
+          </div>
+          <div class="btn" title="Share this">
+            <i class="fas fa-share-alt"></i>
+          </div>
+          <div class="btn" title="Comment on this">
+            <i class="far fa-comment-alt"></i>
+          </div>
+          <div class="btn" title="Save this">
+            <i class="far fa-save"></i>
+          </div>
+          <div class="btn" title="Add this">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="btn" title="Find more near this location">
+            <i class="fas fa-search-location"></i>
+          </div>
+          <div class="btn" title="More Information">
+            <i class="fas fa-info"></i>
+          </div>
+        </label>
+      </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
     </div>
