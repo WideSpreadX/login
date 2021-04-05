@@ -9,11 +9,18 @@
         left: 0;
         overflow-y: scroll;
         width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
         
     }
+    
     .image-container h5 {
         text-align: center;
         padding: 10px;
+        padding-bottom: 0;
+    }
+    .image-container h6 {
+        text-align: center;
     }
     .image {
         position: relative;
@@ -26,19 +33,66 @@
         width: 100%;
     }
     .image-location {
-        top: 20px;
+        top: 0;
         left: 0;
         position: absolute;
         z-index: 2;
         text-align: left;
-        padding: 10px;
+        padding: 5px;
         color: #fff;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border-bottom: groove 1px lightskyblue;
+        box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.3);
         text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-
+        display: inline-flex;
+    }
+    
+    .artist-name {
+        width: 90%;
+    }
+    .artist-link {
+        width: 100%;
+    }
+    .artist-link a {
+        text-align: center;
+        padding-left: 15px;
+        font-size: 0.8rem;
+        text-shadow: 0 0 2px  rgba(135, 206, 250, 0.75);
+        color: rgba(255, 255, 255, 0.25);
+    }
+    .image-location h5 {
+        text-align: left;
+        margin: 0;
+    }
+    .image-location p {
+        width: 100%;
+        text-align: left;
     }
     .image-location a {
         color: #fff;
         text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+    .image-links {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background:rgba(0, 0, 0, 0.3);
+        border-top: groove 1px lightskyblue;
+        box-shadow: 0 -2px 2px 1px rgba(0, 0, 0, 0.3);
+    }
+    .image-links p {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+        
+    }
+    .image-links a {
+        color: lightskyblue;
+    }
+    .spread-menu {
+
     }
     .search-engines {
     text-align: center;
@@ -68,18 +122,26 @@
     <p><a href="/socialspread/photospread/pixabay">Pixabay</a></p>
 </div>
 <div class="image-container">
-    <h5>Recent Images</h5>
+    <h5>Newest Images</h5>
     <% returnedData.forEach(function(data) { %>
         <div class="image">
             <img src="<%= data.urls.small %>" alt="">
             <div class="image-location">
-                <h5><%= data.user.name %></h5>
-                <% if (data.user.instagram_username) { %>
-                    <p><a href="https://instagram.com/<%= data.user.instagram_username %>"><i class="fab fa-instagram"></i> <%= data.user.instagram_username %></a></p>
-                <% } else { %>
-                    <span></span>
-                <% } %>
+                <div class="artist-name">
+                    <h5><%= data.user.name %></h5>
+                    <div class="artist-link">
+                        <a href="https://instagram.com/<%= data.user.instagram_username %>"><i class="fab fa-instagram"></i><%= data.user.instagram_username %></a>
+                    </div>
+                    <% if (data.user.location) { %>
+                        <span style="display: none;"></span>
+                    <% } else { %>
+                        <h6><%= data.user.location %></h6>
+                    <% } %>
+                </div>
+                <div class="spread-menu">
+                    <%- include('partials/spreadMenu') %>
+                </div>
             </div>
         </div>
-            <% }) %>
+    <% }) %>
 </div>

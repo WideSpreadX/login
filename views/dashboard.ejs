@@ -1299,6 +1299,19 @@
     padding: 10px;
     padding-left: 20px;
 }
+.spreader-container {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    margin-top: 30px;
+    width: 90%;
+    padding: 10px;
+    border-top: groove 2px #fff;
+    border-bottom: groove 2px #fff;
+    border-right: groove 2px #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
 .tab {
   overflow: hidden;
   overflow-x: scroll;
@@ -1313,35 +1326,36 @@
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
+  background: rgba(135, 206, 250, 0.5);
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+  margin-left: 0;
+  border-radius: 0;
+  
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: lightskyblue;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  padding-bottom: 0;
-  padding-top: 20px;
+  padding: 0;
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
 
 }
@@ -1353,7 +1367,6 @@
     box-shadow: none;
     border: none;
     padding: 0;
-    padding-top: 10px;
     margin: 0;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -1446,6 +1459,11 @@
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(2px);
     box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.527);
+}
+.new-spread button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
 }
 .post-container {
     background: rgba(255, 255, 255, 0.3);
@@ -1974,9 +1992,7 @@
 
 
 
-<div class="spread-break">
-    <hr>
-</div>
+<div class="spreader-container">
     <h5 style="text-align: center;">Spread Something</h5>
     <p style="width: 100%; text-align: center; font-size: 0.6rem; color: lightskyblue;">Scroll left & right for more Spreaders</p>
     <div class="tab" data-title="The Spreader" data-intro="This is where you can Spread things!">
@@ -2300,9 +2316,9 @@
         </div>
       </div>
     </div>
-      <div class="spread-break">
-        <hr>
-    </div>
+
+</div>
+      
     <h5 style="text-align: center; padding-bottom: 20px;">Your Photos</h5>
 
     <div class="outer_cont_container" style="margin-top: 150px;">
