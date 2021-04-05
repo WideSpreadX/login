@@ -194,7 +194,7 @@ app.patch('/upload-background-image', upload.single('user_background_image'), (r
           console.log(`Image Owner: ${imageOwner} Image Data: ${obj.img.data}`);
           const newImage = obj.img.data;
           User.findByIdAndUpdate(imageOwner,
-            {user_background_image: req.file.filename},
+            {user_background_image: ("/image/" + req.file.filename)},
             function(err, doc) {
                 if(err) {
                     console.log(err)

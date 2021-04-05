@@ -1910,12 +1910,13 @@
 }
 }
 </style>
+
 <div class="user-background-image">
     <% if (profile.user_background_image) { %>
-        <img src="/image/<%= profile.user_background_image %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
-        <%} else { %>
+        <img src="<%= profile.user_background_image %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
+    <% } else { %>
             <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
-            <% } %>
+    <% } %>
 </div>
 
 
@@ -1923,11 +1924,6 @@
 <div class="intro-message" data-title="Page Slider Menu" data-intro="Slide this menu left and right to access more features. SocialSpread, YourSpread, SpreadChat(Real-time text, audio, video chat), Tools(Notes, ToDo's, Encyclopedia, Dictionary, etc.), SpreadShield & FlexFloor.">
     <%- include('partials/mainHeaderPageMenu') %>
 </div>
-
-
-
-
-
 
 <div class="dashboard-container">
     <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
@@ -1947,39 +1943,35 @@
         <% } %>
 </div>
 
+
 <!-- Profile Image -->
 <% if (!avatarImage) { %>
-
-        <div class="user-profile-image-form">
-            
-            <form action="/upload-avatar?_method=PATCH" method="post" enctype="multipart/form-data">
-                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                        <div class="custom-file-profile-image">
-                            <input type="file" name="user_profile_image" id="userProfileImage">
-                            <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="custom-file-profile-image-button">Change</button>
-                        </div>
-                </form>
+    <div class="user-profile-image-form">    
+        <form action="/upload-avatar?_method=PATCH" method="post" enctype="multipart/form-data">
+            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+            <div class="custom-file-profile-image">
+                <input type="file" name="user_profile_image" id="userProfileImage">
+                <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
             </div>
-            <%} else { %>
-                <div class="user-profile-image-form">
-                    <form action="/upload-avatar?_method=PATCH" method="POST" enctype="multipart/form-data">
-                        <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                        <div class="custom-file-profile-image">
-                            <input type="file" name="user_profile_image" id="userProfileImage">
-                            <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="custom-file-profile-image-button">Change</button>
-                        </div>
-                </form>
-                    </form>
-                    </div>
-                <% } %>
+            <div>
+                <button type="submit" class="custom-file-profile-image-button">Change</button>
+            </div>
+        </form>
+    </div>
+<%} else { %>
+    <div class="user-profile-image-form">
+        <form action="/upload-avatar?_method=PATCH" method="POST" enctype="multipart/form-data">
+            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
+            <div class="custom-file-profile-image">
+                    <input type="file" name="user_profile_image" id="userProfileImage">
+                    <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
+            </div>            
+            <div>
+                <button type="submit" class="custom-file-profile-image-button">Change</button>
+            </div>
+        </form>
+    </div>
+<% } %>
 
 <div class="user-profile-routes">
     <div class="route">

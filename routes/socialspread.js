@@ -30,9 +30,16 @@ router.get('/photospread', (req, res) => {
 axios.request(options).then(function (response) {
     const returnedData = response.data;
     console.log(returnedData)
-    res.render('photospread', {returnedData});
+    const imageIds = () => {
+        for (i=0;i < returnedData.length;i++) {
+
+            const imageId = returnedData[i].id;
+            console.log(`Image ID: ${imageId}`)
+        }
+    }
+    res.render('photospread', {returnedData, imageIds});
 }).catch(function (error) {
-	console.error(error);
+    console.error(error);
 });
 
 });

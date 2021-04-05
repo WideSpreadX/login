@@ -161,7 +161,7 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
     .then(profile => {
             res.render('public-profile', {currentPageTitle: "Profile", profile, posts, articles, profileImages, avatarImage, userId, inSpreads, weather})
         });
-})
+});
 
 router.post('/:profileId/inspread/:spreaderId', ensureAuthenticated, async (req, res) => {
     const spreadTo = req.params.profileId;
@@ -186,7 +186,7 @@ router.post('/:profileId/inspread/:spreaderId', ensureAuthenticated, async (req,
         }
         )
     res.redirect(`/users/${spreadTo}`);
-})
+});
 
   router.post('/:id/add-friend', (req, res) => {
     let id = req.body.friends;
@@ -267,8 +267,25 @@ router.post('/new-vr-image-url', ensureAuthenticated, (req, res) => {
     });
     newImageUrl.save()
     res.redirect(`/users/update-profile/${user}`);
-})
+});
 
+router.patch('/change-main-background-image-url', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const userBackgroundImage = req.body.bgImage;
+
+    const user = await User.findByIdAndUpdate(userId, 
+        {user_background_image: userBackgroundImage},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+    )
+    user.save()
+    res.redirect(`/dashboard`);
+});
 router.patch('/update-profile', ensureAuthenticated, async (req, res, next) => {
     try {
     const id = req.user._id;
