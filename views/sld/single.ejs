@@ -1,0 +1,107 @@
+<style>
+    .sld-video-container {
+        width: 100%;
+    }
+    .sld-bg {
+        width: 100%;
+    }
+    .sld-bg img {
+        width: 100%;
+    }
+    .sld-video {
+        margin-bottom: 15px;
+        position: fixed;
+        left: 0;
+        top: 100px;
+        
+    }
+    .sld-video-background {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .sld-video-background iframe {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        background: transparent;
+    }
+    .sld-video-header {
+        background: rgba(255, 255, 255, 0.5);
+        padding: 10px;
+        padding-bottom: 5px;
+        border-top: groove 2px lightskyblue;
+        box-shadow: 0 -6px 6px 3px rgba(0, 0, 0, 0.5), 0 4px 4px 2px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+        border-bottom: groove 2px lightskyblue;
+        text-shadow: 0 0 2px #000;
+    }
+    .sld-video-header h5 {
+        padding: 0;
+        margin-bottom: 0;
+        color: #fff;
+    }
+    .sld-video-header p {
+        margin-bottom: 5px;
+        color: #fff;
+    }
+    .thumbnail-slider {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        overflow-y: scroll;
+        z-index: -1001;
+        padding-bottom: 70px;
+    }
+    .thumbnail-slide {
+        width: 100%;
+    }
+    .thumbnail-slide img {
+        min-height: 100%;
+        width: 100%;
+        max-width: 100vw;
+    }
+    .tags-slider h6 {
+        color: magenta;
+        font-size: 0.6rem;
+    }
+    .search {
+        opacity: 0.3;
+    }
+</style>
+
+<div class="sld-container">
+    <div class="sld-bg">
+        
+    </div>
+    <div class="search">
+        <form action="/sld/video/search" method="post">
+            <input type="search" name="query" placeholder="Search for videos...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+            <div class="sld-video">
+                <div class="sld-video-background">
+                    <iframe allowfullscreen src="<%= returnedData.embed %>" frameborder="0"></iframe>
+                </div>
+
+                    <div class="thumbnail-slider">
+                        <% returnedData.thumbs.forEach(function(thumb) { %>
+                            <div class="thumbnail-slide">
+                                <img src="<%= thumb.src %>" alt="">
+                            </div>
+                        <% }) %>
+                    </div>
+                    <div class="sld-video-header">
+                        <h5><%= returnedData.title %></h5>
+                        <p><%= returnedData.length_min %></p>
+                        <div class="tags-slider">
+                            <h6><%= returnedData.keywords %></h6>
+                        </div>
+    
+                    </div>
+
+            </div>
+    </div>

@@ -307,6 +307,27 @@ router.patch('/save-image-url', ensureAuthenticated, async (req, res) => {
     res.redirect(`/dashboard`);
 });
 
+/* Add a Video to Users Video */
+router.patch('/save-video-url', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const videoToSave = req.body.videoId;
+
+    const user = await User.findByIdAndUpdate(userId, 
+        {$addToSet: {user_inspread_videos: {video: videoToSave, poster: req.body.poster}}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+    )
+    user.save()
+    res.redirect(`/dashboard`);
+});
+
+
 
 router.patch('/update-profile', ensureAuthenticated, async (req, res, next) => {
     try {

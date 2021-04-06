@@ -141,6 +141,7 @@ app.use('/yourspread', require('./routes/yourspread'));
 app.use('/spreadchat', require('./routes/spreadchat'));
 app.use('/groups', require('./routes/groups'));
 app.use('/government', require('./routes/government'));
+app.use('/sld', require('./routes/sld'));
 
 app.post('/upload', upload.single('user_image'), (req, res) => {
   const imageOwner = req.user._id;

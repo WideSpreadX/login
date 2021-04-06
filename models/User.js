@@ -96,6 +96,10 @@ const UserSchema = new mongoose.Schema({
     user_vr_background_image_url: String,
     user_images: [String],
     user_inspread_images: [String],
+    user_inspread_videos: [{
+        video: String,
+        poster: String
+    }],
     user_avatar: String,
     user_video: [String],
     movie_list: [
