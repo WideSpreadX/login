@@ -1,3 +1,6 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    
 <style>
 
     /* DESKTOP STYLE */
@@ -981,8 +984,147 @@
 }
 }
 @media screen and (max-width: 500px) {
+    .spread-menu {
+        
+    }
+    .spread-menu input {position: absolute; display: none}
+.spread-menu button {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-   
+.menu {
+  margin: 0 auto;
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  margin-top: 0;
+  z-index: 3001;
+  box-shadow: 0 0 4px 4px 2px rgba(255, 255, 255, 0.75);
+}
+.btn::after {
+    transform: translateX(-75px) translateY(75px);
+}
+.btn {
+    z-index: 3002;
+  width: 40px;
+  max-width: 40px;
+  height: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(135, 206, 250, 0.3);
+  backdrop-filter: blur(2px);
+  border: groove 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.5), inset 0 0 8px lightskyblue;
+}
+
+.material-icons.md-36 { 
+    font-size: 18px;
+    color: #fff;
+
+}
+
+.btn {
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  
+  
+  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.btn:not(:first-child) {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  z-index: -2;
+  transform: translateX(-85px) translateY(85px);
+  -webkit-transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+  transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+}
+.btn i {
+    color: #fff;
+    font-size: 1.2rem;
+}
+.btn:nth-child(2) {top:0px;-webkit-transition-delay: 0s;transition-delay: 0s}
+.btn:nth-child(3) {top:0px;left:0px;-webkit-transition-delay: 0.1s;transition-delay: 0.1s}
+.btn:nth-child(4) {left:0px;;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
+.btn:nth-child(5) {top:0px;left:0px;-webkit-transition-delay: 0.3s;transition-delay: 0.3s}
+.btn:nth-child(6) {top:0px;-webkit-transition-delay: 0.4s;transition-delay: 0.4s}
+.btn:nth-child(7) {top:0px;left:0px;-webkit-transition-delay: 0.5s;transition-delay: 0.5s}
+.btn:nth-child(8) {left:0px;-webkit-transition-delay: 0.6s;transition-delay: 0.6s}
+.btn:nth-child(9) {top:0px;left:0px;-webkit-transition-delay: 0.7s;transition-delay: 0.7s}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(2) {
+  top:-70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(3) {
+  top:-40px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(4) {
+  left:70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(5) {
+  top :50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(6) {
+  top:70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(7) {
+  top:50px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(8) {
+  left:-70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input.toggle:checked ~ #show-menu .btn:nth-child(9) {
+  top:-40px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.menuBtn, .closeBtn {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.closeBtn {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+input#toggle:checked ~ #show-menu .btn .menuBtn {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+input#toggle:checked ~ #show-menu .btn .closeBtn {
+  transform: translateY(0px);
+  opacity: 1;
+}
     .user-background-image {
         z-index: -800;
     }
@@ -1228,6 +1370,55 @@
         text-align: center;
         color: #fff;
     }
+
+
+
+
+    /* Images */
+
+    .spread-slider-photos {
+        height: 350px;
+        max-height: 350px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        border-top: groove 2px #fff;
+        border-bottom: groove 2px #fff;
+        padding-bottom: 10px;
+        box-shadow: 0 8px 8px 4px rgba(0, 0, 0, 0.5);
+    }
+    .spread-slider-header {
+        background: rgba(135, 206, 250, 0.3);
+        backdrop-filter: blur(2px);
+        border-bottom: groove 2px #fff;
+        box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
+    }
+    .spread-slider-header h5 {
+        color: #fff;
+        text-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
+    }
+    .spread-slider {
+        width: 100%;
+        display: inline-flex;
+        overflow-x: scroll;
+    }
+
+
+    .slide {
+        position: relative;
+        max-width: 100%;
+
+    }
+    .slide-background {
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+    }
+    .slide-background img {
+        height: 100%;
+        max-height: 300px;
+        max-width: 100vw;
+    }
+
     .see-albums {
         width: 80%;
         margin: 0 auto;
@@ -1681,7 +1872,10 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(2px);
-    border-radius: 8px;
+    border-top: groove 2px #fff;
+    border-bottom: groove 2px #fff;
+    border-radius: 0;
+    box-shadow: 0 8px 8px 4px rgba(0, 0, 0, 0.5);
 }
 .weather h5 {
     text-align: center;
@@ -1740,9 +1934,7 @@
 }
 .forecast-container {
     width: 100%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    background:rgba(135, 206, 250, 0.5);
+
     backdrop-filter: blur(2px);
 }
 .forecast-container h5 {
@@ -2311,29 +2503,90 @@
 
 </div>
       
-    <h5 style="text-align: center; padding-bottom: 20px;">Your Photos</h5>
-
-    <div class="outer_cont_container" style="margin-top: 150px;">
-        <div class="cont_container">
-            <div class="cont_inner_container">
-                <% profileImages.forEach(function(image){ %>
-                    <div style="padding: 7px;">
-                        <div> 
-                            <div> 
-                                    <div class="user-images"> 
-                                        <img src="/image/<%= image.img.data %>">
-
-                                    </div> 
-                            </div> 
-                        </div> 
-                        
-                    </div>
-                    
-                    <% }); %>
-                    
+<div class="spread-slider-photos">
+    <div class="spread-slider-header">
+        <h5>Your Photos</h5>
+    </div>
+    <div class="spread-slider">
+        <% profileImages.forEach(function(image){ %>
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="/image/<%= image.img.data %>">
+                </div>
+                <div class="slide-data">
+                    <p><%= image.description %></p>
                 </div>
             </div>
-        </div>
+        <% }); %>
+    </div>
+</div>
+
+
+<!-- Second Test Slider -->
+
+<div class="spread-slider-photos">
+    <div class="spread-slider-header">
+        <h5>Saved Photos</h5>
+    </div>
+    <div class="spread-slider">
+        <% profile.user_inspread_images.forEach(function(image){ %>
+            <div class="slide">
+                <div class="slide-background">
+                    <img src="<%= image %>">
+                </div>
+                <div class="spread-menu">
+
+                    <div class="menu">
+                        <input type="checkbox" id="<%= image %>" class="toggle"/>
+                        <label id="show-menu" for="<%= image %>">
+                          <div class="btn">
+                            <i class="fas fa-project-diagram toggleBtn menuBtn"></i>
+                            <i class="material-icons md-36 toggleBtn closeBtn">close</i>
+                          </div>
+                          <div class="btn" title="Make your background image - Dashboard & Public Profile">
+                              <form action="/users/change-main-background-image-url?_method=PATCH" method="post">
+                                <input type="text" name="bgImage" value="<%= image %>" hidden>
+                                <button type="submit"><i class="far fa-image"></i></button>
+                            </form>
+                          </div>
+                          <div class="btn" title="Like this">
+                            <i class="far fa-heart"></i>
+                          </div>
+                          <div class="btn" title="Share this">
+                            <i class="fas fa-share-alt"></i>
+                          </div>
+                          <div class="btn" title="Comment on this">
+                            <i class="far fa-comment-alt"></i>
+                          </div>
+                          <div class="btn" title="Save this">
+                            <i class="far fa-save"></i>
+                          </div>
+                          <div class="btn" title="Add this">
+                            <form action="/users/save-image-url?_method=PATCH" method="post">
+                              <input type="text" name="imageURL" value="<%= image %>" hidden>
+                              <button type="submit"><i class="fas fa-plus"></i></button>
+                          </form>
+                          </div>
+                          <div class="btn" title="Find more near this location">
+                            <i class="fas fa-search-location"></i>
+                          </div>
+                          <div class="btn" title="More Information">
+                            <i class="fas fa-info"></i>
+                          </div>
+                        </label>
+                      </div>
+
+                </div>
+
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+
+
+
         <div class="user-profile-image-form">
         
             <form action="/upload" method="post" enctype="multipart/form-data">
@@ -2354,9 +2607,6 @@
         </div>
     </a>
 
-    <div class="spread-break">
-        <hr>
-    </div>
 
     <% if (!profile.zip) { %>
         <span style="display: none;"></span>
@@ -2405,9 +2655,7 @@
             
         <% } %>
 
-        <div class="spread-break">
-            <hr>
-        </div>
+
     <div class="your-friends">
         <a href="/<%= profile.id %>/friends"><h5>Your Friends</h5></a>
     </div>
@@ -2493,9 +2741,6 @@
     </div>
 </div>
 
-<div class="spread-break">
-    <hr>
-</div>
 
 <div class="its-messy" id="itsMessy" style="color: #fff; background: rgba(255, 0, 0, 0.3); border-radius: 8px; padding: 10px;">
     <p>    Welcome to WideSpread! Please excuse any mess I may have overlooked or didn't get to yet.. WideSpread is still under construction, but feel free to explore and enjoy! Do your best to try and break things (just let me know on SocialSpread or send me an InSpread (working title...) so I can fix it.</p>

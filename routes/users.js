@@ -286,6 +286,28 @@ router.patch('/change-main-background-image-url', ensureAuthenticated, async (re
     user.save()
     res.redirect(`/dashboard`);
 });
+
+/* Add an Image to Users Images */
+router.patch('/save-image-url', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const imageToSave = req.body.imageURL;
+
+    const user = await User.findByIdAndUpdate(userId, 
+        {$addToSet: {user_inspread_images: imageToSave}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+    )
+    user.save()
+    res.redirect(`/dashboard`);
+});
+
+
 router.patch('/update-profile', ensureAuthenticated, async (req, res, next) => {
     try {
     const id = req.user._id;

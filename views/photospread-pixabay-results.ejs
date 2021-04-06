@@ -359,7 +359,10 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
             <i class="far fa-save"></i>
           </div>
           <div class="btn" title="Add this">
-            <i class="fas fa-plus"></i>
+            <form action="/users/save-image-url?_method=PATCH" method="post">
+              <input type="text" name="imageURL" value="<%= data.largeImageURL %>" hidden>
+              <button type="submit"><i class="fas fa-plus"></i></button>
+          </form>
           </div>
           <div class="btn" title="Find more near this location">
             <i class="fas fa-search-location"></i>

@@ -67,7 +67,7 @@ router.get('/photospread/pexels/search/:query', (req, res) => {
 
     client.photos.search({ query, per_page: 100 }).then(photos => {
         console.log(photos)
-        res.render('photospread-pexels-results', {photos})
+        res.render('photospread-pexels-results', {photos, query})
     });
 });
 

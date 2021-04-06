@@ -160,6 +160,7 @@ conn.once('open', () => {
         })
         .populate('posts')
         .then(profile => {
+          console.log(profile)
                 res.render('dashboard', {
                 profile,
                 profileImages,
