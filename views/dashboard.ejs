@@ -5,141 +5,22 @@
 
     /* DESKTOP STYLE */
 
-      @media screen and (min-width: 1200px) {
-    .widespread-header {
-      text-align: center;
-      padding: 0;
-    }
-    .logo {
-      margin: 0;
-      width: 95%;
-    }
-    .logo h1 {
-      margin: 0;
-    }
-    .user-background-color {
-        z-index: -300;
-    }
-    .your-friends {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .your-friends a h5 {
-        padding: 10px;
-        width: 50%;
-        margin-left: 25%;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 8px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-    }
-    .find-new-friends {
-        padding: 10px;
-        display: inline-flex;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        width: 90%;
-        height: 350px;
-        min-height: 350px;
-        max-height: 350px;
-    }
-    .new-friend {
-        margin-left: 20px;
-        position: relative;
-        height: 90%;
-        width: 80px;
-    }
-    .possible-friend-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 80px;
-        height: 100%;
-    }
-    .possible-friend-image {
-        width: 80px;
-        height: 120px;
-        max-height: 120;
-        min-height: 120px;
-        overflow-y: hidden;
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
-    }
-    
-    .possible-friend-image img {
-        width: 80px;
-    }
-    
-    .possible-friend {
-        border-radius: 8px;
-        width: 80px;
-        height: 300px;
-        min-height: 300px;
-        max-height: 300px;
-        background: rgba(0, 0, 0, 0.3);
-        box-shadow: none;
-        opacity: 1.0;
-    }
-    .possible-friend h3 {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        border-bottom: groove 2px lightskyblue;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(2px);
-        color: #fff;
-    }
-    .possible-friend-data {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background:rgba(0, 0, 0, 0.3);
-        padding: 10px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-    }
-    .possible-friend-data p {
-        margin-bottom: 0;
-        padding: 0;
-    }
-    .add-friend-container {
-        display: inline-flex;
-        width: 100%;
-    }
-    .add-friend {
-        width: 50%;
-    }
-    .add-friend button {
-        background: rgba(0, 128, 0, 0.3);
-        width: 40px;
-        height: 40px;
-        border-top: groove 2px green;
-        border-bottom: groove 2px green;
-        color: #fff;
-        box-shadow: none;
-        
-    }
-    .remove-friend {
-        width: 50%;
-    }
-    .remove-friend button {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 0, 0, 0.3);
-        border: none;
-        border-top: groove 2px red;
-        border-bottom: groove 2px red;
-        outline: none;
-        color: #fff;
-    }
-  }
-
+   
 
 
 /* CELL PHONE STYLE */
-
+@media screen and (max-width: 500px) {
+    .main-header-page-menu-container {
+        backdrop-filter: blur(2px);
+        border-left: groove 1px rgba(135, 206, 250, 0.555);
+        border-right: groove 1px rgba(135, 206, 250, 0.555);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        max-height: 40px;
+        width: 100vw;
+        
+    }
 .spread-break hr {
     background: lightskyblue;
     box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
@@ -218,7 +99,7 @@
 .route a {
 
 }
-
+}
 @media screen and (max-width: 1199px) {
 
     
@@ -2101,6 +1982,166 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
   to {opacity: 1;}
 }
 }
+@media screen and (max-width: 2699px) {
+        .main-header-page-menu-container {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            height: 100vh;
+            width: 10%;
+            background: rgba(135, 206, 250, 0.3);
+            backdrop-filter: blur(2px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            z-index: 7000;
+            padding: 0;
+            border-right: groove 2px lightskyblue;
+            box-shadow: -6px 0 6px 7px 2px red;
+        }
+        #mainHeaderPageMenu {
+        }
+        .main-header-page-menu-inner {
+            backdrop-filter: blur(2);
+
+        }
+        .main-header-page-menu-inner a {
+            display: block;
+            backdrop-filter: none;
+            line-height: 40px;
+            box-shadow: none;
+        }
+    .widespread-header {
+      text-align: center;
+      padding: 0;
+    }
+    .logo {
+      margin: 0;
+      width: 95%;
+      max-height: 85px;
+      border-bottom: none;
+    }
+    .logo h1 {
+        margin: 0;
+    }
+    .user-background-color {
+        z-index: -300;
+    }
+    .your-friends {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .your-friends a h5 {
+        padding: 10px;
+        width: 50%;
+        margin-left: 25%;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .find-new-friends {
+        padding: 10px;
+        display: inline-flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 90%;
+        height: 350px;
+        min-height: 350px;
+        max-height: 350px;
+    }
+    .new-friend {
+        margin-left: 20px;
+        position: relative;
+        height: 90%;
+        width: 80px;
+    }
+    .possible-friend-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 100%;
+    }
+    .possible-friend-image {
+        width: 80px;
+        height: 120px;
+        max-height: 120;
+        min-height: 120px;
+        overflow-y: hidden;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    
+    .possible-friend-image img {
+        width: 80px;
+    }
+    
+    .possible-friend {
+        border-radius: 8px;
+        width: 80px;
+        height: 300px;
+        min-height: 300px;
+        max-height: 300px;
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: none;
+        opacity: 1.0;
+    }
+    .possible-friend h3 {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom: groove 2px lightskyblue;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(2px);
+        color: #fff;
+    }
+    .possible-friend-data {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background:rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .possible-friend-data p {
+        margin-bottom: 0;
+        padding: 0;
+    }
+    .add-friend-container {
+        display: inline-flex;
+        width: 100%;
+    }
+    .add-friend {
+        width: 50%;
+    }
+    .add-friend button {
+        background: rgba(0, 128, 0, 0.3);
+        width: 40px;
+        height: 40px;
+        border-top: groove 2px green;
+        border-bottom: groove 2px green;
+        color: #fff;
+        box-shadow: none;
+        
+    }
+    .remove-friend {
+        width: 50%;
+    }
+    .remove-friend button {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 0, 0, 0.3);
+        border: none;
+        border-top: groove 2px red;
+        border-bottom: groove 2px red;
+        outline: none;
+        color: #fff;
+    }
+  }
+
 </style>
 
 <div class="user-background-image">
