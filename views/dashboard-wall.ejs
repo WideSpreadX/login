@@ -331,7 +331,6 @@
 
 
    .image-share {
-       background: lime;
        width: 100%;
        position: absolute;
        top: 0;
@@ -382,15 +381,14 @@
                     </div>
 
                 <% } else { %>
-                <div class="author-image">
-                    <% if (post.author.user_avatar) { %>
-                        <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
+                    <div class="author-image">
+                        <% if (post.author.user_avatar) { %>
+                            <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
                         <%} else { %>
                             <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" >
-                            <% } %>
-                        </div>
-
                         <% } %>
+                    </div>
+                <% } %>
 
                         <div class="author-info">
                     <a href="/users/<%= post.author.id %>">
