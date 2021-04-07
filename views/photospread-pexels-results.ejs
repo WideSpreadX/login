@@ -579,8 +579,11 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
             </div>
         
         
+    <div class="query-bar">
+        <h5><%= query %></h5>
+      </div>
             <div class="image-container">
-                <h5><%= query %></h5>
+             
                 <% photos.photos.forEach(function(data) { %>
                     <div class="image">
                         <img src="<%= data.src.original %>" alt="">

@@ -99,13 +99,13 @@
    .author-image {
        position: absolute;
        z-index: 6;
-       width: 100%;
-       height: 300px;
+       height: 100%;
        top: 0;
        left: 0;
+       text-align: center;
    }
    .author-image img {
-       width: 100%;
+       width: 80%;
        height: auto;
        max-height: 300px;
    }
@@ -140,6 +140,10 @@
     .post-header {
         width: 100%;
         display: inline-flex;
+        background: rgba(0, 0, 0, 0.5);
+        border-bottom: solid 1px lightskyblue;
+        box-shadow: 0 6px 10px 0px rgba(135, 206, 250, 0.4);
+
     }
     .edit-post {
         width: 30%;
@@ -324,6 +328,26 @@
        background: black;
        color: #fff;
    }
+
+
+   .image-share {
+       background: lime;
+       width: 100%;
+       position: absolute;
+       top: 0;
+       left: 0;
+   }
+   .image-share img {
+       width: 100%;
+       height: 100%;
+   }
+   .author-info {
+       padding: 0;
+   }
+   .post h5 {
+       color: #fff;
+   }
+
 </style>
 
 <%- include('partials/mainHeaderSiteMenu') %>
@@ -347,10 +371,17 @@
 <h5>Recent Spreads</h5>
 
 
-    <% data.forEach(function(post){ %>
+<% data.forEach(function(post){ %>
     <div class="post-container">
         <div class="post">
             <div class="post-author-data">
+
+                <% if (post.container_image) { %>
+                    <div class="image-share">
+                        <img src="<%= post.container_image %> alt="">
+                    </div>
+
+                <% } else { %>
                 <div class="author-image">
                     <% if (post.author.user_avatar) { %>
                         <img src="/image/<%= post.author.user_avatar %>" alt="'s Avatar">
@@ -358,6 +389,9 @@
                             <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar" >
                             <% } %>
                         </div>
+
+                        <% } %>
+
                         <div class="author-info">
                     <a href="/users/<%= post.author.id %>">
                         <h5><%= post.author.fname %> <%= post.author.lname %></h5>

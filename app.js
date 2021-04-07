@@ -126,7 +126,7 @@ app.use('/users', require('./routes/users'));
 app.use('/business', require('./routes/businesses'));
 app.use('/academy', require('./routes/academy'));
 app.use('/tools', require('./routes/tools'));
-app.use('/news', require('./routes/news'));
+/* app.use('/news', require('./routes/news')); */
 app.use('/shopping', require('./routes/shopping'));
 app.use('/socialspread', require('./routes/socialspread'));
 app.use('/spreadshield', require('./routes/spreadshield'));
@@ -141,6 +141,7 @@ app.use('/yourspread', require('./routes/yourspread'));
 app.use('/spreadchat', require('./routes/spreadchat'));
 app.use('/groups', require('./routes/groups'));
 app.use('/government', require('./routes/government'));
+/* app.use('/sld', require('./routes/sld')); */
 /* app.use('/sld', require('./routes/sld')); */
 
 app.post('/upload', upload.single('user_image'), (req, res) => {

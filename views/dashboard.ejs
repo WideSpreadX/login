@@ -2553,17 +2553,23 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
                             <i class="far fa-heart"></i>
                           </div>
                           <div class="btn" title="Share this">
-                            <i class="fas fa-share-alt"></i>
+                            <form action="/users/share-image-url" method="post">
+                                <input type="text" name="shareImageURL" value="<%= image %>" hidden>
+                                <button type="submit"><i class="fas fa-share-alt"></i></button>
+                            </form>
                           </div>
                           <div class="btn" title="Comment on this">
                             <i class="far fa-comment-alt"></i>
                           </div>
                           <div class="btn" title="Save this">
-                            <i class="far fa-save"></i>
+                            <form action="/users/save-image-url?_method=PATCH" method="post">
+                                <input type="text" name="saveImageURL" value="<%= image %>" hidden>
+                                <button type="submit"><i class="far fa-save"></i></button>
+                            </form>
                           </div>
                           <div class="btn" title="Add this">
-                            <form action="/users/save-image-url?_method=PATCH" method="post">
-                              <input type="text" name="imageURL" value="<%= image %>" hidden>
+                            <form action="/users/add-image-url?_method=PATCH" method="post">
+                              <input type="text" name="addImageURL" value="<%= image %>" hidden>
                               <button type="submit"><i class="fas fa-plus"></i></button>
                           </form>
                           </div>

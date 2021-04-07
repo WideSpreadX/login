@@ -129,12 +129,12 @@ input.toggle:checked ~ #show-menu .btn:nth-child(9) {
   opacity: 0;
 }
 
-input#toggle:checked ~ #show-menu .btn .menuBtn {
+input.toggle:checked ~ #show-menu .btn .menuBtn {
   transform: translateY(-50px);
   opacity: 0;
 }
 
-input#toggle:checked ~ #show-menu .btn .closeBtn {
+input.toggle:checked ~ #show-menu .btn .closeBtn {
   transform: translateY(0px);
   opacity: 1;
 }
@@ -316,8 +316,10 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
     </div>
 
 
+    <div class="query-bar">
+      <h5><%= query %></h5>
+    </div>
     <div class="image-container">
-        <h5>Newest Images</h5>
         <% returnedData.hits.forEach(function(data) { %>
             <div class="image">
                 <img src="<%= data.largeImageURL %>" alt="">

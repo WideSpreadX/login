@@ -290,7 +290,7 @@ router.patch('/change-main-background-image-url', ensureAuthenticated, async (re
 /* Add an Image to Users Images */
 router.patch('/save-image-url', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
-    const imageToSave = req.body.imageURL;
+    const imageToSave = req.body.saveImageURL;
 
     const user = await User.findByIdAndUpdate(userId, 
         {$addToSet: {user_inspread_images: imageToSave}},
@@ -305,6 +305,38 @@ router.patch('/save-image-url', ensureAuthenticated, async (req, res) => {
     )
     user.save()
     res.redirect(`/dashboard`);
+});
+
+router.patch('/add-image-url', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const imageToAdd = req.body.addImageURL;
+
+    const user = await User.findByIdAndUpdate(userId, 
+        {$addToSet: {user_inspread_images: imageToAdd}},
+        {safe: true, upsert: true},
+        function(err, doc) {
+            if(err) {
+                console.log(err)
+            } else {
+                return
+            }
+        }
+    )
+    user.save()
+    res.redirect(`/dashboard`);
+});
+
+
+router.post('/share-image-url', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const imageToShare = req.body.shareImageURL;
+    const post = new Post({
+        author: userId,
+        container_image: imageToShare 
+    })
+    post.save();
+    res.redirect('/dashboard/wall')
+
 });
 
 /* Add a Video to Users Video */

@@ -209,12 +209,12 @@ router.get('/weather', ensureAuthenticated, async (req, res) => {
     const user = await User.findById(id);
     const userZip = user.zip;
     const userUnits = user.measuring_system;
-     const weatherKey = process.env.WEATHER_API_KEY;
+    const weatherKey = process.env.WEATHER_API_KEY;
     const options = {
-    method: 'GET',
-    url: `http://api.openweathermap.org/data/2.5/weather?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
-  };
-  const weather = await axios.request(options).then(function (response) {
+        method: 'GET',
+        url: `http://api.openweathermap.org/data/2.5/weather?zip=${userZip},us&units=imperial&APPID=${weatherKey}`
+    };
+    const weather = await axios.request(options).then(function (response) {
       const returnedData = response.data;
       console.log(`Current Weather: ${weather}`);
       return returnedData;
@@ -271,4 +271,3 @@ router.get('/newsCatagory', (req, res) => {
 });
 
 */
-module.exports = router;
