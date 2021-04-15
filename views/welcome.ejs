@@ -1,163 +1,158 @@
 <style>
+  input {
+    color: #fff;
+  }
+  input::placeholder {
+    color: #fff;
+  }
   @media screen and (min-width: 1200px) {
-    .widespread-header {
-      text-align: center;
-      padding: 0;
+        body {
+          background: #000;
+        }
+        .main-spread-menu-container {
+            box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
+        }
+        .main-spread-window-container {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 85vw;
+          height: 100vh;
+          z-index: 1; 
+          overflow-y: scroll;
+        }
+        .main-spread-window {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        .glass {
+          background: rgba(135, 206, 250, 0.3);
+          backdrop-filter: blur(2px);
+          padding-bottom: 20px;
+          border-top: groove 2px lightskyblue;
+          border-bottom: groove 2px lightskyblue;
+          box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
+        }
+       
+        /* WideSpread Logo */
+        .widespread-center-logo {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          width: 150px;
+          height: 150px;
+        }
+        .widespread-center-logo img {
+          width: 100%;
+          max-width: 100%;
+          min-width: 100%;
+          filter: drop-shadow( 0 0 15px  #000); 
+        }
+        /* Create Account */
+        .create-account {
+          background: rgba(135, 206, 250, 0.3);
+          border-radius: 8px;
+          padding-top: 10px;
+          min-width: 600px;
+          max-width: 900px;
+          min-height: 500px;
+          max-height: 500px;
+          margin: auto;
+          margin-top: 150px;
+          backdrop-filter: blur(2px);
+          box-shadow: 0 6px 6px rgba(0, 0, 0, 0.5);
+        }
+        .create-account h5 {
+          text-align: center;
+          background: rgba(0, 0, 0, 0.3);
+          color: #fff;
+          border-top: groove 2px lightskyblue;
+          border-bottom: groove 2px lightskyblue;
+
+        }
+        .create-account-btns {
+          text-align: center;
+          width: 100%;
+          min-height: 50px;
+          margin-top: 60px;
+          display: inline-flex;
+          width: 100%;
+        }
+        .create-account h1 {
+          text-align: center;
+          padding: 20px;
+        }
+        .create-account-btns h6 {
+          width: 40%;
+          margin-left: 5%;
+          font-size: 2rem;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.3);
+          text-shadow: 0 0 4px rgba(135, 206, 250, 0.75);
+        }
+        .create-account-btns a {
+          color: rgba(255, 255, 255, 0.3);
+          text-shadow: 0 0 4px rgba(135, 206, 250, 0.75);
+          transition: ease-in 0.4s
+          
+        }
+        .create-account-btns a:hover {
+          color: rgba(255, 255, 255, 0.6);
+          text-shadow: 0 0 4px rgba(135, 206, 250, 0.95);
+          text-decoration: none;
+          transition: ease-in 0.2s
+        }
     }
-    .logo {
-      margin: 0;
-      width: 95%;
+
+
+@media screen and (max-width: 1199px) {
+        .main-spread-menu {
+            display: none;
+        }
     }
-    .logo h1 {
-      margin: 0;
-    }
-    .create-account {
-      width: 80%;
-      margin-left: 10%
-    }
-    .create-account img {
-      width: 300px;
-      height: 300px;
-    }
-    .create-account p {
-      color: #fff;
-    }
-    .create-account-btns {
-      background: transparent;
-      width: 80%;
-      margin-left: 10%;
+
+
+@media screen and (max-width: 500px) {
 
     }
-    .create-account-btns a {
-      border-radius: 8px;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-      background: rgba(255, 255, 255, 0.3);
-      transition: ease-in 0.5s;
-    }
-    .create-account-btns a:hover {
-      border-radius: 8px;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-      background: rgba(255, 255, 255, 0.5);
-      transition: ease-in 0.3s;
-    }
-  }
-  @media screen and (max-width: 1199px) {
-    .widespread-header {
-      text-align: center;
-      padding: 0;
-    }
-    .logo-container {
-      position: fixed;
-      z-index: -1;
-      width: 100vw;
-      height: 100vw;
-      top: 100px;
-      left: 0;
-    }
-    .logo-container img {
-      width: 80%;
-      margin-left: 10%;
-      height: auto;
-    }
-    .logo {
-      margin: 0;
-    }
-    .logo h1 {
-      margin: 0;
-    }
-    .video-background {
-      background: #000;
-    }
-    .video-background video {
-      min-height: 100vh;
-      width: auto;
-    }
-    .create-account {
-      width: 90%;
-      margin-left: 5%;
-      margin-top: 60px;
-      padding-top: 0;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-      border-radius: 8px;
-      box-shadow: none;
-      backdrop-filter: blur(2px);
-      background: rgba(0, 0, 0, 0.3);
-    }
-    .create-account img {
-      width: 300px;
-      height: 300px;
-    }
-    .create-account p {
-      color: #fff;
-      border-top: none;
-      background: rgba(255, 255, 255, 0.3);
-      box-shadow: none;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      width: 100%;
-      border-bottom: groove 2px lightskyblue;
-    }
-    .create-account-btns {
-      background: transparent;
-      width: 80%;
-      margin-left: 10%;
 
-    }
-    .create-account-btns a {
-      border-radius: 8px;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-      background: rgba(255, 255, 255, 0.3);
-      transition: ease-in 0.5s;
-      padding: 10px;
-      display: block;
-      margin-top: 10px;
-      color: #fff;
-    }
-    .spreadshield-demos {
-            width: 95%;
-            margin-top: 15px;
-            margin-left: 2.5%;
-            text-align: center;
-        }
-        .spreadshield-demos video {
-            border-radius: 8px;
-            width: 100%;
-            height: auto;
-        }
-  }
 </style>
-<div class="inner-container">
 
-    <div class="video-background">
-        <video autoplay muted loop id="vidBackground">
-            <source src="videos/space-particles_1a1a1a.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <!-- Space Particles - Video by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Pixabay</a> -->
-            <!-- Earth Particles - Video by <a href="https://pixabay.com/users/llensgraf-2065862/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Leif Lensgraf</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Pixabay</a> -->
+
+<!-- Background Video -->
+
+
+<div class="video-background">
+  <video autoplay muted loop id="vidBackground">
+    <source src="/videos/space-particles_1a1a1a.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <!-- Space Particles - Video by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Pixabay</a> -->
+    <!-- Earth Particles - Video by <a href="https://pixabay.com/users/llensgraf-2065862/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Leif Lensgraf</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Pixabay</a> -->
 </div>
-<div class="logo-container">
-  <img width="160px" height="160px" src="/images/system/widespread_logo_1d.png" alt="WideSpread Logo">
-</div>
-<div class="row mt-5">
+
+
+
+<!-- Main Spread Window -->
+<div class="main-spread-window-container">
+  <div class="main-spread-window">
+
+
+    <!-- Create Account -->
     <div class="create-account">
-        <div class="text-center">
-            <p>Create an account or login</p>
-            <div class="create-account-btns">
-                <a href="/users/login">Login</a>
-                <a href="/users/register">Register</a>
-            </div>
-        </div>
+      <h1>Welcome to WideSpread</h1>
+      <h5>Create an account or login</h5>
+      <div class="create-account-btns">
+        <h6><a href="/users/login">Login</a></h6>
+        <h6><a href="/users/register">Register</a></h6>
+      </div>
     </div>
+  </div>
 </div>
 
 
-
-</div>
 
 
 

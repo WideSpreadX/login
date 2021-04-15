@@ -2142,6 +2142,45 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
     }
   }
 
+  
+
+@media screen and (max-width: 1199px) {
+        .main-spread-menu {
+            display: none;
+        }
+    }
+
+
+@media screen and (max-width: 2560px) {
+        .dashboard-container {
+            background: lime;
+        }
+        .widespread-center-logo {
+            z-index: 250000;
+            right: 10;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+        }
+        .user-background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            min-width: 100vw;
+            height: 100vh;
+            min-height: 100vh;
+            z-index: -1000;
+        }
+        .user-background-image img {
+            width: 100%;
+            min-width: 100%;
+            height: 100%;
+            min-height: 100%;
+        }
+    }
+
+
 </style>
 
 <div class="user-background-image">
@@ -2171,9 +2210,9 @@ input#toggle:checked ~ #show-menu .btn .closeBtn {
 <div class="user-avatar">
     <% if (profile.user_avatar) { %>
         <img src="/image/<%= profile.user_avatar  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="260px">
-        <%} else { %>
+    <%} else { %>
         <img src="images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
-        <% } %>
+    <% } %>
 </div>
 
 

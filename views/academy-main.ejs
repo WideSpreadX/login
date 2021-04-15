@@ -27,7 +27,67 @@
         text-shadow: 0 0 3px lightskyblue;
         transition: ease-in 0.2s;
     }
-
+    @media screen and (max-width: 2560px) {
+        .spread-header {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+        .students-current-courses {
+            width: 85%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            box-shadow: none;
+        }
+        .student-course {
+            box-shadow: none;
+                position: relative;
+                max-height: 300px;
+                max-width: 300px;
+                min-height: 300px;
+                min-width: 300px;
+                margin-left: 5px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                overflow: hidden;
+                padding: 0;
+        }
+        .course-background-image {
+            text-align: center;
+            z-index: -1;
+            max-width: 100%;
+        }
+        .course-background-image img {
+            max-width: 100%;
+        }
+        .course-header {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            text-align: center;
+            border-bottom: groove 2px lightskyblue;
+        }
+        .course-header h2 {
+            padding-top: 10px;
+        }
+        .course-stats {
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            border-top: groove 2px lightskyblue;
+            padding: 10px;
+            color: #fff;
+        }
+    }
     @media screen and (max-width: 1199px) {
         .main-header-page-menu-container {
             width: 100%;
@@ -175,16 +235,19 @@
 <div class="page-title">
     <h1><%= currentPageTitle %></h1>
 </div>
+<div class="spread-header">
+    <h3>Your Current Courses</h3>
+</div>
 <div class="students-current-courses">
 
-    <h3>Your Current Courses</h3>
     <% academyInfo.academy_info.current_courses.forEach(function(course){ %>
+    <a href="/academy/courses/<%= course.id %>">
         <div class="student-course">
             <div class="course-background-image">
                 <img src="/image/<%= course.background_image %>" alt="">
                 <% if (course.background_image) { %>
                 <% } else { %>
-                    <p>NO IMAGE</p>
+                    <span style="display: none;"></span>
                 <% } %>
             </div>
             <div class="course-header">
@@ -196,11 +259,9 @@
                 <p>Credits: <%= course.credit_value %></p>
                 <p>Current Grade: <%= course.current_grade %>%</p>
             </div>
-            <div class="go-to-course">
-                    <p><a href="/academy/courses/<%= course.id %>">Go to Class</a></p>
-            </div>
-            </div>
 
+            </div>
+        </a>
     <% }); %>
 </div>
 

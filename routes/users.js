@@ -30,11 +30,13 @@ const VrBackgroundImageUrl = require('../models/VrBackgroundUrl');
 
 // Login Page
 router.get('/login', (req, res) => {
-    res.render('login', {currentPageTitle: 'Login', fname: ''});
+    const currentUser = null
+    res.render('login', {currentPageTitle: 'Login', currentUser});
 })
 // Register Page
 router.get('/register', (req, res) => {
-    res.render('register', {currentPageTitle: 'Register'});
+    const currentUser = null
+    res.render('register', {currentPageTitle: 'Register', currentUser});
 })
 
 // Register Handle

@@ -1,4 +1,67 @@
 <style>
+    /* All Screen Sizes */
+
+/* SpreadShield/UltraWide Triple */
+@media screen and (max-width: 5120) {
+    .toolbox-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+    .tool {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+}
+
+/* UltraWide Double */
+@media screen and (max-width: 2559) {
+    
+}
+
+
+/* Computer Monitor/Tablet Landscape */
+@media screen and (max-width: 1920px) {
+    .toolbox-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 10px;
+    }
+    .tool {
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        width: 90%;
+        border-radius: 8px;
+        border-top: groove 2px lightskyblue;
+        border-bottom: groove 2px lightskyblue;
+    }
+    .tool h4 {
+        width: 100%;
+        font-size: 2rem;
+    }
+    .tool i {
+        padding: 10px;
+    }
+}
+
+
+/* Tablet/Phone Landscape */
+@media screen and (max-width: 1199px) {
+    
+}
+
+        
+/* Phone Portrait */
+@media screen and (max-width: 500px) {
     .page-title {
         padding: 20px;
         text-align: center;
@@ -50,9 +113,10 @@
 
     .toolbox-container {
         margin-top: 20px;
+        display: block;
     }
     .tool {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.3);
         padding: 10px;
         padding-top: 15px;
         border-radius: 8px;
@@ -60,12 +124,24 @@
         border-bottom: groove 2px lightskyblue;
         margin-bottom: 10px;
     }
+    .tool h4 {
+        font-size: 1rem;
+        width: 100%;
+        color: #fff;
+
+    }
+}
+
 </style>
-<%- include('partials/mainHeaderSiteMenu') %>
-<%- include('partials/mainHeaderPageMenu') %>
+
+
+<div class="user-background-image">
+    <img src="https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/746/2015/08/23081925/896695552_db8678435c_b.jpg" alt="Background Image">
+</div>
 <div class="page-title">
     <h1>Tools Home</h1>
 </div>
+<%- include('partials/mainHeaderPageMenu') %>
 <div class="toolbox-container">
     <div class="tool">
         <a href="/tools/todos"><h4><i class="far fa-list-alt"></i> To Do Lists</h4></a>
@@ -74,7 +150,10 @@
         <a href="/notebooks"><h4><i class="fas fa-book-open"></i> Notebooks</h4></a>
     </div>
     <div class="tool">
-        <a href="/academy/encyclopedia"><h4><i class="fas fa-book"></i> Encyclopedia</h4></a>
+        <a href="/academy/encyclopedia">
+            
+            <h4><i class="fas fa-book"></i> Encyclopedia</h4>
+        </a>
     </div>
     <div class="tool">
         <a href="/tools/dictionary"><h4><i class="fas fa-spell-check"></i> Dictionary</h4></a>

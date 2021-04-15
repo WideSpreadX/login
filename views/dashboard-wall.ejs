@@ -1,4 +1,86 @@
 <style>
+    @media screen and (max-width: 2560px) {
+        .create-spread-post {
+            width: 50%;
+            position: fixed;
+            top: 85px;
+            left: 25%;
+            z-index: 50;
+        }
+        .create-spread-post h5 {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            margin-bottom: 0;
+            padding-bottom: 20px;
+        }
+        .create-spread-post textarea {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .socialspread-posts {
+            width: 85%;
+            padding-top: 180px;
+        }
+        .post-container {
+            width: 100%;
+            height: 500px;
+            display: inline-flex;
+            margin: 0;
+            margin-left: 10px;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-image {
+            overflow: hidden;
+            width: 100%;
+            max-height: 300px;
+            text-align: center;
+        }
+        .author-image img {
+            width: auto;
+            height: 300px;
+        }
+        .post {
+            width: 50%;
+            padding-top: 0;
+        }
+        .comments-container {
+            width: 50%;
+            height: 500px;
+            min-height: 500px;
+            max-height: 500px;
+            overflow-y: scroll;
+            border-bottom: groove 2px lightskyblue;
+        }
+        .comment {
+            box-shadow: none;
+        }
+        .spread-comment {
+            margin-left: 10px;
+            width: 50%;
+            margin-left: 50%;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .comment-author-image {
+            width: 50px;
+            height: 100px;
+        }
+        .comment-author-image img {
+            width: auto;
+            max-width: 50px;
+            height: 100%;
+        }
+        .spread-comment textarea {
+            width: 100%;
+
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    }
+    @media screen and (max-width: 500px) {
         .spread-break hr {
     background: lightskyblue;
     box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
@@ -6,7 +88,7 @@
     margin-left: 10%;
     border-radius: 50%;
     margin-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 30px; 
     }
     button {
         width: auto;
@@ -22,7 +104,10 @@
         backdrop-filter: blur(2px);
         border-top: groove 2px lightskyblue;
         border-bottom: groove 2px lightskyblue;
-
+        position: relative;
+        margin-left: 0;
+        left: 0;
+        top: 10px;
     }
     .create-spread-post h5 {
         text-align: center;
@@ -39,16 +124,20 @@
         box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.3);
         transition: ease-in 0.3s;
         padding: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
     .create-spread-post textarea:focus {
         background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(2px);
         color: #fff;
-        background: rgba(135, 206, 250, 0.3);
+        background: rgba(255, 255, 255, 0.3);
         border-top: groove 2px #fff;
         border-bottom: groove 2px #fff;
         box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
         transition: ease-in 0.3s;
+        border-radius: 0;
+
     }
     .create-spread-post textarea:active {
         border-radius: 10px;
@@ -73,11 +162,15 @@
     .socialspread-posts {
         z-index: 0;
         position: relative;
+       width: 100%;
+       padding-top: 0;
     }
    .post-container {
        padding: 0;
        margin: 0;
        border: none;
+       display: block;
+       width: 100%;
    }
    .post {
        padding: 0;
@@ -86,6 +179,7 @@
        position: relative;
        margin-top: 30px;
        z-index: 5;
+       width: 100%;
        overflow: hidden;
        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.7);
        border-top: groove 2px lightskyblue;
@@ -102,6 +196,7 @@
        z-index: 6;
        width: 100%;
        height: 100%;
+       min-height: 350px;
        top: 0;
        left: 0;
        text-align: center;
@@ -292,6 +387,8 @@
        border-bottom-right-radius: 8px;
        padding: 5px;
        border: none;
+       border-bottom-left-radius: 8px;
+       border-bottom-right-radius: 8px;
        border-bottom: groove 2px lightskyblue;
        margin-bottom: 0;
        transition: ease-in 0.3s;
@@ -363,17 +460,19 @@
    .post h5 {
        color: #fff;
    }
-
+    }
 </style>
 
-<%- include('partials/mainHeaderSiteMenu') %>
 <%- include('partials/mainHeaderPageMenu') %>
 
-<h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">SocialSpread</h2>
+
+<div class="page-title">
+    <h2>SocialSpread</h2>
+</div>
 
 
 <div class="create-spread-post">
-    <h5 style="text-align: center; margin-bottom: 20px;">Spread Something</h5>
+    <h5 style="text-align: center;">Spread Something</h5>
     <form action="/users/<%= id %>/post" method="POST">
         <textarea required name="postBody" id="postBody" class="form-control"></textarea>
         <button type="submit">Spread It</button>
@@ -514,6 +613,7 @@
                 </div>
             <% }) %>
         </div>
+    </div>
         <div class="spread-comment">
             <form action="/users/<%= post.author.id %>/post/<%= post.id %>/comment" method="POST">
                 <textarea required name="commentBody" id="commentBody" style="color: #fff" placeholder="Add a comment..."></textarea>
@@ -521,7 +621,6 @@
                 <input type="text" name="fromPost" value="<%= post.id %>" hidden="true">
             </form>
         </div>
-    </div>
 <% }) %>
 
 </div>

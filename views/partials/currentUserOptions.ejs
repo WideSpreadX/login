@@ -1,0 +1,13 @@
+<% if (!currentUser) { %>
+    <span></span>
+<% } else {  %>
+    <div class="user-bar">
+        <div class="user-option">
+            <a href="/users/logout"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+        <div class="user-option">
+            <a href="/users/update-profile/<%= currentUser.id %>"><i class="fas fa-user-cog"></i></a>
+            
+        </div>
+    </div>
+<% } %>

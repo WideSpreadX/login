@@ -1,284 +1,277 @@
 <style>
-  .create-account {
-    padding-top: 20px;
-    backdrop-filter: blur(2px);
+  input {
+    color: #fff;
   }
-  .create-account-btns {
-    padding: 0;
-  }
-  .login-input {
-    width: 90%;
-    margin-left: 5%;
-    box-shadow: none;
-    padding: 10px;
-  }
-  .login-button {
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 30px;
+  input::placeholder {
+    color: #fff;
   }
   @media screen and (min-width: 1200px) {
-    .widespread-header {
-      text-align: center;
-      padding: 0;
+        body {
+          background: #000;
+        }
+        .main-spread-menu-container {
+            box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
+        }
+        .both-forms {
+          width: 85vw;
+          display: inline-flex;
+          overflow: hidden;
+          position: fixed;
+          top: 85px;
+          padding-bottom: 85px;
+          right: 0;
+        }
+        .both-forms button {
+          margin-top: 40px;
+          background: rgba(0, 255, 0, 0.3);
+          backdrop-filter: blur(4px);
+          font-size: 1.5rem;
+          width: 50%;
+          margin-left: 0;
+          box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
+          border: solid 1px green;
+          border-radius: 8px;
+          padding: 10px;
+
+        }
+        .glass {
+          background: rgba(135, 206, 250, 0.3);
+          backdrop-filter: blur(2px);
+          padding-bottom: 20px;
+          border-top: groove 2px lightskyblue;
+          border-bottom: groove 2px lightskyblue;
+          box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
+        }
+        .login-form {
+          width: 30%;
+          position: relative;
+        }
+        .login-form form {
+          position: absolute;
+          top: 30px;
+          left: 0;
+          width: 100%;
+        }
+        .login-form label {
+          font-size: 0.7rem;
+          color: #fff;
+          text-align: center;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .login-form input {
+          right: 10px;
+          padding: 5px;
+          background: rgba(135, 206, 250, 0.3);
+          border: none;
+          border-top: groove 2px #fff;
+          border-bottom: groove 2px #fff;
+          outline: none;
+          margin-top: 5px;
+          border-radius: 0;
+          width: 100%;
+        }
+        /* WideSpread Logo */
+        .widespread-logo {
+          width: 40%;
+          min-width: 40%;
+          margin-left: 5%;
+          text-align: center;
+          padding-top: 150px;
+        }
+        .widespread-logo img {
+          width: 100%;
+          max-width: 100%;
+          min-width: 100%;
+          filter: drop-shadow( 0 0 15px  #000); 
+        }
+
+        .register-form {
+          margin-left: 5%;
+          width: 30%;
+          position: relative;  
+        }
+        .register-form form {
+          position: absolute;
+          top: 30px;
+          left: 0;
+          width: 100%;
+        }
+        .input-data {
+          width: 100%;
+        }
+        .register-form label {
+          font-size: 0.7rem;
+          color: #fff;
+          text-align: center;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .register-form input {
+          right: 10px;
+          padding: 5px;
+          background: rgba(135, 206, 250, 0.3);
+          border: none;
+          border-top: groove 2px #fff;
+          border-bottom: groove 2px #fff;
+          outline: none;
+          margin-top: 5px;
+          border-radius: 0;
+          width: 100%;
+        }
     }
-    .logo {
-      margin: 0;
-      width: 95%;
+
+
+@media screen and (max-width: 1199px) {
+        .main-spread-menu {
+            display: none;
+        }
     }
-    .logo h1 {
-      margin: 0;
-    }
-    .create-account {
-      width: 80%;
-      margin-left: 10%
-    }
-    .create-account img {
-      width: 300px;
-      height: 300px;
-    }
-    .create-account p {
-      color: #fff;
-    }
-    .create-account-btns {
-      background: transparent;
-      width: 80%;
-      margin-left: 10%;
-    }
-    .create-account-btns h1 {
-      margin-bottom: 30px;
-    }
-    .login-input {
-      box-shadow: none;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-      color: #fff;
-    }
-    .login-input:focus {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(2px);
-    }
-    .login-button {
-      box-shadow: none;
-      background: rgba(0, 128, 0, 0.3);
-      border-top: groove 2px green;
-      border-bottom: groove 2px green;
-    }
-    .alert-warning {
-      color: #fff;
-      background: rgba(255, 0, 0, 0.3);
-      border: none;
-      border-top: groove 2px red;
-      border-bottom: groove 2px red;
-      outline: none;
-      border-radius: 8px;
-    }
-  }
-  @media screen and (max-width: 1199px) {
-    .widespread-header {
-      text-align: center;
-      padding: 0;
-    }
-    .logo {
-      margin: 0;
-      width: 95%;
-    }
-    .logo h1 {
-      margin: 0;
-    }
-    .video-background {
-      background: #000;
-    }
-    .video-background video {
-      min-height: 100vh;
-      width: auto;
-    }
-    .create-account {
-      box-shadow: none;
-      margin-top: 60px;
-      padding-top: 0;
-      background: transparent;
-    }
-    .create-account img {
-      width: 300px;
-      height: 300px;
-    }
-    .create-account p {
-      color: #fff;
-    }
-    .create-account-btns {
-      background: transparent;
-      width: 100%;
-    }
-    .create-account-btns a {
+
+
+@media screen and (max-width: 500px) {
 
     }
-    .form-control {
 
-      transition: ease-in 0.3s;
-    }
-    .form-control:focus {
-      border-top: groove 2px #fff;
-      border-bottom: groove 2px #fff;
-      transition: ease-in 0.3s;
-    }
-    .login-input {
-      width: 100%;
-      box-shadow: none;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-      color: #fff;
-      margin-left: 0;
-      border-radius: 2px;
-      border: none;
-      outline: none;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-    }
-    .login-input::placeholder {
-      color: #fff;
-      text-shadow: 0 0 2px lightskyblue;
-    }
-    .login-input:focus {
-      color: #fff;
-      background: rgba(135, 206, 250, 0.3);
-      box-shadow: 0 0 3px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(2px);
-    }
-    .login-button {
-      box-shadow: inset 0 0 8px #fff;
-      background: rgba(0, 128, 0, 0.3);
-      border-bottom: groove 2px green;
-      border-left: solid 1px green;
-      border-right: solid 1px green;
-      margin-top: -2px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      width: 80%;
-      margin-left: 0;
-      position: relative;
-      z-index: 8;
-      padding: 10px;
-      color: #fff;
-      transition: ease-in 0.3s;
-    }
-    .login-button:active {
-      background: rgba(0, 128, 0, 0.15);
-      outline: none;
-      border: none;
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.75);
-      color: #ccc;
-      animation-name: click;
-      animation-duration: 1s;
-    }
-    .alert-warning {
-      color: #fff;
-      background: rgba(255, 0, 0, 0.3);
-      border: none;
-      border-top: groove 2px red;
-      border-bottom: groove 2px red;
-      outline: none;
-      border-radius: 8px;
-    }
-    .spreadlink a {
-      background: none;
-      border: none;
-    }
-    .glass {
-      border-radius: 8px;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-      background: rgba(255, 255, 255, 0.3);
-      transition: ease-in 0.5s;
-      padding-bottom: 10px;
-      box-shadow: 0 6px 4px rgba(0, 0, 0, 0.63);
-      position: relative;
-      z-index: 12;
-      padding-top: 0;
-    }
-    .glass h5 {
-      background: rgba(0, 0, 0, 0.3);
-      border-bottom: groove 2px lightskyblue;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      padding: 10px;
-    }
-    .register-link {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(2px);
-      text-align: center;
-      margin-top: 50px;
-      padding: 20px;
-      border-radius: 2px;
-      border-top: groove 2px lightskyblue;
-      border-bottom: groove 2px lightskyblue;
-    }
-    .register-link p {
-      color: #fff;
-      font-size: 1.2rem;
-      margin-bottom: 0;
-    }
-    @keyframes click {
-  0%   {transform: rotateX(0deg);}
-  40%  {transform: rotateX(30deg);}
-  100%   {transform: rotateX(10deg);}
-  }
-}
 </style>
-<div class="inner-container" style="height: 100vh;">
-  <div class="video-background">
-    <video autoplay muted loop id="vidBackground">
-        <source src="/videos/space-particles_1a1a1a.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <!-- Space Particles - Video by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Pixabay</a> -->
-        <!-- Earth Particles - Video by <a href="https://pixabay.com/users/llensgraf-2065862/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Leif Lensgraf</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Pixabay</a> -->
+
+
+<!-- Background Video -->
+
+<div class="video-background">
+  <video autoplay muted loop id="vidBackground">
+    <source src="/videos/space-particles_1a1a1a.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <!-- Space Particles - Video by <a href="https://pixabay.com/users/tommyvideo-3092371/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Tomislav Jakupec</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5200">Pixabay</a> -->
+    <!-- Earth Particles - Video by <a href="https://pixabay.com/users/llensgraf-2065862/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Leif Lensgraf</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=17235">Pixabay</a> -->
 </div>
-  <div class="row mt-5">
-    <div class="create-account">
-        <div class="text-center">
-            <div class="create-account-btns">
-            
-              <% include('./partials/messages') %>
-              <form action="/users/login" method="POST">
-                <div class="glass">
-                  <h5 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h5>
 
-                  <div class="form-group">
-                    <label for="email" style="color: #fff">Email</label>
-                    <input
-                    type="email"
-                  id="email"
-                  name="email"
-                  class="form-control login-input"
-                  placeholder="Enter your email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label style="color: #fff" for="password">Password</label>
-                  <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="form-control login-input"
-                  placeholder="Enter your password"
-                  />
-                </div>
+
+<!-- Main SpreadMenu -->
+
+<div class="main-spread-menu-container">
+  <%- include('./partials/mainSpreadMenu') %>
+</div>
+
+
+
+<!-- Login/Register Forms -->
+
+<div class="both-forms">
+
+  <!-- Login Form -->
+
+  <div class="login-form">   
+    <%- include('./partials/messages') %>
+    <form action="/users/login" method="POST">
+      <div class="glass" style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;">
+        <h5 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h5>
+        <div class="input-group">
+          <label for="email" style="color: #fff">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="input-control login-input"
+            placeholder="Enter your email"
+            />
         </div>
-          <button type="submit" class="login-button">Login</button>
-        </form>
-
+        <div class="form-group">
+          <label style="color: #fff" for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            />
+        </div>
       </div>
-    </div>
-      </div>
-    </div>
-    <div class="register-link">
-      <p>
-        No Account? <a class="spreadlink" style="color: lightskyblue; background: none; border: none;" href="/users/register">Register</a>
-      </p>
-    </div>
+      <button type="submit" style="border-radius: 0; border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Login</button>
+    </form>
   </div>
+
+
+  <!-- WideSpread Logo -->
+
+  <div class="widespread-logo">
+    <img src="/images/system/widespread_logo_1d.png" alt="WideSpread Logo">
+  </div>
+
+
+  <!-- Register Form -->
+
+  <div class="register-form">
+    <%- include ('./partials/messages') %>
+    <form action="/users/register" method="POST">
+      <div class="glass" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-left: none;">
+      <h5><i class="fas fa-user-plus"></i> Register</h5>
+        <div class="input-group">
+            <label for="name" style="color: #fff"> First Name</label>
+            <input
+            type="name"
+            id="fname"
+            name="fname"
+            class="input-control login-input"
+            placeholder="Enter First Name"
+            value="<%= typeof name != 'undefined' ? fname : '' %>"
+            />
+        </div>
+        <div class="input-group">
+          <div class="input-data">
+            <label for="name" style="color: #fff"> Last Name</label>
+          </div>
+            <input
+            type="name"
+            id="lname"
+            name="lname"
+            class="input-control login-input"
+            placeholder="Enter Last Name"
+            value="<%= typeof name != 'undefined' ? lname : '' %>"
+            />
+        </div>
+        <div class="input-group">
+          <div class="input-data">
+            <label for="email" style="color: #fff">Email</label>
+            <input
+            type="email"
+            id="email"
+            name="email"
+            class="input-control login-input"
+            placeholder="Enter Email"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+            />
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-data">
+            <label for="password" style="color: #fff">Password</label>
+            <input
+            type="password"
+            id="password"
+            name="password"
+            class="input-control login-input"
+            placeholder="Create Password"
+            value="<%= typeof password != 'undefined' ? password : '' %>"
+            />
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="input-data">
+            <label for="password2" style="color: #fff">Confirm Password</label>
+            <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="input-control login-input"
+            placeholder="Confirm Password"
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+            />
+          </div>
+        </div>
+      </div>
+      <button type="submit" style="border-radius: 0; border-top-left-radius: 8px; border-bottom-left-radius: 8px; margin-left: 50%; border-right: none;">Register</button>
+    </form>
+  </div>
+
+</div>

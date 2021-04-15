@@ -57,7 +57,6 @@ router.post('/add-new-business', ensureAuthenticated, (req, res) => {
     const companyId = req.params.companyId;
     const company = await Company.findById(companyId);
     const subPages = await Subpage.find({company_site: {$eq: companyId} })
-    Company.findById(companyId)
     res.render('business-home', {currentPageTitle: 'Business', company, subPages});
 })
 

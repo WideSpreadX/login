@@ -10,6 +10,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const fs = require('fs');
 const User = require('../models/User');
+const Link = require('../models/Link');
 const Post = require('../models/Post');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
@@ -27,7 +28,8 @@ const axios = require('axios');
 
 // Welcome Page
 router.get('/', (req, res) => {
-    res.render('welcome');
+  const currentUser = null
+    res.render('welcome', {currentUser });
 });
 
 const db = require('../config/keys').MongoURI;
@@ -66,11 +68,12 @@ conn.once('open', () => {
   
   const upload = multer({ storage });
 
-
-
-// Dashboard
-    router.get('/dashboard', ensureAuthenticated, async (req, res) => {
-        const id = req.user._id;
+  
+  // Dashboard
+  router.get('/dashboard', ensureAuthenticated, async (req, res) => {
+    const id = req.user._id;
+    const currentUser = req.user._id;
+        
         const friends = req.user.friends;
         const posts = await Post.find({ author: { $eq: id } }).sort({createdAt: 'desc'}).populate(
           {
@@ -171,6 +174,7 @@ conn.once('open', () => {
                 id: req.user.id,
                 posts,
                 questions,
+                currentUser,
                 polls,
                 videos,
                 audioTracks,
@@ -437,5 +441,13 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
         .then(profile => 
           res.render('socialspread-home', {currentPageTitle: 'SocialSpread', profile, userFriends, friendIds, avatars})
         )
-  })
+});
+
+
+
+
+
+
+
+
 module.exports = router;

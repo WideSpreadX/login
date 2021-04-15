@@ -19,6 +19,7 @@ const InSpread = require('../models/InSpread');
 const Poll = require('../models/Poll');
 const Course = require('../models/Course');
 const Item = require('../models/Item');
+const Link = require('../models/Link');
 const UserBackgroundImage = require('../models/UserBackgroundImage');
 const Class = require('../models/Class');
 const LearningPoint = require('../models/LearningPoint');
@@ -81,5 +82,41 @@ router.get('/users/:userId/course/:courseId', ensureAuthenticated, async (req, r
     res.render('admin-course', {adminUser, course, classes, learningPoint});
     
 });
+
+
+/* Add New Link */
+router.get('/links-home', async (req, res) => {
+    const allLinks = await Link.find();
+    res.render('./admin/links', {allLinks});
+});
+
+router.post('/new-link', ensureAuthenticated, (req, res) => {
+    const newLink = new Link({
+      spread_link: req.body.spreadLink,
+      name: req.body.name,
+      zone: req.body.zone,
+      url: req.body.url,
+      age_resrictions: req.body.ageRestrictins,
+      help_points: {
+        title: req.body.helpPointTitle,
+        description: req.body.helpPointDescription,
+        body: req.body.helpPointBody,
+        tags: {
+          
+        }
+      },
+      primary: req.body.primary,
+      secondary: req.body.secondary,
+      helpers: req.body.helpers
+    })
+    newLink.save()
+  
+    res.redirect('/dashboard');
+  });
+  
+  
+  
+  /* Edit Link */
+
 
 module.exports = router;

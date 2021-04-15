@@ -32,7 +32,27 @@
         text-shadow: 0 0 3px lightskyblue;
         transition: ease-in 0.2s;
     }
+    @media screen and (max-width: 2560px) {
+        .company-site-container {
+            width: 100%;
 
+        }
+        .background-image {
+            width: 100%;
+            min-width: 100%;
+            height: 100%;
+            min-hight: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .background-image img {
+            width: 100%;
+            height: 100%;
+        }
+        
+    }
     @media screen and (max-width: 500px) {
         .spread-break hr {
     background: lightskyblue;
@@ -186,13 +206,15 @@
             text-align: right;
         }
     }
+
+    
 </style>
 <%- include('partials/mainHeaderSiteMenu') %>
 <div class="page-title">
     <h1><%= currentPageTitle %></h1>
 </div>
 <div class="main-header-page-menu-container">
-    <div id="mainHeaderPageMenuu">
+    <div id="mainHeaderPageMenu">
         <div class="main-header-page-menu-inner">
             <a href="/business">Business Home</a>
             <a href="/business/your-desk">Your Desk</a>

@@ -1,3 +1,18 @@
+    @media screen and (max-width: 2560px) {
+        .page-title {
+            position: fixed;
+            top: 20px;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+            left: 30%;
+            width: 40%;
+            z-index: 999999;
+            text-align: center;
+        }
+    }
+
+
+
+    @media screen and (max-width: 500px) {
 /* Site Container */
 .container {
     width: 100vw;
@@ -109,6 +124,21 @@
 }
  */
 
+
+    /* Background Images */
+.user-background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -1000;
+}
+.user-background-image img {
+    width: 100%;
+    min-height: 100vh;
+}
 /* Page Titles */
 .page-title {
     position: relative;
@@ -116,4 +146,6 @@
     margin-left: 0;
     text-align: center;
     padding: 20px;
+    left: 0;
 }
+    }

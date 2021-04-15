@@ -1,0 +1,54 @@
+<style>
+    .admin-list {
+        min-height: 300px;
+        width: 100%;
+        background: lime;
+    }
+</style>
+
+
+
+
+<!-- Main SpreadMenu -->
+
+<div class="main-spread-menu-container">
+    <%- include('../partials/mainSpreadMenu') %>
+</div>
+
+
+<!-- ADMIN Form -->
+
+<div class="admin-form">
+    <form action="/admin/new-link" method="post">
+        <input type="text" name="spreadLink" placeholder="Spread Link">
+        <input type="text" name="name" placeholder="Name of Link">
+        <input type="number" name="zone" placeholder="Zone">
+        <input type="string" name="url" placeholder="URL">
+        <input type="number" name="ageRestrictions" placeholder="Youngest Age Allowed">
+        <input type="text" name="helpPointTitle" placeholder="Title">
+        <input type="text" name="helpPointDescription" placeholder="Description">
+        <input type="text" name="helpPointBody" placeholder="">
+        <textarea name="helpPointBody" placeholder="Add help point..."></textarea>
+        <input type="text" name="primary" placeholder="Primary Tag">
+        <input type="text" name="secondary" placeholder="Secondary Tag">
+        <input type="text" name="helpers" placeholder="Helper Tags (seperated by commas with or without a space)">
+        <button type="submit">Add Link</button>
+
+    </form>
+</div>
+
+  
+  
+<!-- ADMIN List -->
+
+<div class="admin-list">
+    <% allLinks.forEach(function(link) { %>
+        <div class="admin-list-item">
+            <div class="item-data">
+                <h1><small>zone</small><%= link.zone %></h1>
+                <h6><%= link.name %></h6>
+            </div>
+            <p><a href="https://widespread-beta.herokuapp.com<%= link.url %>"><%= link.url %></a></p>
+        </div>
+    <% }) %>
+</div>
