@@ -1,2826 +1,1977 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    
-<style>
 
-    /* DESKTOP STYLE */
-
-   
-
-
-/* CELL PHONE STYLE */
-@media screen and (max-width: 500px) {
-    .main-header-page-menu-container {
-        backdrop-filter: blur(2px);
-        border-left: groove 1px rgba(135, 206, 250, 0.555);
-        border-right: groove 1px rgba(135, 206, 250, 0.555);
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        max-height: 40px;
-        width: 100vw;
-        
-    }
-.spread-break hr {
-    background: lightskyblue;
-    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
-    width: 80%;
-    margin-left: 10%;
-    border-radius: 50%;
-    margin-top: 40px;
-    margin-bottom: 30px;
-}
-.video-feature {
-    width: 100%;
-    max-width: 100%;
-    max-height: 500px;
-}
-.video-feature iframe {
-    max-height: 500px;
-    width: 100%;
-    border-radius: 8px;
-}
-.video-feature p {
-    text-align: center;
-    width: 100%;
-    color: #fff;
-}
-.video-feature a {
-    text-align: center;
-    width: 100%;
-    color: #fff;
-}
-
-
-.welcome-user {
-    background: rgba(135, 206, 250, 0.3);
-    border-top: groove 2px #fff;
-    border-bottom: groove 2px #fff;
-    backdrop-filter: blur(2px);
-    padding: 5px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.5);
-}
-.welcome-user h5 {
-    color: #fff;
-    padding-bottom: 0;
-}
-.user-profile-image-form {
-    max-width: 200px;
-}
-.user-avatar {
-    max-width: 220px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    overflow: hidden;
-    padding: 20px;
-    padding-bottom: 0;
-    backdrop-filter: blur(2px);
-    box-shadow: 0 -2px 2px 4px rgba(0, 0, 0, 0.5);
-    border-top: groove 2px lightskyblue;
-}
-.user-avatar img {
-    width: 200px;
-    margin: -10px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    box-shadow: 0 -2px 2px 2px rgba(0, 0, 0, 0.5);
-
-}
-
-.route {
-    width: 95%;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.3);
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-
-}
-.route a {
-
-}
-}
-@media screen and (max-width: 1199px) {
-
-    
-   
-    .user-background-image {
-        z-index: -800;
-    }
-    .user-background-color {
-        z-index: -801;
-    }
-    .user-profile-image-form {
-        max-width: 85vw;
-        margin-left: 2.5vw;
-        display: inline-flex;
-        position: relative;
-        background: rgba(0, 0, 0, 0.3);
-        border-top: groove 1px rgba(135, 206, 250, 0.5);
-        border-bottom: groove 1px rgba(135, 206, 250, 0.5);
-        backdrop-filter: blur(2px);
-        padding: 10px;
-        color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.514);
-    }
-    .custom-file-profile-image {
-        width: 55vw;
-        border: none;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.3);
-    }
-    .custom-file-profile-image input {
-    }
-    .custom-file-profile-image {
-        width: 55vw;
-        
-    }
-    .custom-file-profile-image-button {
-        width: 20vw;
-        position: absolute;
-        right: 12px;
-        top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        background: rgba(0, 128, 0, 0.3);
-        backdrop-filter: blur(4px);
-        outline: none;
-        border: none;
-        border-top: groove 2px green;
-        border-bottom: groove 2px green;
-        color: #fff;
-    }
-    .user-profile-routes {
-        background: rgba(0, 0, 0, 0.3);
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        backdrop-filter: blur(2px);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-        display: inline-flex;
-    }
-    .route {
-        width: 90%;
-        margin-left: 5%;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.3);
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-        text-align: center;
-
-    }
-    .route:first-of-type {
-        margin-left: 0;
-    }
-    .route a {
-        width: 100%;
-        background: none;
-        border: none;
-        color: #fff;
-    }
-    .user-profile-routes a {
-        width: 100%;
-        border-radius: 8px;
-        margin-bottom: 0;
-
-
-    }
-    .cont_container {
-        border-left: groove 1px lightskyblue;
-        border-right: groove 1px lightskyblue;
-        border-radius: 8px;
-        background: rgba(0, 0, 0, 0.3);
-        margin-bottom: 20px;
-    }
-    .user-images h1 {
-        text-align: center;
-        padding-top: 20px;
-    }
-    .user-images {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-    padding: 10px;
-    width: 300px;
-    min-height: 100px;
-    border-top: groove 2px lightskyblue;
-    border-bottom: groove 2px lightskyblue;
-    position: relative;
-}
-.user-images img {
-    border-radius: 8px;
-    max-width: 100%;
-}
-.user-images-info {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 280px;
-    height: 50px;
-    padding: 8px;
-    margin-left: 10px;
-    border-top: groove 2px lightskyblue;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.user-images-info p {
-    color: #fff;
-    text-align: center;
-}
-    .your-friends {
-        text-align: center;
-        background: rgba(255, 255, 255, 0.301);
-        backdrop-filter: blur(2px);  
-        padding: 10px;
-        padding-top: 15px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-    }
-    .your-friends a {
-        color: lightskyblue;
-    }
-    .find-new-friends {
-        position: relative;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
-        border-left: groove 1px lightskyblue;
-        border-right: groove 1px lightskyblue;
-    }
-    .find-new-friends {
-        min-height: 450px;
-    }
-    .new-friend {
-        position: relative;
-        width: 300px;
-        height: 400px;
-        min-height: 400px;
-        margin-left: 20px;
-        border-radius: 15px;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-    }
-
-    .possible-friend {
-        margin-top: -140px;
-        min-width: 300px;
-        box-shadow: 0 8px rgba(0, 0, 0, 0.445);
-        background: rgba(255, 255, 255, 0.37);
-        z-index: 10;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-    }
-    .possible-friend p {
-        color: #fff;
-    }
-    .possible-friend-background {
-        overflow: hidden;
-        border-radius: 15px;
-    }
-    .possible-friend-image {
-        position: absolute;
-        z-index: 9;
-        top: 0;
-        left: 0;
-        width: 300px;
-        min-height: 100%;
-        border-radius: 15px;
-    }
-    .possible-friend-image img {
-        width: 300px;
-        min-height: 100%;
-        border-radius: 15px;
-    }
-    .friend-container {
-        margin-top: 20px;
-    }
-    .add-friend-container {
-        display: inline-flex;
-    }
-    .add-friend button {
-        border-radius: 50%;
-        background: rgba(0, 128, 0, 0.5);
-        width: 40px;
-        height: 40px;
-        margin-right: 5px;
-        text-align: center;
-        color: #fff;
-    }
-    .remove-friend button {
-        border-radius: 50%;
-        background: red;
-        width: 40px;
-        height: 40px;
-        margin-left: 5px;
-        text-align: center;
-        color: #fff;
-    }
-    .see-albums {
-        width: 80%;
-        margin: 0 auto;
-        padding: 10px;
-        padding-top: 20px;
-        margin-bottom: 20px;
-        background:rgba(255, 255, 255, 0.404);
-        backdrop-filter: blur(2px);
-        text-align: center;
-        border-radius: 8px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-    }
-    .see-albums p {
-        color: #fff;
-    }
-    .inspread-container h5 {
-        text-align: center;
-    margin-bottom: 30px;
-    }
-    .inspreads {
-        max-height: 500px;
-    overflow-y: scroll;
-}
-
-.inspread {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
-.inspread-from {
-    display: inline-flex;
-}
-.inspread-from-image {
-    background: rgba(40, 40, 40, 0.3);
-    border: groove 2px lightskyblue;
-    border-right: solid 1px lightskyblue;
-    border-radius: 15px;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.452);
-    padding-left: 10px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    display: flex;
-    align-items: center;
-  justify-content: center;
-}
-.inspread-from-image img {
-    display: inline-flex;
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
-}
-.inspread-body {
-    width: 100%;
-}
-.inspread-body h4 {
-    color: lightskyblue;
-    padding: 10px;
-    width: 100%;
-
-}
-.inspread-body p {
-    color: #fff;
-    padding-left: 20px;
-    padding-bottom: 0;
-}
-.inspread-body small {
-    color: #ccc;
-    padding: 10px;
-    padding-left: 20px;
-}
-.tab {
-  overflow: hidden;
-  overflow-x: scroll;
-  width: 100%;
-  border: 1px solid #ccc;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
-  border-top-right-radius: 8px;
-  display: inline-flex;
-}
-
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  padding-bottom: 0;
-  padding-top: 20px;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
-
-}
-.tabcontent h5 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-.spread-post {
-    box-shadow: none;
-    border: none;
+body, html {
+     background: rgba(0, 0, 0, 0.6);
     padding: 0;
-    padding-top: 10px;
     margin: 0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-
-}
-.spread-post h5 {
-    text-align: center;
-}
-.spread-post textarea {
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-.spread-post input {
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 10px;
-
-}
-.spread-post select {
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 8px;
-    padding: 5px;
-    margin-bottom: 20px;
-}
-.spread-post select:active {
-    max-height: 50px;
-    overflow-y: scroll;
-
-}
-.spread-post p {
-    text-align: center;
-    margin-bottom: 5px;
-}
-.boolean-options {
-    display: inline-flex;
-    width: 100%;
-}
-.boolean-option {
-    width: 50%;
-    text-align: center;
-}
-.spread-file input {
-    width: 90%;
-    outline: none;
-    border: none;
-    background: transparent;
-    margin: 5px;
-    border-radius: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: ease-in 0.5s;
-    color: #fff;
-    text-shadow: 0 0 2px #000;
-    font-size: 1rem;
-}
-#userVideo {
-    width: 90%;
-    margin-left: 5%;
-}
-
-.button {
-    width: 80%;
-    margin-left: 10%;
-    background: rgba(0, 128, 0, 0.5);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: groove 2px green;
-    border-bottom: none;
-    outline: none;
-    color: #fff;
-}
-.spreaded {
-    max-height: 400px;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    min-width: 100vw;
+    max-width: 100vw;
     overflow-x: hidden;
-    overflow-y: scroll;
-    width: 100%;
-    border-top: inset 2px #000;
 }
-.new-spread {
-    border-top: groove 2px #000;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.527);
+body {
+    min-height: 100vh;
 }
-.post-container {
-    background: rgba(255, 255, 255, 0.3);
-    width: 90%;
-    margin-left: 0;
-    padding: 0;
-    border: none;
-    border-radius: 15px;
-    border-bottom: groove 2px lightskyblue;
-    border-top: groove 2px lightskyblue;
-    box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 0.75), inset 0 0 8px 3px rgba(255, 255, 255, 0.5);
+.not-done {
+    background: lime;
 }
-.post-profile-image {
-    width: 100%;
-    height: 160px;
-    text-align: center;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.post-profile-image img {
-    width: 100px;
-    height: 100%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.post-author {
-    backdrop-filter: blur(4px);
-    margin-top: 20px;
-    text-align: center;
-    border: groove 2px lightskyblue;
-    border-left: none;
-    border-right: none;
-    padding-top: 10px;
-    background: rgba(255, 255, 255, 0.85);
-}
-.post-body {
-    padding: 5px;
-    color: #fff;
-}
-.post-comments {
-    position: relative;
-    background: rgba(150, 150, 150, 0.3);
-    margin-top: -20px;
-    margin-bottom: 40px;
-    width: 80%;
-    padding-bottom: 5;
-    margin-left: 5%;
-    border-bottom: groove 2px lightskyblue;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.post-comments h4 {
-    text-align: center;
-    padding: 10px;
-    padding-top: 15px;
-    text-shadow: 0 0 2px #fff;
-}
-
-.post-comments p {
-    color: #fff;
-}
-.post-comment {
+.to-do {
+    box-shadow: inset 0 0 10px lime, 0 0 10px lime;
+    padding: 20px;
     margin-bottom: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    padding-bottom: 10px;
-    border-bottom: groove 2px lightskyblue;
-    border-top: groove 2px lightskyblue;
-    border-radius: 3px;
-    box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 0.75), inset 0 0 8px 3px rgba(255, 255, 255, 0.5);
-}
-.comment-layout {
-    display: inline-flex;
-}
-.comment-left {
-    width: 80px;
-    padding-top: 10px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.comment-right {
-    width: fit-content;
-}
-.comment-author-image {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.comment-author-image img {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.comment-author-name {
-    padding: 10px;
-    display: block;
-    width: 100%;
-}
-.comment-author-name h6 {
-    color: rgba(255, 255, 255, 0.884);
-    text-shadow: 0 0 1px lightskyblue;
-    padding-bottom: 3px;
-    border-bottom: solid 1px lightskyblue;
-}
-.comment-body {
-    padding: 8px;
-}
-
-.public-article {
-}
-.article {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(4px);
     border-radius: 15px;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 90%;
-    margin-left: 5%;
-    padding-top: 20px;
-    border-top: groove 2px lightskyblue;
-    border-bottom: groove 2px lightskyblue;
-    box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 0.75), inset 0 0 8px 3px rgba(255, 255, 255, 0.5);
 }
-.article h3, .article h5 {
-    padding: 5px;
-}
-.article h3 {
-    color: lightskyblue;
-}
-.article h5 {
-    color: #ccc;
-}
-.article p {
-    text-align: left;
-    padding: 15px;
-    color: #fff;
-}
-.article small {
-    color: #ccc;
-}
-.article-more {
-    background: rgba(0, 128, 0, 0.5);
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 20px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: groove 2px green;
-    border-bottom: none;
-}
-.article-more a {
-    color: #fff;
-    padding: 10px;
-
-}
-.article hr {
-    width: 80%;
-    margin-left: 10%;
-    background: lightskyblue;
-}
-.question-container {
-    background: rgba(255, 255, 255, 0.3);
-    margin-top: 10px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-.question {
-    padding: 10px;
-}
-.question-category {
-    text-align: center;
-    color: lightskyblue;
-}
-.question-stats {
-    padding: 5px;
-}
-.question-resolved p {
-    color: #fff;
-}
-.question-page {
-    text-align: center;
-    padding-bottom: 10px;
-}
-.question-page a {
-    text-align: center;
-    color: #fff;
-    padding: 10px;
-    background: rgba(0, 128, 0, 0.5);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: groove 2px green;
-    border-bottom: none;
-
-}
-.poll-container {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-.poll-question h5 {
-    color: #fff;
-    padding: 10px;
-}
-.poll-reply-options {
-    background: rgba(0, 0, 0, 0.3);
-    display: inline-flex;
-    width: 100%;
-    padding-top: 20px;
-}
-.poll-option {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
+.to-do-data {
+    color: lime;
+    box-shadow: inset 0 0 10px lime, 0 0 10px lime;
+    padding: 20px;
     margin-bottom: 10px;
-    border-top: groove 2px lightskyblue;
-    border-bottom: groove 2px lightskyblue;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #fff;
-    border-radius: 8px;
-    width: 45%;
-    margin-left: 2.5%;
+    border-radius: 15px;
 }
-.weather {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-}
-.weather h5 {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 10px;
+
+.input-group input {
     color: #000;
-    margin-bottom: 0;
-    padding-bottom: 0;
 }
-.weather h6 {
-    color:rgba(0, 0, 0, 0.5);
-    text-shadow: 0 0 1px lightskyblue;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    text-align: center;
-    padding: 5px;
-    padding-bottom: 10px;
-    border-bottom: groove 2px lightskyblue;
-}
-.weather-data {
-    display: inline-flex;
-    width: 100%;
-}
-.weather-info {
-    width: 80%;
-    padding-bottom: 10px;
-}
-.weather-info p {
-    padding: 5px;
-    padding-left: 15px;
-    margin-bottom: 0;
-}
-.weather-icons {
-    width: 20%;
-}
-.weather-icons img {
-    width: 90%;
-    filter: drop-shadow( 0 0 5px lightskyblue); 
-
-}
-.weather-link p {
-    background: rgba(0, 128, 0, 0.5);
-    width: 80%;
-    margin-left: 10%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border: groove 2px green;
-    border-top: none;
-    text-align: center;
-    padding: 5px;
-}
-.weather-link a {
-    color: #fff;
-}
-.forecast-container {
-    width: 100%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    background:rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-top: groove 2px lightskyblue;
-}
-.forecast-container h5 {
-    border-radius: 0;
-    padding-bottom: 10px;
-}
-.weather-forecast {
-    display: inline-flex;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-top: 10px;
-    border-radius: 8px;
-    border-left: groove 1px lightskyblue;
-    border-right: groove 1px lightskyblue;
-    overflow-x: scroll;
-    background:rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(2px);
-}
-.weather-forecast-day {
-    width: 150px;
-    min-width: 150px;
-    margin-right: 20px;
-    padding-right: 20px;
-    border-right: solid 1px #ccc;
-    text-align: center;
-    color: #fff; 
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding-top: 10px;
-}
-.weather-forecast-day:last-of-type {
-    border-right: none;
-}
-.forecast-day {
-    
-}
-/* Go from zero to full opacity */
-@keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-}
-@media screen and (max-width: 500px) {
-    .spread-menu {
-        
-    }
-    .spread-menu input {position: absolute; display: none}
-.spread-menu button {
-    background: transparent;
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
-* {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.menu {
-  margin: 0 auto;
-  position: absolute;
-  top: 10px;
-  right: 60px;
-  margin-top: 0;
-  z-index: 3001;
-  box-shadow: 0 0 4px 4px 2px rgba(255, 255, 255, 0.75);
-}
-.btn::after {
-    transform: translateX(-75px) translateY(75px);
-}
-.btn {
-    z-index: 3002;
-  width: 40px;
-  max-width: 40px;
-  height: 40px;
-  max-height: 40px;
-  border-radius: 50%;
-  position: absolute;
-  overflow: hidden;
-  cursor: pointer;
-  background: rgba(135, 206, 250, 0.3);
-  backdrop-filter: blur(2px);
-  border: groove 1px rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.5), inset 0 0 8px lightskyblue;
-}
-
-.material-icons.md-36 { 
-    font-size: 18px;
-    color: #fff;
-
-}
-
-.btn {
-  font-size: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  
-  
-  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.btn:not(:first-child) {
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  z-index: -2;
-  transform: translateX(-85px) translateY(85px);
-  -webkit-transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
-  transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
-}
-.btn i {
-    color: #fff;
-    font-size: 1.2rem;
-}
-.btn:nth-child(2) {top:0px;-webkit-transition-delay: 0s;transition-delay: 0s}
-.btn:nth-child(3) {top:0px;left:0px;-webkit-transition-delay: 0.1s;transition-delay: 0.1s}
-.btn:nth-child(4) {left:0px;;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
-.btn:nth-child(5) {top:0px;left:0px;-webkit-transition-delay: 0.3s;transition-delay: 0.3s}
-.btn:nth-child(6) {top:0px;-webkit-transition-delay: 0.4s;transition-delay: 0.4s}
-.btn:nth-child(7) {top:0px;left:0px;-webkit-transition-delay: 0.5s;transition-delay: 0.5s}
-.btn:nth-child(8) {left:0px;-webkit-transition-delay: 0.6s;transition-delay: 0.6s}
-.btn:nth-child(9) {top:0px;left:0px;-webkit-transition-delay: 0.7s;transition-delay: 0.7s}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(2) {
-  top:-70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(3) {
-  top:-40px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(4) {
-  left:70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(5) {
-  top :50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(6) {
-  top:70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(7) {
-  top:50px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(8) {
-  left:-70px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-input.toggle:checked ~ #show-menu .btn:nth-child(9) {
-  top:-40px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-}
-
-.menuBtn, .closeBtn {
-  position: absolute;
-  transition: all 0.3s ease;
-}
-
-.closeBtn {
-  transform: translateY(50px);
-  opacity: 0;
-}
-
-input#toggle:checked ~ #show-menu .btn .menuBtn {
-  transform: translateY(-50px);
-  opacity: 0;
-}
-
-input#toggle:checked ~ #show-menu .btn .closeBtn {
-  transform: translateY(0px);
-  opacity: 1;
-}
-    .user-background-image {
-        z-index: -800;
-    }
-    .user-background-color {
-        z-index: -801;
-    }
-
-    .dashboard-container {
-        width: 100%;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.3);
-    border-top: groove 2px #fff;
-    border-bottom: groove 2px #fff;
-    backdrop-filter: blur(2px);
-    padding: 5px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.5);
-        
-    }
-    .dashboard-container h2 {
-        padding: 15px;
-        margin-top: 10px;
-        color: #fff;
-    }
-    .dashboard-container p {
-        padding: 10px;
-        color: #fff;
-    }
-    .dashboard-container small {
-        color: lightskyblue;
-    }
-    .dashboard-container p a {
-        border: none;
-        padding: 0;
-        background: none;
-        width: none;
-        border-radius: 0;
-        margin: 0;
-        border: solid 1px rgba(255, 255, 255, 0.644);
-        padding: 10px;
-        background: rgba(204, 204, 204, 0.123);
-        backdrop-filter: blur(1px);
-        border-radius: 5px;
-        font-size: 1.3rem;
-        color: rgba(23, 38, 88, 0.8);
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.452);
-    }
-    .dashboard-container p a:hover {
-        color: #fff;
-    }
-    .dashboard-container a {
-        width: 100%;
-        padding: 10px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-        border-radius: 8px;
-        background: rgba(0, 0, 0, 0.3);
-        margin-bottom: 10px;
-    }
-    .dashboard-container video {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-
-    .user-profile-image-form {
-        max-width: 85vw;
-        margin-left: 2.5vw;
-        display: inline-flex;
-        position: relative;
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(2px);
-        padding: 10px;
-        color: #fff;
-        border-radius: 8px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-    }
-    .custom-file-profile-image {
-        width: 55vw;
-        border: none;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.3);
-    }
-    .custom-file-profile-image input {
-    }
-    .custom-file-profile-image {
-        width: 55vw;
-        
-    }
-    .custom-file-profile-image-button {
-        width: 20vw;
-        position: absolute;
-        right: 12px;
-        top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-        background: rgba(0, 128, 0, 0.3);
-        backdrop-filter: blur(4px);
-        outline: none;
-        border: none;
-        border-top: groove 2px green;
-        border-bottom: groove 2px green;
-        color: #fff;
-    }
-    .user-profile-routes {
-        background: rgba(0, 0, 0, 0.3);
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-    }
-    .user-profile-routes a {
-        margin-left: 5px;
-        width: 100%;
-        border-radius: 8px;
-    }
-    .cont_container {
-        border-left: groove 1px lightskyblue;
-        border-right: groove 1px lightskyblue;
-        border-radius: 8px;
-        background: rgba(0, 0, 0, 0.3);
-        margin-bottom: 20px;
-    }
-    .user-images h1 {
-        text-align: center;
-        padding-top: 20px;
-    }
-    .user-images {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-radius: 8px;
-    padding: 10px;
-    width: 300px;
-    min-height: 100px;
-    border-top: groove 2px lightskyblue;
-    border-bottom: groove 2px lightskyblue;
-    position: relative;
-}
-.user-images img {
-    border-radius: 8px;
-    max-width: 100%;
-}
-.user-images-info {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 280px;
-    height: 50px;
-    padding: 8px;
-    margin-left: 10px;
-    border-top: groove 2px lightskyblue;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.user-images-info p {
-    color: #fff;
-    text-align: center;
-}
-    .your-friends {
-        text-align: center;
-        background: rgba(255, 255, 255, 0.301);
-        backdrop-filter: blur(2px);  
-        padding: 10px;
-        padding-top: 15px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-    }
-    .your-friends a {
-        color: lightskyblue;
-    }
-    .find-new-friends {
-        position: relative;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
-        border-left: groove 1px lightskyblue;
-        border-right: groove 1px lightskyblue;
-    }
-    .find-new-friends {
-        min-height: 450px;
-    }
-    .new-friend {
-        position: relative;
-        width: 300px;
-        height: 400px;
-        min-height: 400px;
-        margin-left: 20px;
-        border-radius: 15px;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-    }
-
-    .possible-friend {
-        margin-top: -140px;
-        min-width: 300px;
-        box-shadow: 0 8px rgba(0, 0, 0, 0.445);
-        background: rgba(255, 255, 255, 0.37);
-        z-index: 10;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-    }
-    .possible-friend p {
-        color: #fff;
-    }
-    .possible-friend-background {
-        overflow: hidden;
-        border-radius: 15px;
-    }
-    .possible-friend-image {
-        position: absolute;
-        z-index: 9;
-        top: 0;
-        left: 0;
-        width: 300px;
-        min-height: 100%;
-        border-radius: 15px;
-    }
-    .possible-friend-image img {
-        width: 300px;
-        min-height: 100%;
-        border-radius: 15px;
-    }
-    .friend-container {
-        margin-top: 20px;
-    }
-    .add-friend-container {
-        display: inline-flex;
-    }
-    .add-friend button {
-        border-radius: 50%;
-        background: rgba(0, 128, 0, 0.5);
-        width: 40px;
-        height: 40px;
-        margin-right: 5px;
-        text-align: center;
-        color: #fff;
-    }
-    .remove-friend button {
-        border-radius: 50%;
-        background: red;
-        width: 40px;
-        height: 40px;
-        margin-left: 5px;
-        text-align: center;
-        color: #fff;
-    }
-
-
-
-
-    /* Images */
-
-    .spread-slider-photos {
-        height: 350px;
-        max-height: 350px;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        border-top: groove 2px #fff;
-        border-bottom: groove 2px #fff;
-        padding-bottom: 10px;
-        box-shadow: 0 8px 8px 4px rgba(0, 0, 0, 0.5);
-    }
-    .spread-slider-header {
-        background: rgba(135, 206, 250, 0.3);
-        backdrop-filter: blur(2px);
-        border-bottom: groove 2px #fff;
-        box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.5);
-    }
-    .spread-slider-header h5 {
-        color: #fff;
-        text-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
-    }
-    .spread-slider {
-        width: 100%;
-        display: inline-flex;
-        overflow-x: scroll;
-    }
-
-
-    .slide {
-        position: relative;
-        max-width: 100%;
-
-    }
-    .slide-background {
-        height: 100%;
-        min-height: 100%;
-        max-height: 100%;
-    }
-    .slide-background img {
-        height: 100%;
-        max-height: 300px;
-        max-width: 100vw;
-    }
-
-    .see-albums {
-        width: 80%;
-        margin: 0 auto;
-        padding: 10px;
-        padding-top: 20px;
-        margin-bottom: 20px;
-        background:rgba(255, 255, 255, 0.404);
-        backdrop-filter: blur(2px);
-        text-align: center;
-        border-radius: 8px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
-    }
-    .see-albums p {
-        color: #fff;
-    }
-    .inspread-container h5 {
-        text-align: center;
-    margin-bottom: 30px;
-    }
-    .inspreads {
-        max-height: 500px;
-    overflow-y: scroll;
-}
-
-.inspread {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
-.inspread-from {
-    display: inline-flex;
-}
-.inspread-from-image {
-    background: rgba(40, 40, 40, 0.3);
-    border: groove 2px lightskyblue;
-    border-right: solid 1px lightskyblue;
-    border-radius: 15px;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.452);
-    padding-left: 10px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    display: flex;
-    align-items: center;
-  justify-content: center;
-}
-.inspread-from-image img {
-    display: inline-flex;
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
-}
-.inspread-body {
-    width: 100%;
-}
-.inspread-body h4 {
-    color: lightskyblue;
-    padding: 10px;
-    width: 100%;
-
-}
-.inspread-body p {
-    color: #fff;
-    padding-left: 20px;
-    padding-bottom: 0;
-}
-.inspread-body small {
-    color: #ccc;
-    padding: 10px;
-    padding-left: 20px;
-}
-.spreader-container {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(2px);
-    margin-top: 30px;
-    width: 90%;
-    border-top: groove 2px #fff;
-    border-bottom: groove 2px #fff;
-    border-right: groove 2px #fff;
-    border-top-right-radius: 8px;
-    margin-bottom: 60px;
-    border-bottom-right-radius: 8px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
-}
-.spreader-container h5 {
-    padding-top: 8px;
-    font-size: 1.2rem;
-}
-
-.tab {
-  overflow: hidden;
-  overflow-x: scroll;
-  width: 100%;
-  border: 1px solid #ccc;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
-  display: inline-flex;
-}
-
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  margin-left: 0;
-  border-radius: 0;
-  
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: lightskyblue;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background: rgba(135, 206, 250, 0.5);
-  color: #000;
-  font-weight: bold;
-  text-shadow: 0 0 1px #222;
-
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  padding: 0;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
-
-}
-.tabcontent h5 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-.spread-post {
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-
-}
-.spread-post h5 {
-    text-align: center;
-}
-.spread-post textarea {
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-.spread-post input {
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 10px;
-
-}
-.spread-post select {
-    width: 90%;
-    margin-left: 5%;
-    border-radius: 8px;
-    padding: 5px;
-    margin-bottom: 20px;
-}
-.spread-post select:active {
-    max-height: 50px;
-    overflow-y: scroll;
-
-}
-.spread-post p {
-    text-align: center;
-    margin-bottom: 5px;
-}
-.boolean-options {
-    display: inline-flex;
-    width: 100%;
-}
-.boolean-option {
-    width: 50%;
-    text-align: center;
-}
-.spread-file input {
-    width: 90%;
-    outline: none;
-    border: none;
-    background: transparent;
-    margin: 5px;
-    border-radius: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: ease-in 0.5s;
-    color: #fff;
-    text-shadow: 0 0 2px #000;
-    font-size: 1rem;
-}
-#userVideo {
-    width: 90%;
-    margin-left: 5%;
-}
-
-.button {
-    width: 80%;
-    margin-left: 10%;
-    background: rgba(0, 128, 0, 0.5);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: groove 2px green;
-    border-bottom: none;
-    outline: none;
-    color: #fff;
-}
-.spreaded {
-    max-height: 400px;
-    width: 100%;
-}
-.new-spread {
-    border-top: outset 4px rgba(0, 0, 0, 0.5);
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    background: rgba(135, 206, 250, 0.3);
-    backdrop-filter: blur(4px);
-    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.527);
-}
-.new-spread-header {
-}
-.new-spread-header h5 {
-    color: #fff;
-    font-weight: bolder;
-    font-size: 1.3rem;
-    text-shadow: 0 1px 1px #000;
-}
-.new-spread button {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    box-shadow: none;
-}
-.post-container {
-    background: rgba(255, 255, 255, 0.3);
-    width: 90%;
-    margin-left: 0;
-    padding: 0;
-    border: none;
-    border-radius: 15px;
-    border-bottom: groove 2px lightskyblue;
-    border-top: groove 2px lightskyblue;
-    box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 0.75), inset 0 0 8px 3px rgba(255, 255, 255, 0.5);
-}
-.post-profile-image {
-    width: 100%;
-    height: 160px;
-    text-align: center;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.post-profile-image img {
-    width: 100px;
-    height: 100%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    box-shadow: 0 3px 5px #000;
-    border-bottom: outset 2px rgba(135, 206, 250, 0.5);
-}
-.post-author {
-    backdrop-filter: 4px;
-    margin-top: 20px;
-    text-align: center;
-    border: groove 2px lightskyblue;
-    border-left: none;
-    border-right: none;
-    padding-top: 10px;
-}
-.post-body {
-    padding: 5px;
-    color: #fff;
-}
-.post-comments {
-    position: relative;
-    background: rgba(135, 206, 250, 0.15);
-    backdrop-filter: blur(2px);
-    margin-top: -20px;
-    margin-bottom: 40px;
-    width: 80%;
-    margin-left: 5%;
-    border-bottom: groove 2px lightskyblue;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.post-comments h4 {
-    text-align: center;
-    padding: 5px;
-    padding-top: 8px;
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-    color: lightskyblue;
-}
-
-.post-comments p {
-    color: #fff;
-}
-.post-comment {
-    margin-bottom: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    padding-bottom: 10px;
-    border-bottom: groove 2px lightskyblue;
-    border-top: groove 2px lightskyblue;
-    border-radius: 3px;
-    box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 0.75), inset 0 0 8px 3px rgba(255, 255, 255, 0.5);
-}
-.comment-layout {
-    display: inline-flex;
-}
-.comment-left {
-    width: 80px;
-    padding-top: 10px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.comment-right {
-    width: fit-content;
-    padding-left: 10px;
-}
-.comment-author-image {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top: lightskyblue 1px outset;
-    border-bottom: lightskyblue 1px outset;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
-}
-.comment-author-image img {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.comment-author-name {
-    padding: 10px;
-    display: block;
-    
-    width: 100%;
-}
-.comment-body {
-    padding: 8px;
-}
-
-.public-article {
-}
-.article {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(4px);
-    border-radius: 15px;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 90%;
-    margin-left: 5%;
-    padding-top: 20px;
-    border-top: groove 2px lightskyblue;
-    border-bottom: groove 2px lightskyblue;
-    box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 0.75), inset 0 0 8px 3px rgba(255, 255, 255, 0.5);
-}
-.article h3, .article h5 {
-    padding: 5px;
-}
-.article h3 {
-    color: lightskyblue;
-}
-.article h5 {
-    color: #ccc;
-}
-.article p {
-    text-align: left;
-    padding: 15px;
-    color: #fff;
-}
-.article small {
-    color: #ccc;
-}
-.article-more {
-    background: rgba(0, 128, 0, 0.5);
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 20px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: groove 2px green;
-    border-bottom: none;
-}
-.article-more a {
-    color: #fff;
-    padding: 10px;
-
-}
-.article hr {
-    width: 80%;
-    margin-left: 10%;
-    background: lightskyblue;
-}
-.question-container {
-    background: rgba(255, 255, 255, 0.3);
-    margin-top: 10px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
-.question {
-    padding: 10px;
-}
-.question-category {
-    text-align: center;
-    color: lightskyblue;
-}
-.question-stats {
-    padding: 5px;
-}
-.question-resolved p {
-    color: #fff;
-}
-.question-page {
-    text-align: center;
-    padding-bottom: 10px;
-}
-.question-page a {
-    text-align: center;
-    color: #fff;
-    padding: 10px;
-    background: rgba(0, 128, 0, 0.5);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border: groove 2px green;
-    border-bottom: none;
-
-}
-.poll-container {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-.poll-question h5 {
-    color: #fff;
-    padding: 10px;
-}
-.poll-reply-options {
-    background: rgba(0, 0, 0, 0.3);
-    display: inline-flex;
-    width: 100%;
-    padding-top: 20px;
-}
-.poll-option {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    margin-bottom: 10px;
-    border-top: groove 2px lightskyblue;
-    border-bottom: groove 2px lightskyblue;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #fff;
-    border-radius: 8px;
-    width: 45%;
-    margin-left: 2.5%;
-}
-.weather {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(2px);
-    border-top: groove 2px #fff;
-    border-bottom: groove 2px #fff;
-    border-radius: 0;
-    box-shadow: 0 8px 8px 4px rgba(0, 0, 0, 0.5);
-}
-.weather h5 {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    padding: 10px;
+.form-group input {
     color: #000;
-    margin-bottom: 0;
-    padding-bottom: 0;
 }
-.weather h6 {
-    color:rgba(0, 0, 0, 0.5);
-    text-shadow: 0 0 1px lightskyblue;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    text-align: center;
-    padding: 5px;
-    padding-bottom: 10px;
-    border-bottom: groove 2px lightskyblue;
-}
-.weather-data {
-    display: inline-flex;
-    width: 100%;
-}
-.weather-info {
-    width: 80%;
-    padding-bottom: 10px;
-}
-.weather-info p {
-    padding: 5px;
-    padding-left: 15px;
-    margin-bottom: 0;
-}
-.weather-icons {
-    width: 20%;
-}
-.weather-icons img {
-    width: 90%;
-    filter: drop-shadow( 0 0 5px lightskyblue);
-}
-.weather-link p {
-    background: rgba(0, 128, 0, 0.5);
-    width: 80%;
-    margin-left: 10%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border: groove 2px green;
-    border-top: none;
-    text-align: center;
-    padding: 5px;
-}
-.weather-link a {
-    color: #fff;
-}
-.forecast-container {
-    width: 100%;
+/* Scrollbar */
 
-    backdrop-filter: blur(2px);
-}
-.forecast-container h5 {
-    border-radius: 0;
-    padding-bottom: 10px;
-
-}
-.weather-forecast {
-    display: inline-flex;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-top: 10px;
-    border-radius: 8px;
-    border-left: groove 1px lightskyblue;
-    border-right: groove 1px lightskyblue;
-    overflow-x: scroll;
-    background:rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(2px);
-}
-.weather-forecast-day {
-    width: 150px;
-    min-width: 150px;
-    margin-right: 10px;
-    padding-right: 10px;
-    border-right: solid 1px #ccc;
-    text-align: center;
-    color: #fff; 
-    padding-top: 10px;
-    background: rgba(0, 0, 0, 0.3);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.3);
-}
-.weather-forecast-day:last-of-type {
-    border-right: none;
-}
-.forecast-day {
-    
-}
-.find-new-friends {
-    height: 100%;
-    padding-bottom: 20px;
-}
-.new-friend {
-    max-width: 80px;
-    height: 20px;
-    position: relative;
-    margin-bottom: 30px;
-    opacity: 1.0;
-}
-.possible-friend-background {
-    width: 80px;
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    min-height: 100px;
-    border-top: groove 2px lightskyblue;
-    border-radius: 8px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-.possible-friend-image {
-    width: 80px;
-    height: auto;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.possible-friend-image img {
-    width: 80px;
-    height: auto;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    position: relative;
-    z-index: 5;
-    border-radius: 8px;
-}
-
-.possible-friend {
-    width: 80px;
-    max-width: 80px;
-    position: relative;
-    top: 140px;
-    height: 250px;
-    left: 0;
-    min-width: 30px;
-    width: 100%;
-    border-top: groove 2px #fff;
-    border-bottom: groove 2px #fff;
-    border-radius: 8px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.5);
-}
-.possible-friend a {
-    width: 80px;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 20;
-}
-.possible-friend h3 {
-    width: 120px;
-    transform: rotate(270deg);
-    margin: 0;
-    position: absolute;
-    top: 60px;
-    font-size: 0.8rem;
-    left: -75px;
-    padding: 5px;
-    border-top: groove 2px lightskyblue;
-    border-right: groove 2px lightskyblue;
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 2px;
     border-left: groove 2px lightskyblue;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    z-index: 50;
+    border-right: groove 2px lightskyblue;
+    background: #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-.possible-friend-data {
-    margin: 0;
-    position: absolute;
-    top: 140px;
-    left: 0;
-    background: rgba(0, 0, 0, 0.3);
-    width: 80px;
+::-webkit-scrollbar:hover {
+    background: #333;
+}
+    /* Track */
+
+::-webkit-scrollbar-track {
+    border-radius: 2px;
+    box-shadow: inset 4px 4px 8px rgba(135, 206, 250, 0.582), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, 0 0 6px rgba(0, 0, 0, 0.5), inset -2px -2px 2px #222;
 }
 
-.add-friend-container {
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(17, 17, 17, 0.705); 
+    border-radius: 2px;
+    box-shadow:  inset 0 0 10px #111,  0 0 3px 3px rgba(135, 206, 250, 0.75), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(135, 206, 250, 0.658); 
+    border-radius: 7px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+}
+
+
+/* Video Background */
+.video-background {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: -1000;
+}
+.video-background video {
+    width: 100%;
+    height: 100vh;
+    box-shadow: 0 0 100px #000;
+    
+}
+.welcome-background-video {
+    overflow: hidden;
+    text-align: center;
+}
+.welcome-background-video video {
     position: absolute;
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
+    box-shadow: 0 0 100px #000;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 400px;
+    z-index: 1;
+    border: solid 1px lightskyblue;
+    box-shadow: inset 0 0 30px lightskyblue, -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #ccc, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    background: rgba(0, 0, 0, 0.377);
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    transition: ease-in 0.3s;
+}
+.dropdown-content a {
+    color: black;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.dropdown-content form {
+    color: black;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.dropdown-content>.add-form>input {
+    background: rgba(255, 255, 255, 0.774);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn-menu {
+    background: transparent;
+    box-shadow: inset 0 0 10px lightskyblue, -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    transition: ease-in 0.1s;
+}
+
+.dropdown-content-menu {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    z-index: 1;
+    border: solid 1px lightskyblue;
+    box-shadow: inset 0 0 30px lightskyblue, 0 0 10px lightskyblue;
+    background: rgba(0, 0, 0, 0.377);
+    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    transition: ease-in 0.1s;
+}
+.dropbtn-menu:hover {
+    border-radius: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: ease-in 0.1s;
+}
+.dropdown-content-menu button {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    background: transparent;
+}
+.dropdown-content-menu button:active {
+    outline: none;
+}
+.dropdown-menu:hover .dropdown-content-menu {
+    display: block;
+    animation-delay: 0.1s;
+}
+.dropdown-content-menu a {
+    color: rgba(204, 204, 204, 0.699);
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 1;
+    font-size: 2rem;
+    transition: ease-in 0.5s;
+}
+.dropdown-content-menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 3px lightskyblue;
+    background: transparent;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    transition: ease-in 0.3s;
+}
+.container {
+    padding: 0;
+    padding-bottom: 100px;
+
+}
+h1,h2,h3,h4,h5,h6 {
+    color: #333;
+    text-shadow: 0 1px 1px #ccc;
+}
+.spread-h3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-bottom: solid 2px rgba(135, 206, 250, 0.555);
+}
+.spread-h5 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.widespread-header {
+    position: fixed;
+    z-index: 8000;
+    top: -10px;
+    width: 90vw;
+    margin-left: 5vw;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.widespread-header .logo {
+    position: absolute;
+    left: 10px;
+    top: 25px;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.001);
+    border-bottom: solid 1px rgba(185, 219, 241, 0.185);
+}
+.widespread-header .logo h1 a {
+    color: rgba(126, 127, 128, 0.75);
+    text-shadow: 0 0 1px rgba(135, 206, 250, 0.75);
+    text-decoration: none;
+    margin-left: 10px;
+    transition: ease-in 0.6s;
+    font-size: 1.8rem;
+}
+.widespread-header h1 a:hover {
+    text-decoration: none;
+    text-shadow: 0 0 1px lightskyblue, 0 0 3px rgba(135, 206, 250, 0.5), 0 0 8px rgba(135, 206, 250, 0.301);
+    transition: ease-in 0.8s;
+}
+.login-ws-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.login-background {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+}
+.login-background-image {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background-image: url('../images/system/widespread_logo_1d.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.3;
+    filter: drop-shadow(0 0 10px rgba(135, 206, 250, 0.664));
+}
+.login-background-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.card h3 {
+}
+.card-body h1 {
+    font-size: 22px;
+}
+.login-ws-logo img {
+    border-radius: 50%;
+    max-width: 200px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+.login-input {
+    border: solid 0.5px #000;
+    border-radius: 10px;
+}
+.login-button {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    border-radius: 10px;
+    transition: ease-in 0.3s;
+}
+.login-button:hover {
+    box-shadow: -3px -3px 6px #000, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px rgba(17, 17, 17, 0.61), inset 4px 4px 8px rgba(0, 0, 0, 0.521), inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px lightskyblue;
+    transition: ease-in 0.3s;
+}
+.widespread-header .current-page-title {
+    text-align: center;
+    text-shadow: 0 0 1px black;
+}
+.widespread-header .current-page-title h2 a {
+    text-decoration: none;
+    color: rgba(135, 206, 250, 0.623);
+    transition: ease-in 0.3s;
+}
+.widespread-header .current-page-title h2 a:hover {
+    text-decoration: none;
+    line-height: 75px;
+    color: rgba(135, 206, 250, 0.829);
+    transition: ease-in 0.3s;
+    text-shadow: 0 0 4px rgba(135, 206, 250, 0.781);
+
+}
+.widespread-header .user-info {
+    width: 225px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    height: 40px;
+}
+.widespread-header .user-info .current-user p {
+    line-height: 30px;
+    max-width: 200px;
+}
+.widespread-header .user-info .user-menu {
+    width: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: transparent;
     display: none;
 }
-.add-friend {
+
+
+.nav-bar-outer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    transition: ease-in 0.6s;
+    
+}
+.nav-bar-outer:hover {
+    background: rgba(0, 0, 0, 0.404);
+    backdrop-filter: blur(4px);
+    transition: ease-in 0.6s;
+}
+.nav-bar {
+    margin-top: 20px;
+    padding: 5px;
+
+}
+.nav-bar-ws {
+    padding: 5px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 4px lightskyblue, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+    
+}
+.nav-bar-ws:hover {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px lightskyblue, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-in 0.4s;
+}
+.red {
+    box-shadow: inset 0 0 10px red;
+}
+.lightskyblue {
+    box-shadow: inset 0 0 10px lightskyblue;
+}
+.blue-glow {
+    box-shadow: 0 0 2px rgb(60, 165, 231);
+}
+.nav-bar a {
+    margin-left: 10px;
+    background: transparent;
+    padding: 10px;
+    color: #ccc;
+    text-decoration: none;
+    transition: ease-in 0.9s;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 10px;
+    text-align: center;
+}
+.current-page-title {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.current-page-title hr{
+    width: 60%;
+    margin: 0 auto;
+    border: solid 1px lightskyblue
+}
+
+.nav-bar a:hover {
+    box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    text-decoration: none;
+    background: #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+    transition: ease-in 0.6s;
+}
+.nav-bar button {
+    margin-left: 10px;
+    background: transparent;
+    padding: 10px;
+    color: #ccc;
+    text-decoration: none;
+    transition: ease-in 0.9s;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 10px;
+    text-align: center;
+}
+.nav-bar button:hover {
+    box-shadow: 0 0 1px rgba(135, 206, 250, 0.541), 0 0 3px rgba(135, 206, 250, 0.685), 0 0 8px rgba(135, 206, 250, 0.301);
+    text-decoration: none;
+    background: #222;
+    color: lightskyblue;
+    text-shadow: 0 0 3px rgba(135, 206, 250, 0.356);
+    transition: ease-in 0.6s;
+}
+.nav-bar-ws .logout-button:hover {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.562), 0 0 1px red;
+}
+.nav-bar-ws form {
+    background: transparent;
+}
+
+.custom-file input {
+    outline: none;
+    border: none;
+    background: transparent;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.custom-file-label {
+    border-radius: 10px;
+    padding: 10px;
+    background: #000;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222, inset 0 0 4px rgba(135, 206, 250, 0.582);
+    cursor: pointer;
+    transition: ease-in 0.5s;
+}
+.custom-file-label:hover {
+    background: #111;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px lightskyblue;
+    transition: ease-in 0.3s;
+}
+.custom-file-label::after {
+    background: rgb(45, 84, 109);
+    box-shadow: -1px -2px 6px #222, 0 -3px 4px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
+    margin-left: -5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #000;
+    transition: ease-in 0.5;
+}
+.custom-file-label::after:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    transition: ease-in 0.3;
+}
+.block-button {
+    background: rgb(45, 84, 109);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 6px black;
+    border-radius: 10px;
+    color: #000;
+    outline: none;
+    border: none;
+    transition: ease-in 0.5s;
+}
+
+.block-button:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    border-radius: 10px;
+    color: #000;
+    outline: none;
+    border: none;
+    transition: ease-in 0.3s;
+}
+
+.user-profile-image-form {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 8px;
+    background: lime;
+}
+
+.user-profile-image-form form {
+}
+
+.custom-file-profile-image input {
+    display: none;
+}
+.custom-file-label-choose-profile-image {
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    transition: ease-in 0.5s;
+}
+.custom-file-label-choose-profile-image:hover {
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px lightskyblue;
+    background: #111;
+    transition: ease-in 0.3s;
+}
+.custom-file-label-profile-image {
+    background: lightskyblue;
+    box-shadow: 3px 3px 3px rgb(3, 46, 3), 0 -3px 3px rgba(135, 206, 250, 0.61);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.custom-file-profile-image-button {
+    margin-top: 0;
+    padding: 0;
+}
+.custom-file-profile-image-button input {
+    outline: none;
+    border: none;
+
+}
+.custom-file-profile-image-button input:hover {
+    background: rgb(73, 170, 230);
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    transition: ease-in 0.3s;
+}
+.add-form {
+    margin-bottom: 10px;
+
+}
+.add-form input {
     display: block;
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+}
+.add-form button {
+    padding: 10px;
+    color: #ccc;
+    box-shadow: -2px -2px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, -2px -2px 2px #222, inset 0 0 8px rgba(204, 204, 204, 0.712);
+    background: #111;
+    transition: ease-in 0.3s;
+    outline: none;
+    border: none;
+}
+.add-form button:hover {
+    box-shadow: -2px -2px 6px rgb(40, 143, 40), -3px -3px 6px rgba(26, 104, 26, 0.568), 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px rgba(119, 118, 118, 0.432), 3px 3px 4px rgba(0, 0, 0, 0.445), 3px 3px 3px rgba(17, 17, 17, 0.527), -3px -3px 8px rgba(26, 104, 26, 0.644), -2px -2px 2px rgb(26, 104, 26), inset 0 0 8px rgba(204, 204, 204, 0.281);
+    background: rgb(26, 104, 26);
+    color: #eee;
+    transition: ease-in 0.3s;
 
 }
-.remove-friend {
+.fa-ellipsis-v {
+    cursor: pointer;
+    text-shadow: 0 0 1px lightskyblue;
+    color: rgba(255, 255, 255, 0.753);
+}
+
+/* Spread It Button */
+.spread-it {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.562);
+    text-shadow: 0 0 2px lightskyblue;
+}
+.spread-it:hover {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.747);
+    text-shadow: 0 0 4px rgba(26, 27, 27, 0.603);
+}
+.submit-button {
+    height: 100px;
+    width: 300px;
+    text-align: center;   
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.like-button button {
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+}
+.center {
+    width: 100%;
+}
+.margin-bottom {
+    margin-bottom: 40px;;
+}
+/* 
+        IMAGES
+*/
+
+.med-image {
+    padding: 10px;
+    border-radius: 10px;
+}
+.med-image img {
+    border-radius: 10px;
+}
+.med-image video {
+    border-radius: 10px;
+}
+.iframe {
+    text-align: center;
+    padding: 5px;
+    max-width: 90vw;
+    overflow: hidden;
+}
+.iframe iframe {
+    border: none;
+    outline: none;
+    max-width: 90vw;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    border-radius: 15px;
+}
+.spreadlink {
+    color: #fff;
+    text-decoration: none;
+    transition: ease-in 0.2s;
+}
+.spreadlink:hover {
+    color: rgba(255, 255, 255, 0.719);
+    text-decoration: none;
+    text-shadow: 0 0 2px lightskyblue;
+    transition: ease-in 0.2s;
+}
+
+.resume-nav {
+    border-left: solid 2px #333;
+}
+.resume-form {
+    padding: 10px;
+}
+.resume-form h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.resume-form p {
+    color: #fff;
+    margin-left: 10%;
+}
+.resume-form small {
+    color: red;
+
+}
+.resume-form-options {
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 20px;
+}
+.form-option {
+    padding: 5px;
+    display: inline-flex;
+    width: 100%;
+    margin-top: 10px;
+}
+.resume-form-options h5 {
+
+}
+.resume-form-options input {
+    margin-left: 20px;
+}
+.resume-form-group {
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 20px;
+}
+.resume-form-group textarea {
     display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+    color: #fff;
 }
-.spreadshield-demos {
-            width: 95%;
-            margin-left: 2.5%;
-            text-align: center;
+.resume-form-group textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.resume-form-group textarea:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.resume-form-group input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.resume-form-group input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.resume-form-group input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.employment-history-company-form {
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: ease-in 0.5s;
+}
+.employment-history-company-form:hover {
+    background: #222;
+    transition: ease-in 0.3s;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.employment-history-company-reference-form {
+    width: 60%;
+    margin: auto;
+}
+.resume-container {
+    padding: 20px;
+    margin-top: 40px;
+}
+.resume-bio p {
+    margin-left: 10px;
+    padding: 20px;
+    color: #fff
+}
+.resume-objective p {
+    margin-left: 10px;
+    padding: 20px;
+    color: #fff
+}
+.resume-education {
+}
+.resume-education p {
+    margin-left: 20px;
+    color: #fff;
+}
+.employment-history-details-reference {
+    padding: 30px;
+    padding-top: 0;
+}
+.employment-history-details-reference p {
+    margin-left: 20px;
+    color: #fff;
+}
 
-        }
-        .spreadshield-demos video {
-            border-radius: 8px;
-            width: 100%;
-            height: auto;
-        }
-/* Go from zero to full opacity */
-@keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.resume-skills {
+    display: inline-flex;
 }
+.resume-skills p {
+    padding: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    border-radius: 10px;
 }
-@media screen and (max-width: 2699px) {
-        .main-header-page-menu-container {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            height: 100vh;
-            width: 10%;
-            background: rgba(135, 206, 250, 0.3);
-            backdrop-filter: blur(2px);
-            overflow-y: scroll;
-            overflow-x: hidden;
-            z-index: 7000;
-            padding: 0;
-            border-right: groove 2px lightskyblue;
-            box-shadow: -6px 0 6px 7px 2px red;
-        }
-        #mainHeaderPageMenu {
-        }
-        .main-header-page-menu-inner {
-            backdrop-filter: blur(2);
 
-        }
-        .main-header-page-menu-inner a {
-            display: block;
-            backdrop-filter: none;
-            line-height: 40px;
-            box-shadow: none;
-        }
+.job-applicant-card {
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.jumbotron {
+    background: rgba(255, 255, 255, 0.288);
+    backdrop-filter: blur(2px);
+    padding-bottom: 20px;
+}
+.user-profile-image-form {
+    max-width: 200px;
+    
+}
+.user-avatar {
+    max-width: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px;
+}
+.user-avatar img {
+    width: 200px;
+    min-width: 200px;
+    margin: -10px;
+}
+.public-profile-avatar {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    padding: 10px;
+}
+.public-profile-avatar img {
+    min-width: 160px;
+    min-height: 160px;
+    margin: -10px;
+    margin-left: -40px;
+    opacity: 0.5;
+    transition: ease-in 0.4s;
+}
+.public-profile-avatar img:hover {
+    opacity: 1.0;
+}
+.find-new-friends {
+    display: inline-flex;
+    max-width: 90vw;
+    overflow-x: scroll;
+    padding: 20px;
+    height: 370px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    padding-right: 80px;
+}
+.possible-friend-image {
+    width: 60px;
+    margin: 0 auto;
+    height: 60px;
+    margin-bottom: 15px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.possible-friend-background {
+    min-height: 300px;
+    padding: 0;
+    margin: 0;
+}
+.possible-friend {
+    background: rgba(204, 204, 204, 0.644);
+    padding-bottom: 20px;
+    padding-top: 0;
+    min-width: 300px;
+    border-radius: 20px;
+    margin-right: 20px;
+    text-align: center;
+    opacity: 0.6;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    transition: ease-in 0.3s;
+    backdrop-filter: blur(2);
+}
+.possible-friend:hover {
+    opacity: 1.0;
+    transition: ease-in 0.5s;
+}
+.possible-friend a {
+    text-decoration: none;
+}
+.possible-friend img {
+
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.possible-friend p {
+    color: #ccc;
+}
+.possible-friend small {
+    color: #aaa;
+}
+.possible-friend h3 {
+    padding: 10px;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.39);
+    background: rgba(0, 0, 0, 0.685);
+    backdrop-filter: blur(6px);
+    border-radius: 2px;
+}
+=
+
+.name-header {
+    background: #000;
+    padding: 25px;
+    padding-bottom: 10px;
+    width: 95%;
+    margin: 0 auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: inset 0 0 15px lightskyblue, -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.name-header h1 {
+    text-align: center;
+    width: 100%;
+}
+.user-header {
+    padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    
+}
+.info-header {
+    text-align: center;
+    
+}
+.info-header a {
+    text-decoration: none;
+    color: #ccc;
+    transition: ease-in 0.3s;
+}
+.info-header a:hover {
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+.spread-container-about p {
+    color: #fff;
+}
+.spread-container {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.spread-container-sub {
+    padding-bottom: 30px;
+    color: #fff;
+
+}
+.spread-container-sub img {
+    filter: drop-shadow(0 0 20px rgba(135, 206, 250, 0.925));
+}
+.spread-container-sub a {
+    color: #fff;
+}
+.friends {
+    padding: 20px;
+    border-radius: 10px;
+}
+.friends li {
+    background: #bbb;
+    border-radius: 10px;
+    transition: ease-in 0.2s;
+}
+.friends li:hover {
+    background: #777;
+    box-shadow: 0 2px 5px black;
+    transition: ease-in 0.2s;
+}
+
+.create-post {
+    padding: 20px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    padding: 10px;
+    padding-bottom: 60px;
+    transition: ease-in 0.4s;
+}
+
+.create-post input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+}
+.create-post input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-post input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.user-workout {
+}
+.create-workout {
+}
+.create-workout h5 {
+    padding: 20px;
+}
+.day {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+.checkbox {
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+}
+.checkbox label {
+}
+.checkbox input {
+    border-radius: 5px;
+}
+.checker {
+    background: lime;
+    padding: 3px;
+}
+.draggable>h4 {
+    cursor: grab;
+    color: lightskyblue;
+}
+.draggable>h4:focus{
+    cursor: grabbing;
+}
+.dragTo-container {
+    margin-top: 20px;
+}
+.dragTo-container>h3 {
+    margin-top: 10px;
+    padding: 10px;
+}
+.dragTo-container>h2 {
+    text-align: center;
+
+}
+.dragTo-container small {
+    padding-left: 30px;
+}
+.dragTo {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    min-height: 50px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.exercise-form {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+}
+.exercise-form label {
+    padding-left: 20px;
+}
+.exercise-form input {
+    border-radius: 10px;
+    background: #000;
+    outline: none;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    color: #ccc;
+    width: 100%;
+    text-shadow: inset 0 0 8px lightskyblue;
+}
+.create-post form {
+    padding: 10px;
+}
+.create-post textarea {
+    margin-bottom: 10px;
+    min-height: 150px;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    transition: ease-in 0.5s;
+}
+.create-post textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-post textarea:focus {
+    background: #333;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+}
+.post h2 {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+.post h5 {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+.user-posts-container {
+    padding: 10px;
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    margin-bottom: 3px;
+    transition: ease-in 0.6s;
+}
+
+.user-posts-container ul {
+    max-height: 70vh;
+    overflow-y: scroll;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-right: 30px;
+    border-radius: 20px;
+}
+
+.user-posts-container li {
+    width: 100%;
+    list-style: none;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: #111;
+}
+.user-posts {
+    padding: 20px;
+    border-radius: 10px;
+}
+.user-posts h5 {
+    text-align: center;
+}
+.user-posts li {
+    margin-top: 0;
+    border-radius: 10px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000;
+    padding: 10px;
+    padding-bottom: 60px;
+    margin-left: -15px;
+    transition: ease-in 0.4s;
+}
+.user-posts li:hover {
+    transition: ease-in 0.2s;
+}
+.outer-post-container {
+       padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #111, inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 4px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    margin-bottom: 40px;
+    
+}
+.outer-post-container a {
+    padding: 8px;
+    font-size: 26px;
+    color: rgba(112, 25, 25, 0.733);
+    text-shadow: -1px -1px 2px rgb(78, 30, 30), 1px 1px 2px #000;
+    font-weight: bold;
+    transition: ease-in 0.2s;
+}
+.outer-post-container a:hover {
+    text-shadow: 0 0 2px red;
+    text-decoration: none;
+    transition: ease-in 0.2s;
+}
+.post-container-single {
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+}
+.post-container-single h3 {
+    border-bottom: solid 2px lightskyblue;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.post-container-single p {
+    padding: 20px;
+}
+.post-container-single>a {
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+.post-container {
+    border-top: solid 1px #ccc;
+    padding: 5px;
+    padding-top: 20px;
+    margin: 20px;
+    margin-top: 10px;
+}
+.post-container img {
+    width: 30px;
+    height: 30px;
+}
+.post-container small {
+    padding-left: 10px;
+}
+.post {
+    padding-top: 20px;
+}
+.post p {
+    font-size: 1.2rem;
+}
+.ss-post {
+    padding: 20px;
+    padding-top: 0;
+    border-radius: 20px;
+}
+.ss-post h3 {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #ccc;
+    margin-bottom: 20px;
+}
+.post-body p {
+    padding: 8px;
+    color: #ccc;
+    text-shadow: 0 0 1px #555;
+    font-size: 1.2rem;
+}
+.ss-post p {
+    font-size: 1.2rem;
+    color: #eee;
+}
+.post-timestamp {
+    width: 100%;
+    text-align: right;
+
+}
+.post-span {
+    color: lightskyblue;
+}
+.post-actions i {
+    color: lightskyblue;
+    text-shadow: 0 0 2ease-in 0.3s;
+}
+.comment-actions i {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 0.5;
+    transition: ease-in 0.3s;
+    font-size: 1.2rem;
+    margin-left: 8px;
+}px white;
+    opacity: 0.5;
+    transition: ease-in 0.3s;
+}
+.post-actions i:hover {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 1;
+    transition: 
+.comment-actions i:hover {
+    color: lightskyblue;
+    text-shadow: 0 0 2px white;
+    opacity: 1;
+    transition: ease-in 0.3s;
+}
+
+
+/* Comments  */
+.comment-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+.comments {
+    
+}
+.comment {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    
+}
+
+
+.comment-on-post {
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, 0 0 10px #111, 4px 4px 8px #000, 3px 3px 6px #111, -3px -3px 8px #222, 2px 2px 2px #333, -2px -2px 2px #222;
+    margin-top: 10px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 20px;
+
+}
+.comment-on-post h4 {
+    text-align: center;
+}
+.comment-on-post textarea {
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.5s;
+    color: #fff;
+}
+.comment-on-post textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #444;
+    transition: ease-in 0.3s;
+    color: #000;
+}
+.comment-on-post textarea:focus {
+    background: #555;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+    color: #000;
+}
+.comment-time p {
+    color: lightskyblue;
+    text-align: right;
+    font-size: 0.9rem;
+}
+.public-post-container {
+    padding: 8px;
+     margin: 5px;
+     border-radius: 10px;
+     margin-top: 20px;
+        width: 90%;
+
+    }
+    .public-post {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    border-radius: 10px;
+    background: #111;
+    padding: 10px;
+}
+.public-post small {
+    margin-left: 10px;
+    cursor: default;
+}
+.public-post p {
+    padding: 10px;
+    margin-top: 10px;
+}
+.public-post a {
+    color: #ccc;
+    padding: 5px;
+}
+.post-option-bar {
+    margin-top: 3px;
+    padding: 3px;
+    color: red;
+}
+.full-page-post-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background: #777;
+    padding: 20px;
+    border-radius: 20px;
+}
+.full-page-post-container h3 {
+    font-size: 3rem;
+    color: #aaa;
+}
+.full-page-post-container small {
+    color: #000;
+}
+.full-page-post-container hr {
+    border-color: #000;
+    margin-bottom: 30px;
+}
+.full-page-post-container p {
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+}
+.list-item a {
+    padding-left: 10px;
+}
+.update {
+    margin-bottom: 5px;
+}
+.update-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.update-profile h3 {
+    text-align: center;
+    margin-top: 40px;
+}
+.s-m-outlet {
+}
+.s-m-outlet p {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+.s-m-outlet input[type=color] {
+    margin-right: 10px;
+}
+
+/* 
+
+
+                    Academy
+
+*/
+.students-current-courses {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.students-current-courses h1 {
+    text-align: center;
+    padding-bottom: 30px;
+    color: lightskyblue;
+}
+.student-course {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+}
+.course-selection-container {
+    background: #000;
+    margin-top: 30px;
+    padding: 40px;
+    padding-top: 10px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.course-selection {
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    background: #000;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    transition: ease-in-out 0.5s;
+}
+.course-selection:hover {
+    background: #111;
+    box-shadow: inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 6px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+    transition: ease-out 0.5s;
+}
+.course-card {
+    max-height: 300px;
+    padding: 10px;
+}
+.class-selection {
+    padding-top: 10px;
+}
+.class-selection h2 {
+    text-align: center;
+}
+.course-classes {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+/* Class */
+.class-container {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.class-chapter {
+}
+.class-chapter li {
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+
+.add-learning-content {
+    padding: 20px;
+    border-radius: 15px;
+}
+.learning-point {
+    padding: 20px;
+    padding-top: 30px;
+    border-radius: 20px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+}
+.collapsible-learning-point {
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-radius: 15px;
+}
+.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.active, .collapsible-learning-point:hover {
+    background-color: #555;
+  }
+.learning-point p, .learning-point small {
+    padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: none;
+    overflow: hidden;
+    background-color: rgba(88, 88, 88, 0.521);
+    backdrop-filter: blur(2px);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #fff;
+    transition: 0.4s ease-out;
+}
+.learning-point-notes small {
+    background: lime;
+}
+.quiz {
+    min-height: 50px;
+    padding-bottom: 30px;
+}
+.create-flashcard {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.create-flashcard input, .create-learning-point input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    border: none;
+    outline: none;
+    transition: ease-in 0.5s;
+}
+.create-flashcard input:hover, .create-learning-point input:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-flashcard input:focus, .create-learning-point input:focus {
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #333;
+    transition: ease-in 0.3s;
+}
+.create-learning-point {
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.create-learning-point textarea {
+    margin-bottom: 10px;
+    min-height: 150px;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #111;
+    transition: ease-in 0.5s;
+    outline: none;
+    border: none;
+    color: #fff;
+    width: 100%;
+}
+.create-learning-point textarea:hover {
+    box-shadow: inset -3px -3px 6px #333, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    background: #222;
+    transition: ease-in 0.3s;
+}
+.create-learning-point textarea:focus {
+    background: #333;
+    box-shadow: inset 0 0 2px rgba(135, 206, 250, 0.89), inset 0 0 12px rgba(135, 206, 250, 0.603), inset -3px -3px 6px #000, inset 3px 3px 6px #111, inset 3px 3px 6px #333, inset -3px -3px 6px #111;
+    transition: ease-in 0.3s;
+}
+
+/* 
+
+
+                    Business
+
+*/
+
+.company-container-card {
+
+}
+
+.company-container-card a {
+    transition: ease-in 0.3s;
+}
+.company-container-card a:hover {
+    text-decoration: none;
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+.company-container-card .company-bio {
+}
+.company-container-card .employee-portal {
+    padding: 5px;
+    text-align: right;
+    padding-right: 20px;
+}
+.company-contact {
+    background: #000;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.company-contact i {
+    margin-right: 10px;
+}
+.company-contact a {
+    color: #555;
+}
+.company-container-card .employee-portal a {
+    color: #ccc;
+    transition: ease-in 0.3s;
+}
+.company-container-card .employee-portal a:hover {
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+
+
+
+.companyInfo {
+}
+.companyInfo a {
+    color: #ccc;
+}
+.companySite-nav ul {
+    display: inline-flex;
+}
+.companySite-nav li {
+    list-style: none;
+    height: 100%;
+    padding: 10px;
+    padding-top: 15px;
+    margin-top: 5px;
+    text-align: center;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.companySite-nav li:first-of-type {
+    margin-left: 0;
+}
+.companySite-nav li a {
+    text-decoration: none;
+}
+
+
+.job-applicants {
+    background: #111;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+.article-container {
+}
+.article-container .article-header {
+    padding: 20px;
+}
+.article-container .article-header h1 {
+}
+.article-container .article-header h3 {
+}
+.article-container p {
+}
+.article-container hr {
+}
+
+
+.news-outlet-container {
+    text-align: center;
+    padding: 20px;
+}
+.news-outlet-logo {
+    padding: 20px;
+    box-shadow: 4px 4px 8px #000, 3px 3px 6px #111, -6px -6px 8px #444, -3px -3px 6px #444, 2px 2px 2px #333, -2px -2px 2px #222;
+    border-radius: 10px;
+}
+.news-outlet-logo img {
+    opacity: 0.4;
+    transition: ease-in 0.5s;
+}
+.news-outlet-logo img:hover {
+    opacity: 1.0;
+    transition: ease-in 0.3s;
+}
+
+.news-outlet h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+.news-articles {
+    padding: 20px;
+}
+
+.news-articles .row {
+    margin-top: 30px;
+    padding: 20px;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 20px;
+    box-shadow: inset 4px 4px 8px #000, inset 3px 3px 6px #111, inset -6px -6px 8px #222, inset -3px -3px 6px #444, inset 2px 2px 2px #333, inset -2px -2px 2px #222;
+}
+
+.news-articles .row .article-image img {
+    border-radius: 20px;
+    box-shadow: -3px -3px 6px #222, -3px -3px 6px #111, 3px 3px 3px #111,  3px 3px 6px #000, inset 0 0 10px #111;
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.news-articles .article-info {
+}
+
+
+.news-articles .article-info a h5{
+    text-decoration: none;
+}
+.news-articles .article-info a h5{
+    transition: ease-in 0.3s;
+}
+.news-articles .article-info a h5:hover {
+    color: lightskyblue;
+    transition: ease-in 0.3s;
+}
+
+/* 
+        SHOPPING
+ */
+
+#output {
+    width: 500px;
+    height: 300px;
+    background: lime;
+}
+.item-image {
+}
+.item-image img {
+ }
+ .item-image img:hover {
+ }
+ .thumbMenuContainer {
+    display: none;
+}
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+    body {
+    }
+    .none {
+        display: none;
+    }
+
+    /* Video Background */
+.video-background {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    z-index: -1000;
+}
+.video-background video {
+    height: 100vh;
+    box-shadow: 0 0 100px #000;
+    
+}
+.thumbMenuContainer {
+    display: none;
+}
+}  
+/* On screens that are 500px or less, set the background color to blue */
+@media screen and (max-width: 500px) {
+    body,html {
+        overflow-x: hidden;
+    }
+    .none {
+        display: none;
+    }
+    /* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    display: none;
+}
+::-webkit-scrollbar:hover {
+    display: none;
+}
+/* Track */
+
+::-webkit-scrollbar-track {
+    display: none;
+    
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    display: none;
+    
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    display: none;
+
+}
+     
+    .container {
+        width: 100vw;
+        min-width: 90vw;
+        min-height: 100vh;
+        margin:0;
+        padding-bottom: 70px;
+        padding-top: 50px;
+    }
     .widespread-header {
-      text-align: center;
-      padding: 0;
+        padding-left: 0;
+        width: 100%;
+        margin-left: 0;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.5), inset 0 -2px 2px rgba(155, 89, 89, 0.25);
+        border-bottom: groove 2px lightskyblue;
     }
     .logo {
-      margin: 0;
-      width: 95%;
-      max-height: 85px;
-      border-bottom: none;
+        width: 95%;
+        text-align: center;
     }
     .logo h1 {
-        margin: 0;
+        left: 0;
+        padding-left: 0;
     }
-    .user-background-color {
-        z-index: -300;
+    .widespread-header .logo h1 a {
+        margin-left: 0;
     }
-    .your-friends {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 30px;
+    .logo a {
+        color: rgba(135, 206, 250, 0.795);
+        text-shadow: 0 0 3px lightskyblue;
+        margin-left: 0;
+
     }
-    .your-friends a h5 {
-        padding: 10px;
-        width: 50%;
-        margin-left: 25%;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 8px;
-        border-top: groove 2px lightskyblue;
-        border-bottom: groove 2px lightskyblue;
+    .user-info {
+        display: none;
     }
-    .find-new-friends {
-        padding: 10px;
-        display: inline-flex;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        width: 90%;
-        height: 350px;
-        min-height: 350px;
-        max-height: 350px;
+    .user-menu {
+        /* display: none; */
     }
-    .new-friend {
-        margin-left: 50px;
-        position: relative;
-        height: 90%;
-        width: 80px;
-    }
-    .possible-friend-background {
-        position: absolute;
+    .inner-container {
+        background: #000;
+        box-shadow: inset 0 0 30px #000;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
         top: 0;
         left: 0;
-        width: 80px;
-        height: 100%;
+        overflow: hidden;
+        overflow-y: scroll;
     }
-    .possible-friend-image {
-        width: 80px;
-        height: 120px;
-        max-height: 120;
-        min-height: 120px;
-        overflow-y: hidden;
+    /* Video Background */
+    .video-background {
+        z-index: -1000;
+        overflow: hidden;
     }
-    
-    .possible-friend-image img {
-        width: 80px;
-    }
-    
-    .possible-friend {
-        border-radius: 8px;
-        width: 80px;
-        height: 300px;
-        min-height: 300px;
-        max-height: 300px;
-        background: rgba(0, 0, 0, 0.3);
-        box-shadow: none;
-        opacity: 1.0;
-    }
-    .possible-friend h3 {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        border-bottom: groove 2px lightskyblue;
-        background: rgba(0, 0, 0, 0.5);
-        color: #555;
-        z-index: 60;
-    }
-    .possible-friend-data {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        max-height: 150px;
-        padding-top: 30px;
-        width: 100%;
-        background:rgba(0, 0, 0, 0.3);
-        padding: 10px;
-    }
-    .possible-friend-data p {
-        margin-bottom: 0;
-        padding: 0;
-    }
-    .add-friend-container {
-        display: inline-flex;
-        width: 100%;
-    }
-    .add-friend {
-        width: 50%;
-    }
-    .add-friend button {
-        background: rgba(0, 128, 0, 0.3);
-        width: 40px;
-        height: 40px;
-        border-top: groove 2px green;
-        border-bottom: groove 2px green;
-        color: #fff;
-        box-shadow: none;
-        
-    }
-    .remove-friend {
-        width: 50%;
-    }
-    .remove-friend button {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 0, 0, 0.3);
-        border: none;
-        border-top: groove 2px red;
-        border-bottom: groove 2px red;
-        outline: none;
-        color: #fff;
-    }
-  }
-
-  
-
-@media screen and (max-width: 1199px) {
-        .main-spread-menu {
-            display: none;
-        }
+    #vidBackground {
+        position: fixed;
+        right: 0;
+        top: 0;
+        min-height: 100vh;
+        min-width: 375vw;
     }
 
+.create-account {
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 1px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: -4px -4px 8px #222, -3px -3px 6px #111, 6px 6px 8px #111,  3px 3px 6px #000, inset -2px -2px 2px #222, inset 2px 2px 2px #222;
+    transition: ease-in 0.3s;
+    backdrop-filter: blur(2);
+    background: rgba(204, 204, 204, 0.199);
+}
+.create-account:hover {
+    opacity: 1.0;
+    transition: ease-in 0.5s;
+}
+.create-account p {
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.795);
+    background: rgba(0, 0, 0, 0.685);
+    border-radius: 2px;
+    border-top: solid 1px lightskyblue;
+    border-bottom: solid 1px lightskyblue;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.616), inset 0 0 8px #000;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.616);
+}
+.create-account img {
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(33, 192, 255, 0.705));
+    opacity: 0.8;
+}
+.create-account-btns {
+    padding: 10px;
+}
+.create-account-btns a {
+    border-radius: 8px;
+}
+.blur {
+    background: rgba(19, 18, 18, 0.63);
+    backdrop-filter: blur(2px);
+}
 
-@media screen and (max-width: 2560px) {
-        .dashboard-container {
-            margin-top: 30px
-            background: rgba(143, 119, 119, 0.25);
-            backdrop-filter: blur(2px);
-        }
-        .dashboard-container a {
-        }
-        .widespread-center-logo {
-            z-index: 250000;
-            right: 10;
-            bottom: 0;
-            width: 100px;
-            height: 100px;
-        }
-        .user-background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            min-width: 100vw;
-            height: 100vh;
-            min-height: 100vh;
-            z-index: -1000;
-        }
-        .user-background-image img {
-            width: 100%;
-            min-width: 100%;
-            height: 100%;
-            min-height: 100%;
-        }
-    }
-
-
-</style>
-  <div class="user-background-image">
-    <% if (profile.user_background_image) { %>
-        <img src="<%= profile.user_background_image %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
-    <% } else { %>
-            <div class="user-background-color" style="width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; background: <%= profile.favColor1 %>"></div>
-    <% } %>
-</div>
-
-<%- include('partials/mainHeaderSiteMenu') %>
-<div class="intro-message" data-title="Page Slider Menu" data-intro="Slide this menu left and right to access more features. SocialSpread, YourSpread, SpreadChat(Real-time text, audio, video chat), Tools(Notes, ToDo's, Encyclopedia, Dictionary, etc.), SpreadShield & FlexFloor.">
-    <%- include('partials/mainHeaderPageMenu') %>
-</div>
-
-<div class="dashboard-container">
-    <h2 style="text-align: center; margin-bottom: 20px; margin-top: 30px;">Your Dashboard</h2>
-    <p><a href="/vr-ar/vr-dashboard">Go To Your VR Dashboard</a></p>
-</div>
-
-<div class="welcome-user">
-    <h5 id="top">Welcome <%= fname %></h5>
-</div>
-
-<!-- Profile Image -->
-<div class="user-avatar">
-    <% if (profile.user_avatar) { %>
-        <img src="/image/<%= profile.user_avatar  %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="260px">
-    <%} else { %>
-        <img src="images/system/default-user_1a1a1a.png" alt="Default Avatar" width="260px" >
-    <% } %>
-</div>
-
-
-<!-- Profile Image -->
-<% if (!avatarImage) { %>
-    <div class="user-profile-image-form">    
-        <form action="/upload-avatar?_method=PATCH" method="post" enctype="multipart/form-data">
-            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-            <div class="custom-file-profile-image">
-                <input type="file" name="user_profile_image" id="userProfileImage">
-                <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
-            </div>
-            <div>
-                <button type="submit" class="custom-file-profile-image-button">Change</button>
-            </div>
-        </form>
-    </div>
-<%} else { %>
-    <div class="user-profile-image-form">
-        <form action="/upload-avatar?_method=PATCH" method="POST" enctype="multipart/form-data">
-            <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-            <div class="custom-file-profile-image">
-                    <input type="file" name="user_profile_image" id="userProfileImage">
-                    <label for="userProfileImage" class="custom-file-label-choose-profile-image">Choose Profile Picture</label>
-            </div>            
-            <div>
-                <button type="submit" class="custom-file-profile-image-button">Change</button>
-            </div>
-        </form>
-    </div>
-<% } %>
-
-<div class="user-profile-routes">
-    <div class="route">
-        <a href="/users/<%= id %>">See Your Profile</a>
-    </div>
-    <div class="route">
-        <a href="/users/update-profile/<%= id %>">Update Your Profile</a>
-    </div>
-</div>
-
-
-
-<div class="spreader-container">
-    <div class="tab" data-title="The Spreader" data-intro="This is where you can Spread things!">
-        <button data-title="SocialSpread" data-intro="Post something you want to tell the world!" class="tablinks" id="defaultOpen" onclick="openCity(event, 'Post')">Post</button>
-        <button data-title="Articles" data-intro="Would you like to write an article? Here is where it can happen!"  class="tablinks" onclick="openCity(event, 'Article')">Article</button>
-        <button data-title="Questions" data-intro="Have a question? Have some answers? Ask anything you'd like. Help others by answering their questions."  class="tablinks" onclick="openCity(event, 'Question')">Question</button>
-        <button data-title="The Polls" data-intro="See what the world thinks about everything! Create your own poll here." class="tablinks" onclick="openCity(event, 'Poll')">Poll</button>
-        <button class="tablinks" onclick="openCity(event, 'Video')">Video</button>
-        <button class="tablinks" onclick="openCity(event, 'Audio')">Audio</button>
-        <button class="tablinks" onclick="openCity(event, 'Event')">Event</button>
-      </div>
-      <div id="Post" class="tabcontent">
-          <div class="spread-post">
-            <div class="spreaded">
-                    <h5>Your Posts</h5>
-                    <ul>
-                        <% posts.forEach(function(post){ %>
-                            <div class="post-container">
-                                <div class="post-profile-image">
-                                        <% if (profile.user_avatar) { %>
-                                            <img src="/image/<%= profile.user_avatar %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
-                                            <%} else { %>
-                                                <img src="/images/system/default-user_1a1a1a.png" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar">
-                                                <% } %>
-                                </div>
-                                <div class="post-author">
-                                    <h3><%= profile.fname %> <%= profile.lname %></h3>
-                                </div>
-                                <div class="post-body">
-                                    <p><%= post.postBody %></p>
-                                </div>
-                            </div>
-                                <div class="post-comments">
-                                        <h4>Comments</h4>
-                                        <% if (post.comments) { %>
-                                            <% post.comments.forEach(function(comment) { %>
-                                                <div class="post-comment">
-                                                    
-                    
-                                                    <div class="comment-layout">
-                                                        <div class="comment-left">
-                                                            <% if (comment.author.user_avatar) { %>
-                                                                <div class="comment-author-image">
-                                                                <img src="/image/<%= comment.author.user_avatar %>" alt="" width="auto" height="80px">
-                                                            </div>
-                                                                <% } else { %>
-                                                                <img src="/images/system/default-user_1a1a1a.png" alt="" width="80px" height="80px">
-                                                                <% } %>
-                                                        </div>
-                                                        <div class="comment-right">
-                                                            <div class="comment-author-name">
-                                                                <h6><%= comment.author.fname %> <%= comment.author.lname %></h6>
-                                                            </div>
-                                                            <div class="comment-body">
-                                                                <p><%= comment.commentBody %></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <% }) %>
-                                            <% } else { %>
-                                                <p>Be the first to comment...</p>
-                                            <% } %>
-                                </div>
-                    
-                    <!--                             <a href="/users/posts/<%= post.id %>">See More</a> -->
-                    
-                                
-                            <% }); %>
-                        </ul>
-            </div>
-            <div class="new-spread">
-                <div class="new-spread-header">
-                    <h5>Spread Something</h5>
-                </div>
-                <form action="/users/<%= id %>/post" method="POST">
-                    <textarea required name="postBody" id="postBody" class="form-control" placeholder="Spread something..."></textarea>
-                    <button class="button" type="submit">Spread It</button>
-                </form>
-            </div>
-        </div>
-      </div>
-      
-
-
-
-      <div id="Article" class="tabcontent">
-        <div class="spread-post" style="border-radius: 15px; padding-bottom: 20px;">
-            <div class="spreaded">
-                <h5>Your Articles</h5>
-                <% articles.forEach(function(article){ %>
-                    <div class="public-article">
-                        <div class="article">
-                            <h3><%= article.articleTitle %></h3>
-                            <h5><%= article.articleHeader %></h5>
-                            <div class="article-published">
-                                <small class="d-inline"><%= article.createdAt.toLocaleDateString() %> - <%= article.createdAt.toLocaleTimeString('en-US') %></small>
-                            </div>
-                            <hr>
-                            <p><%= article.articleBody %></p>
-                            <div class="article-more">
-                                <a href="/users/articles/<%= article.id %>">See More</a>
-                            </div>
-                        </div>  
-                        
-                    </div>
-                <% }); %>
-            </div>
-            <div class="new-spread">
-
-                <h5>Create New Article</h5>
-                <form action="/users/<%= id %>/article" method="POST">
-                <input type="text" name="articleTitle" placeholder="Article Title" id="articleTitle"></input>
-                <input type="text" name="articleHeader" id="articleHeader" placeholder="Article Header">
-                <textarea required name="articleBody" id="articleBody" class="form-control" placeholder="Article body..."></textarea>
-                <button class="button" type="submit">Spread It</button>
-            </form>
-        </div>
-        </div>
-      </div>
-            
-      <div id="Question" class="tabcontent">
-          <div class="spreaded">
-              <h5>Your Questions</h5>
-              <% questions.forEach(function(question) { %>
-                <div class="question-container">
-                    <div class="question">
-                        <h5><%= question.question_body %></h5>
-                    </div>
-                    <div class="question-category">
-                        <p>Category: <%= question.category %></p>
-                    </div>
-                    <div class="question-author">
-                    </div>
-                    <div class="question-stats">
-                        <div class="question-resolved">
-                            <% if (question.resolved == true) { %>
-                                <p style="text-shadow: 0 0 3px green;">This question is resolved.</p>
-                            <% } else { %>
-                                <p style="text-shadow: 0 0 3px red;">This question hasn't been resolved yet.</p>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="question-page">
-                        <a href="/academy/question/<%= question.id %>">See More</a>
-                    </div>
-                </div>
-            <% }) %>
-          </div>
-          <div class="new-spread">
-        <h5>Ask a Question</h5>
-      <div class="spread-post">
-          <form action="/academy/question" method="POST">
-              <textarea required name="question_body" id="questionBody" class="form-control" placeholder="What is your question?"></textarea>
-              <select name="category" id="category">
-                  <option value="Math">Math</option>
-                  <option value="Science">Science</option>
-                  <option value="History">History</option>
-                  <option value="Politics">Politics</option>
-                  <option value="Legal">Legal</option>
-                  <option value="Technology">Technology</option>
-                  <option value="Geography">Geography</option>
-                  <option value="Construction">Construction</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Art">Art</option>
-                  <option value="Music">Music</option>
-                  <option value="Health">Health</option>
-                  <option value="Nature">Nature</option>
-                  <option value="Engineering">Engineering</option>
-                  <option value="Automotive">Automotive</option>
-                  <option value="Other">Other</option>
-              </select>
-              <button class="button" type="submit">Spread It</button>
-          </form>
-        </div>
-      </div>
-    </div>
-          
-    <div id="Poll" class="tabcontent">
-        <div class="spreaded">
-            <h5>Your Polls</h5>
-            <p><a href="/polls">All Polls</a></p>
-            <% polls.forEach(function(poll) { %>
-                <div class="poll-container">
-                    <div class="poll-question">
-                        <h5><%= poll.poll_body %></h5>
-                    </div>
-                    <div class="poll-reply-options">
-                        <form action="/users/<%= poll.id %>/poll-response?_method=PATCH" method="POST">
-                            <label class="poll-option">
-                                <input type="radio" name="votes" value="1">
-                                <span><%= poll.poll_reply1.reply_option %></span>
-                            </label>
-                            <label class="poll-option">
-                                <input type="radio" name="votes" value="2">
-                                <span><%= poll.poll_reply2.reply_option %></span>
-                            </label>
-                            <label class="poll-option">
-                                <input type="radio" name="votes" value="3">
-                                <span><%= poll.poll_reply3.reply_option %></span>
-                            </label>
-                            <label class="poll-option">
-                                <input type="radio" name="votes" value="4">
-                                <span><%= poll.poll_reply4.reply_option %></span>
-                            </label>
-                            <label class="poll-option">
-                                <input type="radio" name="votes" value="5">
-                                <span><%= poll.poll_reply5.reply_option %></span>
-                            </label>
-                            <label class="poll-option">
-                                <input type="radio" name="votes" value="6">
-                                <span><%= poll.poll_reply6.reply_option %></span>
-                            </label>
-                            <button class="button" style="margin-top: 10px;" type="submit">Vote</button>
-                        </form>
-                    </div>
-                </div>
-            <% }) %>
-        </div>
-        <div class="new-spread">
-        <h5>Create New Poll</h5>
-      <div class="spread-post">
-          <form action="/users/<%= id %>/poll" method="POST">
-            <textarea required name="poll_body" required id="pollBody" class="form-control" placeholder="Poll question..."></textarea>
-            <input type="text" name="poll_reply1" required placeholder="Poll Reply 1" id="poll_reply1"></input>
-            <input type="text" name="poll_reply2" required placeholder="Poll Reply 2" id="poll_reply2"></input>
-            <input type="text" name="poll_reply3" placeholder="Poll Reply 3" id="poll_reply3"></input>
-            <input type="text" name="poll_reply4" placeholder="Poll Reply 4" id="poll_reply4"></input>
-            <input type="text" name="poll_reply5" placeholder="Poll Reply 5" id="poll_reply4"></input>
-            <input type="text" name="poll_reply6" placeholder="Poll Reply 6" id="poll_reply4"></input>
-              <button class="button" type="submit">Spread It</button>
-          </form>
-        </div>
-      </div>
-    </div>
-          
-      <div id="Video" class="tabcontent">
-          <div class="new-spread">
-              <h5>Add New Video</h5>
-        <div class="spread-post">
-    
-            <form action="/upload-video" method="post" enctype="multipart/form-data">
-                <div class="spread-file">
-                    <input type="file" name="user_video" id="userVideo">
-                </div>
-                <input type="text" name="videoOwner" id="videoOwner" style="display: none;" value="<%= id %>">
-                <input type="text" name="videoName" id="videoName" placeholder="Video Title" style="margin-top: 15px;">
-                <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this video">
-                <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
-                <button type="submit" disabled class="button" style="color: red;">Add Video</button>
-            </form>
-        </div>
-        </div>
-      </div>
-      <div id="Audio" class="tabcontent">
-          <div class="new-spread">
-              <h5>Add New Audio</h5>
-        <div class="spread-post">
-    
-            <form action="/upload-audio" method="post" enctype="multipart/form-data">
-                <div class="spread-file">
-                    <input type="file" name="user_audio" id="userAudio">
-                </div>
-                <input type="text" name="audioOwner" id="audioOwner" style="display: none;" value="<%= id %>">
-                <input type="text" name="audio_name" id="audioName" placeholder="Track Title" style="margin-top: 15px;">
-                <input type="text" name="user_tags" id="user_tags" placeholder="Tag friends in this track">
-                <input type="text" name="catagory_tags" id="catagory_tags" placeholder="Add Catagory Tags">
-                <button type="submit"  class="button" style="color: red;">Add Audio</button>
-            </form>
-        </div>
-        </div>
-      </div>
-      <div id="Event" class="tabcontent">
-          <div class="new-spread">
-        <h5>Create an Event</h5>
-      <div class="spread-post">
-          <form action="/users/<%= id %>/event" method="POST">
-                <input type="text" name="eventName" id="eventName" placeholder="Name of Event">
-              <textarea required name="eventDescription" id="eventDescription" class="form-control" placeholder="Describe your event..."></textarea>
-              <p>Party Type</p>
-              <select name="category" id="category">
-                  <option value="Birthday">Birthday</option>
-                  <option value="Holiday Party">Holiday Party</option>
-                  <option value="Cookout">Cookout</option>
-                  <option value="Dinner Party">Dinner Party</option>
-                  <option value="Celebration">Celebration</option>
-                  <option value="Fund Raiser">Fund Raiser</option>
-                  <option value="Music Performace">Music Performace</option>
-                  <option value="Tournament">Tournament</option>
-                  <option value="Meet-Up">Meet-Up</option>
-                  <option value="Specialty Party">Specialty Party</option>
-                  <option value="Baby Shower">Baby Shower</option>
-                  <option value="Funural">Funural</option>
-                  <option value="Celebration of Life">Celebration of Life</option>
-                  <option value="Other">Other</option>
-              </select>
-              <p>What day is your event?</p>
-              <input type="date" name="eventDate" id="eventDate">
-              <p>What time will your event begin?</p>
-              <input type="time" name="eventStart" id="eventStart">
-              <p>What time will your event end?</p>
-              <input type="time" name="eventEnd" id="eventEnd">
-              <p>Who would you like to invite?</p>
-              <p style="font-size: 0.6rem; color: red">Need to add multi-select</p>
-              <select name="invitees" id="invitees">
-                  <% profile.friends.forEach(function(friend) { %>
-                    <option value="<%= friend.id %>"><%= friend.fname %> <%= friend.lname %></option>
-                <% }) %>
-              </select>
-              <p>Is this event invite only?</p>
-              <div class="boolean-options">
-                  <div class="boolean-option">
-                      <p>Yes</p>
-                      <input type="radio" name="inviteOnly" id="inviteOnly" value="true">
-                    </div>
-                    <div class="boolean-option">
-                      <p>No</p>
-                      <input type="radio" name="inviteOnly" id="inviteOnly" value="false">
-                    </div>
-              </div>
-              <button class="button" disabled type="submit">Spread It</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-</div>
-      
-<div class="spread-slider-photos">
-    <div class="spread-slider-header">
-        <h5>Your Photos</h5>
-    </div>
-    <div class="spread-slider">
-        <% profileImages.forEach(function(image){ %>
-            <div class="slide">
-                <div class="slide-background">
-                    <img src="/image/<%= image.img.data %>">
-                </div>
-                <div class="slide-data">
-                    <p><%= image.description %></p>
-                </div>
-            </div>
-        <% }); %>
-    </div>
-</div>
-
-
-<!-- Second Test Slider -->
+.card {
+    background: lime;
+}
+.card-body {
+    margin: 0 auto;
+    background: lime;
+}
 
 
 
 
+/* Academy */
+.learning-point p, .learning-point small {
+    padding: 20px;
+    padding-bottom: 40px;
+    display: none;
+    overflow: hidden;
+    background-color: rgba(88, 88, 88, 0.521);
+    backdrop-filter: blur(2px);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #fff;
+    font-size: 0.7rem;
+    transition: 0.4s ease-out;
+}
+
+}  
 
 
 
-        <div class="user-profile-image-form">
-        
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="text" name="imageOwner" id="imageOwner" style="display: none;" value="<%= id %>">
-                <div class="custom-file-profile-image">
-                    <input type="file" name="user_image" id="userImage">
-                    <label for="userImage" class="custom-file-label-choose-profile-image">Upload an Image</label>
-                </div>
-                
-                <div>
-                    <button type="submit" class="custom-file-profile-image-button">Add</button>
-                </div>
-            </form>
-        </div>
-    <a href="/photo-album/<%= profile._id %>">
-        <div class="see-albums">
-            <p>Your Photo Album's</p>
-        </div>
-    </a>
-
-
-    <% if (!profile.zip) { %>
-        <span style="display: none;"></span>
-        <% } else { %>
-        <div class="weather">
-            <h5>Current Weather</h5>
-            <h6><%= weather.name %></h6>
-            <div class="weather-data">
-                <div class="weather-info">
-                    <p style="color: #fff"><i class="fas fa-thermometer-three-quarters"></i> <%= weather.main.temp %> &#8457;</p>
-                    <p style="color: #fff"><i class="fas fa-wind"></i> <%= weather.wind.speed %> mph</p>
-                </div>
-                <div class="weather-icons">
-                    <% weather.weather.forEach(function(item) { %>
-                        <div class="weather-icon">
-                            <img src="https://openweathermap.org/img/wn/<%= item.icon %>.png" alt="<%= item.main %>">
-                        </div>
-                    <% }) %>
-                </div>
-            </div>
-            <div class="forecast-container">
-        
-            <h5>Forecast</h5>
-                <div class="weather-forecast">
-                    <% forecast.list.forEach(function(day) { %>
-                        <div class="weather-forecast-day">
-                            <div class="day-container">
-                                <p class="forecast-day"><small><%= day.dt_txt %></small></p>
-                            </div>
-                            <div class="forecast-icon">
-                                <% day.weather.forEach(function(icon) { %>
-                                <img src="https://openweathermap.org/img/wn/<%= icon.icon %>.png" alt="<%= day.weather.main %>">
-                                <% }) %>
-                            </div>
-                            <div class="forecast-temp">
-                                <p><i class="fas fa-thermometer-three-quarters"></i> <%= day.main.temp %></p>
-                            </div>
-                        </div>
-                    <% }) %>
-                </div>
-            </div>
-        </div>
-                <div class="weather-link">
-                    <p><a href="/news/weather">More Weather</a></p>
-                </div>
-            
-        <% } %>
-
-
-    <div class="your-friends">
-        <a href="/<%= profile.id %>/friends"><h5>Your Friends</h5></a>
-    </div>
-    <div class="row">
-        <h5 style="text-align: center; width: 100%;">Find New Friends</h5>
-        <p style="text-align: center; color: lightskyblue; width: 100%;"><small style="text-align: center; color: lightskyblue; width: 100%;">Scroll left & right for more people</small></p>
-        <div class="find-new-friends">
-            <% nearbyUsers.forEach(function(friend){ %>
-                <% if(nearbyUsers) { %>
-            <div class="new-friend">
-
-            
-            <div class="possible-friend-background">
-
-                <div class="possible-friend-image">
-                    <% if (friend.user_avatar) { %>
-                        <img src="/image/<%= friend.user_avatar   %>" alt="<%= profile.fname %> <%= profile.lname %>'s Avatar" width="60px">
-                    <%} else { %>
-                        <img src="/images/system/default-user_1a1a1a.png" alt="Default Avatar"  width="60px"  >
-                        <% } %>
-                </div>
-            </div>
-            <a href="/users/<%= friend.id %>">
-                <div class="possible-friend">
-                        <h3 style="text-shadow: 0 0 3px <%= friend.favColor1 %>"><%= friend.fname %> <%= friend.lname %></h3>
-                        <div class="possible-friend-data">
-
-                        <% if (!friend.town && !friend.state && !friend.country) { %>
-                            <br>
-                            <br>
-                            <% } else { %>
-                                <p><%= friend.town %>, <%= friend.state %></p>
-                                <p><%= friend.country %></p>
-                                <% } %>
-                            </a>
-                            <div class="add-friend-container">
-                                    <div class="add-friend">
-                                        <form action="/users/<%= profile._id %>/add-friend" method="POST">
-                                            <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
-                                            <button class="" type="submit">
-                                                <i class="fas fa-user-plus"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                <div class="remove-friend">
-                                    <form action="/users/<%= profile._id %>/remove-friend?_method=PATCH" method="POST">
-                                        <input type="text" name="friends" value="<%= friend.id %>" style="display: none;">
-                                        <button class="" type="submit">
-                                            <i class="fas fa-user-minus"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <%} else { %>
-                    <span></span> 
-                    <% } %>
-            <% }) %>
-        </div>
-    </div>
-<div class="inspread-container" data-title="InSpreads" data-intro="This is where all your InSpreads will be, both public and private. (InSpreads are messages directed at you from your public profile.)">
-    <h5>Spread To You</h5>
-    <div class="inspreads">
-        <% inSpreads.forEach(function(inSpread) { %>
-            <div class="inspread">
-                <div class="inspread-from">
-                    <div class="inspread-from-image">
-                        <img src="/image/<%= inSpread.inSpreadFrom.user_avatar %>" alt="" width="40px" height="80px">
-                    </div>
-                    <div class="inspread-body">
-                    <h4><%= inSpread.inSpreadFrom.fname %> <%= inSpread.inSpreadFrom.lname %></h4>
-                    <p><%= inSpread.inSpreadBody %></p>
-                        <div class="inspread-time">
-                            <small><%= inSpread.inSpreadAt.toLocaleDateString() %></small>
-                            <small><%= inSpread.inSpreadAt.toLocaleTimeString() %></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% }) %>
-    </div>
-</div>
-
-
-<div class="its-messy" id="itsMessy" style="color: #fff; background: rgba(255, 0, 0, 0.3); border-radius: 8px; padding: 10px;">
-    <p>    Welcome to WideSpread! Please excuse any mess I may have overlooked or didn't get to yet.. WideSpread is still under construction, but feel free to explore and enjoy! Do your best to try and break things (just let me know on SocialSpread or send me an InSpread (working title...) so I can fix it.</p>
-    <p>    I'm Jon, and I'll be the first person in the "Find New Friends" slider on your Dashboard, feel free to add me to get new feature updates.. don't hesitate to ever ask me any questions or make recommendations for something you would like to be added... WideSpreads conception was built around helping any and everyone anyway possible! Not judge people by their looks like how Facebook got started...</p>
-    <p>    Also, feel free to check out some demo videos and screenshots to hopefully give some guidance until I build walkthroughs and explain things... <a href="https://www.instagram.com/widespread_os/" target="_blank" style="color: lightskyblue;">WideSpread OS</a> (Yeah, yeah, it's Instagram... time to put them in their place... the trash!)</p>
-    <p style="text-align: center;"><a style="color: lightskyblue;" href="#top">Back to Top</a></p>
-</div>
-
-
-
-<script>
-    document.getElementById("defaultOpen").click();
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-</script>
-
-<script>
-    /* introJs().start(); */
-</script>
