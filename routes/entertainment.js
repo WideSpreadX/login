@@ -30,7 +30,6 @@ router.get('/', async (req, res) => {
 
     axios.request(options).then(function (response) {
       const returnedData = response.data;
-      console.log(returnedData)
       res.render('ent-home', { returnedData, movies});
     }).catch(function (error) {
       console.error(error);
