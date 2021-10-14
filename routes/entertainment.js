@@ -159,25 +159,31 @@ router.post('/movies/add-to-recommended', ensureAuthenticated, (req, res) => {
 })
 
 router.get('/tv', async (req, res) => {
-  const userId = req.user._id;
-  const user = await User.findById(userId);
   const tvShow = await Show.find();
-  const userShows = await User.findById(userId).select('user_shows');
   const apiKey = process.env.TMDB_API_KEY
 	const options = {
   method: 'GET',
   url: `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
-};
+  };
 
-axios.request(options).then(function (response) {
-    const returnedData = response.data;
-    console.log(returnedData)
-    res.render('ent-tv-home', {returnedData, user, tvShow, userShows});
-}).catch(function (error) {
-	console.error(error);
+  axios.request(options).then(function (response) {
+      const returnedData = response.data;
+      console.log(returnedData)
+      res.render('ent-tv-home', {returnedData, tvShow });
+  }).catch(function (error) {
+    console.error(error);
+  });
+
 });
 
+router.get('/tv/user', async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
+  const tvShow = await Show.find();
+  const userShows = await User.findById(userId).select('user_shows');
+  res.render('ent-tv-user', { user, tvShow, userShows });
 });
+
 
 router.post('/tv/save', ensureAuthenticated, async (req, res) => {
   const user = req.user._id;
