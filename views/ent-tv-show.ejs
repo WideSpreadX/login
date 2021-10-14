@@ -1,33 +1,26 @@
 <style>
 
-.spread-break hr {
-    background: lightskyblue;
-    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.534);
-    width: 80%;
-    margin-left: 10%;
-    border-radius: 50%;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    }
-
-    
     .show-search {
         background: rgba(255, 255, 255, 0.3);
-        border-radius: 8px;
         border-top: groove 2px lightskyblue;
         border-bottom: groove 2px lightskyblue;
-        padding: 10px;
         padding-bottom: 0;
+        padding-top: 10px;
         width: 100%;
         margin-bottom: 30px;
+        border-radius: 0;
     }
     .show-search input {
-        width: 90%;
-        margin-left: 5%;
-        border-radius: 8px;
+        width: 100%;
         outline: none;
         border: none;
         padding: 5px;
+        background: rgba(135, 206, 250, 0.5);
+        color: #fff;
+        box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.75);
+    }
+    .show-search input::placeholder {
+        color: #fff;
     }
     .show-search button {
         width: 80%;
@@ -41,10 +34,6 @@
         border-top-left-radius: 8px;  
         border-top-right-radius: 8px;  
     }
-    h5 {
-        text-align: center;
-        color: #fff;
-    }
     .show-image {
         position: fixed;
         top: 0;
@@ -54,12 +43,26 @@
         min-height: 100%;
         z-index: -80;
     }
+    .show-container {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: outset 2px lightskyblue;
+        border-bottom: outset 2px lightskyblue;
+    }
     .show-container h3 {
         text-align: center;
         padding: 10px;
+        font-size: 1.5rem;
+    }
+    .show-container h6 {
+        text-align: center;
+        padding: 5px;
     }
     .show-container p {
         color: #fff;
+        padding: 10px;
     }
     .show-image img {
         max-width: 100%;
@@ -67,11 +70,23 @@
         max-height: 100%;
         min-height: 100%;
     }
+    .seasons-container {
+        margin-top: 30px;
+    }
+    .seasons-container h5 {
+        font-size: 1.3rem;
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        border-top: outset 2px lightskyblue;
+        border-bottom: outset 2px lightskyblue;
+    }
     .seasons {
         display: inline-flex;
         overflow-x: scroll;
         width: 90%;
         margin-left: 5%;
+        margin-top: 15px;
 
     }
     .season {
@@ -85,6 +100,10 @@
         border-radius: 8px;
         margin-right: 20px;
     }
+    .season a {
+        text-decoration: none;
+    }
+
     .season-image {
         position: absolute;
         top: 0;
@@ -99,8 +118,9 @@
         border-radius: 8px;
     }
     .season p {
-        background: rgba(255, 255, 255, 0.3);
-        border-bottom: groove 2px lightskyblue;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        border-bottom: outset 2px lightskyblue;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         z-index: 10;
@@ -130,15 +150,15 @@
         margin-bottom: 20px;
     }
     .add-to-list button {
-        width: 80%;
-        margin-left: 10%;
+        width: 100%;
         border: none;
         border-top: groove 2px green;
         border-bottom: groove 2px green;
-        border-radius: 8px;
         background: rgba(0, 128, 0, 0.3);
         color: #fff;
         outline: none;
+        padding: 5px;
+        font-size: 1.3rem;
     }
 </style>
 
@@ -157,30 +177,35 @@
         <button type="submit">Add to Your List</button>
     </form>
 </div>
+<div class="show-image">
+    <img src="https://image.tmdb.org/t/p/w500<%= returnedData.poster_path %>" alt="">
+</div>
 <div class="show-container">
-    <div class="show-image">
-        <img src="https://image.tmdb.org/t/p/w500<%= returnedData.poster_path %>" alt="">
-    </div>
     <div class="show-title">
         <h3> <%= returnedData.name %></h3>
     </div>
     <p><%= returnedData.overview %></p>
+    <h6>Created By: <%= returnedData.created_by[0].name %></h6>
 </div>
-<h5> <%= returnedData.created_by[0].name %></h5>
 
-<h5>Seasons</h5>
-<div class="seasons">
-    <% returnedData.seasons.forEach(function(season) { %>
-        <a href="/entertainment/tv/<%= showId %>/<%= season.season_number %>">
+
+<div class="seasons-container">
+    <h5>Seasons</h5>
+    <div class="seasons">
+        <% returnedData.seasons.forEach(function(season) { %>
             <div class="season">
-                <div class="season-image">
-                    <img src="https://image.tmdb.org/t/p/w500<%= season.poster_path %>" alt="">
-                </div>
-                <p><%= season.name %></p>
+                <a href="/entertainment/tv/<%= showId %>/<%= season.season_number %>">
+                    <div class="season-image">
+                        <img src="https://image.tmdb.org/t/p/w500<%= season.poster_path %>" alt="">
+                    </div>
+                    <p><%= season.name %></p>
+                </a>
             </div>
-        </a>
-    <% }) %>
+            <% }) %>
+    </div>
 </div>
+
+
 
 <div class="add-to-recommended">
     <form action="/entertainment/tv/add-to-recommended" method="post">
