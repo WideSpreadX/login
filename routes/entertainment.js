@@ -168,7 +168,6 @@ router.get('/tv', async (req, res) => {
 
   axios.request(options).then(function (response) {
       const returnedData = response.data;
-      console.log(returnedData)
       res.render('ent-tv-home', {returnedData, tvShow });
   }).catch(function (error) {
     console.error(error);
@@ -234,7 +233,6 @@ router.get('/tv/search/:show', async (req, res) => {
 
 axios.request(options).then(function (response) {
     const returnedData = response.data;
-    console.log(returnedData)
     res.render('ent-tv-search-results', {returnedData, show});
 }).catch(function (error) {
 	console.error(error);
@@ -255,7 +253,6 @@ router.get('/tv/:showId', async (req, res) => {
 
 axios.request(options).then(function (response) {
     const returnedData = response.data;
-    console.log(returnedData)
     res.render('ent-tv-show', {returnedData, showId});
 }).catch(function (error) {
 	console.error(error);
@@ -277,7 +274,6 @@ router.get('/tv/:showId/:seasonId', async (req, res) => {
 
 axios.request(options).then(function (response) {
     const returnedData = response.data;
-    console.log(returnedData)
     res.render('ent-tv-show-season', {returnedData, showId});
 }).catch(function (error) {
 	console.error(error);
@@ -294,20 +290,35 @@ router.get('/tv/:showId/:seasonId/:episodeId', async (req, res) => {
 
     const apiKey = process.env.TMDB_API_KEY
 	const options = {
-  method: 'GET',
-  url: `https://api.themoviedb.org/3/tv/${showId}/season/${seasonId}/episode/${episodeId}?api_key=${apiKey}`
-};
+		method: 'GET',
+		url: `https://api.themoviedb.org/3/tv/${showId}/season/${seasonId}/episode/${episodeId}?api_key=${apiKey}`
+	};
 
 axios.request(options).then(function (response) {
     const returnedData = response.data;
-    console.log(returnedData)
     res.render('ent-tv-show-episode', {returnedData, showId});
 }).catch(function (error) {
 	console.error(error);
 });
 
-})
+});
 
+
+router.get('/similar/tv/:showId', async (req, res) => {
+  const showId = req.params.showId;
+  const apiKey = process.env.TMDB_API_KEY
+  const options = {
+    method: 'GET',
+    url: `https://api.themoviedb.org/3/tv/${showId}/recommendations?api_key=${apiKey}&language=en-US&page=1`
+  };
+
+  axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    res.render('ent-tv-show-similar', { returnedData, showId });
+  }).catch(function (error) {
+    console.error(error);
+  });
+});
 
 router.get('/videos', async (req, res) => {
     const userId = req.user._id;
