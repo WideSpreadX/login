@@ -237,6 +237,7 @@ router.get('/weather', ensureAuthenticated, async (req, res) => {
 });
 
 
+module.exports = router;
 /* 
 
                 BLANK SCRAPING SETUP FOR NEWS
