@@ -474,7 +474,7 @@ router.get('/music', (req, res) => {
 const options = {
   method: 'GET',
   url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
-  params: {q: 'marshmello'},
+  params: {q: 'craig david'},
   headers: {
     'x-rapidapi-key': '7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79',
     'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
