@@ -69,11 +69,29 @@ router.get('/kids/movies', async (req, res) => {
 });
 
 router.post('/movies/search', (req, res) => {
-    const movie = req.body.movie;
     const movieString = req.body.movie;
     const convertedString = movieString.replace(/\s/g, '+')
-    res.redirect(`/entertainment/movies/${convertedString}`);
-})
+    res.redirect(`/entertainment/search/movies/${convertedString}`);
+});
+ 
+router.get('/search/movies/:query', (req, res) => {
+  const query = req.params.query;
+  const apiKey = 'd3722e71'
+  const options = {
+    method: 'GET',
+    url: `http://www.omdbapi.com/?apikey=${apiKey}&s=${query}`
+  };
+
+  axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData)
+    res.render('ent-movie-search-results', { returnedData, query });
+  }).catch(function (error) {
+    console.error(error);
+  });
+});
+
+
 router.get('/movies/:movie', (req, res) => {
     const movie = req.params.movie;
     const apiKey = 'd3722e71'
