@@ -147,7 +147,30 @@ axios.request(options).then(function (response) {
 }).catch(function (error) {
 	console.error(error);
 });
-})
+});
+
+router.get('/photos/movies/:imdbID', (req, res) => {
+  const imdbID = req.params.imdbID;
+
+  var options = {
+    method: 'GET',
+    url: 'https://imdb8.p.rapidapi.com/title/get-all-images',
+    params: { tconst: imdbID },
+    headers: {
+      'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+      'x-rapidapi-key': '7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79'
+    }
+  };
+
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+    const returnedData = response.data;
+    res.render('ent-movie-info-photos', {returnedData})
+  }).catch(function (error) {
+    console.error(error);
+  });
+});
+
 
 router.post('/movies/save', ensureAuthenticated, async (req, res) => {
     const user = req.user._id;
