@@ -6,21 +6,21 @@
         border-bottom: outset 2px #fff;
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
         margin-bottom: 20px;
-    }
-
-    .main-header-page-menu-inner {
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
         flex-wrap: nowrap;
         align-items: center;
         overflow-x: scroll;
         width: 100%;
+        max-width: 100vw;
+        padding: 5px;
     }
+
 
     .main-header-page-menu-inner-item {
         min-width: 120px;
         margin-top: 5px;
+        padding-bottom: 5px;
         text-align: center;
     }
     .main-header-page-menu-inner-item a {
@@ -32,9 +32,7 @@
     }
 </style>
 
-<div class="main-header-page-menu-container">
-    <div id="mainHeaderPageMenu">
-        <div class="main-header-page-menu-inner">
+    <div class="main-header-page-menu-container">
             <div class="main-header-page-menu-inner-item">
                 <a href="/entertainment">Home</a>
             </div>
@@ -57,6 +55,4 @@
                 <a href="/entertainment/sports">Sports</a>
             </div>
 
-        </div>
     </div>
-</div>
