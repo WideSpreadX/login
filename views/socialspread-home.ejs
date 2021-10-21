@@ -1,5 +1,40 @@
 <style>
    @media screen and (min-width: 299px) {
+       .create-spread-post {
+           width: 100%;
+           margin-bottom: 30px;
+       }
+       .create-spread-post h5 {
+           text-align: center;
+           font-size: 1.5rem;
+           padding: 8px;
+       }
+       .create-spread-post textarea {
+           width: 100%;
+           background: rgba(255, 255, 255, 0.5);
+           backdrop-filter: blur(4px);
+           color: #000;
+           padding: 5px;
+           outline: none;
+           border: none;
+           border-top: outset 2px lightskyblue;
+           border-bottom: outset 2px lightskyblue;
+           font-family: 'Play', sans-serif;
+        }
+        .create-spread-post textarea::placeholder {
+            color: #000;
+        }
+        .create-spread-post button {
+            width: 80%;
+            margin-left: 10%;
+            background: rgba(0, 255, 0, 0.5);
+            backdrop-filter: blur(4px);
+            outline: none;
+            border: none;
+            padding: 5px; 
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+       }
         .socialspread-posts {
             width: 100vw;
         }
@@ -7,6 +42,8 @@
         }
         .socialspread-post-header h5 {
             text-align: center;
+            font-size: 1.7rem;
+            padding: 10px;
         }
         .posts-container {
         }
@@ -211,7 +248,7 @@
 <div class="create-spread-post">
     <h5 style="text-align: center;">Spread Something</h5>
     <form action="/users/<%= id %>/post" method="POST">
-        <textarea required name="postBody" id="postBody" class="form-control"></textarea>
+        <textarea required name="postBody" placeholder="What would you like to say?" id="postBody" class="form-control"></textarea>
         <button type="submit">Spread It</button>
     </form>
 </div>
