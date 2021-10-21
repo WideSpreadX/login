@@ -408,41 +408,6 @@ router.get('/:userId/friends', ensureAuthenticated, async (req, res) => {
 
     res.render('all-polls', {allPolls});
   })
-  router.get('/socialspread', async (req, res) => {
-    const thisUser = req.user._id;
-    
-    const userFriends = await User.findById(thisUser).populate('friends').exec()
-    const friendId = userFriends.friends.map(friend);
-    function friend(id) {
-      return id._id
-    }
-    
-    let friendIds = []
-    friendIds.push(friendId.toString())
-    console.log(friendIds)
-    const avatars = friendIds.forEach(findAvatar)
-    
-    
-    function findAvatar(friendId) {
-      const friendAvatar = ProfileImage.findOne({imageOwner: {$eq: friendId }})
-      console.log(friendAvatar)  
-    }
-    
-    User.findById(thisUser)
-        .populate({
-          path: 'friends',
-          model: 'User',
-          populate: {
-            path: 'friends',
-            model: 'User'
-          } 
-        })
-        .exec()
-        .then(profile => 
-          res.render('socialspread-home', {currentPageTitle: 'SocialSpread', profile, userFriends, friendIds, avatars})
-        )
-});
-
 
 
 
