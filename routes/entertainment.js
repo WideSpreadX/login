@@ -460,27 +460,56 @@ router.get('/videos/:userId/upload-done', async (req, res) => {
   res.render('ent-video-upload-complete', {item, eventType, eventData});
 });
 
+
+
+
 /* Music */
 router.get('/music', (req, res) => {
+  const options = {
+    method: 'GET',
+    url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+    params: {q: 'craig david'},
+    headers: {
+      'x-rapidapi-key': '7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79',
+      'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
+  };
 
-
-const options = {
-  method: 'GET',
-  url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
-  params: {q: 'craig david'},
-  headers: {
-    'x-rapidapi-key': '7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79',
-    'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-  const returnedData = response.data;
-	console.log(returnedData);
-  res.render('ent-music-home', {returnedData} );
-}).catch(function (error) {
-	console.error(error);
+  axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData);
+    res.render('ent-music-home', {returnedData} );
+  }).catch(function (error) {
+    console.error(error);
+  });
 });
+
+
+router.post('/music/search', (req, res) => {
+  const query = req.body.query;
+  res.redirect(`/entertainment/music/search/${query}`);
+});
+
+
+router.get('/music/search/:query', (req, res) => {
+  const query = req.params.query
+  const options = {
+    method: 'GET',
+    url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
+    params: {q: `${query}`},
+    headers: {
+      'x-rapidapi-key': '7e45ec5e4fmsh4f3dac417f9eaa7p179a33jsnbfe4cb2e4c79',
+      'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
+  };
+
+  axios.request(options).then(function (response) {
+    const returnedData = response.data;
+    console.log(returnedData);
+    res.render('ent-music-search-results', {returnedData, query} );
+  }).catch(function (error) {
+    console.error(error);
+  });
 });
 
 
